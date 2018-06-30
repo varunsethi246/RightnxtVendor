@@ -1,0 +1,60 @@
+<template name="userPhotos">
+	<div class="container-fluid borderleft"> 	
+	  	<div class="photoRender col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	  		<h3 class="col-lg-6 col-xs-6">Photo Album</h3>
+
+				{{#if checkPhotoLoading}}
+				  
+				{{else}}
+					<button type="button" class="btn btn-success photoDeleteBtn {{showDeleteAllPic}} pull-right" data-toggle="modal" >Delete Selected Photos</button>
+				{{/if}}
+
+		</div>
+
+		{{#if checkPhotoLoading}}
+			<div class="checkPhotoLoading col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				Your photos of reviews to keep them in one place.
+			</div>
+		{{else}}
+		<div class="photoRender col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="modal fade modaldelete" id="userModal" role="dialog">
+				<div class="modal-dialog">
+					  <div class="modal-content">
+						  <div class="modal-header delete-close editofferModal1">
+							  <a href="#" data-dismiss="modal" aria-hidden="true" class="close pull-right"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i></a>
+							 </div>
+						  <div class="modal-body">
+								<p>Deleting the selected pic will also remove the pic from your reviews</p>
+								<div class="body-close">
+								  <button type="button" id="{{_id}}" class="btn btn-default userYes"><b>Yes</b></button>
+								  <button type="button" class="btn btn-danger btn-ok" data-dismiss="modal"><b>No</b></button>
+							  </div>
+						  </div>
+					  </div>
+				  </div>
+			  	</div>
+		  	</div>
+  
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 userPhotoPicRender">
+				<div class="">
+					<div class="row">
+						{{#each userPhotosData}}
+							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 photoAlbmImg">
+								<img src="{{url}}" class="bgGif"  alt=""/>
+	
+								<div  class="likeIcn {{isLiked}}" id="{{margLike}}">
+										<i class="fa fa-heart " aria-hidden="true" id="{{_id}}" title="Like"></i>
+								</div>
+								<!-- <div > -->
+									<i id="{{_id}}" class="fa fa-trash-o deleteBtn {{@index}} {{showDelete}}"  aria-hidden="true" title="Delete"></i>
+								<!-- </div> -->
+							</div>
+						{{/each}}
+					</div>
+				</div>
+			</div>
+		{{/if}}
+
+	  
+	</div>         
+</template>

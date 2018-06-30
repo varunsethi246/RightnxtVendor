@@ -1,0 +1,14 @@
+<template name="generalLayoutWithImage">
+
+	<div class="navHeadSearchbarCommon">{{> header }}</div>
+	<div class="visible-sm" id="visible-sm"></div>
+	<div class="visible-md" id="visible-md"></div>
+	<div class="visible-lg" id="visible-lg"></div>
+	<!-- <div class="visible-xs" id="visible-xs"></div> -->
+	<div class="generalLayoutWithImage">
+		<img class="img-responsive" src="/images/generalImage.png" alt="">
+	</div>
+	{{> Template.dynamic template=generalcontent }}
+	{{> footer}}
+	
+</template>

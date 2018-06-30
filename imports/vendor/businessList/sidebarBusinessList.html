@@ -1,0 +1,25 @@
+<template name="sidebarBusinessList">
+	<div class="listofType">
+		<h4  class="listofTypeHeading">Show Results In</h4>
+		<ul class="listofTypeUl scrollbar" id="style-3">
+			{{#if searchList}}
+				{{#each searchList}}
+					<li>
+						<h4>{{title}}</h4>
+						<ul>
+							{{#each sublist}}
+								<li class="listofTypeSearch">{{categories}}</li>
+							{{/each}}
+						</ul>
+					</li>
+				{{/each}}
+			{{else}}
+				<li>
+					<div class="listofTypeSearchGifAlt">
+							No Relevant Categories Found
+					</div>
+				</li>
+			{{/if}}
+		</ul>
+	</div>
+</template>

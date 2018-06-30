@@ -1,0 +1,138 @@
+<template name="addvendorAboutOwner">
+	{{#with vendorBusOwInfoRetrive}}
+	<div class="adminsideAdjClass">
+		<!-- {{> vendorAboutOwner}} -->
+		<div class="">
+			<div class="row">
+				<div class="col-lg-12">
+					<form class="businessAboutOwner" novalidate>
+						<div class="row addvenBusInfo">
+							<div class="col-lg-12 vBusGroupRow">
+								<h3 class="vOpenACloseTitle">Meet the Owner / Manager</h3>
+							</div>
+							<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 vBusGroupRow">
+								<div class="progress">
+								  <div class="progress-bar addVendorAddNewFormProgressbar" role="progressbar" aria-valuenow="{{completedPercent}}"
+								  aria-valuemin="0" aria-valuemax="100" style="width:{{completedPercent}}%">
+								    {{completedPercent}}% Completed
+								  </div>
+								</div>
+							</div>
+							<div class="col-lg-12 vBusGroupRow">
+								<div class="form-group vContactInfoFormTwo">
+									<h5>Contact Information</h5>
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="row">
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 v-image-upload-margin">
+													<label>Full name</label><br>
+													<div class="row">
+														<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+															<input type="text" class="form-control businessFullNameC" id="businessFullName" name="ownerFullName" value="{{ownerFullName}}">
+															<span class="SpanBusinessFullName"></span>
+														</div>
+														<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+															<i class="fa fa-question-circle vBusTitleI pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Full Name of person leading the Business"></i>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 v-image-upload-margin">
+													<label>What is your role?</label><br>
+													<div class="row">
+														<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+															<!-- <input type="text" class="form-control businessWhatRoleC" id="businessWhatRole" name="ownerRole" >
+															<span class="SpanBusinessWhatRole"></span> -->
+															<select class="businessWhatRoleC" name="ownerRole">
+																{{#each vendorRoles}}
+																<option {{selected}}>{{vendorRole}}</option>
+																{{/each}}
+																
+															</select>
+														</div>
+														<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+															<i class="fa fa-question-circle vBusTitleI pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Role of the person"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="row">
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 v-image-upload-margin">
+													<label>Mobile</label><br>
+													<div class="row">
+														<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+															<div class="input-group">
+															  <span class="input-group-addon">+91</span>
+															  <input type="text" class="form-control businessMobileC" id="businessMobile" name="ownerMobile" placeholder="10 digit Mobile Number" maxlength="10" value="{{ownerMobile}}">
+															</div>
+															
+															<span class="SpanBusinessMobile"></span>
+														</div>
+														<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+															<i class="fa fa-question-circle vBusTitleI pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Mobile Number : Not displayed to Customers."></i>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 v-image-upload-margin">
+													<label>Email</label><br>
+													<div class="row">
+														<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+															<input type="text" class="form-control businessEmailC" id="businessEmail" name="ownerEmail" value="{{ownerEmail}}">
+															<span class="SpanBusinessEmail"></span>
+														</div>
+														<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+															<i class="fa fa-question-circle vBusTitleI pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Email Id : Not displayed to Customers."></i>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-12 v-image-upload-margin">
+											<label>Your Description / Bio</label><br>
+											<div class="row">
+												<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+													<!-- <textarea class="form-control businessYourDescC" id="businessYourDesc" rows="5" name="ownerDesc" maxlength="2500" value="{{ownerDesc}}"></textarea> -->
+													<textarea class="form-control businessYourDescC" id="businessYourDesc" rows="3" name="ownerDesc" maxlength="1000" value="{{ownerDesc}}" placeholder="Minimum 50 and Maximum 1000 Characters"></textarea>
+													<div class="textRemain pull-right"></div>
+													<span class="SpanBusinessYourDesc"></span>
+												</div>
+												<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+													<i class="fa fa-question-circle vBusTitleI pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Brief description about yourself. Upto 50 characters."></i>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 v-image-upload-class v-image-upload-margin">
+											<!-- <img src="{{ownerPhoto}}" class="img-thumbnail"> -->
+											<label class="PictureOne">Picture</label>
+											<br>
+											<div class="owImgUploaded">
+												<img src="{{ownerPhoto}}" class="img-thumbnail {{checkpngImg}}">
+												<input type="file" name="ownerPhoto" class="vendorImg new-class" />
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vendorFormOSave vendorFormTermNCon vendorLeftSideTNC">
+											<input type="checkbox" name="businessTermNCon" id="businessTermNCon" {{businessTermNCon}}>
+											<a href="/webpage/terms-of-service" target="_blank" class="businessTermNConA">Terms and Conditions</a>
+											<div class="SpanBusinessTandC"></div>
+										</div>
+										
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vendorFormOSave">
+											<a href="{{currentPath}}" class="floatingCirclesSpanOne">
+												<span><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+											</a>
+							    			<input type="submit" name="" class="btn vendor-formOne-save" value="Save and Next">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>
+	{{/with}}
+</template>

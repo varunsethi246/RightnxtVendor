@@ -1,0 +1,47 @@
+<template name="VendorGotLikes">
+	<div class="VendorGotLikesBorder">
+		<div class="VendorGotLikesClass">
+			{{#with businessName}}
+				<h3 class="likesTitleClass">{{businessTitle}}</h3>
+				<h4 class="likesClass">Likes <span class="likesSpan">({{likeCount}})</span></h4>
+			{{/with}}
+		{{#if likeNumber}}
+			{{#each businessLikesData}}
+				<div class="UserLikesList vendorlikelist">
+					<img src="{{userProfilePic}}" alt="">
+					<span class="UserInfoClass">
+						<div class="LikesUserName">
+							<!-- Ravi Jadhav -->
+							{{username}}
+						</div>
+						<div class="LikesReviewsandFollow revClass">
+							<!-- 92 reviews, 217 Followers -->
+
+							<!-- {{#each follower}}
+							{{UserFollowerRev}} reviews, {{userFollowFol}} Followers
+							{{/each}} -->
+							<!-- {{UserFollowerRev}} Reviews, {{userFollowFol}} Followers -->
+							{{#with UserReviewCount userid}}
+								{{UserReviewNo}} Reviews
+							{{/with}}
+
+							{{#with UserFollowerCount userid}}
+								{{UserFollowerNo}} Followers
+							{{/with}}
+
+						</div>
+						<div class="LikesReviewsandFollowTime revClass">
+							<!-- 20 min ago -->
+							{{timeAgo}}
+						</div>
+					</span>
+				</div>
+			{{/each}}
+		{{else}}
+				<div class="UserLikesList vendorlikelist">
+					<h4>No Likes yet.</h4>
+				</div>
+		{{/if}}
+		</div>
+	</div>
+</template>

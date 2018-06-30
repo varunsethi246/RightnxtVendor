@@ -1,0 +1,104 @@
+<template name="businessAdsList">
+	<div class="bannerAdsList">
+		<div class="row">
+			<div class="col-lg-12"><h2 class="listOfBanners HeadingList">List of Ads</h2></div>
+			<div class="col-lg-12">
+				<div class="listBannerDiv">
+					<span><i class="fa fa-search"></i></span>
+					<input type="text" placeholder="Search.." class="listBannerSearch">
+				</div>
+			</div>
+			<div class="col-lg-12">
+				<div class="col-lg-4 bannerComClass activeBanner">Active Ads</div>
+				<div class="col-lg-4 bannerComClass newBanner">New Ads</div>
+				<div class="col-lg-4 bannerComClass inactiveBanner">Inactive Ads</div>
+			</div>
+			
+			<div class="col-lg-12 tableListBnnr">
+				<table class="table table-bordered table-striped table-hover tableBannerList">
+					<thead>
+						<th>Business</th>
+						<th>Ads Duration</th>
+						<th>Ads Categories</th>
+						<th>Ads Position</th>
+						<th>Ads Action</th>
+					</thead>
+					<tbody>
+						{{#each adsDetails}}
+							<tr>
+								<td class="bannerTitleFont">
+									{{bussinessTitle}}<br>
+									<span style="color: #000">Business Link: </span>rightnxt.com/<span class="bannerLinkFont">{{businessLink}}</span>
+								</td>
+								<td>
+									<!-- {{bannerDuration}} -->
+									<div class="bannerAdsDurationDiv">
+										{{bannerDuration}} Month 
+									</div>
+									<div class="bannerAdsDurationDiv">
+										Start Date: {{startDate}}
+									</div>
+									<div class="bannerAdsDurationDiv">
+										End Date: {{endDate}}
+									</div>
+								</td>
+								<td>
+									{{#each categoryArrList}}
+										{{this}} <br/>
+									{{/each}}
+								</td>
+								<td>
+									{{#each businessPosition}}
+										{{this}}<br> 
+									{{/each}}
+								</td>
+								<td>
+									<button class="btn btn-{{buttonStatus}}"  aria-hidden="true" data-toggle="modal" data-target="#m-{{businessLink}}">{{buttonStatusText}}</button>
+									<div class="modal fade" id="m-{{businessLink}}" role="dialog">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header delete-close">
+									        		<a href="#" data-dismiss="modal" aria-hidden="true" class="close pull-left"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i></a>
+									   			 </div>
+									            <div class="modal-body">
+									            	<p class="text-center text-centerEnq">Are you sure you want to {{buttonStatusText}} this Ad?</p>
+									         		<div class="body-close">
+									                	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+										            	<button  data-dismiss="modal" type="button" class="btn btn-{{buttonStatus}} btnStatAction">{{buttonStatusText}}</button>
+									                </div>
+									            </div>
+									        </div>
+										</div>
+									</div>
+
+									<button class="btn btn-danger deleteBanner"   aria-hidden="true" data-toggle="modal" data-target="#delete-{{businessLink}}">Delete</button>
+									<div class="modal fade" id="delete-{{businessLink}}" role="dialog">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header delete-close">
+									        		<a href="#" data-dismiss="modal" aria-hidden="true" class="close pull-left"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i></a>
+									   			 </div>
+									            <div class="modal-body">
+									            	<p class="text-center text-centerEnq">Are you sure you want to Delete this Ad?</p>
+									         		<div class="body-close">
+									                	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+										            	<button  data-dismiss="modal" type="button" class="btn btn-danger btnDeleteAction">Delete</button>
+									                </div>
+									            </div>
+									        </div>
+										</div>
+									</div>
+
+								</td>
+								
+							</tr>
+						{{/each}}
+						<!-- {{else}}
+						<h1>Nothing to display</h1>
+						{{/if}} -->
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</template>

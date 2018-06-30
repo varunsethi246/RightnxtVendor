@@ -1,0 +1,130 @@
+<Template name="companysettingsformCarousel">
+  <!-- <form class="employeeMasterForm"> -->
+
+  <!-- <form class="employeeMasterForm"> -->
+
+    <div id="formCarousel" class="carousel slide " data-ride="carousel" data-interval="false">
+  <!-- Indicators -->
+    
+      <ol class="leavecustom-list">
+        <li data-target="#formCarousel" data-slide-to="0"  class="active"  >
+          <!-- <span class="tooltiptext">Tooltip text</span> -->
+           <i class="fa fa-info-circle formsSettingGlyphicon" data-placement="bottom"  data-toggle="tooltip" title="Add Company Information" aria-hidden="true" ></i>
+        </li>
+        <li data-target="#formCarousel" data-slide-to="1">
+          <i class="fa fa-globe formsSettingGlyphicon" data-placement="bottom"  data-toggle="tooltip" title="Add Company Locations" aria-hidden="true"></i>
+        </li>
+        <li data-target="#formCarousel" data-slide-to="2">
+          <i class="fa fa-credit-card formsSettingGlyphicon" data-placement="bottom"  data-toggle="tooltip" title="Add Bank Details"  aria-hidden="true"></i>
+        </li>
+       
+         <li data-target="#formCarousel" data-slide-to="3">
+          <i class="fa fa-cog formsSettingGlyphicon" data-placement="bottom"  data-toggle="tooltip" title=" Add Tax Settings" aria-hidden="true"></i>
+        </li>
+        <!-- <li data-target="#formCarousel" data-slide-to="4">
+          <i class="fa fa-file-o formsSettingGlyphicon" data-placement="bottom"  data-toggle="tooltip" title=" Add Template Events" aria-hidden="true"></i>
+        </li> -->
+        <li data-target="#formCarousel" data-slide-to="4">
+          <i class="fa fa-file-o formsSettingGlyphicon" data-placement="bottom"  data-toggle="tooltip" title=" Add Trending Business Rate" aria-hidden="true"></i>
+        </li>
+        <!--  <li data-target="#formCarousel" data-slide-to="4">
+          <i class="fa fa-building formsSettingGlyphicon" aria-hidden="true"></i>
+        </li> -->
+        <!-- {{#with themeProcessConfig}}
+          {{#if isSelectedProcess 'Customize'}} -->
+             <li data-target="#formCarousel" data-slide-to="5">
+              <i class="fa fa-inr formsSettingGlyphicon" data-placement="bottom"  data-toggle="tooltip" title="Add Labour Charges Category!" aria-hidden="true"></i>
+            </li>
+        <!--   {{/if}}
+        {{/with}} -->
+        <li data-target="#formCarousel" data-slide-to="6">
+          <i class="fa fa-cog formsSettingGlyphicon" data-placement="bottom"  data-toggle="tooltip" title="Other Settings" aria-hidden="true"></i>
+        </li>
+         <li data-target="#formCarousel" data-slide-to="7">
+          <i class="fa fa-building formsSettingGlyphicon" data-placement="bottom"  data-toggle="tooltip" title="Thank you" aria-hidden="true"></i>
+        </li>
+
+        
+         <hr class="companySettingshr">      
+      </ol>        
+
+  <!-- Wrapper for slides -->
+      <div class="carousel-inner companyformCarousel" role="listbox">
+        {{#with formData}}
+        <div class="item active">
+          {{> companyInfo}}
+        </div>
+         {{/with}}
+        <div class="item">
+         
+            {{> companyLocations}} 
+            {{> allLocations}}
+          
+        </div>
+
+        <div class="item">
+          {{> companyBankDetails }}
+          {{> companyAllBankDetails }}
+          
+          
+        </div>
+
+       <!--  <div class="item">
+          {{> generalSettings}}
+        </div> -->
+        
+        <div class="item">
+          {{> taxSettings}}
+          {{> allTaxes}}
+        </div>
+
+        <!-- <div class="item">
+          {{> generateEvent}}
+        </div> -->
+
+        <div class="item">
+          {{> businessRate}}
+        </div>
+
+        <!-- {{#with themeProcessConfig}}
+          {{#if isSelectedProcess 'Customize'}} -->
+          <div class="item">
+            {{> labourCharges}}
+            {{> allLabourDetails}}
+          </div>
+        <!-- {{/if}} -->
+        <!-- {{/with}} -->
+
+        {{ #with otherSettingData }}
+          <div class="item">
+              {{> otherSettings}}
+          </div>
+        {{/with}}
+
+        <div class="item">
+          {{> finalSubmit}}
+         
+        </div>
+        
+        
+       
+      </div>
+      <a class="pull-left prevBtn" href="#formCarousel" role="button" data-slide="prev">
+        <button class="btn btn-primary nextPre previousbtn"> Previous </button>
+      </a>
+      <!-- {{#with checkitem}}
+        {{#if isSelectedSlide 'true'}} -->
+      <!-- <a class="pull-right nextBtn nextButton" href="#formCarousel" role="button" data-slide="next">
+        <button class="btn btn-success nextPre nextbtn"> Save  </button>
+      </a> -->
+     
+      <a class="pull-right nextBtn nextButton" href="#formCarousel" role="button" data-slide="next">
+        <button class="btn btn-success nextPre nextbtn"> Save & Continue </button>
+      </a>
+       <!-- {{/if}}
+      {{/with}}
+       -->
+   
+  </div>
+
+</Template>

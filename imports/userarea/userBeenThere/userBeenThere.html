@@ -1,0 +1,21 @@
+<template name="userBeenThere">
+	<div class="BeenThBlk borderleft">
+    <h3>Been There</h3>
+    {{#if checkBeenThereLoading}}
+      <div class="checkBeenThereLoading col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        Been There Business to keep them in one place.
+      </div>
+    {{else}}
+      {{#each beenThereData}}
+        <div class="bookmarkImg col-lg-3 col-md-3 col-sm-3 col-xs-12">
+          <a href="/{{businessLink}}" target="_blank">
+              <img src="{{ownerPhoto}}" alt=""/>
+              <h6>{{businessName}}</h6>
+              <p>{{businessArea}}, {{businessCity}}</p>
+          </a>
+        </div>
+      {{/each}}
+    {{/if}}
+   
+  </div>     
+</template>

@@ -1,0 +1,80 @@
+<template name="vendorOffer1">
+	<form id="OrderForm">
+		<div class="row">
+			<div class="col-lg-12  col-md-12 col-sm-12 col-xs-12">			
+				<div class="form-group">
+					<div class="vendor-colomn">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<label class="bold">Deal Templates</label>
+							<select class="form-control vendorSelectArrow selectpicker dealx required" name="dealTemplate">
+								<option selected="true" disabled> -- Select -- </option>
+								<option>Percent Off</option>
+								<option>Price Off</option>
+								<option>Fixed Price</option>
+								<option>Free Item</option>
+								<option>Create Your own Deal</option>
+							</select>
+						</div>
+						<!-- {{#if newdesc}} -->
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<label class="bold">Deal Heading/Headline (40 char. max)</label>
+							<input id="dealHeadline" type="text" name="dealHeadline" maxlength="40" class="form-control headlineonetwo" >
+						</div>
+					<!-- 	{{/if}} -->
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<label class="bold">Deal Description (80 char. max)</label>
+							<textarea maxlength="80" name="dealDescription" class="form-control"></textarea>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<label class="bold col-lg-12 col-md-12 col-sm-12 col-xs-12 expireLabel">Expiration Date</label>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 toDateBuss">
+								<div class="row">
+									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-4 expireLabelfromDate">
+										<label class="bold">From</label>	
+									</div>
+									<div class="col-lg-5 col-md-5 col-sm-5 col-xs-8 fromDateBuss">
+										<input type="date" class="form-control changeDate" id="usrtimeFrom" name="expirationFromDate" value="{{dateData}}">		
+									</div>
+									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-4 fromDate">
+										<label class="bold toDate">To</label>	
+									</div>
+									<div class="col-lg-5 col-md-5 col-sm-5 col-xs-8 toDateBuss">
+										<input type="date" class="form-control changeMonth" id="usrtimeTo" name="expirationToDate" value="{{todateData}}">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<label class="bold">Legal Notices &amp; Disclaimers (240 char. max)</label>
+							<textarea maxlength="240" class="form-control" name="legalNotices"></textarea>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<label class="bold">Picture</label>
+							<div class="row">
+								<div class="col-lg-6 col-md-4 col-sm-4 col-xs-6 removeMargTopImg">
+									<input type="file" name="files" class="businessPhotofiles inputOfferImg">
+									<input type="button" name="choosePic" value="Choose Picture" class="form-control uploadButton1">
+								
+									<output id={{i}}></output>
+									<!-- <span class="noFile drag">No File Chosen</span> -->
+								</div>
+							</div>						
+						</div>
+						<div class="locIcn col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<!-- <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i> -->
+							<a href="/webpage/terms-of-service" target="_blank">Terms and Conditions</a> 
+						</div>
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offerSave">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<input type="submit" name="save1" id="save" class="btn vendor-formOne-save" value="SAVE">
+								<!-- <input type="submit" name="save2" id="save" class="btn vendor-formOne-save" value="SAVE" style="display: none"> -->
+							</div>
+    					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</template>

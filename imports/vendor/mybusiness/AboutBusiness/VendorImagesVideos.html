@@ -1,0 +1,184 @@
+<template name="vendorImagesVideos">
+	<form>
+		<div class="VendorGotLikesBorder">
+			<div class="row vImgVidUpl">
+				<div class="col-lg-12">
+					<form class="businessImgVideo">
+						<div class="row addvenBusInfo">
+							<!-- For Images -->
+							<div class="col-lg-12 vBusGroupRow dragDropImage">
+								<h3 class="vOpenACloseTitle">Images</h3>
+							</div>
+							<div class="col-lg-12" id="div1" style=""  >
+								<output id="editbusinessImglist"></output>
+								<input type="file" name="files[]" id="editbusinessImgfiles" multiple="true" class="inputImg">
+								<h4 id="dragEdit1">Drag new photos here</h4>
+							</div>
+							<div class="col-lg-12 vBusGroupRow vendorImgVidUpDiv">
+								<div class="vendorupImgC" id="editsaveBusinessImg">
+									<span class="Vuploadicon"><i class="fa fa-folder-open-o vendorImgVidUploadSpan" aria-hidden="true"></i>
+										<span class="VuploadText">Click Upload</span>
+									</span>
+									
+								</div>
+							</div>
+
+							<div class="col-lg-12 vBusGroupRow">
+								<div class="vPhotosOwnerManager">
+									<div class="row vPhotosYouRow">
+										{{#each vendorPhotosOwnerManagerDataEdit}}
+										<div class="col-lg-3 col-md-3 col-sm-3  col-xs-12 vPhotosUserRowSec">
+											<div class="noworkDiv">
+												<i class="fa fa-times-circle pull-right delBusiImg cursorPointer positionCross" id="img-{{_id}}" aria-hidden="true"></i><br>
+												<div class="uploadPhotoSize">
+													<img src="{{url}}" class="img-responsive thumbnail cursorPointer {{checkpngImg}}" data-toggle="modal" data-target="#businessImgModal-{{_id}}">
+												</div>
+												<!-- Modal -->
+												<div id="businessImgModal-{{_id}}" class="modal fade" role="dialog">
+												  <div class="modal-dialog">
+
+												    <!-- Modal content-->
+												    <div class="modal-content">
+												      <div class="modal-body">
+												      	<div class="alignCenter text-center">
+												        <img src="{{this.url}}" class="img-responsive imgAlignCenter {{checkpngImg}}">
+												        </div>
+												      </div>
+												      <div class="modal-footer">
+												        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												      </div>
+												    </div>
+
+												  </div>
+												</div>
+												<!-- End Modal -->
+											</div>
+										</div>
+										{{/each}}
+									</div>
+								</div>
+							</div>
+
+							<!-- For Video -->
+							<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  vBusGroupRow dragDropImage">
+								<h3 class="vOpenACloseTitle">Video</h3>
+							</div>
+							{{#with currentUpload}}
+						        Uploading <b>{{file.name}}</b>:
+						        <span id="progress">{{progress.get}}%</span>
+						        {{else}}
+									{{#unless businessVideo}}
+							            <input id="fileInput" type="file" />
+						            {{/unless}}
+						    {{/with}}
+
+							<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  vBusGroupRow">
+								<div class="vPhotosOwnerManager">
+								
+									<div class="row vPhotosYouRow">
+										{{#each files}} 
+										<div class="col-lg-4 col-md-4 col-sm-4  col-xs-12 vPhotosUserRowSec">
+											<div class="vPhotosYouRImgNew vPhotosYouRImgPost">
+												<i class="fa fa-times-circle pull-right deleteVideo cursorPointer" id="video-{{_id}}" aria-hidden="true"></i>
+												<div class="videoShow">
+													<video controls="controls" width="300" height="200" src="{{fileURL this}}?play=true" type="{{videoFile.type}}" class="videoBkImg" controlsList="nodownload">
+													</video>
+												</div>
+												<!-- Modal -->
+												<div id="businessVideoModal-{{_id}}" class="modal fade" role="dialog">
+												  <div class="modal-dialog">
+
+												    <!-- Modal content-->
+												    <div class="modal-content">
+												      <div class="modal-body">
+												      	<div class="alignCenter text-center">
+													        <video controls="controls" width="300" height="200" src="{{fileURL this}}?play=true" controlsList="nodownload">
+															</video>
+												      </div>
+												      <div class="modal-footer">
+												        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												      </div>
+												    </div>
+
+												  </div>
+												</div>
+												<!-- End Modal -->
+											</div>
+										</div>
+										</div>
+										{{/each}}
+									</div>
+									
+								</div>
+							</div>
+
+							<!-- For Business Menu -->
+							<div class="{{statusEnable}}">
+								<div class="col-lg-12 vBusGroupRow dragDropImage">
+									<h3 class="vOpenACloseTitle">Business Menu</h3>
+								</div>
+								<div class="col-lg-12 businessDivOpen" id="div1" style=""  >
+									<output id="editbusinessMenulist"></output>
+									<input type="file" name="files[]" id="editbusinessMenufiles" multiple="true" class="inputImg">
+									<h4 id="dragEdit3">Drag new menu images here</h4>
+								</div>
+								<div class="col-lg-12 vBusGroupRow vendorImgVidUpDiv">
+									<div class="vendorupImgC" id="editsaveBusinessMenu">
+										<span class="Vuploadicon"><i class="fa fa-folder-open-o vendorImgVidUploadSpan" aria-hidden="true"></i>
+											<span class="VuploadText">Click Upload</span>
+										</span>
+									</div>
+								</div>
+
+								<div class="col-lg-12 vBusGroupRow">
+									<div class="vPhotosOwnerManager">
+										<div class="row vPhotosYouRow">
+											{{#each vendorMenuOwnerManagerDataEdit}}
+											<div class="col-lg-3 col-md-3 col-sm-3  col-xs-12 vPhotosUserRowSec">
+												<div class="">
+													<i class="fa fa-times-circle pull-right delBusiMenu cursorPointer positionCross" id="menu-{{_id}}" aria-hidden="true"></i>
+													<div class="uploadPhotoSize BussUploadSize">
+														<img src="{{this.url}}" class="img-responsive thumbnail cursorPointer {{checkpngImg}}" data-toggle="modal" data-target="#businessMenuModal-{{_id}}">
+													</div>
+
+													<!-- Modal -->
+													<div id="businessMenuModal-{{_id}}" class="modal fade" role="dialog">
+													  <div class="modal-dialog">
+
+													    <!-- Modal content-->
+													    <div class="modal-content">
+													      <div class="modal-body">
+													      	<div class="alignCenter text-center">
+													        <img src="{{this.url}}" class="img-responsive imgAlignCenter {{checkpngImg}}">
+													        </div>
+													      </div>
+													      <div class="modal-footer">
+													        <button type="button" class="btn btn-default"  id="editcloseStartVideo">Close</button>
+													      </div>
+													    </div>
+
+													  </div>
+													</div>
+													<!-- End Modal -->
+												</div>
+											</div>
+											{{/each}}
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="col-lg-12 vBusGroupRow vendorImgVidUpDiv">
+							<div class="alignCenter">
+								<input type="button" name="" class="btn vendor-formOne-save" value="Save" id="editsaveImgAndVideos">
+							</div>	
+						</div>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+	</form>
+</template>

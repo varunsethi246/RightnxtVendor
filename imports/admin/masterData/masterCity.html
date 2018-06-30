@@ -1,0 +1,107 @@
+<template name="masterCity">
+	<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+			
+			<form id="cityMaster">
+				<div class="masterAreaBoxs">
+					<div class="masterFormHeading">
+						<h3> Add City </h3>
+						<hr>					
+					</div>
+					<div class="col-lg-5 col-lg-offset-1">
+	                    <div class="form-group">
+	                        <label class="control-label col-lg-3 areaMasterOption">Country</label>
+						    <select class="form-control bulkUploadsAdmin selectpicker areaMasterSelect col-lg-9" name="country" id="country">
+						    	<option>India</option>
+						    </select>
+						</div>
+	                </div>
+
+		            <div class="col-lg-5 ">
+	                    <div class="form-group">
+	                        <label class="control-label col-lg-8 areaMasterOption">State</label>
+						    <select class="form-control bulkUploadsAdmin stateBorder" name="state" id="states">
+						    	<option selected="true" disabled="disabled">-- Select State --</option>
+						    	{{#each masterCityState}}
+							    	<option>{{state}}</option>	
+						    	{{/each}}
+						    </select>
+						   	<span class="selectStates"></span>
+						</div>
+	                </div>
+		            <div class="col-lg-4 col-lg-offset-4">
+	                    <div class="form-group">
+	                        <label class="control-label col-lg-3 areaMasterOption" for="city">City</label>
+						    <input type="text" class="form-control areaMasterSelect areaCitys" id="areaCity" name="city" maxlength="30" required="true" />
+						    <span class="duplication"></span>
+						</div>
+		            </div>
+		            <div class="row col-lg-4 col-lg-offset-3 citybtnMaster">
+						<button class="btn btn-primary areaMasterBtn">Submit</button>	
+					</div>
+				</div>	
+			</form>
+		</div>
+		<div class="col-lg-10 col-lg-offset-1">
+			<div class="searchBusinessList">
+				<span><i class="fa fa-search"></i></span>
+				<input type="text" name="search" placeholder="Search.." id="searchCityTable">
+			</div>	
+		</div>
+
+		<div class="cityTable">
+	
+			<table class="table table-hover table-striped" id="CityTable">
+				<thead>
+					<tr class="tableHeadColor">
+						<th>Country</th>
+						<th>State</th>
+						<th>City</th>
+						<th class="cityCenter">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+					{{#each masterCity}}
+					<tr>
+						<td>{{country}}</td>
+						<td>{{> editableText collection="city" field="state" }}</td>
+						<td>{{> editableText collection="city" field="city" }}</td>
+						<td class="col-lg-2 cityCenter">
+									<i class="fa fa-lg {{statusIconClass}} {{status}}Status showTooltip" id="statusCity-{{_id}}" aria-hidden="true"></i>
+									<div class="newtooltip "> 
+										<span class="texttooltilps ">
+											Click to {{statusTooltipCity}}
+										</span> 
+										<div class="newAngleDown">
+										</div>
+									</div>
+									<i class="fa fa-trash-o fa-lg bussDelete" id="cityDelete {{_id}}" data-toggle="modal" data-target="#deleteDataModal-{{_id}}"></i>
+						<!-- <button class="btn btn-danger" id="cityDelete {{_id}}" data-toggle="modal" data-target="#deleteDataModal-{{_id}}"><i class="fa fa-trash-o"></i></button> -->
+						</td>
+
+						<div class="modal fade" id="deleteDataModal-{{_id}}" role="dialog">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header delete-close">
+							        		<a href="#" data-dismiss="modal" aria-hidden="true" class="close"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i></a>
+							   			 </div>
+							            <div class="modal-body">
+							            	<p class="text-center">Do you want to delete this document?</p>
+							         		<div class="body-close">
+							                	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+								            	<button type="button" class="btn btn-danger btn-ok delete">Delete</button>
+							                </div>
+							            </div>
+							        </div>
+								</div>
+							</div>
+
+					</tr>
+					{{/each}}
+					
+				</tbody>
+			</table>
+
+	</div>	
+	
+</template>

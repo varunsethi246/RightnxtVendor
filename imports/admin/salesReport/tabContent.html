@@ -1,0 +1,19 @@
+<template name="tabContent">
+<div class="tab-content">
+	<div id="todaysReport" class="tab-pane fade in active">
+	  {{> todaysSalesReport}}
+	</div>
+	<div id="weeklyReport" class="tab-pane fade">
+	 {{> weeklySalesReport}}
+	</div>
+	<div id="monthlyReport" class="tab-pane fade">
+	   {{> monthlySalesReport}}
+	</div>
+	<div id="yearlyReport" class="tab-pane fade">
+	  {{> yearlySalesReport}}
+	</div>
+	<div id="datetabs" class="tab-pane fade">
+	  {{> fromToFields}}
+	</div>
+</div>
+</template>

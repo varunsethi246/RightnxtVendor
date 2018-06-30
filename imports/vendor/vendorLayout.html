@@ -1,0 +1,27 @@
+<template name="vendorLayout">
+	{{#if currentUser }}
+		{{#if isInRole 'Vendor'}}
+				<div class="navHeadSearchbarCommon">{{> header }}</div>
+				<i class="fa fa-chevron-circle-up fa-3x bussScrollTop" title="Scroll to Top" aria-hidden="true"></i>
+				<div class="generalHeadVendor">
+					{{> userProfile }}
+				</div> 
+				<div class="vendorLayoutCss">
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 sidebarVendorWrapper">
+						{{> vendorSidebar }}					
+					</div>
+					<!-- {{#if ownerVendor}} -->
+						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 contentBody">
+							{{> Template.dynamic template=main }}				
+						</div>
+					<!-- {{else}}
+						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 contentBody">
+							<img src="/users/profile/notfound.jpg" alt="" height="100%" width="100%">
+						</div>
+					{{/if}} -->
+				</div>
+		{{/if}}
+	{{else}}
+			<img src="/users/profile/notfound.jpg" alt="" height="100%" width="100%">
+	{{/if}}
+</template>

@@ -1,0 +1,32 @@
+<template name="categoriesSearchField">
+	<div class="str-tag-input1 focus-agetCategory1">
+		<div class="categoryDisplayBlockTop">
+			<div class="categoryDisplayBlock" >
+				<span id="alistCategory" ></span>
+				<input type="text" list="categoryShow" name="js-focus-input js-keydown-input js-change-input " class="agetCategory1 col-lg-12" placeholder="Enter Category Name, Select it and hit Tab button..." id="agetCategory">
+				<input type="hidden" name="searchCategories" id="asearchCategories" value="">
+			</div>
+		</div>
+	</div>
+	<datalist id="categoryShow">
+		{{#each getcategory}}
+			<option class="{{status}}"> 
+				{{#if ifDashData level0}} 
+					 {{level0}} 
+				{{/if}}
+				{{#if ifDashData level1}}
+					> {{level1}} 
+				{{/if}}
+				{{#if ifDashData level2}}
+					> {{level2}} 
+				{{/if}}
+				{{#if ifDashData level3}}
+					> {{level3}} 
+				{{/if}} 
+				{{#if ifDashData level4}}
+					> {{level4}} 
+				{{/if}}
+			</option>
+		{{/each}}
+	</datalist>
+</template>

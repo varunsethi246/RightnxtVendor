@@ -1,0 +1,30 @@
+<template name="jobApplicationForm">
+	<form id="joinForm">
+		<div class="form-group form_group">
+			<label for="name">Name</label>
+			<input id="name" type="text" class="form-control" name="name" maxlength="30" pattern="[a-zA-Z0-9 ]+">
+		</div>
+		<div class="form-group form_group">
+			<label for="email">Email</label>
+			<input type="email" class="form-control" name="email" email="true">
+		</div>
+		<div class="form-group form_group">
+			<label for="mobileno">Mobile No</label>
+			<input type="number" class="form-control no-spinner" name="MobileNo">
+		</div>
+		<div class="form-group form_group">
+			<label for="qualification">Qualification</label>
+			<input type="text" name="Qualification" class="form-control" required="true">
+		</div>
+		<div class="form-group form_group">
+			<label>Resume</label>
+			<input type="file" name="fileupload" value="fileupload" id="fileupload" class="form-control fileupload">
+			<output id="resumeList"></output>
+		</div>
+		<input type="submit" id="apply" class="btn btn-default form-control" value="Apply Now" /> 
+		<div class="form-group form_group" style="visibility: hidden; display:inline;">
+			<label for="PostForApply">Post For Apply</label>
+			<input type="text" class="form-control" name="PostForApply" value="{{jobTitle}}" disabled="disabled">
+		</div>
+	</form>
+</template>

@@ -1,0 +1,33 @@
+<template name="salesTableViewBanner">
+	<tr class="clickableRow" id={{orderId}}>
+    {{#if isGreaterThan0 rowSpanCount}}
+      <td class="rowspanElement" rowspan="{{rowSpanCount}}"> 
+        <a href="" class="showModal"> {{ date }} </a> 
+      </td>
+    {{/if}}
+    <td> 
+      <a href=""> {{ orderNo }} </a> 
+    </td>
+    <td> 
+      <a href=""> {{ businessLink}} </a>
+    </td>
+    <td>
+      <a href=""> &#x20B9; {{ totalAmount }}</a> 
+    </td>
+    <td> 
+      <a href=""> &#x20B9; {{ discountedPrice }}</a> 
+    </td>
+    <td> 
+      <a href=""> {{ orderType }} </a> 
+    </td>
+    <td> 
+      <a href="/bannerInvoice/{{businessLink}}"><i class="fa fa-eye"></i></a>
+      <!-- <a ><i class="fa fa-file-pdf-o pdfOne" id={{orderId}}></i>
+        {{>bannerInvoice}}
+      </a> -->
+
+    </td>
+  </tr>
+
+		<!-- modal -->
+</template>

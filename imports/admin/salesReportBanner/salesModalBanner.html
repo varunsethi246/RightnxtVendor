@@ -1,0 +1,83 @@
+<template name="salesModalBanner">
+    {{#with resultVar}}
+     
+    <div class="confirmOrder col-lg-10 col-lg-offset-1 col-sm-12 col-md-12 col-xs-12">
+      {{#each images}}
+        <div class="logoInvoice pull-left">
+          <img class="img-responsive img-rounded" src="{{companyLogo}}">
+        </div>
+        <div>
+          <h3>{{companyName}}</h3>
+        </div>
+      {{/each}}
+      <div class="pull-right">
+        <address><strong>
+          Order No:
+        </strong><br> {{orderno}}  </address>
+      </div>
+      
+       <div class="row">
+            <div class="col-xs-12">
+            
+            <hr>
+            <div class="row">
+              <div class="col-xs-6">
+                <address>
+                <strong>Billed To:</strong><br>
+                  {{#each customerInfoOrder}}
+
+                  <b>{{name}}</b><br>
+                  {{houseNo}},{{street}} {{city}},{{state}}-{{pin}}<br>Mobile : {{mob}}
+                  
+                  {{/each}}
+                </address>
+              </div>
+              <div class="col-xs-6 text-right">
+                <address>
+                  <strong>Order Date:</strong>
+                  <br>{{date}}<br><br>
+                </address>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <address>
+                  <strong>Payment Method:</strong><br>
+                   {{payMethod}} 
+                </address>
+              </div>
+              
+              
+            </div>
+          </div>
+        </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel panel-default">
+                <div class="panel-heading summaryHeading">
+                  <h3 class="panel-title"><strong>Order summary</strong></h3>
+                </div>
+
+                  <div class="InvoiceHeader col-lg-12 col-md-12 col-sm-12 col-xs-12 hidden-xs">
+                      <div class="col-lg-5">Products</div>
+                      <div class="col-lg-2">Price</div>
+                      <div class="col-lg-3">Quantity</div>
+                      <div class="col-lg-2">Total</div>
+                  </div>
+                    {{#each products }}
+                      {{> reviewOrderViewBanner }}
+                    {{/each}} 
+                  <div class="totalAmount col-lg-12 col-md-12 col-sm-12 col-xs-12 grandTotalCalc">          
+                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6 pull-right">
+                       <div class=" col-lg-7 col-md-8 col-sm-12 col-xs-6 cartvaluesTitles">Total Price:</div>
+                       <div  id="totalAmount" class="totalamount col-lg-5 col-md-4 col-sm-12 col-xs-6 cartvalues">&#x20B9; {{total}}  </div>
+                    </div>
+                  </div> 
+              </div>
+            </div>
+          </div>
+      </div>
+    
+    {{/with}}
+</template>

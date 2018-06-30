@@ -1,0 +1,4235 @@
+@font-face {
+font-family:'PROXIMANOVA-BOLD';
+src:url(/fonts/PROXIMANOVA-BOLD.ttf),url(/fonts/PROXIMANOVA-BOLD.eot)
+}
+
+@font-face {
+font-family:'PROXIMANOVA-REGULAR';
+src:url(/fonts/PROXIMANOVA-REGULAR.ttf),url(/fonts/PROXIMANOVA-REGULAR.eot)
+}
+
+@font-face {
+font-family:'GOTHIC_0';
+src:url(/fonts/GOTHIC_0.ttf),url(/fonts/GOTHIC_0.eot)
+}
+
+.dropmenu,.dropmenuGen {
+padding-left:0
+}
+
+.rowPad > .col-xs-12 > .col-xs-12 {
+padding-right:0;
+margin-top:15px;
+margin-bottom:20px
+}
+
+.timeline-reviews {
+padding:25px
+}
+
+.timeline-reviews > .col-xs-12 {
+padding-right:0;
+padding-left:0
+}
+
+.RevEditBoxTimeline {
+margin-bottom:5px;
+cursor:pointer;
+margin-top:0!important
+}
+
+.timelineCommTxt {
+padding-right:0;
+padding-left:0
+}
+
+.timelineComment {
+padding-left:0;
+padding-right:0
+}
+
+.timelineRevieverImg > ul > li {
+padding-left:0;
+padding-right:0;
+height:83px;
+margin-bottom:3px
+}
+
+.timelineRevieverImg > ul > li > img {
+margin-bottom:5px;
+height:100%;
+width:100%;
+padding:1px
+}
+
+.usercommName {
+padding-left:0
+}
+
+.userTimelineCommentText > div > .col-lg-12 {
+padding-left:0
+}
+
+.wide-text-edit {
+cursor:default;
+border:1px solid #ccc;
+padding:5px;
+word-wrap:break-word!important
+}
+
+.layoutHeight {
+min-height:700px
+}
+
+.buscrollTop {
+color:#ccc;
+top:600px;
+margin-right:20px
+}
+
+.userFollPhotoSugg {
+padding-left:8px!important
+}
+
+.bulkTab {
+padding-left:15px!important
+}
+
+.borderClass {
+border-bottom:1px solid #ccc
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+.followersBlk > .col-xs-12 {
+padding-left:0;
+padding-right:0
+}
+
+.userFollInfoSugg {
+padding-left:0!important
+}
+
+.userFollInfoSugg > h5 > a:hover {
+color:#f89b1c!important
+}
+
+.inviteDiv {
+padding-left:0;
+padding-right:0
+}
+
+.menuItems,.menuItems1 {
+padding-right:3px!important
+}
+
+.revCommtext {
+padding-left:10px!important
+}
+
+.reviewImg > ul > li {
+height:100px!important
+}
+
+.borderClass {
+border-bottom:1px solid #ccc
+}
+
+.reviewRightTxt {
+margin-left:0!important;
+margin-top:0!important
+}
+
+.genHead {
+height:80px!important;
+padding-right:0
+}
+
+.prfPic {
+height:98px!important;
+width:98px!important;
+border:1px solid #ccc!important;
+top:12px!important;
+padding-right:0!important;
+padding-left:0!important;
+background-image:url(images/Rightnext-Loading.gif);
+background-repeat:no-repeat;
+background-size:100% 100%
+}
+
+.addPhotoTxt {
+height:18px!important;
+padding:0!important;
+position:absolute!important;
+right:15px!important;
+cursor:pointer!important;
+opacity:.8!important;
+bottom:-27px!important;
+z-index:1!important
+}
+
+.prfContent {
+padding-top:11px!important
+}
+
+.prfContent h3 {
+font-size:25px!important;
+padding:0!important;
+margin:0!important;
+font-weight:400!important;
+line-height:25px!important;
+color:#f89b1c
+}
+
+.rightBtn {
+float:right;
+padding:0!important;
+margin:0
+}
+
+.prfContent h4 {
+color:#4e4f51;
+font-size:15px!important;
+padding:0;
+margin:0;
+margin-top:5px!important;
+font-weight:400!important
+}
+
+.rightBtn.prfSetting a {
+line-height:26px!important;
+float:right!important;
+border:1px solid #ccc!important;
+padding:1px!important;
+padding-left:8px!important;
+padding-right:6px!important;
+font-size:14px!important;
+text-decoration:none!important;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.collapseMenuBusiness {
+background:#f89b1c;
+border-color:#f89b1c;
+margin-left:0!important;
+margin-right:0!important;
+margin-top:10px
+}
+
+.collapseMenuBusiness button i {
+color:#fff
+}
+
+.collapseMenuBusiness a {
+color:#fff
+}
+
+.businessMenuBack {
+background:#f5f5f5!important;
+border-left:1px solid #d5d5d5
+}
+
+.userSidebarDiv {
+margin-top:13px!important
+}
+
+.usersidebarUl {
+margin-top:0!important
+}
+
+.timelineBlock {
+margin-top:5px!important
+}
+
+.timelineRightTxt {
+padding:0;
+text-decoration:none;
+margin-left:0!important;
+margin-top:-4px!important
+}
+
+.userName {
+margin-left:5px
+}
+
+.commentTxt {
+margin-left:3px!important
+}
+
+.comment > i {
+margin-left:-6px
+}
+
+.share_page {
+margin-left:3px!important
+}
+
+.share_page i {
+margin-left:-6px
+}
+
+.timelineComment {
+margin-left:0;
+padding-right:0;
+padding-left:15px
+}
+
+.usercommName {
+margin-left:-7px
+}
+
+.likeRightTxt {
+margin-left:0!important;
+margin-top:0!important
+}
+
+.likeRightTxt p {
+padding:0!important
+}
+
+.AddFrid {
+width:100%!important
+}
+
+.AddFrid img {
+width:290px
+}
+
+.addFrdButton {
+margin-bottom:10px
+}
+
+.bookmarkHeight {
+margin-left:-30px!important
+}
+
+.menuItems {
+margin-left:0!important
+}
+
+.BeenThBlk {
+padding-left:0!important
+}
+
+.delEnq,.flagEnq,.checkEnq {
+height:0!important;
+position:relative
+}
+
+.flagEnq {
+right:-12px;
+top:-12px!important
+}
+
+.delEnq {
+right:9px;
+top:-3px
+}
+
+.userImgBusi {
+padding-left:0;
+padding-right:0
+}
+
+.vEnqForm {
+margin-top:12px
+}
+
+.vEnqFormImgOne > h4 {
+margin-bottom:6px!important
+}
+
+.vEnqListBorderFirstRow > .col-xs-5 {
+padding-left:42px
+}
+
+.readEnClass > .col-xs-5 {
+padding-right:0
+}
+
+.vendorEnquiryCl {
+margin-left:0!important
+}
+
+.vEnqUserAdj {
+font-size:11px
+}
+
+.vEnqActiveDiv span {
+padding:4px!important;
+border:1px solid #ccc;
+cursor:pointer;
+font-size:12px!important
+}
+
+.photoRender h3 {
+margin-left:-15px!important
+}
+
+.photoRender {
+padding-right:0
+}
+
+.userPhotoPicRender {
+padding-left:0;
+padding-right:0
+}
+
+.photoDeleteBtn {
+left:15px
+}
+
+.photoAlbmImg {
+height:175px!important;
+padding-right:0;
+margin-bottom:5px!important
+}
+
+.photoAlbmImg:nth-child(even) {
+padding-left:5px
+}
+
+.likeIcn {
+right:38px!important
+}
+
+.deleteBtn {
+right:8px!important
+}
+
+.commRevTxt {
+margin-left:10px!important;
+width:96%!important
+}
+
+.userOffersI > .pull-right {
+position:absolute;
+top:-42px;
+right:0
+}
+
+.userOffer {
+padding-left:0!important
+}
+
+.profileSettingSidebar {
+border-right:0!important;
+min-height:0!important
+}
+
+.profSettingsidebarUl {
+margin-top:0!important
+}
+
+.profSetting {
+margin-left:0!important
+}
+
+.userCommDt {
+padding-left:0!important;
+padding-right:0
+}
+
+.usercommName {
+margin-left:0!important
+}
+
+.editProfile {
+margin-left:0!important;
+margin-bottom:20px
+}
+
+.inviteYourFriends {
+padding:0!important
+}
+
+#inviteYourFriends .col-xs-12 {
+padding-right:0!important;
+padding-left:0!important
+}
+
+.rowPad {
+margin-top:3%
+}
+
+.rowPad > .col-xs-12 > .col-xs-12 {
+padding-right:0;
+margin-top:15px;
+margin-bottom:20px
+}
+
+.timeline-reviews {
+padding:15px!important
+}
+
+.timeline-reviews > .col-xs-12 {
+padding-right:0;
+padding-left:0;
+margin-bottom:8px
+}
+
+.timelineCommTxt {
+padding-right:0;
+padding-left:0
+}
+
+.timelineRevieverImg > ul > li {
+padding-left:0;
+padding-right:0;
+height:97px;
+margin-bottom:5px
+}
+
+.timelineRevieverImg > ul > li > img {
+margin-bottom:5px;
+height:100%
+}
+
+.usercommName {
+padding-left:0
+}
+
+.heart > .fa-heart {
+right:3.5px!important
+}
+
+.notifiacationUsers>ul {
+left:12px;
+top:12px
+}
+
+.userTimelineCommentText > div > .col-lg-12 {
+padding-left:15px
+}
+
+.likeLeftImg {
+padding-left:0
+}
+
+.likeHeight > .VendorGotLikesClass {
+margin-left:0
+}
+
+.userReviewBlock {
+padding-left:0;
+padding-right:0
+}
+
+.tabsStyle {
+padding-right:0
+}
+
+.bulkTab {
+padding-left:15px!important
+}
+
+.FYFInvite > .col-xs-12 {
+padding-left:0;
+padding-right:0
+}
+
+.sort_txt {
+margin-bottom:5px
+}
+
+.sort_menu {
+margin-bottom:15px
+}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+.addPhotoTxt {
+left:19px!important
+}
+
+.rightBtn {
+padding:39px 0 0!important
+}
+
+.timelineRightTxt {
+margin-left:0!important;
+margin-top:0!important
+}
+.empty-timelineRightTxt {
+padding:0;
+text-decoration:none;
+padding-top: 0%
+}
+.likeRightTxt {
+margin-left:1px!important
+}
+
+.reviewRightTxt {
+margin-left:0!important;
+margin-top:0!important
+}
+
+.menuItems {
+padding-left:0!important;
+padding-right:30px!important;
+margin-left:0!important;
+margin-bottom:10px!important
+}
+
+.photoDeleteBtn {
+margin-left:-15px!important
+}
+
+.AddFrid img {
+width:97%
+}
+
+.userOffer {
+padding-left:0!important
+}
+
+.revName {
+margin-left:-15px
+}
+
+.usercommName {
+margin-left:0!important
+}
+
+.follwSugg i {
+top:0
+}
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+.timelineRightTxt {
+margin-left:-80px!important;
+margin-top:0!important
+}
+.empty-timelineRightTxt {
+padding:0;
+text-decoration:none;
+padding-top: 0%
+}
+.likeRightTxt {
+margin-left:-50px!important
+}
+
+.menuItems {
+padding-left:0!important;
+padding-right:30px!important;
+margin-left:0!important
+}
+
+.userHeart > .fa-heart {
+right:18px!important
+}
+
+#comment > .fa-comment {
+right:25px
+}
+
+.inviteYourFriends {
+padding:0!important
+}
+
+#inviteYourFriends > .col-md-12 {
+padding-left:0;
+padding-right:0
+}
+
+#reviewRightTxt {
+margin-left:0!important;
+padding-left:28px!important;
+margin-top:0!important
+}
+
+.infoSugg {
+position:absolute;
+right:-17px;
+top:8.5px
+}
+
+.addPhotoTxt {
+right:30px!important
+}
+}
+
+.rowPad {
+margin-bottom:-20px
+}
+
+.rowPad > .col-lg-3,.rowPad > .col-lg-6 {
+margin-top:-15px
+}
+
+#uploadImg {
+display:none
+}
+
+.prfPic {
+height:186px;
+width:178px;
+border:1px solid #ccc;
+top:32px;
+padding-right:0;
+padding-left:0
+}
+
+.propic {
+height:40px;
+width:40px;
+border-radius:100%
+}
+
+.marginTab {
+margin-top:78px
+}
+
+img.profilePic.img-responsive {
+display:block;
+height:auto;
+position:relative
+}
+
+.image-upload > input {
+display:none
+}
+
+.addPhotoTxt {
+height:18px;
+position:absolute;
+right:35px;
+cursor:pointer;
+opacity:1;
+bottom:-27px;
+z-index:1
+}
+
+.prfContent h3 {
+font-size:36px;
+padding:32px 0 0;
+margin:0;
+font-weight:400;
+line-height:50px;
+color:#f89b1c
+}
+
+.prfContent h4 {
+color:#4e4f51;
+font-size:21px;
+padding:0;
+margin:0;
+font-weight:400
+}
+
+.prfContent h5 {
+line-height:16px;
+text-align:justify
+}
+
+.prfContent p {
+color:#4e4f51;
+font-size:14px;
+padding:8px 0 8px 24px;
+margin:0;
+background:url(../images/locPng.png) no-repeat left center
+}
+
+.rightBtn {
+float:right;
+padding:39px 33px 0 0;
+margin:0
+}
+
+.rightBtn.prfSetting a:hover {
+color:#f89b1c
+}
+
+.rightBtn.prfSetting a {
+line-height:26px;
+border:1px solid #ccc;
+padding:2px;
+font-size:14px;
+text-align:center;
+text-decoration:none;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.timeLineSetting {
+display:none
+}
+
+.userSidebarDiv {
+margin-top:36px
+}
+
+.usersidebarUl {
+margin-top:50px
+}
+
+.usersidebarUl li {
+list-style:none;
+padding:10px;
+width:103%;
+font-size:14px;
+padding-left:24px;
+margin:0;
+margin-left:10px;
+cursor:pointer
+}
+
+.usersidebarUl li span {
+margin-left:10px
+}
+
+.usersidebarUl a {
+text-decoration:none;
+color:#333
+}
+
+.usersidebarUl i {
+color:#ccc
+}
+
+.usersidebarUl .active i {
+color:#fff
+}
+
+.userSidebarDiv .usersidebarUl .active {
+background:#f89b1c
+}
+
+.userSidebarDiv .usersidebarUl .active span {
+color:#fff!important
+}
+
+.usersidebarUl li:hover {
+background:#f89b1c;
+margin-bottom:2px;
+margin-top:2px
+}
+
+.usersidebarUl li:hover a,.usersidebarUl li:hover a i {
+color:#fff
+}
+
+.usersidebarUl li.active {
+color:red
+}
+
+.userMenuItem:hover .enqheadphone,.userMenuItem:hover .offerbullhorn,.userMenuItem:hover .squratng,.userMenuItem:hover .squbenthere,.userMenuItem:hover .fabukmark,.userMenuItem:hover .thumbsupfollower,.userMenuItem:hover .fapic,.userMenuItem:hover .revpencil,.userMenuItem:hover .fapencil,.userMenuItem:hover .fausertmelne {
+color:#fff
+}
+
+.userMenuItem:hover .enq,.userMenuItem:hover .offr,.userMenuItem:hover .ratng,.userMenuItem:hover .benthere,.userMenuItem:hover .bukmark,.userMenuItem:hover .followerup,.userMenuItem:hover .foto,.userMenuItem:hover .revws,.userMenuItem:hover .lke,.userMenuItem:hover .tmelne {
+color:#fff
+}
+
+.userPic {
+padding:0
+}
+
+.userPic img {
+width:30px;
+height:30px;
+border-radius:100%
+}
+
+.commentBlock {
+margin-top:10px;
+margin-bottom:8px;
+padding:0
+}
+
+.usercommName,.userRevname,.revName {
+font-size:13px;
+color:#4e4f51;
+font-weight:600;
+font-family:'PROXIMANOVA-REGULAR';
+cursor:pointer
+}
+
+.userRevEdit {
+min-width:120px;
+cursor:pointer
+}
+
+.usercommName {
+margin-left:-15px
+}
+
+.userRevBussVendor > .userReviews > .editBoxComment {
+margin-top:10px;
+margin-bottom:10px
+}
+
+.editBoxComment {
+    margin-top:10px;
+    margin-bottom:10px
+}
+
+.loadmore {
+text-align:center;
+border:1px solid #ccc;
+padding:6px;
+cursor:pointer
+}
+
+.loadmore:hover {
+background-color:#f89b1c;
+color:#fff
+}
+
+.loadmore:active {
+background-color:#f89b00;
+box-shadow:0 0 3px #ccc;
+transform:translateY(1px)
+}
+
+.timelineBlock {
+margin-top:37px;
+padding-right:0!important;
+padding-left:0!important
+}
+
+.timeline-reviews {
+background:#fff;
+box-shadow:0 0 3px #ccc;
+margin-bottom:20px;
+padding:30px
+}
+
+.contentBodys {
+background-color:#f5f5f5;
+border-left:1px solid #ccc;
+padding-bottom:100px
+}
+
+.commentReviewone {
+width:100%;
+margin-top:1px;
+padding:4px;
+border:1px solid #ccc;
+text-align:justify;
+font-size:14px;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.nameRev {
+padding:0
+}
+
+.reViewer_page {
+margin:0;
+padding:0
+}
+
+.timelineLeftImg {
+padding:0
+}
+
+.timelineLeftImg img {
+max-width:63px;
+height:63px;
+border-radius:3px
+}
+
+.timelineRightTxt {
+padding:0;
+text-decoration:none;
+margin-left:-49px;
+margin-top:-6px
+}
+
+.timelineRightTxt a:hover {
+color:#f89b1c;
+text-decoration:none;
+cursor:pointer
+}
+
+.timelineRightTxt a {
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR';
+font-weight:600;
+font-style:oblique
+}
+
+.timelineRightTxt p {
+font-size:14px;
+color:#b2b2b2!important;
+padding:0 0 8px;
+margin:0;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.userPhoto {
+padding:0;
+margin:0 auto;
+border-radius:50%;
+width:39px;
+height:39px;
+background:#b2b2b2;
+overflow:hidden
+}
+
+.userPicReview {
+padding:0;
+margin:0 auto;
+border-radius:50%;
+width:39px;
+height:39px;
+overflow:hidden
+}
+
+.userName p {
+color:#4e4f51;
+font-weight:600;
+font-size:12px;
+font-family:'PROXIMANOVA-REGULAR';
+padding:0;
+margin:0;
+text-align:center
+}
+
+.timelineCommTxt p {
+padding:0;
+margin:0;
+text-align:justify;
+font-size:14px;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR";
+line-height:20px;
+word-break:break-all
+}
+
+.timelineRevieverImg ul {
+padding:0;
+margin:0;
+list-style:none
+}
+
+.timelineRevieverImg ul li {
+display:inline
+}
+
+.all-comment {
+padding:0;
+margin-bottom:10px
+}
+
+.like,.adminLike {
+border:1px solid #ccc;
+text-align:center;
+height:29px;
+line-height:29px;
+padding:0 8px;
+margin-top:10px
+}
+
+.like p,.adminLike p {
+margin:0;
+padding:0;
+font-size:15px;
+color:#b2b2b2;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.heart,.heartv,.orangeHeart {
+padding:0;
+height:29px;
+line-height:29px;
+text-align:center;
+border-bottom:1px solid #ccc;
+border-right:1px solid #ccc;
+border-top:1px solid #ccc;
+font-size:15px;
+color:#b2b2b2;
+font-family:"PROXIMANOVA-REGULAR";
+margin-top:10px;
+cursor:pointer
+}
+
+.heart i,.heartv i {
+font-size:16px
+}
+
+.heart i:hover {
+color:#f89b1c;
+cursor:pointer
+}
+
+.orangeHeart i {
+color:#f89b1c
+}
+
+.commentTxt {
+border:1px solid #ccc;
+text-align:center;
+height:29px;
+padding:0;
+line-height:29px;
+margin-top:10px;
+margin-left:17px
+}
+
+.commentTxt p {
+margin:0;
+padding:0;
+font-size:15px;
+color:#b2b2b2;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.comment {
+border:1px solid #ccc;
+margin:0;
+height:29px;
+line-height:29px;
+text-align:center;
+width:10%;
+border-left:0;
+margin-top:10px;
+color:#ccc;
+cursor:pointer
+}
+
+.comment i:hover {
+color:#f89b1c;
+cursor:pointer
+}
+
+.share_page {
+border:1px solid #ccc;
+height:29px;
+line-height:29px;
+text-align:center;
+margin-top:10px;
+color:#ccc
+}
+
+.share_page:hover {
+border:1px solid #f89b1c;
+cursor:pointer;
+color:#f89b1c
+}
+
+.timelineBlock .user_image1 img {
+position:absolute;
+margin-top:59px;
+margin-left:-17px
+}
+
+.inviteYourFriends {
+padding:30px
+}
+
+.suggested h3 {
+font-weight:400;
+font-size:14px;
+color:#fff;
+font-family:'PROXIMANOVA-REGULAR';
+line-height:38px;
+background:#6cc233;
+text-align:center;
+cursor:pointer;
+margin-top:7px
+}
+
+/*.suggestedToFollow {
+padding:0 11px;
+border:1px solid #ccc;
+height:auto;
+min-height:90px
+}*/
+.suggestedToFollow {
+padding: 0 11px;
+border: 1px solid #ccc;
+height: auto;
+border-radius: 2px;
+min-height: 90px;
+background: #fff;
+box-shadow: #ccc 1px 1px 5px;
+}
+
+.suggestedToFollow h4 {
+font-size:14px;
+font-weight:400;
+padding:8px 0;
+margin:0;
+font-family:'PROXIMANOVA-BOLD';
+color:#565656;
+text-align:center
+}
+
+.suggestedToFollow ul {
+padding:10px 0 0;
+margin:0;
+list-style:none
+}
+
+.suggestedToFollow ul li {
+margin:0 0 8px!important;
+display:block;
+width:100%;
+clear:both
+}
+
+.vndr_delete > .fa-trash-o {
+position:relative;
+right:2px
+}
+
+.heart > .fa-heart {
+position:absolute;
+top:6px;
+right:11px
+}
+
+.photoSugg {
+height:32px;
+border-radius:50%;
+margin:0;
+padding:0
+}
+
+.suggInfoTimeline {
+padding:0;
+margin:0
+}
+
+.suggInfoTimeline h5 {
+font-size:14px;
+font-weight:400;
+padding:0;
+margin:0;
+font-family:'PROXIMANOVA-REGULAR';
+color:#4e4f51;
+cursor:pointer
+}
+
+.suggInfoTimeline h5:hover {
+color:#f89b1c
+}
+
+.suggInfoTimeline a:hover {
+color:#f89b1c;
+text-decoration:none
+}
+
+.suggInfoTimeline p {
+font-size:14px;
+font-weight:400;
+padding:0;
+margin:0;
+font-family:'PROXIMANOVA-REGULAR';
+color:#b2b2b2
+}
+
+.follwSugg {
+height:30px;
+cursor:pointer;
+padding-left:10px
+}
+
+.follwSugg i {
+color:#999;
+font-size:24px;
+padding:3px;
+border:1px solid #ccc;
+position:relative;
+right:0
+}
+
+.follwSugg i:hover {
+color:#f89b1c;
+border:1px solid #f89b1c
+}
+
+.reviewRow {
+min-height:500px
+}
+
+.userRevCommentRep > .col-lg-12 {
+padding-left:0
+}
+
+.userRevAllComment {
+margin-bottom:15px;
+margin-top:10px
+}
+
+.userRevRow1 {
+margin-top:5px;
+margin-bottom:5px;
+padding-right:0;
+padding-left:0
+}
+
+.revUserPic {
+padding-left:0
+}
+
+.reviewBox {
+padding-right:0;
+padding-left:0
+}
+
+.reviewImg > ul > li {
+padding:1px;
+height:83px;
+margin-bottom:3px
+}
+
+.reviewImg > ul > li > img {
+height:100%;
+width:100%
+}
+
+.reviewImgDiv {
+padding-right:0;
+padding-left:0
+}
+
+.reviewLeftImg {
+padding:0
+}
+
+.reviewLeftImg img {
+max-width:63px;
+height:63px;
+border-radius:3px
+}
+
+.timelineReviewBlock {
+padding:20px
+}
+
+.reviewRightTxt {
+padding:0;
+text-decoration:none;
+margin-top:-6px
+}
+
+.reviewRightTxt a {
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR';
+font-weight:600;
+font-style:oblique
+}
+
+.reviewRightTxt a:hover {
+color:#f89b1c;
+text-decoration:none
+}
+
+.reviewRightTxt p {
+font-size:14px;
+color:#b2b2b2!important;
+padding:0 0 8px;
+margin:0;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.ReviewTxt,.RevComment,.revCommtext {
+padding:0
+}
+
+.ReviewTxt p {
+word-break:break-all;
+text-align:justify
+}
+
+.reviewImage {
+padding:0
+}
+
+.commRevTxt {
+width:100%;
+margin-top:1px;
+padding:4px;
+border:1px solid #ccc;
+color:#b2b2b2;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.reviewImage img {
+width:30px;
+height:30px;
+border-radius:100%
+}
+
+.reviewImg ul {
+padding:0;
+margin:0;
+list-style:none
+}
+
+.reviewImg ul li {
+display:inline
+}
+
+.reviewsTitle h3 {
+color:#f89b1c;
+font-size:20px;
+font-weight:400;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.sort_txt {
+font-family:"PROXIMANOVA-REGULAR";
+color:#4e4f51;
+display:block;
+font-size:14px;
+padding:0
+}
+
+.sort_menu {
+padding:0
+}
+
+.sort_menu ul {
+font-size:0;
+margin:0;
+padding:0
+}
+
+.sort_menu ul li a {
+color:#666!important;
+display:block;
+font-family:"PROXIMANOVA-REGULAR";
+font-size:14px;
+padding:4px 14px;
+text-decoration-style:initial;
+}
+
+.suggInfoReview {
+float:left;
+padding:0 10px;
+margin:0;
+width:193px
+}
+
+.suggInfoReview h5 {
+font-size:14px;
+font-weight:400;
+padding:0;
+margin:0;
+font-family:'PROXIMANOVA-REGULAR';
+color:#4e4f51;
+cursor:pointer
+}
+
+.suggInfoReview h5:hover {
+color:#f89b1c
+}
+
+.suggInfoReview a:hover {
+color:#f89b1c;
+text-decoration:none
+}
+
+.suggInfoReview p {
+font-size:14px;
+font-weight:400;
+padding:0;
+margin:0;
+font-family:'PROXIMANOVA-REGULAR';
+color:#b2b2b2
+}
+
+.reviever {
+margin-top:45px
+}
+
+.reviever_page .follow {
+line-height:23px;
+height:23px;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.follow {
+border:1px solid #ccc;
+height:25px;
+line-height:25px;
+font-size:12px;
+color:#b2b2b2;
+text-align:center;
+width:11%;
+float:right
+}
+
+.follow:hover {
+background:#6cc233;
+color:#fff
+}
+
+.photoRender h3 {
+color:#f89b1c;
+font-size:20px;
+font-family:'PROXIMANOVA-BOLD';
+padding-left:0
+}
+
+.photoRender {
+padding-left:0
+}
+
+.photoAlbmImg {
+height:210px;
+padding-left:0;
+margin-bottom:15px
+}
+
+.photoAlbmImg ul {
+position:absolute;
+padding:0;
+margin:0;
+list-style:none;
+top:0;
+right:23.5%;
+z-index:1
+}
+
+.photoAlbmImg ul li {
+padding:0;
+margin:0;
+display:inline
+}
+
+.photoDeleteBtn {
+border-radius:0;
+padding:0 5px;
+position:relative;
+font-size:12px;
+color:#fff;
+font-family:'PROXIMANOVA-REGULAR';
+line-height:20px;
+background:#6cc233;
+cursor:pointer;
+top:17px
+}
+
+.likeIcn {
+border:1px solid #ccc;
+background:#fff;
+color:#ccc;
+cursor:pointer;
+padding-left:3px;
+padding-right:3px;
+position:absolute;
+top:8px;
+right:50px
+}
+
+.deleteBtn {
+border:1px solid #ccc;
+background-color:#fff;
+color:#ccc;
+cursor:pointer;
+padding:2px 5px;
+font-size:16px;
+position:absolute;
+top:8px;
+right:23px
+}
+
+.phtoModalBtn {
+margin-right:5%;
+margin-top:4%;
+cursor:pointer
+}
+
+.phtoModalFooter {
+border-top:0!important;
+padding:13px;
+margin-top:-19px;
+margin-right:28%
+}
+
+.photoYesBtn,.photoNoBtn {
+border-radius:0
+}
+
+.photoYesBtn:hover {
+background:#f89b1c;
+color:#fff
+}
+
+.photoNoBtn:hover {
+background:#f89b1c;
+color:#fff
+}
+
+.photoModalBody p {
+margin-right:19px;
+font-size:16px;
+color:#4e4f51;
+text-align:center;
+line-height:19px;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.photoModalContent {
+border-radius:0
+}
+
+.likeIcn i:hover {
+color:#f89b1c
+}
+
+.deleteBtn i:hover {
+color:#f01010
+}
+
+.followersBlk h3 {
+color:#f89b1c;
+font-size:20px;
+font-weight:400;
+padding:30px 0 12px;
+margin:0;
+font-family:'PROXIMANOVA-BOLD';
+clear:both
+}
+
+.followingBox {
+margin-left:0;
+margin-right:0
+}
+
+.followTab {
+    float: left;
+    width: 100%;
+    padding: 7px 1% 6px;
+    margin: 0 0 15px;
+    min-height: 50px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px #a5a5a5;
+    height: 75px;
+}
+/*.followTab {
+float:left;
+width:100%;
+padding:7px 1% 6px;
+margin:0 0 15px;
+min-height:50px;
+border:1px solid #ccc;
+cursor:pointer
+}
+*/
+.followTab:hover {
+background:#fff
+}
+
+.infoSugg {
+float:left;
+padding:0 11px;
+margin:0
+}
+
+.infoSugg h5 {
+font-size:14px;
+font-weight:400;
+padding:0;
+margin:0;
+font-family:'PROXIMANOVA-REGULAR';
+color:#4e4f51
+}
+
+.infoSugg p {
+font-size:14px;
+font-weight:400;
+padding:0;
+margin:0;
+font-family:'PROXIMANOVA-REGULAR';
+color:#b2b2b2
+}
+
+.followerSugg {
+float:right;
+width:34px;
+height:30px;
+cursor:pointer;
+padding:2px 0 0;
+margin-top:-36px
+}
+
+.followerSugg i {
+color:#999;
+font-size:24px;
+padding:3px;
+border:1px solid #ccc;
+right:7px;
+position:relative
+}
+
+.loadMore {
+clear:both;
+padding:0;
+margin:5px 0 0;
+border:1px solid #ccc;
+line-height:41px;
+text-align:center;
+font-size:14px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR';
+cursor:pointer;
+display:block
+}
+
+.LessMore {
+border:1px solid #ccc;
+clear:both;
+color:#4e4f51;
+cursor:pointer;
+font-family:"PROXIMANOVA-REGULAR";
+font-size:14px;
+line-height:41px;
+margin:5px 0 0;
+padding:0;
+text-align:center;
+width:98.5%;
+display:none
+}
+
+.AddFrid {
+min-height:249px;
+padding:30px 0 0;
+border:1px solid #ccc;
+margin:14px 0 0;
+text-align:center
+}
+
+.AddFrid h4 {
+font-size:20px;
+color:#4e4f51;
+font-weight:400;
+padding:20px 0 0;
+margin:0;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.AddFrid p {
+color:#4e4f51;
+font-size:15px;
+padding:5px 0 13px;
+margin:0;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.addFrdButton {
+padding:0;
+text-align:center;
+font-size:15px;
+color:#fff;
+font-family:'PROXIMANOVA-REGULAR';
+line-height:30px;
+background:#6cc233;
+width:115px;
+margin:0 auto;
+clear:both;
+cursor:pointer
+}
+
+.addFrdButton a {
+color:#fff;
+text-decoration:none
+}
+
+.userBookMarks {
+padding-left:30px
+}
+
+.bookmarkHeight {
+min-height:500px
+}
+
+.MainBeens {
+padding-left:0
+}
+
+.bookmarksBlk h3 {
+padding:25px 0 14px;
+margin:0;
+color:#f89b1c;
+font-size:20px;
+font-weight:400;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.bookmarkImg {
+padding:0;
+margin:10px 10px 0 0;
+border:1px solid #ccc;
+width:215px;
+padding-bottom:9px;
+height:218px
+}
+
+.bookmarkImg h6 {
+color:#4e4f51;
+font-size:13px;
+font-weight:400;
+padding:8px 5px 0;
+margin:0;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.bookmarkImg p {
+padding:0 5px 10px;
+margin:0;
+font-size:14px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.bookmarkImg:hover {
+border:1px solid #f89b1c;
+box-shadow:5px 4px 4px gray
+}
+
+.BeenThBlk {
+padding-left:30px
+}
+
+.BeenThBlk h3 {
+color:#f89b1c;
+font-size:20px;
+font-weight:400;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.BeenImg {
+padding:0;
+margin:0 13px 13px 0;
+border:1px solid #ccc
+}
+
+.BeenImg h6 {
+color:#4e4f51;
+font-size:13px;
+font-weight:400;
+padding:8px 5px 0;
+margin:0;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.BeenImg p {
+padding:0 5px 10px;
+margin:0;
+font-size:14px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.BeenImg:hover {
+border:1px solid #f89b1c;
+box-shadow:5px 4px 4px gray
+}
+
+.ratingClass {
+padding-left:30px
+}
+
+.ratingClass h3 {
+padding:25px 0 5px;
+margin:0;
+font-weight:400;
+font-family:'PROXIMANOVA-BOLD';
+font-size:20px;
+color:#f89b1c
+}
+
+.ratingClass .img_con1 {
+padding:0;
+width:205px;
+margin:0 15px 0 0;
+border:1px solid #ccc;
+margin-top:2%
+}
+
+.img_con1 {
+float:left;
+position:relative;
+cursor:pointer;
+z-index:1
+}
+
+.business_name {
+font-size:13px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-BOLD';
+padding:10px 6px 0
+}
+
+.ratingClass .img_con1 p {
+padding:0 6px 5px;
+margin:0;
+font-size:13px;
+color:#4e4f51;
+line-height:18px
+}
+
+.img_con1:hover {
+border:1px solid #f89b1c;
+box-shadow:5px 4px 4px #999
+}
+
+.img_con1 img {
+height:121px;
+width:203px
+}
+
+.userOffer {
+padding-left:30px
+}
+
+.userTimelineOffer {
+margin-top:10px
+}
+
+.userOffer h3 {
+padding:25px 0 0;
+margin:0;
+color:#f89b1c;
+font-size:20px;
+font-weight:400;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.leftOfferImg img {
+height:100px;
+width:100px
+}
+
+.middleOfferText p {
+font-size:18px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR';
+line-height:21px;
+padding:0;
+margin-left:-15px;
+margin-top:5px
+}
+
+.userCon h3 {
+padding:25px 0 0;
+margin:0;
+color:#f89b1c;
+font-size:20px;
+font-weight:400;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.sortText {
+font-family:"PROXIMANOVA-REGULAR";
+color:#4e4f51;
+display:block;
+font-size:14px;
+padding:4px 0;
+float:left;
+margin:10px 0 0
+}
+
+.sortMenu {
+margin:10px 0 0
+}
+
+.sortMenu ul {
+margin:0;
+padding:0;
+margin-left:-45px
+}
+
+.sortMenu ul li {
+display:inline-block;
+position:relative
+}
+
+.sortMenu ul li a {
+color:#666!important;
+display:block;
+font-family:"PROXIMANOVA-REGULAR";
+font-size:14px;
+padding:4px 14px
+}
+
+.sortMenu ul li ul {
+height:89px;
+padding-top:0;
+margin-top:5px;
+padding-bottom:0;
+margin-bottom:0;
+display:none
+}
+
+.userCon .offerText {
+margin:12px 0 0
+}
+
+.offerText {
+border:1px solid #ccc;
+margin:16px 0 0;
+padding:0
+}
+
+.leftOfferImg {
+margin-top:7px;
+margin-bottom:7px
+}
+
+.rightOfferText i {
+border:1px solid #ccc;
+color:#999;
+font-size:21px;
+padding:4px;
+margin-top:8px
+}
+
+.userCon .rightOfferText p {
+font-size:17px;
+margin:0;
+padding:0;
+font-family:'PROXIMANOVA-REGULAR';
+line-height:21px
+}
+
+.rightOfferText i.fa-share-alt:hover {
+cursor:pointer;
+border:1px solid #f89b1c;
+color:#f89b1c
+}
+
+.rightOfferText i.fa-floppy-o:hover {
+color:#f89b1c;
+cursor:pointer;
+border:1px solid #c71010
+}
+
+.knowMore {
+position:absolute;
+top:62.5px;
+cursor:pointer;
+text-decoration:none;
+border:1px solid #ccc;
+color:#4e4f51;
+text-align:center;
+border-radius:0;
+margin-top:0;
+padding:2px 8px;
+font-size:15px;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.knowMore:hover {
+text-decoration:none;
+background:#4e4f51;
+color:#fff
+}
+
+.enquiryDetailsBlock {
+border:1px solid #ccc;
+padding:0
+}
+
+.userEnquiryMain h3 {
+color:#565656;
+font-size:14px;
+font-family:"PROXIMANOVA-BOLD";
+padding:8px 0 10px 16px;
+margin:0 0 7px;
+font-weight:400;
+border-bottom:1px solid #ccc
+}
+
+.userEnquiryMain h4 {
+color:#565656;
+font-size:14px;
+font-family:"PROXIMANOVA-BOLD";
+font-weight:400;
+padding:0 0 0 16px;
+margin:0
+}
+
+.userEnquiryMain ul {
+padding:0 0 5px;
+margin:0 16px;
+list-style:none;
+border-bottom:1px solid #ccc;
+font-size:14px;
+font-family:"PROXIMANOVA-BOLD";
+font-weight:400
+}
+
+.userEnquiryMain ul li {
+display:inline;
+padding:0;
+margin:0
+}
+
+.userEnquiryMain ul span {
+font-family:'PROXIMANOVA-REGULAR';
+color:#565656
+}
+
+.userEnquiryDescription {
+background:#d7f6e8;
+padding:0;
+margin:13px 27px 0 0;
+width:258px;
+position:relative;
+float:right
+}
+
+.triangleUpNew {
+border-bottom:11px solid transparent;
+border-left:13px solid #d7f6e8;
+height:0;
+position:absolute;
+right:-13px;
+width:0
+}
+
+.userEnquiryDescription h5 {
+color:#565656;
+font-size:14px;
+font-family:"PROXIMANOVA-BOLD";
+font-weight:400;
+padding:10px 16px 0;
+margin:0
+}
+
+.userEnquiryDescription p {
+color:#565656;
+font-size:14px;
+font-family:'PROXIMANOVA-REGULAR';
+font-weight:400;
+padding:5px 16px 10px;
+margin:0;
+line-height:18px
+}
+
+.approxBudgetNew {
+background:#d7f6e8;
+padding:0;
+margin:2px 27px 0 0;
+width:258px;
+position:relative;
+float:right
+}
+
+.approxBudgetNew h5 {
+color:#565656;
+font-size:14px;
+font-family:"PROXIMANOVA-BOLD";
+font-weight:400;
+padding:10px 16px 0;
+margin:0
+}
+
+.approxBudgetNew p {
+color:#565656;
+font-size:14px;
+font-family:'PROXIMANOVA-REGULAR';
+font-weight:400;
+padding:5px 16px 10px;
+margin:0;
+line-height:18px
+}
+
+.imgEnq1New {
+float:right;
+padding:2px 16px 0 0;
+margin:0
+}
+
+.enqDescriptionMsg {
+background:#ddecfb;
+padding:0 15px 0 30px;
+float:left;
+position:relative;
+margin-top:178px;
+margin-left:58px;
+margin-bottom:10px
+}
+
+.enqDescriptionMsg p {
+padding:10px 0;
+margin:0
+}
+
+.triangleUp {
+width:0;
+height:0;
+border-right:13px solid #ddecfb;
+border-bottom:11px solid transparent;
+position:absolute;
+left:-13px
+}
+
+.userEnqFormButton .btn-xs {
+border:1px solid #c71010;
+color:#c71010;
+background:#f1f1f1;
+font-family:'PROXIMANOVA-REGULAR';
+font-size:14px
+}
+
+.userEnqFormButton .btn-xs:hover {
+background:#c71010;
+color:#fff
+}
+
+.userTextarea {
+padding:0;
+margin:11px 0 7px 17px
+}
+
+.userEnqFormTextarea {
+border-radius:0;
+margin-bottom:5px
+}
+
+.userEnqFileSendBtn {
+position:relative;
+margin-bottom:12px;
+padding-bottom:26px
+}
+
+.userEnqFileUpload1 {
+display:inline-block;
+position:absolute;
+width:116px;
+right:66px
+}
+
+.userEnqFileUpload1 span {
+display:inline-block;
+background:#6cc233;
+color:#fff;
+width:110px;
+position:absolute;
+padding-top:2px;
+padding-bottom:3px;
+padding-left:8px
+}
+
+.userEnqFileUpload1 span i {
+margin-left:5px
+}
+
+.userEnqUpload {
+display:inline-block;
+opacity:0;
+width:103px;
+position:relative;
+font-size:14px;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.userEnqSndBtn {
+position:absolute;
+right:0;
+padding:3px 16px 2px;
+font-size:14px;
+font-family:'PROXIMANOVA-REGULAR';
+background:#f89b1c;
+color:#fff;
+border:none;
+outline:none
+}
+
+.vendor_wrapper {
+padding-right:3%;
+padding-left:3%;
+margin-bottom:30px
+}
+
+.vendorPage {
+margin:0;
+padding:0;
+padding-right:10px
+}
+
+.vendorCon h1 {
+text-align:left;
+padding:0;
+font-weight:600;
+margin:0;
+font-size:22px;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.modeOfPayment {
+padding:0
+}
+
+.modeOfPayment b {
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.businessPay>li {
+color:#4e4f51;
+font-size:14px;
+font-family:'PROXIMANOVA-REGULAR';
+padding:0
+}
+
+.all_offer p {
+color:#f89b1c;
+font-size:17px;
+cursor:pointer;
+word-wrap:break-word
+}
+
+.time-seemore {
+cursor:pointer;
+color:#f89b1c
+}
+
+.time-seemore2 {
+display:none;
+cursor:pointer;
+color:#f89b1c
+}
+
+.today {
+font-family:'PROXIMANOVA-BOLD';
+color:#4e4f51;
+font-size:14px
+}
+
+.time {
+color:#4e4f51;
+font-size:14px;
+margin:0 0 0 25px
+}
+
+.reviever_pagenew {
+display:none
+}
+
+.open-btn {
+margin:15px 0 0;
+padding:0;
+color:#fff;
+background:#f89b1c;
+width:25%;
+text-align:center
+}
+
+.carouselVideoBody {
+width:100%;
+height:430px
+}
+
+.left carousel-control.carouselArrow {
+margin-left:-157%
+}
+
+.multi-item-carousel .carousel-inner .item {
+transition:500ms ease-in-out left
+}
+
+.multi-item-carousel .carousel-inner .active .left {
+left:-33%
+}
+
+.multi-item-carousel .carousel-inner .right {
+left:33%
+}
+
+.multi-item-carousel .carousel-inner .next {
+left:33%
+}
+
+.multi-item-carousel.carousel-inner.prev {
+left:-33%
+}
+
+.share_page1 {
+padding-left:6.7px
+}
+
+.iconBuss .share_page1 {
+padding-left:0
+}
+
+.share_page1,.share_page2,.share_page3 {
+border:1px solid #ccc;
+float:left;
+height:26px;
+line-height:26px;
+text-align:center;
+width:6%;
+cursor:pointer;
+color:#b2b2b2;
+margin:0 0 0 1.5%
+}
+
+.share_page1:hover,.share_page2:hover,.share_page3:hover {
+color:#f89b1c
+}
+
+.vendorReviewModal {
+border-radius:0
+}
+
+.reviewText {
+border-radius:0
+}
+
+.reviewTitle {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:14px;
+color:#4e4f51
+}
+
+.reviewPublishBtn {
+font-family:'PROXIMANOVA-REGULAR';
+background:#f89b1c;
+color:#fff;
+font-size:14px;
+text-align:center;
+border:none;
+border-radius:0
+}
+
+.reviewPublishBtn:hover {
+background:#4e4f51;
+color:#fff
+}
+
+.businessDetailsreview {
+font-family:PROXIMANOVA-REGULAR;
+color:#4e4f51;
+float:left;
+height:26px;
+width:15%;
+font-size:13px;
+cursor:pointer;
+border-width:1px;
+border-style:solid;
+border-color:#ccc;
+border-image:initial;
+margin-left:8px;
+padding:4px 0 0 6px
+}
+.businessDetailsreview:hover{
+color:#f89b1c;
+}
+
+.reportBox {
+font-family:PROXIMANOVA-REGULAR;
+color:#4e4f51;
+width:19%;
+font-size:14px;
+cursor:pointer;
+border-width:1px;
+border-style:solid;
+border-color:#ccc;
+padding:2px 0 2px 7px
+}
+
+.reportBox:hover {
+color:#f89b1c
+}
+
+.your-rating span {
+border:1px solid #ccc;
+font-family:PROXIMANOVA-REGULAR;
+color:#4e4f51;
+float:left;
+height:26px;
+font-size:14px;
+cursor:pointer;
+border-width:1px;
+border-style:solid;
+border-color:#ccc;
+border-image:initial;
+margin:0 0 0 1.5%;
+padding:4px 0 0 6px;
+border-right:0
+}
+
+.your-rating span i {
+color:#f89b1c
+}
+.your-rating:hover span{
+color:#f89b1c
+}
+
+.reportHeader {
+padding-bottom:0;
+padding-top:0
+}
+
+.reportHeader h3 {
+font-weight:400;
+font-size:16px;
+color:#6cc233;
+margin-top:8px;
+margin-bottom:8px
+}
+
+.reportText {
+font-size:15px;
+color:#4e4f51;
+padding:5px 0;
+font-weight:100!important
+}
+
+#reportSubmit {
+border-radius:0
+}
+
+.reportBody > form > ul > li {
+margin-bottom:12px;
+padding-right:0
+}
+
+.reportBody > form > ul {
+margin-bottom:0
+}
+
+.reportbtn .btn-default {
+text-align:center;
+background:#f89b1c;
+color:#fff;
+font-size:15px;
+font-family:'PROXIMANOVA-REGULAR';
+border-radius:0;
+margin-right:42%;
+margin-top:-10px
+}
+
+.reportCloseBtn {
+position:absolute;
+right:10%;
+top:10px
+}
+
+.reportbtn {
+border-top:0
+}
+
+.reportBlock {
+height:375px;
+border-radius:0
+}
+
+.reportBody li {
+font-family:'PROXIMANOVA-REGULAR';
+color:#4e4f51
+}
+
+.blk_bg {
+background:rgba(0,0,0,0.8);
+position:absolute;
+bottom:0;
+height:45px
+}
+
+.blk_bgleft {
+color:#fff;
+font-size:13px;
+padding-left:0;
+padding-top:2px
+}
+
+.blk_bgright {
+padding-right:0;
+padding-left:55px;
+padding-top:8.5px
+}
+
+.location-map-icon>ul {
+list-style:none;
+background:#fff none repeat scroll 0 0;
+border:1px solid #ccc;
+margin:0 auto;
+padding:0;
+position:absolute;
+right:-134px;
+height:127px;
+top:17px;
+width:147px;
+z-index:111;
+display:none
+}
+
+.location-map-icon>.fa-map-marker:hover .location-map-icon>ul {
+display:block
+}
+
+.location-map-icon>.fa-map-marker {
+cursor:pointer
+}
+
+.location-map-icon {
+padding:0;
+text-align:center;
+position:absolute;
+z-index:111
+}
+
+.mapRight .location-map-icon {
+top:-166px;
+height:50px;
+margin:auto;
+bottom:0;
+left:89px;
+right:0;
+width:35px
+}
+
+.tabGallry {
+margin:6px 3px 12px
+}
+
+.businessInformation .TabGallryM .nav-tabs > li.active > a {
+background-color:#fff!important;
+color:#f89b1c!important;
+border-bottom:1px solid #000!important;
+border-radius:0;
+border-left:0!important;
+border-right:0!important;
+border-top:0!important
+}
+
+.businessInformation .TabGallryM .nav-tabs > li > a {
+color:#4e4f53!important;
+border-radius:0;
+background-color:#fff!important;
+border-left:0!important;
+border-right:0!important;
+border-top:0!important;
+border-bottom:0!important
+}
+
+.businessInformation .TabGallryM .nav-tabs > li.active > a:hover {
+color:#f89b1c!important;
+border-bottom:1px solid #000!important;
+background-color:#fff!important;
+border-left:0!important;
+border-right:0!important;
+border-top:0!important
+}
+
+.businessInformation .TabGallryM .nav-tabs > li > a:hover {
+color:#f89b1c!important;
+border-bottom:1px solid #000!important;
+background-color:#fff!important;
+border-left:0!important;
+border-right:0!important;
+border-top:0!important
+}
+
+.businessInformation .TabGallryM .nav-tabs > li {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:14px;
+font-weight:400;
+margin:0!important;
+border-left:0!important;
+border-right:0!important;
+border-top:0!important;
+border-bottom:0!important
+}
+
+.vendorAbtBusiness {
+padding:0
+}
+
+.vendorAbtBusiness h4 {
+word-break:break-all;
+margin:0;
+padding:20px 0 0;
+font-size:14px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.vendorAbtBusiness p {
+font-size:14px;
+color:#4e4f51;
+text-align:justify;
+word-break:break-all
+}
+
+.owner_lft h4 {
+font-size:14px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.owner_lft {
+padding-left:0;
+font-size:14px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.owner_lft p {
+font-size:14px;
+color:#4e4f51;
+margin-top:5px;
+font-weight:600;
+font-style:oblique
+}
+
+.owner_rht {
+margin-top:29px;
+padding:0 0 0 14px;
+text-align:justify
+}
+
+.addReview h4 {
+font-size:14px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-BOLD';
+clear:both
+}
+
+.openReview {
+border:1px solid #f89b1c;
+padding:10px 0;
+display:block;
+position:relative
+}
+
+.reviewMaxHeight {
+height:350px
+}
+
+.reviewClose {
+cursor:pointer;
+color:#ccc;
+height:21px;
+width:21px;
+padding:0 6px;
+margin-top:-10px
+}
+
+.openReviewLeft {
+margin-top:14px;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.openReviewLeft img {
+height:63px;
+width:63px
+}
+
+.writeReview,.editReview {
+font-family:'PROXIMANOVA-REGULAR';
+border:1px solid #ccc;
+height:85px!important;
+border-radius:0;
+margin-top:-7px
+}
+
+.tagImg,.uploadImg,.shareImg {
+font-size:15px;
+color:#b2b2b2;
+font-family:"PROXIMANOVA-REGULAR";
+cursor:pointer
+}
+
+.tagImg i {
+border:1px solid #ccc;
+padding:5px
+}
+
+.tagImg i:hover {
+color:#f89b1c;
+cursor:pointer
+}
+
+.uploadImg i:hover {
+color:#f89b1c;
+cursor:pointer
+}
+
+.shareImg i:hover {
+color:#f89b1c;
+cursor:pointer
+}
+
+.uploadImg i {
+border:1px solid #ccc;
+padding:5px
+}
+
+.shareImg i {
+border:1px solid #ccc;
+padding:5px
+}
+
+.fb {
+background:#00008B;
+cursor:pointer;
+color:#fff!important
+}
+
+.twit {
+background:#00BFFF;
+cursor:pointer;
+color:#fff!important
+}
+
+.socailShare {
+display:inline-block
+}
+
+.publishReview {
+border:1px solid #ccc;
+font-family:'PROXIMANOVA-REGULAR';
+cursor:pointer;
+height:28px;
+margin-bottom:15px;
+padding-left:10px;
+padding-top:2px;
+color:#a9a9a9
+}
+
+.NopublishReview {
+border:1px solid #ccc;
+font-family:'PROXIMANOVA-REGULAR';
+cursor:pointer;
+height:28px;
+margin-bottom:15px;
+padding-left:10px;
+padding-top:2px;
+color:#a9a9a9
+}
+
+.NopublishReview:hover {
+background:#eee
+}
+
+.public_btn {
+margin-top:-2px;
+background:#f89b1c;
+color:#fff;
+font-size:14px;
+border:none;
+padding:3px;
+padding-left:10px;
+padding-right:10px
+}
+
+.public_btn:hover {
+background:#4e4f51;
+color:#fff
+}
+
+.public_btn2:hover {
+background:#4e4f51;
+color:#fff
+}
+
+.publish2 {
+margin:0 12px 0 0;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.public_btn2 {
+background:#f89b1c;
+color:#fff;
+font-size:14px;
+border:none;
+cursor:pointer;
+margin-right:-12px
+}
+
+.socailShare ul li {
+list-style:none;
+display:inline-block
+}
+
+.addReviewFooter {
+margin-top:10px
+}
+
+.addReviewFooter ul li {
+list-style:none;
+display:inline-block
+}
+
+.publish_btn:hover {
+background:#4e4f51;
+color:#fff
+}
+
+.userReviews {
+background:#fff;
+box-shadow:0 0 3px #ccc;
+margin-bottom:20px;
+padding:30px;
+margin-top:10px
+}
+
+.userRevname {
+padding:0
+}
+
+.userReviewTempImg ul {
+padding:0;
+margin:0;
+list-style:none
+}
+
+.userReviewTempImg ul li {
+display:inline
+}
+
+.userReviewTempcommTxt,.userCommRevTemp,.userRevTempleftImg,.usercomRevTemtext,.userRowTemp,.userRevTempImage1,.userRevTempPic,.userRevTempCommentText {
+padding:0
+}
+
+.userCommRevTemp {
+margin-top:10px
+}
+
+.userRevTempImage1 {
+margin-top:10px
+}
+
+.userRevTempRightTxt p {
+font-size:14px;
+color:#b2b2b2!important
+}
+
+.userRevTempRightTxt a {
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.userRevTempRightTxt a:hover {
+color:#f89b1c;
+text-decoration:none
+}
+
+.commenRevTempTxt,.editCommentInput {
+width:100%;
+margin-top:1px;
+padding:4px;
+border:1px solid #ccc;
+color:#333;
+font-family:"PROXIMANOVA-REGULAR";
+margin-bottom:3px
+}
+
+.userReviewTempcommTxt p {
+margin-bottom:0;
+font-size:14px;
+text-align:justify;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR";
+word-break:break-all
+}
+
+.userFollow {
+border:1px solid #ccc;
+height:25px;
+line-height:25px;
+font-size:12px;
+color:#b2b2b2;
+text-align:center
+}
+
+.userFollow:hover {
+background:#6cc233;
+color:#fff;
+cursor: pointer;
+}
+
+.vndr_SharePage {
+border:1px solid #ccc;
+line-height:29px;
+text-align:center;
+margin-top:10px;
+color:#ccc
+}
+
+.vndr_SharePage:hover {
+border:1px solid #f89b1c;
+cursor:pointer;
+color:#f89b1c
+}
+
+.vndr_delete {
+border:1px solid #ccc;
+text-align:center;
+line-height:29px;
+margin-top:10px;
+color:#ccc;
+display:none
+}
+
+.vndr_delete:hover {
+cursor:pointer;
+border:1px solid #c71010;
+color:#c71010
+}
+
+.showDeleteButton {
+display:block!important
+}
+
+.showDeleEditBox {
+display:block!important
+}
+
+.reviever1 {
+margin-top:21px;
+font-size:14px
+}
+
+.userRevTempImage1 img {
+width:30px;
+height:30px;
+border-radius:100%
+}
+
+.mainConBusi .nav-tabs > li.active > a {
+color:#fff!important;
+background-color:#f89b1c!important;
+border:1px solid #f89b1c!important;
+border-radius:0;
+padding:6px
+}
+
+.mainConBusi .nav-tabs > li > a {
+color:#fff!important;
+background-color:#b2b2b2!important;
+border:1px solid #b2b2b2;
+border-radius:0;
+padding:6px
+}
+
+.mainConBusi .nav-tabs > li > a:hover {
+color:#fff!important;
+background-color:#f89b1c!important;
+border:1px solid #f89b1c;
+border-radius:0;
+padding:6px
+}
+
+.mainConBusi .nav-tabs > li.active > a:hover {
+color:#fff!important;
+background-color:#f89b1c!important;
+border:1px solid #f89b1c!important;
+border-radius:0;
+padding:6px
+}
+
+.descriptionBar {
+margin:0
+}
+
+.businessVendorOfferText {
+border:1px solid #ccc;
+margin-top:15px
+}
+
+.userOfferText {
+border:1px solid #ccc;
+margin-top:15px;
+width:82%
+}
+
+.busiVedorleftOfferImg {
+margin-top:7px;
+margin-bottom:7px;
+padding-left:0;
+height:90px
+}
+
+.busiVedorleftOfferImg img {
+height:100%;
+width:80%
+}
+
+.busiVendorRightOfferText i {
+width:45.8%;
+padding:2px 10px 2px 3.5px;
+border:1px solid #ccc;
+color:#999;
+font-size:21px;
+margin-top:8px
+}
+
+.userOffersI {
+padding-left:0;
+padding-right:0
+}
+
+.userOffersI i {
+padding:2px 10px 2px 8.5px;
+border:1px solid #ccc;
+color:#999;
+font-size:21px;
+margin-top:8px
+}
+
+.busiVendorRightOfferText i.fa-share-alt {
+margin-right:5px
+}
+
+.busiVendorRightOfferText i.fa-share-alt:hover,.userOffersI i.fa-share-alt:hover {
+cursor:pointer;
+border:1px solid #f89b1c;
+color:#f89b1c
+}
+
+.busiVendorRightOfferText i.fa-floppy-o:hover {
+color:#f89b1c;
+cursor:pointer;
+border:1px solid #f89b1c
+}
+
+.busiVendorMiddleOfferText p {
+font-size:18px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR';
+line-height:21px;
+padding:0
+}
+
+.busiVendorMiddleOfferText {
+padding-left:0;
+padding-right:0;
+margin-top:7px
+}
+
+.cash_back {
+font-size:14px;
+color:#6cc233;
+font-family:'PROXIMANOVA-BOLD';
+border-bottom:1px solid #ccc;
+margin:0 3% 0 2%;
+padding:2% 0 1%
+}
+
+.exp {
+font-size:14px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-BOLD';
+margin:0;
+padding:2% 0 1%
+}
+
+.date {
+margin:0;
+padding:0;
+color:#6cc233;
+font-family:'PROXIMANOVA-BOLD';
+font-size:14px
+}
+
+.total-txt {
+padding:2% 2% 2% 0;
+border-bottom:1px solid #ccc
+}
+
+.informationHide p {
+color:#4e4f51;
+font-size:12px;
+padding-top:3%;
+padding-left:0;
+padding-right:0;
+text-align:justify
+}
+
+.informationHide {
+display:none
+}
+
+.openCloseTime {
+display:none
+}
+
+.showOffer {
+display:block
+}
+
+.hideOffer {
+display:none
+}
+
+.nopadding {
+padding:0!important;
+margin:0!important
+}
+
+.time,.days,.times {
+color:#4e4f51;
+font-size:14px;
+font-family:'PROXIMANOVA-REGULAR';
+padding-bottom:10px
+}
+
+.openReviewBox {
+display:none
+}
+
+.fa-star-half {
+background:#666;
+color:#fff;
+font-size:18px
+}
+
+.fa-star-half:hover {
+color:#f89b1c
+}
+
+.left-star {
+border-right:1px solid #fff
+}
+
+.right-star {
+border-left:1px solid #fff;
+margin-left:-6px
+}
+
+.selectedStar {
+color:#f89b1c!important
+}
+
+.yourSetting h3 {
+font-size:19px;
+color:#f89b1c;
+font-weight:400;
+padding:25px 0;
+margin:0;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.yourSetting h4 {
+font-size:19px;
+color:#f89b1c;
+font-weight:400;
+padding:0;
+margin:0;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.privacyPassName {
+font-size:15px;
+color:#4e4f51;
+line-height:28px;
+font-weight:400;
+padding:12px 0 0;
+margin:0;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.privacyPass {
+border-radius:0
+}
+
+.saveBtn {
+padding:0;
+margin:3px 0 0;
+width:81%;
+background:#f89b1c;
+color:#fff;
+font-size:15px;
+height:38px;
+border:0;
+border-radius:0
+}
+
+.profSetting {
+height:700px;
+margin-left:20px
+}
+
+.deleteAcc {
+color:#c71010;
+font-size:17px;
+margin:31px 0 0;
+cursor:pointer
+}
+
+.yourAccSetting h3 {
+font-size:19px;
+color:#f89b1c;
+font-weight:400;
+padding:25px 0;
+margin:0;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.yourAccSetting h4 {
+font-size:19px;
+color:#f89b1c;
+font-weight:400;
+padding:0;
+margin:0;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.upldTxtImg h5 {
+padding:5% 0 4%;
+margin:0;
+font-size:15px;
+font-weight:400
+}
+
+.upload {
+border-radius:5px;
+display:inline-block;
+height:38px;
+padding:0;
+position:relative;
+width:auto;
+color:#4e4f51
+}
+
+.uploadButton1 {
+    background-color: #f89b2fbf;
+    border: 1px solid #f89b2f45;
+    box-sizing: content-box;
+    color: #080808;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    height: 33px;
+    width: 53%;
+    /*margin-left: 21px;*/
+    position: absolute;
+    top: 65%;
+}
+.upldTxtImg .fileName {
+font-size:14px
+}
+
+.profileSettingSidebar {
+border-right:1px solid #ccc;
+height:auto;
+min-height:800px
+}
+
+.EditprfNam {
+padding:0 3%;
+margin:0;
+border:1px solid #ccc;
+height:36px;
+width:100%;
+font-size:14px;
+color:#333
+}
+
+.editProfile {
+margin-left:20px
+}
+
+.profileSettingSidebar .profSettingsidebarUl .active {
+background:#f89b1c
+}
+
+.profSettingsidebarUl {
+margin-top:56px;
+width:56%
+}
+
+.profSettingsidebarUl li {
+list-style:none;
+padding:10px;
+width:126%;
+font-size:14px;
+padding-left:15px;
+margin:0;
+margin-left:11px;
+cursor:pointer
+}
+
+.profSettingsidebarUl a {
+text-decoration:none;
+color:#4e4f51
+}
+
+.editState,.editArea {
+padding-left:0
+}
+
+.editCity,.editPincode {
+padding-right:0
+}
+
+.resetpass {
+height:400px
+}
+
+.resetWrapper {
+border:1px solid #ccc
+}
+
+#reviewImgDiv {
+border:1px solid #ccc;
+height:100px;
+margin-top:10px;
+overflow:hidden;
+overflow-y:auto;
+margin-bottom:12px
+}
+
+.reviewUpload {
+padding-left:50%;
+padding-right:50%;
+margin-top:39px;
+margin-left:-17px;
+border-radius:0;
+background:#f89b1c;
+color:#fff;
+border:none;
+cursor:pointer
+}
+.publishReview{
+border:1px solid #ccc;
+font-family: 'PROXIMANOVA-REGULAR';
+cursor: pointer;
+height: 28px;
+margin-bottom: 15px;
+padding-left: 10px;
+padding-top: 2px;
+color: rgb(169, 169, 169)
+}
+.publishReview:hover{
+background: #eee;
+}
+
+.reviewUpload:hover {
+background:#4e4f51;
+color:#fff
+}
+
+.inputReviewImg {
+opacity:0
+}
+
+.reviewImages {
+display:none
+}
+
+.tagFrnd {
+display:none
+}
+
+.minopenReviewHeight {
+height:250px
+}
+
+.maxopenReviewHeight {
+ height:365px ;
+display: block;
+/*display: flow-root !important;*/
+}
+
+.inputReviewImg {
+border:1px solid red;
+width:100%;
+height:100%;
+cursor:pointer;
+opacity:0;
+position:absolute;
+margin:auto;
+top:0;
+left:0;
+right:0;
+bottom:33px
+}
+
+.reviewImgtext {
+color:#aaa;
+font-size:18px
+}
+
+.draggedReviewImg {
+height:85px;
+width:85px;
+border:1px solid #ddd;
+padding:3px;
+margin:3px 6px
+}
+
+.commentImg {
+width:30px;
+height:30px;
+border-radius:100%
+}
+
+.userCommDt {
+font-size:11px;
+color:#999;
+padding-left:50px
+}
+
+.userCommentText {
+font-size:12px;
+color:#333;
+word-break:break-all;
+margin-top:0
+}
+
+.commentReplyInputBox {
+display:none;
+padding:0
+}
+
+.commentReplySubInputBox {
+display:none
+}
+
+.commentReplyInput {
+font-size:12px;
+color:#666;
+width:100%;
+border:1px solid #ccc;
+padding:3px 6px;
+margin-top:10px;
+margin-bottom:10px
+}
+
+.replyImg {
+width:26px;
+height:26px;
+border-radius:100%;
+margin-top:10px;
+margin-bottom:10px
+}
+
+.userReplyPic,.userReplyComent,.commentReplyArr {
+padding:0
+}
+
+.userRepName {
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR';
+cursor:pointer;
+font-size:12px;
+font-weight:600;
+margin-top:10px;
+padding:0
+}
+
+.commentReplyLike,.usrCommentReply,.unuserLike {
+color:#66f;
+font-size:11px;
+font-weight:700;
+font-style:italic;
+text-align:center;
+cursor:pointer
+}
+
+.userCommRepDt {
+font-size:11px;
+color:#999;
+padding-left:50px;
+padding-right:0;
+margin-top:10px
+}
+
+.userRowTemp {
+margin-top:5px
+}
+
+.commentReplySubInput {
+font-size:11px;
+color:#666;
+width:100%;
+border:1px solid #ccc;
+padding:3px 6px;
+margin-top:10px;
+margin-bottom:10px
+}
+
+.userReviewTempImg {
+margin-bottom:5px
+}
+
+.commRepEditDel {
+margin-top:10px
+}
+
+.commentReplyBox {
+display:none;
+padding-left:0;
+border:1px solid #ccc;
+margin-top:5px
+}
+
+.commentReplyBox > .userReplyComent > input {
+border:0;
+padding-left:8px;
+width:100%
+}
+
+.userRevRepEdit,.userRevvReplyDel {
+padding-left:10px;
+color:#4e4f51
+}
+
+.userTimelineCommentText {
+padding:0
+}
+
+.userCommentWrapper {
+margin-top:6px;
+margin-bottom:6px;
+padding:0
+}
+
+.hideFollowButton {
+display:none
+}
+
+.alreadyFollowing {
+background:#6cc233;
+color:#fff;
+cursor:pointer
+}
+
+.bgGif {
+background-image:url(images/Rightnext-Loading.gif);
+background-size:60px 60px;
+background-repeat:no-repeat;
+background-position:center center
+}
+
+.userBusinessRating {
+padding:0
+}
+
+.img-circlePic {
+height:40px;
+width:40px;
+border-radius:100%;
+padding-right:0
+}
+
+.likeRightTxt {
+padding:0;
+text-decoration:none;
+margin-left:-15px;
+margin-top:-3px
+}
+
+.likeLeftImg {
+padding-left:0
+}
+
+.likeRightTxt a {
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.likeRightTxt a:hover {
+color:#f89b1c;
+text-decoration:none
+}
+
+.likeRightTxt p {
+font-size:14px;
+color:#b2b2b2!important;
+padding:0 0 8px;
+margin:0;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.likeLeftImg img {
+max-width:40px;
+height:40px;
+border-radius:50%
+}
+
+.userRevTempleftImg img {
+height:80px;
+width:100%
+}
+
+.categorySelect,.locationSelect,.selectNewest {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:14px;
+line-height:0;
+border-radius:0;
+height:25px;
+padding:3px 0 0;
+border:0
+}
+
+.vendorCon h1 {
+font-size: 28px;
+word-break: break-all;
+color: #f89b1c!important;
+text-align: left;
+padding: 0;
+margin: 0;
+}
+
+.no {
+font-size:18px;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR";
+padding:10px 0;
+}
+
+#description > div > .col-lg-12:nth-child(3) > .text-danger {
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.userBusinessRating {
+margin-bottom:8px
+}
+
+.business_offer {
+color:#4e4f51;
+font-size:14px;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.valid_txt {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:14px;
+color:#6cc233;
+margin-top:-10px
+}
+
+.offer_showmore {
+font-family:'PROXIMANOVA-REGULAR';
+background:#6cc233 none repeat scroll 0 0;
+color:#fff;
+text-align:center;
+cursor:pointer;
+padding-bottom:2px;
+padding-top:2px;
+margin-bottom:6px;
+margin-top:10px;
+border-radius:0
+}
+
+.offer_showmore:hover {
+color:#fff
+}
+
+.descriptionBus {
+margin-top:25px
+}
+
+.descriptionBus ul {
+list-style:none
+}
+
+.share_page1 {
+margin-left:0!important;
+border-radius:0;
+margin-bottom:16px
+}
+
+.menuItems1 {
+padding-left:0;
+padding-right:0;
+margin-bottom:10px
+}
+
+.menuItems {
+padding-left:0;
+padding-right:0;
+margin-left:10px;
+margin-bottom:10px
+}
+
+.nonUserCloseBtn {
+position:absolute;
+right:7%;
+top:7px
+}
+
+.nonUserContent {
+border-radius:0;
+height:130px
+}
+
+.nonUserHeader {
+background:#f89b1c
+}
+
+.nonUserModal {
+margin-top:18%
+}
+
+.nonUserOkayBtn {
+position:relative;
+left:45%;
+background:#f89b1c;
+border:#f89b1c
+}
+
+.nonUserOkayBtn:focus,.nonUserOkayBtn:active:focus,.nonUserOkayBtn.active:focus,.nonUserOkayBtn.focus,.nonUserOkayBtn:active.focus,.nonUserOkayBtn.active.focus {
+background:#f89b1c;
+color:#fff
+}
+
+.nonUserOkayBtn:hover {
+background:#f89b1c;
+color:#fff
+}
+
+.nonUserBody p {
+margin-top:10px;
+text-align:center
+}
+
+.ownerDesc2,.od-read-less,.aboutOwnerDesc2,.busAbutod-read-less {
+display:none;
+cursor:pointer
+}
+
+.userReviewDesc2,.userReview-read-less,.userReviewTimelineDesc2,.timelineReview-read-less,.ownerDesc4,.review-read-less{
+display:none;
+cursor:pointer
+}
+
+.od-read-more a {
+cursor:pointer;
+color:#f89b1c
+}
+
+.od-read-more {
+cursor:pointer;
+color:#f89b1c
+}
+
+.review-read-more a {
+cursor:pointer;
+color:#f89b1c
+}
+
+.review-read-more {
+cursor:pointer;
+color:#f89b1c
+}
+
+.review-read-less a {
+cursor:pointer;
+color:#f89b1c
+}
+
+.review-read-less {
+cursor:pointer;
+color:#f89b1c
+}
+
+
+.od-read-less a {
+cursor:pointer;
+color:#f89b1c
+}
+
+.od-read-less {
+cursor:pointer;
+color:#f89b1c
+}
+
+
+.userReview-read-more,.userReview-read-less {
+cursor:pointer;
+color:#f89b1c
+}
+
+.userReview-read-more a,.userReview-read-less a {
+cursor:pointer;
+color:#f89b1c
+}
+
+.timelineReview-read-more,.timelineReview-read-less {
+cursor:pointer;
+color:#f89b1c
+}
+
+.timelineReview-read-more a,.timelineReview-read-less a {
+cursor:pointer;
+color:#f89b1c
+}
+
+
+
+.busAbutod-read-more,.busAbutod-read-less {
+cursor:pointer;
+color:#f89b1c
+}
+
+.busAbutod-read-more a,.busAbutod-read-less a {
+cursor:pointer;
+color:#f89b1c
+}
+
+.profSettingsidebarUl li:hover {
+background:#f89b1c;
+margin-bottom:2px;
+margin-top:2px
+}
+
+.profSettingsidebarUl li a:hover {
+color:#fff
+}
+
+.profSettingsidebarUl .active i {
+color:#fff
+}
+
+.profileSettingSidebar .profSettingsidebarUl .active {
+background:#f89b1c
+}
+
+.profileSettingSidebar .profSettingsidebarUl .active span {
+color:#fff!important
+}
+
+.vendorlikelist img {
+border:1px solid #ccc;
+margin-top:-28px;
+border:1px solid #ccc;
+margin-top:-28px;
+border-radius:50%;
+height:40px;
+width:40px;
+top:-15px;
+position:relative
+}
+
+.commentLike,.commentReply {
+color:#66f;
+font-size:12px;
+font-style:italic;
+text-align:center;
+cursor:pointer
+}
+
+.userlike {
+padding:0
+}
+
+.userthumbTxtOverfl {
+display:inline-block;
+width:200px;
+/*white-space:nowrap;*/
+overflow:hidden!important;
+text-overflow:ellipsis
+}
+
+.aboutOwnerContent {
+padding:0
+}
+
+.notifyWrapper {
+font-size:16px;
+font-family:'PROXIMANOVA-REGULAR';
+color:#f89b1c;
+line-height:20px;
+min-height:20px;
+padding-bottom:2px;
+vertical-align:bottom;
+margin-top:-6px;
+font-weight:600
+}
+
+.notifyreportWrapper {
+width:100%;
+height:auto;
+margin:auto;
+margin-top:2%;
+box-shadow:1px 2px 2px rgba(0,0,0,0.1);
+border-radius:3px;
+margin-left:0!important;
+padding:2%;
+background:#fff!important;
+margin-bottom:7%
+}
+
+.notify {
+border-top:1px solid #ccc
+}
+
+.notifyBody {
+justify-content:center;
+margin-top:-1px;
+min-height:24px;
+word-wrap:break-word;
+padding:5px 5px 5px 9px;
+cursor:pointer;
+font-size:12px
+}
+
+.notidate {
+justify-content:center;
+margin-top:-9px;
+min-height:24px;
+word-wrap:break-word;
+padding:5px 5px 5px 9px;
+color:#90949c;
+cursor:pointer;
+font-size:12px
+}
+
+.box-body {
+margin-top:10px
+}
+
+.menuItem:hover .privcy,.menuItem:hover .edtProf,.menuItem:hover .config {
+color:#fff
+}
+
+.dropGeneral a:hover {
+color:#f89b1c
+}
+
+.dropGeneral:hover .userFaAngle {
+color:#f89b1c
+}
+
+.dropdown-menu > li > .hoverColor:hover,.dropdown-menu > li > .hoverColor:focus {
+ color: #fff;
+    text-decoration: none;
+    background-color: #ffe0b6;
+    margin-left: 0;
+     padding-bottom: 0px; 
+    /* background: #000; */
+}
+.dropdown-menu > li > a:hover,.dropdown-menu > li > a:focus {
+color:#fff;
+text-decoration:none;
+background-color:#f89b1c;
+margin-left:0;
+padding-bottom:8px
+}
+
+.dropdown-menu>li:hover .userFaSever,.dropdown-menu>li:hover .settingCog,.dropdown-menu>li:hover .powerOff {
+color:#fff
+}
+
+.dropdown-menu>li:hover .timelne,.dropdown-menu>li:hover .prfseting,.dropdown-menu>li:hover .lgout {
+color:#fff
+}
+
+.deleteTrash {
+color:#aaa;
+margin-right:5px;
+padding-top:5px;
+display:none
+}
+
+.venq {
+overflow:hidden!important
+}
+
+.notifRowBunch:hover .deleteTrash {
+display:inline-block
+}
+
+.userSettingadmin1 {
+width:10%;
+top:47px;
+padding:10px
+}
+
+.deleEditBox {
+color:#aaa;
+cursor:pointer
+}
+
+.userRevDeleEdit> li:hover {
+color:#fff;
+text-decoration:none;
+background-color:#f89b1c
+}
+
+.userRevDeleEdit> li > a {
+color:#1d2129;
+text-decoration:none;
+margin-left:0;
+padding-bottom:8px;
+font-size:12px;
+color:#333;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.userRevDeleEdit {
+min-width:100px!important;
+padding:5px 0;
+border-radius:0;
+margin:2px 0 0;
+font-size:12px;
+color:#1d2129
+}
+
+.editPen,.deltrash {
+padding-right:6px
+}
+
+.editBoxComment, 
+.starRatingblock {
+	display:none;
+	padding:0
+}
+
+.userRevComEdit {
+	/* padding-left:10px; */
+	color:#666;
+	font-size:13px;
+	background: #f89b1c;
+	color: #fff;
+	text-align: center;
+}
+
+.userRevCommEdit {
+padding-left:10px
+}
+
+.reviewCommCancel,.reviewReplyCancel {
+color:#666;
+font-size:11px;
+padding-left:0;
+display:none;
+cursor:pointer
+}
+
+/* .reviewCancel {
+    color:#666;
+    font-size:11px;
+    padding-left:0;
+    display:none;
+    cursor:pointer
+    } */
+.reviewCancel, .reviewBusSave {
+    border: 1px solid #685a56;
+    padding: 2px 10px;
+    margin-right: 2px;
+    color:#666;
+    display:none; 
+    cursor:pointer;
+}
+
+.reviewCancel:hover, .reviewBusSave:hover {
+    color:#fff;
+    background:#f89b1c;
+    border: 1px solid #f89b1c;
+}
+
+.userRevCommentDel {
+color:#fff!important
+}
+
+.userRevCommEdit,.userRevvCommentDel,.userRevCommentEditPen,.userRevCommentDel {
+cursor:pointer;
+padding-left:10px;
+font-size:14px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.timelineRevDate {
+padding-left:28px;
+padding-right:0
+}
+
+.RevEditBox {
+color:#aaa;
+margin-top:-2px;
+cursor:pointer
+}
+
+.slick-prev {
+left:4%!important
+}
+
+.followBox1 {
+padding-left:0;
+padding-right:0
+}
+/*empty review template css*/
+.empty-timeline-reviews {
+background:#fff;
+box-shadow:0 0 3px #ccc;
+margin-bottom:20px;
+padding:30px
+}
+
+.empty-timelineLeftImg {
+padding:0
+}
+
+.empty-timelineLeftImg img {
+height: 63px;
+background: #D3D3D3;
+width: 63px;
+border: 0
+}
+.empty-timelineRightTxt {
+padding:0;
+text-decoration:none;
+padding-top: 2%;
+margin-left: -25px
+/*margin-left:-49px;
+margin-top:-6px*/
+}
+.empty-timelineRightTxt p{
+background: #D3D3D3;
+height: 8px
+}
+.empty-review{
+height: 200px;
+background: #fff
+}
+
+.reviewCancelSave{
+    margin-bottom: 10px;
+}
+.followerBoxWrap,.followingBoxWrap{
+	overflow-y: scroll;
+    height: 167px;
+}
+.countMargin{
+	margin-left: 0px!important;
+}
+.yourFriendFind{
+	background-color: #eee!important;
+	/*border-radius: 4px!important;*/
+}
+.paddingZero{
+	padding: 0px;
+}
+.enqDateMargin{
+padding-left: 48px;
+}
+.enqActionMargin{
+	padding-left: 50px;
+}
+.enqDateMargin{
+	padding-left: 48px;
+}
+.enqDeleteThis{
+    margin-right: 22px;
+}
+.vEnqListBorder{
+	    overflow-y: scroll;
+    height: 400px;
+}
+.timeLineFollowBtn{
+	background: #6bc233;;
+	color: white;
+	    line-height: 26px;
+    border: 1px solid #ccc;
+    padding: 7px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    color: #4e4f51;
+    font-family: 'PROXIMANOVA-REGULAR';
+}
+.rightBtn .timeLineFollowBtn:hover {
+	color: white;
+}

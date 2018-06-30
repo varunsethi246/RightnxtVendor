@@ -1,0 +1,36 @@
+<template name="signupScreen">
+	<div class="signupScreen"> 
+		<h4>User SignUp</h4>
+		<form id="signupScreen">
+			<div class="form-group loginFormGroup">
+				<label for="name" class="vendorLabel loginLabel">Name</label>
+			    <input type="text" class="form-control signUpName" id="name" name="name" required="true" >
+			</div>
+			<div class="form-group loginFormGroup">
+			    <label for="email" class="loginLabel">Email</label>
+			    <input type="email" class="form-control signUpEmail" id="email" name="email" email="true" required="true" > 
+			    <span class="wrongEmailSpan"></span>
+			</div>
+			<div class="form-group loginFormGroup">
+			    <label for="mobile" class="loginLabel numberLabel">Your 10 Digit Mobile Number</label>
+			    <input type="tel" class="form-control signUpMobile" id="mobile" name="mobile" maxlength="10" required="true">
+			</div>
+			<div class="form-group loginFormGroup">
+			    <label for="pwd" class="loginLabel">Password</label>
+			    <input type="password" class="form-control signUpPassword" id="pwd" name="pwd" minlength="6" required="true">
+			</div>
+			<input type="submit"  id="userSignUp" class="signUpBtn" value=" User SignUp">
+		</form>
+		
+		<div class="signUpPara">
+			<p>By Signing Up you agree to our
+				<a href="/webpage/terms-of-service" class="termAndCondition">T&amp;C </a> and  
+				<a href="/webpage/privacy-policy" class="privacyPolicy">Privacy Policy</a>
+			</p>
+		</div>
+		<div class="loginTxt1">
+			<i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
+			<span> Login With Your Email</span>
+		</div>
+	</div>
+</template>

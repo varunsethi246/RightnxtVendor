@@ -1,0 +1,21 @@
+<template name='businessListSearchbar'>
+	<div class="col-lg-4">
+		<div class="thumbBusDiv">
+			<div class="thumImgDim">
+				<img src="{{businessImage}}">
+			</div>
+			<div class="thumImgDesc">
+				<p class="thumImgDescP thumbTxtOverfl col-lg-12 col-md-12 col-sm-12 col-xs-12 noPaddingVendor">{{businessTitle}}</p>
+				<p class="thumbTxtOverfl thumbTxtAddr col-lg-12 col-md-12 col-sm-12 col-xs-12 noPaddingVendor">{{businessAddress}}</p>
+				<div class="thumDescPhon thumbTxtOverfl col-lg-12 col-md-12 col-sm-12 col-xs-12 noPaddingVendor">
+					<i class="fa fa-phone" aria-hidden="true"></i>
+					<span>{{businessLandLine}}, {{businessMobile}}</span>
+				</div>
+			</div>
+			<div class="thumbEnqBtn" data-toggle="modal" data-target="#vEnqModal">
+				<button class="btn btn-success">Enquiry</button>
+				<span class="vCmtEnqPageHide">{{> businessEnquiry}}</span>
+			</div>
+		</div>
+	</div>
+</template>

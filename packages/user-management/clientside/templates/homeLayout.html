@@ -1,0 +1,22 @@
+<template name="homeLayout">
+<main>
+
+ 	{{#if currentUser}}
+ 		<!-- {{#each usersData}} -->
+		       <!-- {{> header}}	  -->
+		<!-- {{/each}} -->
+		       {{> settings}}
+																																																																																																								
+		  {{#if isInRole 'admin'}} 
+		       {{> addRoleList}}		  
+
+		  {{else}}
+		  		<h2> Welcome</h2>
+		  {{/if}}
+
+    {{else}}
+        	{{> login}}
+    {{/if}}
+
+</main>
+ </template>

@@ -1,0 +1,52 @@
+<template name="reportModalForm">
+	<div class="modal fade" id="reportModal" role="dialog">
+	    <div class="modal-dialog">
+	      	<!-- Modal content-->
+	      	<div class="reportBlock modal-content">
+	        	<div class="reportHeader modal-header">
+	          		<h3 class="modal-title">Whats Wrong?</h3>
+	          		<button type="button" class="close bussReportCloseBtn" data-dismiss="modal">&times;</button>
+	        	</div>
+
+	        	<div class="reportBody modal-body">
+	        		<form class="reportModalForm">
+		         		<ul class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		         			<li class="reportBody col-lg-4 col-md-4 col-sm-6 col-xs-12">
+			         			<label class="checkbox-inline">
+			         			<input type="checkbox" value="phoneNumber" id="phoneNumber" name="phoneNumber"  >Phone Number</label>
+			         		</li>
+			         		<!-- {{#with reportPhoneNumber}} checked {{/with}} -->
+			         		<li class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+			         			<label class="checkbox-inline">
+			         			<input type="checkbox" value="photosInappropriate" id="photosInappropriate" name="photosInappropriate">Photos inappropriate</label>
+			         		</li>
+			         		<li class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+			         			<label class="checkbox-inline">
+			         			<input type="checkbox" value="address" id="address" name="address">Address</label>
+			         		</li>
+			         		<li class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+			         			<label class="checkbox-inline">
+			         			<input type="checkbox" value="duplicateBusiness" id="duplicateBusiness" name="duplicateBusiness">Duplicate business</label>
+			         		</li>
+			         		<li class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+			         			<label class="checkbox-inline">
+			         			<input type="checkbox" value="businessHasShutdown" id="businessHasShutdown" name="businessHasShutdown">Business Has Shutdown</label>
+			         		</li>
+			         		<li class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+			         			<label class="checkbox-inline">
+			         			<input type="checkbox" value="other" id="other" name="other">Other</label>
+		         			</li>
+		         		</ul>
+
+		         		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			         		<label for="reportComment" class="reportText">Text (Optional)</label>
+							<textarea class="form-control" rows="5" id="reportComment" name="reportComment"></textarea>
+						</div>
+
+		         		<input type="submit" class="btn btn-warning col-lg-2 col-lg-offset-5 col-md-2 col-md-offset-5 col-sm-2 col-sm-offset-5 col-xs-4 col-xs-offset-4" id="reportSubmit" value="Submit">
+		         	</form>
+		        </div>
+	     	</div>
+	    </div>
+	</div>
+</template>

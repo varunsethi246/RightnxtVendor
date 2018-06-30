@@ -1,0 +1,159 @@
+<template name= "UMChecklistElements">
+<section class="Content">
+<div class="row">
+<div class="col-md-10 col-lg-12 col-sm-12 col-xs-12">
+  <form id="checkboxForm" class="col-lg-10 col-md-12 col-sm-12 col-xs-12 reportWrapper">
+		<h1 class="reportTitleName">Configure Your Signup Form</h1>
+		<h4 class="signupConfigTitle">Select the fields that you want to select for your sign up form. </h4>
+
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+			    <label class="control-label">Company Domain*</label>
+				<input type="text" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" name="companyDomain" value="" placeholder="" required>
+				<span class="help-block">Company Domain, eg.: BizwithEase</span>
+			</div>
+
+
+
+			<div class="form-group col-lg-6 col-md-2 col-xs-2 col-sm-2 ">
+			    <label class="control-label">Default Role to New User*</label>
+				<input type="text" class="col-lg-12" name="defaultRole" value="" placeholder="" required>
+				<span class="help-block col-lg-12">Role, eg.: User</span>
+			</div>
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+			    <input type="checkbox" class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxcompanyName" value="no" />
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="companyName" value="companyName" placeholder="" disabled>
+			</div> 
+
+			
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox" class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxtitle" value="no" />
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="title" value="title" placeholder="Salutation" disabled>
+			</div>
+
+
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox" class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxfirstName" value="no" />
+				<input  type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10"  name="firstName" value="firstName" disabled>
+			</div>
+
+
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox" class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxlastName"  value="no"  />
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="lastName" value="lastName" disabled>
+			</div>
+
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox"  class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxemailAddress"  value="no"  required/>
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="emailAddress" value="emailAddress" disabled>
+			</div>
+
+
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox"  class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxuserName"  value="no"   />
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="userName" value="userName" disabled >
+			</div>
+
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox"  class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxgender"  value="no"  />
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="gender" value="gender" disabled>
+			</div>
+
+
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox"  class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxpicture"  value="no"  />
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="picture" value="picture" disabled>
+			</div>
+
+
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox" class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxhomeAddress" value="no"   />
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="homeAddress" value="homeAddress" disabled>
+			</div>
+
+
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox"  class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxcity" value="no"   />
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="city" value="city" disabled>
+			</div>
+
+
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox"  class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxstate" value="no"  />
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="state" value="state" disabled>
+			</div>
+
+
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox"  class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxpin" value="no"   />
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="pin" value="pin" disabled>
+			</div>
+
+
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox" class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxcountry"  value="no"  />
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="country" value="country" disabled>
+			</div>
+
+
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox"  class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxmobNum" value="no"   />
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="mobNum" value="mobNum" disabled>
+			</div>
+
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox"  class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxalterMobNum"  value="no"  />
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="alterMobNum" value="alterMobNum" disabled>
+			</div>
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox"  class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxpassword"  value="no"  required/>
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="password" value="password" disabled>
+			</div>
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox"  class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxconfirmPassword"  value="no"  required/>
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="confirmPassword" value="confirmPassword" disabled>
+			</div>
+
+			<div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12 ">
+				<input type="checkbox"  class="option-input col-lg-2 col-md-2 col-sm-2 col-xs-2" name="checkboxNewsLetterSubscription"  value="no"/>
+				<input type="text" class="col-lg-10 col-md-10 col-sm-10 col-xs-10" name="newsLetterSubscription" value="newsLetterSubscription" disabled>
+			</div>
+
+<!-- 			<div>
+			 Add 'ADMIN' role to below user
+
+			<select class="col-lg-4 addAdminRole" name="addAdminRoleListDropdown" >
+			<option value="-" selected >Select </option>	
+	
+			{{#each usersconfig}}
+			<option value="{{_id}}"> {{ username }} </option>
+			{{/each}}
+
+			</select>
+			</div> -->
+
+		<div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 pull-right">
+	   	 <input type="submit" value="submit" class="btn btn-primary pull-right">
+	    </div>
+
+  </form>
+</div>
+</div>
+</section>
+</template>

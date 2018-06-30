@@ -1,0 +1,19 @@
+<template name="tabContentBanner">
+<div class="tab-content">
+	<div id="todaysReport" class="tab-pane fade in active">
+	  {{> todaysSalesReportBanner}}
+	</div>
+	<div id="weeklyReport" class="tab-pane fade">
+	 {{> weeklySalesReportBanner}}
+	</div>
+	<div id="monthlyReport" class="tab-pane fade">
+	   {{> monthlySalesReportBanner}}
+	</div>
+	<div id="yearlyReport" class="tab-pane fade">
+	  {{> yearlySalesReportBanner}}
+	</div>
+	<div id="datetabs" class="tab-pane fade">
+	  {{> fromToFieldsBanner}}
+	</div>
+</div>
+</template>

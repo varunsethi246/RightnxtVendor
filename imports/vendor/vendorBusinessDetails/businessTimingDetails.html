@@ -1,0 +1,44 @@
+<template name="businessTimingDetails">
+  <p class="busiTimeOpenHrs">
+    <b>Opening Hours 
+      <span class="time-seemore">( See More+ )</span> 
+      <span class="time-seemore2">( See Less- )</span>
+    </b>
+  </p>
+  <p>
+    <span class="today">Today:</span> 
+    <span class="time">
+      {{#each todayTimings }}
+        {{todayFromTime}} to {{todayToTime}}
+      {{/each}}
+      {{#if todayTimings}}{{else}}<span class="busClosed">Closed</span>{{/if}}
+    </span>
+  </p>
+  <div class="timingData col-lg-12 col-md-12 col-sm-12 col-xs-12 nopadding">
+    {{#each openCloseTime}}
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopadding">  
+        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-2 days nopadding"> {{ day }} </div>
+        <div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 times dayBuss"> 
+          {{#each timing}}
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopadding">  
+              {{fromTime}} to {{toTime}}
+            </div>
+          {{/each}}
+          {{#if timing}}{{else}}<span class="busClosed">Closed</span>{{/if}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  <!-- <div class="open-btn">Open</div> -->
+  <hr class="hrBorderBuss">
+  <div class="selectBuss">
+    <!-- <p><b>Mode of Payment</b></p> -->
+    <div class="payIcon">
+      <ul>
+        {{#with modeBuss}}
+          <li>{{this}}</li>
+        {{/with}}
+      </ul>
+    </div>
+  </div>
+</template>

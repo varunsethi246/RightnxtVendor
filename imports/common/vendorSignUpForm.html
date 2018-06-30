@@ -1,0 +1,31 @@
+<template name="vendorSignUpForm">
+	<div class="signUpBox">
+		<div class="vendorFrom">
+			<h4>Vendor SignUp</h4>
+			<form id="vendorsignUpForm">
+				<div class="form-group vendorField loginFormGroup">
+					<label for="usr" class="vendorLabel loginLabel">Name</label>
+					<input type="text" class="form-control vSignUp" id="usr" name="name" required="true">
+				</div>
+				<div class="form-group vendorField loginFormGroup">
+				    <label for="email" class="loginLabel">Email</label>
+				    <input type="email" class="form-control vSignUp vSignUpEmail" id="emailSignUp" name="email" required="true">
+				    <span class="wrongVendorEmailSpan"></span>
+				</div>
+				<div class="form-group vendorField loginFormGroup">
+			    	<label for="mobile" class="loginLabel  numberLabel">Your 10 Digit Mobile Number</label>
+			   		<input type="tel" class="form-control vSignUp" id="mobileSignUp" name="mobile" maxlength="10" required="true">
+				</div>
+				<div class="form-group vendorField loginFormGroup">
+				    <label for="pwd" class="loginLabel">Password</label>
+				    <input type="password" class="form-control vSignUp" id="pwdSignUp" name="pwd" required="true" minlength="6">
+				</div>
+				<input type="submit" id="vendorSignUp" class="signUp-btn1" value="Vendor SignUp">
+			</form>
+			<div class="loginTxt2">
+				<i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
+				<span> Login With Your Email</span>
+			</div>
+		</div>
+	</div>
+</template>

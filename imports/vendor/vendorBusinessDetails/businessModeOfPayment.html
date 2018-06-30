@@ -1,0 +1,14 @@
+<template name="businessModeOfPayment">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 modeOfPayment">
+		{{#if businessModeOfPayArray}}
+			<b>Modes of Payment</b>
+			{{#each businessModeOfPayArray }}
+				<ul class=businessPay>
+					<li class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						{{this}}
+					</li>
+				</ul>
+			{{/each}}
+		{{/if}}
+	</div>
+</template>

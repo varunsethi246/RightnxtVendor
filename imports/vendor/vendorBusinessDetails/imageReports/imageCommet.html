@@ -1,0 +1,171 @@
+<template name="imageCommet">
+	{{#with businessComment}}
+		{{#if imgFrom typeofImg}}
+			<div class=" imageReportBodyOne">
+				<div class="col-lg-12 imageReportTwo">
+					<div class="review_left col-lg-3 col-xs-3">
+						<img src={{pic}} class="commentImage" alt="">
+					</div>
+					<div class="review_right col-xs-9 col-lg-9">
+				        <p class="userName">{{userName}}</p>
+				        <div class="review-flw">{{reviewCounts}} Reviews ,{{followerCounts}} Followers</div>
+				        <a href="#">
+				        <div class="flw_btn imageReportFollowing">Following</div>
+				        </a>
+				    </div>
+				</div>
+			</div>
+		{{else}}
+			<div class=" imageReportBodyOne">
+				<div class="col-lg-12 imageReportTwo">
+					<div class="review_left col-xs-3 col-lg-3">
+						<img src={{pic}} class="commentImage" alt="">
+					</div>
+					<div class="review_right col-xs-9 col-lg-9">
+				        <p class="userName">{{businessName}}</p>
+						<span class="imageReportBussName"> {{businessaddress}}</span>
+						<!-- {{timeAgo createdAt}}          -->
+				    </div>
+				</div>
+			</div>
+		{{/if}}
+
+	{{/with}}
+	{{#if isInRole 'user'}}
+		<div class="bg_gry col-lg-12 imageCommentReviewOne">
+			{{#unless showComment}}
+			    <div class="review-flw col-lg-12">
+			    	No comments yet. Be the first one to comment!
+			    </div>
+		    {{/unless}}
+		    <div class="user_image2 col-lg-12">
+		    	<img alt="" src="/images/user-profile/following2.png" class="userComment">
+		    	<input id="commentone" class="comment_txt modalComments" placeholder="Comment" name="comment" type="text">
+		    </div>
+		</div>
+		<div class="modalCommentWrpr">
+			{{#each showComment}}
+	            <div class="col-lg-12 col-xs-12 col-md-12 userCommentWrapper">
+	               <div class="col-lg-1 col-xs-1 col-md-1 userPic">
+	                  <div class="">
+	                    <img class="commentImg" src="{{userProfileImgPath}}"/>
+	                  </div>
+	               </div>
+	               <div class="col-lg-11 col-xs-11 col-md-11 imgCommentData">
+	                  <div class="">
+	                     <div class="col-lg-7 col-xs-8 col-md-6 usercommName">
+	                       <!--  {{#if checkCurrentUser userId}}
+	                           <div class="col-lg-6 col-xs-12 col-md-6 revName">{{commentUserName}} </div>
+	                        {{else}} -->
+	                           <a href="/userReview/{{userId}}" target="_blank"><div class="col-lg-7 revName">  {{commentUserName}} </div>  </a>
+	                        <!-- {{/if}} -->
+	                     </div>
+	                     <div class="col-lg-5 col-xs-4 col-md-6 imgDateAgo">
+	                     	{{userCommentDateAgo}}
+
+	                     	<span class="{{deletEditBlock}} editdeltCommnt">
+	                     		<i class="fa fa-ellipsis-h pull-right" data-toggle="dropdown" aria-hidden="true"></i>
+								<ul class="dropdown-menu modalComntActivityUl editdeltCommntOpts">
+								    <li class="modalComntActivityLi replyEllpEdit" data-imgId="{{imgId}}" data-authUserId="{{userId}}" data-docId="{{_id}}">
+								    	<i class="fa fa-pencil editPen" aria-hidden="true"></i> Edit
+								    </li>
+								    <li class="modalComntActivityLi replyEllpDelete" id="" data-imgId="{{imgId}}" data-authUserId="{{userId}}" data-docId="{{_id}}">
+								    	<i class="fa fa-trash-o modalComntActivityI" aria-hidden="true"></i> Delete
+								    </li>
+								</ul>
+	                     	</span>
+
+	                     </div>
+	                     <div class="col-lg-12 col-xs-12 col-md-12 userCommentText">
+	                     	<span class="replyInputShwHid">{{imgcomment}}</span>
+	                     	<br>
+	                     	<input data-commentId="{{_id}}" class="editReplyInput" placeholder="Edit Comment" name="" type="text">
+
+	                     </div>
+	                     <div class="col-lg-12 col-xs-12 col-md-12">
+	                        <span class="commentLike" data-userId={{userId}} data-docId="{{_id}}" data-imageId="{{imgId}}">
+	                          	{{#if likeUnlike}}
+									Like
+								{{else}}
+									Like
+								{{/if}}
+	                           <span>({{commentLikeCount}})</span>
+	                        </span>
+	                        &nbsp;.&nbsp;
+	                        <span class="commentReply">
+	                           Reply <span>({{commentReplyCount}})</span>
+	                        </span>
+	                        <input id="replyOfreplyInput" data-userId={{userId}} data-commentId="{{_id}}" class="reportModInputReply" placeholder="Comment" name="" type="text">
+
+
+	                        <!-- MultiComment HTML Start-->
+	                        {{#each imgMultiComment}}
+							<div class="replyOfReplySub">
+								<div class="col-lg-1 col-xs-1 col-md-1 userPic">
+									<div class="">
+										<img class="commentImg" src="{{userProfileImgPath}}"/>
+									</div>
+								</div>
+								<div class="col-lg-11 col-xs-11 col-md-11 imgCommentData">
+									<div class="">
+										<div class="col-lg-7 col-xs-8 col-md-6 usercommName">
+											<a href="/userReview/{{userId}}" target="_blank"><div class="col-lg-6 revName">  {{commentUserName}} </div>  </a>
+										</div>
+										<div class="col-lg-5 col-xs-4 col-md-6 imgDateAgo">
+											{{userCommentDateAgo}}
+
+											<span class="{{deletEditReplyBlock}} editdeltCommnt">
+					                     		<i class="fa fa-ellipsis-h pull-right" data-toggle="dropdown" aria-hidden="true"></i>
+												<ul class="dropdown-menu modalComntActivityUl editdeltCommntOpts">
+												    <li class="modalComntActivityLi replyOfRplyEllpEdit" data-imgId="{{../imgId}}" data-authUserId="{{userId}}" data-docId="{{../_id}}" data-replyId="{{replyId}}">
+												    	<i class="fa fa-pencil editPen" aria-hidden="true"></i> Edit
+												    </li>
+												    <li class="modalComntActivityLi replyOfRplyEllpDelete" id="" data-imgId="{{../imgId}}" data-authUserId="{{userId}}" data-docId="{{../_id}}" data-replyId="{{replyId}}">
+												    	<i class="fa fa-trash-o modalComntActivityI" aria-hidden="true"></i> Delete
+												    </li>
+												</ul>
+	                     					</span>
+
+										</div>
+										<div class="col-lg-12 col-xs-12 col-md-12 userCommentText">
+											<span class="replyOfReplyInpShwHid">{{imgcomment}}</span>
+											<br>
+	                     					<input data-commentId="{{../_id}}" data-replyId="{{replyId}}" class="editReplyOfReplyInput" placeholder="Edit Comment" name="" type="text">
+
+										</div>
+										<div class="col-lg-12 col-xs-12 col-md-12">
+											<span class="commntMReplyLike" data-userIdReply={{userId}} data-userIdComment={{../userId}} data-docId="{{../_id}}" data-imageId="{{../imgId}}" data-likeDocId="{{replyId}}">
+													{{#if replyLikeUnlike}}
+														Like
+													{{else}}
+														Like
+													{{/if}}
+												 <span>({{commentReplyLikeCount}})</span>
+											</span>
+											&nbsp;.&nbsp;
+											<!-- <span class="commentReply" data-commentcount="">
+												Reply
+											</span> -->
+											<input id="replyOfreplyInputTwo"  data-userId={{../userId}}  data-commentId="{{../_id}}" class="reportModInputReply" placeholder="Comment" name="" type="text">
+										</div>
+									</div>
+								</div>
+							</div>
+							{{/each}}
+	                        <!-- MultiComment HTML End-->
+
+
+	                     </div>
+	                    <!-- <div class="ellipsisPos"> -->
+
+
+						<!-- </div> -->
+
+
+	                  </div>
+	               </div>
+	            </div>
+	        {{/each}}
+        </div>
+	{{/if}}
+</template>

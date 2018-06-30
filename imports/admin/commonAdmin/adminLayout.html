@@ -1,0 +1,24 @@
+<template name="adminLayout">
+{{#if currentUser}}
+	{{#if isInRole 'admin,Staff'}}
+		{{> adminHeader }}
+		<div class="wrapper">
+			<div class="container-fluid adminBackground">
+				{{> adminSidebar }}
+				{{> Template.dynamic template=main }}		
+			</div>
+		</div>
+		{{> adminFooter }}
+	{{/if}}
+	<!-- {{else}} -->
+		
+{{else}}
+		<img src="/users/profile/notfound.jpg" alt="" height="100%" width="100%">
+	<!-- {{#if logout}}
+	<a href={{logouthref}}></a>
+	{{/if}}
+ -->
+ 	<!-- <a href="/"></a> -->
+{{/if}}
+
+</template>

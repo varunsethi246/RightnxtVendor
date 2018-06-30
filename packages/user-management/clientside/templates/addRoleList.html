@@ -1,0 +1,25 @@
+<template name="addRoleList">
+	<button class="addrole">Add Role</button>
+
+	<table class="table table-hover table-bordered">
+		<thead>
+			<th> Role </th>
+			<th> Action </th>
+		</thead>
+		<tbody>
+			{{#each addrole}}
+				{{> add_role}}							
+			{{/each}}
+		</tbody>
+	</table>
+</template>
+
+<template name="add_role">
+	<tr>
+		<td> {{name}}</td>			
+		<td> 
+			<a href="um-editroles/{{_id}}" title="editrole"> Edit </a> 
+			<button class="deleteRole" title="deleteRole">Delete</button>
+		</td>		
+	</tr>
+</template>

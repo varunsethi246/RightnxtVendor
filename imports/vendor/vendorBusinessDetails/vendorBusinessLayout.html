@@ -1,0 +1,31 @@
+<template name="vendorBusinessLayout">
+{{#if isReady}}
+    <div class="navHeadSearchbarCommon">{{> header}}</div>
+    <i class="fa fa-chevron-circle-up fa-3x bussScrollTop" title="Scroll to Top" aria-hidden="true"></i>
+    {{#with businessData }}
+	    {{#if isInRole 'admin'}}
+	    	{{> vendorBusinessCarousel}}
+			<div class="vendor_wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+			    {{> businessLeftSidebar  }}
+			    {{> businessMainContent  }}
+			    {{> businessRightSidebar }}
+			</div>
+		{{else}}
+			<div class="{{showBusinessContent}}">
+				{{> vendorBusinessCarousel}}
+				<div class="vendor_wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				    {{> businessLeftSidebar  }}
+				    {{> businessMainContent  }}
+				    {{> businessRightSidebar }}
+				</div>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 {{showNoContent}} userImgBusi">
+				<img src="/users/profile/notfound.jpg" alt="" height="100%" width="100%">
+			</div>
+		{{/if}}
+	{{/with}}
+    {{> footer }}
+<!-- {{else}}
+	{{> loading}} -->
+{{/if}}	
+</template>

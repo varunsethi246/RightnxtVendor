@@ -1,0 +1,20 @@
+<template name="offerPayment">
+	{{#with orderData }}
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offerTitle offerPay">
+			<!-- <h3>Total Price</h3> -->
+	        <p class="col-lg-8 col-md-8 col-sm-8 col-xs-8">Rate per Offer per Month</p>
+	        <span id="offer" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Rs. {{ratePerOffer}}</span>
+
+	        <p class="col-lg-9 col-md-9 col-sm-9 col-xs-9">Number of Offers</p>
+	        <span id="offerNo" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">{{numOfOffers}}</span>
+			
+			<p class="col-lg-9 col-md-9 col-sm-9 col-xs-9">Number of Months</p>
+			<span id="offerMon" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">{{#if monthChange}}{{monthChange.noOfMonths}}{{else}}{{numOfMonths}}{{/if}}</span>
+			
+			<hr class="col-lg-11 col-md-11 col-sm-11 col-xs-11 dottedLine">
+			
+			<p class="col-lg-8 col-md-8 col-sm-8 col-xs-8">Total Price:</p>
+			<span class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Rs. {{#if monthChange}}{{monthChange.price}}{{else}}{{totalPrice}}{{/if}}</span>
+		</div>
+	{{/with}}
+</template>

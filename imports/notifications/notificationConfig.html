@@ -1,0 +1,162 @@
+<template name="notificationConfig">
+	<!-- on off buttons to set true false values for the required events -->
+	<div class="profSetting col-lg-4 col-md-7 col-sm-7 col-xs-12 ">
+	
+		<div class="yourSetting">
+        	<h3>Notification Configuration</h3>
+        	<br>
+	       	<form class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	       	{{#with scaleProcess}}
+				<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				  <label for="usr" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Enquiry:</label>
+				  <div class="radioOuterwrapper">
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="Enquiry" id="Enquiry1" value="true" required {{isCheckedenquiry "true"}}>
+					<label for="Enquiry1" class="radioOuterwrapper-label radioOuterwrapper-label-off" title="click if you want to receive enquiry mail">Yes</label>
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="Enquiry" value="false" id="Enquiry2" required {{isCheckedenquiry "false"}}>
+					
+					<label for="Enquiry2" class="radioOuterwrapper-label radioOuterwrapper-label-on" title="click if you dont want to receive enquiry mail">No</label>
+					<span class="radioOuterwrapper-selection"></span>
+				  </div>
+				</div>
+			{{/with}}
+				<!-- <div class="form-group col-lg-12">
+				  <label for="usr" class="col-lg-6">Invoice:</label>
+				  <div class="radioOuterwrapper">
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="Invoice" id="Invoice1" value="true" required checked>
+					<label for="Invoice1" class="radioOuterwrapper-label radioOuterwrapper-label-off">Yes</label>
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="Invoice" value="false" id="Invoice2" required>
+					
+					<label for="Invoice2" class="radioOuterwrapper-label radioOuterwrapper-label-on">No</label>
+					<span class="radioOuterwrapper-selection"></span>
+				  </div>
+				</div> -->
+				{{#with ratingProcess}}
+				<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				  <label for="usr" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Review and Rating:</label>
+				  <div class="radioOuterwrapper">
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="Rating" id="Rating1" value="true" required {{isCheckedrating "true"}}>
+					<label for="Rating1" class="radioOuterwrapper-label radioOuterwrapper-label-off" title="click if you want to get Rating mail">Yes</label>
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="Rating" value="false" id="Rating2" required {{isCheckedrating "false"}}>
+					
+					<label for="Rating2" class="radioOuterwrapper-label radioOuterwrapper-label-on" title="click if you dont want to receive rating mail">No</label>
+					<span class="radioOuterwrapper-selection"></span>
+				  </div>
+				</div>
+				{{/with}}
+				<!-- <div class="form-group col-lg-12">
+				  <label for="usr" class="col-lg-6">Payment Successfull</label>
+				  <div class="radioOuterwrapper">
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="Payment" id="Payment1" value="true" required checked>
+					<label for="Payment1" class="radioOuterwrapper-label radioOuterwrapper-label-off">Yes</label>
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="Payment" value="false" id="Payment2" required>
+					
+					<label for="Payment2" class="radioOuterwrapper-label radioOuterwrapper-label-on">No</label>
+					<span class="radioOuterwrapper-selection"></span>
+				  </div>
+				</div> -->
+			{{#if isInRole 'user'}}
+				{{#with followProcess}}
+				<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				  <label for="usr" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Follow:</label>
+				  <div class="radioOuterwrapper">
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="Follow" id="Follow1" value="true" required {{isCheckedfollow "true"}}>
+					<label for="Follow1" class="radioOuterwrapper-label radioOuterwrapper-label-off" title="click if you want to receive follow mail">Yes</label>
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="Follow" value="false" id="Follow2" required {{isCheckedfollow "false"}}>
+					
+					<label for="Follow2" class="radioOuterwrapper-label radioOuterwrapper-label-on" title="click if you dont want to receive follow mail">No</label>
+					<span class="radioOuterwrapper-selection"></span>
+				  </div>
+				</div>
+				{{/with}}
+			{{/if}}
+				<!-- {{#with unfollowProcess}}
+				<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				  <label for="usr" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">UnFollow:</label>
+				  <div class="radioOuterwrapper">
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="UnFollow" id="UnFollow1" value="true" required {{isCheckedunfollow "true"}}>
+					<label for="UnFollow1" class="radioOuterwrapper-label radioOuterwrapper-label-off" title="click if you want to receive unfollow mail">Yes</label>
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="UnFollow" value="false" id="UnFollow2" required {{isCheckedunfollow "false"}}>
+					
+					<label for="UnFollow2" class="radioOuterwrapper-label radioOuterwrapper-label-on" title="click if you dont want to receive unfollow mail">No</label>
+					<span class="radioOuterwrapper-selection"></span>
+				  </div>
+				</div>
+				{{/with}}
+ -->
+				{{#with likeProcess}}
+				<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				  <label for="usr" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Like:</label>
+				  <div class="radioOuterwrapper">
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="Like" id="Like1" value="true" required {{isCheckedlike "true"}}>
+					<label for="Like1" class="radioOuterwrapper-label radioOuterwrapper-label-off" title="click if you want to receive like mail">Yes</label>
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="Like" value="false" id="Like2" required {{isCheckedlike "false"}}>
+					
+					<label for="Like2" class="radioOuterwrapper-label radioOuterwrapper-label-on" title="click if you dont want to receive like mail">No</label>
+					<span class="radioOuterwrapper-selection"></span>
+				  </div>
+				</div>
+				{{/with}}
+
+				<!-- {{#with unlikeProcess}}
+				<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+				  <label for="usr" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">UnLike</label>
+				  <div class="radioOuterwrapper">
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="UnLike" id="UnLike1" value="true" required {{isCheckedunlike "true"}}>
+					<label for="UnLike1" class="radioOuterwrapper-label radioOuterwrapper-label-off" title="click if you want to receive unlike mail">Yes</label>
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="UnLike" value="false" id="UnLike2" required {{isCheckedunlike "false"}}>
+					
+					<label for="UnLike2" class="radioOuterwrapper-label radioOuterwrapper-label-on" title="click if you dont want to receive unlike mail">No</label>
+					<span class="radioOuterwrapper-selection"></span>
+				  </div>
+				</div>
+				{{/with}} -->
+			{{#if isInRole 'user'}}
+				{{#with commentProcess}}
+				<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				  <label for="usr" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Comment:</label>
+				  <div class="radioOuterwrapper">
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="Comment" id="Comment1" value="true" required {{isCheckedcomment "true"}}>
+					<label for="Comment1" class="radioOuterwrapper-label radioOuterwrapper-label-off" title="click if you want to receive comment mail">Yes</label>
+					<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="Comment" value="false" id="Comment2" required {{isCheckedcomment "false"}}>
+					
+					<label for="Comment2" class="radioOuterwrapper-label radioOuterwrapper-label-on" title="click if you dont want to receive comment mail">No</label>
+					<span class="radioOuterwrapper-selection"></span>
+				  </div>
+				</div>
+				{{/with}}
+			{{/if}}
+			{{#if isInRole 'Vendor'}}
+				{{#with editbusinessProcess}}
+					<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					  <label for="usr" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Edit Business:</label>
+					  <div class="radioOuterwrapper">
+						<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="editbusiness" id="editbusiness1" value="true" required {{isCheckededitbusiness "true"}}>
+						<label for="editbusiness1" class="radioOuterwrapper-label radioOuterwrapper-label-off" title="click if you want to receive EditBusiness mail">Yes</label>
+						<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="editbusiness" value="false" id="editbusiness2" required {{isCheckededitbusiness "false"}}>
+						
+						<label for="editbusiness2" class="radioOuterwrapper-label radioOuterwrapper-label-on" title="click if you dont want to receive Edit Business mail">No</label>
+						<span class="radioOuterwrapper-selection"></span>
+					  </div>
+					</div>
+				{{/with}}
+
+				{{#with reportProcess}}
+					<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					  <label for="usr" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Report:</label>
+					  <div class="radioOuterwrapper">
+						<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="report" id="report1" value="true" required {{isCheckedreport "true"}}>
+						<label for="report1" class="radioOuterwrapper-label radioOuterwrapper-label-off" title="click if you want to receive report mail">Yes</label>
+						<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="report" value="false" id="report2" required {{isCheckedreport "false"}}>
+						
+						<label for="report2" class="radioOuterwrapper-label radioOuterwrapper-label-on" title="click if you dont want to receive report mail">No</label>
+						<span class="radioOuterwrapper-selection"></span>
+					  </div>
+					</div>
+				{{/with}}
+			{{/if}}
+				<!-- <button class="btn btn-warning submitConfig pull-right">Submit</button> -->
+				<input type="submit" class="btn btn-warning submitConfig" value="Submit"/>
+			</form>
+		</div>
+	</div>
+</template>

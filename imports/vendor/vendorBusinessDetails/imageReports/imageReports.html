@@ -1,0 +1,167 @@
+<template name="imageReports">
+	<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+	<div class="modal fade" id="bigImageCarousel" role="dialog">
+		<div class="modal-dialog modal-lg imageReportLarge">
+			<div class="modal-content  imageReportContent">
+				<div class="">
+					<div class="col-lg-12 imageReportPadding">
+						<div class="">
+							<div class="col-lg-8 imageReportPadding">
+
+								<div class="col-lg-12 imageReportPadding">
+									<div class="modal-header imageReportHeader">
+										<div class="likesharereport" >
+											{{> imageReportModal}}
+										<!-- share modal -->
+											<div class="share">
+												<i class="fa fa-share pull-right btn shareModalIcon imgModelButton" aria-hidden="true" data-toggle="modal" id="shareModalReports" data-target="#imageReportShare"> Share </i>
+											</div>
+
+											{{#if isInRole 'user'}}
+												<div class="modal" id="imageReportShare" role="dialog">
+													<div class="modal-dialog">
+														<div class="modal-content RModaleShare">
+														<div class="modal-header closeImgReportShare">
+															Share With
+															<button type="button" class="close" data-dismiss="">X</button>
+														</div>
+														  <div class="modal-body">
+														        <div class="">
+														           <div class="row">
+														              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vModalContent">
+														                 <div class="row">
+														                    <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+														                    Share with
+														                    </div> -->
+
+														                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-left">
+														                       <div class="vModalContentfb bussImgShareFB" id="{{_id}}">
+														                          <i class="fa fa-facebook" aria-hidden="true"></i>
+														                          <span>Continue with Facebook</span>
+														                       </div>
+														                    </div>
+														                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-right">
+														                       <div class="vModalContentgp bussImgShareGP" id="{{_id}}">
+														                          <i class="fa fa-google-plus" aria-hidden="true"></i>
+														                          <span>Continue with Google+</span>
+														                        </div>
+														                    </div>
+														                 </div>
+														              </div>
+														           </div>
+														        </div>
+														  	</div>
+														</div>
+													</div>
+												</div>
+											{{/if}}
+											{{#if isInRole 'admin , Vendor'}}
+												<div class="modal fade nonuserShare" id="imageReportShare" role="dialog">
+											        <div class="modal-dialog nonUserModal">
+											          <!-- Modal content-->
+											            <div class="modal-content nonUserContent">
+											                <div class="modal-header nonUserHeader">
+											                    <button type="button" class="close nonUserCloseBtn" data-dismiss="">&times;</button>
+											                </div>
+											                <div class="modal-body nonUserBody">
+											                   {{#if isInRole 'Vendor'}}
+											                    	<p>You are logged in as vendor. In order to avail this facility, please login separately as a user.</p>
+											                    {{else}}
+											                    	<p>You are logged in as Admin. In order to avail this facility, please login separately as a user.</p>
+											                    {{/if}}
+											                    <button class="btn-primary nonUserOkayBtn" data-dismiss="" >Okay</button>
+											                </div>
+											            </div>
+											        </div>
+											    </div>
+											{{/if}}
+
+											<!--share modal end  -->
+
+
+
+										<!-- likes start -->
+										<span class="pull-right likesCount">f </span>
+
+										{{#if isInRole 'user'}}
+											<span id="{{link}}">
+												<i class="fa fa-heart pull-right likeModalIcon" id="likeimage" aria-hidden="true"> Like</i>
+											</span>
+										{{else}}
+											{{#if isInRole 'admin , Vendor'}}
+												<span>
+												<i class="fa fa-heart-o pull-right likeModalIcons" aria-hidden="true" id="nonUserReview" data-toggle="modal" data-target="#nonuserreview"> Like</i>
+												</span>
+											{{else}}
+												<span>
+													<i class="fa fa-heart-o pull-right btn likeIconModal" aria-hidden="true">
+													 Like</i>
+												</span>
+											{{/if}}
+										{{/if}}
+										<div class="modal fade" id="nonuserreview" role="dialog">
+									        <div class="modal-dialog nonUserModal">
+									          <!-- Modal content-->
+									            <div class="modal-content nonUserContent">
+									                <div class="modal-header nonUserHeader">
+									                    <button type="button" class="close likeClose nonUserCloseBtn" data-dismiss="">&times;</button>
+									                </div>
+									                <div class="modal-body nonUserBody">
+									                	{{#if isInRole 'Vendor'}}
+									                    	<p>You are logged in as vendor. In order to avail this facility, please login separately as a user.</p>
+									                    {{else}}
+									                    	<p>You are logged in as Admin. In order to avail this facility, please login separately as a user.</p>
+									                    {{/if}}
+
+									                    <button class="btn-primary likeOkey nonUserOkayBtn" data-dismiss="" >Okay</button>
+									                </div>
+									            </div>
+									        </div>
+									    </div>
+
+										<!-- likes end -->
+
+										</div>
+									</div>
+
+
+									<div class="modal-body imageReportBody">
+
+										<!-- Carousel for big image  -->
+										<div id="myCarousel1" class="carousel imageReportCarousel" data-ride="carousel">
+
+										    <div class="carousel-inner abc" id="imageSliderCarousel">
+											    {{#each imageCarouselSlideBig}}
+													<div class="item {{activeClass}} imageReportSlider" data-imgClass="{{imgLikeClass}}" data-imgLikeStatus="{{imgLikesStatus}}">
+														<img src="{{img}}" id="{{_id}}" alt="" class="x" />
+													</div>
+												{{/each}}
+										    </div>
+
+										    <!-- Left and right controls -->
+										    <a class="left carousel-control leftReportSlide previousImageID" href="#myCarousel1" data-slide="prev">
+										      <span class="glyphicon glyphicon-chevron-left "></span>
+										      <!-- <span class="sr-only">Previous</span> -->
+										    </a>
+										    <a class="right carousel-control rightReportSlide nextImageID" href="#myCarousel1" data-slide="next">
+										      <span class="glyphicon glyphicon-chevron-right"></span>
+										      <!-- <span class="sr-only">Next</span> -->
+										    </a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-4 imageReportPadding" >
+								<button type="button" class="close imageReportCloseFirst" data-dismiss="modal">&times;</button>
+
+								{{> imageCommet}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</template>

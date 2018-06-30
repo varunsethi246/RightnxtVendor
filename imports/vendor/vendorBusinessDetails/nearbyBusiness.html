@@ -1,0 +1,28 @@
+<template name="nearbyBusiness">
+	<div class="nearByBusinessesDiv">
+		{{#if nearBusiness}}		
+			<p class="nearBusi">Nearby Businesses</p>
+		{{/if}}
+		{{#each nearBusiness}}
+	     	<a href="/{{businessLink}}" target="_blank">
+		     	<div class="nearby"> 
+		     		<img src={{imgUrl}}  alt=""/>
+		     		<div class="blk_bg col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			          	<div class="blk_bgleft col-lg-6 col-md-6 col-sm-6 col-xs-6">
+				            <p>{{businessTitle}}</p>
+				            <p>{{businessArea}} , {{businessCity}}</p>
+			         	</div>
+		          		<div class="blk_bgright col-lg-6 col-md-6 col-sm-6 col-xs-6">
+		            		<div class="rating-right">
+		            			{{#with showRating businessLink}}
+		            				{{> starRating2  }}
+		            			{{/with}}
+		            		</div>
+		         		</div>
+		           </div>
+		     	</div>
+		    </a>
+	    {{/each}}
+		<hr class="nearbyHr col-lg-11">
+	</div>
+</template>

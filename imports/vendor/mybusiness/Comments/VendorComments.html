@@ -1,0 +1,133 @@
+<template name="vendorComments">
+	<div class=" vendorCommentClass">
+		<div class="vendorCommentCl">
+			<div class="row">
+				<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+					<div class="vCommentsMainClass">
+						{{#with vendorBusinessTitle}}
+							<h3 class="vCommentsHotelName">{{businessName}}</h3>
+							<h3 class="vCommentsHotelNameT">Comments <span>({{businessCount}})</span></h3>
+						{{/with}}
+					</div>
+					<!-- <div class="vCommentsMainClass">
+						{{#with vendorBusinessTitle}}
+							<h3 class="vCommentsHotelName">{{businessName}}</h3>
+							<h3 class="vCommentsHotelNameT">Comments <span>({{businessCount}})</span></h3>
+						{{/with}}
+
+						{{#each vendorCommentsData}}
+						<div class="row vendorCommentsDataMargin">
+							<div class="col-lg-12 vCommentsProfile">
+								<a href="#" class="vCommentsProf">
+									<img src="{{userProfilePic}}">
+								</a>
+								<div class="vCommentsProfileInfo">
+									<a href="#">{{usersName}}</a><br>
+									<p>{{userAddress}}</p>
+									<p>{{timeAgo}}</p>
+								</div>
+									</div>
+							<div class="col-lg-12 vCommentsProfilePara">
+								<p>{{reviewComment}}</p>
+							</div>
+							<div class="col-lg-12">
+								<div class="vCommentsImageRow">
+									<div class="vCommentsImgDiv">
+										<img src="images/reviever-img1.jpg">
+									</div>
+									<div class="vCommentsImgDiv">
+										<img src="images/reviever-img2.jpg">
+									</div>
+									<div class="vCommentsImgDiv">
+										<img src="images/reviever-img3.jpg">
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="vCmtall-comment">
+					            	<div class="vCmtlike">
+					             		<p>{{reviewLikes}} Like</p>
+					            	</div>
+					            	<div class="vCmtheart">
+					            		<i class="fa fa-heart" aria-hidden="true"></i>
+					            	</div>
+					            	<div class="vCmtcommentTxt">
+					              		<p>{{userComments}} Comment</p>
+					            	</div>
+					            	<div class="vCmtcomment">
+					            		<i class="fa fa-comment" aria-hidden="true"></i>
+					            	</div>
+					            	<div class="vCmtshare_page" data-toggle="modal" data-target="#VVendorCommentmodal">
+					            		<i class="fa fa-share" aria-hidden="true"></i>
+					            	</div>
+					            	<div class="modal fade" id="VVendorCommentmodal" role="dialog">
+									    <div class="modal-dialog">
+									      <div class="modal-content VCommentModalMainContent">
+									        <div class="modal-body">
+									        	<div class="vModalContentClose"></div>
+									          	<div class="vModalContentMain">
+									          		<div class="row">
+									          			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vModalContentShare">
+									          				Share
+									          				<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+									          			</div>
+									          			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vModalContent">
+									          				<div class="row">
+									          					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-left">
+									          						<div class="vModalContentfb">
+									          							<i class="fa fa-facebook" aria-hidden="true"></i>
+									          							<span>Continue with Facebook</span>
+									          						</div>
+									          					</div>
+									          					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-right">
+									          						<div class="vModalContentgp">
+									          							<i class="fa fa-google-plus" aria-hidden="true"></i>
+									          							<span>Continue with Google+</span>
+									          						</div>
+									          					</div>
+									          				</div>
+									          			</div>
+									          			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									          				<form>
+									          					<div class="vmodalForm">
+									          						<input type="text" class="form-group vmodalFormOne" placeholder="http://rightnxt.com">
+									          						<hr>
+									          						<div class="vCenterOr">or</div>
+									          						<div class="form-group">
+									          							<label for="toVEmail">To (Email address)</label><br>
+									          							<input type="text" id="toVEmail">
+									          						</div>
+									          						<div class="form-group">
+									          							<label for="toVAddNote">Add a note (Optional)</label><br>
+									          							<input type="text" id="toVAddNote">
+									          						</div>
+									          						<div class="vmodalFormButton">
+									          							<button type="button" class="btn btn-warning">Share</button>
+									          						</div>
+									          					</div>
+
+									          				</form>
+									          			</div>
+									          		</div>
+									          	</div>
+									        </div>
+									      </div>
+									    </div>
+									</div>
+					            	<div class="vCmtuser_image">
+					            		<span></span>
+					            		<input type="text" class="vCmtcomment_txt2 pull-right" name="comment" id="comment" placeholder="Comment">
+					            	</div>
+					         	</div>
+							</div>
+						</div>
+						{{/each}}
+					</div> -->
+					{{#each businessComments}}
+					  	{{> userReviewTemplate}}
+					{{/each}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

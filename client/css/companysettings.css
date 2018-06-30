@@ -1,0 +1,583 @@
+.HRMSBackgroundWrapper {
+padding:0 2%!important
+}
+
+.HRMSWrapper {
+background:#fff!important
+}
+
+#HRMSHeaderTitle {
+font-size:23px;
+padding:1%;
+color:#333;
+font-family:'Lato',sans-serif;
+margin-bottom:0!important
+}
+
+#HRMSSubTitle {
+font-size:18px;
+color:#333;
+font-family:'Lato',sans-serif;
+padding-bottom:1%!important;
+padding-top:1%;
+padding-left:1%
+}
+
+.HRMSTitle,.HRMSTitle2 {
+font-size:14px!important;
+font-family:'poppins',sans-serif!important;
+color:#686868;
+font-weight:500;
+padding-bottom:1%;
+margin-top:3%;
+padding-top:0;
+font-weight:bold
+}
+
+.HRMSTitle2 {
+margin-top:.8%!important
+}
+
+.HRMSTextbox {
+width:100%!important;
+color:#777;
+height:41px!important;
+border-radius:0!important;
+font-family:'poppins',sans-serif;
+background:transparent;
+margin-bottom:2%
+}
+
+#formCarousel .companyformCarousel {
+height:350px;
+overflow-y:auto
+}
+
+.leavecustom-list {
+text-align:center;
+margin-top:-32px!important
+}
+
+.leavecustom-list li {
+display:inline;
+font-size:40px;
+color:#99f
+}
+
+.formsSettingGlyphicon {
+font-size:18px!important;
+border:1px solid #eee;
+padding:10px;
+height:41px;
+margin-right:18px;
+border-radius:100%;
+color:#fff;
+width:41px;
+text-align:center;
+background:#3c8dbc
+}
+
+.nextButton {
+margin-right:3%
+}
+
+.nextPre {
+margin-top:10px!important;
+font-weight:700
+}
+
+.previousbtn {
+margin-left:32%!important;
+padding:7% 28%
+}
+
+.outrwrapper {
+height:600px
+}
+
+.companylogo {
+margin-bottom:20px
+}
+
+.CompanyTitle {
+text-align:center;
+z-index:999
+}
+
+.companySettingCarousel .item li {
+list-style:none;
+font-size:15px;
+padding:2% 2% 2% 4%;
+border:1px solid #ddd;
+background:#3c8dbc;
+color:#fff;
+margin-left:0
+}
+
+.companySettingCarousel {
+padding:2%;
+background:#fff
+}
+
+.companySettingCarousel .carousel-inner {
+border:0 solid #999;
+width:100%
+}
+
+.companySettingCarousel .carousel-inner img {
+height:auto;
+width:4%;
+margin-top:-8px
+}
+
+.companySettingCarousel .carousel-inner h1 {
+border:1px solid #ddd;
+padding:2%;
+background:#3c8dbc;
+text-align:center;
+color:#fff;
+text-transform:uppercase;
+font-size:17px!important
+}
+
+.settingsHeading {
+height:50px;
+z-index:2;
+color:#aaa;
+padding:1%
+}
+
+.settingsHeading span {
+font-size:22px
+}
+
+.settingsHeading a {
+margin-right:2%;
+padding:1%
+}
+
+.companyHeader .header {
+color:#3c8dbc!important;
+padding-left:1%;
+font-size:18px;
+font-weight:700
+}
+
+.companyHeader a {
+text-decoration:none!important
+}
+
+.companySettingCarousel {
+height:400px
+}
+
+.deleteLocations,.deleteBankDetails,.deletetaxSettings,.editRate,.deletetRate {
+width:17px;
+font-size:19px;
+margin-left:31px;
+text-align:center;
+color:#367fa9;
+cursor:pointer
+}
+
+.editLocations,.edittaxSettings,.editBankDetails {
+width:17px;
+font-size:19px;
+margin-left:31px;
+text-align:center;
+color:#367fa9;
+cursor:pointer
+}
+
+.title {
+margin-top:0!important
+}
+
+.description {
+border:0 solid red;
+background:#fff;
+margin-top:-10px;
+height:auto;
+padding:2%
+}
+
+.description .companyTitle {
+font-weight:800;
+margin-bottom:0;
+float:left;
+margin-top:0
+}
+
+.description .companyData {
+padding:1%;
+color:#fff;
+font-size:16px;
+background:#337ab7
+}
+
+.companyHeading {
+padding-top:3%;
+text-align:center;
+font-weight:700
+}
+
+.outerborder {
+border:1px solid #999;
+margin-left:1%;
+height:115px
+}
+
+.addressDetails {
+text-align:center;
+padding-top:6%;
+margin-bottom:10px
+}
+
+.general-modal-body {
+height:500px
+}
+
+.general-modal-size {
+width:92%
+}
+
+.addmorelocations,.addmoreaccounts {
+padding:1%
+}
+
+.addmoreaccounts {
+padding:1%;
+margin-top:20px
+}
+
+.finalSubmitmsg {
+border:0 solid red;
+padding:10%;
+font-size:33px;
+color:#fff;
+font-family:arial;
+font-weight:700;
+text-align:center;
+background:#3c8dbc;
+margin-top:49px
+}
+
+.fastyle {
+font-size:29px;
+color:#fff
+}
+
+.dispalyCarousel .carousel-indicators li {
+background:#337ab7!important;
+height:0!important;
+width:0!important
+}
+
+#csFormsModal .modal-header {
+border-bottom:0 solid #e5e5e5!important
+}
+
+.companySettingshr {
+margin-top:-21px;
+border:1px solid #e5e5e5
+}
+
+.display-indicators {
+display:none
+}
+
+.editbtn,.addbtn {
+padding:5px;
+margin-right:1%
+}
+
+.companyTitle {
+text-align:center;
+color:#eee;
+z-index:999;
+color:#3c8dbc;
+font-weight:700
+}
+
+.locationFormWrapper {
+display:none
+}
+
+.addLocation,.addBankDetails,.addtaxsettings {
+margin-top:25px
+}
+
+.themeForm {
+padding:3%
+}
+
+.companySettingsTable {
+margin-top:20px;
+padding:0
+}
+
+.companySettingsTable th {
+font-weight:700
+}
+
+.faqStyle {
+font-size:23px;
+margin-top:-1px;
+margin-left:10px;
+padding:0;
+cursor:pointer
+}
+
+.faqStyle label {
+font-size:17px;
+cursor:pointer
+}
+
+.displayLogo {
+padding:2%
+}
+
+.dataWrapper {
+border:1px solid #3c8dbc;
+padding:1%;
+height:auto
+}
+
+.holderName {
+text-transform:uppercase;
+text-align:center;
+font-weight:700;
+margin-bottom:1px
+}
+
+.labourbtn {
+margin-top:35px
+}
+
+.tooltip {
+position:relative;
+display:inline-block;
+border-bottom:1px dotted #000
+}
+
+.tooltip .tooltiptext {
+visibility:hidden;
+width:120px;
+background-color:#000;
+color:#fff;
+text-align:center;
+border-radius:6px;
+padding:5px 0;
+position:absolute;
+z-index:1
+}
+
+.tooltip:hover .tooltiptext {
+visibility:visible
+}
+
+.companySettingsTable {
+padding:4%!important
+}
+
+.formWrapper {
+border:1px solid #ddd;
+padding:2%
+}
+
+.reportWrapper {
+width:100%;
+height:auto;
+margin:auto;
+margin-top:8%;
+border-top:3px solid #3c8dbc;
+box-shadow:1px 2px 2px rgba(0,0,0,0.1);
+border-radius:3px;
+margin-left:0!important;
+padding:3%;
+background:#fff!important;
+margin-bottom:7%
+}
+
+.dispalyTitle {
+background:#3c8dbc;
+text-align:center;
+color:#fff
+}
+
+.radioOuterwrapper {
+position:relative;
+margin:0 auto;
+margin-left:50%;
+height:37px;
+width:160px;
+background:rgba(114,114,114,0.25);
+border-radius:3px;
+-webkit-box-shadow:inset 0 1px 3px rgba(0,0,0,0.3),0 1px rgba(255,255,255,0.1);
+box-shadow:inset 0 1px 3px rgba(0,0,0,0.3),0 1px rgba(255,255,255,0.1)
+}
+
+.radioOuterwrapper-label {
+position:relative;
+z-index:2;
+float:left;
+padding-top:5px;
+width:80px;
+line-height:26px;
+font-size:16px;
+text-align:center;
+cursor:pointer
+}
+
+.radioOuterwrapper-label:active {
+font-weight:700
+}
+
+.radioOuterwrapper-label-off {
+padding-right:2px
+}
+
+.radioOuterwrapper-label-on {
+padding-right:2px
+}
+
+.radioOuterwrapper-input {
+display:none
+}
+
+.radioOuterwrapper-input:checked + .radioOuterwrapper-label {
+font-weight:700;
+color:#fff;
+text-shadow:0 1px rgba(255,255,255,0.25);
+-webkit-transition:.15s ease-out;
+-moz-transition:.15s ease-out;
+-o-transition:.15s ease-out;
+transition:.15s ease-out;
+padding-top:4px
+}
+
+.radioOuterwrapper-input:checked + .radioOuterwrapper-label-on ~ .radioOuterwrapper-selection {
+left:78px;
+width:80px
+}
+
+.radioOuterwrapper-selection {
+display:block;
+position:absolute;
+z-index:1;
+top:2px;
+left:2px;
+width:73px;
+height:33px;
+background:#65bd63;
+border-radius:3px;
+background-image:-webkit-linear-gradient(top,#5cb85c,#5cb85c);
+background-image:-moz-linear-gradient(top,#5cb85c,#5cb85c);
+background-image:-o-linear-gradient(top,#5cb85c,#5cb85c);
+background-image:linear-gradient(to bottom,#5cb85c,#5cb85c);
+-webkit-box-shadow: inset 0 1px rgba(255,255,255,0.5),0 0 2px rgba(0,0,0,0.2);
+box-shadow:inset 0 1px rgba(255,255,255,0.5),0 0 2px rgba(0,0,0,0.2);
+-webkit-transition:left .15s ease-out;
+-moz-transition:left .15s ease-out;
+-o-transition:left .15s ease-out;
+transition:left .15s ease-out
+}
+
+.store1 {
+margin-left:28px!important
+}
+
+.storeTitle {
+margin-left:190px!important
+}
+
+.preciousStore {
+margin-left:-45px
+}
+
+.preciousStoreLabel {
+margin-left:3px!important
+}
+
+.groceryStore {
+margin-left:-22px
+}
+
+.groceryLabel {
+margin-left:251px!important;
+width:284px!important
+}
+
+.themeOuter {
+margin-left:77px
+}
+
+.togglebtngrp .cssToggle * {
+width:139px;
+height:40px;
+line-height:30px
+}
+
+.toggle-btn-grp.cssonly * {
+height:60px;
+padding:1%;
+vertical-align:middle;
+margin-top:-4px;
+margin-left:-4px;
+line-height:23px
+}
+
+.toggle-btn-grp.cssonly div {
+display:inline-block;
+position:relative;
+padding:1%;
+border:1px solid #aaa;
+margin:5px 2px
+}
+
+.toggle-btn-grp.cssonly div label {
+position:absolute;
+z-index:0;
+padding:2px;
+text-align:center
+}
+
+.toggle-btn-grp.cssonly div input {
+position:absolute;
+z-index:1;
+cursor:pointer;
+opacity:0;
+height:66px;
+margin-top:-6px;
+width:100px
+}
+
+.toggle-btn-grp.cssonly div input:checked + label {
+background-image:-webkit-linear-gradient(top,#1ed000,#026f00);
+border:solid 1px green!important;
+color:#fff;
+height:58px;
+width:100%
+}
+
+.firstTheme {
+margin-left:7%!important
+}
+
+.themeSettings {
+margin-right:11%;
+margin-top:10px
+}
+
+.input,input::-webkit-input-placeholder {
+font-size:13px
+}
+
+.bankDetailsFormWrapper {
+display:none
+}
+
+.companyHeading hr {
+margin-top:5px!important;
+margin-bottom:0!important
+}

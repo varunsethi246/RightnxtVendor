@@ -1,0 +1,10 @@
+<template name="alreadyClaimed">
+	<div class="alreadyClaimed">
+		<h4>{{alreadyClaimData.businessName}} has already been claimed.</h4>
+		<p>
+			If this is your business and you do not have 
+			access, you can <a class="reclaim" id={{alreadyClaimData.id}}>reclaim it.</a>
+		</p>
+		<button class="alrclaimModalBtn btn-medium" data-dismiss="modal">Close</button>
+	</div>
+</template>

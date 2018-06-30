@@ -1,0 +1,124 @@
+<template name="businessInformation">
+	<div class="businessInformation">
+	    <div class="TabGallryM">
+	    	<!-- {{#if or businessMenu businessImages}} -->
+		   		<ul class="nav nav-tabs tabGallry">
+	   				{{#if statusMenu businessMenu}}
+				    		<li class="active menuActive">
+			   					<a data-toggle="tab" href="#menuBuss">Menu</a>
+			   				</li>
+			    	{{/if}}
+			    	{{#if statusImg businessImages}}
+			    		<li class="{{#if statusMenu businessMenu}}photosInfoBuss{{else}}active{{/if}}">
+		    	 			<a data-toggle="tab" href="#photosBusi">Photos</a>
+		    	 		</li>
+			    	{{/if}}
+		    	</ul>
+	    	<!-- {{/if}} -->
+	    	<div class="tab-content">
+				<div id="menuBuss" class="tab-pane fade in active">
+		    	 	<div class="pull-right closePhotoMenu">
+		    	 		<a href="" class="text-danger">Close</a>
+		    	 	</div>
+		    	 	<div class="businessPhotos">
+		    	 		{{#each businessMenu}}
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 vPhotosUserRowSec photoMenu menuPicTab {{showMenu}}" id="{{menu}}" data-toggle="modal" data-target="{{#if showMoreImg}}#bigImageCarousel{{/if}}">
+								<div class="">
+									<div class="uploadPicSize">
+										<img src="{{menuUrl}}" class="img-responsive cursorPointer bgGif {{checkpngImg}}"/>
+										<div class="moreImagesMenu cursorPointer menuMoreImage {{showMoreImg}}">
+						                  <div>More <br>
+						                    Images</div>
+						                </div>
+									</div>
+								</div>
+							</div>
+						{{/each}}
+		    	 	</div>
+				</div>
+				<div id="photosBusi" class="tab-pane fade {{#if statusMenu businessMenu}}{{else}}active in{{/if}}">
+		    	 	<div class="pull-right closeMenu">
+		    	 		<a href="" class="text-danger">Close</a>
+		    	 	</div>
+					<div class="menuPhotos">
+				    	{{#each businessImages}}
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 vPhotosUserRowSec {{showPhoto}} photoMenu photoPicTab" id="{{img}}" data-toggle="modal" data-target="{{#if showImg}}#bigImageCarousel{{/if}}">
+								<div class="">
+									<div class="uploadPicSize">
+										<img src="{{imgUrl}}" class="img-responsive cursorPointer bgGif {{checkpngImage}}"/>
+										<div class="moreImagesMenu picMoreImage cursorPointer {{showImg}}">
+						                	<div>More <br> 
+						                	Images</div>
+						                </div>
+									</div>
+								</div>
+							</div>
+						{{/each}}
+				    </div>
+				</div>
+			</div>
+	    </div>
+
+	    <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12  vendorAbtBusiness">
+	    	{{#if isInRole 'admin'}}
+			    	<h4>About Business</h4>
+			    	<p>
+				    	{{> editableText collection="business" field="businessAboutBus"}}
+			    	</p>
+	    	{{else}}
+		    	{{#if businessAboutBus}}
+	    			<h4>About Business</h4>
+    			{{/if}}
+		   		{{#if aboutOwnerDesc2}}
+			 		<p>
+		        		{{aboutOwnerDesc1}}
+		        		<span class="aboutOwnerDesc2">{{aboutOwnerDesc2}}</span>
+		        		<span class="clr busAbutod-read-more">...<a>read more</a></span>
+		        		<span class="clr busAbutod-read-less">...<a>read less</a></span>
+		        	</p>
+		        {{else}}
+			    	<p>
+				    	{{businessAboutBus}}
+			    	</p>
+	    		{{/if}}
+	    	{{/if}}
+	    </div>
+
+	    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 owner_lft">
+	    	{{#if or ownerPhoto ownerDesc}}
+		    	<h4>About Owner</h4>
+		    {{/if}}
+		    {{#if isInRole 'admin'}}
+			    {{#if ownerPhoto}}
+			    	<img src="{{picUrl}}" alt="ownerImg" class="bgGif">
+			    	<p>{{> editableText collection="business" field="ownerFullName"}}</p>
+			    {{/if}}
+			{{else}}
+				{{#if ownerPhoto}}
+			    	<img src="{{picUrl}}" alt="ownerImg" class="bgGif">
+			    	<p>{{ownerFullName}}</p>
+			    {{/if}}
+			{{/if}}
+	    </div>
+	    <div class="aboutOwnerContent {{#if ownerPhoto}}col-lg-9 col-md-9 col-sm-9 col-xs-12 owner_rht{{else}}col-lg-12{{/if}}" id="reviewslide">
+	    	{{#if isInRole 'admin'}}
+		        	<p>
+		        		{{> editableText collection="business" field="ownerDesc"}}
+		        	</p>
+	        {{else}}
+		        {{#if ownerDesc2}}
+			        	<p>
+			        		{{ownerDesc1}}
+			        		<span class="ownerDesc2">{{ownerDesc2}}</span>
+			        		<span class="clr od-read-more">... <a>read more</a></span>
+			        		<span class="clr od-read-less">...<a>read less</a></span>
+			        	</p>
+		        	{{else}}
+			        	<p>
+			        		{{ownerDesc}}
+			        	</p>
+		        {{/if}}
+	        {{/if}}
+	    </div>        
+	</div>	        
+</template>

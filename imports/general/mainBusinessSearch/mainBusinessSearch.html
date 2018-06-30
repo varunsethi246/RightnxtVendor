@@ -1,0 +1,34 @@
+<template name="mainBusinessSearch">
+	<div class="str-tag-input1 focus-getBusiness1">
+		<div class="businessDisplayBlockTop">
+			<div class="businessDisplayBlock " >
+				<span id="listBusiness" ></span>
+				<input type="text" list="businessListShow" name="js-focus-input js-keydown-input js-change-input " placeholder="I am looking for" id="getBusiness" class="getBusiness1 col-lg-12" autocomplete="off">
+				<input type="hidden" name="searchBusiness" id="searchBusiness" value="">
+			</div>
+		</div>
+	</div>
+	<div class="homeSearchBarList">
+		<div class="homeSearchBarListWrapper">
+			{{#each getbusiness}}
+				{{#if businessHomeSearchTypeBus searchType}}
+					<div class="homeSearchBarListContent optionSearchHomePage" data-busLink={{businessLink}}>
+						<a href="{{businessLink}}">
+							<i class="fa fa-shopping-bag" style="margin-right: 5px;color: #666;" aria-hidden="true"></i>
+							<span class="selectedTitleVal">{{businessTitle}} </span>({{businessArea}})
+						</a>
+					</div>
+				{{else}}
+					<div class="topSearchBarListContent optionSearchHomePage"  data-catg={{categoryTitle}}>
+						<a>
+							<img src="/images/favicon.ico" style="width: 14px">
+							<span class="selectedTitleVal">{{categoryTitle}}</span>
+							<span class="homeCategoryDropList">[+]</span>
+						</a>
+					</div>
+				{{/if}}
+			{{/each}}
+		</div>
+	</div>
+	
+</template>

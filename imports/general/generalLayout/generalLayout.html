@@ -1,0 +1,9 @@
+<template name="generalLayout">
+	{{#if isReady}}
+		<div class="navHeadSearchbarCommon">{{> header }}</div>
+		{{> Template.dynamic template=generalcontent }}
+		{{> footer}}
+<!-- 	{{else}}
+		{{> loading}} -->
+	{{/if}}
+</template>

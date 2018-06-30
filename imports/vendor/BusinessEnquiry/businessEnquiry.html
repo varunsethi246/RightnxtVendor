@@ -1,0 +1,174 @@
+<template name="businessEnquiry">
+	<div class="vCmtEnqPage pull-right " data-toggle="modal" data-target="#vEnqModal">
+		<button class="btn btn-success btn-sm">Enquiry</button>
+	</div>
+	
+	<!-- Modal -->
+{{#if curretUser}}
+  	<div>
+	  	{{#if isInRole 'user'}}
+			<div class="modal fade" id="vEnqModal" role="dialog">
+				<div class="modal-dialog">
+				<div class="modal-content VCommentModalMainContent">
+					<div class="modal-body">
+						<div class="vModalContentClose"></div>
+						<div class="vModalContentMain">
+							{{#with getuserData}}
+									<div class="row">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vModalContentShare">
+											<span class="vEnqTitleModal">Send Enquiry</span>
+											<button type="button" class="close pull-right" data-dismiss="modal" title="Close">&times;</button>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vModalContent">
+											<div class="vEnqConModal">
+												Lets try to be more specific to get better responses from Sellers
+											</div>
+										</div> 
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<form>
+												<input type="text" class="form-control vEnqModalC enquiryName vEnqModalCNew" value="{{ profile.name }}" placeholder="Name" name="enquiryName">
+												<div class="spanEnqName"></div>
+												<div class="row">
+													<div class="col-lg-6">
+														<div class="input-group">
+															<span class="input-group-addon">+91</span>
+															<input type="text" class="form-control vEnqModalC enquiryPhone vEnqModalCNew" value="{{ profile.mobile }}"  name="enquiryPhone" minlength="10" maxlength="10" placeholder="10 Digit Mobile Number">
+														</div>
+														<div class="spanEnqPhone"></div>
+													</div>
+													<div class="col-lg-6">
+														<input type="email" class="form-control vEnqModalC enquiryEmail vEnqModalCNew" value="{{#each emails}}{{address}}{{/each}}"  placeholder="Email" name="enquiryEmail" required>
+														<div class="spanEnqEmail"></div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-lg-6">
+														<textarea class="form-control vEnqModalC enquiryDesc" rows="5" placeholder="Description/Message" name="enquiryDesc"></textarea>
+														<div class="spanEnqDesc"></div>
+													</div>
+													<div class="col-lg-6">
+														<div class="vEnqModalC vEnqModalBorder vEnqModalCShowOne">
+															<div class="vEnqModalO">
+																<input type="file" class="vEnqModalOFile enquiryPhoto" name="files[]">
+															</div>
+															<div class="vEnqModalT">
+																<span class="showEnquiryImg" id="showEnquiryImgId">
+																<i class="fa fa-camera fa-5x" aria-hidden="true"></i>
+																</span>
+															</div>
+														</div>
+
+														<div class="vEnqModalC vEnqModalBorder vEnqModalCShowTwo">
+															<div class="vEnqModalO">
+																<input type="file" class="vEnqModalOFile enquiryPhotoAll" name="files[]">
+															</div>
+															<div class="vEnqModalT">
+																<span class="showEnquiryImgAll" id="showEnquiryImgIdAll">
+																<i class="fa fa-camera fa-5x" aria-hidden="true"></i>
+																</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="col-lg-12">
+											<div class="vEnqBtnC vEnqModalCShowOne">
+												<button class="btn SendEnqTo">Send</button>
+											</div>
+											<div class="vEnqBtnC vEnqModalCShowTwo">
+												<button class="btn SendEnqToAll">Send</button>
+											</div>
+										</div>
+									</div>
+								{{/with}}
+						</div>
+					</div>
+				</div>
+				</div>
+			</div> 
+		 {{/if}}
+		 <!-- {{checkVendorLog}} -->
+	</div>
+{{else}}
+	<div class="modal fade" id="vEnqModal" role="dialog">
+	    <div class="modal-dialog">
+	      <div class="modal-content VCommentModalMainContent">
+	        <div class="modal-body">
+	        	<div class="vModalContentClose"></div>
+	          	<div class="vModalContentMain">
+	          		<div class="row">
+	          			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vModalContentShare">
+	          				<span class="vEnqTitleModal">Send Enquiry</span>
+	          				<button type="button" class="close pull-right" data-dismiss="modal" title="Close">&times;</button>
+	          			</div>
+	          			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vModalContent">
+	          				<div class="vEnqConModal">
+	          					Lets try to be more specific to get better responses from Sellers
+	          				</div>
+	          			</div> 
+	          			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	          				<form>
+	          					<input type="text" class="form-control vEnqModalC enquiryName vEnqModalCNew"  placeholder="Name" name="enquiryName">
+	          					<div class="spanEnqName"></div>
+	          					<div class="row">
+	          						<div class="col-lg-6">
+	          							<div class="input-group">
+										  	<span class="input-group-addon">+91</span>
+										  	<input type="text" class="form-control vEnqModalC enquiryPhone vEnqModalCNew"  name="enquiryPhone" minlength="10" maxlength="10" placeholder="10 Digit Mobile Number">
+										</div>
+	          							<div class="spanEnqPhone"></div>
+	          						</div>
+	          						<div class="col-lg-6">
+	          							<input type="email" class="form-control vEnqModalC enquiryEmail vEnqModalCNew"
+	          							placeholder="Email" name="enquiryEmail" required>
+	          							<div class="spanEnqEmail"></div>
+	          						</div>
+	          					</div>
+	          					<div class="row">
+	          						<div class="col-lg-6">
+	          							<textarea class="form-control vEnqModalC enquiryDesc" rows="5" placeholder="Description/Message" name="enquiryDesc"></textarea>
+	          							<div class="spanEnqDesc"></div>
+	          						</div>
+	          						<div class="col-lg-6">
+	          							<div class="vEnqModalC vEnqModalBorder vEnqModalCShowOne">
+	          								<div class="vEnqModalO">
+		          								<input type="file" class="vEnqModalOFile enquiryPhoto" name="files[]">
+		          							</div>
+		          							<div class="vEnqModalT">
+		          								<span class="showEnquiryImg" id="showEnquiryImgId">
+		          								<i class="fa fa-camera fa-5x" aria-hidden="true"></i>
+		          								</span>
+		          							</div>
+	          							</div>
+
+	          							<div class="vEnqModalC vEnqModalBorder vEnqModalCShowTwo">
+	          								<div class="vEnqModalO">
+		          								<input type="file" class="vEnqModalOFile enquiryPhotoAll" name="files[]">
+		          							</div>
+		          							<div class="vEnqModalT">
+		          								<span class="showEnquiryImgAll" id="showEnquiryImgIdAll">
+		          								<i class="fa fa-camera fa-5x" aria-hidden="true"></i>
+		          								</span>
+		          							</div>
+	          							</div>
+	          						</div>
+	          					</div>
+	          				</form>
+	          			</div>
+	          			<div class="col-lg-12">
+	          				<div class="vEnqBtnC vEnqModalCShowOne">
+	          					<button class="btn SendEnqTo">Send</button>
+	          				</div>
+	          				<div class="vEnqBtnC vEnqModalCShowTwo">
+	          					<button class="btn SendEnqToAll">Send</button>
+	          				</div>
+	          			</div>
+	          		</div>
+	          	</div>
+	        </div> 
+	      </div>
+	    </div>
+	</div> 
+{{/if}}
+</template>

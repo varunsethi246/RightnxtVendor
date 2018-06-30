@@ -1,0 +1,109 @@
+<template name="businessEventIcons">
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 textbox textBoxVen">
+            		
+    </div>
+    <div class="descriptionBus">
+        <ul class="iconBuss">
+        	<li class="share_page1 {{likesStatus}}like" id="likeme" title="Like"> 
+            	<i class="fa fa-heart" aria-hidden="true"></i>
+            </li>
+        
+            <li class="share_page2 {{bookmarkStatus}}Bookmark" id="bookmark" title="Bookmark">
+            	<i class="fa fa-bookmark" aria-hidden="true"></i>
+            </li>
+
+            <li class="share_page2 {{beenThereStatus}}BeenThere" id="beenThere" title="Been There">
+            	<i class="fa fa-hand-o-up" aria-hidden="true"></i>
+            </li>
+
+            <li class="share_page3 businessSharePage" id="share" data-toggle="modal" data-target="#share_page3" title="Share">
+            	<i class="fa fa-share-alt" aria-hidden="true">
+            	</i>
+            </li>
+            {{#if isInRole 'user'}}
+             <!-- Modal -->
+	         <div class="modal fade" id="share_page3" role="dialog">
+	            <div class="modal-dialog">
+	               <div class="modal-content VCommentModalMainContent">
+	                  <div class="modal-body">
+	                     <div class="vModalContentClose"></div>
+	                        <div class="vModalContentMain">
+	                           <div class="row">
+	                              
+	                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vModalContent bussShareIcon">
+	                                 <div class="row">
+	                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vModalContentShare">
+	                                    Share
+	                                       <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+	                                    </div>
+	                                    
+	                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-left">
+	                                       <div class="fbShareDiv" id="{{_id}}">
+	                                          <i class="fa fa-facebook" aria-hidden="true"></i>
+	                                          <span>Continue with Facebook</span>
+	                                       </div>
+	                                    </div>
+	                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-right">
+	                                       <div class="gpShareDiv" id="{{_id}}">
+	                                          <i class="fa fa-google-plus" aria-hidden="true"></i>
+	                                          <span>Continue with Google+</span>
+	                                        </div>
+	                                    </div>
+	                                 </div>
+	                              </div>
+	                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	                                 <form>
+	                                    <div class="vmodalForm">
+	                                       <input type="text" class="form-group vmodalFormOne" placeholder="http://rightNXT.com">
+	                                       <hr>
+	                                       <div class="vCenterOr">or</div>
+	                                       <div class="form-group">
+	                                          <label for="toVEmail">To (Email address)</label><br>
+	                                          <input type="text" id="toVEmail">
+	                                       </div>
+	                                       <div class="form-group">
+	                                          <label for="toVAddNote">Add a note (Optional)</label><br>
+	                                          <input type="text" id="toVAddNote">
+	                                       </div>
+	                                       <div class="vmodalFormButton">
+	                                          <button type="button" class="btn btn-warning shareBussPage">Share</button>
+	                                       </div>
+	                                    </div>
+	                                 </form>
+	                              </div>
+	                           </div>
+	                        </div>
+	                  </div>
+	               </div>
+	             </div>
+	         </div>
+	         <!-- Modal -->
+	         {{/if}}
+
+            <li class="businessDetailsreview" title="Review">
+            	<i class="fa fa-pencil" aria-hidden="true"></i>
+            	<span>Review</span>	
+            </li>
+	        
+            <li class="your-rating" title="Rating">
+				<span class="rate"><i class="fa fa-star-o" aria-hidden="true"></i> Rate </span> 
+				<div class="rateBusi col-lg-3 col-md-3 col-sm-3 col-xs-4" id="busiRate">
+				{{#if currentUser}}
+					{{#if alreadyReviewed}}
+						{{#with showRating}}
+							{{> starRating2 }}
+						{{/with}}
+					{{else}}
+						{{> starRating }}
+					{{/if}}
+				{{else}}
+					{{> starRating2 }}
+				{{/if}}
+
+				</div>
+	        </li>
+
+	    	<li class="enqBusi" title=""> {{> businessEnquiry}} </li>
+	    </ul>
+    </div>
+</template>

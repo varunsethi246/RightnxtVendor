@@ -1,0 +1,50 @@
+<template name="fromToFields">
+<section class="Content">
+<div class="row">
+<div class="col-md-10 col-lg-12">
+	<h4 class="salesreportTitle"> Customized Sales Report </h4>
+	<form class="fromToFields" method="post">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<!-- <div class="col-lg-8 col-lg-offset-2 col-md-4 col-sm-6 col-xs-12"> -->
+
+				<div class="input-group inputFieldSales col-lg-8 col-lg-offset-3">
+					<label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">From
+						<input class="form-control" type="date" name="fromDate" id="fromdate" value="{{fromDate}}">
+					</label>
+					<label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">To
+						<input class="form-control" type="date" name="toDate" id="todate" value="{{toDate}}">
+						<!-- <input type="button" name="search" value="Search"  /> -->
+					</label>
+					<label class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><span class="sr-only">search</span><br><button class="btn btn-primary search">Search</button></label>
+				</div>
+				<div class="table-responsive saleheadback">
+				<table class="table table-striped myTable table-bordered tableSales">
+					<thead>
+						<tr class="table-head saleheadbackground">
+							<th> Date </th>
+							<th> Order Number </th>
+							<th> Business Link </th>
+							<th> Total Amount </th>
+							<th> Discounted Price </th>
+							<th> Order Type</th>
+						</tr>
+					</thead>
+					<tbody class="myTableData">
+						{{#if result}}
+				            {{#each result}}
+				            	{{> salesTableView}}
+			            	{{/each}}
+			        	{{else}}
+							<td colspan=6 > 
+						      Nothing to Display.
+						    </td>
+						{{/if}}
+					</tbody>
+				</table>
+				</div>
+		</div>
+	</form>
+</div>
+</div>
+</section>
+</template>

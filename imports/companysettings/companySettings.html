@@ -1,0 +1,18 @@
+<template name="companySettings">
+{{#if currentUser}}
+  {{#if isInRole 'admin'}}
+    	<section class="Content">
+    	<div class="row">
+        <!-- <div class="  col-md-10 col-lg-12">
+          {{> companysettingsHeader}}
+          {{> companysettingsModal}}
+        </div> -->
+        <div class="col-md-10 col-lg-12">
+			{{> companysettingsDisplayCarousel}}
+		</div>
+        </div>
+    	</section>
+  {{/if}}
+{{/if}}  
+</template>
+ 

@@ -1,0 +1,35 @@
+<template name="allLabourDetails">
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		<div class="HRMSBackgroundWrapper companySettingsTable  col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="formWrapper col-lg-12">
+				<table class="table table-striped myTable table-bordered">
+					<thead>
+						<tr>
+							<th> Labour Charge Category </th>
+							<th> Rate(per gm) </th>
+							<th> Action 	  </th>
+							 
+						</tr>
+					</thead>
+					<tbody class="myTableData">
+						{{#with labourDetails }}
+							{{#each labourChargesDetails }}
+						      	<tr>
+						        <td> {{ labourChargeCategory }} </td>
+						        <td> {{ labourChargeRate }}     </td>
+						         <td>
+						         	<i class="fa fa-pencil editLabourSettings" aria-hidden="true" name="{{../_id}}"></i> &nbsp;&nbsp;
+						         	<i class="fa fa-trash deleteLabourSettings" aria-hidden="true" name="{{../_id}}"></i>
+						         </td>
+					        	
+					        		
+					        	
+						      </tr>
+				      		{{/each}}
+				    	{{/with}}	
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>	
+</template>

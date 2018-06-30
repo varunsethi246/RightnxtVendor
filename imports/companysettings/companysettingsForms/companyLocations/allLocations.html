@@ -1,0 +1,61 @@
+<template name="allLocations">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="HRMSBackgroundWrapper companySettingsTable col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			
+				<table class="table table-striped myTable table-bordered">
+					<thead>
+						<tr>
+							<th> Company Locations </th>
+							<th> Address 	       </th>
+							<th> Country 		   </th>
+							<th> State  		   </th>
+							<th> City   		   </th>
+							<th> Pincode 		   </th>
+							<th> Actions           </th>
+					
+							 
+						</tr>
+					</thead>
+					<tbody class="myTableData">
+						{{#with allLocationsinformationhead}}
+							{{#each allLocationsinfo }}
+								{{#each companyLocationsInfo }}
+									{{#if isSelectedLocation 'Headoffice'}}
+						<!-- {{ #each allLocationsinfo }} -->
+										<!-- {{ #each companyLocationsInfo }} -->
+									      	<tr>
+									       	 <td> {{ mainLocation }} </td>
+									       	 <td> {{ companyAddress }}  </td>
+									         <td>{{ companyCountry }}   </td>
+									         <td>{{ companyState }}     </td>
+									         <td>{{ companyCity }}      </td>   
+									         <td>{{ companyPincode }}   </td>
+									         <td>
+									         	<i class="fa fa-pencil editLocations" aria-hidden="true" name="{{../_id}}"></i>
+									         	<i class="fa fa-trash deleteLocations" aria-hidden="true" name="{{../_id}}"></i>
+									         </td>
+									      	</tr>
+							      	
+							      		{{else}}
+							      			<tr>
+									       	 <td> {{ companyLocation }} </td>
+									       	 <td> {{ companyAddress }}  </td>
+									         <td>{{ companyCountry }}   </td>
+									         <td>{{ companyState }}     </td>
+									         <td>{{ companyCity }}      </td>   
+									         <td>{{ companyPincode }}   </td>
+									         <td>
+									         	<i class="fa fa-pencil editLocations" aria-hidden="true" name="{{../_id}}"></i>
+									         	<i class="fa fa-trash deleteLocations" aria-hidden="true" name="{{../_id}}"></i>
+									         </td>
+									      	</tr>
+							      		{{/if}}
+							      		<!-- {{/each}} -->
+				    			{{/each}}
+				    		{{/each}}
+				    	{{/with}}	
+					</tbody>
+				</table>
+			</div>
+	</div>	
+</template>

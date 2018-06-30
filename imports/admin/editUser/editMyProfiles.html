@@ -1,0 +1,105 @@
+<template name="editMyProfiles">
+	 <form id="editMyProfile">
+	  <div class="signup col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	  	<h1 class="formTitle">Edit My Profile</h1>
+	  	<hr class="editFormUnderline">
+	    <div class="form-group col-lg-2 col-md-2 col-xs-2 col-sm-2 ">
+		   <label class="signupLabel control-label">Title*</label>
+		   <select class="form-control" name="salutation1">
+				<option>Mr</option>
+				<option>Mrs</option>
+				<option>Ms</option>
+			</select>
+	    </div>
+
+	   <div class="form-group col-lg-5 col-md-4 col-xs-12 col-sm-12 ">
+		   <label class="signupLabel control-label">First Name*</label>
+		   <input type="text" class="form-control" name="firstName1" placeholder="" pattern="[A-Za-z]+" value={{ edit.profile.firstName }} required>
+	    </div>
+
+	    <div class="form-group col-lg-5 col-md-4 col-xs-12 col-sm-12 ">
+		   <label class="signupLabel control-label">Last Name*</label>
+		   <input type="text" class="form-control" name="lastName1" pattern="[A-Za-z]+" placeholder="" value={{ edit.profile.lastName }} required>
+	    </div>
+
+	   <div class="form-group col-lg-12 col-md-4 col-xs-12 col-sm-12 ">
+		   <label class="signupLabel control-label">Email address*</label>
+		   <input type="email" class="form-control" name="signupEmail1" placeholder="" value= {{ edit.emails.[0].address }} disabled>
+	    </div>
+
+	   <div class="form-group col-lg-12 col-md-4 col-xs-12 col-sm-12 ">
+		   <label class="signupLabel control-label">Username*</label>
+		   <input type="text" class="form-control required" name="userName1" placeholder="" value={{ edit.profile.name }} disabled>
+	    </div>
+
+	   <div class="form-group col-lg-12 col-md-4 col-xs-12 col-sm-12 ">
+		   		<label class="radio-inline"><input type="radio" name="signGender1" value="Male" checked="{{#if compare edit.profile.signGender "Male" }}checked{{/if}}">Male</label>
+		   		<label class="radio-inline"><input type="radio" name="signGender1" value="Female" checked="{{#if compare edit.profile.signGender "Female" }}checked{{/if}}">Female</label>
+		   		<label class="radio-inline"><input type="radio" name="signGender1" value="Transgen" checked="{{#if compare edit.profile.signGender "Transgen" }}checked{{/if}}">Other</label>
+	    </div>
+
+	<!--    <div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+		   <label class="signupLabel control-label sr-only">Picture</label>
+	    	<input class="dataURI js-browseImg1 sr-only" id="my-file-selector" type="file" name="displayPicture1"/>
+		</div>
+ -->
+	   <div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+		   <label class="signupLabel control-label">Home Address</label>
+		   <textarea class="form-control" rows="2" id="comment" name="homeAdd1" value={{ edit.profile.homeAdd }} ></textarea>
+	    </div>
+
+	   <div class="form-group col-lg-3 col-md-4 col-xs-12 col-sm-12 ">
+		   <label class="signupLabel control-label">City</label>
+		   <input type="text" class="form-control" name="city1" placeholder="" value= {{ edit.profile.city}} >
+	    </div>
+
+	   <div class="form-group col-lg-3 col-md-4 col-xs-12 col-sm-12 ">
+		   <label class="signupLabel control-label">State</label>
+		  <input type="text" class="form-control" name="state1" placeholder="" value={{ edit.profile.state}}>
+	    </div>
+
+	   <div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 clear ">
+		   <label class="signupLabel control-label" for="zipcode">Pin/Zip Code</label>
+		  <input type="text" class="form-control" name="zip1" placeholder="" value={{ edit.profile.zip}} maxlength="6" pattern="[0-9]{6}">
+	    </div>
+
+	   <div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+		   <label class="signupLabel control-label">Country*</label>
+		  <input type="text" class="form-control required" name="country1" placeholder="" value={{ edit.profile.country}} required >
+	    </div>
+
+	   <div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+		   <label class="signupLabel control-label">Mobile Number*</label>
+		  <input type="number" class="form-control" name="mobNumber1" placeholder="" value= {{ edit.profile.mobile }} required>
+	    </div>
+
+	   <div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+		   <label class="signupLabel control-label">Alternate Number</label>
+		  <input type="number" class="form-control" name="alterNumber1" placeholder="" value={{ edit.profile.alterNumber}}>
+	    </div>
+
+	   <div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+		   <label class="signupLabel control-label">New Password</label>
+		   <input type="password" class="form-control" name="signupPassword1" placeholder="">
+	    </div>
+
+	   <div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+		   <label class="signupLabel control-label">Confirm Password</label>
+		   <input type="password" class="form-control" name="signupConfirmPassword1" placeholder="">
+	    </div>
+
+	    <!-- {{> reCAPTCHA}} -->
+	    <div class="col-lg-12">
+	    	
+		   	<div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+		    	<input type="reset" value="Reset" class="btn-primary signUpInput pull-right">
+		   	</div>
+		   	<div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12">
+		    	<input type="submit" value="Update" class="btn-primary signUpInput pull-left">
+		    </div>
+	    </div>
+
+
+	  </div>  <!-- End of Signup wrapper -->
+  </form>
+</template>

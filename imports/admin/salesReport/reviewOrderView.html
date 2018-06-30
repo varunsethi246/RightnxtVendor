@@ -1,0 +1,33 @@
+<template name="reviewOrderView">	
+	<div id="{{productId}}" class="productRow col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="products col-lg-5 col-md-5 col-sm-5 col-xs-5 cartItemsPadding" >
+			<img src="{{productthumbnail}}" class="col-lg-5 col-xs-5 col-sm-12 col-md-12 img-thumbnail cartImg">
+			<div class="col-lg-7 col-md-9 col-sm-7 col-xs-7 noLRPad detailsOrdersShow">
+			<span class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 detailsCenter"><b>{{ planName }}</b></span>
+				{{#if isSelectedprocessType}}
+					
+					<div class="col-lg-12 col-sm-12 col-md-3 col-xs-12 productsize "><b> Size:</b> {{ size }}&nbsp;{{ unit }} </div>
+					<div class="col-lg-12 col-sm-12 col-md-3 col-xs-12 productsize "> <b>Net wt:</b> {{ netwt }}&nbsp;{{ weightUnit }} </div>	
+					<div class="col-lg-12 col-sm-12 col-md-3 col-xs-12 productsize "><b> Gross Wt:</b> {{ grosswt }}&nbsp;{{ weightUnit }} </div>	
+					<div class="col-lg-12 col-sm-12 col-md-3 col-xs-12 productsize "><b> Labour Charge: </b>&#x20B9;{{labrChgTotal}}({{ LabrChg }}rs/gm)</div>				
+				{{else}}
+					<div class="col-lg-12 col-sm-12 col-md-3 col-xs-12 productsize "><b> Size: </b>{{ size }}&nbsp;{{ unit }} </div>
+				{{/if}}
+			</div>
+		</div>
+		<div class="price1 col-lg-2 col-md-2 col-sm-2 col-xs-3 cartItemsPadding noLRPad">
+			<!-- <div class="col-lg-12"> -->
+				<span class="hidden-lg hidden-sm hidden-md col-xs-12 noLRPad">Price</span>
+				<span class="col-lg-12 col-xs-12 col-md-12 col-sm-12 noLRPad">&#x20B9; {{ price }}</span>
+				<!-- <span class="col-lg-9"></span> -->
+			<!-- </div> -->
+		</div>
+		<div class="quantity col-lg-2 col-md-2 col-sm-2 col-xs-2 cartItemsPadding noLRPad">
+			<span class="col-lg-1 col-md-1 col-sm-1 col-xs-12 hidden-lg hidden-sm hidden-md noLRPad">Qty</span><span class="col-lg-9 col-md-9 col-sm-9 col-xs-12 detailsCenter1 reviewQty noLRPad">{{ qty }}</span>
+		</div>
+		<div class=" col-lg-3 col-md-3 col-sm-3 col-xs-2 cartItemsPadding noLRPad">
+			<span class="col-lg-1 col-md-1 col-sm-1 col-xs-1 hidden-lg hidden-sm hidden-md noLRPad">Sub-Total</span>
+			<span class="col-lg-12 col-md-5 col-sm-5 col-xs-12 subtotalReview total noLRPad">&#x20B9;{{ total }}</span>
+		</div>
+	</div>
+</template>

@@ -1,0 +1,244 @@
+<template name="UMheader">
+
+    <nav id="header" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-6">
+          <ul class="nav navbar-nav">
+            <li id="toggleSidebar"><a href="#"><span class="fa fa-bars fa-lg"></span></a></li>
+            <li><a href="#"><span class="fa fa-user fa-lg">    </span></a></li>
+            <li><a href="#"><span class="fa fa-envelope fa-lg"></span></a></li>
+            <li><a href="#"><span class="fa fa-fire fa-lg">    </span></a></li>
+            <li><a href="#"><span class="fa fa-rocket fa-lg">  </span></a></li>
+          </ul>
+        </div> <!-- End of Header Left  -->
+
+        <div class="col-lg-6">
+          <ul class="nav navbar-nav">
+            <li class="dropdown" id="language-header">
+              <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <i class="fa fa-globe fa-lg"></i>
+                <span>Language</span> 
+              </a>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#" data-lang="en">
+                  <img src="/images/usa.png"/>
+                  <span>English</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" data-lang="en">
+                  <img src="/images/spanish.png"/>
+                  <span>Español</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" data-lang="en">
+                  <img src="/images/french.png"/>
+                  <span>Français</span>
+                </a>
+              </li>
+
+
+            </ul>
+            </li> <!-- End of Language Dropdown  -->
+
+             <li class="dropdown" id="notification-header">
+              <a href="#" data-hover="dropdown" data-close-others="true">
+                <i class="fa fa-bell-o fa-lg"></i>
+                  <span class="badge badge-danger badge-header">6</span>
+              </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">
+               <p>12 Pending Notifications</p>
+               <!-- <p class="pull-left">12 Pending Notifications</p>-->
+              </li>
+              <li class="dropdown-menu-list">
+                <a href="#">
+                  <i class="fa fa-star fa-lg"></i>
+                  <span>Steve have rated your photo</span>
+                  <span class="dropdown-time pull-right">Just now</span>
+                </a>
+              </li>
+              <li class="dropdown-menu-list">
+                <a href="#">
+                  <i class="fa fa-heart fa-lg c-red "></i>
+                  <span>John added you to his favs</span>
+                  <span class="dropdown-time pull-right">15 min</span>
+                </a>
+              </li>
+              <li class="dropdown-menu-list">
+                 <a href="#">
+                  <i class="fa fa-file-text p-r-10 fa-lg "></i>
+                  <span>New document available</span>
+                  <span class="dropdown-time pull-right">22 min</span>
+                </a>
+               
+              </li>
+              <li class="dropdown-menu-list">
+                 <a href="#">
+                  <i class="fa fa-picture-o p-r-10 fa-lg c-blue"></i>
+                  <span>New picture added</span>
+                  <span class="dropdown-time pull-right">25 min</span>
+                </a>
+              </li>
+              <li class="dropdown-menu-list">
+                 <a href="#">
+                  <i class="fa fa-bell p-r-10 fa-lg c-orange"></i>
+                  <span>Meeting in 1 hour</span>
+                  <span class="dropdown-time pull-right">22 min</span>
+                </a>
+              </li>
+               <li class="dropdown-menu-list">
+                 <a href="#">
+                  <i class="fa fa-bell p-r-10 fa-lg "></i>
+                  <span>Server 5 overloaded</span>
+                  <span class="dropdown-time pull-right">2 hours</span>
+                </a>
+              </li>
+              <li class="dropdown-menu-list">
+                 <a href="#">
+                  <i class="fa fa fa-comment p-r-10 fa-lg "></i>
+                  <span>Bill comment your post</span>
+                  <span class="dropdown-time pull-right">3 hours</span>
+                </a>
+              </li>
+
+               <li class="dropdown-menu-list">
+                 <a href="#">
+                  <i class="fa fa-picture-o p-r-10 fa-lg c-blue"></i>
+                  <span>New picture added</span>
+                  <span class="dropdown-time pull-right">2 days</span>
+                </a>
+              </li>
+              <li class="dropdown-footer clearfix">
+                <a href="#" class="pull-left">See all notifications</a>
+                <a href="#" class="pull-right icon"><i class="fa fa-cog"></i></a>
+              </li>
+            </ul>
+            </li>
+          <!-- Begin Message Dropdown-->
+             <li class="dropdown" id="messages-header">
+              <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <i class="fa fa-paper-plane-o fa-lg"></i>
+                <span class="badge badge-primary badge-header">8</span>
+              </a>
+            <ul class="dropdown-menu ">
+              <li class="dropdown-header clearfix">
+                <p class="pull-left">You have 8 messages</p>
+              </li>
+              <li class="dropdown-menu-list">
+                <span class="pull-left p-r-5">
+                  <img src="/images/avatar3.png">
+                </span>
+              <div class="clearfix">
+                <label><strong>Alexa Johnson</strong></label>
+                <small class="pull-right">
+                  <i class="fa fa-clock-o"></i>
+                    12 min ago
+                </small>
+              </div>
+                <p>Lorem ipsum dolor sit amet, consectetur...</p>
+              </li>
+
+              <li class="dropdown-menu-list">
+                <span class="pull-left p-r-5">
+                  <img src="/images/avatar4.png">
+                </span>
+              <div class="clearfix">
+                <label><strong>John Smith</strong></label>
+                <small class="pull-right">
+                  <i class="fa fa-clock-o"></i>
+                    47 min ago
+                </small>
+              </div>
+                <p>Lorem ipsum dolor sit amet, consectetur...</p>
+              </li>
+
+              <li class="dropdown-menu-list">
+                <span class="pull-left p-r-5">
+                  <img src="/images/avatar5.png">
+                </span>
+              <div class="clearfix">
+                <label><strong>Bobby Brown</strong></label>
+                <small class="pull-right">
+                  <i class="fa fa-clock-o"></i>
+                    1 hour ago
+                </small>
+              </div>
+                <p>Lorem ipsum dolor sit amet, consectetur...</p>
+              </li>
+
+               <li class="dropdown-menu-list">
+                <span class="pull-left p-r-5">
+                  <img src="/images/avatar6.png">
+                </span>
+              <div class="clearfix">
+                <label><strong>James Miller</strong></label>
+                <small class="pull-right">
+                  <i class="fa fa-clock-o"></i>
+                    2 days ago
+                </small>
+              </div>
+                <p>Lorem ipsum dolor sit amet, consectetur...</p>
+              </li>
+              <li class="dropdown-footer clearfix">
+                <a href="#" class="pull-left">See all messages</a>
+                <a href="#" class="pull-right icon"><i class="fa fa-cog"></i></a>
+              </li>
+            </ul>
+            </li>
+            <!--End Messages -->
+            <!--Begin User Dropdown -->
+            <li class="dropdown bg" id="user-header">
+              <a class= "user-dropdown" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <img src="/images/user1.png"/>
+                <span class="username">Hi, {{profile.firstName}}</span>
+              </a>
+              <ul class="dropdown-menu clearfix">
+                <li>
+                  <a href="#">
+                    <i class="fa fa-user"></i>
+                    <label>My Profile</label>
+                  </a>
+                </li>
+                <li>
+                  <a href="editMyProfile/{{_id}}">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <label>Edit My Profile</label>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-calendar"></i>
+                    <label>My Calender</label>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-cog"></i>
+                    <label>Account Settings</label>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="logout">
+                    <i class="fa fa-sign-out"></i>
+                    <label>Logout</label>
+                  </a>
+                </li>
+                </ul>
+            </li>
+
+                <!--End of User-->
+                <!--Begin chat -->
+            
+                <li class="dropdown chatToggle" id="user-header">
+                    <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                      <i class="fa fa-comment-o fa-lg"></i>
+                    </a>
+                </li>
+          </ul>
+        </div> <!-- End of Header Right  -->
+    </nav>
+
+</template>

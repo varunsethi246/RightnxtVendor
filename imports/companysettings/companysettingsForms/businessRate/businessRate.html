@@ -1,0 +1,81 @@
+<template name="businessRate">
+	<form class="rateInfo" id="rateInfo" >
+		<div class="HRMSBackgroundWrapper col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<div id="HRMSHeaderTitle">Trending Business Charges</div>
+			<div class="formWrapper col-lg-12">
+				
+				<div class="HRMSBackgroundWrapper taxDetailsFormWrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="HRMSform-group col-lg-6 col-md-6 col-sm-12 col-xs-12  ">
+						<label class="HRMSTitle">Monthly Charge</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-file-text" aria-hidden="true"></i>
+							</div>
+							<input type="text" class="form-control HRMSTextbox" id="monthlyRate" name="monthlyRate" placeholder="Enter Monthly Rate"  value="{{monthlyRate}}"> 
+						</div>
+					</div>
+					<div class="HRMSform-group col-lg-6 col-md-6 col-sm-12 col-xs-12  ">
+						<label class="HRMSTitle">Category Wise Charge</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-file-text" aria-hidden="true"></i>
+							</div>
+							<input type="text" class="form-control HRMSTextbox" id="categoryRate" name="categoryRate" placeholder="Enter Category Wise Rate"  value="{{categoryRate}}"> 
+						</div>
+					</div>
+					<div class="HRMSform-group col-lg-6 col-md-6 col-sm-12 col-xs-12  ">
+						<label class="HRMSTitle">Area Wise Charge</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-file-text" aria-hidden="true"></i>
+							</div>
+							<input type="text" class="form-control HRMSTextbox" id="areaRate" name="areaRate" placeholder="Enter Area Wise Rate"  value="{{areaRate}}"> 
+						</div>
+					</div>
+					<div class="addmoretax col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="addmoretax col-lg-3 col-md-3 col-sm-12 col-xs-12 pull-right">
+							<label class="HRMSTitle">&nbsp;&nbsp;&nbsp;
+							</label>
+							
+								<input type="submit" class="btn companyBankDetails rateInfo btn-primary clearfix" value="Submit">
+
+							
+						</div>
+
+					</div>
+					
+					
+					
+				</div>			  		
+			</div>
+		</div>
+	</form>
+
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		<div class="HRMSBackgroundWrapper companySettingsTable col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="formWrapper col-lg-12">
+			<table class="table table-striped myTable table-bordered">
+					<thead>
+						<tr>
+							<th> MonthlyCharge </th>
+							<th> CategoryCharge </th>
+							<th> AreaCharge </th>
+							<th> Action </th>
+							 
+						</tr>
+					</thead>
+					<tbody class="myTableData">
+						{{#each treandingBusinessDetails }}
+					      	<tr>
+					        <td> {{ monthlyCharge }} </td>
+					        <td> {{ categoryCharge }} </td>
+					        <td> {{ areaCharge }} </td>
+					         <td><i class="fa fa-trash deleteRate" aria-hidden="true" name="{{../_id}}"></i></td>
+					      </tr>
+				      	{{/each}}
+					</tbody>
+				</table>
+			</div>
+			</div>
+	</div>	
+</template>

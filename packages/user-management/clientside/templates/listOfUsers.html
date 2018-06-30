@@ -1,0 +1,61 @@
+<template name="listOfUsers">
+
+	<select class="col-lg-4 userListDropdown" name="userListDropdown" >
+		<option value="-" name="userListDDOption" selected>Select </option>	
+		<option value="block_selected" name="userListDDOption">Block Selected</option>	
+		<option value="active_selected" name="userListDDOption">Active Selected</option>
+		<option value="cancel_selected" name="userListDDOption">Cancel Selected Acccounts</option>	
+		{{#each roles}}
+		<option  value="add${{name}}" name="userListDDOption">Add {{name}} Role to Selected </option>
+		{{/each}}
+
+		{{#each roles}}
+		<option  value="remove${{name}}" name="userListDDOption">Remove {{name}} Role from Selected </option>	
+		{{/each}}
+
+	</select>
+	
+  	<div class="table-responsive userList col-lg-8">
+		<table class="table table-hover table-bordered ">
+			<thead>
+				<th> <input type="checkbox" id="checkAll" class="allSelector" name="allSelector"> </th>
+				<th> Username </th>
+				<th> Status </th>
+				<th> Roles </th>
+				<th> Member for </th>
+				<th> Last Access </th>
+				<th> Operations </th>
+			</thead>
+			<tbody>
+				{{#each users}}
+					{{> user}}							
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+
+
+
+</template>
+
+
+<template name="user">
+	<tr class="info">
+		<td> <input type="checkbox" name="userCheckbox" class="userCheckbox" value="{{_id}}" > </td>		
+		<td> {{profile.userName}} <br> {{this._id}} </td>		
+		<td> {{profile.status}} </td>		
+		<td> {{roles}} </td>		
+		<td> {{timeAgo createdAt}} </td>		
+		<td> {{timeAgo status.lastLogin.date}}
+		 <!-- <img src="{{profile.displayPicture}}"> -->
+		</td>		
+		<td> 
+			<a href="um-editProfile/{{_id}}"><button type="button" class="btn btn-primary btn-sm"> Edit</button> </a> 
+
+			<!-- Trigger the modal with a button -->
+<!-- 			<button type="button" class="btn btn-info deleteUserConfirm" data-target="#userDeleteConfirm{{this._id}}">Delete <br> {{this._id}}</button>
+			{{> deleteUserConfirm userId=this._id}} -->
+			<button type="button" class="btn btn-info btn-sm deleteUserConfirm">Delete</button>
+		</td>		
+	</tr>
+</template>

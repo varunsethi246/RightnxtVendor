@@ -1,0 +1,107 @@
+<template name="categoriesLevels">
+<form id="categoriesForms">
+	<div >
+		<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12 levelCategories">
+			<div class="masterAreaBox1">
+				<div class="col-lg-3 levelNone">
+					<div class="form-group">
+						<label for="Level0" class="control-label col-lg-12 areaMasterOption ">Products /Services </label>
+						<select class="form-control categoriesLevel col-lg-3 form-control selectpicker areaMasterSelect stateSelect" placeholder="Level0" name="level0" minlength="1" id="selectOptions">
+							<option selected="true">-- Select Options --</option>
+							<option value="Products">Products</option>
+							<option value="Services">Services</option>
+						</select>
+						<span class="selectProSer"></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 levelNone">
+						<div class="col-lg-5 ">
+							<div class="form-group errorLabel">
+								<label for="Level1" class="control-label col-lg-12 areaMasterOption">Level1 Category</label>
+								<input type="text" list="categoryLevel1Show" class="form-control  categoryLevelHeight col-lg-9 levelValidationCreate" placeholder="Level1" name="level1Name" autocomplete="off"  minlength="1" id="level1Name" required>
+
+								<datalist id="categoryLevel1Show">
+									{{#each getcategoryLevel1}}
+										<option> {{level1}} </option>
+									{{/each}}
+								</datalist>
+							</div>
+						</div>
+						<div class="col-lg-7 errorBottom">
+							<div class="form-group errorLabel">
+								<label for="Level1" class="control-label col-lg-12 areaMasterOption">Tags for Level1 Category</label>
+								<span id="listLevel1Tags" ></span>
+								<input type="text" class="form-control tagsLevel categoryLevelHeight" placeholder="Enter Tags (comma separated)" name="level1Tags" minlength="1"  id="level1Tags">	
+							</div>
+						</div>
+						
+						<div class="col-lg-5 ">
+							<div class="form-group errorLabel">
+								<label for="Level2" class="control-label col-lg-12 areaMasterOption">Level2 Category</label>
+								<input type="text" list="categoryLevel2Show" class="form-control  categoryLevelHeight col-lg-9 levelValidationCreate" placeholder="Level2" name="level2Name" minlength="1" id="level2Name">
+								 <datalist id="categoryLevel2Show">
+									{{#each getcategoryLevel2}}
+										<option value="{{level2}}" > </option>
+									{{/each}}
+								</datalist>
+							</div>
+						</div>
+						<div class="col-lg-7 errorBottom">
+							<div class="form-group">
+								<label for="Level2" class="control-label col-lg-12 areaMasterOption">Tags for Level2 Category</label>
+								<input type="text" class="form-control tagsLevel categoryLevelHeight col-lg-9" placeholder="Enter Tags (comma separated)" name="level2Tags" minlength="1"  id="level2Tags">
+							</div>
+						</div>
+						
+						<div class="col-lg-5 ">
+							<div class="form-group errorLabel">
+								<label for="Level3" class="control-label col-lg-12 areaMasterOption">Level3 Category</label>
+								<input type="text" list="categoryLevel3Show" class="form-control  categoryLevelHeight col-lg-9 levelValidationCreate" placeholder="Level3" name="level3Name" minlength="1" id="level3Name">
+								<datalist id="categoryLevel3Show">
+									{{#each getcategoryLevel3}}
+										<option value="{{level3}}" > </option>
+									{{/each}}
+								</datalist>
+							</div>
+						</div>
+						<div class="col-lg-7 errorBottom">
+							<div class="form-group">
+								<label for="Level3" class="control-label col-lg-12 areaMasterOption">Tags for Level3 Category</label>
+								<input type="text" class="form-control tagsLevel categoryLevelHeight col-lg-9" placeholder="Enter Tags (comma separated)" name="level3Tags" minlength="1"  id="level3Tags">
+							</div>
+						</div>
+						
+						<div class="col-lg-5">
+							<div class="form-group errorLabel">
+								<label for="Level4" class="control-label col-lg-12 areaMasterOption">Level4 Category</label>
+								<input type="text" list="categoryLevel4Show" class="form-control  categoryLevelHeight col-lg-9 levelValidationCreate" placeholder="Level4" name="level4Name" minlength="1" id="level4Name">
+								<datalist id="categoryLevel4Show">
+									{{#each getcategoryLevel4}}
+										<option value="{{level4}}" ></option>
+									{{/each}}
+								</datalist>
+							</div>
+						</div>
+						<div class="col-lg-7 errorBottom">
+							<div class="form-group">
+								<label for="Level4" class="control-label col-lg-12 areaMasterOption">Tags for Level4 Category</label>
+								<input type="text" class="form-control tagsLevel categoryLevelHeight col-lg-9" placeholder="Enter Tags (comma separated)" name="level4Tags" minlength="1"  id="level4Tags">
+							</div>
+						</div>
+
+					</div>
+				</div>
+				
+				<div class="col-lg-7 col-lg-offset-4  col-md-7 col-md-offset-4 col-sm-12 col-xs-12 levelCategories">
+					
+					<div class="levelSubmit">
+						<button type="submit" class="btn btn-primary levelbtn">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+</template>

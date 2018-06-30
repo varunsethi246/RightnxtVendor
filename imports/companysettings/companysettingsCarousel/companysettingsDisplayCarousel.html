@@ -1,0 +1,67 @@
+<template name="companysettingsDisplayCarousel">
+	<form class="companysettingsDisplayCarousel">
+
+		<div class= " reportWrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="col-lg-12">
+				{{> companysettingsHeader}}		
+				{{> companysettingsModal}}																					
+			</div>
+			<div id="dispalyCarousel" class="carousel slide companySettingCarousel" data-ride="carousel" data-interval="false">
+			    <!-- Indicators -->
+			    <ol class="display-indicators">
+			      <li data-target="#dispalyCarousel" data-slide-to="0" class="active"></li>
+			      <li data-target="#dispalyCarousel" data-slide-to="1"></li>
+			      <li data-target="#dispalyCarousel" data-slide-to="2"></li>
+			      <li data-target="#dispalyCarousel" data-slide-to="3"></li>
+			    </ol>
+
+		    <!-- Wrapper for slides -->
+			    <div class="carousel-inner" role="listbox">
+				    <div class="item active">
+				        
+		                    <ul>
+		                     <li data-target="#dispalyCarousel" data-slide-to="1" class="active">Company Information
+		                     	<i class="fa fa-angle-right pull-right fastyle" aria-hidden="true"></i>
+		                         
+		                     </li>
+
+		                     <li data-target="#dispalyCarousel" data-slide-to="2" class="active"> Company Address
+		                        <i class="fa fa-angle-right pull-right fastyle" aria-hidden="true"></i>
+		                     </li>
+		                    <li data-target="#dispalyCarousel" data-slide-to="3" class="active"> 	Bank Details
+		                        <i class="fa fa-angle-right pull-right fastyle" aria-hidden="true"></i>
+		                     </li>
+		                     <li data-target="#dispalyCarousel" data-slide-to="4" class="active"> 	Tax Settings
+		                         <i class="fa fa-angle-right pull-right fastyle" aria-hidden="true"></i>
+		                     </li>
+
+		                    </ul>
+	                 	 
+			      	</div>
+
+			      	<div class="item">
+				        {{> displayCompanyInfo}}
+
+			    	</div>
+			    
+			     	<div class="item">
+				        {{> displayCompanyLocations}}
+                  		
+                  	</div>
+
+			      <div class="item">
+			        
+			          {{> dispalyBankDetails}}
+			      </div>
+			      <div class="item">
+			        
+			          {{> displayTaxDetails}}
+			      </div>
+			     
+			    </div><!-- Carousel inner close-->
+            </div><!--Close Carousel-->
+		</div> 
+	
+		
+	</form>
+</template>

@@ -1,0 +1,114 @@
+<!-- q=rightnxt+url&oq=user+data&aqs=chrome..69i57j0j69i60l2j0l2.4907j0j7|{{changeHref}}|&sourceid=chrome&ie=UTF-8 -->
+<template name="userSidebar">
+{{#with hideShowMenu}}
+<div class=" userSidebarDiv">
+    <div class="collapseMenu collapseMenuBusiness hidden-lg hidden-md hidden-sm">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#businessMenuCollapse">
+            <i class="fa fa-bars fa-lg" aria-hidden="true"></i>                        
+        </button>
+        <a class="navbar-brand" href="#">Business Menu</a>
+    </div>
+    <ul class="usersidebarUl col-lg-9 col-lg-offset-3 col-md-9 col-sm-9 col-xs-12 collapse navbar-collapse" id="businessMenuCollapse">
+    <a href="/userProfile" arial-control="submenu-1">
+        <li class="userMenuItem active {{statusClass}} sidebarlink1 userProfile">
+        
+            <i class="fa fa-user fausertmelne" aria-hidden="true"></i>
+            <span class="tmelne">Timeline</span>
+         
+        </li>
+    </a>
+    <a href="/userLike{{changeHref}}"> 
+        <li class="userMenuItem sidebarlink1 userLike">
+           
+            <i class="fa fa-pencil fapencil" aria-hidden="true"></i>
+            <span class="lke">Likes</span>
+            {{#with siderbarLikesCount}}
+            <span class="lke countMargin">({{noofLikes}})</span>
+            {{/ with}}
+           
+        </li>
+    </a>
+    <a href="/userReview{{changeHref}}">
+        <li class="userMenuItem sidebarlink1 userReview {{activeClass}}">
+             
+            <i class="fa fa-pencil revpencil" aria-hidden="true"></i>
+            <span class="revws">Reviews</span>
+            {{#with siderbarReviewCount}}
+            <span class="revws countMargin">({{noofReviews}})</span>
+            {{/with}}
+            
+        </li>
+    </a>
+    <a href="/userPhotos{{changeHref}}">
+        <li class="userMenuItem sidebarlink1 userPhotos">
+  
+            <i class="fa fa-picture-o fapic" aria-hidden="true"></i>
+            <span class="foto">Photos</span>
+            <span class="foto countMargin">({{siderbarPhotosCount}})</span>
+     
+        </li>
+    </a>
+    <a href="/userFollowers{{changeHref}}">
+        <li class="userMenuItem sidebarlink1 userFollowers">
+         
+            <i class="fa fa-thumbs-up thumbsupfollower" aria-hidden="true"></i>
+            <span class="followerup">Network</span>
+            <span class="followerup countMargin">({{followers}})</span>
+            
+        </li>
+    </a>
+    <a href="/userBookmarks{{changeHref}}">
+        <li class="userMenuItem sidebarlink1 userBookmarks">
+           
+            <i class="fa fa-bookmark fabukmark" aria-hidden="true"></i>
+            <span class="bukmark">Bookmarks</span>
+            {{#with siderbarBookmarkCount}}
+                <span class="bukmark countMargin">({{noofBookmark}})</span>
+            {{/with}}
+           
+        </li>
+     </a>
+    <a href="/userBeenThere{{changeHref}}">
+        <li class="userMenuItem sidebarlink1 userBeenThere">
+         
+            <i class="fa fa-check-square squbenthere" aria-hidden="true"></i>
+            <span class="benthere">Been There</span>
+            {{#with siderbarBeenThereCount}}
+                <span class="benthere countMargin">({{noofBeenThere}})</span>
+            {{/with}}
+           
+        </li>
+    </a>
+    <a href="/userRatings{{changeHref}}"> 
+        <li class="userMenuItem sidebarlink1 userRatings">
+       
+            <i class="fa fa-check-square squratng" aria-hidden="true"></i>
+            <span class="ratng">Ratings</span>
+            {{#with ratingsCount}}
+            <span class="ratng countMargin">({{noofRatingData}})</span>
+            {{/with}}
+                           
+        </li>
+    </a> 
+    <a href="/userOffers{{changeHref}}">
+        <li class="userMenuItem sidebarlink1 userOffers">
+          
+            <i class="fa fa-bullhorn offerbullhorn" aria-hidden="true"></i>
+            <span class="offr">Offers</span>
+            <span class="offr countMargin">({{siderbarOffersCount}})</span>
+                        
+        </li>     
+    </a>     
+    <a href="/userEnquiry">       
+        <li class="userMenuItem sidebarlink1 userEnquiry {{statusClass}}">
+           
+            <i class="fa fa-headphones enqheadphone" aria-hidden="true"></i>
+            <span class="enq">Enquiry</span>
+            <span class="enq countMargin">({{enquiryCountUser}})</span>
+          
+        </li>
+    </a>
+    </ul>
+</div>
+{{/with}}
+</template>

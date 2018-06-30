@@ -1,0 +1,14 @@
+<template name="profileSettingLayout">
+	
+	{{#if currentUser}}
+		<div class="navHeadSearchbarCommon">{{> header }}</div>
+		{{> userProfile }}
+		<div class="">
+			{{> profileSettingSidebar }}
+		</div>
+		<div class="">
+			{{> Template.dynamic template=profileSettings }}
+		</div>
+	{{/if}}
+
+</template>

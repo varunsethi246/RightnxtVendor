@@ -1,0 +1,63 @@
+<template name="businessLocation">
+	<div class="venderCon3">
+
+		<div class="bussLoc col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<p class="locBusi col-lg-6 col-md-6 col-sm-6 col-xs-6"><b>Location</b></p>
+			<div class="reportBox col-lg-4 col-md-6 col-sm-12 col-xs-12 pull-right" id="businesReportBox" data-toggle="modal" data-target="{{#if isInRole 'user'}}#reportModal{{else}}#nousersreviews{{/if}}" title="Report">
+            	<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            	<span>Report</span>
+            </div>
+	        {{> reportModalForm }}
+	        <!-- modal nonUserReview -->
+            <div class="modal fade" id="nousersreviews" role="dialog">
+                <div class="modal-dialog nonUserModal">
+                  <!-- Modal content-->
+                    <div class="modal-content nonUserContent">
+                        <div class="modal-header nonUserHeader">
+                            <button type="button" class="close nonUserCloseBtn" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body nonUserBody">
+                             {{#if isInRole 'Vendor'}}
+                                <p>You are logged in as Vendor. In order to avail this facility, please login separately as a user.</p>
+                            {{else}}
+                                <p>You are logged in as Admin. In order to avail this facility, please login separately as a user.</p>
+                            {{/if}}
+                            <button class="btn-primary nonUserOkayBtn" data-dismiss="modal" >Okay</button>
+                        </div>
+                    </div>        
+                </div>
+            </div>
+		</div>	
+
+		{{#if isInRole 'admin'}}
+			<p class="addrBusi">{{> editableText collection="business" field="businessAddress"}},&nbsp;{{> editableText collection="business" field="businessCity"}},&nbsp;{{> editableText collection="business" field="businessState"}}</p>
+		{{else}}
+			<p class="addrBusi">{{businessAddress}},&nbsp;{{businessArea}},&nbsp;{{businessCity}},&nbsp;{{businessState}}</p>
+		{{/if}}
+		<div class="mapRight">
+			<div class="map-container bussMapContainer">
+		       {{> googleMap name="exampleMap" options=businessMapLocation}}
+		    </div>
+		</div>
+	</div>
+</template>
+
+
+
+
+
+	    	<!-- <div class="location-map-icon"> 
+	      		<i class="fa fa-2x fa-map-marker" aria-hidden="true"></i>
+				<ul>
+					<li><h4>{{businessTitle}}</h4></li>
+		            <li class="phPopNew">
+		            	<i class="fa fa-phone" aria-hidden="true"></i> 
+		            	<span>{{businessLandline}}</span>
+		            </li>
+		            <li class="statPopNew">
+			            <i class="fa fa-heart" aria-hidden="true"></i>
+			            <span><img src="images/starMap.jpg"  alt=""/></span>
+		            </li>
+	            	<li class="locaMapNew">{{businessAddress}},{{businessArea}},{{businessCity}},{{businessState}}</li>
+				</ul>
+			</div> -->

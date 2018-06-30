@@ -1,0 +1,142 @@
+<template name="businessBlkup">
+	<div class="masterBusinessBox1">
+		<div class="row">
+			<div class="col-lg-12  col-md-12 ">
+				<div class="formTitleGeneral col-lg-10 col-lg-offset-1 listGap CategoriesListUpload">
+					<h1>BUSINESS LIST UPLOAD</h1>
+				</div>
+			</div>
+
+
+			<div class="col-lg-12">
+				<div class="bulkuploadInstructions">
+					<div class="bulkuploadInst col-lg-2">
+						<a href="/Business.csv" download>
+							<img src="images/csv.png">
+						</a>
+					</div>
+					<ul class="">
+						<li>Please use attached file format to bulkupload yours contacts into this sysytem.</li>
+						<li>Please do not change the Heading of following file.</li>
+						<li>If multiple categories should be | seprated</li>
+						<li>If a categories doesn't have subcategories let it be blank</li>
+						<li>File Format must be *.CSV.</li>
+						<li>Following is the  format of .CSV file.</li>
+						
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-10 col-lg-offset-1 formatTop scrollbar" id="style-3">
+				<table class="table table-hover table-striped">
+					<thead>
+						<tr class="tableHeadColor">
+							<th>Business Title</th>
+							<th>Business Link (www.rightNXT.com/)</th>
+							<th>Business Email Id</th>
+							<th>About Your Business</th>
+							<th>Business Address</th>
+							<th>Business Country</th>
+							<th>Business State</th>
+							<th>Business City</th>
+							<th>Business Area</th>
+							<th>Business Pin code</th>
+							<th>Business Latitude</th>
+							<th>Business Longitude</th>
+							<th>Monday</th>
+							<th>Tuesday</th>
+							<th>Wednesday</th>
+							<th>Thursday</th>
+							<th>Friday</th>
+							<th>Saturday</th>
+							<th>Sunday</th>
+							<th>Business Categories 1</th>
+							<th>Business Categories 2</th>
+							<th>Business Categories 3</th>
+							<th>Business Categories 4</th>
+							<th>Business Anything Else</th>
+							<th>Business Landline</th>
+							<th>Business Mobile</th>
+							<th>Business Alternate Mobile</th>
+							<th>Business Web Address</th>
+							<th>Business Tag</th>
+							<th>Business Mode of Payment</th>
+							<th>Owner Full Name</th>
+							<th>Role</th>
+							<th>Owner Mobile</th>
+							<th>Owner Email</th>
+							<th>Owner Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>	
+					</tbody>
+				</table>
+			</div>
+			<div class="col-lg-10 col-lg-offset-1 uploadCSV businessCsv">
+				
+				<div class="row" >
+					<div class="form-group col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10  col-xs-offset-1 ">
+						<label class="control-label " >  Upload File</label>
+						<div class="input-group">
+							<input class="form-control incWidth" id="upCatgBlk" name="upCatgBlk" type="file" value="{{upCatgBlk}}"/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						{{#if uploading}}
+						{{> progressBar }}
+						{{/if}}
+						{{#with showProgressBar}}
+						{{#if uploadingFinished}}
+						{{> progressCompleted }}
+						<!-- {{> dailyOrdersShow1}} -->
+						<div class="col-lg-6 col-lg-offset-3 timeRequired">
+							Inserted {{totalRecords}} products in ({{requiredelapsedTime}} seconds)
+						</div>
+						{{/if}}
+						{{/with}}
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</template>

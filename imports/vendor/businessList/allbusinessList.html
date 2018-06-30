@@ -1,0 +1,63 @@
+<template name="allbusinessList">
+	<div class="col-lg-12 noSearchText">
+		Type your search query in above search bar to see search results.<br>
+		Make sure that all words are spelled correctly.
+	</div>
+	<div class="col-lg-12 didNotMatchQuery">
+		Your search did not match to any Business.<br>
+		Make sure that all words are spelled correctly.
+		Try different keywords.
+		Try more general keywords.
+	</div>
+	<div class="col-lg-12">
+		<div class="busList">
+			<ul>
+				<li class="busListEnq" data-toggle="modal" data-target="#vEnqModal">
+					<i class="fa fa-headphones" aria-hidden="true"></i>
+					<span>Send Enquiry to all the Providers</span>
+				</li>
+				<li>
+					<span class="listFilter">Filter:</span>
+				</li>
+				<li>
+					<span class="listRelevance busListSelectedPre busListSelected">Relevance</span>
+				</li>
+				<li>
+					<span class="listOffers busListSelectedPre">Offers</span>
+				</li>
+				<li>
+					<span class="listDistance busListSelectedPre">Distance</span>
+				</li>
+			</ul>
+			<span class="vCmtEnqPageHide">
+				<!-- Enquiry Modal -->
+				{{> businessEnquiry}}
+			</span>
+		</div>
+	</div>
+	<div class="col-lg-12 xs-visible hidden-sm hidden-md hidden-lg catListShowHidePre">
+		<div class="col-xs-12 catListShowHide listofTypeRed">Hide Category List</div>
+	</div>
+	<div class="col-lg-12">
+		<div class="row">
+			<div class="col-lg-2">				
+				{{> sidebarBusinessList}}
+			</div>
+
+			<!-- Insert Map on Map View -->
+			<div class="displayMapView">
+				{{> businessMap}}
+			</div>
+
+			<!-- Insert Grid on Grid View -->
+			<div class="col-lg-8 displayGridView">
+				{{> thumbnailBusinessList}}
+			</div>
+
+			<!-- Right side Banner list -->
+			<div class="col-lg-2 displayGridBus">
+				{{> rightSidebarBusList}}
+			</div>
+		</div>
+	</div>
+</template>

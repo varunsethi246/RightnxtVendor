@@ -1,0 +1,63 @@
+<template name="enquiryDetails">
+	<div class="row vEnqFormTitleRow">
+		<div class="col-lg-12 vEnqFormTitle">
+			<h3>Enquiry Details</h3>
+		</div>
+		<div class="col-lg-12 vEnqFormDetails">
+			<h4>{{enquiryName}}</h4>
+			<ul>
+				<li>
+					<h4>Mobile:</h4>
+					<span>{{enquiryPhone}}</span>
+				</li>
+				<li>
+					<h4>Email:</h4>
+					<span>{{enquiryEmail}}</span>
+				</li>
+			</ul>
+		</div>
+		<div class="col-lg-12">
+             <div class="vEnqFormImgOne">
+                <h4>Description</h4>
+                {{#each enquiryDesc}}
+                    <div class="row">
+                        <div class="col-lg-8 {{posClass}} formBreakWord">
+                        	{{#if comment}}
+	                            <div class="{{posClassTringl}} {{posClass}}-bkgBorder"></div>
+								<p class="{{posClass}}-bkg">{{comment}}</p>
+							{{else}}
+								<div class="{{posClassTringl}} {{posClass}}-bkgBorder displayNone"></div>
+								<p class="{{posClass}}-bkg displayNone">{{comment}}</p>
+							{{/if}}
+							{{#if enquiryImgVal}}
+                             	<div class="vEnqFormImgThreeImg">
+                                	<img src="{{enquiryPhoto}}" class="img-responsive">
+								</div>
+							{{/if}}
+							<!-- <div class="{{posClassTringl}}-msgTimeStmp">
+								{{commentsTS}}
+							</div> -->
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+			<!-- <div class="vEnqFormImgTwo">
+				<div class="row">
+					<div class="col-lg-8">
+						<h5>Approximate Budget</h5>
+						<p>Rs. 500</p>
+					</div>
+				</div>
+			</div> -->
+			<!-- <div class="vEnqFormImgThree">
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="vEnqFormImgThreeImg">
+							<img src="{{enquiryPhoto}}" class="img-responsive">
+						</div>
+					</div>
+				</div>
+			</div> -->
+		</div>
+	</div>
+</template>

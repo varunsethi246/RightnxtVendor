@@ -1,0 +1,114 @@
+<template name="vendorSidebar">
+		<div class="sidebarDiv">
+			<div class="collapseMenu collapseMenuBusiness hidden-lg hidden-md hidden-sm"  data-toggle="collapse" data-target="#businessMenuCollapse">
+		        <button type="button" class="navbar-toggle">
+		            <i class="fa fa-bars fa-lg" aria-hidden="true"></i>                        
+		        </button>
+		        <a class="navbar-brand venCollapse" href="#">Business Menu</a>
+		    </div>
+			<ul class="collapse navbar-collapse col-xs-12" id="businessMenuCollapse">
+				<li class="col-xs-12">
+					<a href="/vendorDashboard" class="menusidebarClass0">
+						<i class="fa fa-tachometer" aria-hidden="true"></i>
+						<span>Dashboard</span>
+					</a>
+				</li>  
+				<li class="col-xs-12">
+					<a href="#myBussiness" data-toggle="collapse" class="mymenucolor menusidebarClass1" arial="false">
+						<i class="fa fa-briefcase" aria-hidden="true"></i>
+						<span>My Businesses</span>
+					</a>
+					<ul id="myBussiness" class="collapse">
+						<div id="accordion">
+						{{#if bussinessDetails}}
+							{{#each bussinessDetails}}
+								<li class="myBussinessList panel">
+									<a href="#{{_id}}" data-toggle="collapse" data-parent="#accordion" class="mainHotelList sidebarBusTitle">{{businessTitle}}</a>
+									<ul id="{{_id}}"  class="collapse sidebarCollabse">
+										<li class="menuSubCat menuSubCat1 active">
+											<a href="/aboutBusiness/{{businessLink}}" class="sidbarPadAdj">
+												<i class="fa fa-pencil" aria-hidden="true"></i>
+												<span>Edit Business</span>
+											</a>
+										</li>
+										<li class="menuSubCat menuSubCat2">
+											<a href="/businessLikes/{{businessLink}}" class="sidbarPadAdj">
+												<i class="fa fa-heart" aria-hidden="true"></i>
+												<span>Likes <span>({{noofLikes}})</span></span>
+											</a>
+										</li>
+										<li class="menuSubCat menuSubCat7">
+											<a href="/businessBeenThere/{{businessLink}}" class="sidbarPadAdj">
+												<i class="fa fa-hand-o-up" aria-hidden="true"></i>
+												<span>Been There <span>({{noofbeenthere}})</span></span>
+											</a>
+										</li>
+										<li class="menuSubCat menuSubCat3">
+											<a href="/businessReports/{{businessLink}}" class="sidbarPadAdj">
+												<i class="fa fa-flag" aria-hidden="true"></i>
+												<span>Report <span>({{noofReports}})</span></span>
+											</a>
+										</li>
+										<li class="menuSubCat menuSubCat4">
+											<a href="/vendorComments/{{businessLink}}" class="sidbarPadAdj">
+												<i class="fa fa-comment" aria-hidden="true"></i>
+												<span>Comments <span>({{noofComments}})</span></span>
+											</a>
+										</li>
+										<li class="menuSubCat menuSubCat5">
+											<a href="/vendorPhotos/{{businessLink}}" class="sidbarPadAdj">
+												<i class="fa fa-picture-o" aria-hidden="true"></i>
+												<span>Photos <span>({{noofPhotosCount}})</span></span>
+											</a>
+										</li>
+										<li class="menuSubCat menuSubCat6">
+											<a href="/businessOffers/{{businessLink}}" class="sidbarPadAdj">
+												<i class="fa fa-bullhorn" aria-hidden="true"></i>
+												<span>My Offers <span>({{noofOffersCount}})</span></span>
+											</a>
+										</li>
+										
+										<li class="menuSubCat menuSubCat9">
+											<a href="/vendorAds/{{businessLink}}" class="sidbarPadAdj">
+												<i class="fa fa-certificate" aria-hidden="true"></i>
+												<span>Ads</span>
+											</a>
+										</li>
+										<li class="menuSubCat menuSubCat10">
+											<a href="/vendorbanner/{{businessLink}}" class="sidbarPadAdj">
+												<i class="fa fa-image" aria-hidden="true"></i>
+												<span>Banner</span>
+											</a>
+										</li>
+										<li class="menuSubCat menuSubCat8">
+											<a href="/vendorEnquiry/{{businessLink}}" class="sidbarPadAdj">
+												<i class="fa fa-headphones" aria-hidden="true"></i>
+												<span> Enquiry <span>({{noofEnquiries}})</span></span>
+											</a>
+										</li>
+									</ul>
+								</li>
+							{{/each}}
+						{{else}}
+								<li class="myBussinessList panel">
+									<span class="mainHotelList sidebarBustitles">You've not added any businesses yet.</span>
+								</li>
+						{{/if}}
+						</div>
+					</ul>
+				</li>
+				<li class="col-xs-12 clickAddNewBusi">
+					<a href="/claim/{{currentCity}}" class="mymenucolor menusidebarClass2">
+						<i class="fa fa-folder-o" aria-hidden="true"></i>
+						<span>Add New Business</span>
+					</a>
+				</li>
+				<li class="col-xs-12">
+					<a href="/VendorPayments" class="mymenucolor menusidebarClass3">
+						<i class="fa fa-credit-card" aria-hidden="true"></i>
+						<span>Payment</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+</template>

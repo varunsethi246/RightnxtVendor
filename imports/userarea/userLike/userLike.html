@@ -1,0 +1,40 @@
+<template name="userLike">
+	<div class="VendorGotLikesBorder likeHeight">
+		
+
+
+	  	{{#if businessName}}
+			{{#with businessName}}
+				<div class="VendorGotLikesClass">
+					<h4 class="userlikesTitleClass">Likes 
+						<span class="likesSpan">({{noofLikes}})</span>
+					</h4>
+					{{#if checkLikeLoading noofLikes}}
+						<div class="checkLikeLoading">
+							Like your favourite Business to keep them in one place.
+						</div>
+					{{else}}
+						{{#each bussDataArray}}
+							<div class="UserLikesList col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="likeList">
+									<div class="likeLeftImg col-lg-1 col-xs-2 col-md-2">
+										<!-- <a href="#"> -->
+										<img src="{{businessImg}}" alt="">
+										<!-- </a> -->
+									</div>    
+									<div class="likeRightTxt col-lg-11 col-xs-10 col-md-10"> 
+										<a href="/{{businessLink}}" target="_blank">{{businessTitle}}</a>
+										<p>{{businessArea}}, {{businessCity}}</p>
+										<p>{{timeAgo createdAt}}</p>
+									</div>     
+								</div>
+							</div>
+						{{/each}}
+					{{/if}}
+				</div>
+			{{/with}} 
+		{{else}}
+		   {{> emptyReviewTemplate}}
+		{{/if}}
+	</div>	
+</template>

@@ -1,0 +1,80 @@
+<template name="companyBankDetails">
+	<form class="companyBankDetails" id="companyBankDetails">
+		<div class="HRMSBackgroundWrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div id="HRMSHeaderTitle">Company Bank Details</div>
+				<!-- ************* Bank Info Details  ************* -->
+			<!-- <button type="button" class="btn btn-primary addBankDetails" data-toggle="locationFormWrapper" >Add More Bank Details </button> -->
+			<ul class="addBankDetails faqStyle" data-target=".bankDetailsFormWrapper">
+				<i class="fa fa-caret-right morebankdetails" aria-hidden="true"></i>
+				<label>Add More Bank Details</label>
+				    
+			</ul>
+
+			<div class="HRMSBackgroundWrapper bankDetailsFormWrapper col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+			  <div class="contactwrapper col-lg-12 col-md-12 col-xs-12 col-sm-12">
+				  	<div class="HRMSform-group   HRMSform-head-group1 col-lg-4 col-md-4 col-xs-6 col-sm-12 ">
+						<label class="HRMSTitle">Account Holder Name</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-user" aria-hidden="true"></i>
+							</div>
+							<input type="text" class="form-control HRMSTextbox" name="accHolderName"  id="accHolderName" value="{{ accHolderName}}" placeholder= "Enter Account Holder Name">
+				  	  	</div>
+				  	</div>
+
+					<div class="HRMSform-group HRMSform-head-group1 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+						<label class="HRMSTitle">Bank Name</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-university" aria-hidden="true"></i>
+							</div>
+							<input type="text" class="form-control HRMSTextbox" name="bankName"  value="{{bankName}}" id="bankName" placeholder= "Enter Bank Name">
+				  	  	</div>
+				  	</div>
+
+
+					<div class="HRMSform-group HRMSform-head-group1 col-lg-4 col-md-4 col-sm-12 col-xs-12  ">
+						<label class="HRMSTitle">Branch</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-university" aria-hidden="true"></i>
+							</div>
+							<input type="text" class="form-control HRMSTextbox" name="branchName" value="{{ branchName }}" id="branchName"  placeholder="Enter Branch Name ">
+				  	  	</div>
+				  	</div>
+				  	<div class="HRMSform-group HRMSform-head-group1  col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+						<label class="HRMSTitle">Account Number</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-address-card-o" aria-hidden="true"></i>
+							</div>
+							<input type="text" class="form-control HRMSTextbox" name="accNumber" id="accNumber" value="{{accNumber}}" placeholder="Enter Account Number ">
+				  	  	</div>
+				  	</div>
+
+				  	<div class="HRMSform-group HRMSform-head-group1 col-lg-4 col-md-4 col-sm-12 col-xs-12  ">
+						<label class="HRMSTitle">IFSC Code</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-address-card-o" aria-hidden="true"></i>
+							</div>
+							<input type="text" class="form-control HRMSTextbox" name="ifscCode" id="ifscCode" value="{{ifscCode}}" placeholder="Enter IFSC Code ">
+				  	  	</div>
+				  	</div>
+
+				  	<div class="addmoreaccounts col-lg-4 col-md-4 col-sm-12 col-xs-12">
+				  	<label class="HRMSTitle">&nbsp;&nbsp;</label>
+				  	{{#if editBankDetails}}
+				  		<input type="button" class="btn btn-primary btnUpdateBankDetails  clearfix" value="Update">
+				  	{{else}}
+				  		<input type="submit" class="btn desigAddMore  clearfix" value="Add More Data">
+
+				  	{{/if}}
+		  			
+		  			</div>
+		  		
+			</div>
+		</div>
+		</div>
+	</form>
+</template>

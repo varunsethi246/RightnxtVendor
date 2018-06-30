@@ -1,0 +1,30 @@
+.listBusiness {
+z-index:9;
+width:auto;
+height:30px;
+position:absolute;
+margin-top:-5%
+}
+
+.tagBusiness {
+background-color:#888;
+color:#fff;
+width:auto;
+height:20px
+}
+
+.businessDisplayBlock {
+overflow-x:scroll;
+margin-bottom:-15px;
+height:43px;
+display:inline;
+width:300px
+}
+
+.businessDisplayBlockTop {
+width:91%
+}
+
+#getBusiness {
+border:none
+}

@@ -1,0 +1,32 @@
+<template name="userViewGraph">
+<div class="graphWrapper">
+	<canvas id="monthChart" class="monthChart" style="height: 200px;"></canvas>
+	<canvas id="yearChart" class="yearChart" style="height: 200px;"></canvas>
+	<canvas id="twoYearChart" class="twoYearChart" style="height: 200px;"></canvas>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 feedBlock">
+		<h4><b>Customer Activity Feed</b></h4>
+		<br>
+		<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 custActivity">
+			<ul class="custActivityLists">
+			{{#if customerActivity}}
+				{{#each customerActivity}}
+					<li class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<span class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<i class="fa fa-calendar-check-o"></i>
+							</div>
+							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">A user in {{city}} clicked on your website.</div>
+						</span>
+						<span class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="dateTimeDiv">{{date}}</div>
+						</span>
+					</li>
+				{{/each}}
+			{{else}}
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="noData"><p style="text-align: center;">No Data Found...</p></div>
+			{{/if}}
+			</ul>
+		</div>
+	</div>
+</div>
+</template>

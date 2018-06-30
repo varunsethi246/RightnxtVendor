@@ -1,0 +1,48 @@
+<template name="imageReportModal">
+	<i class="fa fa-exclamation-circle pull-right btn reportModalIcon checkid imgModelButton" id="imgModalReport" data-toggle="modal" data-target="#imageReportOne" aria-hidden="true"> Report </i>
+  <!-- Modal -->
+	{{#if isInRole 'user'}}
+		<div class="modal secondModal" id="imageReportOne" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content secondModals">
+					<div class="modal-header">
+						<button type="button" class="close imageReportClose" data-dismiss="" id="close">&times;</button>
+						<h4 class="modal-title">Report</h4>
+					</div>
+					<div class="modal-body modalSecond">
+		                <p class="weight">Why do you want to report this page?</p>
+		                <form>
+							<select id="selectImageReport" name="selectImageReport" class="selectReport">
+								<option selected="">Select an option...</option>
+								<option>It’s not a picture of this business.</option>
+								<option>It’s an outdated picture of this business.</option>
+								<option>It’s does not depict a typical experience at this business.</option>
+								<option>It contains nudity and explicit photos</option>
+							</select>
+							<p class="selectText">Text (Optional)</p>
+							<textarea id="imageReportComment" name="imageReportComment" class="selectTextReport"></textarea>
+							<input type="submit" value="Report" class="btn btn-default selectInputReport col-lg-offset-5" id="imageReportSubmit">
+		                </form>  
+					</div>
+				</div>
+			</div>
+		</div>
+	{{/if}}
+	{{#if isInRole 'admin , Vendor'}}
+	 <div class="modal fade nonuserlike" id="imageReportOne" role="dialog">
+        <div class="modal-dialog nonUserModal">
+          <!-- Modal content-->
+            <div class="modal-content nonUserContent">
+                <div class="modal-header nonUserHeader">
+                    <button type="button" class="close reportClose nonUserCloseBtn" data-dismiss="">&times;</button>
+                </div>
+                <div class="modal-body nonUserBody">
+                    <p>You are not logged in as user. In order to avail this facility, please login separately as a user.</p>
+                    <button class="btn-primary reportOkey nonUserOkayBtn" data-dismiss="" >Okay</button>
+                </div>
+            </div>        
+        </div>
+    </div>
+    {{/if}}
+
+</template>

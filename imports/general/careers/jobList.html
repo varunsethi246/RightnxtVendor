@@ -1,0 +1,80 @@
+<template name="jobList">
+	<div class="eForm joblist">
+		{{> AddNewJobForm }}	
+	</div>
+
+	<div id="inactiveOk" class="col-lg-12 addNewJob editpage webpageForm">
+		<h1 class="text-info text-center">Job List</h1>
+		<hr class="webpageFormUnderline">
+		<div class="col-lg-10 col-lg-offset-1 job-list">
+			<table class="table table-striped table-hover table-bordered last_para">
+				<thead>
+					<tr>
+						<th>Job Title</th>
+						<th>Date of Job Post</th>
+						<th>Last Date of Application</th>
+						<th>No. of Vacancies</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each editJobList}}
+						<tr class="text-center">
+							<td>{{jobTitle}}</td>
+							<td>{{dateofPost}}</td>
+							<td>{{date}}</td>
+							<td>{{noOfVacancies}}</td>
+							<td>
+								<button id="{{_id}}" class="edit {{contentType}} btn btn-primary" title="Edit">
+									<a href="#"> <i class="fa fa-pencil-square-o" title="Edit"></i> </a>
+								</button>
+								<button id="{{_id}}" class="btn btn-default {{buttonActive}}" title="{{jobStatus}}" data-toggle="modal">
+									<a href="#"><i class="fa fa-circle fa-lg {{iActive}}" aria-hidden="true" title="{{jobStatus}}"></i></a>
+								</button>
+								<button id="{{_id}}" data-toggle="modal" data-target="#deleteDataModal-{{_id}}" class="btn btn-danger" title="Delete">
+									<a href="#"> <i class="fa fa-trash-o" title="Delete"></i> </a>
+								</button>
+							</td>
+
+							<div class="modal fade modalInactive" id="inactiveDataModal-{{_id}}" role="dialog">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header delete-close editofferModal1">
+							        		<a href="#" data-dismiss="modal" aria-hidden="true" class="close pull-right"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i></a>
+							   			</div>
+							            <div class="modal-body">
+							            	<p class="text-center">Last date of application has been expired.</p>
+							            	<p class="text-center">To activate this job, change the last date of application.</p>
+							         		<div class="body-close">
+							                	<button type="button" class="btn {{contentType}} btn-default btn-danger edit inactiveOk" id="{{_id}}" data-dismiss="modal">OK</button>
+							                </div>
+							            </div>
+							        </div>
+								</div>
+							</div>
+
+							<div class="modal fade modaldelete" id="deleteDataModal-{{_id}}" role="dialog">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header delete-close editofferModal1">
+										<!-- 	<p></p> -->
+										<span>Delete this Job</span>
+							        		<a href="#" data-dismiss="modal" aria-hidden="true" class="close pull-right"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i></a>
+							   			</div>
+							            <div class="modal-body">
+							            	<p class="text-center">Do you want to delete this Job?</p>
+							         		<div class="body-close">
+							                	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+								            	<button type="button" class="btn btn-danger btn-ok delete">Delete</button>
+							                </div>
+							            </div>
+							        </div>
+								</div>
+							</div>
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</template>

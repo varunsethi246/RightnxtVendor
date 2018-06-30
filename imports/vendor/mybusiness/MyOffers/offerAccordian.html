@@ -1,0 +1,29 @@
+<template name="offerAccordian">
+	<div class="row offeraccr">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="vAboutBusinessAccordion">
+				<!-- Form Start -->
+				<div class="panel-group" id="accordion9">
+					{{#each numberOfOffers}}
+					    <div class="panel panel-default vAccordionHeadPre vAccordionHeadPreOne">
+					        <div class="panel-heading vAccordionHead {{#if inData}}accordianSelect{{/if}}" data-toggle="collapse" data-parent="#accordion9" href="#collapse{{ i }}">
+				            	<h4 class="panel-title">
+				                	<a>
+					                	<span class="vAboutBusTitle">Offer {{i}}</span>
+					                	<i class="fa {{#if inData}}fa-angle-up {{else}} fa-angle-down {{/if}} fa-2x pull-right" aria-hidden="true"></i>
+				                	</a>
+				            	</h4>
+				        	</div>
+				        	<div id="collapse{{ i }}" class="panel-collapse collapse {{#if inData}}in{{/if}}">
+				            	<div class="panel-body panelbody vendorPanelBody">
+				            		{{> vendorOffer1 }}
+				            	</div>
+				      		</div>
+				    	</div>
+					{{/each}}
+				</div>
+				<!-- Form End -->
+			</div>
+		</div>
+	</div>
+</template>

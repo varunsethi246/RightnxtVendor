@@ -1,0 +1,119 @@
+<template name="offersTabContent">
+	{{#each vendorOffersData}}
+		<div class="">
+	    	<div class="businessVendorOfferText col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		        <div class="busiVedorleftOfferImg col-lg-3 col-md-3 col-sm-3 col-xs-4">
+		        	<img src="{{#if offerImgData}}{{offerImgData.url}}{{else}}../images/rightnxt_image_nocontent.jpg{{/if}}"  alt=""/>
+		        </div>
+		        <div class="busiVendorMiddleOfferText col-lg-7 col-md-6 col-sm-6 col-xs-8">
+		            <p>{{dealHeadline}}</p>
+		            <div class="btn knowMore" id="offer-{{index}}">Know More</div>
+		        </div>
+		        <div class="busiVendorRightOfferText col-lg-2 col-md-3 col-sm-3 col-xs-12" id="busiVendorRightOfferText">
+					<div class="pull-right">
+						<i class="col-lg-5 col-md-12 col-sm-5 col-xs-5 fa fa-share-alt" data-toggle="modal" data-target="#shareOfferPage-{{_id}}" title="Share"></i>
+						<i class="col-lg-5 col-md-12 col-sm-5 col-xs-5 fa fa-floppy-o offerSave {{savedOfferStatus}}SavedOffer" id="{{_id}}" aria-hidden="true" title="Save Offer"></i>
+					</div>
+		        </div>
+
+	             <!-- modal nonUserReview -->
+	            <div class="modal fade" id="noserreview" role="dialog">
+	                <div class="modal-dialog nonUserModal">
+	                  <!-- Modal content-->
+	                    <div class="modal-content nonUserContent">
+	                        <div class="modal-header nonUserHeader">
+	                            <button type="button" class="close nonUserCloseBtn" data-dismiss="modal">&times;</button>
+	                        </div>
+	                        <div class="modal-body nonUserBody">
+	                             {{#if isInRole 'Vendor'}}
+	                                <p>You are logged in as Vendor. In order to avail this facility, please login separately as a user.</p>
+	                            {{else}}
+	                                <p>You are logged in as Admin. In order to avail this facility, please login separately as a user.</p>
+	                            {{/if}}
+	                            <button class="btn-primary nonUserOkayBtn" data-dismiss="modal" >Okay</button>
+	                        </div>
+	                    </div>        
+	                </div>
+	            </div>
+	           
+	           	<!-- Modal -->
+            	<div class="modal fade" id="shareOfferPage-{{_id}}" role="dialog">
+				    <div class="modal-dialog">
+				      	<div class="modal-content VCommentModalMainContent">
+				        	<div class="modal-body">
+				        		<div class="vModalContentClose"></div>
+				          		<div class="vModalContentMain">
+				          			<div class="row">
+				          				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vModalContentShare">
+				          				Share
+				          					<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+				          				</div>
+				          				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vModalContent">
+				          					<div class="row">
+				          						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-left">
+				          							<div class="offerContentfb" id="{{_id}}">
+				          								<i class="fa fa-facebook" aria-hidden="true"></i>
+				          								<span>Continue with Facebook</span>
+				          							</div>
+				          						</div>
+				          						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-right">
+				          							<div class="offerContentgp" id="{{_id}}">
+				          								<i class="fa fa-google-plus" aria-hidden="true"></i>
+				          								<span>Continue with Google+</span>
+				          						    </div>
+				          						</div>
+				          					</div>
+				          				</div>
+				          				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				          					<form>
+				          						<div class="vmodalForm">
+				          							<input type="text" class="form-group vmodalFormOne" placeholder="http://rightNXT.com">
+				          							<hr>
+				          							<div class="vCenterOr">or</div>
+				          							<div class="form-group">
+				          								<label for="toVEmail">To (Email address)</label><br>
+				          								<input type="text" id="toVEmail-{{_id}}" name="toVEmail">
+				          							</div>
+				          							<div class="form-group">
+				          								<label for="toVAddNote">Add a note (Optional)</label><br>
+				          								<input type="text" id="toVAddNote-{{_id}}" name="toVAddNote">
+				          							</div>
+				          							<div class="vmodalFormButton" id="{{_id}}">
+				          								<button type="button" class="btn btn-warning">Share</button>
+				          							</div>
+				          						</div>
+				          					</form>
+				          				</div>
+				          			</div>
+				          		<!-- <div class="vModalContentShare">
+				          			Share
+				          		</div>
+				          		<div class="vModalContentfb">
+				          			<div class="vModalContFBInvite">
+				          				
+				          				
+				          			</div>
+				          		</div>
+				          		<div class="vModalContentgp">
+				          			
+				          		</div> -->
+				          		</div>
+				        	</div>
+				      	</div>
+				    </div>
+				</div>
+            	<!-- Modal -->
+
+	       		<div class="informationHide" id="offerDesc-{{index}}">
+			       	<div class="total-txt col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			            <span class="exp">Expiration Date:</span>
+			            <span class="date"> From {{expirationFromDate}} To {{expirationToDate}} </span>
+			        </div>
+			        <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			            {{dealDescription}}
+			        </p>
+		   		</div>
+	    	</div>
+    	</div>
+    {{/each}}
+</template>

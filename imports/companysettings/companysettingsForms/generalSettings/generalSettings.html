@@ -1,0 +1,128 @@
+<template name="generalSettings">
+	<form class="generalSettings" id="generalSettings">
+		<div class="productsForm themeForm col-lg-10 col-md-8 col-sm-12 col-xs-12 col-lg-offset-1">
+			<h1 class="reportTitleName">THEME SETTING</h1>
+			
+			<!-- <div id="HRMSHeaderTitle">
+		</div> -->
+		<hr>
+		<div class="col-lg-8 col-lg-offset-2 ">
+			{{#with scaleProcessType}}
+
+			<!-- {{#each generalSettings}} -->
+			<div class="col-lg-12">
+				<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" id="HRMSHeaderTitle">What is type of scale?
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 scaleProcessLabel">
+
+					<div class="radioOuterwrapper">
+						<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="scaleprocess1" id="scaleoption1" value="retail" {{isCheckedscale "retail"}} required>
+						<label for="scaleoption1" class="radioOuterwrapper-label radioOuterwrapper-label-off">retail</label>
+						<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="scaleprocess1" value="wholesale" {{isCheckedscale "wholesale"}} id="scaleoption2" required>
+						
+						<label for="scaleoption2" class="radioOuterwrapper-label radioOuterwrapper-label-on">wholesale</label>
+						<span class="radioOuterwrapper-selection"></span>
+					</div>
+				</div>
+			
+			</div>
+			{{/with}} 
+			<div class="col-lg-12">
+				{{#with shopType}}
+					<div class="col-lg-5 col-md-4 col-sm-12 col-xs-12" id="HRMSHeaderTitle">What is type of shop?
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 scaleProcessLabel">
+
+						<div class="radioOuterwrapper">
+							<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="process1" id="shopoption1" value="online" {{isCheckedshop "online"}} required>
+							<label for="shopoption1" class="radioOuterwrapper-label radioOuterwrapper-label-off">Online</label>
+							<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="process1" value="inhouse" {{isCheckedshop "inhouse"}} id="shopoption2" required>
+							<label for="shopoption2" class="radioOuterwrapper-label radioOuterwrapper-label-on">InHouse</label>
+							<span class="radioOuterwrapper-selection"></span>
+						</div>
+					</div>
+				
+				{{/with}}
+				</div>
+				<div class="col-lg-12">
+					{{#with ProcessType}}
+					<!-- </div> -->
+					<div class="col-lg-5 col-md-4 col-sm-12 col-xs-12" id="HRMSHeaderTitle" >What is type of process?
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 scaleProcessLabel">
+
+						<div class="radioOuterwrapper">
+							<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="process2" id="processoption1" value="Standard" {{isCheckedprocess "Standard"}} required>
+							<label for="processoption1" class="radioOuterwrapper-label radioOuterwrapper-label-off">Standard</label>
+							<input type="radio" class="radioOuterwrapper-input accoType radiobuttonStyle" name="process2" value="Customize" {{isCheckedprocess "Customize"}} id="processoption2" required>
+							<label for="processoption2" class="radioOuterwrapper-label radioOuterwrapper-label-on">Customize</label>
+							<span class="radioOuterwrapper-selection"></span>
+						</div>
+					</div>
+				
+				{{/with}}
+			</div>
+			<div class="col-lg-12">
+				{{#with StoreType}}
+				<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" id="HRMSHeaderTitle">What is Store Business?
+				</div>
+				<div class="toggle-btn-grp cssonly col-lg-7">
+				    <div class="col-lg-3 firstTheme">
+				    	<input type="radio" name="process3" value="elegantTheme" {{isCheckedstore "elegantTheme"}}/>
+				    	<label onclick="" class="toggle-btn">Fashion 
+				    	Jewellery
+				    	</label>
+				    </div>
+
+				    <div class="col-lg-3">
+				    	<input type="radio" name="process3" value="preciousJewelleryTheme" {{isCheckedstore "preciousJewelleryTheme"}} />
+				    	<label onclick="" class="toggle-btn">
+				    		Precious Jewellery
+				    	</label>
+				    </div>
+
+				    <div  class="col-lg-3">
+				    	<input type="radio" name="process3" value="groceryTheme" {{isCheckedstore "groceryTheme"}}/>
+				    		<label onclick="" class="toggle-btn">
+				    			Grocery Theme
+				    		</label>
+				    </div>
+				     <div class="col-lg-3 firstTheme">
+				     	<input type="radio" name="process3" value="autospareTheme" {{isCheckedstore "autospareTheme"}}/>
+				     	<label onclick="" class="toggle-btn">
+				     		Automobile Spareparts
+				    	</label>
+				    </div>
+
+				    <div class="col-lg-3">
+				    	<input type="radio" name="process3" value="dairyProductsTheme" {{isCheckedstore "dairyProductsTheme"}} />
+				    	<label onclick="" class="toggle-btn">
+				    		Milk Dairy Theme
+				    	</label>
+				    </div>
+
+				    <div class="col-lg-3">
+				    	<input type="radio" name="process3" value="garmentTheme" {{isCheckedstore "garmentTheme"}}/>
+				    	<label class="toggle-btn">Garment Theme</label>
+				    </div>
+
+				    <div  class="col-lg-3 firstTheme">
+				    	<input type="radio" name="process3" value="greenPlanet" {{isCheckedstore "greenPlanet"}}/>
+				    	<label class="toggle-btn">Green Planet</label>
+				    </div>
+				     <div  class="col-lg-3">
+				    	<input type="radio" name="process3" value="garment-T-Theme" {{isCheckedstore "garment-T-Theme"}}/>
+				    	<label class="toggle-btn">Garment-T Theme</label>
+				    </div>
+				</div>
+
+				
+				{{/with}}
+			</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<input type="submit" class="btn themeSettings clearfix col-lg-2 col-md-1 col-sm-12 col-xs-12 pull-right btn-primary" value="Submit">
+				</div>
+			</div>
+		</div>
+	</form>
+</template>

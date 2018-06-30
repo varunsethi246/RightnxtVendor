@@ -1,0 +1,63 @@
+<template name="loginScreen">
+	<div class="loginScreen">
+		<form class="loginForm">
+			<div class="form-group loginFormGroup">
+			    <label for="email" class="loginLabel">Email</label>
+			    <input type="email" class="form-control loginEmail" id="emailLogin" name="email" required="true">
+			    <span class="wrongLoginEmailSpan"></span>
+			</div>
+			<div class="form-group">
+			    <label for="pwd" class="loginLabel">Password</label>
+			    <input type="password" class="form-control loginPassword" id="pwdlogin" name="pwd" required="true">
+			    <span class="passwordWrongSpan"></span>
+			</div>
+			<input type="submit" class="login-btn1" value="Login" id="submit" name="submit" required="true">
+			<!-- <button type="submit" class="btn btn-default btn-primary login-btn1" name="submit">submit</button> -->
+		</form>
+		<div class="col-lg-12 col-md-12 linksotpfotgot">
+			<span class="verifyotp">
+				<a href="/LoginOTP" >Verify Account?</a>	
+			</span>
+			<span class="forgotPwd">
+				<a href="/UMforgotpassword" data-toggle="modal" data-target="#forgotPwdModal">Forgot Password?</a>
+				<!-- {{> forgotPasswords}}	 -->
+				<div id="forgotPwdModal" class="frgtBody modal fade" role="dialog">
+
+			  	  <div class="modalBox modal-dialog modal-sm modalforgetpass">
+			    
+			    	<div class="Modal-content">
+			      		<div class="frgtHeader Modal-header">Forgot Password
+			      			<button type="button" class="frgtClose close">&times;</button>
+			      		</div>
+			      	</div>
+				    <div class="frgtContent modal-body">
+				        <p>Please enter your email address and we will send you an email about how to reset your password.</p>
+					        <form id="forgotPasswordForm">
+								<div class="form-group col-lg-10 col-md-10 col-sm-10">
+									<div class="forgotEmailMessage">
+								  		You will receive a recovery mail at <span class="enteredEmail"></span>, if it's in our database. Please check your inbox to start the password recovery process.
+								  	</div>
+									<!-- <div class="input-group"> -->
+								  		<input id="forgotPasswordEmail" type="text" name="email" placeholder="Email Address" class="emailBox form-control forgotEmail" required>
+						<!-- 				<span class="input-group-addon glyphi-custom"><i class="fa fa-user" aria-hidden="true"></i></span>	 -->
+								  	<!-- </div> -->
+								  	
+								</div>
+							  <button class="resetPwd col-lg-10 UMloginbutton disableBtn"><!-- <i class="fa fa-paper-plane" aria-hidden="true"></i> -->&nbsp;Reset Password</button>
+							</form>
+				    </div>
+				<!--     <div class="modal-footer1"> -->
+				   <!--  	<a href="/UMforgotpassword" data-toggle="modal" data-target="#resetPassword">Reset Password</a> -->
+				       <!--  <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#resetPassword">Reset Password</button> -->
+				        <!-- {{>resetPassword}} -->
+				    <!-- </div> -->
+			    </div>
+			</div>
+			</span>
+		</div>
+		<div class="loginTxt">
+			<i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
+			<span>Sign Up With Your Email</span>
+		</div> 
+	</div>
+</template>

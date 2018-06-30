@@ -1,0 +1,78 @@
+<template name="findYourFriends">
+	<div class="followersBlk  col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="timelineBlock col-lg-7 col-md-12 col-sm-12 col-xs-12">		
+			<h4 class="fYFTitle">Find your friends</h4>
+			
+            <div class="tabsStyle col-md-12 col-lg-12 col-sm-12 col-xs-12">
+			  	 <ul class="nav nav-pills noLRPad">
+				    <li class="active col-lg-3 col-md-3 col-sm-12 col-xs-4">
+				    	<a data-toggle="pill" href="#facebook" class="" > 
+				    		Facebook
+				    	</a>
+				    </li>
+				    <li class="col-lg-3 col-md-3 col-sm-12 col-xs-4 bulkTab">
+				    	<a data-toggle="pill" href="#google">
+				    		Google+
+				    	</a>
+				    </li>
+				</ul>
+			</div>
+
+			<div class="tab-content">
+				<div id="facebook" class="tab-pane fade in active">
+				  <div class="FacebookBlk">
+                    <div class="FBbTn">
+                      <button class="FBimport">Continue with Facebook</button>
+                    </div>
+                    <div class="contentFB">
+	                    <h5>Connect your Facebook account with RightNXT to continue.</h5>
+	                    <p>We'll only import your contacts, and won't send any invites at this step.</p>
+	                </div>
+	                <div class="contactFB">FACEBOOK CONTACTS</div>
+                  </div>
+				</div>
+				<div id="google" class="tab-pane fade">
+				 <div class="GPlusBlk">
+                    <div class="GPlus">
+                      <button class="Googleimport">Continue with Google+</button>
+                    </div>
+                    <div class="contentGoogle">
+	                    <h5>Connect your Google+ account with RightNXT to continue.</h5>
+	                    <p>We'll only import your contacts, and won't send any invites at this step.</p>
+	                </div>
+	                <div class="contactGoogle">GOOGLE+ CONTACTS</div>
+                  </div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- find friend block -->
+	    <div class="FYFInvite col-lg-5 col-md-12 col-sm-12 col-xs-12">
+		    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12">
+		      <p>Name, email or RightNXT handle</p>
+		      <div class="friendsBlock col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			    <div class="input-group ">
+				   <input type="text" class="form-control textboxstyle" name="searchemail js-focus-input js-keydown-input js-change-input" placeholder="Find friends on RightNXT" id="userSearch">
+
+				   <div class="input-group-addon glyphi btn yourFriendFind">
+	       				<i class="fa fa-search" aria-hidden="true"></i>
+	      		   </div>
+	      		</div>
+			   
+			   {{> suggestedFollowUsers}}
+
+		      </div>
+		    </div>
+	  	</div>
+    </div>
+</template>
+
+<template name="user">
+	<li class="user black {{selected}}" id="user-link">
+		<span class="name">{{email}}</span>
+	</li>
+</template>
+
+
+

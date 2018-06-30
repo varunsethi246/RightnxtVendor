@@ -1,0 +1,3 @@
+isNumeric = function(val){
+	
+}

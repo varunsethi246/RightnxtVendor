@@ -1,0 +1,77 @@
+<template name="UMaddRoleList">
+	<section class="Content">
+		<div class="row">
+			<div class="col-md-10 col-lg-12 col-sm-12 col-xs-12 noLRPad">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 noLRPad">
+				
+					{{> UMaddRoles}}
+
+
+					<table class="table-responsive table table-striped table-hover myTable table-bordered dataTable no-footer addRoleNew">
+						<thead class="table-head umtblhdr">
+							<th class="umHeader"> Role </th>
+							<th class="umHeader"> Action </th>
+						</thead>
+						<tbody>
+							{{#each addrole}}
+								{{> UMadd_role}}							
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+</template>
+
+<template name="UMadd_role">
+	<tr>
+		<td> {{name}}</td>			
+		<td> 
+			<button class="editrole fa fa-pencil-square-o" data-toggle="modal" data-target="#{{_id}}-{{idForModal}}" title="Edit Role"></button>
+
+			<!-- Modal -->
+			<div id="{{_id}}-{{idForModal}}" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
+
+			    <!-- Modal content-->
+			    <div class="modal-content reportWrapper">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Edit Role</h4>
+			      </div>
+			      <div class="modal-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			        {{> UMeditRoles}}
+			      </div>
+			      <!-- <div class="modal-footer">
+			        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			      </div> -->
+			    </div>
+
+			  </div>
+			</div> <!-- End of Modal-->
+			<!-- <a href="UMeditroles/{{_id}}" class="umbtnEdit"> Edit </a>  -->&nbsp;&nbsp;
+			
+			<button class= "roleDelete fa fa-trash delIcon detailsCenter" data-toggle="modal" data-target="#{{idForModal}}-{{ _id }}" title="Delete Role"></button>
+
+			 <div class="modal fade" id="{{idForModal}}-{{ _id }}" role="dialog">
+			    <div class="modal-dialog modal-sm">
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">Delete Role</h4>
+			        </div>
+			        <div class="modal-body">
+			          <p><b>The role will be deleted. Are you sure you want to continue?.</b></p>
+			        </div>
+			        <div class="modal-footer">
+			          <button id="{{ _id }}" type="button" data-dismiss="modal" class="btn btn-danger deleteRole" >Delete</button>
+	    			  <button type="button" data-dismiss="modal" class="btn btn-primary ">Cancel</button>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+
+		</td>		
+	</tr>
+</template>

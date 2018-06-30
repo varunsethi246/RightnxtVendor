@@ -1,0 +1,169 @@
+<template name="claim">
+	<!-- {{#if currentUser }} -->
+		<!-- {{#if isInRole 'Vendor'}} -->
+			<!-- <div class="navHeadSearchbarCommon">{{> header}}</div> -->
+
+			<!-- <div class="visible-sm"></div>
+			<div class="visible-md"></div> 
+			<div class="visible-lg"></div>
+			<div class="visible-xs"></div> -->
+
+			<div class="claim col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="container">
+					<div class="text-center para">
+						<h3>Claim your listing to access advanced analytical and engagement tools</h3>
+						<p class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">Edit the information in your page, add photos and menus, answer reviews, and more. Search for your listing and submit your contact details. You will be contacted shortly for verification.</p>
+					</div>
+					<div class="forms last_para">
+						<div class="row">
+							<div class="col-lg-6 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-8 col-sm-offset-1 col-xs-12 venLocCityGen">
+								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 location-city">
+									<span class="city "><img src="../images/location-city.png" alt="">  <span class="claimUserCity">Pune</span>
+										<button type="button" class="btn btn-default" data-toggle="modal" data-target="#changeCityModal">Change City </button>
+									</span>
+ 
+									<div class="modal fade" id="changeCityModal" role="dialog">
+										<div class="modal-dialog">
+											<div class="modal-content city-content">
+									      <div class="modal-header">
+									        <a href="#" data-dismiss="modal" aria-hidden="true" class="city-close close pull-right modal-headers"><i class="fa fa-times-circle-o fa-lg selectareaclose" aria-hidden="true"></i></a>
+									          <div class="group">
+								    					<input class="form-control" list="cityShowList" type="text" placeholder="Enter Your City" id="getClaimCity">
+															<datalist id="cityShowList">
+																{{#each showCityClaim}}
+																	<option> 
+																		{{city}}
+																	</option>
+																{{/each}}
+															</datalist>
+														</div>
+									          <p class="text-left top_search">TOP SEARCHED</p>
+							         		  <p class="cityModal"><a href="#">National Capital Region (NCR)</a>, <a href="#">Mumbai</a>, <a href="#">Pune</a>, <a href="#">Bengaluru</a>, <a href="#">Chennai</a>, <a href="#">Hyderabad</a>, <a href="#">Kolkata</a></p>
+							            </div>
+									     </div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+								<div class="row col-lg-4 col-md-4 col-sm-4 col-xs-12 group form-group">
+								    <select class="form-control area" id="getAreaClaim">
+								      	<option value="All">All Areas</option>
+						    			{{#each showAreasClaim}}
+								      		<option>{{area}}</option> 
+								    	{{/each}}
+								    </select>
+								</div>
+								<div class="row col-lg-7 col-md-7 col-sm-7 col-xs-11 group venGenClaimButt1">
+							    <input class="form-control" type="text" placeholder="Find your business here" id='claimBusiness'>
+								</div>
+								<div class="row col-lg-1 col-md-1 col-sm-1 col-xs-1 group venGenClaimButt groups">
+							    <button type="button" class="form-control btn form_button"><i class="fa fa-search fa-lg" aria-hidden="true"></i></button>
+							  </div>
+							</div>
+						</div>
+					</div>
+					{{#each claimContent}}
+						<div class="row claimRow" id="claimRow">
+							<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 claim-data row-border">
+								<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
+									<h3> {{businessTitle}} </h3>
+									<p class="venGenP">{{#if businessMobile}}{{businessMobile}} {{else}} Not Available{{/if}}</p>
+									<!-- <p>{{#if businessLandline}}{{businessLandline}}{{else}} Not Available{{/if}}</p> -->
+									<p> {{businessAddress}}, {{businessArea}}, {{businessCity}} </p>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12 claim-button">
+									{{#with claimDetails businessOwnerId}}
+										<button type="submit" id="claimYourBusiness" data-target="#claimLoginModal" data-toggle="modal" class="btn btn-default {{#if isInRole 'Vendor'}}{{statusClass}}{{else}}{{newStatusClass}}{{/if}} {{id}}">{{statusClaim}}</button>
+									{{/with}}	
+								</div>
+							</div>
+						</div>
+      		<input type="hidden" name="claimMob" value={{businessMobile}} >
+      		<input type="hidden" name="claimName" value={{_id}} >	
+      	{{/each}}
+      	<!-- {{claimPagination}} -->
+      	<div class="col-lg-4 col-lg-offset-4 outerPaginationDiv"> 
+      	  {{#with pgcount}}
+      	    {{#if pgcount.nxtArrow}}
+      	      {{#each returnpgno}}
+	              <input type="button" name="" class="pageNo {{classNm}}" value="{{pgno}}">
+      	      {{/each}}
+      	    {{else}}
+      	      <button type="button" class="btn btn-primary claimPreviousButton" id="claimPreviousButton" disabled='disabled'> <i class="fa fa-angle-left"></i> </button>
+	              <input type="button" name="" class="pageNo active" id="claimChangeValue1" value="1"> 
+	              <input type="button" name="" class="pageNo" id="claimChangeValue2" value="2">
+	              <input type="button" name="" class="pageNo" id="claimChangeValue3" value="3">
+      	      <button type="button" class="btn btn-primary claimNextButton" id="claimNextButton"> <i class="fa fa-angle-right"></i> </button>
+      	    {{/if}}
+	      	{{/with}}
+      	</div>
+	      	
+      	<!-- modal nonUserReview -->
+          <div class="modal fade" id="nouserreview" role="dialog">
+              <div class="modal-dialog nonUserModal">
+                <!-- Modal content-->
+                  <div class="modal-content nonUserContent">
+                      <div class="modal-header nonUserHeader">
+                          <button type="button" class="close nonUserCloseBtn" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body nonUserBody">
+                          {{#if isInRole 'user'}}
+                              <p>You are logged in as User. In order to avail this facility, please login separately as a Vendor.</p>
+                          {{else}}
+                              <p>You are logged in as Admin. In order to avail this facility, please login separately as a Vendor.</p>
+                          {{/if}}
+                          <button class="btn-primary nonUserOkayBtn" data-dismiss="modal" >Okay</button>
+                      </div>
+                  </div>        
+              </div>
+          </div>
+
+					<div class="modal" id="claimLoginModal" role="dialog">
+						<div class="modal-dialog">
+							<div class="row">
+									<div class="close">
+										<i class="fa fa-times fa-lg" data-dismiss="modal"></i>
+									</div>										
+									<div class="leftModal col-lg-6 col-md-6 col-sm-12 col-xs-12">
+									   <img src="../images/login-logo.png">
+										{{> claimProcess}}
+									</div>
+									<div class="claimRightModal rightModal col-lg-6 col-md-6 col-sm-12 col-xs-12">
+										{{> claimOtp }}
+										{{> alreadyClaimed }}			
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> 
+					
+					<!-- <div class="col-lg-5 col-lg-offset-4 col-md-5 col-md-offset-4 col-sm-7 col-sm-offset-3 col-xs-12 claim-pagination">
+						<ul class="pagination">
+						    <li class="active"><a href="#">1</a></li>
+						    <li><a href="#">2</a></li>
+						    <li><a href="#">3</a></li>
+						    <li><a href="#">4</a></li>
+						    <li><a href="#">5</a></li>
+						    <li><a href="#">6</a></li>
+						    <li><a href="#">7</a></li>
+						    <li><a href="#">8</a></li>
+						    <li><a href="#">9</a></li>
+						    <li><a href="#">10</a></li>
+						</ul>
+					</div> -->
+					<div class="row">
+						<div class="col-lg-7 col-md-7 col-sm-7 col-xs-11 text-center footer-row hidden-lg hidden-md hidden-sm hidden-xs">
+							<h3>Cannot find your Business?</h3>
+							<p>Fill the form below to create a listing on rightNXT</p>
+							<!-- <a href="/addNewBusiness/businessInfo">Add your business</a> -->
+							<span class="addBusiness">Add your business</span>
+						</div>
+					</div>
+				</div>
+			<!-- </div> -->
+		<!-- {{/if}} -->
+	<!-- {{/if}} -->
+</template>

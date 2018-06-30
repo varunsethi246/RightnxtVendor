@@ -1,0 +1,54 @@
+<template name="labourCharges">
+	<form class="labourCharges" id="labourCharges" >
+		<div class="HRMSBackgroundWrapper col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<div id="HRMSHeaderTitle">Labour Charge Category</div>
+			<!-- <ul class="addLabourCat faqStyle" data-target=".labourCategoryFormWrapper">
+				<i class="fa fa-caret-right moreLabourCat" aria-hidden="true"></i>
+				<label>Add More Labour Category</label>
+			</ul> -->
+			<div class="formWrapper col-lg-12">
+				<label class="faqStyle">Add More Labour Charge Category</label>
+
+				<div class="HRMSBackgroundWrapper labourCategoryFormWrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="HRMSform-group col-lg-6 col-md-6 col-sm-12 col-xs-12  ">
+						<label class="HRMSTitle">Labour Charge Category</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-usd" aria-hidden="true"></i>
+							</div>
+							<input type="text" class="form-control HRMSTextbox" name="labourChargeCategory" id="labourChargeCategory" placeholder="Labour Charge Category" value="{{labourChargeCategory}}">
+						</div>
+					</div>
+
+					<!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> -->
+					<div class="HRMSform-group HRMSform-head-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<label class="HRMSTitle">Rate(per gm)</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-money" aria-hidden="true"></i>
+							</div>
+							<input type="number" class="form-control HRMSTextbox" name="labourChargeRate" id="labourChargeRate" placeholder="Per Gram Rate" value="{{applicableTax}}"><div class="input-group-addon"><i class="fa fa-inr" aria-hidden="true"></i></div>
+						</div>
+					</div>
+					
+						
+					<div class="addmoretax labourbtn col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="addmoretax col-lg-3 col-md-3 col-sm-12 col-xs-12 pull-right">
+							<label class="HRMSTitle">&nbsp;&nbsp;&nbsp;
+							</label>
+							{{#if editlabourSettings}}
+							<input type="button" class="btn btn-danger btnUpdatLabourChargeDetails  clearfix" value="Update">
+							{{else}}
+							<input type="submit" class="btn btn-primary companyLabourChargeDetails clearfix" value="Add More Data">
+
+							{{/if}}
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</form>
+
+	
+</template>

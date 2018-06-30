@@ -1,0 +1,38 @@
+<template name="viewVendorOffer">
+	<div class="row">
+		<div class="col-lg-12 col-md-12  col-sm-12 col-xs-12 ">			
+			<div class="form-group">
+				<div class="row vendor-colomn">
+					{{#with formvaluesData}}
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="row">
+								{{#if offerImgData}}
+									<div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 removeMargTopImg">
+										<span class="vendor2Img">
+											<img class="thumbnail draggedImg imgVendorSpan" src='{{#if offerImgData}}{{offerImgData.url}}}{{else}}{{offerImage}}{{/if}}'>
+										</span>
+									</div>
+									<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 removeMargTopImg">
+										<h5>Deal Template : <p>{{dealTemplate}}</p></h5>
+										<h5>Deal Headline : <p>{{dealHeadline}}</p></h5>
+										<h5>Deal Description : <p>{{dealDescription}}</p></h5>
+										<h5>Expiration Date :  <p>{{expirationToDate}}</p></h5>
+										<h5>Legal Notices &amp; Disclaimers : <p>{{legalNotices}}</p></h5>
+									</div>
+								{{else}}
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 removeMargTopImg">
+										<h5>Deal Template : <p>{{dealTemplate}}</p></h5>
+										<h5>Deal Headline : <p>{{dealHeadline}}</p></h5>
+										<h5>Deal Description : <p>{{dealDescription}}</p></h5>
+										<h5>Expiration Date :  <p>{{expirationToDate}}</p></h5>
+										<h5>Legal Notices &amp; Disclaimers : <p>{{legalNotices}}</p></h5>
+									</div>
+								{{/if}}
+							</div>						
+						</div>
+					{{/with}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

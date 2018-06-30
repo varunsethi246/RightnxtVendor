@@ -1,0 +1,9 @@
+.tag-input-outer {
+border:1px solid #ccc;
+padding:1px
+}
+
+#getTag {
+margin:4px 6px;
+position:relative
+}

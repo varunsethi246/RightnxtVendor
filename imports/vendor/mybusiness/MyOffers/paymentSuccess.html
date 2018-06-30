@@ -1,0 +1,137 @@
+<template name="paymentSuccess">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="paymentSuccessVen">
+            Payment Successful
+        </div>
+    </div>
+    {{paymentSuccessfull}}
+
+    {{#if currentUser}}
+        {{#if isInRole 'Vendor'}}
+            {{#with invoiceDetailsForOnline}}
+                <div class="">
+                    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12 receipt"> 
+
+                        <h3 class="col-lg-11 col-md-11 col-sm-11 col-xs-11"> 
+                            <img src="/images/footer-logo.png" class=""> 
+                        </h3>
+                        
+                        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 recBorder">
+                            <h4> Payment Receipt for {{businessName}} </h4>
+                            <div class="recMargin">
+                                <hr class="col-lg-11 col-md-11 col-sm-11 col-xs-11 recLine">
+                                <p class="col-lg-7 col-md-7 col-sm-7 col-xs-5">Merchant Ref.:</p>
+                                <span class="col-lg-5 col-md-5 col-sm-5 col-xs-7 venMerRef">{{merchantRef}}</span>
+                                <p class="col-lg-7 col-md-7 col-sm-7 col-xs-8">Transaction ID:</p>
+                                <span class="col-lg-5 col-md-5 col-sm-5 col-xs-4">{{transactionID}}</span>
+                                <p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Transaction Message:</p>
+                                <span class="col-lg-5 text-success col-md-5 col-sm-5 col-xs-5">'{{transactionMsg}}'</span>
+                                <p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Transaction Date &amp; Time:</p>
+                                <span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{invDate}}</span>
+                                <p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Payment Method:</p>
+                                <span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{paymentMode}}</span>
+                                <p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Amount Paid:</p>
+                                <span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{totalPrice}}</span>
+                                <hr class="col-lg-11 col-md-11 col-sm-11 col-xs-11 recLine">
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center recDiv">
+                                <button class="button1">
+                                    <i class="btn fa fa-print" aria-hidden="true"></i>
+                                    <span>Print</span>
+                                </button>
+                                <button class="button3" data-toggle="modal" data-target="#shareReceipt" title="Share">
+                                    <i class="btn fa fa-envelope-o " aria-hidden="true"></i>
+                                    <span>Email</span>
+                                </button>
+                                <div class="modal fade" id="shareReceipt" role="dialog">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content VCommentModalMainContent">
+                                        <div class="modal-body">
+                                            <div class="vModalContentClose"></div>
+                                                <div class="vModalContentMain">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vModalContentShare">
+                                                        Share
+                                                        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+                                                        </div>
+                                                    </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <form>
+                                                            <div class="vmodalForm">
+                                                            <div class="form-group">
+                                                                <label for="toVEmail">To (Email address)</label><br>
+                                                                <input type="text" id="toVEmail" name="toVEmail">
+                                                            </div>
+                                                            <!-- <div class="form-group">
+                                                                <label for="toVAddNote">Add a note (Optional)</label><br>
+                                                                <input type="text" id="toVAddNote">
+                                                            </div> -->
+                                                            <div class="vmodalFormButton">
+                                                                <button type="button" class="btn btn-warning shareReceiptEmail" data-dismiss="modal">Share</button>
+                                                            </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <button class="button2">
+                                    <i class="btn fa fa-times" aria-hidden="true"></i>
+                                    <span>Close</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id='DivIdToPrint' style="display:none;">
+                    <div class="col-lg-10 col-lg-offset-1 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 receipt" style="
+                        border: 1px solid orange;
+                        padding-bottom: 22px;
+                    "> 
+                        <h3 class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="
+                            background-color: orange;
+                            color: white;
+                            padding-top: 10px;
+                            padding-bottom: 12px;
+                            margin-top: 0px;
+                            margin-bottom: 0px;
+                            font-size: 24px;
+                            padding-left: 30px;
+                            -webkit-print-color-adjust:exact;
+                        "> {{companyName}} </h3>
+                        
+                        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 recBorder" style="
+                            padding-left: 30px;padding-right: 30px;
+                        ">
+                            <h4 style="
+                                font-size: 17px;
+                                font-weight: 500;
+                                color: #111;
+                            "> Payment Receipt for {{businessName}} </h4>
+                            <hr class="col-lg-11 col-md-11 col-sm-11 col-xs-11 recLine">
+                            <div class="recMargin">
+                                <p class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="color: #444;font-size: 12px;">Merchant Ref.:
+                                <span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{merchantRef}}</span></p>
+                                <p class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="color: #444;font-size: 12px;">Transaction ID:
+                                <span class="col-lg-5 col-md-5 col-sm-5 col-xs-5"></span></p>
+                                <p class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="color: #444;font-size: 12px;">Transaction Message:
+                                <span class="col-lg-5 text-success col-md-5 col-sm-5 col-xs-5">'{{transactionMsg}}'</span></p>
+                                <p class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="color: #444;font-size: 12px;">Transaction Date &amp; Time:
+                                <span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{invDate}}</span></p>
+                                <p class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="color: #444;font-size: 12px;">Payment Method:
+                                <span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{paymentMode}}</span></p>
+                                <p class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="color: #444;font-size: 12px;">Amount Deducted:
+                                <span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{totalPrice}}</span></p>
+                            </div>
+                            <hr class="col-lg-11 col-md-11 col-sm-11 col-xs-11 recLine">
+                        </div>
+                    </div>
+                </div>
+            {{/with}}
+        {{/if}}
+    {{/if}}
+</template>

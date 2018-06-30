@@ -1,0 +1,89 @@
+<template name="homepageBanner">
+	<div class="visible-sm"></div>
+	<div class="visible-md"></div>
+	<div class="visible-lg"></div>
+	<div class="visible-xs"></div>
+
+	<div class="video video-xs">
+<!-- 		{{#each bannerVideo}}
+			<video src="{{fileURL this}}?play=true" loop id="myVideo" width="100%" height="100%">
+		    </video>
+	    {{/each}}
+ -->
+		{{#each bannerVideo}}
+			<video autoplay muted loop id="myVideo" width="100%" height="100%">
+		      		<source src={{fileURL this}} type="video/mp4">
+		    </video>
+	    {{/each}}
+
+
+
+ 	    <!-- {{#with tellBrowserName}}
+			<video autoplay loop id="myVideo" width="100%" height="100%">
+		      		<source src={{videoScr}} type={{videotype}}>
+		    </video>
+	    {{/with}} -->
+	</div>
+
+	<div class="forms homepageForms homepageForms-xs">
+	{{#with shwCityAndArea}}
+		<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-1 col-xs-12">
+			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 location-city">
+				<span class="city"><img src="/images/location-city.png" alt=""> 
+					<span class="curUserCity">Pune</span>
+					<button type="button" class="btn btn-default" data-toggle="modal" data-target="#changeCityModal">Change City</button>
+				</span>
+
+				<div class="modal fade" id="changeCityModal" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content city-content">
+				            <div class="modal-header citySearchMheader">
+				            	<a href="#" data-dismiss="modal"  aria-hidden="true" class="city-close close pull-right"><i class="cityShowCloseModal fa fa-times-circle-o fa-lg selectareaclose" aria-hidden="true"></i></a>
+				            	<div class="group">
+		    						<input class="form-control groupHeight-xs" type="text" list="cityShow" placeholder="Enter Your City" id="getCity">
+									<datalist size = {{showListCity}} id="cityShow" class="listCitySelect">
+										{{#each currentCityList}}
+											<option>{{city}}</option>
+										{{/each}}
+									</datalist>
+								</div>
+
+				         		<div class="cityModal">
+				         			<p class="text-left top_search">TOP SEARCHED</p>
+				         			<a href="#" class="TopCity">National Capital Region (NCR)</a>, 
+				         			<a href="#" class="TopCity">Mumbai</a>, 
+				         			<a href="#" class="TopCity">Pune</a>, 
+				         			<a href="#" class="TopCity">Bengaluru</a>, 
+				         			<a href="#" class="TopCity">Chennai</a>, 
+				         			<a href="#" class="TopCity">Hyderabad</a>, 
+				         			<a href="#" class="TopCity">Kolkata</a>
+				         		</div>
+				         		
+				            </div>
+				        </div>
+					</div>
+				</div>
+			</div>			
+		</div>
+
+		<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 group-xs">
+			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 group">
+		    		<select class="form-control area groupHeight-xs" id="getArea">
+				      	<option value="All Areas" selected>All Areas</option>
+		    			{{#each currentAreaList}}
+				      		<option {{selected}}>{{area}}</option>
+				    	{{/each}}
+				    </select>
+			</div>
+
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 group">
+		    	{{> mainBusinessSearch }}
+			</div>
+
+			<div class="col-lg-3 col-lg-offset-0 col-md-3 col-sm-4 col-xs-5 col-xs-offset-3 group">
+		    	<button type="button" class="form-control btn searchBusList groupHeight1-xs" title="Search"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+		    </div>
+		</div>
+	{{/with}}
+	</div>
+</template>

@@ -1,0 +1,24 @@
+<template name="businessOfferDetails">
+  {{#if offersData}}
+    <div class="business_offer">
+      Offers
+    </div>
+  {{/if}}
+  {{#each offersData }}
+    <div class="all_offer">
+      <div class="openOfferSection offer {{class}}"> 
+        <p class="openToBusOfferSec"> {{dealHeadline}} </p>
+        <div class="valid_txt">
+          Valid : From {{expirationFromDate}} - To {{expirationToDate}}
+        </div>
+        <hr class="hrBorder {{#if offersGreaterThan3}}{{bussShow}}{{/if}}">
+      </div>
+    </div>
+  {{/each}}
+
+  {{#if offersGreaterThan3 }}
+    <div class="offer_showmore btn">Show More</div>
+    <hr class="hrBorder">
+  {{/if}}
+  <!--end all offer-->
+</template>

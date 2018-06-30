@@ -1,0 +1,23 @@
+<template name="UMhomeLayout">
+<main>
+
+ 	{{#if currentUser}}
+		       {{> UMheader}}	 
+		       {{> UMsettings}}
+		       <h2> Welcome</h2>
+
+
+		  {{#if isInRole 'admin'}} 
+		       {{> UMChecklistElements}}
+		       <!-- {{> UMlistOfUsers}} -->
+		       <!-- {{> UMaddRoleList}}		   -->
+		  {{else}}
+		  		{{> UMUnauthorizedUser}}
+		  {{/if}}
+
+    {{else}}
+        	{{> UMlogin}}
+    {{/if}}
+
+</main>
+ </template>

@@ -1,0 +1,92 @@
+<template name="AddNewJobForm">
+    <div class="col-lg-12 editpage addNewJob" id="addNewJobForm">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 webpageForm">
+            <h1>{{changeJobFormTitle}}</h1>
+            <hr class="webpageFormUnderline">
+            <form class="addNewJobForm">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 marginBottom inputOption">
+                    <label for="jobTitle">Job Title</label>
+                    <div class="input-group" id="title">
+                        <div class="input-group-addon"><i class="fa fa-list-alt"></i></div>
+                        <input type="text" id="input1" name="jobTitle" class="form-control" placeholder="Job Title">
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 marginBottom">
+                    <label for="jobDescripton">Job Description</label>
+                    <textarea name="jobDescripton" id="desc" class="form-control" rows="5" placeholder="Job Description" required></textarea>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 marginBottom inputOption">
+                    <label for="noOfVacancies">Number of Vacancies</label>
+                    <div class="input-group" id="noOfVacancy">
+                        <div class="input-group-addon"><i class="fa fa-list-ol"></i></div>
+                        <input name="noOfVacancies" id="input2" class="form-control" type="number" placeholder="Number of Vacancies" required> 
+                    </div>
+                </div>
+
+                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 marginBottom">
+                    <label for="salary">Salary</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-inr" aria-hidden="true"></i></div>
+                        <input name="salary" type="number" id="input6" class="form-control no-spinner">
+                    </div>                   
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 marginBottom inputOptionDate">
+                    <label for="date">Last Date of Application</label>
+                    <div class="input-group" id="dateInput">
+                        <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                        <input name="date" id="input3" class="form-control" type="date">
+                    </div>  
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 marginBottom">
+                    <label for="selectCountry">Country</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-globe"></i></div>
+                        <div class="form-group">
+                            <select name="selectCountry" id="jobFormCountry" class="form-control">
+                                {{#if jobListData.selectCountry}}<option value="{{jobListData.selectCountry}}">{{jobListData.selectCountry}}</option>{{/if}}
+                                <option value="India">India</option>
+                            </select>
+                        </div>
+                    </div>                    
+                </div>
+
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-6 marginBottom selectJobOption">
+                    <label for="selectState">State</label>
+                    <div class="input-group" id="stateInput">
+                        <div class="input-group-addon"><i class="fa fa-globe"></i></div>
+                        <div class="form-group">
+                            <select name="selectState" id="jobFormState" class="form-control">
+                                <option disabled="disabled" selected="true">--Select your State--</option>
+                                {{#if jobListData.selectState}}<option value="{{jobListData.selectState}}">{{jobListData.selectState}}</option>{{/if}}
+                                {{#each stateData}}
+                                    <option value="{{state}}">{{state}}</option>
+                                {{/each}}                          
+                            </select>
+                        </div>
+                    </div>  
+                </div>
+
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-6 marginBottom selectJobOption">
+                    <label for="selectCity">City</label>
+                    <div class="input-group" id="cityInput">
+                        <div class="input-group-addon"><i class="fa fa-globe"></i></div>
+                        <div class="form-group">
+                            <select name="selectCity" id="jobFormCity" class="form-control">
+                                <option disabled="disabled" selected="true">--Select your City--</option>
+                                {{#if jobListData.selectCity}}<option value="{{jobListData.selectCity}}">{{jobListData.selectCity}}</option>{{/if}}
+                                {{#each cityData}}
+                                    <option value="{{city}}">{{city}}</option>
+                                {{/each}}                          
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="btn pull-right addNewBtn" value="Submit" />
+            </form>
+        </div>
+    </div>
+</template>

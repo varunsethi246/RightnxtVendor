@@ -1,0 +1,17 @@
+<template name="customerLeadsGraph">
+<div class="graphWrapper">
+	<canvas id="custmonthChart" class="custmonthChart" style="height: 200px;"></canvas>
+	<canvas id="custyearChart" class="custyearChart" style="height: 200px;"></canvas>
+	<canvas id="custtwoYearChart" class="custtwoYearChart" style="height: 200px;"></canvas>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 feedBlock">
+		<h4><b>Customer Leads Breakdown : {{dateVal}}</b></h4>
+		<br>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custLead">
+			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><i class="fa fa-camera" aria-hidden="true"></i>&nbsp; {{totalUpload}} User Uploaded Photos</div>
+			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><i class="fa fa-calendar-check-o"></i>&nbsp;{{totalClicks}} Clicks To Your Website</div>
+			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><i class="fa fa-bookmark"></i>&nbsp;{{bookmarks}} Bookmarks</div>
+			<br>
+		</div>
+	</div>
+</div>
+</template>

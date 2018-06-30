@@ -1,0 +1,39 @@
+<template name="allTaxes">
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		<div class="HRMSBackgroundWrapper companySettingsTable col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="formWrapper col-lg-12">
+			<table class="table table-striped myTable table-bordered">
+					<thead>
+						<tr>
+							<th> Applicable Tax      </th>
+							<th> Applicable Tax Rate </th>
+							<th> Effective From	     </th>
+							<th> Effective To		 </th>
+							<th> Action 	         </th>
+							 
+						</tr>
+					</thead>
+					<tbody class="myTableData">
+						{{#with taxSettingsDetails }}
+							{{#each taxSettings }}
+						      	<tr>
+						        <td> {{ taxType }}       </td>
+						        <td> {{ applicableTax }} </td>
+						         <td>{{ effectiveFrom }} </td>
+						         <td>{{ effectiveTo }}   </td>
+						         <td>
+						         	<i class="fa fa-pencil edittaxSettings" aria-hidden="true" id="{{@index}}" name="{{../_id}}"></i> &nbsp;&nbsp;
+						         	<i class="fa fa-trash deletetaxSettings" aria-hidden="true" name="{{../_id}}"></i>
+						         </td>
+					        	
+					        		
+					        	
+						      </tr>
+				      		{{/each}}
+				    	{{/with}}	
+					</tbody>
+				</table>
+			</div>
+			</div>
+	</div>	
+</template>

@@ -1,0 +1,30 @@
+<template name="loginModal">
+	<div class="modal fade" id="loginModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="row">
+				<div class="modal-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="close">
+						<i class="fa fa-times fa-lg" data-dismiss="modal"></i>
+					</div>										
+					<div class="leftModal col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<img src="images/login-logo.png">				
+						<div>
+							<h3>Why Sign Up?</h3>
+							<ul class="rightModal-list">
+								<li>Get to see all the current running Offerd and Discounts</li>
+								<li>Give reviews and Ratings to the Businesses you vistied</li>
+								<li>Create yourown network with your friends</li>
+								<li>Manage your own profile</li>
+							</ul>
+						</div>
+					</div>
+					<div class="rightModal col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				        <div class="genLoginSignup"> {{> generalLoginSignup }}</div>
+						<!-- <div class="loginScreen"> {{> UMlogin }}</div>
+						<div class="signupScreen"> {{> UMsignup }}</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+</template>

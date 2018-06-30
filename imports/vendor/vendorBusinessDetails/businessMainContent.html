@@ -1,0 +1,24 @@
+<template name="businessMainContent">
+	<div class="col-lg-5 col-md-5 col-sm-8 col-xs-12 mainConBusi">
+		<ul class="descriptionBar nav nav-tabs nav-justified" id="scrollOffer">
+			<li class="descData active">
+				<a data-toggle="tab" href="#description" class="descBuss">Description</a>
+			</li>
+			{{#if offersBussData}}
+				<li class="offersData">
+				  	<a data-toggle="tab" href="#offers"> Offers </a>
+				</li>
+			{{else}}
+				
+			{{/if}}
+		</ul>
+		<div class="tab-content">
+			<div id="description" class="tab-pane fade in active">
+			  	{{> descriptionTabContent }}
+			</div>
+			<div id="offers" class="tab-pane fade">
+			  	{{> offersTabContent }}
+			</div>
+		</div>
+	</div>
+</template>

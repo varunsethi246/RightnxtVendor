@@ -1,0 +1,31 @@
+<template name="manageCategoriesList">
+	<div class="row manageRow">			 
+		<div class="row masterAreaCityState ">
+			<div class="areaCityStateHeading">
+			 	<h1>MANAGE CATEGORIES</h1>
+			</div>
+			<hr>
+			<ul class="nav nav-pills masterNavTab col-lg-8 col-lg-offset-4 ">
+				<li class="active masterNavTabs col-lg-3">
+					<a data-toggle="tab" href="#home">Categories</a>
+				</li>
+				<li class="masterNavTabs col-lg-3">
+					<a data-toggle="tab" href="#menu1">BulkUpload</a>
+				</li>
+			</ul>
+		  
+			<div class="tab-content">
+			    <div id="home" class="tab-pane fade in active">
+			      {{> categoriesLevels }}
+			    </div>
+			    <div id="menu1" class="tab-pane fade">
+			     {{> catgBulkUpload }}
+			    </div>
+			</div>
+			
+			{{> categoriesList }}
+
+		</div>
+	</div>
+	
+</template>

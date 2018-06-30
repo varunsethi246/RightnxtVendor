@@ -1,0 +1,170 @@
+<template name="vendorPhotos">
+	<div class="vendorPhotosClass">
+		<div class="vendorPhotosCl">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<h3 class="vendorHotelReportTwo vendorBussTitle">{{businessName.businessTitle}}</h3>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+					<div class="nav-tabs">
+						<ul class="myPhotosList">
+							<li class="active" data-toggle="tab" href="#vPhotosYou" aria-expanded="true"><a href="#">Photos by you</a></li>
+							<li data-toggle="tab" href="#vPhotosUser" aria-expanded="true"><a href="#">Photos by users</a></li>
+						</ul>
+					</div>
+					<div class="tab-content">
+						<div id="vPhotosYou" class="tab-pane fade act active in">
+							<div class="vPhotosYouMain">
+								<div class="row">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vPhotosYouPre">
+										<span class="vPhotosYouSort">Sort by</span>
+
+										<div class="nav-tabs nav-tabsPre">
+											<span data-toggle="tab" href="#" aria-expanded="true" class="newestFirst">
+												<a href="" class="nav-tabsAct1">Newest First</a>
+											</span>
+											<span data-toggle="tab" href="#" aria-expanded="true" class="oldestFirst">
+												<a href="" class="nav-tabsAct2">Oldest First</a>
+											</span>
+										</div>
+
+										<div class="tab-content">
+											<div id="vPhotosYouNewF" class="tab-pane fade act active in">
+												<div class="vPhotosYouNewMain">
+													<div class="row">
+														<div class="col-lg-6 vPhotosYouNewh">
+															<h4>Photos by you <span>({{photoByYou}})</span></h4>
+														</div>
+														<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+															<div class="vPhotosYouUpload">
+																<div class="col-lg-12 uploadpicvendor displayDiv" id="div1" style="" >
+																	<output id="businessPhotolist"></output>
+																	<input type="file" name="files[]" id="businessPhotofiles" multiple="true" class="inputImg">
+																</div>
+																<div class="vPhotosYouUploadPost">
+																	<input type="file" name="files[]" id="businessPhotofiles" multiple="true" class="inputImg drag">
+																	<div class="vPhotosYouUploadImg">
+																		<input type="file" name="files[]" id="businessPhotofiles" multiple="true" class="inputImg drag">
+																		<img src="../images/uploadImg.jpg" class="bgGif drag img-responsive">
+																	</div>
+																	<div class="vPhotosYouUploadTxt">
+																		<input type="file" name="files[]" id="businessPhotofiles" multiple="true" class="inputImg drag">
+																		<h3 class="drag">Upload new photo/ videos</h3>
+																		<p class="drag"></p>
+																		<div class="vPhotosYouUploadBtn">
+																			<input type="file" name="files[]" id="businessPhotofiles" multiple="true" class="inputImg drag">
+																			<button class="btn btn-success displayBtn" id="saveBusinessphoto">Upload</button>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+														
+														<!-- <div class="col-lg-12 vBusGroupRow vendorImgVidUpDiv">
+															<div class="vendorupImgC">
+																<span><i class="fa fa-folder-open-o vendorImgVidUploadSpan" aria-hidden="true" id="saveBusinessphoto">Upload</i></span>
+															</div>
+														</div> -->
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+															<div class="vPhotosYouRepeat">
+																<div class="row vPhotosYouRow">
+																	{{#each vendorPhotosData}}
+																		<div class="col-lg-3 col-md-4 col-sm-4  col-xs-12 vPhotosUserRowSec vPhotosUserRowSecAdj">
+																			<div class="noworkDiv1">
+																				<i class="fa fa-times-circle pull-right delBusiImg cursorPointer" id="photo-{{_id}}" aria-hidden="true"></i><br>
+																				<div class="uploadPhotoSize" data-toggle="modal" data-target="#confirmBusImage-{{_id}}"  title="Click on Image to select as Business Image">
+																					<img src="{{url}}" class="img-responsive thumbnail cursorPointer {{checkpngImg}}">
+																				</div>
+																			</div>
+																		</div>
+
+
+
+
+																		<div class="modal fade" id="confirmBusImage-{{_id}}" role="dialog">
+																			<div class="modal-dialog">
+																				<div class="modal-content">
+																					<div class="modal-header delete-close">
+																		        		<a href="#" data-dismiss="modal" aria-hidden="true" class="close pull-right BussDeleteClose"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i></a>
+																		   			 </div>
+																		            <div class="modal-body">
+																		            	<p class="text-center">Are you sure want to set this as your Business Photo?</p>
+																		         		<div class="body-close">
+																		                	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+																			            	<button type="button" class="btn btn-danger btn-ok submitImageForBusiness" data-imgId="{{_id}}" data-busId="{{businessId}}"  data-dismiss="modal">Yes</button>
+																		                </div>
+																		            </div>
+																		        </div>
+																			</div>
+																		</div>
+
+
+
+
+
+																	{{/each}}
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="vPhotosUser" class="tab-pane fade act in">
+							<div class="vPhotosUserMain">
+								<div class="row">
+									<div class="col-lg-12 vPhotosYouPre">
+										<span class="vPhotosYouSort">Sort by</span>
+
+										<div class="nav-tabs nav-tabsPreTwo">
+											<span data-toggle="tab" href="#" aria-expanded="true" class="newestFirstUser">
+												<a href="#" class="nav-tabsAct11">Newest First</a>
+											</span>
+											<span data-toggle="tab" href="#" aria-expanded="true" class="oldestFirstUser">
+												<a href="#" class="nav-tabsAct22">Oldest First</a>
+											</span>
+										</div>
+
+										<div class="tab-content">
+											<div id="vPhotosYouNewS" class="tab-pane fade act active in">
+												<div class="vPhotosYouNewMain">
+													<div class="row">
+														<div class="col-lg-12 vPhotosYouNewh">
+															<h4 class="vPhotosYouNewBtnPre">Photos by users <span>({{photoByUser}})</span></h4>
+															<button id="pp" class="btn btn-success vPhotosYouNewBtn pull-right publishUserPic">Publish in Main Page</button>
+														</div>
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+															<div class="vPhotosYouRepeat vPhotosYouRe bussVendorRepeatPic">
+																<div class="row vPhotosYouRow">
+																	{{#each vendorPhotosUserData}}
+																		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 vPhotosUserRowSecAdj vPhotosUserRowSecAdj1">
+																			<div class="vPhotosYouRImg col-lg-12 col-md-12 col-xs-12 col-sm-12">
+																				<div class="vPhotosYouRepeatImgO vPhotosYouRepeatImgOAdj col-lg-12 col-md-12 col-xs-12 col-sm-12 ">
+																					<img src="{{url}}" class="vPhotosUserBkGif img-responsive {{checkpngImg}}">
+																					<input id={{_id}} type="checkbox" class="pull-right vendorPhotosUImg" checked="{{#if alreadyChecked}}checked{{/if}}">
+																				</div>
+																			</div>
+																		</div>
+																	{{/each}}
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</template>

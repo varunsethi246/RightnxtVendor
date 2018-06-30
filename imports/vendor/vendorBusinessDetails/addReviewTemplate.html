@@ -1,0 +1,122 @@
+<template name="addReviewTemplate">
+	{{#if reviewData}}
+		<div class="addReview">
+		   <h4>Review</h4>  
+		</div>
+	{{else}}{{#if isInRole 'user'}}
+			<div class="addReview">
+			   <h4>Review</h4>  
+			</div>
+		{{/if}}
+	{{/if}}
+	{{#if isInRole 'user'}}
+	    {{#if alreadyReviewed}}
+		    <div class="NopublishReview" id="publish3">
+		    	<i class="fa fa-pencil Valign" aria-hidden="true"></i>
+		    	<span class="Valignspan">Review</span>
+		        <button class="public_btn pull-right">Publish</button>
+		        <span class="passwordWrongSpan text-danger "></span>
+		    </div>
+	    	
+	    {{else}}
+		    <div class="publishReview" >
+		    	<i class="fa fa-pencil" aria-hidden="true"></i>
+		    	<span>Review</span>
+		        <button class="public_btn pull-right" id="publish3">Publish</button>
+		        <span class="passwordWrongSpan text-danger"></span>
+		    </div>
+	    {{/if}}
+    {{/if}}
+
+
+    <div class="openReview openReviewBox minopenReviewHeight">
+        <div class="reviewClose pull-right">
+        	<i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <div class="openReviewLeft col-lg-2 col-md-2 col-sm-2 col-xs-2">
+      	{{#with userProfilePic}}
+        	<img src="{{profile.userProfilePic}}"  alt="" class="bgGif"/>
+       	{{/with}}
+        </div>
+        <div class="openReviewRight col-lg-10 col-md-10 col-sm-10 col-xs-10">
+            <p>Your Ratings</p>
+            <form id="reviewForm1" class="reviewformClass" novalidate>
+            	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 starRatingWrapper">
+					<div class="col-lg-3 leftbox"> 
+						<span class="glyphicon glyphicon-star smallStar"></span>
+						<span class="rate"> Rate </span> 
+					</div>
+					<div class="col-lg-9 starWrapper"> 
+	            		{{> starRating }}
+					</div>
+            	</div>
+            	<div class="col-lg-6 textbox textboxVisible">
+            		
+            	</div>
+	            <div class="addWriteReview">
+		            <label for="comment"></label>
+		  			<textarea class="form-control writeReview" rows="5" name="review"  id="review" placeholder="at least 140 characters" minlength="140"></textarea>
+		  		</div>
+		  		<p class="textRemain">0 / 140</p>
+		  		<span class="passwordWrongSpan newReviewMsg"> </span>
+
+				<div class="reviewImages">
+					<div class="col-lg-12" id="reviewImgDiv">
+						<div class="reviewImgInputDiv">
+							<!-- <div>Tag Friends</div> -->
+							<output id="reviewImglist"></output>
+							<div class="reviewImgtext">Click here to select images</div>
+							<input type="file" name="files[]" id="reviewImgfiles" multiple="true"
+							class="inputImg">							
+						</div>
+					</div>
+				</div>
+
+	       		<div class="tagFrnd">
+					<div class="col-lg-12" id="tagImgDiv">
+						<div class="reviewImgInputDiv">
+							<div class="tagedFrndList">
+					      		{{#each getFrndsList.tagedFriends}} 
+									<span class="bunchTagFrnd bunchTagFrndTagged">
+										<span className="">
+											<img src="{{userImage}}" alt="" class="img img-circle userPhotReviewList">
+										</span>	
+										{{selectedUser}}
+										<span class="bunchTagFrndCross" data-userId = "{{selectedUserId}}">x</span>
+									</span>
+								{{/each}}
+					      	</div>
+							<input type="text" id="searchFrnds" class="looking_frnds" name="looking" placeholder="I am looking for">			        
+							<ul class="tagFrndUl">
+							{{#each getFrndsList.data}}
+								<li id="{{_id}}" class="tagFrndLi" data-userName="{{profile.name}}" data-photo="{{userPhoto}}">
+									<div class="tagFrndLiDiv">
+										<img src="{{userPhoto}}" class="img img-circle tagFrndLiDivPhoto" />
+										<div class="tagFrndLiDivTitle">
+											{{profile.name}}
+										</div>
+										 
+									</div>
+								</li>
+							{{/each}}
+							</ul>							
+						</div>
+					</div>
+	      		</div>
+	           	<div class="addReviewFooter">
+	           		<ul>
+			            <li class="tagImg"> 
+			            	<i class="fa fa-user-plus addFriends" aria-hidden="true"  title="Tag a Friend" ></i>
+			            </li>
+			            <li class="uploadImg">
+			           		 <i class="fa fa-picture-o" aria-hidden="true" title="Add Images"></i>
+			            </li>
+			            <li class="publish2 pull-right">
+			              <input type="submit" class="public_btn2" id="publishBtn" value="Publish" />
+			            </li>
+			   		</ul>
+			   	</div>
+		   	</form>
+        </div>
+    </div>
+</template>

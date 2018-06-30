@@ -1,0 +1,137 @@
+<template name="companyInfo">
+	<form class="companyInfo" id= "companyInfo">
+		<div class="HRMSBackgroundWrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div id="HRMSHeaderTitle">Company Information</div>
+				<div class="basicInfowrapper col-lg-6 col-md-6 col-xs-6 col-sm-12">
+
+				<!-- ************* Basic Info Details  ************* -->
+
+					<div class="HRMSform-group col-lg-12 col-md-12 col-xs-12 col-sm-12 ">
+						<label class="HRMSTitle">Company Name</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<span class="glyphicon glyphicon-education"></span>
+							</div>
+							<input type="text" class="form-control HRMSTextbox"  name="companyName"  id="companyName"   placeholder ="Enter Company Name" value="{{companyName}}" required>
+						</div>
+					</div>
+
+					<div class="HRMSform-group HRMSform-head-group col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+						<label class="HRMSTitle">Contact Number</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-phone" aria-hidden="true"></i>
+							</div>
+							<input type="text" class="form-control HRMSTextbox" name="companyContactNumber" id="companyContactNumber" placeholder="Enter Contact Number" value="{{companyContactNumber}}" required>
+				  	  	</div>
+				  	</div>
+
+				  	<div class="HRMSform-group HRMSform-head-group col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+						<label class="HRMSTitle">Contact Email</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-envelope-o" aria-hidden="true"></i>
+							</div>
+							<input type="text" class="form-control HRMSTextbox" name="companyEmail" id="companyEmail" placeholder="Enter Email Address"  value="{{ companyEmail }}" required>
+				  	  	</div>
+				  	</div>
+				  	<div class="col-lg-12 displayLogo">
+						<div class="HRMSform-group col-lg-6 col-md-6 col-xs-12 col-sm-12 companylogo">
+							
+							<label class="HRMSTitle">Company Logo</label>
+
+							<div class="input-group">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-upload"></span>
+								</div>
+
+								<input type="file" name="uploadImages" class="form-control imgBrowse" data-buttonText="Your label here." required>
+						
+							</div>	
+						</div>
+						
+						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							{{#each tempLogoimage}}
+			    					<div class="pull-left col-lg-6 col-md-6 col-sm-12 col-xs-12"><a href="/"><img src="{{tempLogoImg}}" class="commonLogo displayLogo img-responsive img-rounded"></a></div>
+			   
+			    			{{/each}}
+						</div>
+					</div>
+				</div>
+		
+				<!-- ************* Contact Details  ************* -->
+				<div class="contactwrapper col-lg-6 col-md-6 col-xs-6 col-sm-12"> 
+					<div class="HRMSform-group HRMSform-head-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<label class="HRMSTitle">Company Address (Head Office / Main Location)</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-map-marker" aria-hidden="true"></i>
+							</div>
+							<input type="text" class="form-control HRMSTextbox" name="companyAddress" id="companyAddress" placeholder="Enter Company Address" value ="{{ companyAddress}}" required>
+				  	  	</div>
+				  	</div>
+				  	<div class="HRMSform-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<label class="HRMSTitle">Pincode</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-address-card-o" aria-hidden="true"></i>
+							</div>
+							<input type="text" class="form-control HRMSTextbox" id="companyPincode" name="companyPincode" placeholder="Enter Pincode" maxlength="6" value="{{companyPincode}}" required> 
+				  		</div>
+				  	</div>
+
+				  	<div class="HRMSform-group col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+						<label class="HRMSTitle">City</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-globe" aria-hidden="true"></i>
+							</div>
+							<select class="form-control HRMSTextbox" id="companyCity" name="companyCity">
+								<option value='Pune'>Pune       	</option>
+								<option value='Bangalore'>Bangalore </option>
+								<option value='London'>London  		</option>
+								<option value='UK'>UK          		</option>
+								<option value='Chicago'>Chicago 	</option>
+								<option value='Kolkata'>Kolkata  	</option>
+								<option value='Agra'>Agra    		</option>
+							</select>
+				  	  	</div>
+				  	</div>
+
+					<div class="HRMSform-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<label class="HRMSTitle">State</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-globe" aria-hidden="true"></i>
+							</div>
+							<select class="form-control HRMSTextbox" id="companyState" name="companyState" value="{{companyState}}">
+								<option value='Maharashtra'>Maharashtra   </option>
+								<option value='Asam'>Asam                 </option>
+								<option value='Delhi'>Delhi               </option>
+								<option value='Gujrat'>Gujrat             </option>
+								<option value='Jammu-Kasmir'>Jammu-Kasmir </option>
+								<option value='Rajastan'>Rajastan         </option>
+								<option value='Kolkata'>Kolkata           </option>
+							</select>
+				  	  	</div>
+				  	</div>
+
+					<div class="HRMSform-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<label class="HRMSTitle">Country</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-globe" aria-hidden="true"></i>
+							</div>
+							<select class="form-control HRMSTextbox" id="companyCountry" name="companyCountry" value="{{companyState}}">
+								<option value='India'>India</option>
+								<option value='America'>America</option>
+								<option value='Australia'>Australia</option>
+								<option value='Japan'>Japan</option>
+								
+							</select>
+				  	  	</div>
+				  	</div>
+				</div>
+			  </div>
+	</form>
+</template>

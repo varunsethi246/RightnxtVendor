@@ -1,0 +1,167 @@
+<template name="userOffers">
+<div class="userOffer borderleft">
+    <div class="userCon">
+        <h3 >Offers</h3>
+	</div>
+	{{#if checkOfferLoading}}
+		<div class="checkOfferLoading">
+			Your favourite offer for Business to keep them in one place.
+		</div>
+	{{else}}
+		<div class="userTimelineOffer">
+			<div class="">     
+				<div class="sort_menu col-lg-9 col-md-12 col-sm-12 col-xs-12">
+					<ul>
+						<li class="sort_txt col-lg-1 col-sm-12 col-md-12 col-xs-12">Sort by</li>  
+						<li  class="col-lg-3 col-sm-4 col-md-4 col-xs-4 menuItems1">
+						  <select class="selectNewest userSelectArrow form-control" id="sortOfferDate">
+							<option value="" selected disabled>--Select--</option>
+							<option value="newestRevFirst" class="newestRevFirst"> Newest First </option>
+							<option value="oldestRevFirst" class="oldestRevFirst"> Oldest First </option>
+						  </select>
+						</li>
+						<li class="col-lg-3 col-sm-4 col-md-4 col-xs-4 menuItems">
+						  <select class="categorySelect userSelectArrow form-control">
+							<option value="" selected disabled>--Select Categories--</option>
+							<option value="-">All Categories</option>
+							{{#each businessOfferCategoriesList}}
+							<option value="{{this}}">{{this}}</option>
+							{{/each}}
+						  </select>
+						</li>
+						<li class="col-lg-3 col-sm-4 col-md-4 col-xs-4 menuItems">
+						  <select class="locationSelect userSelectArrow form-control">
+							<option value="" selected disabled>--Select Location--</option>
+							<option value="-">All Locations</option>
+							{{#each businessOfferLocationList}}
+							<option value="{{this}}">{{this}}</option>
+							{{/each}}
+						  </select>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="offerDateSort">
+			{{#each userOffersData}}
+				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+					<div class="businessVendorOfferText col-lg-12 col-md-12 col-sm-12 col-xs-12{{categoryClasses}} {{AreaClasses}}" data-date="{{offerDateNumber}}">
+						
+						<div class="busiVedorleftOfferImg col-lg-3 col-md-3 col-sm-3 col-xs-4" id="busiVedorleftOfferImg">
+							<img src="{{#if offerImgData}}{{offerImgData.url}}{{else}}../images/rightnxt_image_nocontent.jpg{{/if}}"  alt=""/>
+						</div>
+						<div class="busiVendorMiddleOfferText col-lg-8 col-md-8 col-sm-7 col-xs-8 ">
+							<a href="{{busLink}}" class="userSavedOffer">
+								{{busTitle}}
+							</a>
+							<p>{{dealHeadline}}</p>
+							<div class="btn knowMore" id="offer-{{index}}">Know More</div>
+						</div>
+						<div class="userOffersI col-lg-1 col-md-1 col-sm-2 col-xs-12">
+							<div class="pull-right">
+								<i class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fa fa-share-alt" data-toggle="modal" data-target="#shareOfferPage" title="Share"></i>
+								<!-- <i class="col-lg-5 col-md-5 col-sm-5 col-xs-5 fa fa-floppy-o offerSave {{savedOfferStatus}}SavedOffer" id="{{_id}}" aria-hidden="true" title="Save Offer"></i> -->
+							</div>
+						</div>
+	
+						<!-- modal nonUserReview -->
+						<div class="modal fade" id="noserreview" role="dialog">
+							<div class="modal-dialog nonUserModal">
+							<!-- Modal content-->
+								<div class="modal-content nonUserContent">
+									<div class="modal-header nonUserHeader">
+										<button type="button" class="close nonUserCloseBtn" data-dismiss="modal">&times;</button>
+									</div>
+									<div class="modal-body nonUserBody">
+										<p>You are not logged in as user. In order to avail this facility, please login separately as a user.</p>
+										<button class="btn-primary nonUserOkayBtn" data-dismiss="modal" >Okay</button>
+									</div>
+								</div>        
+							</div>
+						</div>
+					
+						<!-- Modal -->
+						<div class="modal fade" id="shareOfferPage" role="dialog">
+							<div class="modal-dialog">
+								<div class="modal-content VCommentModalMainContent">
+									<div class="modal-body">
+										<div class="vModalContentClose"></div>
+										<div class="vModalContentMain">
+											<div class="row">
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vModalContentShare">
+												Share
+													<button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+												</div>
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vModalContent">
+													<div class="row">
+														<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-left">
+															<div class="offerContentfb" id="{{_id}}">
+																<i class="fa fa-facebook" aria-hidden="true"></i>
+																<span>Continue with Facebook</span>
+															</div>
+														</div>
+														<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-right">
+															<div class="offerContentgp" id="{{_id}}">
+																<i class="fa fa-google-plus" aria-hidden="true"></i>
+																<span>Continue with Google+</span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<form>
+														<div class="vmodalForm">
+															<input type="text" class="form-group vmodalFormOne" placeholder="http://rightnxt.com">
+															<hr>
+															<div class="vCenterOr">or</div>
+															<div class="form-group">
+																<label for="toVEmail">To (Email address)</label><br>
+																<input type="text" id="toVEmail">
+															</div>
+															<div class="form-group">
+																<label for="toVAddNote">Add a note (Optional)</label><br>
+																<input type="text" id="toVAddNote">
+															</div>
+															<div class="vmodalFormButton">
+																<button type="button" class="btn btn-warning">Share</button>
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										<!-- <div class="vModalContentShare">
+											Share
+										</div>
+										<div class="vModalContentfb">
+											<div class="vModalContFBInvite">
+												
+												
+											</div>
+										</div>
+										<div class="vModalContentgp">
+											
+										</div> -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Modal -->
+	
+						<div class="informationHide" id="offerDesc-{{index}}">
+							<div class="total-txt col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<span class="exp">Expiration Date:</span>
+								<span class="date"> From {{expirationFromDate}} To {{expirationToDate}} </span>
+							</div>
+							<p class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								{{dealDescription}}
+							</p>
+						</div>
+					</div>
+				</div>
+			{{/each}}
+		</div>
+	{{/if}}
+   
+</div>
+</template>

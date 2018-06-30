@@ -1,0 +1,487 @@
+@font-face {
+font-family:'PROXIMANOVA-BOLD';
+src:url(/fonts/PROXIMANOVA-BOLD.ttf),url(/fonts/PROXIMANOVA-BOLD.eot)
+}
+
+@font-face {
+font-family:'PROXIMANOVA-REGULAR';
+src:url(/fonts/PROXIMANOVA-REGULAR.ttf),url(/fonts/PROXIMANOVA-REGULAR.eot)
+}
+
+@font-face {
+font-family:'GOTHIC_0';
+src:url(/fonts/GOTHIC_0.ttf),url(/fonts/GOTHIC_0.eot)
+}
+
+.inviteAtag:hover {
+text-decoration:none!important
+}
+
+.friendsBlock {
+border:1px solid #ccc;
+padding:2%;
+height:625px;
+overflow-y:scroll;
+background: white;
+border-radius: 4px;
+}
+
+.friendTittle {
+font-size:14px;
+font-weight:400;
+padding:8px 0;
+margin:0;
+font-family:'PROXIMANOVA-BOLD';
+color:#565656
+}
+
+.friendList li {
+list-style:none
+}
+
+.tabsStyle ul {
+padding:5px 0 0;
+margin:0;
+list-style:none;
+border-bottom:1px solid #ccc;
+line-height:36px
+}
+
+.tabsStyle ul li {
+padding:0 21px 0 0;
+margin:0 2px 0 0;
+display:inline;
+color:#565656;
+cursor:pointer;
+font-size:14px;
+font-family:'PROXIMANOVA-REGULAR';
+float:left
+}
+
+.tabsStyle ul li.active {
+border-bottom:1px solid #000;
+color:#000
+}
+
+.noLRPad li a {
+color:#000!important;
+background-color:transparent!important;
+padding:0!important
+}
+
+.noLRPad li a:focus {
+background-color:transparent!important
+}
+
+.FBbTn button {
+padding:0 57px 0 86px;
+margin:0;
+border:0;
+line-height:39px;
+background:#3b5998 url(../images/FBicon.png) no-repeat 57px center;
+color:#fff;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.FBbTn {
+padding:100px 0 0;
+margin:0
+}
+
+.GPlusBlk {
+padding:0;
+margin:0
+}
+
+.GPlus {
+padding:100px 0 0;
+margin:0
+}
+
+.GPlus button {
+padding:0 57px 0 86px;
+margin:0;
+border:0;
+line-height:39px;
+background:#d34836 url(../images/g.png) no-repeat 57px center;
+color:#fff;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.fYFTitle {
+padding:20px 0 0;
+margin:0;
+color:#f89b1c;
+font-size:20px;
+font-weight:400;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.follwSugg a {
+padding:0;
+margin:0;
+float:left;
+width:34px;
+height:30px
+}
+
+.follwSugg a:hover {
+color:#f89b1c!important
+}
+
+.FYFInvite {
+padding:5% 0 0
+}
+
+.friendL li {
+list-style:none;
+padding-bottom:5%
+}
+
+.followI {
+top:-4px!important
+}
+
+.contactFB {
+display:none
+}
+
+.contactGoogle {
+display:none
+}
+
+.followerSugg a:hover {
+color:#f89b1c!important
+}
+
+.followersBlk {
+padding-left:0!important
+}
+
+.tabsStyle {
+padding-left:0!important
+}
+
+.userImg {
+width:32px;
+height:32px
+}
+
+.userListShow {
+display:block;
+position:absolute;
+width:100%;
+top:71px;
+left:15px;
+z-index:9;
+height:150px;
+overflow:hidden;
+overflow-y:auto;
+box-shadow:0 1px 1px 1px #eee;
+display:none
+}
+
+.firstDiv {
+display:none
+}
+
+.switchNotif {
+position:relative;
+display:inline-block;
+width:60px;
+height:34px
+}
+
+.switchNotif input {
+display:none
+}
+
+.sliderNotif {
+position:absolute;
+cursor:pointer;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background-color:#ccc;
+-webkit-transition:.4s;
+transition:.4s
+}
+
+.sliderNotif:before {
+position:absolute;
+content:"";
+height:26px;
+width:26px;
+left:4px;
+bottom:4px;
+background-color:#fff;
+-webkit-transition:.4s;
+transition:.4s
+}
+
+input:checked + .sliderNotif {
+background-color:#f89b1c
+}
+
+input:focus + .sliderNotif {
+box-shadow:0 0 1px #f89b1c
+}
+
+input:checked + .sliderNotif:before {
+-webkit-transform:translateX(26px);
+-ms-transform:translateX(26px);
+transform:translateX(26px)
+}
+
+.sliderNotif.round {
+border-radius:34px
+}
+
+.sliderNotif.round:before {
+border-radius:50%
+}
+
+.cofigPadding {
+padding:5%
+}
+
+.vendortabs {
+width:50%
+}
+
+.tabContents {
+width:100%
+}
+
+.tabDiv {
+margin-top:2%
+}
+
+.vendorGraphsDiv {
+padding:2%
+}
+
+.topContent {
+margin-bottom:3%
+}
+
+.tabsContent {
+padding:2%
+}
+
+.graphDate {
+font-weight:700;
+padding:0
+}
+
+.addYearClass {
+background-color:#ccc
+}
+
+.feedBlock {
+background:#f5f5f5;
+padding:1%
+}
+
+.graphWrapper {
+background:#fff
+}
+
+.custActivity {
+background:#fff;
+padding:1%
+}
+
+.custActivityLists li {
+list-style:none;
+padding:1%;
+border-bottom:1px solid #ccc
+}
+
+.dateTimeDiv {
+margin-left:10%;
+color:#ccc;
+font-size:12px
+}
+
+.monthChart {
+display:none
+}
+
+.yearChart {
+display:none
+}
+
+.custLead {
+padding:3%
+}
+
+.amcharts-chart-div a {
+display:none!important
+}
+
+.TableHeader th {
+text-align:center
+}
+
+.positionUl li {
+list-style:none
+}
+
+.insideDiv {
+padding:1%;
+border:1px solid #ccc
+}
+
+.insideDiv input {
+width:87%;
+border:none
+}
+
+.insideDiv .fa-times {
+color:rgba(255,0,0,0.44);
+cursor:pointer
+}
+
+.insideDiv .fa-times:hover {
+color:red
+}
+
+.businessSearchList {
+background:#f1f1f1;
+width:96%;
+margin-left:2%
+}
+
+.areaListView {
+background:#f1f1f1;
+width:96%;
+margin-left:2%
+}
+
+.bannercategoryListShow {
+width:96%;
+left:17px;
+z-index:9;
+height:300px;
+overflow:hidden;
+overflow-y:scroll;
+box-shadow:0 2px 10px 1px #999;
+display:none;
+background-color:#f1f1f1;
+padding-top:20px;
+margin-left:2%
+}
+
+.bannercategoryListShow .displayDiv {
+height:40px;
+position:relative;
+top:15px;
+position:relative;
+top:15px
+}
+
+.bannercategoryListShow .categoryListShow {
+width:100%;
+left:16px
+}
+
+.imgMapview {
+width:170px;
+height:140px
+}
+
+#noData {
+height:55px;
+width:100%;
+font:14px
+}
+
+.custmonthChart {
+display:none
+}
+
+.custyearChart {
+display:none
+}
+
+.fbShareDiv:hover {
+cursor:pointer;
+background:#1f52bc
+}
+
+.fbShareDiv {
+padding:9px 5px;
+background:#3b5998
+}
+
+.busPagefbShare:hover {
+cursor:pointer;
+background:#1f52bc
+}
+
+.busPagefbShare {
+padding:9px 5px;
+background:#3b5998
+}
+
+.offerContentfb:hover {
+cursor:pointer;
+background:#1f52bc
+}
+
+.offerContentfb {
+padding:9px 5px;
+background:#3b5998
+}
+
+.gpShareDiv:hover {
+background:#d7250e;
+cursor:pointer
+}
+
+.gpShareDiv {
+padding:9px 5px;
+background:#d34836
+}
+
+.offerContentgp:hover {
+background:#d7250e;
+cursor:pointer
+}
+
+.offerContentgp {
+padding:9px 5px;
+background:#d34836
+}
+
+.busPagegpShare:hover {
+background:#d7250e;
+cursor:pointer
+}
+
+.busPagegpShare {
+padding:9px 5px;
+background:#d34836
+}
+
+.userReviewFbShare:hover {
+cursor:pointer;
+background:#1f52bc
+}
+
+.userReviewFbShare {
+padding:9px 5px;
+background:#3b5998
+}
+
+.userReviewGPShare:hover {
+background:#d7250e;
+cursor:pointer
+}
+
+.userReviewGPShare {
+padding:9px 5px;
+background:#d34836
+}

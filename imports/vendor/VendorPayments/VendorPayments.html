@@ -1,0 +1,42 @@
+<template name="vendorPayments">
+	<div class="vendorPayClass">
+		<div class="vendorPaymentCl">
+			{{#if paymentDetails}}
+				<div class="VendorGotLikesBorder table-responsive">
+					<table class="table table-bordered vPaymentTable">
+						<thead>
+							<tr>
+								<th>Order No.</th>
+								<th>Business Name</th>
+								<th>Amount</th>
+								<th>Status</th>
+								<th>Invoice Date</th>
+								<th>Order Type</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each paymentDetails}}
+								<tr>
+									<td>{{invoiceNumber}}</td>
+									<td>{{businessTitle}}</td>
+									<td>{{totalAmount}}</td>
+									<td>{{paymentStatus}}</td>
+									<td>{{invoiceDate}}</td>
+									<td>{{orderType}}</td>
+									<td>
+										<a href="{{receiptLink}}">View</a>
+									</td>
+								</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			{{else}}
+				<div class="VendorGotLikesBorder ">
+					<div class="vendorPayText">You can Promote your business by advertising on rightNXT. Please contact admin for the same.</div>
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</template>

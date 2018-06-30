@@ -1,0 +1,86 @@
+<template name="catgBulkUpload">
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-4 col-md-7 col-md-offset-5">
+			<div class="formTitleGeneral col-lg-6 col-lg-offset-0 listGap CategoriesListUpload">
+				<h3>Categories List Upload</h3>
+			</div>
+		</div>
+		<!-- <hr class="CategoriesListUnderline"> -->
+		<div class="col-lg-12">
+				<div class="bulkuploadInstruction ">
+					<div class="bulkuploadIns col-lg-2">
+						<a href="/HierarchyofCategories.csv" download>
+							<img src="images/csv.png">
+						</a>
+					</div>
+					<ul class="">
+						<li>Please use attached file format to bulkupload yours contacts into this sysytem.</li>
+						<li>Please do not change the Heading of following file.</li>
+						<li>File Format must be *.CSV.</li>
+						<li>Following is the  format of .CSV file.</li>
+						
+					</ul>
+				</div>
+		</div>
+		<div class="col-lg-10 col-lg-offset-1 formatTop scrollbar" id="style-3">
+			<table class="table table-hover table-striped">
+				<thead>
+					<tr class="tableHeadColor">
+						<th>level 0</th>
+						<th>level 1</th>
+						<th>level 1 Tags</th>
+						<th>level 2</th>
+						<th>level 2 Tags</th>
+						<th>level 3</th>
+						<th>level 3 Tags</th>
+						<th>level 4</th>
+						<th>level 4 Tags</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>	
+				</tbody>
+			</table>
+		</div>
+		<div class="col-lg-10 col-lg-offset-1 uploadCSV">
+			
+			<div class="row" >
+				<div class="form-group col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10  col-xs-offset-1 ">
+					<label class="control-label " >  Upload File</label>
+					<div class="input-group">
+						<input class="form-control incWidth" id="upCatgBlk" name="upCatgBlk" type="file" value="{{upCatgBlk}}"/>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-12">
+					{{#if uploading}}
+					{{> progressBar }}
+					{{/if}}
+					{{#with showProgressBar}}
+					{{#if uploadingFinished}}
+					{{> progressCompleted }}
+					<!-- {{> dailyOrdersShow1}} -->
+					<div class="col-lg-6 col-lg-offset-3 timeRequired">
+						Inserted {{totalRecords}} products in ({{requiredelapsedTime}} seconds)
+					</div>
+					{{/if}}
+					{{/with}}
+				</div>
+			</div>
+		
+		</div>
+
+	</div>
+</template>

@@ -1,0 +1,62 @@
+<template name= "salesReportTabsBanner">
+<section class="Content">
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="reportWrapper">
+<h1 class="SalesreportTitleName">BANNER SALES REPORT</h1>
+<hr>
+
+	<!-- <div class="commonTabs"> -->
+	<div id="salesreport" class="salesReportTabs col-lg-12">
+	  	 <ul class="nav nav-pills">
+		    <li class="active salesTab col-lg-2 col-md-2 col-sm-12 col-xs-12">
+		    	<a data-toggle="pill" href="#todaysReport" class="" > Today 
+		    	</a>
+		    </li>
+		    <li class="col-lg-2 col-md-2 col-sm-12 col-xs-12 salesTab">
+		    	<a data-toggle="pill" href="#weeklyReport">
+		    		This Week
+		    	</a>
+		    </li>
+		    <li class="col-lg-2 col-md-2 col-sm-12 col-xs-12 salesTab">
+		    	<a data-toggle="pill" href="#monthlyReport">
+		    		This Month
+		    	</a>
+		    </li>
+		    <li class="col-lg-2 col-md-2 col-sm-12 col-xs-12 salesTab">
+		    	<a data-toggle="pill" href="#yearlyReport">
+		    		This Year
+		    	</a>
+		    </li>
+		    <li class="col-lg-2 col-md-2 col-sm-12 col-xs-12 salesTab">
+		    	<a data-toggle="pill" href="#datetabs">
+		    		Customised
+		    	</a>
+		    </li>
+		</ul>
+	</div>
+	<!-- </div> -->
+	<div class="tab-content">
+		<div id="todaysReport" class="tab-pane fade in active">
+		  {{> todaysSalesReportBanner}}
+		</div>
+		<div id="weeklyReport" class="tab-pane fade">
+		 {{> weeklySalesReportBanner}}
+		</div>
+		<div id="monthlyReport" class="tab-pane fade">
+		   {{> monthlySalesReportBanner}}
+		</div>
+		<div id="yearlyReport" class="tab-pane fade">
+		  {{> yearlySalesReportBanner}}
+		</div>
+		<div id="datetabs" class="tab-pane fade">
+		  {{> fromToFieldsBanner}}
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</section>
+
+
+</template>

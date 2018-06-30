@@ -1,0 +1,55 @@
+ <template name="monthlySalesReport">
+<section class="Content">
+<div class="row">
+<div class="monthlySalesReportForpdf">
+	<h4 class="salesreportTitle"> Monthly Sales Report </h4>
+	<form class="monthlySalesReport">
+		<div class="">
+			<div class="col-lg-4 col-lg-offset-4">
+
+				<div class="input-group inputFieldSales dateinputstyle">
+					<div class="input-group-addon HRMSAddon" id="previousMonth">
+						<span class="fa fa-caret-left nextarrow"></span>
+					</div>
+					<input type="month" class="form-control HRMSTextbox" name="monthlyValue" id="monthlyValue" value="{{currentmonth}}">
+					<div class="input-group-addon HRMSAddon nextAddon" id="nextMonth">
+						<span class="fa fa-caret-right nextarrow"></span>
+					</div>
+		 		</div>
+			</div>
+				<!-- <div class="col-lg-6 col-lg-offset-5 faoutput">
+					<span class="fapdf pull-right" title="Download as PDF"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></span>
+					<span onClick="window.print()" class="faprint pull-right" title="Print"><i class="fa fa-print" aria-hidden="true"></i></span>
+				</div> -->
+				<div class="table-responsive col-lg-12">
+				<table class="table table-striped myTable table-bordered tableSales" id="exampleMonth">
+					<thead>
+						<tr class="table-head saleheadbackground">
+							<th> Date </th>
+							<th> Order Number </th>
+							<th> Business Link </th>
+							<th> Total Amount </th>
+							<th> Discounted Price </th>
+							<th> Order Type</th>
+							<th> Action</th>
+						</tr>
+					</thead>
+					<tbody class="myTableData">
+						{{#if result}}
+				            {{#each result}}
+				            	{{> salesTableView}}
+				            {{/each}}
+				        {{else}}
+							<td colspan=6 > 
+						      Nothing to Display.
+						    </td>
+						{{/if}}
+					</tbody>
+				</table>
+				</div>
+			</div>
+	</form>
+</div>
+</div>
+</section>
+</template>

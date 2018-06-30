@@ -1,0 +1,173 @@
+<template name="businessEvntIcons2">
+    <div class="descriptionBus">
+        <ul>
+        	<li class="share_page1 like" id="nonUserReview" data-toggle="modal" data-target="#nonuserreviews" title="Like"> 
+            	<i class="fa fa-heart" aria-hidden="true"></i>
+            </li>
+            <!-- modal nonUserReview -->
+            <div class="modal fade" id="nonuserreviews" role="dialog">
+                <div class="modal-dialog nonUserModal">
+                  <!-- Modal content-->
+                    <div class="modal-content nonUserContent">
+                        <div class="modal-header nonUserHeader">
+                            <button type="button" class="close nonUserCloseBtn" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body nonUserBody">
+                            {{#if isInRole 'Vendor'}}
+                                <p>You are logged in as Vendor. In order to avail this facility, please login separately as a user.</p>
+                            {{else}}
+                                <p>You are logged in as Admin. In order to avail this facility, please login separately as a user.</p>
+                            {{/if}}
+                            <button class="btn-primary nonUserOkayBtn" data-dismiss="modal" >Okay</button>
+                        </div>
+                    </div>        
+                </div>
+            </div>
+            <li class="share_page2 Bookmark" id="nonUserReview" data-toggle="modal" data-target="#nonuserreviews" title="Bookmark">
+            	<i class="fa fa-bookmark" aria-hidden="true"></i>
+            </li>
+             <!-- modal nonUserReview -->
+            <div class="modal fade" id="nonuserreviews" role="dialog">
+                <div class="modal-dialog nonUserModal">
+                  <!-- Modal content-->
+                    <div class="modal-content nonUserContent">
+                        <div class="modal-header nonUserHeader">
+                            <button type="button" class="close nonUserCloseBtn" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body nonUserBody">
+                             {{#if isInRole 'Vendor'}}
+                                <p>You are logged in as Vendor. In order to avail this facility, please login separately as a user.</p>
+                            {{else}}
+                                <p>You are logged in as Admin. In order to avail this facility, please login separately as a user.</p>
+                            {{/if}}
+                            <button class="btn-primary nonUserOkayBtn" data-dismiss="modal" >Okay</button>
+                        </div>
+                    </div>        
+                </div>
+            </div>
+
+
+            <li class="share_page2 BeenThere" id="nonUserReview" data-toggle="modal" data-target="#nonuserreviews" title="Been There">
+            	<i class="fa fa-hand-o-up" aria-hidden="true"></i>
+            </li>
+            <!-- modal nonUserReview -->
+            <div class="modal fade" id="nonuserreviews" role="dialog">
+                <div class="modal-dialog modal-sm nonUserModal">
+                  <!-- Modal content-->
+                    <div class="modal-content nonUserContent">
+                        <div class="modal-header nonUserHeader">
+                            <button type="button" class="close nonUserCloseBtn" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            {{#if isInRole 'Vendor'}}
+                                <p>You are logged in as Vendor. In order to avail this facility, please login separately as a user.</p>
+                            {{else}}
+                                <p>You are logged in as Admin. In order to avail this facility, please login separately as a user.</p>
+                            {{/if}}
+                            <button class="btn-primary nonUserOkayBtn" data-dismiss="modal" >Okay</button>
+                        </div>
+                    </div>        
+                </div>
+            </div>
+
+
+
+            <li class="share_page3" id="nonUserReview" data-toggle="modal" data-target="#nonuserreviews" title="Share">
+            	<i class="fa fa-share-alt" aria-hidden="true"></i>
+            </li>
+            <!-- modal nonUserReview -->
+            <div class="modal fade" id="nonuserreviews" role="dialog">
+                <div class="modal-dialog modal-sm nonUserModal">
+                  <!-- Modal content-->
+                    <div class="modal-content nonUserContent">
+                        <div class="modal-header nonUserHeader">
+                            <button type="button" class="close nonUserCloseBtn" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                             {{#if isInRole 'Vendor'}}
+                                <p>You are logged in as Vendor. In order to avail this facility, please login separately as a user.</p>
+                            {{else}}
+                                <p>You are logged in as Admin. In order to avail this facility, please login separately as a user.</p>
+                            {{/if}}
+                            <button class="btn-primary nonUserOkayBtn" data-dismiss="modal" >Okay</button>
+                        </div>
+                    </div>        
+                </div>
+            </div>
+
+            <li class="businessDetailsreview" id="nonUserReview" data-toggle="modal" data-target="#nonuserreviews" title="Review">
+            	<i class="fa fa-pencil" aria-hidden="true"></i>
+            	<span>Review</span>	
+            </li>
+            <!-- modal nonUserReview -->
+            <div class="modal fade" id="nonuserreviews" role="dialog">
+                <div class="modal-dialog modal-sm nonUserModal">
+                  <!-- Modal content-->
+                    <div class="modal-content nonUserContent">
+                        <div class="modal-header nonUserHeader">
+                            <button type="button" class="close nonUserCloseBtn" data-dismiss="modal">&times;</button>
+                        </div>
+                         <div class="modal-body">
+                             {{#if isInRole 'Vendor'}}
+                                <p>You are logged in as Vendor. In order to avail this facility, please login separately as a user.</p>
+                            {{else}}
+                                <p>You are logged in as Admin. In order to avail this facility, please login separately as a user.</p>
+                            {{/if}}
+                            <button class="btn-primary nonUserOkayBtn" data-dismiss="modal" >Okay</button>
+                        </div>
+                    </div>        
+                </div>
+            </div>
+
+           <!--  <li class="reportBox" id="nonUserReview" data-toggle="modal" data-target="#nonuserreviews">
+            	<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            	<span data-toggle="modal" data-target="#reportModal1">Report</span>	
+            </li> -->
+             <!-- modal nonUserReview -->
+            <!-- <div class="modal fade" id="nonuserreviews" role="dialog">
+                <div class="modal-dialog modal-sm nonUserModal"> -->
+                  <!-- Modal content-->
+                    <!-- <div class="modal-content nonUserContent">
+                        <div class="modal-header nonUserHeader">
+                            <button type="button" class="close nonUserCloseBtn" data-dismiss="modal">&times;</button>
+                        </div>
+                         <div class="modal-body">
+                           {{#if isInRole 'Vendor'}}
+                                <p>You are logged in as Vendor. In order to avail this facility, please login separately as a user.</p>
+                            {{else}}
+                                <p>You are logged in as Admin. In order to avail this facility, please login separately as a user.</p>
+                            {{/if}}
+                            <button class="btn-primary nonUserOkayBtn" data-dismiss="modal" >Okay</button>
+                        </div>
+                    </div>        
+                </div>
+            </div> -->
+		    <li class="your-rating" title="Rating">
+				<span class="rate"><i class="fa fa-star-o" aria-hidden="true"></i> Rate </span> 
+				<div class="rateBusi col-lg-3 col-md-3 col-sm-3 col-xs-4">{{> starRating2 }}</div>
+	        </li>
+        </ul>
+        <div class="enqBusi" id="nonUserReview" data-toggle="modal" data-target="#nonuserreviews" title="Enquiry">
+            {{> businessEnquiry}}
+        </div>
+          <!-- modal nonUserReview -->
+            <div class="modal fade" id="nonuserreviews" role="dialog">
+                <div class="modal-dialog modal-sm nonUserModal">
+                  <!-- Modal content-->
+                    <div class="modal-content nonUserContent">
+                        <div class="modal-header nonUserHeader">
+                            <button type="button" class="close nonUserCloseBtn" data-dismiss="modal">&times;</button>
+                        </div>
+                         <div class="modal-body">
+                            {{#if isInRole 'Vendor'}}
+                                <p>You are logged in as Vendor. In order to avail this facility, please login separately as a user.</p>
+                            {{else}}
+                                <p>You are logged in as Admin. In order to avail this facility, please login separately as a user.</p>
+                            {{/if}}
+                            <button class="btn-primary nonUserOkayBtn" data-dismiss="modal" >Okay</button>
+                        </div>
+                    </div>        
+                </div>
+            </div>
+    </div>
+</template>

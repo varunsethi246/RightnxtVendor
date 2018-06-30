@@ -1,0 +1,60 @@
+<template name="editTemplate">
+<section class="NotificationContent">
+	<div class="row">
+		<div class="col-lg-12 col-md-10 ">
+			<div class="notifWrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<h1 class="reportTitleName">UPDATE TEMPLATE</h1>
+				<hr>
+
+				<div class="create-email-template-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				
+					<div class="saveTemplateWrapper col-lg-12 col-md-12 col-xs-12 col-sm-12">
+					{{#each viewTemplate}}
+						<form class="newTemplateForm">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+									 <label class="col-lg-6 label-category">Template Type<span class="astrick">*</span>:</label>     						
+								      <input type="text" name="templateType" value={{templateType}} class="templateType col-lg-12 col-md-12 col-sm-12 col-xs-12 inputValid" disabled="" />  
+    						
+									</div>	
+								</div>
+							</div>
+							<div class="row inputrow">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="form-group">
+									 <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12 label-category">Template Name<span class="astrick">*</span>:</label>     						
+								        <input type="text" name="templateName" value={{templateName}} class="templateName col-lg-12 col-md-12 col-sm-12 col-xs-12 inputValid" />
+									</div>	
+								</div>
+							</div>
+							<div class="row inputrow subjectRow">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="form-group subjectDiv">
+									 <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12 label-category">Subject<span class="astrick">*</span>:</label>     						
+								        <input type="text" name="subject" value={{subject}} class="subject col-lg-12 col-md-12 col-sm-12 col-xs-12 inputValid" />
+									</div>	
+								</div>
+							</div>
+							<div class="row inputrow">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="form-group">
+									 <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12 label-category">Message<span class="astrick">*</span>:</label> 
+									 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 NOpadding"> 
+									 	<div id="editmessageContent">{{{content}}}</div>  
+									 </div> 						
+									</div>	
+								</div>
+							</div>
+							<div class="savetemp col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+								<button type="submit" class="btn btn-primary pull-right updatebtn col-lg-2 col-md-3 col-sm-6 col-xs-12">Update Template</button>
+							</div>
+						</form>
+					{{/each}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</template>

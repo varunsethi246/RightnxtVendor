@@ -1,0 +1,4240 @@
+.anonymousUserContainer {
+padding-right:0;
+padding-left:0
+}
+
+.video {
+border-bottom:1px solid #ccc;
+height:100%;
+width:100%
+}
+
+.homeScrollTop,.bussScrollTop {
+color:#b2b2b2;
+right:8px;
+bottom:5px;
+cursor:pointer;
+position:fixed;
+display:none;
+z-index:5
+}
+
+.homeScrollTop:hover,.bussScrollTop:hover {
+color:#f89b1c
+}
+
+.location-city {
+padding:0
+}
+
+.location-city .city {
+color:#4e4f51;
+font-size:14px;
+font-family:'PROXIMANOVA-REGULAR';
+position:relative;
+top:9px
+}
+
+.location-city span .btn-default {
+background:none!important;
+border:1px solid #f89b1c!important;
+border-radius:0!important;
+font-size:12px;
+color:#f89b1c!important;
+text-align:center;
+margin-left:1%;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.area {
+padding:0 30px 0 5px;
+border:1px solid #ccc;
+height:47px;
+font-size:13px;
+line-height:47px;
+cursor:pointer;
+color:#777;
+border-radius:0
+}
+
+.area:focus {
+border:1px solid #f89b1c;
+box-shadow:none
+}
+
+.group {
+margin-top:3%;
+height:47px;
+/*padding-left:0!important;*/
+/*padding-right:0!important*/
+}
+.groups {
+width: 10%;
+/*padding-left:0!important;
+padding-right:0!important*/
+}
+
+.group input {
+height:45px;
+border:1px solid #ccc;
+padding-left:10px;
+border-radius:0
+}
+
+.group input:focus {
+border:1px solid #f89b1c;
+box-shadow:none
+}
+
+#gridSearchBusiness:focus {
+border:1px solid #f89b1c;
+box-shadow:none
+}
+
+.optionOfAreaG:focus {
+border:1px solid #f89b1c;
+box-shadow:none
+}
+
+.group button {
+border-radius:0;
+color:#fff;
+border:1px solid #f89b1c;
+background-color:#f89b1c;
+height:47px;
+font-size:13px;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.group button:hover {
+color:#fff;
+border:1px solid #f89b1c
+}
+
+.city-content {
+margin-top:25%
+}
+
+.modal-header .city-close {
+margin-top:-5%
+}
+
+.city-close i {
+color:#000;
+position:relative;
+top:26px;
+right:20px
+}
+
+.city-close i:hover {
+color:#f89b1c
+}
+
+.cityModal a {
+color:#4e4f51
+}
+
+.cityModal a:hover {
+color:#f89b1c;
+text-decoration:none
+}
+
+.modal-header .top_search {
+margin-top:3%;
+margin-bottom:0;
+font-size:15px;
+color:#333
+}
+
+.homepageForms {
+margin-top:-36%
+}
+
+.homepageBannerlg {
+margin-top:7%
+}
+
+.searchBusList:focus,.searchBusList:active:focus,.searchBusList.active:focus,.searchBusList.focus,.searchBusList:active.focus,.searchBusList.active.focus {
+color:#fff;
+outline:none;
+border:1px solid orange
+}
+
+.howWork,.howWork1,.howWork2,.howWork3 {
+opacity:0
+}
+
+.fadeInUp {
+animation-name:fadeInUp;
+animation-fill-mode:forwards
+}
+
+@keyframes fadeInUp {
+0% {
+opacity:0;
+transform:translate3d(0,100%,0)
+}
+
+100% {
+opacity:1;
+transform:none
+}
+}
+
+.howitworks {
+margin-top:37%
+}
+
+.howitworks h1 {
+color:#f89b1c;
+text-align:center;
+font-family:'PROXIMANOVA-BOLD';
+font-size:40px;
+margin:70px 0
+}
+
+.howitworks .row div h3 {
+font-size:18px;
+color:#4e4f51
+}
+
+.howitworks .row div p {
+color:#4e4f51;
+font-size:14px!important;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.howitworks .row div img {
+margin:auto;
+height:75px
+}
+
+.fadeInUp {
+animation-name:fadeInUp
+}
+
+@keyframes fadeInUp {
+from {
+opacity:0;
+transform:translate3d(0,100%,0)
+}
+
+to {
+opacity:1;
+transform:none
+}
+}
+
+.product {
+padding:0
+}
+
+.product .col-lg-12 {
+padding:0
+}
+
+.product h3 {
+font-size:25px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR';
+font-weight:400;
+text-align:center;
+margin-top:40px;
+margin-bottom:20px
+}
+
+.products {
+height:120px;
+width:15%;
+border:1px solid #ccc;
+margin-left:1.66%
+}
+
+.products img {
+margin:auto;
+margin-top:10%;
+height:40px
+}
+
+.products h6 {
+margin-top:24%;
+text-align:center;
+font-size:13px;
+color:#4e4f51;
+font-weight:700;
+font-family:'GOTHIC_0'
+}
+
+.last_para3 {
+margin-bottom:50px!important
+}
+
+#productCarousel .item.active,#serviceCarousel .item.active {
+padding-left:0
+}
+
+#productCarousel .carousel-inner .item .products:hover {
+border:1px solid #f89b1c
+}
+
+#serviceCarousel .carousel-inner .item .products:hover {
+border:1px solid #f89b1c
+}
+
+#serviceCarousel {
+margin-bottom:50px
+}
+
+.carousel-control.left,.carousel-control.right {
+background-image:none
+}
+
+.aboutus-image {
+overflow:hidden
+}
+
+.aboutus {
+text-align:justify
+}
+
+.aboutus h2 {
+text-align:center;
+font-weight:400;
+font-size:44px;
+color:#f89b1c;
+font-family:"PROXIMANOVA-BOLD";
+margin:35px 0 30px
+}
+
+.aboutNavbar {
+padding-left:40px
+}
+
+.aboutNavbar .nav-pills > li.active > a {
+background-color:#fff!important;
+color:#f89b1c!important;
+border-bottom:1px solid #000;
+border-radius:0
+}
+.aboutNavbar .FAQTAB > li.active > a {
+background-color:#fff!important;
+color:#f89b1c!important;
+border-bottom:1px solid #000!important;
+border-radius:0
+}
+.FAQTAB>li.active>a, .FAQTAB>li.active>a:hover, .FAQTAB>li.active>a:focus, .FAQTAB>li>a{
+	/*border-style: none!important;*/
+	/*border: 1px solid #a5a5a500!important;*/
+	    border-radius: 0;
+    border-left: 0px!important;
+    border-top: 0px!important;
+    border-right: 0px!important;
+}
+.aboutNavbar .nav-pills > li > a {
+color:#4e4f53!important;
+border-radius:0
+}
+
+.aboutNavbar .nav-pills > li.active > a:hover {
+color:#f89b1c!important;
+border-bottom:1px solid #000;
+background-color:#fff!important
+}
+
+.aboutNavbar .nav-pills > li > a:hover {
+color:#f89b1c!important;
+border-bottom:1px solid #000;
+background-color:#fff!important
+}
+
+.aboutNavbar .nav-pills > li {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:14px;
+font-weight:400;
+margin:0!important;
+border-bottom:1px solid #ccc
+}
+
+.companytab {
+line-height:1.42857143em;
+background-color:#fff!important
+}
+
+.companytab h4 {
+font-weight:400;
+font-size:25px;
+color:#4f5054;
+font-family:'PROXIMANOVA-REGULAR';
+text-align:center;
+margin-bottom:25px;
+margin-top:40px
+}
+
+.companytab p {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:14px;
+color:#4d4e52;
+line-height:22px;
+text-align:justify;
+margin-bottom:2%
+}
+
+.visionImg {
+margin-top:65px
+}
+
+.visionImg img {
+margin:0 auto
+}
+
+.visionImg h4 {
+font-weight:400;
+font-size:25px;
+color:#4f5054;
+font-family:'PROXIMANOVA-REGULAR';
+text-align:center;
+margin-top:-4%;
+margin-bottom:20px
+}
+
+.visionImg p {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:14px;
+color:#4d4e52;
+line-height:22px;
+text-align:justify;
+margin-bottom:35px
+}
+
+.whyWeBuilt {
+line-height:1.42857143em;
+background-color:#fff!important
+}
+
+.whyWeBuilt h4 {
+font-weight:400;
+font-size:25px;
+color:#4f5054;
+font-family:'PROXIMANOVA-REGULAR';
+text-align:center;
+margin-top:40px
+}
+
+.whyWeBuilt p {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:14px;
+color:#4d4e52;
+line-height:22px;
+text-align:justify;
+margin-left:3%;
+margin-right:3%
+}
+
+.whyWeBuilt ul {
+color:#f89b1c;
+list-style:none
+}
+
+.whyWeBuilt ul li:before {
+content:"•";
+font-size:260%;
+position:relative;
+top:27px
+}
+
+.last_para {
+margin-bottom:40px
+}
+
+.howWeHelp {
+line-height:1.42857143em;
+background-color:#fff!important
+}
+
+.howWeHelp h4 {
+font-weight:400;
+font-size:25px;
+color:#4f5054;
+font-family:'PROXIMANOVA-REGULAR';
+text-align:center;
+margin-bottom:25px;
+margin-top:40px
+}
+
+.howWeHelp p {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:14px;
+color:#4d4e52;
+line-height:22px;
+text-align:justify;
+margin-bottom:20px
+}
+
+.howWeHelp p:last-child {
+margin-bottom:0
+}
+
+.howWeHelp h5 {
+font-weight:400;
+font-size:25px;
+color:#4f5054;
+font-family:'PROXIMANOVA-REGULAR';
+text-align:center;
+margin-bottom:30px;
+margin-top:40px
+}
+
+.howWeHelp ul {
+color:#4d4e52;
+line-height:26px;
+padding-left:32px
+}
+
+.howWeHelp ul li {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:14px;
+font-weight:400
+}
+
+.aboutus-sm {
+border:1px solid #ccc;
+line-height:36px;
+text-align:left;
+font-size:14px;
+font-family:"PROXIMANOVA-BOLD";
+cursor:pointer;
+color:#4e4f51
+}
+
+.aboutus-sm button span {
+line-height:36px;
+font-size:14px;
+font-family:"PROXIMANOVA-BOLD"!important;
+cursor:pointer;
+color:#4e4f51!important
+}
+
+input[type=number].no-spinner::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance:none;
+margin:0
+}
+
+.addNewBtn {
+margin-top:20px;
+margin-bottom:30px;
+margin-right:2%;
+padding:10px 50px
+}
+
+.addNewBtn:hover {
+color:#fff;
+background-color:#f89b1c
+}
+
+.topCareer {
+padding-top:17px!important
+}
+
+.iCareer a i {
+margin-top:8.5px
+}
+
+.careerColorOrange {
+color:#f89b1c
+}
+
+.careerColorGrey {
+color:#ccc
+}
+
+#careerData button {
+margin-top:-4%;
+margin-right:-3%
+}
+
+#careerData {
+width:8%;
+padding-top:14px
+}
+
+.classActive:focus,.classActive:active:focus,.classActive.active:focus,.classActive.focus,.classActive:active.focus,.classActive.active.focus {
+background-color:#fff;
+border:1px solid #f89b1c
+}
+
+.classInactive:focus,.classInactive:active:focus,.classInactive.active:focus,.classInactive.focus,.classInactive:active.focus,.classInactive.active.focus {
+background-color:#fff;
+border:1px solid #ccc
+}
+
+.classInactive {
+border:1px solid #ccc
+}
+
+.classInactive:hover {
+background-color:#fff;
+border:1px solid #ccc
+}
+
+.classIInactive {
+color:#ccc!important
+}
+
+.classActive {
+border:1px solid #f89b1c
+}
+
+.classActive:hover {
+background-color:#fff;
+border:1px solid #f89b1c;
+color:#f89b1c
+}
+
+.classIActive {
+color:#f89b1c!important
+}
+
+.careerJoinForm {
+padding-left:10%;
+padding-right:10%;
+margin:5.5% 0 8%
+}
+
+.career {
+line-height:26px;
+margin-bottom:32%
+}
+
+.career h2 {
+font-weight:400;
+font-size:44px;
+color:#f89b1c;
+font-family:"PROXIMANOVA-BOLD";
+margin-top:35px;
+margin-bottom:20px
+}
+
+.career h4 {
+font-weight:400;
+font-size:25px;
+color:#4f5054;
+font-family:'PROXIMANOVA-REGULAR';
+text-align:center;
+margin-bottom:25px
+}
+
+.last_para1 {
+margin-bottom:10px!important
+}
+
+.career-row {
+margin-left:12.5%
+}
+
+.career .row {
+margin-left:3%;
+margin-right:3%
+}
+
+.career-col h5 {
+font-size:12.5px
+}
+
+.career-col {
+border:1px solid #ccc;
+margin-bottom:20px;
+padding-bottom:3%;
+font-weight:400;
+font-family:"PROXIMANOVA-BOLD";
+font-size:15px;
+padding-top:10px;
+padding-left:20px
+}
+
+.career-col p {
+margin-bottom:0;
+font-weight:400;
+font-family:"PROXIMANOVA-BOLD";
+font-size:14px
+}
+
+.career-col:hover {
+background:#f89b1c;
+border:1px solid #f89b1c;
+color:#fff
+}
+
+.career-list a {
+text-decoration:none;
+color:#4f5054
+}
+
+.careerForms table thead tr th {
+text-align:center
+}
+
+#joinForm .form_group input:focus {
+border:1px solid #f89b1c;
+box-shadow:none
+}
+
+#joinForm .form_group select:focus {
+border:1px solid #f89b1c;
+box-shadow:none
+}
+
+#joinForm .form_group .error {
+color:red
+}
+
+#joinForm .form_group input.error {
+border:1px solid red;
+box-shadow:none
+}
+
+#joinForm .form_group select.error {
+border:1px solid red;
+box-shadow:none
+}
+
+#OrderForm .col-lg-12 input:focus,#OrderForm .col-lg-12 select:focus,#OrderForm .col-lg-12 textarea:focus {
+border:1px solid #f89b1c;
+box-shadow:none
+}
+
+#OrderForm .col-lg-12 .error {
+color:red
+}
+
+#OrderForm .col-lg-12 input.error,#OrderForm .col-lg-12 select.error,#OrderForm .col-lg-12 textarea.error {
+border:1px solid red;
+box-shadow:none
+}
+
+#OfferForm .col-lg-12 input:focus,#OfferForm .col-lg-12 select:focus,#OfferForm .col-lg-12 textarea:focus {
+border:1px solid #f89b1c;
+box-shadow:none
+}
+
+#OfferForm .col-lg-12 .error {
+color:red
+}
+
+#OfferForm .col-lg-12 input.error,#OfferForm .col-lg-12 select.error,#OfferForm .col-lg-12 textarea.error {
+border:1px solid red;
+box-shadow:none
+}
+
+#addNewJobForm .input-group input:focus,#addNewJobForm .form-group select:focus,#addNewJobForm .input-group div:focus {
+border:1px solid #f89b1c;
+box-shadow:none
+}
+
+#addNewJobForm .inputOption label.error {
+color:red;
+padding-left:5%!important
+}
+
+#addNewJobForm .inputOptionDate label.error {
+color:red;
+padding-left:15%!important
+}
+
+#addNewJobForm .marginBottom input.error {
+border:1px solid red;
+box-shadow:none
+}
+
+#addNewJobForm .marginBottom select.error {
+border:1px solid red;
+box-shadow:none
+}
+
+#addNewJobForm .selectJobOption label.error {
+color:red;
+padding-left:10%!important
+}
+
+#addNewJobForm .form-group .error:focus,#addNewJobForm .input-group .error:focus {
+border:1px solid red;
+box-shadow:none
+}
+
+#addNewJobForm .input-group {
+margin-bottom:.5%
+}
+
+.citySearchMheader .group {
+margin-top:7%
+}
+
+.joinus h2 {
+font-size:24px;
+color:#4e4f51;
+font-weight:400;
+font-family:"PROXIMANOVA-BOLD"
+}
+
+.joinus-text h2 {
+margin-top:40px;
+margin-bottom:12px
+}
+
+.joinus-text h4 {
+font-size:24px;
+color:#4e4f51;
+font-weight:400;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.joinTab {
+padding:8px 0;
+margin-bottom:14px
+}
+
+.joinTab .true {
+display:inline
+}
+
+.noLeftContent {
+border-left:0!important;
+padding-left:0!important
+}
+
+.joinTab .false {
+display:none
+}
+
+.joinTab span {
+font-size:12.5px;
+font-family:"PROXIMANOVA-REGULAR";
+padding-right:6px;
+color:#999
+}
+
+.joinColor {
+color:#333!important
+}
+
+.joinSal {
+padding-left:10px;
+border-left:1px solid #ccc
+}
+
+.joinus-text p {
+font-size:14px;
+line-height:22px;
+color:#4e4f51;
+font-weight:400;
+font-family:"PROXIMANOVA-REGULAR";
+text-align:justify;
+margin-bottom:25px;
+word-wrap:break-word
+}
+
+.joinus ul li {
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR";
+font-size:14px;
+line-height:24px
+}
+
+.joinus ul {
+padding-left:15px
+}
+
+.forms_content .btn-default {
+background-color:#f89b1c!important;
+color:#fff!important;
+border-radius:0;
+font-family:"PROXIMANOVA-BOLD";
+font-size:16px;
+margin-left:0!important;
+border:1px solid #f89b1c;
+height:40px
+}
+
+.joinus .forms_content {
+margin-bottom:50px;
+margin-left:0;
+margin-top:3.5%
+}
+
+.form_group select {
+border-radius:0
+}
+
+.form_group input {
+border-radius:0
+}
+
+.form_group label {
+font-weight:400;
+font-family:'PROXIMANOVA-REGULAR';
+font-size:15px;
+color:#4e4f51
+}
+
+.form_group {
+margin-bottom:22px
+}
+
+.fileupload {
+padding:5px 0 5px 10px
+}
+
+.joinUslg {
+margin-left:0!important
+}
+
+.joinUsmd {
+margin-left:0!important
+}
+
+.joinUssm {
+margin-left:0!important
+}
+
+.joinus-text {
+margin-bottom:40px
+}
+
+.job-list table thead tr th {
+text-align:center
+}
+
+.job-list table tbody tr td button a i {
+color:#fff
+}
+
+.addNewJobForm {
+margin-top:3%
+}
+
+.codeofconduct {
+margin-top:1.5%;
+text-align:justify
+}
+
+.codeofconduct h2 {
+text-align:left;
+font-weight:400;
+font-size:36px;
+color:#f89b1c;
+font-family:"PROXIMANOVA-BOLD"
+}
+
+.codeofconduct p {
+line-height:22px;
+color:#4d4e52;
+font-size:14px;
+text-align:justify;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.codeofconduct h3 {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:22px;
+font-weight:400;
+color:#000;
+margin-top:35px;
+margin-bottom:20px
+}
+
+.codeofconduct ul {
+padding-left:42px!important
+}
+
+.codeofconduct ul li {
+color:#4d4e52;
+font-family:'PROXIMANOVA-REGULAR';
+font-size:14px;
+margin-bottom:10px
+}
+
+.codeofconduct a {
+text-decoration:underline!important;
+color:#4d4e52!important
+}
+
+.codeofconduct {
+margin-top:1.5%
+}
+
+.termsofservice ul li {
+color:#4d4e52;
+font-family:'PROXIMANOVA-REGULAR';
+font-size:14px;
+margin-left:3.5%
+}
+
+.termsofservice {
+margin-top:1.5%;
+text-align:justify
+}
+
+.termsofservice a {
+text-decoration:underline!important;
+color:#4d4e52!important
+}
+
+.termsofservice h2 {
+text-align:left;
+font-weight:400;
+font-size:36px;
+color:#f89b1c;
+font-family:"PROXIMANOVA-BOLD"
+}
+
+.termsofservice h4 {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:18px;
+font-weight:400;
+color:#000
+}
+
+.termsofservice p {
+line-height:22px;
+color:#4d4e52;
+font-size:14px;
+font-family:'PROXIMANOVA-REGULAR';
+text-align:justify
+}
+
+.termsofservice h3 {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:22px;
+font-weight:400;
+color:#000;
+margin-bottom:22px;
+margin-top:35px
+}
+
+.termsofservice h6 {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:18px;
+font-weight:400;
+color:#000
+}
+
+.ol-plist {
+color:#4d4e52!important;
+font-family:'PROXIMANOVA-REGULAR'!important;
+font-size:14px!important;
+text-align:justify
+}
+
+.ol-plist ol li {
+margin-bottom:10px
+}
+
+.termsofservice ol ul {
+padding-left:42px
+}
+
+.privacy-policy {
+margin-top:1.5%;
+text-align:justify
+}
+
+.privacy-policy a {
+text-decoration:underline!important;
+color:#4d4e52!important
+}
+
+.privacy-policy h2 {
+text-align:left;
+font-weight:400;
+font-size:36px;
+color:#f89b1c;
+font-family:"PROXIMANOVA-BOLD"
+}
+
+.privacy-policy h4 {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:18px;
+font-weight:400;
+color:#000
+}
+
+.privacy-policy h3 {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:22px;
+font-weight:400;
+color:#000;
+margin-top:30px
+}
+
+.privacy-policy h6 {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:18px;
+font-weight:400;
+color:#000
+}
+
+.privacy-policy p {
+line-height:22px;
+color:#4d4e52;
+font-size:14px;
+font-family:'PROXIMANOVA-REGULAR';
+text-align:justify
+}
+
+.privacy-policy ol {
+line-height:22px;
+color:#4d4e52;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.privacy-policy ol li {
+margin-bottom:8px
+}
+
+.privacy-policy table,thead tr th,tbody tr td,tbody tr th {
+border:1px solid #ccc
+}
+
+.privacy-policy table thead tr,table tbody tr th {
+background-color:#f0f0f0
+}
+
+.privacy-policy table thead tr th,tbody tr th {
+padding:8px
+}
+
+.privacy-policy table {
+margin-top:7px;
+margin-bottom:20px
+}
+
+.privacy-policy table tbody tr td {
+color:#4d4e52;
+font-size:14px;
+font-family:'PROXIMANOVA-REGULAR';
+font-weight:400;
+padding:8px
+}
+
+.policy-list .list-heading {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:22px;
+font-weight:400;
+color:#000
+}
+
+.msgMar {
+margin-top:18px
+}
+
+.msgSpan {
+line-height:1.5
+}
+
+.contact-margin {
+margin-top:7%
+}
+
+.form_group input:focus,.form_group textarea:focus,.form_group select:focus {
+border:1px solid #f89b1c;
+box-shadow:none
+}
+
+.form_group input.error,.form_group select.error,.form_group textarea.error {
+border:1px solid red;
+box-shadow:none
+}
+
+.form_group .error:focus {
+border:1px solid red;
+box-shadow:none
+}
+
+.form_group .error {
+color:red
+}
+
+.contact-us h2 {
+text-align:left;
+font-weight:400;
+font-size:36px;
+color:#f89b1c;
+font-family:"PROXIMANOVA-BOLD";
+margin-top:35px;
+margin-bottom:25px
+}
+
+.contact-form .btn {
+border-radius:0;
+color:#fff;
+background-color:#f89b1c;
+margin-left:0!important;
+margin-bottom:20px;
+font-size:14px;
+border:1px solid #f89b1c
+}
+
+.contact-form .btn-default:hover {
+background-color:#4d4e52!important;
+border:1px solid #4d4e52!important
+}
+
+.ads-div {
+margin-top:8%
+}
+
+.form_group textarea {
+border-radius:0
+}
+
+.contact-form h3 {
+font-weight:400;
+font-size:20px;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.contact-form p {
+font-weight:400;
+font-family:'PROXIMANOVA-REGULAR';
+color:#4e4f51;
+font-size:14px;
+line-height:22px
+}
+
+.contact-margin .info-div {
+margin-bottom:20px;
+padding-bottom:0;
+border:1px solid #ccc
+}
+
+.claim {
+background:url(../images/claim/banner.jpg) no-repeat;
+background-attachment:fixed;
+background-position:center;
+background-size:cover;
+min-height:500px
+}
+
+.text-center h3 {
+color:#4e4f51;
+font-size:20px;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.text-center p {
+color:#4e4f51;
+font-size:14px;
+font-family:"PROXIMANOVA-REGULAR";
+line-height:25px;
+word-wrap: break-word;
+}
+
+.claim-data h3 {
+font-size:18px;
+color:#4e4f51;
+font-weight:400;
+font-family:"PROXIMANOVA-BOLD"
+}
+
+.claim-data p {
+font-family:"PROXIMANOVA-REGULAR";
+font-size:14px;
+color:#4e4f51;
+line-height:27px
+}
+
+.claim-button .btn {
+margin-top:16%;
+margin-left:30%;
+border-radius:3px!important
+}
+
+.claim-button .statusClass-green {
+border:1px solid #6cc233!important;
+color:#6cc233!important;
+font-size:14px;
+font-family:"PROXIMANOVA-REGULAR";
+text-align:center;
+background-color:#fff
+}
+
+.claim-button .statusClass-green:hover {
+background-color:#6cc233!important;
+color:#fff!important
+}
+
+.claim-button .statusClass-red {
+border:1px solid #c71010!important;
+color:#c71010!important;
+font-size:14px;
+font-family:"PROXIMANOVA-REGULAR";
+text-align:center;
+background-color:#fff
+}
+
+.claim-button .statusClass-red:hover {
+background-color:#c71010!important;
+color:#fff!important
+}
+
+.claim-button .statusClass-g {
+border:1px solid #6cc233!important;
+color:#6cc233!important;
+font-size:14px;
+font-family:"PROXIMANOVA-REGULAR";
+text-align:center;
+background-color:#fff
+}
+
+.claim-button .statusClass-g:hover {
+background-color:#6cc233!important;
+color:#fff!important
+}
+
+.claim-button .statusClass-r {
+border:1px solid #c71010!important;
+color:#c71010!important;
+font-size:14px;
+font-family:"PROXIMANOVA-REGULAR";
+text-align:center;
+background-color:#fff
+}
+
+.claim-button .statusClass-r:hover {
+background-color:#c71010!important;
+color:#fff!important
+}
+
+.claim .container .row-border {
+border:1px solid #ccc;
+margin-bottom:6px;
+background-color:#fff
+}
+
+.claimlg {
+margin-top:8.5%
+}
+
+.claimmd {
+margin-top:2%
+}
+
+.claimsm {
+margin-top:2%
+}
+
+.claimxs {
+margin-top:2%
+}
+
+.para3 {
+margin-top:40px
+}
+
+.claim .group .form_button {
+border-radius:0;
+height:36px!important;
+border:1px solid #ccc;
+/*padding-right:26px;*/
+padding-right:12px;
+background-color:#fff!important;
+color:#666!important
+}
+
+.claim .group button:hover {
+border:1px solid #f89b1c!important
+}
+
+.claim .group .area {
+height:36px!important;
+color:#777!important
+}
+
+.claim .group input {
+height:36px!important
+}
+
+.claimp {
+margin-top:85px
+}
+
+.claimpp {
+margin-top:-34px
+}
+
+.claimOtp p a {
+cursor:pointer
+}
+
+.claimOtp p {
+padding-left:16px;
+padding-top:20px;
+padding-bottom:20px;
+font-size:16px;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+#signupScreen {
+margin-top:-8%
+}
+
+.login-btn1:hover {
+border:1px solid #4e4f51
+}
+
+.login-btn1 {
+border:1px solid #f89b1c
+}
+
+.alreadyClaimed p a {
+cursor:pointer
+}
+
+.alreadyClaimed p {
+margin-top:-8%;
+padding-left:17px!important
+}
+
+.alrclaimModalBtn {
+background-color:#f89b1c;
+border:1px solid #f89b1c;
+color:#fff;
+padding:5px 15px;
+margin-left:38%
+}
+
+.claimRightModal h4 {
+margin-top:28%;
+padding-left:16px;
+padding-top:20px;
+padding-bottom:20px;
+color:#4e4f51;
+font-weight:600;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.claimOtp p:first-child {
+margin-top:20%
+}
+
+.claimOtp input {
+padding:3.7px 4px
+}
+
+.claimRightModal form {
+margin-left:5%
+}
+
+.claimModalBtn:hover {
+color:#fff
+}
+
+.claimModalBtn:focus,.claimModalBtn:active:focus,.claimModalBtn.active:focus,.claimModalBtn.focus,.claimModalBtn:active.focus,.claimModalBtn.active.focus {
+color:#fff
+}
+
+.claimModalBtn {
+background-color:#f89b1c;
+border:1px solid #f89b1c;
+color:#fff;
+border-radius:0;
+padding-top:3px;
+margin-top:-2px
+}
+
+.claimotpdiv {
+margin-left:39%
+}
+
+.callBkbtn {
+background-color:#f89b1c;
+border:1px solid #f89b1c;
+color:#fff;
+border-radius:0;
+padding:6px 12px;
+margin-left:35%
+}
+
+.footer-row {
+background-color:#f0f0f0;
+padding:12px 0 25px;
+margin-top:2%;
+margin-left:21%;
+margin-bottom: 20px;
+}
+
+.footer-row a {
+color:#fff;
+background-color:#f89b1c;
+height:29px;
+line-height:29px;
+padding:10px;
+font-family:"PROXIMANOVA-REGULAR";
+font-size:15px;
+border:1px solid #f89b1c
+}
+
+.footer-row span {
+color:#fff;
+background-color:#f89b1c;
+height:29px;
+line-height:29px;
+padding:10px;
+font-family:"PROXIMANOVA-REGULAR";
+font-size:15px;
+border:1px solid #f89b1c;
+cursor:pointer
+}
+
+.footer-row a:hover {
+text-decoration:none
+}
+
+.footer-row a:visited {
+text-decoration:none
+}
+
+.footer-row h3 {
+font-weight:400;
+color:#f89b1c;
+font-family:"PROXIMANOVA-BOLD";
+font-size:20px
+}
+
+.footer-row p {
+font-family:"PROXIMANOVA-REGULAR";
+color:#4e4f51;
+font-size:15px
+}
+
+.thankP {
+padding-left:60px
+}
+
+.claim-pagination .pagination > li > a {
+border:none!important;
+color:#4e4f51!important;
+font-size:18px;
+font-family:'PROXIMANOVA-REGULAR';
+background:none!important
+}
+
+.claim-pagination .pagination > li > a:hover {
+color:#f89b1c!important;
+background:none!important
+}
+
+.claim-pagination .pagination > .active > a {
+color:#f89b1c!important;
+background:none!important
+}
+
+.claim .container .forms {
+padding-left:4%;
+margin-top:7%
+}
+
+.claim-login a {
+font-size:13px;
+color:#666;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.claim-login {
+margin-top:22px;
+margin-right:60px
+}
+
+.claim-login a:hover {
+color:#F89B1C;
+text-decoration:none
+}
+
+.faq .tab-content {
+margin-top:2%
+}
+
+.panel-color {
+background-color:#f89b1c!important;
+color:#fff!important
+}
+
+.panel-heading .span {
+position:relative;
+top:-6px
+}
+
+.panel-heading .span .fa-angle-up {
+margin-top:-1px
+}
+
+.panel-title h4 i {
+color:#4e4f51;
+font-weight:400
+}
+
+.panel-display {
+display:block
+}
+
+.introduction .panel-default a {
+text-decoration:none
+}
+
+.introduction .panel-default a .panel-heading {
+font-size:16px;
+color:#4e4f51;
+font-weight:400;
+font-family:"PROXIMANOVA-BOLD";
+background-color:#f5f5f5;
+padding-bottom:10px
+}
+
+.introduction .panel-collapse .panel-body {
+font-family:"PROXIMANOVA-REGULAR";
+font-size:14px;
+color:#4e4f51;
+font-weight:500;
+text-align:justify
+}
+
+.introduction .panel-default {
+border-radius:0!important
+}
+
+.introduction .panel-default a .panel-heading:hover {
+background-color:#f89b1c;
+color:#fff
+}
+
+.merchant {
+margin-top:1.5%
+}
+
+.merchant ul li {
+color:#4d4e52;
+font-family:'PROXIMANOVA-REGULAR';
+line-height:18px;
+margin:8px 0 15px;
+text-align:justify
+}
+
+.merchant ul {
+color:#4d4e52!important;
+margin-left:70px
+}
+
+.para {
+margin-bottom:22px
+}
+
+.para1 {
+margin-bottom:30px
+}
+
+.para2 {
+margin-top:21px
+}
+
+.merchant h4 {
+margin-left:25px
+}
+
+.merchant h3:first-of-type {
+margin-top:15px
+}
+
+.merchant h3 {
+margin-top:45px
+}
+
+.aboutUs-form {
+margin-top:5.5%;
+margin-bottom:7%
+}
+
+.aboutUsForm .btn {
+padding:12px 40px;
+margin-left:0!important;
+border:1px solid #ccc;
+font-weight:700;
+margin-bottom:5%;
+box-shadow:none
+}
+
+.aboutUsForm .btn:hover {
+background-color:#f89b1c!important;
+border:1px solid #f89b1c;
+color:#fff!important
+}
+
+.generalContentForm .btn {
+padding:12px 40px;
+border:1px solid #ccc;
+margin-left:0!important;
+margin-bottom:5%;
+font-weight:700;
+box-shadow:none
+}
+
+.generalContentForm .btn:hover {
+background-color:#f89b1c!important;
+color:#fff!important;
+border:1px solid #f89b1c
+}
+
+#faqadminForm .btn {
+padding:12px 40px;
+border:1px solid #ccc;
+margin-left:0!important;
+font-weight:700;
+margin-bottom:5%;
+box-shadow:none
+}
+
+#faqadminForm .btn:hover {
+background-color:#f89b1c!important;
+border:1px solid #f89b1c;
+color:#fff!important
+}
+
+.editpage {
+padding-top:2%;
+margin-top:5.5%;
+margin-bottom:12%
+}
+
+.editpage .true {
+display:block;
+margin-left:64%;
+margin-top:-16.5%
+}
+
+.editpage .false {
+display:none
+}
+
+.merchantGuidelinessm {
+margin-top:13%
+}
+
+.merchantGuidelineslg {
+margin-top:6.5%
+}
+
+.merchantGuidelinesmd {
+margin-top:6%
+}
+
+.merchantGuidelinesxs {
+margin-top:34%
+}
+
+.eForm {
+display:none
+}
+
+.delete-close {
+background-color:#f89b1c!important;
+color:#f89b1c!important;
+padding:8px
+}
+
+.body-close {
+margin-left:39%
+}
+
+input[name="choosePic"] {
+padding:0px;
+}
+/*input[name="chooseVendor2Pic"]:hover {
+background-color: #f9b81c!important;
+color: #fff!important;
+border: 1px solid #f9b81c!important;
+font-weight: 700!important;
+}*/
+
+input[name='chooseVendor2Pic'] {
+margin-top:8%;
+margin-bottom:8%
+}
+
+.vendor2Drag {
+display:none
+}
+
+.imgVendorSpan {
+margin-left:65px;
+box-shadow:1px 1px 2px #aaa
+}
+
+#imgVendorSpan {
+position:relative;
+bottom:169px
+}
+
+#imgVendor2Span {
+position:relative;
+bottom:168px;
+right:52px
+}
+
+.offersVendor {
+padding-left:0
+}
+
+.vendor2Imge {
+margin-top:-1%
+}
+
+.noFile {
+position:relative;
+top:8px;
+left:20px
+}
+
+.saveoffer .col-lg-12 {
+margin-left:2.5%
+}
+
+.offerFormDiv {
+padding-left:0
+}
+
+.offerForm {
+margin-bottom:18px;
+padding-left:0
+}
+
+#OfferForm .madal-body {
+padding-top:0
+}
+
+.aboutBusinessClass {
+padding-left:0!important
+}
+
+.offerPay h3 {
+color:#f89b1c;
+font-family:'PROXIMANOVA-REGULAR';
+font-size:19px;
+font-weight:400;
+margin-bottom:8%
+}
+
+.offerTitle p {
+color:#171717;
+font-family:'PROXIMANOVA-REGULAR';
+font-size:16px;
+font-weight:400
+}
+
+.offerTitle > span {
+font-size:16px
+}
+
+.newOffTitle h4 {
+font-weight:400;
+font-size:20px;
+font-family:'PROXIMANOVA-BOLD';
+color:#f89b1c;
+margin-top:3px
+}
+
+.offerPara {
+font-size:16px;
+color:#171717;
+font-family:'PROXIMANOVA-REGULAR';
+font-weight:400
+}
+
+.offeraccr {
+margin-left:-0
+}
+
+.vAboutBusinessAccordion .panel-heading i {
+margin-top:-8px
+}
+
+.fromDate {
+padding-left:0
+}
+
+.fromDate label,.expireLabelfromDate label {
+padding-top:6px
+}
+
+.toDate {
+padding-left:18px
+}
+
+.offerbtn {
+margin-left:3%;
+margin-bottom:10%
+}
+
+.offerSave {
+padding-left:17px;
+margin-top:12px
+}
+
+.offerPay {
+padding-top:15px;
+margin-top:20%;
+background:#fff;
+box-shadow:1px 1px 2px #aaa
+}
+
+.offerPaymt {
+margin-top:5%;
+background:#f5f5f5;
+box-shadow:1px 1px 2px #aaa;
+margin-bottom:5%
+}
+
+.dottedLine {
+border-top:1px solid #f89b1c;
+margin-top:8px;
+margin-bottom:14px
+}
+
+.vendorPanelBody {
+padding-top:0
+}
+
+.delBusiImg {
+position:absolute;
+top:10px;
+right:16px
+}
+
+.paymtback {
+border-left:1px solid #ccc
+}
+
+.paymtInv > h4 {
+margin-top:30px
+}
+
+.paymtInv {
+margin-top:2.5%;
+margin-bottom:2.5%;
+padding:2%;
+padding-right:0;
+background-color:#f7f7f7;
+box-shadow:1px 1px 2px #aaa
+}
+
+.paymtInv h4,h5,h3,p,th,td {
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.paymtInv hr {
+border-top:2px solid #f89b1c
+}
+
+.invRight {
+padding-left:0
+}
+
+.invLeft {
+padding-left:5%
+}
+
+.invBoth {
+padding-left:0;
+margin-top:3%;
+margin-bottom:3%
+}
+
+.paymtTable {
+padding-left:0
+}
+
+.paymtTable .table > thead:first-child > tr:first-child > th {
+border-top:2px solid #ddd
+}
+
+.paymtTable .table > tbody > tr {
+border-bottom:2px solid #ddd
+}
+
+.paymtTable .table > thead > tr >th {
+text-align:center;
+background-color:#f0f0f0
+}
+
+.paymtTable .table > tbody > tr >td {
+padding-bottom:2.5%;
+padding-top:2.5%
+}
+
+.paymtTable .table > tbody >tr >.payLastRow {
+padding-left:4.75%
+}
+
+.placeOrder {
+padding-top:20%;
+padding-right:20%;
+cursor:pointer
+}
+
+.placeOrder .btn {
+background-color:#f89b1c;
+border-radius:0!important;
+color:#fff;
+font-weight:700;
+font-size:14px;
+margin-left:50px
+}
+
+.placeOrder .btn:hover {
+background-color:#f89b1c;
+color:#fff
+}
+
+.payline {
+padding-left:4%
+}
+
+.payIcon img {
+height:40px;
+width:60px
+}
+
+.headerLogin {
+padding-left:30%!important
+}
+
+.activeBookmark {
+color:#f89b1c!important;
+border:1px solid #f89b1c!important
+}
+
+.inactiveBookmark {
+color:#b2b2b2!important;
+border:1px solid #b2b2b2!important
+}
+
+.inactiveBookmark:hover {
+color:#f89b1c!important
+}
+
+.activeBeenThere {
+color:#f89b1c!important;
+border:1px solid #f89b1c!important
+}
+
+.inactiveBeenThere {
+color:#b2b2b2!important;
+border:1px solid #b2b2b2!important
+}
+
+.inactiveBeenThere:hover {
+color:#f89b1c!important
+}
+
+.bookmarkImg a:hover {
+text-decoration:none
+}
+
+.bookmarkImg a {
+text-decoration:none
+}
+
+.BeenImg a {
+text-decoration:none
+}
+
+.BeenImg a:hover {
+text-decoration:none
+}
+
+.recLine {
+padding-left:6.5%;
+border-top:2px solid #b2b2b2
+}
+
+.recBorder {
+border:1px solid #f89b1c;
+margin-left:3%;
+margin-top:-1.4%
+}
+
+.receipt {
+margin-top:2.5%;
+margin-bottom:2.5%;
+padding:2%;
+padding-right:0;
+background-color:#f7f7f7;
+box-shadow:1px 1px 2px #aaa
+}
+
+.receipt h3 {
+    font-family: 'PROXIMANOVA-REGULAR';
+    color: #fff;
+    background-color: antiquewhite;
+    margin-left: 3%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border: 2px solid #f89b1c;
+    margin-bottom: 10px;
+}
+
+.receipt h4 {
+font-family:'PROXIMANOVA-REGULAR';
+margin-left:15%;
+padding-top:4%;
+padding-bottom:1%;
+text-align:left
+}
+
+.recMargin {
+margin-left:15%;
+margin-right:15%;
+margin-top:-2%
+}
+
+.recMargin p {
+padding-left:1px
+}
+
+.recDiv {
+margin-top:10px;
+margin-bottom:6%
+}
+
+.recDiv button span {
+padding-right:18px
+}
+
+.recDiv .button1,.buttonMakePaymet {
+color:#fff;
+background-color:#f89b1c;
+font-family:'PROXIMANOVA-BOLD';
+border:1px solid #f89b1c
+}
+
+.recDiv .button1:hover,.buttonMakePaymet:hover {
+background-color:#b2b2b2;
+border:1px solid #b2b2b2
+}
+
+.recDiv .button2 {
+color:#fff;
+background-color:#b2b2b2;
+font-family:'PROXIMANOVA-BOLD';
+border:1px solid #b2b2b2
+}
+
+.recDiv .button2:hover {
+background-color:#f89b1c;
+border:1px solid #f89b1c
+}
+
+.recDiv .button3 {
+color:#fff;
+background-color:#b2b2b2;
+font-family:'PROXIMANOVA-BOLD';
+border:1px solid #b2b2b2
+}
+
+.recDiv .button3:hover {
+background-color:#f89b1c;
+border:1px solid #f89b1c
+}
+
+.recDiv .button2 i:hover,.recDiv .button1 i:hover,.recDiv .button3 i:hover,.buttonMakePaymet i:hover {
+color:#fff
+}
+
+input[name="save"]:focus,input[name="save"]:active:focus,input[name="save"].active:focus,input[name="save"].focus,input[name="save"]:active.focus,input[name="save"].active.focus {
+outline:none;
+box-shadow:none;
+text-decoration:none;
+color:#fff
+}
+
+.modaledit .modal-content {
+margin-top:-4%
+}
+
+.modaledit .modal-body {
+padding-top:10px
+}
+
+#OrderForm {
+margin-left:-8px;
+margin-right:-12px
+}
+
+.editofferModal2 a i {
+position:relative;
+top:3px;
+right:26px;
+color:#fff
+}
+
+.editofferModal1 a i {
+position:relative;
+top:1.5px;
+right:26px;
+color:#fff
+}
+
+#inactOfferModal .modal-body {
+padding-top:26px
+}
+
+#inactOfferModal .body-close {
+margin-left:46%
+}
+
+#inactOfferModal .modal-content {
+margin-top:21%
+}
+
+.editofferModal1 {
+padding-bottom:2%
+}
+
+.editofferModal2 span {
+color:#fff;
+font-size:20px;
+margin-left:13px;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.editofferTable .modaledit #OrderForm {
+margin-bottom:2%;
+margin-top:-3%
+}
+
+.modaldelete .modal-body p {
+font-family:'PROXIMANOVA-REGULAR';
+font-weight:500;
+font-size:16px;
+text-align:center
+}
+
+.modaldelete {
+margin-top:13%
+}
+
+.editexistingoffer {
+background:#fff;
+border-radius:0;
+margin-bottom:10%;
+padding-top:2%;
+padding-right:0
+}
+
+.editexistingoffer h2 {
+color:#777;
+font-family:"PROXIMANOVA-BOLD"
+}
+
+.editVendorMargin {
+margin-bottom:0
+}
+
+.editpage {
+padding:0
+}
+
+.editpay {
+margin:-4.5% -2% -10px
+}
+
+.venBusiOffer {
+padding-top:0;
+margin-top:-20px;
+padding-bottom:0;
+margin-bottom:-12px
+}
+
+.editOfferTable thead tr th {
+color:#fff;
+font-family:"PROXIMANOVA-BOLD";
+font-size:15px;
+padding:0;
+margin:0;
+font-weight:400;
+text-align:center;
+padding-top:8px;
+padding-bottom:8px;
+background-color:#f89b1c
+}
+
+.editOfferTable tbody tr td .fa-pencil-square-o:hover,
+.editOfferTable tbody tr td .fa-eye:hover {
+color:#f89b1c;
+border:#f89b1c 1px solid
+}
+
+.activeOfer {
+color:#f89b1c!important;
+border:#f89b1c 1px solid!important
+}
+
+.editOfferTable tbody tr td .fa-circle:hover {
+color:#f89b1c;
+border:#f89b1c 1px solid
+}
+
+.editOfferTable tbody tr td .fa-trash-o:hover {
+color:red;
+border:red 1px solid
+}
+
+.editOfferTable tbody tr td i {
+border:#777 1px solid;
+border-radius:0;
+background-color:#fff;
+color:#777;
+padding:4%;
+cursor:pointer
+}
+
+.editOfferTable tbody tr td {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:14px;
+padding:0;
+margin:0;
+font-weight:400;
+text-align:center;
+padding-top:8px;
+padding-bottom:8px
+}
+
+.editOfferTable tbody tr td a {
+text-decoration:underline;
+font-style:italic;
+color:#00f
+}
+
+.editOfferTable tbody tr td a:hover {
+text-decoration:none
+}
+
+.btn:focus,.btn:active:focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn.active.focus {
+outline:none
+}
+
+a:focus,a:active:focus,a.active:focus,a.focus,a:active.focus,a.active.focus {
+outline:none;
+box-shadow:none;
+text-decoration:none
+}
+
+a:hover {
+text-decoration:none
+}
+
+.othermodal button i {
+color:blue
+}
+
+/*.othermodal .close {
+margin-top:-3%
+}*/
+.othermodal .close {
+    margin-top: -1%;
+    position: absolute;
+    right: 28px;
+}
+.othermodal .close :hover {
+    color:black;
+}
+
+.uploadpicvendor h4 {
+text-align:center;
+margin-top:15%
+}
+
+.uploadpicvendor {
+display:none;
+height:122px!important
+}
+
+.marginBtnV {
+margin-left:98%!important;
+margin-top:12%!important
+}
+
+.uploadPicSize {
+height:80px;
+width:100%;
+padding-right:2px
+}
+
+.vPhotosUserRowSecAdj {
+	padding: 0px 15px 0px 4px;
+/*margin-bottom:15px*/
+}
+
+.vPhotosUserRowSecAdj > .vPhotosYouRImg {
+padding-right:0
+}
+
+/*.vPhotosUserRowSecAdj:last-child {
+margin-bottom:15px
+}*/
+
+.uploadPicSize img {
+height:100%;
+width:100%
+}
+
+.uploadPicSize img:hover {
+background:rgba(0,0,0,0.8)
+}
+
+#photosBusi .closeMenu {
+display:none;
+margin-top:-44px;
+margin-right:4px
+}
+
+#photosBusi .closeMenu a {
+font-size:12px
+}
+
+.businessRepeat {
+border:1px solid #ccc;
+margin-top:0;
+margin-bottom:0;
+max-height:370px;
+overflow-y:scroll;
+overflow-x:hidden
+}
+
+.businessPicSize {
+height:115px;
+width:100%;
+padding-left:3px
+}
+
+.businessPicSize img {
+height:100%;
+width:100%
+}
+
+.businessHeight {
+padding:0;
+margin-left:.5%;
+display:none
+}
+
+.businessRepeatMenu {
+padding-left:6px;
+padding-bottom:6px
+}
+
+.businessRepeat .vPhotosYouRow {
+margin-top:6px;
+margin-left:0
+}
+
+#menuBuss .closePhotoMenu {
+display:none;
+margin-top:-43.8px;
+margin-right:4px
+}
+
+#description > div > .col-lg-12 {
+padding-right:0;
+padding-left:0
+}
+
+.userReviewTempImg ul li img {
+margin-bottom:5px
+}
+
+.userReviewTempcommTxt p {
+margin-top:8px
+}
+
+#menuBuss .closePhotoMenu a {
+font-size:12px
+}
+
+.seachBusiness {
+border:1px solid #bbb!important
+}
+
+.busireviever1 {
+padding-left:0;
+padding-right:0
+}
+
+.owner_lft img {
+height:100%;
+width:100%
+}
+
+.moreImagesMenu {
+background:rgba(0,0,0,0.8);
+bottom:0;
+color:#fff;
+font-size:12px;
+height:100%;
+left:0;
+position:absolute;
+right:0;
+text-align:center;
+top:0;
+width:98%;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.vendorAbtBusiness h4 {
+margin-bottom:8px!important
+}
+
+.businessRightSidebar {
+padding-right:0
+}
+
+.textBoxVen {
+padding-top:6px;
+margin-left: 30%;
+text-align: right;
+}
+
+.locBusi {
+font-size:17px;
+margin-bottom:0;
+padding-left:0
+}
+
+.userRevBussVendor > .userReviews {
+padding:23px!important;
+margin-bottom:10px!important
+}
+
+.bussMapContainer {
+width:100%;
+max-width:100%;
+height:190px!important;
+margin-top:15px;
+margin-bottom:15px
+}
+
+.addrBusi {
+font-size:16px;
+margin-bottom:0;
+word-break:break-all
+}
+
+.reportModalForm ul {
+list-style:none;
+padding-left:0;
+padding-right:0
+}
+
+.nearBusi {
+margin-top:30px;
+font-size:16px;
+margin-bottom:-5px;
+font-weight: 600;
+}
+
+.moreImagesMenu div {
+margin-top:26%
+}
+
+.photoMenu {
+margin-top:3px;
+padding-left:0;
+margin-bottom:5px!important;
+padding-right:0
+}
+
+.vPhotosYouRe {
+margin-top:10px!important
+}
+
+.vPhotosYouRe .row {
+/*margin-top:0px!important;*/
+/*margin-bottom:0!important;*/
+margin-left:1%
+}
+
+.bussVendorRepeatPic {
+padding-right:22px!important
+}
+
+.vPhotosYouRepeatImgOAdj {
+height:195px
+}
+
+.vPhotosYouRepeatImgOAdj:hover {
+border:2px solid #f89b1c;
+box-shadow:0px 0px 12px #aaa;
+}
+
+.vPhotosYouRepeatImgOAdj img {
+height:100%;
+width:100%
+}
+
+.photoAlbmImg img {
+height:100%;
+width:100%
+}
+
+.userPicRow {
+margin-bottom:48px
+}
+
+#marLike {
+margin-left:30px!important
+}
+
+.nearby {
+position:relative;
+border:1px solid #ccc;
+margin-top:15px;
+height:195px;
+width:100%
+}
+
+.nearby:hover {
+border:1px solid #f89b1c;
+box-shadow:1px 1px 2px #aaa;
+margin-top:15px
+}
+
+.nearbyHr {
+margin-bottom:16px;
+margin-top:18px
+}
+
+.nearby img {
+height:100%;
+width:100%
+}
+
+.blk_bgleft p {
+padding:0;
+margin:0;
+font-size:14px
+}
+
+.activeSavedOffer {
+color:#f89b1c!important;
+border:1px solid #f89b1c!important
+}
+
+.inactiveSavedOffer {
+color:#b2b2b2!important;
+border:1px solid #b2b2b2!important
+}
+
+.inactiveSavedOffer:hover {
+color:#f89b1c!important;
+border:1px solid #f89b1c!important
+}
+
+.bussReportCloseBtn {
+background:#fff;
+border:0;
+position:absolute;
+right:7%;
+top:8.5px;
+font-size:22px
+}
+
+.login-margin {
+margin-left:36%
+}
+
+.deleteBtn:hover {
+border:1px solid red;
+color:red
+}
+
+.delUserBtn {
+border:1px solid red;
+color:red
+}
+
+.bookmarkImg img {
+width:100%;
+height:82%
+}
+
+.rating .col-lg-12 {
+padding-left:0
+}
+
+.hrBorder {
+margin-top:3px;
+margin-left:0;
+margin-bottom:6px;
+width:100%
+}
+
+.bussShowMore {
+display:none
+}
+
+.busiVendorRightOfferText {
+padding-right:0
+}
+
+#ImgCarousel {
+padding-left:0;
+padding-right:0
+}
+
+.modalIdSeach {
+width:100%;
+height:215px
+}
+
+.modalIdSeach img {
+width:100%;
+height:100%
+}
+
+.vedio {
+padding-left:0;
+padding-right:0;
+height:215px
+}
+
+.slick-slide:hover {
+transition:all 200ms ease-in;
+transform:scale(1.2);
+z-index:2
+}
+
+.mainConBusi {
+padding-left:0
+}
+
+#busiRate .col-lg-12 {
+padding-left:16px;
+margin-left:-10px;
+margin-top:0;
+border:1px solid #ccc;
+border-left:0;
+padding-right:0
+}
+
+.enqBusi .vCmtEnqPage .btn {
+margin-right:1px;
+margin-top:-2px
+}
+
+.rateBusi {
+padding-right:0;
+padding-left:0
+}
+
+.bussLoc {
+padding-right:0;
+padding-left:0;
+margin-bottom:5px
+}
+
+.photosInfoBuss {
+padding-left:4%
+}
+
+.businessPay {
+margin-top:6px;
+margin-left:5.5%
+}
+
+.timingData {
+display:none
+}
+
+/*.selectBuss {
+margin-top:-6px
+}*/
+
+.heartv > .fa-heart {
+position:absolute;
+top:6px;
+right:10.5px
+}
+
+.rateBusi .userBusinessRating {
+border:1px solid #ccc;
+border-left:0;
+padding-left:10px
+}
+
+.selectBuss label {
+font-size:14px
+}
+
+.dayBuss {
+margin-left:-6%
+}
+
+.hrBorderBuss {
+margin-left:0;
+width:100%
+}
+
+.mainConBusi .nav li.descData a {
+margin-right:1px
+}
+
+#reviewslide {
+word-break:break-all
+}
+
+#reviewslide p {
+text-align:justify
+}
+
+.tabBott {
+margin-top:8px;
+margin-bottom:0
+}
+
+.comingSoon .container-fluid {
+padding:0
+}
+
+.comingSoon h1 {
+color:#f89b1c;
+position:fixed;
+top:26%;
+left:37%;
+font-size:60px
+}
+
+.comingSoon .h1Div {
+text-align:center;
+background:url(../images/claim/banner.jpg) no-repeat;
+background-attachment:fixed;
+height:500px;
+margin-top:-2%;
+background-size:contain
+}
+
+.comingSoon .h1Div .jackInTheBox {
+animation-name:jackInTheBox;
+animation-duration:1.5s
+}
+
+@keyframes jackInTheBox {
+from {
+opacity:0;
+transform:scale(0.1) rotate(30deg);
+transform-origin:center bottom
+}
+
+50% {
+transform:rotate(-10deg)
+}
+
+70% {
+transform:rotate(3deg)
+}
+
+to {
+opacity:1;
+transform:scale(1)
+}
+}
+
+.generalLayoutWithImage img {
+height:100%;
+width:100%
+}
+
+.footerCompany {
+margin-top:0;
+margin-left:15px
+}
+
+.section3-head {
+margin-top:-1px;
+margin-left:6px
+}
+
+/*#xyz:hover{
+	background-color: #f89b1c!important;
+	color: #fff!important;
+    font-weight: 700!important;
+    border: 1px solid #f9b81c!important;
+}*/
+
+@media screen and (max-width: 767px) {
+.homepageForms-xs {
+margin-top:4.5%
+}
+
+.groupHeight-xs {
+height:44px
+}
+
+.groupHeight1-xs {
+height:40px!important
+}
+
+.group-xs {
+margin-top:2.5%
+}
+
+.headerImgPadding-xs {
+padding-left:0
+}
+
+.headerImgPadding-xs .navbar-brand {
+padding-left:0
+}
+
+.headerImgPadding-xs .logo {
+margin-left:0
+}
+
+.login-margin {
+margin-left:0;
+padding-top:0;
+position:relative;
+top:-54px
+}
+
+.headerLogin-xs {
+padding-top:0;
+padding-right:0
+}
+
+.headerLogin-xs .login {
+padding-top:0
+}
+
+.headerLogin-xs .howItWork {
+margin-right:0;
+padding:0 0 0 6px
+}
+
+.headerPull-xs {
+position:relative;
+top:-41px;
+padding-right:0
+}
+
+.howitworks {
+margin-top:55%
+}
+
+.howitworks h1 {
+font-size:30px;
+margin-bottom:20px
+}
+
+.howitworks-xs .howitworks_text {
+margin-bottom:2%
+}
+
+.howitworks-xs .howitworks_text img {
+height:55px!important
+}
+
+.howitworks-xs .howitworks_text p {
+line-height:18px
+}
+
+.products {
+width:48%;
+margin-left:2%
+}
+
+.products h6 {
+margin-top:15%
+}
+
+#productCarousel .item.active,#serviceCarousel .item.active {
+padding-left:8px!important
+}
+
+.footerWrapper-xs {
+padding-left:20px;
+padding-bottom:10px;
+margin-bottom:20px
+}
+
+.footerWrapper-xs a img {
+height:65px
+}
+
+.footerItems-xs {
+padding-left:23px
+}
+
+.footerItems-xs .footerCompany {
+margin-left:0
+}
+
+.footetDiv1-xs {
+margin-bottom:7px
+}
+
+.footerItems-xs .section3-head {
+margin-left:0;
+margin-bottom:6px
+}
+
+.section3-list {
+margin-top:-10px!important
+}
+
+.footerItems-xs .section3-1 {
+margin-left:0
+}
+
+.section5-head {
+margin-left:0;
+padding-left:40px
+}
+
+.section5-head h3 {
+margin-top:5px
+}
+
+.form4General-xs {
+padding-left:0;
+padding-right:0;
+margin-top:0
+}
+
+.genHeaderLogin-xs {
+padding-top:0;
+padding-right:0
+}
+
+.merchant-xs {
+padding-left:0;
+padding-right:0
+}
+
+.merchant-xs h2 {
+font-size:32px!important
+}
+
+.collapseMenu {
+border:1px solid #4e4f52;
+height:42px;
+margin-left:16px;
+margin-right:17px
+}
+
+.collapseMenu a {
+font-family:'PROXIMANOVA-BOLD';
+font-size:16px;
+color:#4e4f52;
+padding-top:9px
+}
+
+.collapseMenu button {
+border-radius:0;
+margin-top:0
+}
+
+.collapseMenu button i {
+color:#4e4f52
+}
+
+#aboutCollapse ul li {
+width:100%
+}
+
+#aboutCollapse ul li a {
+padding-left:0
+}
+
+#faqCollapse ul li {
+width:100%
+}
+
+#faqCollapse ul li a {
+padding-left:0
+}
+
+.aboutus-xs h2 {
+font-size:42px!important;
+margin-bottom:20px!important
+}
+
+.aboutData-xs {
+padding-right:0;
+padding-left:0;
+text-align:justify
+}
+
+.aboutDat-xs {
+padding-left:28px;
+text-align:justify
+}
+
+.aboutData-xs h4 {
+font-size:23px!important
+}
+
+.general-xs h4 {
+font-size:18px!important
+}
+
+.general-xs h3 {
+font-size:20px!important;
+text-align:left
+}
+
+.comingSoon h1 {
+top:35%;
+left:8%;
+font-size:50px
+}
+
+.aboutus-xs .introduction {
+padding-left:0;
+padding-right:0
+}
+
+.introduction .panel-heading {
+padding-left:2px;
+padding-right:4px
+}
+
+.introduction .panel-body {
+text-align:justify
+}
+
+.faqCollapseMenu {
+margin-right:15px;
+margin-left:15px
+}
+
+.last_para .career-xs {
+padding-right:0;
+padding-left:0
+}
+
+.joinus-text {
+margin-bottom:15px
+}
+
+.career-row {
+margin-left:0;
+padding-right:0;
+padding-left:0
+}
+
+.leftModal,.rightModal {
+height:auto;
+width:100%
+}
+
+.leftModal img {
+margin-top:7%;
+margin-bottom:0;
+margin-left:28%;
+width:42%
+}
+
+.genLoginSignup {
+margin-top:0
+}
+
+.rightModal p {
+padding-top:8px;
+padding-bottom:0
+}
+
+.loginForm {
+margin-top:28px
+}
+
+.loginFormGroup {
+margin-bottom:25px
+}
+
+.loginForm div:nth-child(2) {
+margin-bottom:0
+}
+
+.loginTxt {
+padding-top:0;
+padding-bottom:4px
+}
+
+.loginTxt1 {
+margin-top:-12px;
+margin-bottom:3px
+}
+
+.rightModal-Google {
+margin-top:4%
+}
+
+.modalBox {
+width:auto
+}
+
+.emailBox {
+width:100%
+}
+
+.resetPwd {
+line-height:18px;
+padding:9px 5px;
+width:45%;
+margin-left:78px
+}
+
+.frgtClose {
+right:40px;
+top:13px
+}
+
+.loginClose-xs {
+margin-right:-14px
+}
+
+
+.companytab h4 {
+margin-top:28px
+}
+
+.section1-head h3 {
+margin-top:0
+}
+
+.whyWeBuilt p {
+margin-left:6%;
+margin-right:0
+}
+
+.visionImg img {
+margin-left:30px
+}
+
+.aboutNavbar {
+padding-left:17px;
+padding-right:20px
+}
+
+.comingSoon .h1Div {
+height:428px;
+background-size:auto
+}
+
+.vendorPage {
+padding-right:0!important
+}
+
+.modeOfPayment {
+margin-bottom:20px
+}
+
+.mainConBusi {
+padding-right:0;
+margin-bottom:20px
+}
+
+#busiVendorRightOfferText .pull-right {
+position:absolute;
+right:0;
+top:-41px
+}
+
+.busiVendorMiddleOfferText p {
+font-size:16px!important;
+text-align:justify
+}
+
+.businessRightSidebar {
+padding-left:0
+}
+
+.reportBox {
+width:21%!important
+}
+
+.blk_bgright {
+padding-left:50px!important
+}
+
+.businessDetailsreview {
+width:21%!important
+}
+
+.enqBusi .vCmtEnqPage {
+position:absolute;
+right:0
+}
+
+.your-rating {
+padding-left:0
+}
+
+.your-rating span {
+padding:4px 0 0 4px !important;
+margin:0!important;
+font-size:13px!important;
+position:absolute;
+top:60px;
+left:0
+}
+
+.rateBusi {
+position:absolute;
+top:60px;
+left:43px
+}
+
+#busiRate {
+position:absolute;
+top:60px;
+left:52px
+}
+
+.rateBusi .userBusinessRating {
+padding-left:7px!important
+}
+
+.share_page1,.share_page2,.share_page3 {
+width:8%!important
+}
+
+.tabGallry {
+margin-left:0!important;
+margin-right:0!important;
+margin-top:25px!important
+}
+
+.photoMenu {
+padding-right:0
+}
+
+.uploadPicSize {
+height:60px
+}
+
+.owner_rht {
+padding-left:0!important;
+margin-top:0!important
+}
+
+.userReviewTempImg ul li img {
+width:75px
+}
+
+.busiVendorRightOfferText i {
+padding-right:4px!important
+}
+
+.nav-tabs.nav-justified > li {
+display:table-cell;
+width:1%
+}
+
+.businessPicSize {
+height:123px
+}
+
+.logo-generalHeader {
+margin-left:0;
+margin-top:0
+}
+
+.dropGeneral {
+margin-right:0;
+position:relative;
+right:12px
+}
+
+.dropmenu > .dropGeneral {
+margin-top:0
+}
+
+.dropmenu {
+padding-right:0;
+padding-left:0;
+position:relative;
+top:-105px;
+right:8px
+}
+
+.dropmenuGen {
+padding-right:0;
+padding-left:0
+}
+
+.notificationUser {
+left:16px
+}
+
+.header-general {
+padding-left:0;
+padding-right:0
+}
+
+.header-general .form4General {
+padding-right:15px;
+padding-left:15px
+}
+
+.gernalHeaderNavBar {
+height:125px
+}
+
+.userCommRevTemp {
+padding-left:10px!important
+}
+
+.heartv > .fa-heart {
+right:4.5px
+}
+
+.vndr_SharePage {
+line-height:27px!important
+}
+
+.vndr_delete {
+line-height:27px!important
+}
+
+.vndr_SharePage .fa-share {
+position:relative;
+right:6.5px;
+top:0
+}
+
+#vndr_SharePage {
+margin-left:5.5px
+}
+
+.vndr_delete .fa-trash-o {
+position:relative;
+right:5px
+}
+
+.nonUserBody {
+padding-top:0
+}
+
+.nonUserCloseBtn {
+right:9%!important
+}
+
+.openReviewRight {
+padding-right:10px;
+padding-left:30px
+}
+
+.openReviewLeft {
+padding-left:10px
+}
+
+/* .minopenReviewHeight {
+height:305px!important
+} */
+
+.openReviewRight > p {
+margin-bottom:5px
+}
+
+.slick-next {
+right:26%!important
+}
+
+.slick-prev {
+left:-98%!important
+}
+
+.spanEnqPhone {
+margin-top:10px
+}
+
+#description > div > .col-lg-12:nth-child(2) {
+margin-top:20px
+}
+
+.bussReportCloseBtn {
+right:12%
+}
+
+.reportBlock {
+height:480px!important
+}
+
+.vModalContentMain {
+padding-top:5px!important
+}
+
+.userRevTempCommentText {
+padding-left:10px!important
+}
+
+.busiVedorleftOfferImg img {
+width:100%!important
+}
+
+#busiRate .col-lg-12 {
+padding-left:10px
+}
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+.footerWrapper-xs {
+padding-left:45px
+}
+
+.footerWrapper-xs a img {
+height:60px
+}
+
+.footerItems-xs {
+padding-left:40px
+}
+
+.section3-head {
+padding-left:0;
+margin-left:-5px
+}
+
+.headerPull-xs {
+padding-right:0
+}
+
+.headerLogin-xs {
+padding-left:0
+}
+
+.genHeaderLogin-xs .headerPull-xs {
+padding-right:52px
+}
+
+.aboutNavbar {
+padding-left:0
+}
+
+.comingSoon h1 {
+position:relative;
+top:16%;
+left:0
+}
+
+.comingSoon .h1Div {
+height:360px
+}
+
+.no {
+font-size:18px!important
+}
+
+.businessPay {
+margin-left:9%
+}
+
+.dayBuss {
+padding-left:25px;
+margin-left:0
+}
+
+.blk_bgright {
+padding-left:35px!important
+}
+
+.reportBox {
+width:24%!important
+}
+
+.busiVedorleftOfferImg {
+height:85px!important
+}
+
+.busiVedorleftOfferImg img {
+width:100%!important
+}
+
+.businessVendorOfferText {
+padding-left:6px;
+padding-right:6px
+}
+
+.busiVendorMiddleOfferText p {
+font-size:15px!important;
+line-height:18px!important
+}
+
+.knowMore {
+font-size:12px!important
+}
+
+.busiVendorRightOfferText i {
+padding-right:6px!important
+}
+
+.businessDetailsreview {
+width:18%!important;
+margin-left:2px!important
+}
+
+.vendorPage {
+padding-right:0!important
+}
+
+.vendor_wrapper {
+padding-left:3%!important
+}
+
+.share_page1,.share_page2,.share_page3 {
+margin-left:.5%!important
+}
+
+.your-rating span {
+font-size:13px!important;
+margin-left:.5%!important
+}
+
+.rateBusi .col-lg-12 {
+padding-left:3px;
+margin-left:0
+}
+
+.rateBusi {
+width:27%
+}
+
+.userRevTempRightTxt {
+margin-left:-14px!important;
+margin-top:0!important
+}
+
+.bussReviewRow {
+padding-left:0
+}
+
+.userReviewTempImg ul li img {
+width:88px;
+height:90px
+}
+
+.modalIdSeach {
+height:180px
+}
+
+.vedio {
+height:180px
+}
+
+.share_page1,.share_page2,.share_page3 {
+width:5.5%!important
+}
+
+#busiRate .col-lg-12 {
+padding-left:2px;
+margin-left:0
+}
+
+.uploadPicSize {
+height:62px
+}
+
+.businessPicSize {
+height:123px
+}
+
+.dropmenu {
+padding-left:4%
+}
+
+.logo-generalHeader {
+margin-left:0
+}
+
+.header-general .form4General {
+padding-left:0
+}
+
+.userCommRevTemp {
+padding-left:6px!important
+}
+
+.heartv > .fa-heart {
+position:absolute;
+top:6px;
+right:6px
+}
+
+.comment > .fa-comment {
+position:absolute;
+top:5px;
+right:10px
+}
+
+.vndr_SharePage > .fa-share {
+position:relative;
+top:1px;
+right:6px
+}
+
+.openReviewRight {
+padding-left:28px
+}
+
+.minopenReviewHeight {
+min-height:310px!important
+}
+
+.userRevTempCommentText {
+padding-left:8px
+}
+
+.slick-next {
+right:5%!important
+}
+
+.venr_heart > .fa-heart {
+right:6px!important
+}
+
+.venr_del > .fa-trash-o {
+right:6px!important
+}
+
+.spanEnqPhone {
+margin-top:10px
+}
+
+.vModalContentShare button {
+right:25px!important;
+top:-5px!important
+}
+}
+
+@media screen and (min-width: 800px) and (max-width: 991px) {
+.section3-1 {
+right:164px
+}
+
+.section3-head {
+right:236px!important
+}
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+.products {
+height:110px
+}
+
+.logo {
+margin-top:0
+}
+
+.gernalHeaderNav-xs .logo a img {
+height:46px
+}
+
+.howItWork {
+padding-top:0;
+padding-bottom:0;
+margin-right:0
+}
+
+.headerPull-xs {
+padding-right:9px
+}
+
+.headerLogin-xs {
+padding-top:0;
+position:relative;
+top:-36px
+}
+
+.gernalHeaderNav-sm .headerImgPadding-xs .logo {
+margin-left:0
+}
+
+.gernalHeaderNav-sm .headerImgPadding-xs .logo a img {
+height:40px
+}
+
+.form4General {
+padding-left:0!important;
+padding-right:0!important
+}
+
+.notifiacationUsers {
+left:-2%!important
+}
+
+.homepageForms-xs {
+margin-top:2.5%
+}
+
+.location-city {
+margin-bottom:6px
+}
+
+.howitworks_text img {
+height:60px!important
+}
+
+.howitworks-xs h1 {
+margin-top:40px;
+margin-bottom:50px
+}
+
+.footerWrapper-xs {
+padding-left:14px;
+padding-bottom:0
+}
+
+.footerWrapper-xs a img {
+height:50px
+}
+
+.section3-head {
+position:relative;
+top:97px;
+right:190px
+}
+
+.section3-head .section3-list {
+margin-top:0
+}
+
+.footerCompany .hoverme {
+margin-bottom:0
+}
+
+.footerCompany {
+position:relative;
+top:-78px
+}
+
+.section3-1 {
+position:relative;
+right:146px;
+top:-79px
+}
+
+.section5-head {
+margin-left:0;
+position:relative;
+top:-262px
+}
+
+.footerWrapper {
+height:250px
+}
+
+.aboutNavbar {
+padding-left:15px
+}
+
+.career-row {
+margin-left:0
+}
+
+.joinus .forms_content {
+margin-top:5%
+}
+
+#faqCollapse {
+margin-bottom:30px
+}
+
+.contact-margin {
+padding-right:0;
+margin-top:12%
+}
+
+.comingSoon h1 {
+top:10%;
+left:32%;
+font-size:50px
+}
+
+.comingSoon .h1Div {
+height:260px
+}
+
+.visionImg img {
+margin-left:25%
+}
+
+.mainConBusi {
+padding-right:0;
+margin-bottom:15%
+}
+
+.busiVendorRightOfferText i {
+padding-right:4px!important
+}
+
+.businessRightSidebar {
+padding-left:0
+}
+
+.logo-generalHeader {
+margin-left:0
+}
+
+.page {
+padding-left:0
+}
+
+.dropmenu {
+padding-left:7%;
+padding-right:0
+}
+
+.slick-prev {
+left:-31%!important
+}
+
+.slick-next {
+right:9%!important
+}
+
+/* .minopenReviewHeight {
+height:295px!important
+} */
+
+.spanEnqPhone {
+margin-top:10px
+}
+
+.vndr_SharePage {
+margin-left:18px;
+line-height:27px
+}
+}
+
+.imageCommentReviewOne {
+margin-left:0;
+padding:0;
+clear:both
+}
+
+.modalCommentWrpr {
+margin:0 10px!important
+}
+
+.mapViewBusList .imgMapview {
+width:100%!important;
+height:100%!important;
+max-height:120px
+}
+
+.mapViewBusList .thumBusDistance {
+margin:10px 20px 10px 0 !important;
+padding:4px 5px!important
+}
+
+@media screen and (min-width:320px) and (max-width:767px) {
+.mapViewBusList .mapVBusTitle,.mapViewBusList .mapVBusAddr,.mapViewBusList .mapVBusPhnNum {
+width:90%
+}
+
+.displayMapView {
+min-height:720px!important
+}
+
+.thumbBusDivs {
+width:93%
+}
+
+.optionOfAreaG {
+width:30%
+}
+
+.mapContainer {
+padding:10px 15px 0
+}
+
+.scrollMapVwBus {
+overflow-y:initial!important;
+height:auto!important
+}
+
+.fa.pull-right {
+margin-left:0!important
+}
+
+.imageReportLarge {
+width:auto
+}
+
+.carousel-inner > .item > img {
+width:100%!important;
+height:100%!important
+}
+
+#imageSliderCarousel {
+overflow:hidden
+}
+
+.imageReportSlider {
+width:auto;
+height:auto
+}
+
+.imageReportBody,.imageReportContent {
+height:auto
+}
+
+.imageCommentReviewOne {
+margin-left:0
+}
+
+.top-userNav > .open > .notif-dropdown {
+max-width:200px
+}
+
+.notifContent {
+white-space:normal!important
+}
+
+.propic {
+width:25px!important;
+height:25px!important
+}
+
+.notifiacationUsers {
+position:absolute;
+left:31%;
+top:20px
+}
+}
+
+@media screen and (min-width:360px) and (max-width:767px) {
+.notifiacationUsers {
+position:absolute;
+left:35%;
+top:20px
+}
+}
+
+.notifvalMenu {
+width:100%
+}
+
+@media screen and (max-width: 320px) {
+.businessDetailsreview {
+width:23%!important
+}
+
+.rateBusi {
+width:37%
+}
+
+.header-general .form4General {
+padding-left:10px
+}
+
+.col-xs-6.dropmenu {
+width:57%
+}
+
+.logo-generalHeader a img {
+width:72%
+}
+
+.busiVendorMiddleOfferText p {
+font-size:13px!important
+}
+
+.knowMore {
+font-size:13px!important
+}
+
+.busiVendorRightOfferText i {
+width:44.8%!important;
+font-size:15px!important
+}
+
+.busiVedorleftOfferImg {
+margin-top:12px!important;
+height:82px!important
+}
+
+#busiVendorRightOfferText .pull-right {
+top:-35.5px
+}
+
+.reportBox {
+width:24%!important
+}
+
+.blk_bgright {
+padding-left:34px!important
+}
+
+.businessPicSize {
+height:95px
+}
+
+.uploadPicSize {
+height:50px
+}
+
+.heart > .fa-heart {
+position:absolute;
+top:7px;
+right:3.5px
+}
+
+.userRevTempCommentText {
+padding-left:12px!important
+}
+}
+
+@media screen and (max-width: 767px) and (min-width: 450px) {
+.howitworks h1 {
+margin-top:20px;
+margin-bottom:42px;
+font-size:38px
+}
+
+.groupHeight1-xs {
+margin-left:72%
+}
+
+.products {
+width:31%
+}
+
+.homepageForms-xs {
+padding-left:12%;
+padding-right:12%
+}
+
+.loginModalZindex .loginModalBody-xs {
+padding-right:29%;
+padding-left:25%
+}
+
+.loginClose-xs {
+margin-right:-21px
+}
+
+.loginClose-xs i {
+top:13px
+}
+
+.resetPwd {
+width:25%;
+margin-left:216px
+}
+
+.frgtContent p {
+margin-left:3%
+}
+
+.comingSoon h1 {
+top:55%;
+left:28%;
+font-size:43px
+}
+
+.merchantGuidelinesxs {
+margin-top:25%
+}
+
+.last_para .career-xs {
+width:50%;
+padding-right:6px;
+padding-left:6px
+}
+
+#jobAppln {
+padding-right:50%;
+margin-top:2%
+}
+
+#faqCollapse {
+margin-bottom:46px
+}
+
+.aboutNavbar {
+padding-right:32px;
+padding-left:30px
+}
+
+.contact-margin {
+margin-top:4%
+}
+
+.howitworks {
+margin-top:46%
+}
+
+.collapseMenu {
+margin-left:30px;
+margin-right:30px
+}
+
+.aboutus-xs .introduction {
+padding-left:15px;
+padding-right:15px
+}
+}
+#claimPreviousButton,#claimNextButton{
+background: #f89b1c;
+border-color: #f89b1c;
+color: #fff;
+border-radius: 0;
+padding: 6px 14px;
+font-size: 15px
+}
+#claimPreviousButton{
+	margin-right: 3%;
+}
+.pageNo{
+background: #f0f0f0;
+box-shadow: 0px 0px 0px #fff;
+border: 0;
+color: #4e4f51;
+margin-right: 3%;
+padding: 4px 12px;
+font-size: 15px  
+}
+.pageNo.active{
+background: #f89b1c;
+color: #fff
+}
+/*.active{
+background: #f89b1c;
+color: #fff
+}*/
+.outerPaginationDiv{
+padding-top: 3%;
+padding-bottom: 1%;
+text-align: center
+}
+.alternateNumbercss{
+	padding: 3.7px 4px;
+    margin-left: 15px!important;
+    margin-bottom: 20px!important;
+}
+.alternateNumberLable{
+	display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px!important;
+    margin-left: 15px!important;
+}
+@media screen and (min-width: 1920px){
+	.aboutNavbar{
+		margin-left: 37%;
+	}
+}
+.otpOuterDiv{
+	border: 1px solid #bbbbbb;
+    margin-top: 15px;
+}
+.busiTimeOpenHrs{margin-top: 10px;margin-bottom: 0px;}

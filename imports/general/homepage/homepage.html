@@ -1,0 +1,12 @@
+<template name="homepage">
+	<i class="fa fa-chevron-circle-up fa-3x homeScrollTop" title="Scroll to Top" aria-hidden="true"></i>
+	<!-- {{#if isReady}} -->
+	 {{#if Template.subscriptionsReady}}
+		{{> homepageBanner}}
+		{{> homepageHowItWorks}}
+		{{> homepageProductCarousel}} 
+		{{> homepageServicesCarousel}}
+	<!-- {{else}}
+		{{> loading}} -->
+	{{/if}}
+</template>	

@@ -1,0 +1,38 @@
+<template name="businessContactDetails">
+	<div class="vendorCon">
+ 		<h1>{{businessTitle}}</h1>
+  	<div class="rating">
+      {{#with showRating }}
+        {{> starRating2 }}
+      {{/with}}
+  		<!-- <img src="images/page-banner/rating.png"  alt=""/> -->
+  	</div>
+  	<hr class="hrBorder">
+    {{#if isInRole 'admin'}}
+     		<div class="no"> 
+     		  {{#if businessLandline }}
+            <i class="fa fa-phone" aria-hidden="true"></i> {{> editableText collection="business" field="businessLandline"}}<br>
+          {{/if}}
+        	{{#if businessMobile}}
+            <i class="fa fa-phone" aria-hidden="true"></i> {{> editableText collection="business" field="businessMobile"}}<br> 
+          {{/if}}
+       		{{#if businessAltMobile}} 
+            <i class="fa fa-phone" aria-hidden="true"></i> {{> editableText collection="business" field="businessAltMobile"}} 
+          {{/if}}
+       	</div>
+    {{else}}
+      <div class="no"> 
+          {{#if businessLandline }}
+            <i class="fa fa-phone" aria-hidden="true"></i> {{businessLandline}}<br>
+          {{/if}}
+          {{#if businessMobile}}
+            <i class="fa fa-phone" aria-hidden="true"></i> {{businessMobile}}<br> 
+          {{/if}}
+          {{#if businessAltMobile}} 
+            <i class="fa fa-phone" aria-hidden="true"></i> {{businessAltMobile}} 
+          {{/if}}
+        </div>
+    {{/if}}
+    <hr class="hrBorder">
+  </div>
+</template>

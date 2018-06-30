@@ -1,0 +1,30 @@
+<template name="salesTableView">
+	<tr class="clickableRow" id={{orderId}}>
+    {{#if isGreaterThan0 rowSpanCount}}
+  		<td class="rowspanElement" rowspan="{{rowSpanCount}}"> 
+        <a href="" class="showModal"> {{ date }} </a> 
+      </td>
+    {{/if}}
+		<td> 
+      <a href=""> {{ orderNo }} </a> 
+    </td>
+		<td> 
+      <a href=""> {{ businessLink}} </a>
+    </td>
+		<td>
+      <a href=""> &#x20B9; {{ totalAmount }}</a> 
+    </td>
+		<td> 
+      <a href=""> &#x20B9; {{ discountedPrice }}</a> 
+    </td>
+		<td> 
+      <a href=""> {{ orderType }} </a> 
+    </td>
+    <td> 
+      <a href="/businessAdsInvoice/{{businessLink}}"> <i class="fa fa-eye"></i></a> 
+    </td>
+	</tr>
+
+		<!-- modal -->
+
+</template>

@@ -1,0 +1,45 @@
+<template name="vendorMyOffers">
+	<div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 offersVendor">	
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="offerTitle">
+				<h3>{{ businessName.businessTitle }}</h3>	
+			</div>		
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="newOffTitle">
+				<h4>Create New Offers</h4>
+			</div>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offerForm">
+          	<form>
+            	<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 offerFormDiv">
+              		<label class="col-lg-8 col-md-8 col-sm-7 col-xs-8 offerPara"> Type number for create new offer: </label>
+              		<input type="number" min="1" name="numOfOffers" value="1" class="offrdInput text-center col-lg-2 col-md-2 col-sm-2 col-xs-2"> &nbsp; Offers
+            	</div>
+             	
+            	<div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12 offerFormDiv">
+              		<label class="col-lg-8 col-md-8 col-sm-7 col-xs-7 offerPara"> Select month for duration: </label>
+              		<input type="number" min="1" id="" name="numOfMonths" value="{{#if monthChange}}{{monthChange}}{{else}}1{{/if}}" class="numOfMonths text-center col-lg-2 col-md-2 col-sm-2 col-xs-2"> &nbsp; Months
+            	</div>
+            	<div class="hidden">
+              		<input type="hidden" name="businessId" value={{businessName._id}} >
+              		<input type="hidden" name="businessLink" value={{businessName.businessLink}} >
+            	</div>
+          </form>
+        </div>
+		
+ 		{{> offerAccordian }}
+ 		
+		<div class="offerbtn pull-right">
+			{{#with paymentBtn}} 
+				<input type="submit" id="offersub" class="btn vendor-formOne-save vendor-Form" value="Place Order" {{value}}/>
+			{{/with}} 
+		</div>
+	</div>
+	
+	<div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 bussVendorOfferPayment">
+		{{> offerPayment}}
+	</div>		
+	
+	{{> editOffer}}
+</template>

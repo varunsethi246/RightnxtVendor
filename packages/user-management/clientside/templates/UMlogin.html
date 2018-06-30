@@ -1,0 +1,90 @@
+<template name="UMlogin">
+	<div class="loginwrapper col-lg-12 col-sm-12 col-xs-12 col-md-12">
+		<div class="col-lg-4"></div>
+	    <div class="UMlogin col-lg-4 col-md-4 col-sm-12 col-xs-12">
+	      <form id="login">
+		    	<div class="col-lg-12">
+			    	<h5 class="formTitle loginTitle UMuppercase col-lg-12">Log in</h5>
+		    	</div>
+
+			   <div class="form-group col-lg-12 col-md-12 col-xs-12 col-sm-12 ">
+				   <!-- <label class="signupLabel control-label">Username or Email*</label> -->
+				   <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					   <input type="text" class="form-control UMname" name="loginusername" placeholder="Email Address">
+					   <span class="input-group-addon glyphi-custom"><i class="fa fa-user" aria-hidden="true"></i></span>
+				   </div>
+			    </div>
+
+	<!-- 		   <div class="form-group col-lg-12 col-md-4 col-xs-12 col-sm-12 ">
+				   <label class="signupLabel control-label">Email address*</label>
+				   <input type="email" class="form-control required" name="loginEmail" placeholder="Email">
+			    </div> -->
+
+			   <div class="form-group col-lg-12 col-md-12 col-xs-12 col-sm-12 ">
+				   	<!-- <label class="signupLabel control-label">Password*</label> -->
+				   	<div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					   	<input type="password" class="form-control UMname" name="loginPassword" placeholder="Password">
+					   	<span class="input-group-addon glyphi-custom"><i class="fa fa-lock" aria-hidden="true"></i></span>
+				   	</div>
+			    </div>
+			    
+			   <div class="form-group col-lg-12 col-md-12 col-xs-12 col-sm-12 ">
+			    	<button class="col-lg-12 col-md-12 col-xs-12 col-sm-12 UMloginbutton hvr-sweep-to-right" type="submit" value="Login">
+			    	<span><i class="fa fa-key" aria-hidden="true"></i></span> Login
+			    	</button>
+			   </div>
+<!-- 
+			   <div class="col-lg-6 col-sm-6 col-xs-6 UMcreateacc"><a href="/signup" class="UMred"> Create an account</a></div> -->
+				<div class="col-lg-6 col-sm-6 col-xs-12 UMcreateacc UMred" data-toggle="modal" data-target="#signupmodal">Create an account</div>
+				<div class="col-lg-6 col-sm-6 col-xs-12 forgotpass" data-toggle="modal" data-target="#forgotpass">Forgot Password ?</div>
+
+
+					<!-- Modal -->
+					<div id="forgotpass" class="modal model-newHeight fade" role="dialog">
+					  <div class="modal-dialog ">
+
+					    <!-- Modal content-->
+					    <div class="modal-content col-lg-8 mdForgetpasdmodal">
+					      <div class="modal-header forgetHeader">
+					        <button type="button" class="close" data-dismiss="modal">&times;</button>
+					        <h4 class="modal-title col-lg-12 loginTitle">FORGOT PASSWORD</h4>
+					        <div class="forgetpassDes col-lg-12">Enter your email address and we'll email you a link to reset your password.</div>
+					      </div>
+					      <div class="modal-body col-lg-12">
+							    {{> ForgotPassword}}
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default FPClose" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+
+					  </div>
+					</div>
+
+
+					<!-- Modal -->
+					<div id="signupmodal" class="modal fade" role="dialog">
+					  <div class="modal-dialog">
+
+					    <!-- Modal content-->
+					    <div class="modal-content mdForgetpasdmodal">
+					      <div class="modal-header forgetHeader">
+					        <button type="button" class="close" data-dismiss="modal">&times;</button>
+					        <h4 class="modal-title col-lg-12 loginTitle">Create New Account</h4>
+					      </div>
+					      <div class="modal-body col-lg-12">
+							    {{> UMsignup}}
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default FPClose" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+
+					  </div>
+					</div>
+
+		    </form>
+	    </div>
+	</div>
+
+</template>

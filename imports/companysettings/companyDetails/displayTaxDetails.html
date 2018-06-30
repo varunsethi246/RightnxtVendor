@@ -1,0 +1,42 @@
+<template name="displayTaxDetails">
+		<div class="companyHeader">
+                    <a class="left"  role="button" data-target="#dispalyCarousel" data-slide-to="0">
+                          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                          <span class="header">Tax Settings</span>
+                    </a>
+            </div>
+
+            <h1>Tax Settings</h1>
+             	<div class="description">
+              	{{#each allTaxSettings }}
+              	   {{#each taxSettings}}
+                      <div class="dataWrapper col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class=" holderName col-lg-12 col-md-12 col-sm-6 col-xs-6"> 
+                            {{ taxType }} 
+                        </div>
+                        <hr>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <label class="companyTitle col-lg-6 col-md-6 col-sm-6 col-xs-6">Applicable Tax</label>  
+                          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-6"> 
+                              : &nbsp;{{ applicableTax }}%
+                          </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <label class="companyTitle col-lg-6 col-md-6 col-sm-6 col-xs-6">Effective From</label>  <div class="col-lg-5 col-md-5 col-sm-6 col-xs-6"> 
+                             : &nbsp;{{ effectiveFrom }}
+                          </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <label class="companyTitle col-lg-6 col-md-6 col-sm-6 col-xs-6">Effective To</label>  
+                          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-6"> 
+                            : &nbsp;{{ effectiveTo }}
+                          </div>
+                        </div>
+                      </div>
+
+         	        {{/each}}                                          
+               {{/each}}
+  
+  </div>   
+</template>

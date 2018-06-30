@@ -1,0 +1,26 @@
+<template name="claimOtp">
+	<div class="claimOtp">
+		{{#with showElement}}
+			<div class="{{showClaim}}">
+				<p>Please enter the OTP sent on your registered 
+		        Mobile Number <span id="replaceMobile">{{replaceMob}}</span></p>
+	        	
+	        	<input type="hidden" name="claimMob" value={{mobile}} >
+	        	<input type="hidden" name="claimName" value={{id}} >
+
+		        <form id="otp" class="form-inline">
+					<input type="number" name="claimOtp" required="true" minlength="4" maxlength="4" class="no-spinner">
+					<button type="button" class="claimModalBtn otpbtn btn">Submit</button> 
+				</form>
+				
+				<p class="claimotpdiv">OR</p>
+			</div>
+			<p class="{{#if mobile}}claimpp{{else}}claimp{{/if}}"> Get a phone call from rightNXT team within 24 hours.</p>
+			<label for="alternatenmbers" class="alternateNumberLable">Your 10 Digit Alternate Mobile Number</label>
+			
+			<input type="number" class="alternateNumbercss" id="alternatenmbers" name="alternatenmbers" maxlength="10" required="true">
+
+			<button class="callBkbtn" id="{{id}}">Call Back</button>
+		{{/with}}
+	</div>
+</template>

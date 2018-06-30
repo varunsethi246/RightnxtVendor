@@ -1,0 +1,144 @@
+<template name="thumbnailBusinessList">
+	<div class="thumbBusList">
+		<div class="row">
+			{{#if isGridViewVisible }}
+				<!-- {{#if gridviewBusinessList}} -->
+						{{#each gridviewBusinessList}}
+								<!-- Grid View -->
+								<div class="col-lg-4 gridViewBusList {{busNoOffer}}">
+									<div class="thumbBusDiv">
+										<div class="thumImgDim">
+											<div class="enqRatingBus">
+												<div class="enqLeftDiv">
+													<!-- {{#with busShowRating latestRating}}
+												        {{> starRating2 }}
+													{{/with}} -->
+													
+													{{> starRating2 businessRating }}
+													
+												</div>
+												<div class="enqMidDiv">{{totalVote}} votes</div>
+												<div class="enqRightDiv pull-right" cords-ids="{{businessLongitude}}-{{businessLatitude}}-{{_id}}">
+													<i class="fa fa-map-marker pull-right" aria-hidden="true"></i>
+												</div>
+											</div>
+											<a href="/{{businessLink}}" >
+												<!-- {{#with searchPageShowImage businessSelectedImages}} -->
+													<img src="{{businessSelectedImagesNew.img}}" class="searchImgList thumImgDimCss {{businessSelectedImagesNew.checkpngImg}}">
+												<!-- {{/with}} -->
+											</a>
+										</div>
+										<div class="thumImgDesc">
+											<a  href="/{{businessLink}}"  class="enqHelper col-lg-12 col-md-12 col-sm-12 col-xs-12 noPaddingVendor">
+												<p class="thumImgDescP thumbTxtOverfl" data-linkUrl={{businessLink}} id={{businessTitle}}>{{businessTitle}}</p>
+											</a>
+											<p class="thumbTxtOverfl thumbTxtAddr col-lg-12 col-md-12 col-sm-12 col-xs-12 noPaddingVendor">{{businessAddress}}</p>
+											<div class="thumDescPhon thumbTxtOverfl col-lg-12 col-md-12 col-sm-12 col-xs-12 noPaddingVendor">
+												<i class="fa fa-phone" aria-hidden="true"></i>
+												<span>{{businessLandline}}{{mobNumSeperator}} {{businessMobile}}</span>
+											</div>
+										</div>
+										<div class="thumBusOffers">
+											<span class="thumBusOffersSnO">
+												<i class="fa fa-percent" aria-hidden="true"></i>
+											</span>
+											<span class="thumBusOffersSnT">{{busOffer}}</span>
+										</div>
+										<div class="thumbEnqBtn" data-link="{{businessLink}}" data-toggle="modal" data-target="#vEnqModal">
+											<button class="btn btn-success">Enquiry</button>
+											<span class="vCmtEnqPageHideGrid">
+												{{> businessEnquiry}}
+											</span>
+										</div>
+										<div class="thumBusDistance pull-right">
+											{{busDist}} km
+										</div>
+									</div>
+								</div>
+						{{/each}}
+				<!-- {{else}}
+					<div class="showGridData">
+					<div class="col-lg-4 gridViewBusList ">
+						<div class="thumbBusDiv">
+							<div class="gridViewBusListDummy"></div>
+						</div>
+					</div>
+					<div class="col-lg-4 gridViewBusList ">
+						<div class="thumbBusDiv">
+							<div class="gridViewBusListDummy"></div>
+						</div>
+					</div>
+					<div class="col-lg-4 gridViewBusList ">
+						<div class="thumbBusDiv">
+							<div class="gridViewBusListDummy"></div>
+						</div>
+					</div>
+					</div>
+				{{/if}} -->
+			{{/if}}
+			{{#if isMapViewVisible }}
+				{{#each gridviewBusinessList}}
+					<!-- Map View -->
+						<div class="col-lg-11 col-xs-12 mapViewBusList {{busNoOffer}}" style="padding:0 5px !important">
+							<div class="thumbBusDivs">
+								<div class="row">
+									<div class="thumImgDims col-xs-5 col-lg-5" >
+										<div class="imageOverflow">
+											<a href="/{{businessLink}}" >
+												<!-- {{#with searchPageShowImage businessSelectedImages }} -->
+												<img src="{{businessSelectedImagesNew.img}}" class="imgMapview  {{businessSelectedImagesNew.checkpngImg}}">
+												<!-- {{/with}} -->
+											</a>
+										</div>
+
+									</div>
+
+									<div class="col-lg-7 col-xs-7" style="padding:0!important">
+										<div class="leftBorder" id={{_id}}>
+											<a  href="/{{businessLink}}"  class="enqHelper">
+												<span class="mapVBusTitle thumImgDescP" data-linkUrl={{businessLink}}  id={{businessTitle}}>{{businessTitle}}</span>
+											</a>
+											<div class="mapVBusAddr">{{businessAddress}}</div>
+											<div class="rvwStarting">
+												<!-- {{#with busShowRating latestRating}}
+											        {{> starRating2 }}
+												{{/with}} -->
+												{{> starRating2 businessRating }}
+												
+											</div>
+											<span class="revwTnumCnt">{{totalVote}} votes</span><br>
+											<div class="mapVBusPhnNum">
+												<i class="fa fa-phone" aria-hidden="true"></i>
+												<span>{{businessLandline}}{{mobNumSeperator}} {{businessMobile}}</span>
+											</div>
+
+											<div class="thumbEnqBtn" data-link="{{businessLink}}" data-toggle="modal" data-target="#vEnqModal">
+												<button class="btn btn-success">Enquiry</button>
+												<span class="vCmtEnqPageHideGrid">
+													{{> businessEnquiry}}
+												</span>
+											</div>
+											<div class="thumBusDistance pull-right">
+												{{busDist}} km
+											</div>
+										</div>
+
+									</div>
+									<div class="col-lg-12">
+										<div class="thumBusOffers">
+											<span class="thumBusOffersSnO">
+												<i class="fa fa-percent" aria-hidden="true"></i>
+											</span>
+											<span class="thumBusOffersSnT">{{busOffer}}</span>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+				{{/each}}
+			{{/if}}
+		</div>
+		<div class="loadMoreBus">Load More</div>
+	</div>
+</template>

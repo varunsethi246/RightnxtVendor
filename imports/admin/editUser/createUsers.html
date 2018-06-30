@@ -1,0 +1,270 @@
+<template name="createUsers">
+	<section class="Content">
+
+    	<div class="row reportWrapper">
+        <div class="col-md-10 col-lg-12">
+		<div class="col-lg-2"></div>
+		<h1 class="reportTitleName">Create Staff</h1>
+		<hr class="editFormUnderline">
+	    <div class="col-lg-12 col-md-4 col-sm-12 col-xs-12 CreateStaffOne">
+
+		  <form id="createRequired">
+			  <div class="col-lg-12 col-md-8 col-sm-12 col-xs-12">
+
+			  	{{#each signUpConfig}}
+					{{#if fieldNameIs "companyDomain" }}
+						{{#if displayIs "yes" }}
+					   <div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+						   <div class="input-group">
+							   <input type="text" class="form-control UMname" name="companyDomain" placeholder="Company Domain" pattern="[A-Za-z]+" required>
+							   <span class="input-group-addon glyphi-custom"><i class="fa fa-building-o" aria-hidden="true"></i></span>
+						   </div>
+					    </div>
+						{{/if}}
+				    {{/if}}
+
+<!-- 					{{#if fieldNameIs "companyName" }}
+						{{#if displayIs "yes" }}
+						   <div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+							   <div class="input-group">
+								   <input type="text" class="form-control UMname" name="companyName" placeholder="Company Name" pattern="[A-Za-z]+" required>
+								   <span class="input-group-addon glyphi-custom"><i class="fa fa-building" aria-hidden="true"></i></span>
+							   </div>
+						    </div>
+						{{/if}}
+				    {{/if}} -->
+			
+					{{#if fieldNameIs "title" }}
+						{{#if displayIs "yes" }}
+						    <div class="form-group col-lg-2 col-md-2 col-xs-2 col-sm-2 ">
+							   <label class="signupLabel control-label">Title*</label>
+							   <select class="form-control" name="salutation">
+									<option>Mr</option>
+									<option>Mrs</option>
+									<option>Ms</option>
+								</select>
+						    </div>
+						{{/if}}
+				    {{/if}}
+
+				  	{{#if fieldNameIs "firstName" }}
+					  	{{#if displayIs "yes" }}
+					   <div class="form-group col-lg-5 col-md-4 col-xs-12 col-sm-12 ">
+							   <label class="signupLabel control-label">First Name</label>
+						   <div class="input-group"  id="firstnameCreate">
+
+							   <input type="text" class="form-control UMname" name="firstName" placeholder="First Name" pattern="[A-Za-z]+">
+							   <span class="input-group-addon" id="boderLeft"><i class="fa fa-user" aria-hidden="true"></i></span>
+						   </div>
+					    </div>
+					    {{/if}}
+				    {{/if}}
+
+
+				    {{#if fieldNameIs "lastName"}}
+					    {{#if displayIs "yes" }}
+					   		<div class="form-group col-lg-5 col-md-4 col-xs-12 col-sm-12 " >
+							   	<label class="signupLabel control-label">Last Name</label>
+							   <div class="input-group" id="lastNameCreate">
+								   <input type="text" class="form-control UMname" name="lastName" pattern="[A-Za-z]+" placeholder="Last Name">
+								   <span class="input-group-addon" id="boderLeft"><i class="fa fa-user-o" aria-hidden="true"></i></span>
+							   </div>
+						    </div>
+					    {{/if}}
+				    {{/if}}
+
+				    {{#if fieldNameIs "emailAddress"}}
+					    {{#if displayIs "yes" }}
+					   		<div class="form-group col-lg-12 col-md-4 col-xs-12 col-sm-12 ">
+							   	<label class="signupLabel control-label">Email Id</label>
+
+							   <div class="input-group" id="emailCreate">
+								   <input type="email" class="form-control UMname validEmail" name="signupEmail" placeholder="Email">
+			   						<span class="wrongEmailSpan removeEmail"></span>
+
+								   <span class="input-group-addon glyphi-custom" id="boderLeft"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+							   </div>
+						    </div>
+					    {{/if}}
+				    {{/if}}
+
+					
+
+				   <!--  {{#if fieldNameIs "userName"}}
+					    {{#if displayIs "yes" }}
+					   		<div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+							   <div class="input-group">
+								   <input type="text" class="form-control UMname" name="userName" placeholder="Username" required>
+								   <span class="input-group-addon glyphi-custom"><i class="fa fa-id-card" aria-hidden="true"></i></span>
+							   </div>
+						    </div>
+					    {{/if}}
+				    {{/if}} -->
+
+				    <!-- {{#if fieldNameIs "gender"}}
+					    {{#if displayIs "yes" }}
+						   <div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+							   		<label class="radio-inline"><input type="radio" name="signGender" value="Male"><i class="fa fa-male" aria-hidden="true"></i></label>
+							   		<label class="radio-inline"><input type="radio" name="signGender" value="Female"><i class="fa fa-female" aria-hidden="true"></i></label>
+							   		<label class="radio-inline"><input type="radio" name="signGender" value="Transgen"><i class="fa fa-transgender-alt" aria-hidden="true"></i></label>
+						    </div>
+					    {{/if}}
+				    {{/if}}
+
+				    {{#if fieldNameIs "picture"}}
+					    {{#if displayIs "yes" }}
+					   		<div class="form-group col-lg-12 col-md-4 col-xs-12 col-sm-12 ">
+							   <div class="input-group">
+								   <input class="dataURI js-browseImg UMname" id="my-file-selector" type="file" name="displayPicture"/>
+								   <span class="input-group-addon glyphi-custom"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+							   </div>
+						    </div>
+						{{/if}}
+					{{/if}}
+ -->
+					{{#if fieldNameIs "homeAddress"}}
+						{{#if displayIs "yes" }}
+					   		<div class="form-group col-lg-12 col-md-4 col-xs-12 col-sm-12 ">
+							   	<label class="signupLabel control-label">Address</label>
+
+							   <div class="input-group" id="commentCreate">
+								   <textarea class="form-control UMname" rows="2" id="comment" name="homeAdd" placeholder="Home Address"></textarea>
+								   <span class="input-group-addon glyphi-custom" id="boderLeft"><i class="fa fa-address-card" aria-hidden="true"></i></span>
+							   </div>
+						    </div>
+					    {{/if}}
+				    {{/if}}
+
+				    <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 groupAddr"> -->
+
+				    {{#if fieldNameIs "country"}}
+						{{#if displayIs "yes" }}
+					   		<div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+							   	<label class="signupLabel control-label">Country</label>
+
+							   <div class="input-group">
+								    <select class="form-control selectpicker areaMasterSelect col-lg-9" name="country" id="countryopt">
+								    	<option>India</option>
+								    </select>
+								 <!--   <input type="text" class="form-control UMname" name="country" placeholder="Country" required> -->
+								   <span class="input-group-addon glyphi-custom"><i class="fa fa-globe" aria-hidden="true"></i></span>
+							   </div>
+						    </div>
+					    {{/if}}
+				    {{/if}}
+
+				    {{#if fieldNameIs "state"}}
+					    {{#if displayIs "yes" }}
+					   		<div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+							   	<label class="signupLabel control-label">State</label>
+
+							   <div class="input-group" id="stateCreate">
+								    <select class="form-control stateBorder UMname" name="state" id="statesOne">
+								    	<option selected="true" disabled="disabled"> Select State </option>
+								    	{{#each masterState}}
+									    	<option>{{state}}</option>	
+								    	{{/each}}
+								    </select>
+
+								   <span class="input-group-addon glyphi-custom" id="stateLeftBorder" ><i class="fa fa-street-view" aria-hidden="true"></i></span>
+							   </div>
+						    </div>
+					    {{/if}}
+				    {{/if}}
+
+				    {{#if fieldNameIs "city"}}
+					    {{#if displayIs "yes" }}
+					   		<div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+							   	<label class="signupLabel control-label">City</label>
+
+							   <div class="input-group" id="cityCreate">
+								    <select class="form-control selectpicker areaMasterSelect citySelect col-lg-9"  name="city" id="cityOne">
+								    	<option selected="true" disabled="disabled"> Select City </option>
+								    	{{#each masterCity}}
+			 					    		<option>{{city}}</option>
+								    	{{/each}}
+								    </select>
+								 
+								   <span class="input-group-addon glyphi-custom" ><i class="fa fa-map-o" aria-hidden="true"></i></span>
+							   </div>
+						    </div>
+					    {{/if}}
+				    {{/if}}
+
+					{{#if fieldNameIs "pin"}} 
+						{{#if displayIs "yes" }}  
+					   		<div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+							   	<label class="signupLabel control-label">Zip Code</label>
+
+							   <div class="input-group" id="zipCreate">
+							    <label for="zipcode"></label>
+							     	<input type="text" class="form-control UMname" pattern="[0-9]{6}" name="zip" placeholder="ZIP" required maxlength="6">
+								 
+								  	<span class="input-group-addon glyphi-custom " id="pinBorder"><i class="fa fa-podcast" aria-hidden="true"></i></span>
+							   </div>
+						    </div> 
+					    {{/if}}
+				    {{/if}}
+
+				    <!-- </div> -->
+
+				    {{#if fieldNameIs "mobNum"}} 
+						{{#if displayIs "yes" }}
+					   		<div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+							   	<label class="signupLabel control-label">Mobile Number</label>
+
+							   <div class="input-group" id="mobileCreate">
+								   <input type="text" class="form-control UMname mobileCreate" name="mobNumber" placeholder="Mobile Number" maxlength="10" required>
+								   <span class="input-group-addon glyphi-custom" id="cityBorder"><i class="fa fa-mobile" aria-hidden="true"></i></span>
+							   </div>
+						    </div>
+					    {{/if}}
+				    {{/if}}
+
+
+					{{#if fieldNameIs "alterMobNum"}} 
+						{{#if displayIs "yes" }}
+					   		<div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 bottomAlter">
+							   	<label class="signupLabel control-label">Alternate Number</label>
+
+							   <div class="input-group" id="alterMobCreate">
+								   <input type="text" class="form-control UMname mobileCreate" name="alterNumber" placeholder="Alternate Number" maxlength="10">
+								   <span class="input-group-addon glyphi-custom " id="cityBorder"><i class="fa fa-mobile" aria-hidden="true"></i></span>
+							   </div>
+						    </div>
+					    {{/if}}
+				    {{/if}}
+				    
+				
+					{{#if fieldNameIs "password"}} 
+						{{#if displayIs "yes" }}
+					   		<div class="form-group col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+							   	<label class="signupLabel control-label">Password</label>
+
+							   <div class="input-group">
+								   <input type="password" class="form-control UMname" name="signupPassword" placeholder="Password" minlength="6" required>
+								   <span class="input-group-addon glyphi-custom" id="boderLeft"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+							   </div>
+						    </div>
+					    {{/if}}
+				    {{/if}}
+
+				   {{/each}}
+				   <div class="col-lg-12 emptyDiv">
+				   	
+				   </div>
+
+					<div class="form-group col-lg-4 col-md-4 col-xs-12 col-sm-12 marginLeft">
+				    	<button class="col-lg-12 col-md-4 col-xs-12 col-sm-12 UMloginbutton hvr-color" type="submit" value="Register"> Register &nbsp; 
+				    	<span><i class="fa fa-rocket" aria-hidden="true"></i></span> 
+				    	</button>
+				   </div>
+
+
+			  </div>  <!-- End of Signup wrapper -->
+		  </form>
+  		</div>
+</div>
+</div>
+</section>
+</template>

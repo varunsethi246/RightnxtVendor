@@ -1,0 +1,197 @@
+<template name="addvendorImagesVideos">
+	{{#with vendorBusImgAndVidRetrive}}
+	<div class="adminsideAdjClass">
+		<!-- {{> vendorImagesVideos}} -->
+		<div class="">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 ">
+					<form class="businessImgVideo">
+						<div class="row addvenBusInfo">
+							<!-- For Images -->
+							<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  vBusGroupRow dragDropImage">
+								<h3 class="vOpenACloseTitle">Images</h3>
+							</div>
+							<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 vBusGroupRow">
+								<div class="progress">
+								  <div class="progress-bar addVendorAddNewFormProgressbar" role="progressbar" aria-valuenow="{{completedPercent}}"
+								  aria-valuemin="0" aria-valuemax="100" style="width:{{completedPercent}}%">
+								    {{completedPercent}}% Completed
+								  </div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  uploadpicv" id="div1" style=""  >
+								<output id="businessImglist"></output>
+								<input type="file" name="files[]" id="businessImgfiles" multiple="true" class="inputImg">
+								<h4 id="drag1">Drag new photos here</h4>
+							</div>
+							<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  vBusGroupRow vendorImgVidUpDiv">
+								<div class="vendorupImgC"  id="saveBusinessImg">
+									<span class="Vuploadicon"><i class="fa fa-folder-open-o vendorImgVidUploadSpan" aria-hidden="true"></i>
+										<span class="VuploadText">Click Upload</span>
+									</span>
+									
+								</div> 
+							</div>
+
+							<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  vBusGroupRow">
+								<div class="vPhotosOwnerManager">
+									<div class="row vPhotosYouRow">
+										{{#each vendorPhotosOwnerManagerData  }}
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 vPhotosUserRowSec">
+											<div class="">
+												<i class="fa fa-times-circle pull-right delBusiImg cursorPointer" id="img-{{_id}}" aria-hidden="true"></i><br>
+												<div class="uploadPhotoSize col-lg-12 col-md-12 col-xs-12 col-sm-12">
+													<img src="{{url}}" class="img-responsive thumbnail cursorPointer {{checkpngImg}}" data-toggle="modal" data-target="#businessImgModal-{{_id}}" >
+												</div>
+												<!-- Modal -->
+												<div id="businessImgModal-{{_id}}" class="modal fade" role="dialog">
+												  <div class="modal-dialog">
+
+												    <!-- Modal content-->
+												    <div class="modal-content">
+												      <div class="modal-body">
+												      	<div class="alignCenter text-center">
+												        <img src="{{this.url}}" class="img-responsive imgAlignCenter {{checkpngImg}}">
+												        </div>
+												      </div>
+												      <div class="modal-footer">
+												        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												      </div>
+												    </div>
+
+												  </div>
+												</div>
+												<!-- End Modal -->
+											</div>
+										</div>
+										{{/each}}
+									</div>
+								</div>
+							</div>
+
+							<!-- For Video -->
+							<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  vBusGroupRow dragDropImage">
+								<h3 class="vOpenACloseTitle">Video</h3>
+							</div>
+							{{#with currentUpload}}
+						        Uploading <b>{{file.name}}</b>:
+						        <span id="progress">{{progress.get}}%</span>
+						        {{else}}
+									{{#unless businessVideo}}
+							            <input id="fileInputOne" type="file" />
+									{{/unless}}
+						    {{/with}}
+							<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  vBusGroupRow">
+								<div class="vPhotosOwnerManager">
+								
+									<div class="row vPhotosYouRow">
+										{{#each files}}
+										<div class="col-lg-4 col-md-4 col-sm-4  col-xs-12 vPhotosUserRowSec">
+											<div class="vPhotosYouRImgNew vPhotosYouRImgPost">
+												<i class="fa fa-times-circle pull-right deleteVideo cursorPointer" id="video-{{_id}}" aria-hidden="true"></i>
+												<div class="videoShow">
+													<video  width="300" height="200" src="{{fileURL this}}?play=true" class="videoBkImg" controlsList="nodownload">
+													</video>
+												</div>
+												<!-- Modal -->
+												<div id="businessVideoModal-{{_id}}" class="modal fade" role="dialog">
+												  <div class="modal-dialog">
+
+												    <!-- Modal content-->
+												    <div class="modal-content">
+												      <div class="modal-body">
+												      	<div class="alignCenter text-center">
+													        <video controls="controls" width="300" height="200" src="{{fileURL this}}?play=true" class="videoBkImg" controlsList="nodownload">
+															</video>
+												      </div>
+												      <div class="modal-footer">
+												        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												      </div>
+												    </div>
+
+												  </div>
+												</div>
+												<!-- End Modal -->
+											</div>
+										</div>
+										</div>
+										{{/each}}
+									</div>
+									
+								</div>
+							</div>
+
+
+							<!-- For Business Menu -->
+							<div class="{{statusEnable}}">
+								<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  vBusGroupRow dragDropImage">
+									<h3 class="vOpenACloseTitle">Business Menu</h3>
+								</div>
+								<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  uploadpicv businessDivOpen" id="div1" style=""  >
+									<output id="businessMenulist"></output>
+									<input type="file" name="files[]" id="businessMenufiles" multiple="true" class="inputImg">
+									<h4 id="drag3">Drag new menu images here</h4>
+								</div>
+								<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  vBusGroupRow vendorImgVidUpDiv">
+									<div class="vendorupImgC" id="saveBusinessMenu">
+										<span class="Vuploadicon"><i class="fa fa-folder-open-o vendorImgVidUploadSpan" aria-hidden="true"></i>
+											<span class="VuploadText">Click Upload</span>
+										</span>
+									</div>
+								</div>
+
+								<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  vBusGroupRow">
+									<div class="vPhotosOwnerManager">
+										<div class="row vPhotosYouRow">
+											{{#each vendorMenuOwnerManagerData}}
+											<div class="col-lg-3 col-md-3 col-sm-3  col-xs-12 vPhotosUserRowSec">
+												<div class="vPhotosYouRImgNew">
+													<i class="fa fa-times-circle pull-right delBusiMenu cursorPointer" id="menu-{{_id}}" aria-hidden="true"></i>
+													<div class="vPhotosYouRepeatImg uploadPhotoSize">
+														<img src="{{url}}" class="img-responsive thumbnail cursorPointer {{checkpngImg}}" data-toggle="modal" data-target="#businessMenuModal-{{_id}}">
+													</div>
+
+													<!-- Modal -->
+													<div id="businessMenuModal-{{_id}}" class="modal fade" role="dialog">
+													  	<div class="modal-dialog">
+														    <!-- Modal content-->
+														    <div class="modal-content">
+														      <div class="modal-body">
+														      	<div class="alignCenter text-center">
+														        <img src="{{this.url}}" class="img-responsive imgAlignCenter {{checkpngImg}}">
+														        </div>
+														      </div>
+														      <div class="modal-footer">
+														        <button type="button" class="btn btn-default"  id="closeStartVideo">Close</button>
+														      </div>
+														    </div>
+													  	</div>
+													</div>
+													<!-- End Modal -->
+												</div>
+											</div>
+											{{/each}}
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  vBusGroupRow vendorImgVidUpDiv">
+							
+							<div class="alignCenter">
+								<a href="{{currentPath}}" class="floatingCirclesSpanOne">
+									<span><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+								</a>
+								<input type="button" name="" class="btn vendor-formOne-save" value="Save" id="saveImgAndVideos">
+							</div>	
+						</div>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	{{/with}}
+</template>

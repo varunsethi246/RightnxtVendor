@@ -1,0 +1,3745 @@
+@font-face {
+font-family:'PROXIMANOVA-BOLD';
+src:url(/fonts/PROXIMANOVA-BOLD.ttf),url(/fonts/PROXIMANOVA-BOLD.eot)
+}
+
+@font-face {
+font-family:'PROXIMANOVA-REGULAR';
+src:url(/fonts/PROXIMANOVA-REGULAR.ttf),url(/fonts/PROXIMANOVA-REGULAR.eot)
+}
+
+@font-face {
+font-family:'GOTHIC_0';
+src:url(/fonts/GOTHIC_0.ttf),url(/fonts/GOTHIC_0.eot)
+}
+
+.vendorLayoutCss {
+margin-left:5%;
+margin-right:2%
+}
+
+.generalHeadVendor .genHead {
+z-index:1
+}
+
+.profileborderfluid {
+border-bottom:1px solid #ccc;
+padding-left:10%;
+padding-right:10%;
+margin-top:60px
+}
+
+.profilephotoUpload {
+height:143px;
+position:relative
+}
+
+.profileuploadPhoto {
+position:absolute
+}
+
+.inputfiletype {
+opacity:0;
+position:absolute;
+top:-12px;
+left:0
+}
+
+.profileuploadText {
+position:absolute;
+bottom:0;
+right:0;
+display:initial
+}
+
+.addtoPhoto {
+display:initial
+}
+
+.vendorProfileName h3 {
+color:#f89b1c;
+font-size:240%;
+padding:5px 0 0;
+margin:0;
+font-weight:400;
+line-height:50px
+}
+
+.vendorProfileName h4 {
+color:#4e4f51;
+font-size:21px;
+padding:0;
+margin:0;
+font-weight:400
+}
+
+.addtoPhotoDiv {
+display:inline-block;
+background:rgba(0,0,0,0.5);
+padding:1px 2px;
+color:#ccc
+}
+
+.addphotoonimageIcon {
+padding-right:3px
+}
+
+a.vendorProfileSetting {
+text-decoration:none;
+color:#555;
+padding:2px 5px;
+border:1px solid #ccc;
+top:25px;
+position:relative
+}
+
+a.vendorProfileSetting i {
+color:#999
+}
+
+a.vendorProfileSetting span span {
+word-break:break-all;
+font-size:small
+}
+
+.vendorProfileName .fa-map-marker {
+font-size:20px;
+padding:4px 6px 4px 0;
+color:#aaa
+}
+
+a.vendorProfileSetting:hover i,a.vendorProfileSetting:hover {
+color:#f89b1c
+}
+
+.vendorProfileSettingAdj {
+margin-top:0;
+padding-bottom:18%
+}
+
+.mymenucolorSelect {
+background:#f89b1c;
+color:#fff!important
+}
+
+.mymenucolorSelect i {
+background:#f89b1c;
+color:#fff!important
+}
+
+.mymenucolorSelect span {
+color:#fff!important
+}
+
+.sidebarDiv {
+margin-top:65px
+}
+
+.sidebarDiv a {
+text-decoration:none;
+color:#4e4f51;
+padding:6px
+}
+
+.sidebarDiv ul {
+list-style:none
+}
+
+.sidebarDiv ul li {
+font-size:14px
+}
+
+.sidebarDiv ul li a i {
+padding:3px;
+font-size:18px;
+color:#A8A8A8
+}
+
+ul {
+padding-left:0
+}
+
+.myBussinessList {
+font-size:14px;
+line-height:33px;
+color:#4e4f51;
+border:1px solid #ccc;
+font-family:'PROXIMANOVA-BOLD';
+margin-bottom:3px;
+border-radius:0
+}
+
+.sidebarDiv ul li a {
+width:100%;
+display:block
+}
+
+.sidebarDiv ul li a:hover {
+background:#f89b1c;
+color:#fff;
+-webkit-transition:all .25s ease-in;
+-moz-transition:all .25s ease-in;
+-ms-transition:all .25s ease-in;
+-o-transition:all .25s ease-in;
+transition:all .25s ease-in
+}
+
+.sidebarDiv ul li a:hover i {
+color:#fff;
+-webkit-transition:all .25s ease-in;
+-moz-transition:all .25s ease-in;
+-ms-transition:all .25s ease-in;
+-o-transition:all .25s ease-in;
+transition:all .25s ease-in
+}
+
+.sidebarDiv ul li ul li {
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.mainHotelList {
+font-family:'PROXIMANOVA-BOLD'
+}
+
+@media only screen and (max-width: 500px) {
+.aboutBusinessClass,.vendorEnquiryClass {
+border-left:0 solid #ccc!important
+}
+}
+
+.vAboutBusinessAccordion i.fa-question-circle {
+color:#999!important
+}
+
+.aboutBusinessClass {
+padding:25px 30px 0
+}
+
+.bussinessTitle {
+margin:0;
+font-weight:400;
+font-size:20px;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.bussinessTitle span {
+color:#fff;
+padding:1px
+}
+
+.bussinessTitle span i {
+padding:2px
+}
+
+.starRatingClass {
+margin-left:9px;
+display:inline-block;
+top:13px;
+position:relative
+}
+
+.starClass {
+background:#f89b1c;
+border-radius:23%
+}
+
+.starClassGray {
+background:#ccc8c8;
+border-radius:23%
+}
+
+.BussnessAboutTitle {
+font-size:20px;
+margin:0;
+color:#f89b1c;
+font-weight:400;
+font-family:'PROXIMANOVA-BOLD';
+font-weight:500
+}
+
+.vAccordionHeadPre {
+color:#333;
+border:none;
+border-radius:0
+}
+
+.vAccordionHead {
+color:#333!important;
+background-color:#e9e9e9!important;
+border:none;
+border-radius:0;
+cursor:pointer
+}
+
+.vAccordionHead .collapsed {
+background-color:#e9e9e9!important;
+color:#333
+}
+
+.vAccordionHeadPre a {
+text-decoration:none
+}
+
+.vAccordionHead:hover,.vAccordionHead:hover i,.vAccordionHead:hover .vAboutBusTitle {
+color:#FFF;
+background-color:#f89b1c!important
+}
+
+.businessAboutOwner .fa-question-circle,.businessInfo .fa-question-circle,.businessImgVideo .fa-question-circle,.businessOpenAndClose .fa-question-circle {
+color:#999!important
+}
+
+.vAboutBusTitle {
+font-size:16px;
+font-weight:400;
+font-family:'PROXIMANOVA-BOLD';
+color:#4e4f51
+}
+
+.vBusTitleI {
+font-size:28px;
+vertical-align:middle
+}
+
+.vBusGroupRow {
+padding:0;
+margin-bottom:15px
+}
+
+span.vBusWebAdress {
+vertical-align:middle
+}
+
+.vBusWebAdress {
+display:inline-block
+}
+
+#businessLink {
+display:inline-block;
+width:72%
+}
+
+.vendor-colomn .col-lg-4,.vendor-colomnTw .col-lg-4,.vendor-colomn .col-md-4,.vendor-colomn .col-sm-12,.vendor-colomn .col-xs-12 {
+margin-top:8px
+}
+
+.vendor-colomn {
+margin-bottom:12px;
+margin-right:0;
+margin-left:0
+}
+
+.vendor-colomnTw {
+margin-bottom:12px;
+margin-right:0;
+margin-left:-15px
+}
+
+.vendorLocTitle {
+color:#f89b1c;
+font-size:15px;
+font-family:'PROXIMANOVA-REGULAR';
+padding:25px 0 12px;
+margin:0;
+font-weight:400
+}
+
+.vendorFetchBtn {
+padding:0 15px;
+height:38px;
+line-height:38px;
+background:#707070;
+color:#fff;
+font-size:16px;
+font-family:'PROXIMANOVA-REGULAR';
+float:left;
+margin:13px 0 16px;
+border-radius:0;
+border:none;
+outline:none
+}
+
+.vendorFetchBtn:hover {
+color:#fff!important
+}
+
+.vBusGroupRow label {
+padding:0 0 2px;
+margin:0;
+font-family:'PROXIMANOVA-REGULAR';
+font-size:15px;
+color:#4e4f51;
+font-weight:400
+}
+
+.vBusGroupRow input {
+border-radius:0
+}
+
+.map-container {
+width:100%;
+max-width:100%;
+height:250px;
+margin-top:15px;
+margin-bottom:15px
+}
+
+.vendor-map-container {
+border:1px solid #ccc
+}
+
+.vendor-formOne-save {
+background:#f89b1c;
+border:none;
+outline:none!important;
+padding:7px 26px;
+color:#fff;
+font-size:16px;
+font-weight:400;
+font-family:'PROXIMANOVA-BOLD';
+border-radius:0
+}
+
+.vendor-formOne-save:hover {
+color:#fff!important;
+background:#4e4f51;
+cursor:pointer
+}
+
+.vendorFormOSave {
+text-align:center;
+margin-bottom:15px
+}
+
+.businessWhatRoleC {
+width:100%;
+padding:7px;
+margin-bottom:7px;
+background:#fff;
+border:1px solid #ccc;
+outline-color:#a1e9f1
+}
+
+.vModeofPay {
+border-radius:0
+}
+
+.vOpenACloseTitle {
+color:#f89b1c;
+font-size:16px;
+margin:0;
+font-weight:400;
+font-family:'PROXIMANOVA-BOLD';
+margin-top:10px;
+margin-bottom:10px
+}
+
+.vContactInfoFormTwo h5 {
+color:#f89b1c;
+font-size:15px;
+font-family:'PROXIMANOVA-REGULAR';
+padding:15px 0 12px;
+margin:0;
+font-weight:400
+}
+
+.vContactInfoFormTwo input {
+margin-bottom:5px
+}
+
+.v-image-upload-class .uploadButton1 {
+border-radius:0;
+border:1px solid #ccc;
+background:#fff;
+outline:none;
+color:#555;
+padding:6px
+}
+
+.v-image-upload-class .uploadButton2 {
+width:113px;
+height:34px;
+opacity:0;
+cursor:pointer;
+position:absolute;
+left:13px;
+line-height:inherit!important;
+display:inherit;
+top:23px;
+margin:0
+}
+
+.v-image-upload-margin {
+margin-top:15px
+}
+
+.vPhotosOwnerManager {
+border:1px solid #ccc;
+margin-top:0
+}
+
+.vPhotosOwnerManager .row {
+margin-top:8px;
+margin-bottom:25px
+}
+
+.vendorImgVidUploadFile {
+width:100%;
+cursor:pointer;
+position:absolute;
+opacity:0
+}
+
+.vendorImgVidUploadBtn {
+width:100%;
+top:-1px;
+background:#fff;
+border:1px solid #ccc
+}
+
+.vendorImgVidUploadSpan {
+text-align:right;
+background:#6cc233;
+top:0;
+padding:10px 27px;
+color:#fff;
+right:0;
+cursor:pointer
+}
+
+.vDateSelect ul {
+font-size:0
+}
+
+.WeekClassPre {
+list-style:none;
+display:inline-block;
+border:1px solid #ccc;
+padding:1% 3%;
+color:#000;
+cursor:pointer;
+font-size:12px
+}
+
+.WeekClassPost {
+color:#fff;
+background:#f89b1c
+}
+
+.TimeFrameBtn {
+background:#f89b1c;
+font-family:'PROXIMANOVA-REGULAR';
+color:#fff;
+border-radius:0;
+outline:none!important;
+border:none
+}
+
+.TimeFrameBtn:hover {
+color:#fff
+}
+
+.TimeFrameBtnPre {
+margin-top:15px
+}
+
+.allsavetime {
+text-align:left;
+margin-top:5px;
+margin-bottom:5px
+}
+
+.VendorGotLikesClass,.vendorReportCl,.vendorCommentCl,.vendorPhotosCl,.vendorEnquiryCl,.vendorPaymentCl {
+margin-left:20px
+}
+
+.likesTitleClass {
+padding:30px 0 0;
+margin:0;
+font-size:20px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.likesClass {
+padding:12px 0 15px;
+margin:0;
+font-size:20px;
+color:#f89b1c;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.likesSpan,.enquirySpan,.ratingsSpan {
+color:#4e4f51
+}
+
+.dotClass {
+background:#9e9ca0;
+height:30px;
+width:30px;
+display:inline-block;
+border-radius:50%;
+position:relative;
+top:-20px
+}
+
+.UserInfoClass {
+display:inline-block;
+padding-left:10px
+}
+
+.UserLikesList {
+margin-bottom:16px
+}
+
+.revClass {
+color:#b2b2b2
+}
+
+.tab-contentOther {
+margin-top:18px
+}
+
+.vendorHotelReport {
+padding:30px 0 0;
+margin:0;
+font-size:20px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.vendorHotelReportSec {
+padding:12px 0 15px;
+margin:0;
+font-size:20px;
+color:#f89b1c;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.vendorHotelReportSec span {
+color:#4e4f51
+}
+
+ul.myreportList {
+margin-bottom:4px
+}
+
+.myreportList li {
+list-style:none;
+display:inline-block;
+margin-right:2px
+}
+
+.myreportList li a {
+text-decoration:none;
+padding:7px 22px 7px 0;
+color:#000;
+font-family:"PROXIMANOVA-REGULAR";
+font-size:14px;
+color:#565656;
+cursor:pointer
+}
+
+.myreportList li a:hover {
+font-family:'PROXIMANOVA-BOLD';
+font-size:14px;
+border-bottom:2px solid #000;
+cursor:pointer
+}
+
+.myreportList .active > a {
+font-family:'PROXIMANOVA-BOLD';
+font-size:14px;
+border-bottom:2px solid #000;
+cursor:pointer
+}
+
+.vImageContenttab {
+border:1px solid #ccc;
+margin-top:5px;
+margin-bottom:5px;
+padding:5px
+}
+
+.userReportList {
+border-bottom:1px solid #ccc;
+padding-bottom:5px
+}
+
+.vreportdotClass {
+background:#9e9ca0;
+height:40px;
+width:40px;
+display:inline-block;
+border-radius:50%;
+position:relative;
+top:-23px
+}
+
+.vreportinfoClass {
+display:inline-block;
+margin-left:7px
+}
+
+.vreportinfoClass h5 {
+display:inline-block;
+padding:9px 0 0;
+margin:0;
+font-weight:400;
+font-family:"PROXIMANOVA-REGULAR";
+font-size:14px;
+color:#4e4f51
+}
+
+.vreportinfoClass p {
+padding:0;
+margin:0;
+font-weight:400;
+font-family:"PROXIMANOVA-REGULAR";
+font-size:14px;
+color:#b2b2b2;
+line-height:18px
+}
+
+.vreportinfoButton {
+top:4px;
+position:relative
+}
+
+.vreportinfoButton > button {
+padding:9px 27px;
+border-radius:0;
+color:#fff;
+background:#f89b1c;
+border:none
+}
+
+.vreportinfoButton > button:hover {
+color:#fff;
+background:#333
+}
+
+.BussRepDelMod p {
+font-size:16px
+}
+
+.BussRepDelMod {
+margin-top:12%
+}
+
+.vImageInnerClassData h2 {
+font-size:16px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-BOLD';
+padding:10px 0 10px 18px;
+margin:0;
+font-weight:400
+}
+
+.outervImageInnerClassInfo {
+padding-right:0
+}
+
+.vImageInnerClassInfo {
+height:116px;
+overflow:hidden
+}
+
+.vImageInnerClassInfo img {
+width:100%;
+height:100%
+}
+
+.vendorImgdescp {
+margin-left:18px;
+margin-top:10px
+}
+
+.vendorImgdescp h3 {
+margin:0;
+font-weight:400;
+font-size:16px;
+color:#ff0030;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.vendorImgdescp p {
+font-size:14px;
+color:#4e4f51;
+margin:0;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.vbussinessDesc h4 {
+font-weight:400;
+padding:0 0 20px 18px;
+margin:0;
+font-size:16px;
+color:#ff0030;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.vCheckboxList ul li,.vCheckboxList ul li input,.vCheckboxList ul li span {
+display:inline-block
+}
+
+.vCheckboxList ul li label {
+display:inline-block;
+position:relative;
+top:-2px
+}
+
+.vCheckboxListUl {
+margin-left:14px
+}
+
+.vCheckboxListUlsm {
+margin-left:5px
+}
+
+.vCheckboxListUl input[type=checkbox],.vCheckboxListUlsm input[type=checkbox] {
+height:20px;
+width:20px;
+position:relative;
+top:4px
+}
+
+.vCheckboxList label {
+font-family:"PROXIMANOVA-REGULAR";
+color:#4e4f51;
+font-size:14px;
+font-weight:400
+}
+
+.someBotinner {
+margin-bottom:10px
+}
+
+.vCheckboxListInfoPara {
+font-size:14px;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR";
+line-height:18px;
+padding:0 20px
+}
+
+.vCommentsImgDiv {
+display:inline-block;
+width:79px;
+height:81px
+}
+
+h3.vCommentsHotelName {
+padding:30px 0 0;
+margin:0;
+font-size:20px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+h3.vCommentsHotelNameT {
+padding:15px 0 5px;
+margin:0;
+font-family:"PROXIMANOVA-BOLD";
+color:#f89b1c;
+font-size:20px
+}
+
+h3.vCommentsHotelNameT span {
+color:#4e4f51
+}
+
+.vCommentsProfile {
+margin:20px 0 0;
+font-size:14px
+}
+
+.vCommentsProf {
+height:67px;
+width:68px;
+overflow:hidden
+}
+
+.vCommentsProf img {
+width:100%
+}
+
+.vCommentsProfileInfo a {
+text-decoration:none;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.vCommentsProfileInfo a:hover {
+color:#f89b1c
+}
+
+.vCommentsProfileInfo p {
+font-size:14px;
+color:#b2b2b2;
+padding:0 0 8px;
+margin:0;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.vCommentsProfilePara p {
+padding:0;
+margin:0;
+font-size:14px;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR";
+line-height:20px
+}
+
+.vCommentsImageRow {
+margin:15px 0 11px
+}
+
+.vCommentsProfile a {
+float:left;
+margin-right:12px
+}
+
+.vCmtall-comment {
+margin:0;
+padding:0 0 15px
+}
+
+.vCmtlike {
+float:left;
+border:1px solid #ccc;
+text-align:center;
+height:29px;
+line-height:29px;
+padding:0 8px
+}
+
+.vCmtlike p {
+margin:0;
+padding:0;
+font-size:15px;
+color:#b2b2b2;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.vCmtheart {
+height:29px;
+line-height:29px;
+float:left;
+width:8%;
+text-align:center;
+border-bottom:1px solid #ccc;
+border-right:1px solid #ccc;
+border-top:1px solid #ccc;
+font-size:18px;
+color:#b2b2b2;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.vCmtcommentTxt {
+float:left;
+border:1px solid #ccc;
+text-align:center;
+height:29px;
+line-height:29px;
+margin:0 0 0 2%;
+padding:0 8px
+}
+
+.vCmtcommentTxt p {
+margin:0;
+padding:0;
+font-size:15px;
+color:#b2b2b2;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.vCmtcomment {
+border:1px solid #ccc;
+float:left;
+margin:0;
+height:29px;
+line-height:29px;
+text-align:center;
+width:10%;
+border-left:0;
+color:#b2b2b2;
+font-size:18px
+}
+
+.vCmtshare_page {
+border:1px solid #ccc;
+float:right;
+margin:0;
+height:29px;
+line-height:29px;
+text-align:center;
+width:35px;
+font-size:18px;
+color:#b2b2b2
+}
+
+.vCmtheart:hover,.vCmtcomment:hover {
+color:#f89b1c;
+cursor:pointer
+}
+
+.vCmtshare_page:hover {
+border:1px solid #f89b1c;
+cursor:pointer;
+color:#f89b1c
+}
+
+.vCmtuser_image span {
+background:red
+}
+
+.vCmtuser_image {
+clear:both;
+position:relative;
+top:25px
+}
+
+.vCmtuser_image span {
+position:relative;
+padding:7px 15px;
+border-radius:50%;
+margin-right:22px;
+top:1px;
+background-color:#999
+}
+
+.vCmtcomment_txt2 {
+width:88%;
+border:1px solid #ccc;
+height:30px;
+margin:-5px 0 0;
+padding:5px;
+font-size:14px;
+outline-color:#f89b1c
+}
+
+.vendorCommentsDataMargin {
+margin-bottom:20px
+}
+
+.VCommentModalMainContent .modal-body {
+padding-top:5px
+}
+
+.vModalContentMain {
+padding:15px
+}
+
+.VCommentModalMainContent {
+margin-top:20%;
+border-radius:0
+}
+
+.vModalMarginBot {
+margin-bottom:10px
+}
+
+.vModalContentShare {
+color:#4e4f51;
+font-size:16px;
+border-bottom:1px solid #ccc;
+font-family:'PROXIMANOVA-REGULAR';
+text-align:left
+}
+
+.bussShareIcon .vModalContentShare {
+padding-left:15px!important;
+padding-right:15px!important;
+margin-bottom:10px
+}
+
+.vModalContentMain .row > .bussShareIcon {
+margin-top:0
+}
+
+.vModalContent {
+margin-top:10px
+}
+
+.vModalContent .row {
+font-size:14px;
+color:#fff;
+text-align:center;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.vModalContentfb {
+padding:9px 5px;
+background:#3b5998
+}
+
+.vModalContentfb i {
+position:relative;
+top:4px;
+margin-right:5px;
+font-size:21px
+}
+
+.vModalContentfb:hover {
+cursor:pointer;
+background:#1f52bc
+}
+
+.vModalContentMain > .row > .col-lg-12 {
+padding:0
+}
+
+.vModalContentgp {
+padding:9px 5px;
+background:#d34836
+}
+
+.vModalContentgp i {
+position:relative;
+top:4px;
+margin-right:5px;
+font-size:21px
+}
+
+.vModalContentgp:hover {
+background:#d7250e;
+cursor:pointer
+}
+
+.vmodalForm input {
+width:100%;
+padding:8px;
+border-radius:0;
+border:1px solid #ccc;
+font-size:14px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR';
+outline-color:#f89b1c;
+margin-bottom:0
+}
+
+.vmodalFormOne {
+margin-top:11px
+}
+
+.vmodalForm hr {
+margin-top:8px;
+margin-bottom:0;
+border-top:1px solid #eee
+}
+
+.vmodalForm label {
+margin-bottom:0!important;
+font-size:14px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR';
+font-weight:400
+}
+
+.vCenterOr {
+text-align:center
+}
+
+.vmodalFormButton {
+text-align:center;
+margin-top:8px
+}
+
+.vmodalFormButton button {
+border-radius:0;
+padding:8px 25px;
+background:#f89b1c;
+border:none;
+outline:none
+}
+
+.vmodalFormButton button:hover {
+background:#4e4f51
+}
+
+.vmodalForm .form-group {
+margin-bottom:0
+}
+
+.vModalContentShare button {
+position:relative;
+right:22px;
+top:-3px;
+font-size:30px;
+color:#000!important;
+opacity:1;
+font-weight:400;
+outline:none
+}
+
+.vModalContentShare button:hover {
+color:#000!important;
+opacity:1;
+font-weight:400;
+outline:none
+}
+
+.vmodalFormOne::placeholder {
+font-size:14px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR';
+line-height:35px
+}
+
+ul.myPhotosList {
+margin-bottom:4px;
+margin-top:8px
+}
+
+.myPhotosList li {
+list-style:none;
+display:inline-block;
+margin-right:2px
+}
+
+.myPhotosList li a {
+text-decoration:none;
+padding:7px 11px 7px 0;
+color:#000;
+font-family:"PROXIMANOVA-REGULAR";
+font-size:14px;
+color:#565656;
+cursor:pointer
+}
+
+.myPhotosList li a:hover {
+font-family:'PROXIMANOVA-BOLD';
+font-size:14px;
+border-bottom:2px solid #000;
+cursor:pointer
+}
+
+.myPhotosList .active>a {
+font-family:'PROXIMANOVA-BOLD';
+font-size:14px;
+border-bottom:2px solid #000;
+cursor:pointer
+}
+
+.vPhotosYouSort {
+color:#4e4f51!important;
+font-size:14px;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.vPhotosYouPre {
+margin-top:22px
+}
+
+.nav-tabsPre {
+display:inline-block;
+border:none;
+margin-left:6px
+}
+
+.nav-tabsPre span {
+font-family:'PROXIMANOVA-REGULAR';
+color:#4e4f51;
+font-size:14px;
+cursor:pointer;
+margin-right:6px
+}
+
+.nav-tabsPre a {
+text-decoration:none;
+color:#4e4f51;
+padding:5px
+}
+
+.nav-tabsPre span a:hover {
+background:#f89b1c;
+color:#fff;
+transition:all .3s ease-in-out
+}
+
+.nav-tabsAct {
+background:#f89b1c;
+color:#fff!important
+}
+
+.nav-tabsPreTwo .active > a {
+background:#f89b1c;
+color:#fff
+}
+
+.nav-tabsPreTwo {
+display:inline-block;
+border:none;
+margin-left:6px
+}
+
+.nav-tabsPreTwo span {
+font-family:'PROXIMANOVA-REGULAR';
+color:#4e4f51;
+font-size:14px;
+cursor:pointer;
+margin-right:6px
+}
+
+.nav-tabsPreTwo a {
+text-decoration:none;
+color:#4e4f51;
+padding:5px
+}
+
+.nav-tabsPreTwo span a:hover {
+background:#f89b1c;
+color:#fff;
+transition:all .3s ease-in-out
+}
+
+.vPhotosYouNewh {
+margin-bottom:1.6%
+}
+
+.vPhotosYouNewh h4 {
+padding:24px 0 0;
+margin:0;
+font-weight:400;
+font-size:20px;
+color:#f89b1c;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.vPhotosYouNewh span {
+color:#4e4f51
+}
+
+.vendorHotelReportTwo {
+padding:20px 0 0;
+margin:0;
+margin-bottom:1%;
+font-size:20px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.vPhotosYouUpload {
+/*margin:18px 0 0;*/
+margin-top:-30px;
+border:1px solid #ccc;
+padding:20px 22px
+}
+
+.vPhotosYouUploadImg {
+display:inline-block;
+vertical-align:top;
+/*position:relative;*/
+/*margin-top:18px;*/
+margin-right:12px
+}
+
+.vPhotosYouUploadTxt {
+display:inline-block;
+margin-top:3px;
+/*margin-bottom:11px*/
+}
+
+.vPhotosYouUploadTxt h3 {
+font-size:20px;
+color:#4e4f51;
+padding:0;
+margin:0;
+font-weight:400;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.vPhotosYouUploadTxt p {
+color:#4e4f51;
+padding:4px 0 0;
+margin:0;
+font-weight:400;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.vPhotosYouUploadBtn {
+position:relative
+}
+
+.vPhotosYouUploadBtn input {
+position:absolute;
+width:115px;
+height:30px;
+top:8px;
+opacity:0;
+cursor:pointer
+}
+
+.vPhotosYouUploadBtn button {
+padding:0;
+border-radius:0;
+margin:10px 0 0;
+border:0;
+background:#6cc233;
+color:#fff;
+font-size:14px;
+height:30px;
+font-family:'PROXIMANOVA-REGULAR';
+width:115px
+}
+
+.vPhotosYouUploadBtn button.btn.btn-success {
+margin-left:0;
+margin-top:3px
+}
+
+.vPhotosYouUploadPost {
+padding:0;
+margin:0 auto;
+max-width:470px;
+width:100%
+}
+
+.vPhotosYouRepeat {
+border:1px solid #ccc;
+margin-top:30px
+}
+
+.vPhotosYouRepeat .row {
+margin-top:8px;
+margin-bottom:25px
+}
+
+.vPhotosYouRepeatImgO {
+display:inline-block;
+border:1px solid #ccc
+}
+
+.vPhotosYouRImg .fa-times-circle {
+display:inline-block;
+position:relative;
+right:-14px;
+top:-229px;
+font-size:16px;
+cursor:pointer
+}
+
+.vPhotosYouRImg {
+display:inline-block
+}
+
+.vPhotosYouRepeatImgR {
+right:3px;
+position:relative;
+font-size:20px;
+margin-top:7px;
+margin-bottom:7px;
+color:#999
+}
+
+.vPhotosYouRepeatImgR .file1,.file2 {
+display:inline-block;
+cursor:pointer;
+cursor:pointer
+}
+
+.vPhotosYouRepeatImgR .file2 i:hover,.vPhotosYouRepeatImgR .file2 i:hover,.vPhotosYouRepeatImgR .file2 input :hover,.vPhotosYouRepeatImgR .file2 i input:hover {
+color:#f89b1c;
+cursor:pointer!important
+}
+
+.vPhotosYouRepeatImgR .file1 input {
+width:15px;
+height:15px;
+position:absolute;
+display:inline-block;
+top:5px;
+left:1px;
+opacity:0;
+overflow:hidden;
+cursor:pointer
+}
+
+.vPhotosYouRepeatImgR .file2 input {
+width:15px;
+height:15px;
+position:absolute;
+display:inline-block;
+top:6px;
+left:23px;
+opacity:0;
+overflow:hidden;
+cursor:pointer
+}
+
+.vPhotosUserRowSec {
+text-align:center
+}
+
+.vendorPhotosUImg {
+position:absolute;
+top:0;
+right:4px;
+height:22px;
+width:28px
+}
+
+.noworkDiv > .uploadPhotoSize {
+padding-right:0
+}
+
+.noworkDiv > .delBusiImg {
+position:relative;
+top:16px;
+right:0
+}
+
+.noworkDiv1 > .delBusiImg {
+/*position:relative;
+top:26px;
+right:18px*/
+    position: relative;
+    top: 20px;
+    right: -10px;
+}
+
+.vendor-colomn > .col-lg-12 > .toDateBuss,.vendor-colomn > .col-lg-12 > .col-lg-12 > .row > .toDateBuss {
+padding-left:0
+}
+
+/*.noworkDiv1 > .uploadPhotoSize {
+width:88%
+}*/
+
+.delBusiMenu {
+position:relative;
+top:-4px;
+right:2px
+}
+
+.vPhotosYouNewh .vPhotosYouNewBtn {
+display:inline;
+border-radius:0;
+padding:2px 10px;
+font-size:12px;
+background:#6cc233;
+outline:none!important;
+border:none;
+margin-left:0;
+margin-top:0!important
+}
+
+.vPhotosYouNewBtnPre {
+display:inline
+}
+
+#vPhotosYouNewS .vPhotosYouNewMain {
+margin-top:19px
+}
+
+.vendorEnquiryClass {
+min-height:800px
+}
+
+.archivedEnqBlock {
+display:block
+}
+
+.archivedEnqNone {
+display:none
+}
+
+.readEnq {
+background:#fff!important;
+color:#000
+}
+
+.unreadEnq {
+background:#b3e5fc!important;
+color:#333
+}
+
+.selectedEnqRead {
+background:#fff!important;
+color:#000
+}
+
+.selectedEnq {
+background:#f89b1c!important;
+color:#fff
+}
+
+.vEnqRowTwoPoiner {
+cursor:pointer
+}
+
+.activeEnquiryTabsPre .fa-angle-down {
+opacity:0
+}
+
+.vEnqFormAdj .show-sm {
+margin-top:10px
+}
+
+.vEnqActiveDiv {
+display:none
+}
+
+.vendorEnquiryClass {
+border-left:1px solid #ccc
+}
+
+.vendorEnquiryRow {
+margin-top:10px
+}
+
+.vendorEnquiryTitle h3 {
+padding:30px 0 0;
+margin:0;
+font-size:20px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.vendorEnquiryForm input {
+padding:18px 6px;
+font-size:14px;
+color:#303030;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.vendorEnquiryForm .input-group-addon {
+padding-left:16px;
+padding-right:16px;
+color:#7f7a7a
+}
+
+.vendorEnquiryFormSearch {
+border-radius:0;
+padding:18px 11px
+}
+
+.userEnquiryFormSearch {
+border-radius:0;
+padding:18px 11px
+}
+
+.activeEnquiryTabPre {
+border:none!important
+}
+
+.activeEnquiryTabPre ul li {
+display:inline-block;
+padding-right:5px;
+text-decoration:none;
+padding-left:5px;
+margin-right:0;
+color:#fff;
+list-style:none;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.activeEnquiryTabPre ul li:hover,.activeEnquiryTabPre ul li:hover a,.activeEnquiryTabPre ul li:hover i {
+background:#f89b1c;
+color:#fff
+}
+
+.activeEnquiryTabPre ul li a {
+text-decoration:none;
+color:#4e4f51
+}
+
+.activeEnquiryTabPre ul li a i {
+margin-left:8px;
+font-size:20px;
+position:relative;
+top:2px;
+color:#4e4f51
+}
+
+.vEnqSpan {
+margin-top:15px
+}
+
+.vEnqSpanShow {
+display:block
+}
+
+.vEnqSpan span {
+color:#000;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.vEnqSpanFirstChild {
+line-height:27px;
+color:#4e4f51!important;
+font-family:"PROXIMANOVA-BOLD"!important;
+font-size:14px;
+display:inline-block;
+margin-right:8px
+}
+
+.vEnqActiveDiv span {
+padding:4px;
+border:1px solid #ccc;
+cursor:pointer
+}
+
+.vEnqActiveDiv span:hover {
+background:#f89b1c;
+color:#fff;
+border:1px solid #f89b1c
+}
+
+.vEnqListBorder {
+border:1px solid #ccc;
+padding:0;
+background:#fff
+}
+
+span.vEnqInfoUserImg {
+height:30px;
+width:30px;
+display:block;
+border-radius:50%;
+overflow:hidden
+}
+
+span.vEnqInfoUserImg img {
+width:100%;
+height: 31px;
+}
+
+.vEnqListBorder .row {
+margin-right:0;
+margin-left:0
+}
+
+.vEnqListBorderFirstRow {
+border-bottom:1px solid #ccc;
+background:#e7e7e7
+}
+
+.EnqListCheckbox,.EnqListCheckboxAll,.EnqListCheckboxTwo,.EnqListCheckboxTwoAll,.EnqListCheckboxThr,.EnqListCheckboxThrAll {
+height:22px;
+width:22px
+}
+
+.vEnqUserAdj {
+position:relative;
+top:0px;
+}
+
+.vEnqUserTrcknted {
+width:85px;
+white-space:nowrap;
+overflow:hidden!important;
+text-overflow:ellipsis
+}
+
+.vEnqVendorTrcknted {
+width:85px;
+white-space:nowrap;
+overflow:hidden!important;
+text-overflow:ellipsis
+}
+
+.vEnqTitleCen {
+text-align:center
+}
+
+.deleteEnq {
+color:#ccc
+}
+
+.text-centerEnq {
+color:#222
+}
+
+.vEnqListBorder .fa-trash,.vEnqListBorder .fa-flag {
+padding:1px;
+background:#fff;
+cursor:pointer;
+border:1px solid #ccc
+}
+
+.flagEnquiry {
+color:red!important
+}
+
+.noflagEnquiry {
+color:#ccc!important
+}
+
+.vEnqListBorder .fa-trash {
+padding-right:2px;
+padding-left:2px
+}
+
+.vEnqListBorder .fa-trash:hover {
+color:#000
+}
+
+.vEnqListBorder .fa-flag:hover {
+color:red
+}
+
+.vEnqRowTwo {
+background:#b3e5fc;
+margin-bottom:2px;
+overflow:hidden
+}
+
+.vEnqRowTwo:hover {
+color:#000
+}
+
+.activeEnquiryTabPre .active,.activeEnquiryTabPre .active a,.activeEnquiryTabPre .active a>i {
+background:#f89b1c;
+color:#fff
+}
+
+.vEnqUserAdjGreen {
+position:relative;
+top:5px;
+color:#43c50f!important;
+transform:rotateY(180deg);
+cursor:pointer;
+background:#fff;
+padding:2px
+}
+
+.restoreArchivei {
+height:60px;
+padding-top:9px
+}
+
+.archivedEnq .flagEnq {
+display:none
+}
+
+.noArchivedEnq .restoreArchivei {
+display:none
+}
+
+.vEnqForm {
+border:1px solid #ccc
+}
+
+.vEnqFormAdj {
+padding-top:99px
+}
+
+.vEnqFormTitle {
+border-bottom:1px solid #ccc
+}
+
+.vEnqFormTitle h3 {
+color:#565656;
+font-size:14px;
+font-family:"PROXIMANOVA-BOLD";
+padding:9px 0 3px;
+margin:0 0 7px;
+font-weight:400
+}
+
+.vEnqFormTitleRow {
+margin-right:0;
+margin-left:0
+}
+
+.vEnqFormDetails ul li {
+list-style:none;
+display:inline-block;
+margin-right:5px
+}
+
+.vEnqFormDetails ul {
+border-bottom:1px solid #ccc
+}
+
+.vEnqFormDetails h4 {
+color:#565656;
+font-size:14px;
+font-family:"PROXIMANOVA-BOLD";
+font-weight:400;
+padding:7px 0 0;
+margin:0
+}
+
+.vEnqFormDetails ul li h4 {
+padding:0;
+display:inline-block
+}
+
+.vEnqFormDetails ul li span {
+font-family:'PROXIMANOVA-REGULAR';
+color:#565656
+}
+.vEnqFormImgOne{
+max-height: 300px;
+overflow-y: scroll;
+}
+.vEnqFormImgOne .row,.vEnqFormImgTwo .row,.vEnqFormImgThree .row {
+margin-right:0;
+margin-left:0;
+margin-bottom: 10px;
+}
+
+.vEnqTriangleleft {
+border-right:13px solid #ddecfb;
+border-bottom:11px solid transparent;
+position:absolute;
+left:2px
+}
+
+.vEnqTriangleRight {
+border-right:13px solid #ddecfb;
+border-bottom:11px solid transparent;
+position:absolute;
+right:2px;
+transform:rotateX(0deg) rotateY(180deg)
+}
+
+.formBreakWord {
+word-wrap:break-word
+}
+
+.vEnqFormImgOne h5,.vEnqFormImgTwo h5 {
+color:#565656;
+font-size:14px;
+font-family:"PROXIMANOVA-BOLD";
+font-weight:400;
+padding:10px 16px 0;
+margin:0;
+background:#ddecfb
+}
+
+.vEnqFormImgOne h4 {
+color:#565656;
+font-size:14px;
+font-family:"PROXIMANOVA-BOLD";
+font-weight:400;
+padding:7px 0 0;
+margin:0
+}
+
+.vEnqFormImgOne p,.vEnqFormImgTwo p {
+color:#565656;
+font-size:14px;
+font-family:'PROXIMANOVA-REGULAR';
+font-weight:400;
+padding:5px 16px 10px;
+margin:0;
+line-height:18px;
+background:#ddecfb
+}
+
+.vEnqFormImgTwo {
+margin-top:2px;
+margin-bottom:2px
+}
+
+.vEnqFormImgThreeImg {
+/* margin-bottom:40px */
+}
+
+.vEnqFormButton button {
+border-radius:0;
+border:1px solid #c71010;
+color:#c71010;
+font-family:'PROXIMANOVA-REGULAR';
+background:#fff;
+padding:2px 11px;
+outline:none;
+margin-top:5px;
+margin-bottom:15px
+}
+
+.vEnqFormButton button:hover {
+background:#c71010;
+color:#fff
+}
+
+.vEnqFormTextarea {
+border-radius:0;
+margin-bottom:5px
+}
+
+.vEnqfileSendBtn {
+position:relative;
+margin-bottom:12px;
+padding-bottom:26px
+}
+
+.vEnqfileUpload1 {
+display:inline-block;
+position:absolute;
+width:116px;
+right:66px
+}
+
+.vEnqfileUpload1 span {
+display:inline-block;
+background:#6cc233;
+color:#fff;
+width:110px;
+position:absolute;
+padding-top:2px;
+padding-bottom:3px;
+padding-left:8px
+}
+
+.vEnqfileUpload1 span i {
+margin-left:5px
+}
+
+.vEnqupload {
+display:inline-block;
+opacity:0;
+width:103px;
+position:relative;
+font-size:14px;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.vEnqsndEnqBtn {
+position:absolute;
+right:0;
+padding:3px 16px 2px;
+font-size:14px;
+font-family:'PROXIMANOVA-REGULAR';
+background:#f89b1c;
+color:#fff;
+border:none;
+outline:none
+}
+
+.addFaq {
+color:#f89b1c;
+text-align:center
+}
+
+.faqSubmitBtn {
+border-radius:0;
+outline:none;
+border:none;
+background:#f89b1c;
+color:#fff;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.vSetsidebarDiv {
+margin-top:65px
+}
+
+.vSetsidebarDiv a {
+text-decoration:none;
+color:#4e4f51;
+padding:6px
+}
+
+.vSetsidebarDiv ul {
+list-style:none
+}
+
+.vSetsidebarDiv ul li {
+font-size:14px
+}
+
+.vSetsidebarDiv ul li a i {
+padding:3px;
+font-size:18px;
+color:#A8A8A8
+}
+
+.vSetsidebarDiv ul li a {
+width:100%;
+display:block
+}
+
+.vSetsidebarDiv ul li a:hover {
+background:#f89b1c;
+color:#fff;
+-webkit-transition:all .25s ease-in;
+-moz-transition:all .25s ease-in;
+-ms-transition:all .25s ease-in;
+-o-transition:all .25s ease-in;
+transition:all .25s ease-in
+}
+
+.vSetsidebarDiv ul li a:hover i {
+color:#fff;
+-webkit-transition:all .25s ease-in;
+-moz-transition:all .25s ease-in;
+-ms-transition:all .25s ease-in;
+-o-transition:all .25s ease-in;
+transition:all .25s ease-in
+}
+
+.vSetsidebarDiv ul li ul li {
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.vPaymentTable {
+margin-top:50px
+}
+
+.vPaymentTable thead tr th {
+background:#f89b1c;
+color:#fff;
+font-family:"PROXIMANOVA-BOLD";
+font-size:14px;
+padding:0;
+margin:0;
+font-weight:400;
+text-align:center;
+padding-top:8px;
+padding-bottom:8px
+}
+
+.vPaymentTable tbody tr td {
+font-family:'PROXIMANOVA-REGULAR';
+font-size:14px;
+padding:0;
+margin:0;
+font-weight:400;
+text-align:center;
+padding-top:8px;
+padding-bottom:8px
+}
+
+.vPaymentTable tbody tr td a {
+text-decoration:underline;
+font-style:italic;
+color:#00f
+}
+
+.vPaymentTable tbody tr td a:hover {
+text-decoration:none
+}
+
+.profileborderfluidlg {
+margin-top:40px
+}
+
+.profileborderfluidmd {
+margin-top:42px
+}
+
+.profileborderfluidsm {
+margin-top:42px
+}
+
+.profileborderfluidxs {
+margin-top:80px
+}
+
+.floatingCircles ul li {
+list-style:none;
+display:inline-block;
+margin-right:35px
+}
+
+.floatingCircles {
+padding-bottom:36px
+}
+
+.floatingCirclesSpanOne {
+font-size:24px;
+position:relative;
+top:5px;
+height:32px;
+width:32px;
+display:inline-block;
+background:orange;
+border-radius:50%;
+color:#fff;
+margin-right:9px;
+/*display:none*/
+}
+
+.floatingCirclesSpanTwo {
+width:17px;
+height:17px;
+border-radius:50%;
+display:inline-block;
+position:relative;
+margin:1px 0
+}
+
+.floatingCirclesSpanColor {
+border:1px solid orange;
+background:orange
+}
+
+.floatingCirclesPreLink a span {
+width:22px;
+height:22px;
+position:absolute;
+background:#444;
+color:#fff;
+border-radius:50%;
+top:17px
+}
+
+.addvenBusInfo {
+margin-right:0!important;
+margin-left:0!important;
+padding-left:3%;
+padding-right:3%;
+margin-bottom:15px
+}
+
+.dragDropImage #templatehelper {
+border:2px dashed #444
+}
+
+.vendorFormTermNCon {
+margin-top:25px
+}
+
+.vendorFormTermNCon input {
+height:17px;
+width:20px
+}
+
+.vendorFormTermNCon span {
+font-style:italic;
+color:#00f;
+text-decoration:underline;
+top:-5px;
+position:relative
+}
+
+.SpanLandLine,.SpanMobile,.SpanAltMobile,.SpanUrl,.SpanBusinesscategories,.SpanBusinessAnythingElse,.SpanBusinessTitle,.SpanBusinessLink,.SpanBusinessEmailId,.SpanBusinessAddress,.SpanBusinessState,.SpanBusinessCity,.SpanBusinessArea,.SpanBusinessZipCode,.SpanBusinessFullName,.SpanBusinessWhatRole,.SpanBusinessMobile,.SpanBusinessEmail,.SpanBusinessYourDesc {
+display:none
+}
+
+.ErrorRedText {
+display:block;
+color:red
+}
+
+.SpanLandLineRedBorder {
+border-color:red
+}
+
+.businessStatePostShow {
+display:block
+}
+
+.linkValid {
+display:none
+}
+
+.linkAvail {
+display:inline-block;
+color:#6cc233
+}
+
+.linkNotAvail {
+display:inline-block;
+color:red
+}
+
+@-webkit-keyframes hvr-buzz-out {
+10% {
+-webkit-transform:translateX(3px) rotate(2deg);
+transform:translateX(3px) rotate(2deg)
+}
+
+20% {
+-webkit-transform:translateX(-3px) rotate(-2deg);
+transform:translateX(-3px) rotate(-2deg)
+}
+
+30% {
+-webkit-transform:translateX(3px) rotate(2deg);
+transform:translateX(3px) rotate(2deg)
+}
+
+40% {
+-webkit-transform:translateX(-3px) rotate(-2deg);
+transform:translateX(-3px) rotate(-2deg)
+}
+
+50% {
+-webkit-transform:translateX(2px) rotate(1deg);
+transform:translateX(2px) rotate(1deg)
+}
+
+60% {
+-webkit-transform:translateX(-2px) rotate(-1deg);
+transform:translateX(-2px) rotate(-1deg)
+}
+
+70% {
+-webkit-transform:translateX(2px) rotate(1deg);
+transform:translateX(2px) rotate(1deg)
+}
+
+80% {
+-webkit-transform:translateX(-2px) rotate(-1deg);
+transform:translateX(-2px) rotate(-1deg)
+}
+
+90% {
+-webkit-transform:translateX(1px) rotate(0);
+transform:translateX(1px) rotate(0)
+}
+
+100% {
+-webkit-transform:translateX(-1px) rotate(0);
+transform:translateX(-1px) rotate(0)
+}
+}
+
+@keyframes hvr-buzz-out {
+10% {
+-webkit-transform:translateX(3px) rotate(2deg);
+transform:translateX(3px) rotate(2deg)
+}
+
+20% {
+-webkit-transform:translateX(-3px) rotate(-2deg);
+transform:translateX(-3px) rotate(-2deg)
+}
+
+30% {
+-webkit-transform:translateX(3px) rotate(2deg);
+transform:translateX(3px) rotate(2deg)
+}
+
+40% {
+-webkit-transform:translateX(-3px) rotate(-2deg);
+transform:translateX(-3px) rotate(-2deg)
+}
+
+50% {
+-webkit-transform:translateX(2px) rotate(1deg);
+transform:translateX(2px) rotate(1deg)
+}
+
+60% {
+-webkit-transform:translateX(-2px) rotate(-1deg);
+transform:translateX(-2px) rotate(-1deg)
+}
+
+70% {
+-webkit-transform:translateX(2px) rotate(1deg);
+transform:translateX(2px) rotate(1deg)
+}
+
+80% {
+-webkit-transform:translateX(-2px) rotate(-1deg);
+transform:translateX(-2px) rotate(-1deg)
+}
+
+90% {
+-webkit-transform:translateX(1px) rotate(0);
+transform:translateX(1px) rotate(0)
+}
+
+100% {
+-webkit-transform:translateX(-1px) rotate(0);
+transform:translateX(-1px) rotate(0)
+}
+}
+
+.hvr-buzz-out {
+display:inline-block;
+vertical-align:middle;
+-webkit-transform:perspective(1px) translateZ(0);
+transform:perspective(1px) translateZ(0);
+box-shadow:0 0 1px transparent;
+-webkit-animation-name:hvr-buzz-out;
+animation-name:hvr-buzz-out;
+-webkit-animation-duration:.75s;
+animation-duration:.75s;
+-webkit-animation-timing-function:linear;
+animation-timing-function:linear;
+-webkit-animation-iteration-count:1;
+animation-iteration-count:1
+}
+
+.vPhotosYouRow {
+margin-top:15px;
+margin-right:0;
+margin-left:12px
+}
+
+.vPhotosUserRowSec {
+margin-bottom:15px
+}
+
+.busScrollTop {
+color:#b2b2b2;
+margin-bottom:10px;
+cursor:pointer
+}
+
+.addvenBusInfo select,.vendorBusInfoAC select {
+border-radius:0
+}
+
+.activeAccoPre .vAboutBusTitle {
+color:#fff
+}
+
+.accordianSelect {
+color:#FFF!important;
+background-color:#f89b1c!important
+}
+
+.accordianSelect .vAboutBusTitle {
+color:#fff
+}
+
+.deleteBus {
+outline:none;
+border-radius:0;
+position:relative;
+top:6px;
+padding:4px 10px
+}
+
+.ReviewBusiness {
+outline:none;
+border-radius:0;
+position:relative;
+top:6px;
+background-color:#f89b1c;
+color:#fff;
+padding:4px 10px;
+margin-right:10px
+}
+
+.ReviewBusiness:hover,.ReviewBusiness:active,.ReviewBusiness:focus {
+color:#fff
+}
+
+.BussDeleteClose {
+right:22px;
+top:3px;
+position:relative
+}
+
+.deleteDataModalB > .modal-dialog {
+margin-top:12%
+}
+.activeDownListFlag{
+position:absolute;
+z-index:1;
+background:#fff;
+border:1px solid #ccc;
+display: none;	
+top:25px;
+width:69px;
+}
+.activeDownList {
+position:absolute;
+z-index:1;
+background:#fff;
+border:1px solid #ccc;
+top:25px;
+width:69px;
+left:15px;
+display:none
+}
+
+.activeDownListFlag li,.activeDownList li {
+width:100%;
+cursor:pointer
+}
+
+.activeDownListBlock {
+position:absolute;
+z-index:1;
+background:#fff;
+border:1px solid #ccc;
+top:25px;
+width:69px;
+left:15px;
+display:block
+}
+
+.activeDownListBlockFlag {
+position:absolute;
+z-index:1;
+background:#fff;
+border:1px solid #ccc;
+top:25px;
+width:69px;
+left:88px;
+display:block
+}
+
+.activeDownList ul li {
+display:block
+}
+
+.vendorImgVidUpDiv {
+margin-top:10px
+}
+
+.vendorupImgC {
+text-align:center;
+border:1px solid #ccc;
+background:#6cc233;
+cursor:pointer
+}
+
+.categoryListShow {
+position:absolute;
+width:96%;
+left:31px;
+z-index:9;
+height:300px;
+overflow:hidden;
+overflow-y:scroll;
+box-shadow:0 2px 10px 1px #999;
+display:none;
+background-color:#f1f1f1;
+padding-top:20px
+}
+
+.categoryListShow .displayDiv {
+height:40px
+}
+
+.categoryListShowadj .displayDiv {
+position:relative;
+top:15px
+}
+
+.categoryListEditadj .displayDiv {
+position:relative;
+top:15px
+}
+
+.categoryListShowadj .categoryListShow {
+width:96%;
+left:30px
+}
+
+.myBusinessAdminEdit .categoryListShow {
+width:97%
+}
+
+.myBusinessAdminAdd .categoryListShow {
+width:96.5%;
+left:31px
+}
+
+.myBusinessAdmin .uploadPhotoSize {
+/*width:276px;
+height:217px;
+overflow:hidden*/
+    height: 150px!important;
+    overflow: hidden!important;
+    padding: 2%!important;
+}
+
+.vEnqModalC {
+border-radius:0;
+margin:10px 0
+}
+
+.vEnqModalCNew {
+margin:0
+}
+
+.vEnqModalBorder {
+border:1px solid #ccc;
+height:127px;
+}
+
+.vEnqModalO {
+position:absolute
+}
+
+.vEnqModalT {
+text-align:center
+}
+
+.vEnqModalOFile {
+height:113px;
+opacity:0
+}
+
+.vEnqModalT .fa-camera {
+padding:21px 0;
+color:#ccc
+}
+
+.vEnqBtnC {
+text-align:center
+}
+
+.vEnqBtnC button {
+font-size:15px;
+font-family:"PROXIMANOVA-REGULAR";
+background:#f89b1c;
+border-radius:0;
+color:#fff;
+padding:7px 27px;
+outline:none
+}
+
+.vEnqBtnC button:hover {
+font-size:14px;
+font-family:"PROXIMANOVA-REGULAR";
+background:#f89b1c;
+border-radius:0;
+color:#fff;
+outline:none
+}
+
+.vEnqBtnC button:focus {
+color:#fff;
+outline:none
+}
+
+.vEnqTitleModal {
+font-size:18px;
+color:#6cc233;
+margin:0;
+font-weight:400;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.vEnqConModal {
+text-align:center
+}
+
+.vCmtEnqPage {
+margin:0;
+text-align:center;
+font-size:18px;
+color:#b2b2b2
+}
+
+.vCmtEnqPage button {
+border-radius:0;
+outline:none;
+padding:2px 7px;
+border:1px solid #5cb85c;
+background:#5cb85c
+}
+
+.vCmtEnqPage button:hover,.vCmtEnqPage button:focus,.vCmtEnqPage button:active {
+outline:none;
+border-radius:0;
+background:#5cb85c;
+border:1px solid #5cb85c
+}
+
+.uploadPhotoSize {
+/*height:217px;*/
+height:160px;
+overflow:hidden;
+/*padding:2%*/
+}
+
+.uploadPhotoSize img {
+width:100%;
+height:100%;
+background-image:url(images/Rightnext-Loading.gif);
+background-repeat:no-repeat;
+background-size:30% 30%;
+background-position:center
+}
+
+.readEnClass {
+cursor:pointer;
+height:60px;
+padding-top:9px
+}
+
+.readEnClass:hover,.readEnClass:hover .checkEnq,.readEnClass:hover ~ .delEnq,.readEnClass:hover ~ .flagEnq {
+background:#ccc!important
+}
+
+.delEnq,.flagEnq,.checkEnq {
+height:60px;
+padding-top:9px
+}
+
+.delEnq,.flagEnq,.restoreArchivei {
+padding-right:5px;
+padding-left:5px
+}
+
+.enqTimestamp {
+font-size:12px
+}
+
+.contentBody {
+border-left:1px solid #ccc;
+padding-bottom:100px
+}
+
+.draggedImgenq {
+border:1px solid #ddd;
+padding:6px;
+margin:6px;
+height:113px
+}
+
+.vEnqModalO {
+height:113px
+}
+
+.vEnqFormImgThreeImg {
+max-width:366px;
+margin-top: 5px;
+}
+/*.vEnqFormImgThreeImg {
+max-width:366px
+}
+*/
+.businessListShow {
+width:100%;
+left:15px;
+position:relative;
+z-index:1;
+overflow-y:scroll;
+height:300px;
+box-shadow:#888 0 3px 12px;
+display:block;
+background:#f1f1f1
+}
+
+.businessListShow .displayDiv {
+margin-top:0;
+height:50px
+}
+
+.displayDiv {
+height:60px
+}
+
+.businessListShow .displayDiv:hover {
+background:#e6e1e6
+}
+
+.cursorPointer a {
+color:#484747
+}
+
+.citySearchMheader {
+height:220px
+}
+
+.businessCityListShow {
+z-index:1;
+overflow-y:scroll;
+height:200px;
+box-shadow:#888 0 3px 12px;
+display:block;
+background:#f1f1f1
+}
+
+.homepageForms .group {
+padding-left:0;
+padding-right:0
+}
+
+.bkgOrange {
+background:#f89b1c;
+color:#fff
+}
+
+.businessTermNConA {
+bottom:4px;
+position:relative
+}
+
+.tAndCBlock {
+display:block
+}
+
+.busTimeTable {
+margin-top:10px
+}
+
+.vendorPayHidden {
+height:0;
+opacity:0
+}
+
+.vendorPayHidden input {
+height:0;
+opacity:0
+}
+
+.showOption {
+box-shadow:0 2px 10px 1px #999;
+background-color:#f1f1f1
+}
+
+.editBusinessBulkImgVideos .vImgVidUpl {
+margin-left:-55px;
+margin-right:-55px
+}
+
+.owImgUploaded {
+height:165px;
+width:156px;
+display:inline-block
+}
+
+.owImgUploaded img {
+width:100%;
+height:100%;
+background-image:url(images/Rightnext-Loading.gif);
+background-size:100% 100%;
+background-repeat:no-repeat
+}
+
+.vendorImg {
+display:inline-block!important
+}
+
+.delBusiVideo {
+right:-12px;
+position:relative;
+top:-5px
+}
+.vPhotosUserRowSecAdj1{margin-top: 15px;}
+.vPhotosYouRepeatImgO {
+height:185px;
+padding:0;
+/*margin-bottom: 15px;*/
+}
+
+.vPhotosYouRImgPost {
+margin-top:15px
+}
+
+.myBusinessAdmin .delBusiVideo {
+right:23px;
+position:relative;
+top:-14px
+}
+
+.myBusinessAdmin .vPhotosYouRepeatImgO {
+width:223px;
+height:118px
+}
+
+.myBusinessAdmin .vPhotosYouRImgPost {
+margin-top:15px
+}
+
+.editBusinessBulkImgVideos .delBusiVideo {
+border:none;
+top:0;
+bottom:0;
+margin:0
+}
+
+.myBusinessAdminEdit .delBusiVideo {
+border:none;
+top:-19px;
+bottom:0;
+margin:0
+}
+
+.redTextDays {
+color:red;
+margin-bottom:8px
+}
+
+#datetimepicker3 td,#datetimepicker3 tr,#datetimepicker3 tbody {
+border:none
+}
+
+#datetimepicker3 tbody {
+width:50%
+}
+
+#datetimepicker3 td {
+padding:0 5px;
+width:1px
+}
+
+#datetimepicker3 .bootstrap-datetimepicker-widget table td {
+height:0;
+line-height:0;
+width:1px
+}
+#datetimepicker3 .bootstrap-datetimepicker-widget{
+	display: block!important;
+}
+#datetimepicker3 .bootstrap-datetimepicker-widget table td span {
+width:2px;
+height:0!important;
+line-height:4px!important;
+color: #4e4f51!important;
+}
+#datetimepicker3 .bootstrap-datetimepicker-widget button[data-action]{background-color: #f89b1c;border: 1px solid #f89b1c;border-radius: 0px;}
+#datetimepicker4 .bootstrap-datetimepicker-widget button[data-action]{background-color: #f89b1c;border: 1px solid #f89b1c;border-radius: 0px;}
+#datetimepicker4 td,#datetimepicker4 tr,#datetimepicker4 tbody {
+border:none
+}
+
+#datetimepicker4 td {
+padding:0 5px
+}
+
+#datetimepicker4 .bootstrap-datetimepicker-widget table td {
+height:0;
+line-height:0;
+width:1px
+}
+
+#datetimepicker4 .bootstrap-datetimepicker-widget table td span {
+width:2px;
+height:0!important;
+line-height:4px!important;
+color: #4e4f51!important;
+}
+
+#datetimepicker3 .timepicker-minutes table td,#datetimepicker4 .timepicker-minutes table td {
+padding:0 5px;
+width:1px;
+height:54px;
+line-height:54px
+}
+
+#datetimepicker3 .timepicker-hours table td,#datetimepicker4 .timepicker-hours table td {
+padding:0 5px;
+width:1px;
+height:54px;
+line-height:54px
+}
+
+.selectOption {
+cursor:pointer
+}
+
+.mobBusinessMobileC {
+margin-top:8px
+}
+
+.mobLabel {
+text-align:center
+}
+
+.textRemain {
+color:#a94442
+}
+
+.revwTnumCnt {
+top:-13px;
+position:relative;
+left:17px
+}
+
+.rvwStarting {
+display:inline-block
+}
+
+.spanEnqName {
+margin-bottom:12px
+}
+
+.accordianIClass {
+margin-top:0!important
+}
+
+.sidbarPadAdj {
+padding:0 26px!important
+}
+
+.sidebarBusTitle {
+padding:2px 14px!important
+}
+
+.vreportdotClass img {
+width:100%;
+border-radius:50%
+height:40px;
+}
+
+.categoryRanking {
+border:1px solid #eee;
+min-height:100px;
+height:auto
+}
+
+.categoryAdsRanking {
+border:1px solid #eee;
+min-height:100px;
+height:auto;
+margin-bottom:20px;
+padding-bottom:15px
+}
+
+.catgBusName:hover {
+cursor:pointer;
+background-color:#9f9
+}
+
+.blankRow {
+background-color:#eee
+}
+
+.contentRow {
+background-color:#3a3;
+color:#fff
+}
+
+.selectedCategories,.selectedAreas {
+border:1px solid #ccc;
+min-height:34px;
+border-radius:6px
+}
+
+.selectedAdsCategories,.selectedAdsAreas {
+border:1px solid #ccc;
+min-height:34px;
+border-radius:6px
+}
+
+.categoryRanking {
+margin-bottom:20px
+}
+
+.categoryValues span,.areaValues span {
+margin-bottom:5px
+}
+
+.categoryAdsValues span,.areaAdsValues span {
+margin-bottom:5px
+}
+
+.tablePayDetails th,.tablePayDetails td {
+padding:7px 0;
+text-align:center
+}
+
+.tableAdsPayDetails th,.tableAdsPayDetails td {
+padding:7px 0;
+text-align:center
+}
+
+.bunchCategory,.bunchAreas,.bunchTagFrnd {
+margin-top:4px;
+padding:2px 10px;
+background:#ddd;
+display:inline-block;
+box-shadow:2px 3px 5px #888;
+margin-right:3px;
+border-radius:50px
+}
+
+.bunchCatCross,.bunchAreaCross,.bunchTagFrndCross {
+color:#444;
+box-shadow:1px 2px 5px #675353;
+padding:0 4px;
+border-radius:50%;
+background:#b2b2b2;
+margin-left:4px;
+cursor:pointer
+}
+
+.contentRow.active-banner {
+background-color:#9d9;
+color:#666
+}
+
+.tablePayDetails th,.tablePayDetails td {
+padding:7px 0;
+text-align:center
+}
+
+.bunchCategory,.bunchAreas {
+margin-top:4px;
+padding:2px 10px;
+background:#ddd;
+display:inline-block;
+box-shadow:2px 3px 5px #888;
+margin-right:3px;
+border-radius:50px
+}
+
+.bunchCatCross,.bunchAreaCross {
+color:#444;
+box-shadow:1px 2px 5px #675353;
+padding:0 4px;
+border-radius:50%;
+background:#b2b2b2;
+margin-left:4px;
+cursor:pointer
+}
+
+.contentRow.active-banner {
+background-color:#9d9;
+color:#666
+}
+
+.bussReviewRow {
+padding:0
+}
+
+.busireviever1 {
+padding:0
+}
+
+.vPhotosUserRowSecAdj1 {
+padding:0
+}
+
+.expireLabel {
+padding:0
+}
+
+.pull-right-bkg {
+background:#bfff94!important
+}
+
+.pull-right-bkgBorder {
+border-right:13px solid #bfff94!important
+}
+
+.venFileUpld input[type='file'] {
+opacity:0;
+cursor:pointer
+}
+
+.venFileUpldBtnStyle .vendorImg {
+width:120px;
+position:absolute;
+height:39px;
+top:-10px;
+margin-bottom:0
+}
+
+.venFileUpldBtnStyle #venFileUpldbutton {
+border: 1px solid #ccc;
+padding: 10px 15px;
+color: #0e1118;
+cursor: pointer;
+background: #efefef;
+opacity: .5;
+margin-left: -13px;
+}
+/*.venFileUpldBtnStyle #venFileUpldbutton {
+border:1px solid #ccc;
+padding:10px 15px;
+color:#666;
+cursor:pointer;
+background:#fff;
+opacity:.5
+}*/
+
+.venFileUpldBtnStyle {
+margin:14px 0;
+width:120px;
+display:inline-block;
+position:absolute;
+bottom:6px;
+left:55px
+}
+
+#venFileUpldval {
+display:inline-block
+}
+
+.userSelectArrow:-moz-focusring,.bulkUploadsAdmin:-moz-focusring,#jobFormCountry:-moz-focusring,#jobFormState:-moz-focusring,#jobFormCity:-moz-focusring,.templateType:-moz-focusring,.faqsSelect:-moz-focusring,.selectPosition:-moz-focusring,#getArea.form-control:-moz-focusring,#getArea:-moz-focusring,#countryopt:-moz-focusring,#stateopt:-moz-focusring,#cityArea:-moz-focusring,.categoriesLevel:-moz-focusring,.addVenCountry:-moz-focusring,.addVenState:-moz-focusring,.addVenCity:-moz-focusring,.addVenArea:-moz-focusring,.businessZipCodeC:-moz-focusring,.businessWhatRoleC:-moz-focusring,.venCountry:-moz-focusring,.venState:-moz-focusring,.venCity:-moz-focusring,.venArea:-moz-focusring,.venPin:-moz-focusring,.vendorSelectArrow:-moz-focusring {
+color:transparent;
+text-shadow:0 0 0 #000
+}
+
+.adminReviewSts {
+text-align:center;
+cursor:pointer;
+color:#337ab7
+}
+
+.closeRevBusMod {
+right:24px;
+position:relative;
+top:3px
+}
+
+.modalCommentWrpr {
+display:inline-block;
+margin-right:31px;
+height:355px;
+overflow-y:auto
+}
+
+.modalComntActivityUl {
+min-width:100px!important;
+padding:5px 0;
+border-radius:0;
+margin:2px 0 0;
+font-size:12px;
+color:#1d2129
+}
+
+.modalComntActivityLi {
+cursor:pointer;
+padding-left:10px;
+font-size:14px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.modalComntActivityI {
+padding-right:6px
+}
+
+.reportModInputReply {
+display:none
+}
+
+.showCmmnt {
+display:block
+}
+
+.commntMReplyLike {
+color:#66f;
+font-size:12px;
+font-weight:700;
+font-style:italic;
+text-align:center;
+cursor:pointer
+}
+
+.showDelEditBlock {
+display:inline-block
+}
+
+.hideDelEditBlock {
+display:none
+}
+
+.editdeltCommnt {
+position:absolute;
+top:0;
+right:0
+}
+
+.editdeltCommntOpts {
+right:0;
+position:initial
+}
+
+.editdeltCommnt ul li {
+cursor:pointer
+}
+
+.editdeltCommnt ul {
+position:absolute;
+right:14px!important;
+top:7px;
+left:-98px
+}
+
+.editdeltCommnt ul li:hover {
+background:#ccc
+}
+
+.editReplyInput,.editReplyOfReplyInput {
+display:none
+}
+
+.editReplyInputC {
+display:block!important
+}
+
+.editReplyTextHide {
+display:none
+}
+
+.newTableTitle {
+text-align:center;
+border:1px solid #ccc;
+padding:6px 0;
+margin-top:5px
+}
+
+.newTableTitleRow {
+text-align:center;
+border:1px solid #ccc;
+padding:6px 0;
+cursor:pointer;
+max-height: 34px;
+overflow: hidden;
+}
+
+.rowWisePos {
+text-align:center
+}
+
+.carouselVideoBody {
+text-align:center
+}
+
+.showVideoDivAdj {
+width:100%;
+height:100%
+}
+
+.enabledCatMenu {
+display:block
+}
+
+.disabledCatMenu {
+display:none
+}
+
+.topSearchBarList {
+position:absolute;
+top:34px;
+background:#eee;
+width:70%;
+left:0;
+border-bottom-left-radius:8px;
+border-bottom-right-radius:8px;
+display:none ;
+box-shadow:#555 1px 6px 11px -5px;
+max-height:446px;
+overflow-y:scroll
+}
+
+.topSearchBarListWrapper {
+margin:4px 6px 5px
+}
+
+.topSearchBarListContent {
+background:#fff;
+border-radius:8px;
+padding:0;
+margin-top:3px;
+cursor:pointer;
+line-height:1
+}
+
+.searchBusType {
+font-size:11px;
+color:#888
+}
+
+.optionSearch {
+border:1px solid #eee;
+border-top:none
+}
+
+.selectedSearch {
+background:rgba(248,155,28,0.37)
+}
+
+.topSearchBarListContent a {
+color:#444;
+padding:6px 8px;
+width:100%;
+display:block
+}
+
+.categoryDropList {
+color:#f89b1c
+}
+
+.searchDisplayHide {
+display:none !important;
+}
+
+.searchDisplayShow {
+display:block
+}
+
+.navHeadSearchbarCommon .topSearchBarList {
+width:91%
+}
+
+.adminBusListAnythEls {
+background:#ffd64d!important
+}
+.staffCreatedy{
+	background-color: #a3ffc0;
+}
+
+.templateActivated {
+background:#f89b1c!important
+}
+
+.templateClassScroll {
+margin-right:0;
+margin-left:0
+}
+
+.spanSettingZipCode {
+display:block
+}
+
+.catListShowHide {
+display:block;
+background:#c5bcbc;
+border-radius:21px;
+margin-top:5px;
+padding:3px 0;
+text-align:center;
+margin-bottom:10px;
+cursor:pointer;
+box-shadow:0 5px 5px 0 #999
+}
+
+.catListShowHidePre {
+height:45px
+}
+
+.listofTypeHide {
+display:none
+}
+
+.listofTypeRed {
+background:#c71010;
+color:#FFF
+}
+
+.listofTypeGreen {
+background:#5cb85c;
+color:#FFF
+}
+
+@media only screen and (max-width: 500px) {
+.topSearchBarList {
+left:0;
+width:100%;
+top:38px
+}
+}
+
+.optionSearchHomePage {
+border:1px solid #eee;
+border-top:none
+}
+
+.selectedSearchHomePage {
+background:rgba(248,155,28,0.37)!important
+}
+
+.homeSearchBarList {
+position:absolute;
+z-index:1;
+top:45px;
+background:#eee;
+width:100%;
+left:0;
+border-bottom-left-radius:8px;
+border-bottom-right-radius:8px;
+box-shadow:#555 1px 6px 11px -5px;
+max-height:387px;
+overflow-y:scroll
+}
+
+.homeSearchBarListWrapper {
+margin:4px 6px 5px
+}
+
+.homeSearchBarListContent {
+background:#fff;
+border-radius:8px;
+padding:0;
+margin-top:3px;
+cursor:pointer;
+line-height:1
+}
+
+.homeSearchBarListContent a {
+color:#444;
+padding:6px 8px;
+width:100%;
+display:block
+}
+
+.optionSearchHomePage {
+border:1px solid #eee;
+border-top:none
+}
+
+.homeCategoryDropList {
+color:#f89b1c
+}
+
+.addVendorAddNewFormProgressbar {
+	background: #f39a35;
+    color: white;
+    font-weight: bold;
+}
+
+.hiddenCitySearchInpBox {
+    height: 0;
+    width: 0;
+    opacity: 0;
+}
+
+.listofTypeSearchGifAlt {
+    background: #eee;
+    padding: 5px;
+    width: 90%;
+    color: #7d7d7d;
+}
+
+.tagFrndLiDivTitle {
+    display: inline-block;
+    top: 0px;
+    position: relative;
+}
+
+.tagFrndLiDivPhoto {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+
+.userPhotReviewList {
+    height: 26px;
+    width: 26px;
+}
+
+.bus-page-edit-outer {
+    display: inline-block;
+}
+
+.bus-page-edit-outer1 {
+    color: #fff;
+    background: #a94442;
+    border-radius: 50%;
+    /* display: inline; */
+    padding: 0px 6px;
+    cursor: pointer;
+    top: 14px;
+    position: relative;
+    left: 2px;
+    display: none;
+}
+
+.bus-page-edit-outerFrnd1 {
+    color: #fff;
+    background: #a94442;
+    border-radius: 50%;
+    padding: 0px 5px;
+    cursor: pointer;
+    /* top: 14px; */
+    /* position: relative; */
+    /* left: 2px; */
+    display: none;
+}
+
+.showMoreCommentsUser {
+    text-align: center;
+    background: #666;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.bannerAdsDurationDiv {
+    background: #ddd;
+    padding: 2px 7px;
+    margin-bottom: 2px;
+}
+
+.showMoreCommntDiv {
+    text-align: center;
+    /* background: #c71010; */
+    background: #f89b1c;
+    padding: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.showMoreCommntDivNone {
+    display: none;
+}
+
+.tagedFrndSpansOuter {
+    display: inline-block;
+    padding-left: 10px;
+}
+
+.taggedFrndShowLiImg {
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+}
+
+.taggedFrndShowLiImg img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.taggedFrndShowLiName {
+    display: inline-block;
+}
+
+.paymentSuccessVen {
+    background: #eee;
+    margin-top: 20px;
+    text-align: center;
+    color: #6cc233;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.paymentInvoiceVen {
+    background: #f89b1c;
+    margin-top: 20px;
+    text-align: center;
+    color: #f5f5f5;
+    font-weight: bold;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.paymentFailedVen {
+    background: #c71010;
+    margin-top: 20px;
+    text-align: center;
+    color: #f5f5f5;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.checkLikeLoading, .checkReviewLoading, .checkPhotoLoading, .checkNetworkFlwLoading, .checkNetworkFlwrLoading, .checkBookmarkLoading, .checkBeenThereLoading,.checnRatingLoading, .checkOfferLoading,.checkEnquirykLoading {
+    text-align: center;
+    background: #eee;
+    color: #4d4e52;
+    padding: 20px;
+    font-size: 20px;
+    box-shadow: 1px 2px 1px 1px #ccc;
+}
+
+.userSavedOffer {
+    color: #444;
+    font-weight: bold;
+}
+
+.userSavedOffer:hover {
+    color:#f89b1c;
+}
+
+.unfollowUserBtn {
+background: #f89b2f;
+text-align: center;
+color: #f5f5f5;
+font-size: 13px;
+width: 50%;
+height: 25px;
+float: right;
+padding-top: 3px;
+border: 0px!important;
+border-radius: 0px!important;
+}
+/*.unfollowUserBtn {
+    background: #c71010;
+    text-align: center;
+    color: #f5f5f5;
+    font-size: 13px;
+}
+*/
+.vEnqTriangleleft-msgTimeStmp {
+    font-size: 9px;
+    text-align: right;
+    background: #d3e4f5;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.vEnqTriangleRight-msgTimeStmp {
+    font-size: 9px;
+    text-align: right;
+    background: #b2f387;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+/* 
+.likedByUser{
+    color: red;
+} */
+
+.userTblBusEmail {
+    background: #eee;
+    padding: 2px 5px;
+    margin-top: 5px;
+}
+
+.busClosed {
+    color: #db4437;
+    font-weight: bold;
+}
+.noactive{
+	    text-align: center;
+}
+.vEnqUserAdj{
+	padding: 0;
+}
+.displayNone{
+	display: none;
+}
+.tagnames:hover{
+	color: #000;
+}
+.periodMargin{
+	margin-left: 18px;
+}
+.Vuploadicon{
+	margin-left: -30px;
+}
+.VuploadText{
+	color: #fff;
+	margin-left: -20px;
+}
+.notifyBody .deleteTrash:hover{
+	color: red;
+}
+.newReviewMsg{
+	    margin-top: -9px;
+    margin-bottom: -5px;
+}
+.xsLeftmargin{
+	text-align: center;
+}
+.imageHeightOne{
+	height: 40px;
+}
+.margintopBeenThere {
+	    margin-top: 10px;
+}
+.playButtonCss{
+	z-index: 1;
+    position: absolute;
+    color: black;
+    top: 45%;
+    left: 45%;
+}
+video::-internal-media-controls-download-button {
+    display:none;
+}
+ 
+video::-webkit-media-controls-enclosure {
+    overflow:hidden;
+}
+ 
+video::-webkit-media-controls-panel {
+    width: calc(100% + 30px); /* Adjust as needed */
+}
+.sidebarBustitles{
+	    width: 100%;
+    font-size: 12px;
+    padding: 2px 9px!important;
+}
+.hoverEnqVendor:hover {
+    background: #ccc!important;
+}
+.removeMargTopImg{margin-top: 0px!important;}
+.noPaddingVendor{padding-left: 0px;padding-right: 0px;}
+.vendorHome{height: 335px;}
+.vendorHome h1{color: #f89b1c;}

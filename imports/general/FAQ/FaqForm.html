@@ -1,0 +1,30 @@
+<template name="faqForm">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addNewJob aboutUs-form webpageForm">	
+		<h1 class="text-center text-info">FAQ Form</h1>
+		<hr class="webpageFormUnderline">	
+		<form id="faqadminForm" class="col-lg-10 col-lg-offset-1">
+			<div class="form-group form_group">
+				<label>Where to add</label>
+				<select id="test" class="form-control faqsSelect" name="whereToAdd" >
+			    	<option vaule="Introduction">Introduction</option>
+			    	<option value="Your Account">Your Account</option>
+			    	<option value="Reviews">Reviews</option>
+			    	<option value="Privacy">Privacy</option>
+			    	<option value="Business Owners">Business Owners</option>
+				</select> 
+			</div>
+
+			<div class="form-group form_group">
+				<label>FAQ Question</label>
+			    <textarea class="form-control" name="faqQue"></textarea>
+			</div>
+
+			<div class="form-group form_group">
+			    <label for="faqAns">FAQ Answer</label>
+			    <textarea class="form-control" id="select" name="faqAns"></textarea>
+			    <span id="faqAns"></span>
+			</div>
+			<input type="submit" class="btn btn-default pull-right" value="SUBMIT"/>
+		</form>
+	</div>
+</template>

@@ -1,0 +1,34 @@
+<template name="dispalyGeneralSettings">
+		<div class="companyHeader">
+                    <a class="left"  role="button" data-target="#dispalyCarousel" data-slide-to="0">
+                          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                          <span class="header">General Settings</span>
+                    </a>
+            </div>
+
+            <h1 class="dispalyTitle">General Settings</h1>
+             	<div class="description">
+              	{{#each allGeneralSettingInformation }}
+              	   <!-- {{#each generalSettings}} -->
+              	   	   <div class="dataWrapper col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                          <label class="companyTitle col-lg-4 col-md-4 col-sm-6 col-xs-6">Shop Type:
+                          </label>  
+                          <div class="col-lg-8 col-lg-8 col-lg-6 col-lg-6"> 
+                          {{ generalSettings.shopType }}
+                          </div>
+                          <label class="companyTitle col-lg-4 col-md-4 col-sm-6 col-xs-6">  Process Type:
+                          </label>  
+                          <div class="col-lg-8 col-lg-8 col-lg-6 col-lg-6"> 
+                          {{ generalSettings.processType }}
+                          </div>
+                          <label class="companyTitle col-lg-4 col-md-4 col-sm-6 col-xs-6">  Store Type:
+                          </label>  
+                          <div class="col-lg-8 col-lg-8 col-lg-6 col-lg-6"> 
+                          {{ generalSettings.storeType }}
+                          </div>
+                        </div>
+                    <!-- {{/each}}                                           -->
+               {{/each}}
+  </div>   
+</template>

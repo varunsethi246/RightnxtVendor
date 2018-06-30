@@ -1,0 +1,48 @@
+<template name="dispalyBankDetails">
+	<div class="companyHeader">
+                <a class="left"  role="button" data-target="#dispalyCarousel" data-slide-to="0">
+                      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                      <span class="header">General Settings</span>
+                </a>
+    </div>
+
+    <h1 class="dispalyTitle">Bank Details</h1>
+     	<div class="description">
+      	{{#each allBankDetailsInformation}}
+      	   {{#each bankDetails}}
+      	    <div class="dataWrapper col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class=" holderName col-lg-12 col-md-12 col-sm-6 col-xs-6"> 
+        			     {{ accHolderName }}
+        		    </div>
+                <hr>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              		<label class="companyTitle col-lg-6 col-md-6 col-sm-6 col-xs-6">Bank Name</label> 	
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
+              			  :&emsp;{{ bankName }}
+              		</div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              		<label class="companyTitle col-lg-6 col-md-6 col-sm-6 col-xs-6">Branch Name</label> 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
+              			:&emsp;{{ branchName }}
+              		</div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <label class="companyTitle col-lg-6 col-md-6 col-sm-6 col-xs-6">Account no</label>  
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
+                    :&emsp;{{ accNumber }}
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <label class="companyTitle col-lg-6 col-md-6 col-sm-6 col-xs-6">IFSC Code</label>  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
+                    :&emsp;{{ ifscCode }}
+                  </div>
+                </div>
+
+            </div>
+            
+            {{/each}}                                          
+       {{/each}}
+
+      </div>   
+</template>

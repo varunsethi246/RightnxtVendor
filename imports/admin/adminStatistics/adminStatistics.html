@@ -1,0 +1,142 @@
+<template name="adminStatistics">
+  <div class="main">
+    {{#with adminStatistics}}
+
+    <div class="row-fluid">
+        <h3>Dashboard</h3>
+        <!-- <div>
+            <ul class="col-md-8 col-sm-12 activeOne">
+                <li>
+                    <a href="#">Home / </a>
+                </li>
+                <li>
+                    <a href="#">Right Nxt / </a>
+                </li>
+                <li>
+                    <a href="#">Dasbaord</a>
+                </li>
+            </ul>
+        </div>
+        <div class="input-group col-md-4 hidden-sm hidden-xs">
+            <input type="text" class="form-control"
+                placeholder="Search" id="inputGroup"/>
+            <span class="input-group-addon">
+            <i class="fa fa-search"></i>
+            </span>
+        </div> -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-6 rowOnePad">
+            <div class="firstRow">
+                <div class="col-lg-3 col-md-2 col-sm-12">
+                    <div class="new-user">
+                        <i class="fa fa-user fa-5x" ></i>
+                        <div class="info userStatistics">+ {{userCounts}}</div>
+                        <div class="status statusStatistics">Number of Users</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2 col-sm-12">
+                    <div class="Vendor">
+                        <i class="fa fa-user fa-5x"></i>
+                        <div class="info vendorStatistics">+ {{vendorCounts}}</div>
+                        <div class="status vendorStatus">Number of Vendors</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2 col-sm-12 overflowBusiness">
+                   <div class="business">
+                        <i class="fa fa-briefcase fa-5x"></i>
+                        
+                        <span class="businessStatisticsActs">Active Business +</span> 
+                        <div class="info businessStatisticsAct"> <span>{{busActCounts}}</span></div>
+                        
+                        <span class="businessStatisticsInacts">Inactive Business +</span> 
+                        <div class="info businessStatisticsInact"><span>{{busInactCounts}}</span>{{busInactCounts}}</div>
+                        
+                        <div class="status businessStatus">Number Of Business</div>
+                    </div> 
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 overflowVisitor">
+                    <div class="visitor">
+                        <i class="fa fa-eye fa-5x"></i>
+                        <span class="visitStatisticsToday">Number Of visit Today</span>
+                        <div class="info visitStatisticsCount">+ 897</div>
+
+                        <span class="visitStatisticsToday">Number Of visit Month</span>
+                        <div class="info visitStatisticsCount">+ 97</div>
+
+                        <div class="status visitStatus">Number of Visits</div>
+                    </div>
+                </div>
+               <!--  <div class="col-lg-2 col-md-2 col-sm-12">
+                    <div class="update">
+                        <i class="fa fa-bar-chart fa-5x"></i>
+                        <div class="info" style="font-size: 24px;float:right;margin-top:18px;">+288</div>
+                        <div class="status" style="font-size: 14px;position: absolute;left: 10px;">Update</div>
+                    </div> 
+                </div> -->
+            </div>  
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-6 rowOnePad  ">
+            <div class="secondRow">
+                <div class="col-lg-3 col-md-2 col-sm-12">
+                    <div class="new-order Adds">
+                        <i class="fa fa-certificate fa-5x"></i>
+                        <div class="addsWeek">This Week </div>
+                        <div class="info weekCount">+ 29</div>
+                        <div class="addsMonth">This Month</div>
+                        <div class="info monthCount">+ 255</div>
+                        <div class="addsYear">This Year</div>
+                        <div class="info yearCount">+ 58624</div>
+                        <div class="status AddsTitle">Number of Adds</div> 
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2 col-sm-12">
+                    <div class="cancelled Banner">
+                        <div class="addsWeek">This Week </div>
+                        <div class="info weekCount">+ 49</div>
+                        <div class="addsMonth">This Month</div>
+                        <div class="info monthCount">+ 523</div>
+                        <div class="addsYear">This Year</div>
+                        <div class="info yearCount">+ 2536</div>
+                        <div class="status offerTitle">Number of Banner</div> 
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-2 col-sm-12">
+                    <div class="messages Offers">
+                        <i class="fa fa-bullhorn fa-5x"></i>
+                        <!-- <i class="fa fa-envelope fa-5x"></i> -->
+                        <!-- <div class="info" style="font-size: 24px;float:right;margin-top:18px;">123</div> -->
+                        <div class="addsWeek">This Week </div>
+                        <div class="info weekCount">+ {{offerWeek}}</div>
+                        <div class="addsMonth">This Month</div>
+                        <div class="info monthCount">+ {{offerMonth}}</div>
+                        <div class="addsYear">This Year</div>
+                        <div class="info yearCount">+ {{offerYear}}</div>
+                        <div class="status offerTitle">Number of Offers</div>    
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <div class="stock Enquiry">
+                        <i class="fa fa-headphones fa-5x"></i>
+                        <!-- <div class="info" style="font-size: 24px;float:right;margin-top:18px;">$37624</div> -->
+                        <div class="addsWeek">This Week </div>
+                        <div class="info weekCount">+ {{enqWeek}}</div>
+                        <div class="addsMonth">This Month</div>
+                        <div class="info monthCount">+ {{enqMonth}}</div>
+                        <div class="addsYear">This Year</div>
+                        <div class="info yearCount">+ {{enqYear}}</div>
+                        <div class="status bannerTitle">Number of Enquiry</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {{/with}}
+
+</div>
+</template>

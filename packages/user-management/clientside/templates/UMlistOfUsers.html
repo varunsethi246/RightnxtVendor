@@ -1,0 +1,131 @@
+<template name="UMlistOfUsers">
+	<!-- <section class="Content"> -->
+		<!-- <div class="row reportWrapper"> -->
+			<div class="col-md-10 col-lg-12 col-sm-12 col-xs-12 noLRPad">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 noLRPad">
+					<div class="form-group col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-2 col-sm-12 col-xs-12 noLRPad">
+						
+						<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12 selectTitle noLRPad">Select Action</label>
+						<select class="col-lg-12 col-md-12 col-sm-12 col-xs-12 userListDropdown actionSelect noLRPad" name="userListDropdown" >
+							<option value="-" name="userListDDOption" disabled="disabled" selected>-- Select --</option>	
+							<option value="block_selected" name="userListDDOption">Block Selected</option>	
+							<option value="active_selected" name="userListDDOption">Active Selected</option>
+							<option value="cancel_selected" name="userListDDOption">Cancel Selected Acccounts</option>	
+							{{#each roles}}
+							<option  value="add${{name}}" name="userListDDOption">Add {{name}} Role to Selected </option>
+							{{/each}}
+
+							{{#each roles}}
+							<option  value="remove${{name}}" name="userListDDOption">Remove {{name}} Role from Selected </option>	
+							{{/each}}
+						</select>
+					</div>
+
+					<div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12 noLRPad">
+						
+						<label class="col-md-10 col-lg-12 col-sm-12 col-xs-12 selectTitle noLRPad">Select Role</label>
+						<select class="col-md-10 col-lg-12 col-sm-12 col-xs-12 userListDropdown roleFilter noLRPad" name="roleListDropdown" >
+							<option value="-" name="roleListDDOption" disabled="disabled" selected>-- Select --</option>
+							<option value="all" name="roleListDDOption">Show All</option>		
+							{{#each roles}}
+							<option  value="{{name}}" name="roleListDDOption">{{name}}</option>
+							{{/each}}
+						</select>
+					</div>
+					<div class="col-lg-10">
+						<div class="searchBusinessList">
+							<span><i class="fa fa-search"></i></span>
+							<input type="text" name="search" placeholder="Search.." id="searchUser">
+						</div>	
+					</div>
+				  	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive noLRPad">
+						<table class="table table-striped table-hover myTable table-bordered dataTable no-footer" id="userListTable">
+							<thead class="table-head umtblhdr table-bordered">
+								<th class="umHeader"> <input type="checkbox" id="" class="allSelector" name="allSelector" value=""> </th>
+								<th class="umHeader"> Username </th>
+								<th class="umHeader"> Status </th>
+								<th class="umHeader"> Roles </th>
+								<th class="umHeader"> Member for </th>
+								<th class="umHeader"> Last Access </th>
+								<th class="umHeader"> Action </th>
+							</thead>
+							<tbody>
+								{{#each users}}
+									{{> UMuser}}							
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+					<div class="col-lg-3 col-lg-offset-1">
+					<!-- {{#with usersCounts}} -->
+						<button class="btn btn-primary loadMoreRows50 loadMore10 hideMore50"> 
+							Show Next 50 Users 
+							<i class="fa fa-spinner fa-pulse spinner" aria-hidden="true"></i>
+						</button>
+					<!-- {{/with}} -->
+					</div>
+					<div class="col-lg-3 col-lg-offset-1">
+						<button class="btn btn-primary loadMoreRows100 loadMore10 hideMore50"> 
+							Show Next 100 Users 
+							<i class="fa fa-spinner fa-pulse spinner" aria-hidden="true"></i>
+						</button>
+					</div>
+					<div class="col-lg-3 col-lg-offset-1">
+						<button class="btn btn-primary loadMoreRowsRest loadMore10 hideMore50"> 
+							Show Remaining Users 
+							<i class="fa fa-spinner fa-pulse spinner" aria-hidden="true"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		<!-- </div> -->
+	<!-- </section> -->
+</template>
+
+
+
+<template name="UMuser">
+	<tr class="">
+		<td> <input type="checkbox" name="userCheckbox" class="userCheckbox" value="{{_id}}" > </td>		
+		<td> {{emails}} </td>		
+		<td> {{status}} </td>		
+		<td> {{roles}} </td>		
+		<td> {{timeAgo createdAt}} </td>		
+		<td> {{timeAgo lastLogin}}
+		 <!-- <img src="{{profile.displayPicture}}"> -->
+		</td>		
+		<td id="one"> 
+			<a href="/editUsersProfile/{{_id}}" >
+				<button type="button" class="fa fa-pencil-square-o editUser" title="Edit"> </button> 
+			</a> 
+
+			<!-- Trigger the modal with a button -->
+<!-- 			<button type="button" class="btn btn-info deleteUserConfirm" data-target="#userDeleteConfirm{{this._id}}">Delete <br> {{this._id}}</button>
+			{{> deleteUserConfirm userId=this._id}} -->
+			<!-- <button type="button" class="fa fa-trash deleteUserConfirm"></button> -->
+
+			<!-- <button class= "fa fa-trash userDel"></button> -->
+
+			<button class= "fa fa-trash userDel" title="Delete" data-toggle="modal" data-target="#{{ _id }}-id"></button>
+			 
+			 <div class="modal fade" id="{{ _id }}-id" role="dialog">
+			    <div class="modal-dialog modal-sm">
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">Delete User</h4>
+			        </div>
+			        <div class="modal-body">
+			          <p><b>The item will be deleted. Are you sure you want to continue?</b></p>
+			        </div>
+			        <div class="modal-footer">
+			          <button id="{{ _id }}" type="button" data-dismiss="modal" class="btn btn-danger deleteUserConfirm" >Delete</button>
+	    			  <button type="button" data-dismiss="modal" class="btn btn-primary ">Cancel</button>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+
+		</td>		
+	</tr>
+</template>

@@ -1,0 +1,564 @@
+/*    .inputImg {
+border:1px solid red;
+width:100%;
+height:100%;
+cursor:pointer;
+opacity:0;
+position:absolute;
+margin:auto;
+top:0;
+left:0;
+right:0;
+bottom:0
+}*/
+.inputImg{
+    height: 40px;
+    margin-top: 2px;
+    background-color: #5f5952bf;
+    border: 1px solid #f89b2f45;
+    box-sizing: content-box;
+    color: #080808;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    height: 32px;
+    width: 53%;
+    margin-left: 21px;
+    position: absolute;
+    top: 64%;
+    /* z-index: 100; */
+    opacity: 0;
+}
+.inputOfferImg{
+    height: 40px;
+    margin-top: 2px;
+    background-color: #5f5952bf;
+    border: 1px solid #f89b2f45;
+    box-sizing: content-box;
+    color: #080808;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    height: 32px;
+    width: 53%;
+    position: absolute;
+    top: 64%;
+    /* z-index: 100; */
+    opacity: 0;
+}
+
+#list {
+width:100%;
+text-align:left;
+position:absolute;
+left:0;
+top:0
+}
+
+#div1 {
+border:1px solid grey;
+height:150px;
+overflow:hidden;
+overflow-y:auto
+}
+
+.draggedImg {
+    height: 190px;
+    width: 160px;
+    border: 1px solid #ddd;
+    padding: 6px;
+    margin: 6px;
+}
+.draggedImgOffers {
+    height: 190px;
+    width: 160px;
+    border: 1px solid #ddd;
+    padding: 6px;
+    margin: 0px;
+    position: relative;
+}
+.draggedImgPhotos {
+    height: 105px;
+    width: 105px;
+    padding: 0px 10px 0px 0px;
+    margin-bottom: 8px;
+    box-shadow: 0px 0px 10px #aaa;
+}
+/*.draggedImg {
+height:150px;
+width:120px;
+border:1px solid #ddd;
+padding:6px;
+margin:6px
+}
+*/
+.draggedVid {
+border:1px solid #ddd;
+padding:6px;
+margin:6px
+}
+
+.alignCenter {
+text-align:center
+}
+
+.cursorPointer {
+cursor:pointer
+}
+
+.imgAlignCenter {
+display:inline-block
+}
+
+.selectOption {
+padding:7px;
+width:100%;
+border:1px solid #ccc;
+border-radius:2px
+}
+
+.showOption {
+padding:7px;
+width:100%;
+border:1px solid #ccc;
+z-index:9;
+background:#fff;
+position:relative
+}
+
+.showDiv {
+display:block
+}
+
+.hideDiv {
+display:none
+}
+
+.editBusinessBulkImgVideos .VendorGotLikesBorder {
+border:none!important
+}
+
+.editBusinessBulkImgVideos {
+width:100%
+}
+
+.businessOwnerImgDiv {
+width:170px;
+height:195px
+}
+
+.businessOwnerImg {
+width:100%;
+height:100%;
+background-image:url(/images/loading5.gif);
+background-size:100% 100%;
+background-repeat:no-repeat    
+}
+
+.showVideoDiv {
+width:100%;
+height:215px;
+background-image:url(/images/loading5.gif);
+background-repeat:no-repeat;
+background-size:100% 100%;
+position: relative
+}
+
+.videoBkImg {
+background-image:url(/images/loading5.gif);
+background-repeat:no-repeat
+}
+
+.profileBkImg {
+background-image:url(/images/Rightnext-Loading.gif);
+background-repeat:no-repeat;
+background-size:100% 100%
+}
+
+.shownoVideoDiv {
+width:100%;
+height:100%
+}
+
+.sliderImageDisplay {
+width:229px;
+height:229px
+}
+
+.imgCarouselBusPadding {
+padding:0;
+margin:0;
+cursor:pointer
+}
+
+#imageSliderCarousel {
+width:auto;
+position:relaitve;
+overflow:initial
+}
+
+#imageSliderCarousel .imgPromo {
+width:100%;
+height:228px
+}
+
+.slick-prev:before,.slick-next:before {
+color:silver
+}
+
+.slick-prev:before {
+content:"\2329"!important;
+font-size:60px;
+color:#fff
+}
+
+.slick-next:before {
+content:"\232A"!important;
+font-size:60px;
+color:#fff
+}
+
+.slick-prev {
+position:absolute;
+left:-19%;
+top:40%!important
+}
+
+.slick-next {
+position:absolute;
+right:4%;
+top:40%!important
+}
+
+.imageReportSlider img {
+width:550px;
+height:330px!important
+}
+
+.disableList {
+color:grey;
+text-decoration:line-through
+}
+
+.positionCross {
+margin-top:10px;
+margin-right:10px
+}
+
+.catgTableL0 {
+width:7px
+}
+
+.catgTableLevel {
+width:125px
+}
+
+/*.catgTableAction {
+width:35px
+}*/
+.catgTableAction {
+width:0px
+}
+
+.categoryLevel1Show,.categoryLevel2Show,.categoryLevel3Show,.categoryLevel4Show {
+width:270px;
+box-shadow:1px 1px 1px 1px #eee;
+height:80px;
+position:absolute;
+z-index:1;
+margin-top:58px;
+display:none;
+background-color:#f2f2f2;
+overflow:hidden;
+overflow-y:auto
+}
+
+.displayDivLevel1:hover,.displayDivLevel2:hover,.displayDivLevel3:hover,.displayDivLevel4:hover {
+background-color:#999
+}
+
+.test1 {
+display:none
+}
+
+.bkgImgNone {
+background-image:none!important
+}
+
+.modalheight {
+height:370px
+}
+
+.login-facebook,.login-google {
+cursor:pointer
+}
+
+.videoShow {
+width:300px;
+height:200px
+}
+
+.deleteVideo {
+/*right:-25px;*/
+right:-65px;
+top:7px;
+position:relative
+}
+
+.frnds {
+display:none
+}
+
+.looking_frnds {
+height:35px;
+width:100%;
+border:1px solid #ccc;
+color:#000;
+font-family:"PROXIMANOVA-REGULAR";
+outline-color:#F89B1C;
+padding:6px 10px;
+display:block;
+
+}
+
+.liStyleNone {
+list-style-type:none;
+position:absolute;
+z-index:3;
+border:1px solid #ccc
+}
+
+.tagFrndUl {
+background:#FFF;
+padding:0 3px;
+box-shadow:3px 4px 8px 0 #555;
+width:100%;
+top:31px;
+border:1px solid #ccc;
+/* max-height:160px; */
+max-height:140px;
+overflow-y:scroll
+}
+
+.tagFrndUlFrieldList{
+    background:#FFF;
+    padding:0 3px;
+    box-shadow:3px 4px 8px 0 #555;
+    width:100%;
+    top:31px;
+    border:1px solid #ccc;
+    /* max-height:160px; */
+    max-height:140px;
+    overflow-y:scroll  
+} 
+
+.tagFrndLi {
+width:100%;
+margin:1px 0;
+background:#ccc;
+color:#333;
+padding:1px 12px;
+cursor: pointer;
+}
+
+.tagFrndLiFrieldList {
+    width:100%;
+    margin:1px 0;
+    background:#ccc;
+    color:#333;
+    padding:1px 12px;
+    cursor: pointer;
+    }
+
+.tagedFrndList {
+margin-bottom:10px
+}
+
+.bunchTagFrndTagged {
+margin-bottom:3px
+}
+
+.bunchTagFrnd {
+color:#333
+}
+
+.tagedFrndSpans {
+background: #f5f5f5;
+padding: 3px 9px;
+border-radius: 6px;
+margin-right: 3px;
+color: #f89b1c;
+margin-bottom: 3px;
+display: inline-block;
+cursor: pointer;
+}
+/*.tagedFrndSpans {
+background:#ccc;
+padding:3px 9px;
+border-radius:6px;
+margin-right:3px;
+color:#a94442;
+margin-bottom:3px;
+display:inline-block;
+cursor:pointer
+}
+*/
+.tagedFrndsTitle {
+color:#000
+}
+
+.tagedFrndDivPre {
+padding-right:0;
+padding-left:0
+}
+
+.listCitySelect {
+width:100%;
+background-color:#ffD;
+position:relative;
+z-index:1
+}
+
+.outerDivOtp {
+text-align:center;
+height:500px;
+padding-top:2%;
+display:block
+}
+
+.outerDivOtp hr {
+border:2px solid #F89B1C!important
+}
+
+.otpForm {
+width:200px;
+margin:0 auto;
+padding-top:5%
+}
+
+.verifyotp {
+padding:10px 20px 0 0;
+font-size:13px;
+cursor:pointer;
+text-align:left
+}
+
+.verifyotp a {
+color:#4e4f51!important
+}
+
+.verifyotp a:hover {
+text-decoration:none;
+color:#f89b1c!important
+}
+
+.linksotpfotgot {
+padding-top:20px;
+padding-bottom:20px
+}
+
+#userEmail {
+margin-bottom:4%;
+margin-top:2%
+}
+
+.optDivMsg {
+margin-top:1%
+}
+
+.optTxtMsg {
+font-weight:700
+}
+
+.gridViewBusListDummy {
+height:150px;
+margin-bottom:10px;
+background-image:url(images/Rightnext-Loading.gif);
+background-size:100px 80px;
+background-position:center center;
+background-repeat:no-repeat;
+-webkit-transition:width .4s ease-in-out;
+transition:width .4s ease-in-out
+}
+
+.dummyStaticPage {
+height:200px;
+background-image:url(images/Rightnext-Loading.gif);
+background-size:100px 80px;
+background-position:center center;
+background-repeat:no-repeat;
+-webkit-transition:width .4s ease-in-out;
+transition:width .4s ease-in-out
+}
+
+#tagImgDiv {
+/* height:100px; */
+/* min-height:100px; */
+margin-top:10px;
+margin-bottom:12px;
+padding-left:0;
+padding-right:0;
+}
+
+.imgModelButton {
+padding:6px 2px
+}
+
+.resendotp {
+/* font-size:11px; */
+/* cursor:pointer; */
+/* text-align:right; */
+/* color:#4e4f51!important */
+}
+
+.resendotp:hover {
+/* text-decoration:none;
+color:#f89b1c!important */
+}
+
+.vendorPayText {
+font-size:16px;
+margin-top:5%
+}
+
+.userNameHeader {
+font-size:14px;
+color:#000
+}
+
+.forgotEmailMessage {
+display:none;
+border:1px solid green;
+margin-top:-5%;
+width:380px;
+margin-left:-7%;
+margin-bottom:2%;
+padding-left:3%;
+color:green
+}
+
+.model-newHeight {
+height:360px!important
+}
+
+.vPhotosUserBkGif{
+background-image:url(/images/Rightnext-Loading.gif);
+background-repeat:no-repeat;
+background-size:100% 100%
+}
+
+#progress{
+    font-weight: 400
+}
+
+.showGridData{
+    display: none;
+}
+
+.listofTypeSearchGif{
+        display: block;
+    height: 20px;
+    margin-bottom: 5px;
+    background: #eee;
+    width: 90%;
+}

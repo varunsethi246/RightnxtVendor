@@ -1,0 +1,102 @@
+<template name="header">
+	{{#if currentUser }}
+
+		{{> generalHeader }}
+
+	{{else}}
+		<div class="transperent_bg col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="navbar navbar-default header col-lg-12 col-md-12 col-sm-12 col-xs-12 gernalHeaderNav {{#if showElement }}gernalHeaderNav-sm{{else}}gernalHeaderNav-xs{{/if}}">
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 headerImgPadding-xs">
+					    <div class="logo">
+					    	<a class="navbar-brand" href="/">
+					    		<img src="/images/logo.png"  alt="RightNxt Logo"/>
+					    	</a>
+						</div>
+					</div>
+
+					{{#if showElement }}
+						{{> searchbar }}
+					{{else}}
+						<div class="col-lg-6 col-md-6 col-sm-7 col-xs-12"></div>
+					{{/if}}
+
+					<div class="col-lg-3 col-md-3 col-xs-12 primaryMenu {{#if showElement }}genHeaderLogin-xs col-sm-3{{else}}headerLogin-xs col-sm-12{{/if}}">	
+						<span class="pull-right col-lg-12 headerPull-xs">
+					        <span class="login {{#if showElement}}login-margin{{/if}}">
+					    	    <a href="" data-toggle="modal" data-target="#loginModal">LOGIN</a>
+						    </span> 
+							{{#if showElement }}
+									
+							{{else}}
+								<span class="howItWork">
+								   	<a href="#howitworks" id="how-a">HOW IT WORKS</a>
+								</span>
+							{{/if}}
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	{{/if}}
+
+	<div class="modal loginModalZindex" id="loginModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="row">
+				<div class="modal-body col-lg-12 col-md-12 col-sm-12 col-xs-12 loginModalBody-xs">
+					<div class="close loginClose-xs loginClose-xsAdj " >
+						<i class="fa fa-times fa-lg loginClosenew" data-dismiss="modal"></i>
+					</div>										
+					<div class="leftModal col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					    <img src="images/login-logo.png">
+						<div>
+							<h3>Why Sign Up?</h3>
+							<ul class="leftModal-list">
+								<li>Get to see all the current running Offers and Discounts</li>
+								<li>Give reviews and Ratings to the Businesses you visited</li>
+								<li>Create your own network with your friends</li>
+								<li>Manage your own profile</li>
+							</ul>
+						</div>
+					</div>
+					<div class="rightModal col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="genLoginSignup">
+							<div class="rightModal-Google">
+								<img src="images/google-login.png">
+								<span class="login-google">Continue with Google+</span>
+							</div>
+							<div class="rightModal-Facebook">
+								<img src="images/facebook-login.png">
+								<span class="login-facebook"> Continue with Facebook </span>
+							</div>
+
+							<p class="text-center">or use your email address</p>
+
+							<div class="login-btn"> Login </div>	
+							<div class="signUp-btn"> Sign Up </div>
+							<div class="vendorRegister">
+								<p class="text-left">Are You a Vendor? Please 
+									<a href="" class="RegisterHere"> Click Here</a>
+									to Register.
+								</p>
+							</div>
+
+						</div>
+						{{> vendorSignUpForm}}
+						{{> loginScreen  	}}
+						{{> signupScreen  	}}
+						{{> signUpThankYou	}}
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</template>
+
+
+
+
+					

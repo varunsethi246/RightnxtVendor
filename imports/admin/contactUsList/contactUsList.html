@@ -1,0 +1,104 @@
+<template name="contactUsList">
+	<div class="row manageRow">	 
+	<div class="row masterAreaCityState ">
+		<div class="areaCityStateHeading">
+		<h1>List of Contact Us Query</h1>
+		</div>
+		
+		<hr>
+		
+		<div class="col-lg-10 col-lg-offset-1">
+			<div class="searchBusinessList">
+				<span><i class="fa fa-search"></i></span>
+				<input type="text" name="search" placeholder="Search by 'How can we help'." id="searchQuery">
+			</div>	
+		</div>
+		
+		<div class="businessListTable">
+			
+			<table class="table table-hover table-striped" id="contactUsListTable">
+				<thead>
+					<tr class="tableHeadColor">
+						<th>Name </th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>How can we help</th>
+						<th>Message</th>
+						<th>Date</th>
+						<th class="bussListAction">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each Details}}
+						<tr>
+							<td class="col-lg-1">{{name}}</td>
+							<td class="col-lg-1 bussTable">{{email}}</td>
+							<td class="col-lg-1 bussEmailId">{{phoneNo}}</td>
+							<td class="col-lg-2">{{howCanWeHelpYou}}</td>
+							<td class="col-lg-3">{{message}}</td>
+							<td class="col-lg-1">{{createdAt}}</td>
+							<td>
+								<i class="fa fa-eye fa-lg cursorPointer cursorPointerss" data-toggle="modal" data-target="#contactUsDataModal-{{_id}}"  aria-hidden="true" title="View"></i>
+								<i class="fa fa-trash-o fa-lg cursorPointer cursorPointerss" id="stateDelete {{_id}}" data-toggle="modal" data-target="#deleteDataModalDelete-{{_id}}" aria-hidden="true" title="Delete"></i>
+							</td>
+							<!-- Show Contact Query -->
+							<div class="modal fade" id="contactUsDataModal-{{_id}}" role="dialog">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header delete-close">
+							        		<a href="#" data-dismiss="modal" aria-hidden="true" class="close"><i class="fa fa-times-circle-o fa-lg paddingeye" aria-hidden="true"></i></a>
+							   			 </div>
+							            <div class="modal-body">
+							            	<p class="text-left">{{message}}</p>
+							         		<div class="body-close">
+							                	<button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+							                </div>
+							            </div>
+							        </div>
+								</div>
+							</div>
+
+							<!-- delete business -->
+							<div class="modal fade" id="deleteDataModalDelete-{{_id}}" role="dialog">
+								<div class="modal-dialog">
+									<div class="modal-content modalheightHelpus">
+										<div class="modal-header delete-close">
+											<p>Delete Query</p>
+							        		<a href="#" data-dismiss="modal" aria-hidden="true" class="close"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i></a>
+							   			 </div>
+							            <div class="modal-body">
+							            	<p class="text-center">Do you want to delete query?</p>
+							         		<div class="col-lg-12 marginQuery">
+							                	<button type="button" class="btn btn-default col-lg-2 QueryDelete" data-dismiss="modal">Cancel</button>
+								            	<button type="button" class="btn btn-danger btn-ok deleteContactUsQuery col-lg-2">Delete</button>
+							                </div>
+							            </div>
+							        </div>
+								</div>
+							</div>
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+			<div class="col-lg-3 col-lg-offset-1">
+				<button class="btn btn-primary loadMoreRows50 loadMore10 hideMore50"> 
+					Show Next 50 Query 
+					<i class="fa fa-spinner fa-pulse spinner" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div class="col-lg-3 col-lg-offset-1">
+				<button class="btn btn-primary loadMoreRows100 loadMore10 hideMore50"> 
+					Show Next 100 Query 
+					<i class="fa fa-spinner fa-pulse spinner" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div class="col-lg-3 col-lg-offset-1">
+				<button class="btn btn-primary loadMoreRowsRest loadMore10 hideMore50"> 
+					Show Remaining Query 
+					<i class="fa fa-spinner fa-pulse spinner" aria-hidden="true"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+</template>

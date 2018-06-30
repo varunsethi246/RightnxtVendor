@@ -1,0 +1,56 @@
+<template name="vendorbanners">
+	<div class="VendorGotLikesBorder">
+		<div class="vendorPaymentCl">
+			{{#if paymentDetailsBanner}}
+				<div class="VendorGotLikesBorder table-responsive">
+					<table class="table table-bordered vPaymentTable">
+						<thead>
+							<tr>
+								<th>Order No.</th>
+								<th>Business Name</th>
+								<th>Amount</th>
+								<th>Status</th>
+								<th>Invoice Date</th>
+								<th>Order Type</th>
+								<!-- <th>Action</th> -->
+							</tr>
+						</thead>
+						<tbody>
+							{{#each paymentDetailsBanner}}
+								<tr>
+									<td>{{invoiceNumber}}</td>
+									<td>{{businessTitle}}</td>
+									<td>{{totalAmount}}</td>
+									<td>{{paymentStatus}}</td>
+									<td>{{invoiceDate}}</td>
+									<td>{{orderType}}</td>
+									<!-- <td>
+										<a href="{{receiptLink}}">View</a>
+									</td> -->
+								</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			{{else}}
+				<div class="VendorGotLikesBorder ">
+					<div class="vendorPayText">You can Promote your business by advertising on rightNXT. Please contact admin for the same.</div>
+				</div>
+			{{/if}}
+		</div>
+		<!-- <div class="VendorGotLikesClass">
+			{{#with businessName}} 
+				<h4 class="likesClass">Contact admin for placing the banners.<br> </h4>
+				<h3 class="likesTitleClass">Contact number : xxxxxxxxxx 
+
+					<br>
+					
+					{{> vendorPayments}}
+				</h3>
+			{{/with}}
+
+			{{#each businessBeenThereData}}
+			{{/each}}
+		</div> -->
+	</div>
+</template>

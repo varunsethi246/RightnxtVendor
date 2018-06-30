@@ -1,0 +1,56 @@
+<template name="contactUs">
+	<div class="contact-us">
+		<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12 last_para">
+
+			<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 contact-form">
+				<form id="contactUsFrom">
+					<h2>Contact us</h2>
+				  	<div class="form-group form_group">
+				    	<label for="name">Name<span class="careerColorOrange">*</span></label>
+				    	<input type="text" class="form-control" name="name" pattern="[a-zA-Z0-9\s\'\.]+">
+				  	</div>
+				  	<div class="form-group form_group">
+				    	<label for="email">Email<span class="careerColorOrange">*</span></label>
+				    	<input type="email" class="form-control" id="email" name="email">
+				  	</div>
+				  	<div class="form-group form_group">
+				    	<label for="mobile-no">Mobile Number</label>
+				    	<input type="number" id="contactMblNumber" value="+91" class="form-control no-spinner" name="phoneNo" minlength="10" maxlength="10">
+				  	</div>
+				  	<span class="SpanMobile"></span>
+				  	<div class="form-group form_group">
+				    	<label>How can we help you?<span class="careerColorOrange">*</span></label>
+				    	<select class="form-control" name="howCanWeHelpYou" required="true">
+				    		<option disabled="disabled" selected="true">--select--</option>
+				    		<option>Portal Related Issue</option>
+				    		<option>Regarding Creating New Account</option>
+				    		<option>Regarding Enquiry to Business</option>
+				    	</select> 
+				  	</div>
+				  	<div class="form-group form_group">
+				    	<label for="message">Message<span class="careerColorOrange">*</span></label>
+				    	<textarea class="form-control" name="message" rows="5" required="true"></textarea>
+				  	</div>
+				  	<input type="submit" class="btn btn-default" value="Send Message"/>
+				</form>
+			</div>
+	 	{{#if Template.subscriptionsReady}}
+
+			<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12 contact-margin">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info-div contact-form">
+					<h3>Work with us</h3>
+					<p>We're hiring globally! Check out all open positions here.</p>
+					<a href="/career/{{getCityName}}"><button type="submit" class="btn btn-default">See our open positions</button></a>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info-div contact-form">
+					<h3>RightNxt for Business</h3>
+					<p>Own a business? See how you can get the most out of RightNxt.</p>
+					<a href="/claim/{{getCityName}}"><button type="submit" class="btn btn-default">Learn More</button></a>
+				</div>
+			</div>
+		<!-- {{else}}
+			{{> loading}} -->
+		{{/if}}
+		</div>
+	</div>
+</template>

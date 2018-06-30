@@ -1,0 +1,14 @@
+<template name="anonymousUserLayout">
+<!-- {{#if isReady}} -->
+{{#if Template.subscriptionsReady}}
+	<div class="container-fluid anonymousUserContainer">		
+			{{> header }}
+			
+			{{> Template.dynamic template=main}}
+
+			{{> footer }}
+	</div>
+<!-- {{else}}
+	{{> loading}} -->
+{{/if}}
+</template>

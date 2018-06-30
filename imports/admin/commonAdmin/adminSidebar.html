@@ -1,0 +1,247 @@
+
+<template name="adminSidebar">
+<aside class="sidebar siderbarOverflow">
+    <div class="adminPhoto">
+        <img class="img-circle" src="/images/addPhoto.jpg">
+        <div class="username">Admin</div>
+    </div>
+    <ul class="sidebar-nav planeStyle" id="accordion1">
+
+        <li class="menusidebarClass aa active sidebarlink" id="listborder">
+            <a href="/adminDashboard"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
+        </li>
+        <!-- <li class="menusidebarClassOne aa active sidebarlink" id="listborder">
+            <a href="/homePageBanner"><i class="fa fa-image"></i><span>Home Page Banner</span></a>
+        </li> -->
+            <!-- 0 -->
+        <li id="listborder" class="panel activeMenuSubmenu">
+            <a data-toggle="collapse" data-parent="#accordion1" href="#firstLink" class="menusidebarClass0 panelIcon">
+                <i class="fa fa-user"></i> <span>Master Data</span>
+                <i class="fa fa-angle-right pull-right angleChange"></i>
+                <!-- <i class="angleDown"></i> -->
+            </a>
+            <div class="panel-collapse collapse " id="firstLink">
+                <ul class="sub-menu menuSubCat1">
+                    <li class="sidebarlink manageLocations">
+                        <a href="/manageLocations"><i class="fa fa-circle-o"></i>Manage Locations</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat2 ">
+                    <li class="sidebarlink categoriesLevels">
+                        <a href="/categoriesLevels"><i class="fa fa-circle-o"></i>Categories Levels</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <!-- 5 -->
+        <li id="listborder" class="panel activeMenuSubmenu">
+            <a data-toggle="collapse" data-parent="#accordion1" href="#collapse6" class="menusidebarClass5 panelIcon"><i class="fa fa-briefcase"></i> <span>Business Management</span>
+                <i class="fa fa-angle-right pull-right angleChange"></i>
+                <!-- <i class="angleDown5"></i> -->
+            </a>
+            <div class="panel-collapse collapse" id="collapse6">
+                 <ul class="sub-menu menuSubCat3">
+                    <li class="sidebarlink addnewbusinessAdmin">
+                        <a href="/addnewbusinessAdmin"><i class="fa fa-circle-o"></i>Add New Business</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat4">
+                    <li class="sidebarlink listOfBusiness">
+                        <a href="/listOfBusiness"><i class="fa fa-circle-o"></i>List of Business</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat5">
+                    <li class="sidebarlink BusinessBlkupload">
+                        <a href="/BusinessBlkupload"><i class="fa fa-circle-o"></i>Business BulkUpload</a>
+                    </li>
+                </ul>
+                
+            </div>
+        </li>
+        <!-- 6 -->
+        <li id="listborder" class="panel activeMenuSubmenu">
+            <a data-toggle="collapse" data-parent="#accordion1" href="#collapse7" class="menusidebarClass6 panelIcon">
+                <i class="fa fa-user"></i> <span>Trending Business</span>
+                <i class="fa fa-angle-right pull-right angleChange"></i>
+                
+            </a>
+            <div class="panel-collapse collapse " id="collapse7">
+                <ul class="sub-menu menuSubCat14">
+                    <li>
+                        <a href="/businessbanners"><i class="fa fa-circle-o"></i>Add Business Banners</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat15">
+                    <li>
+                        <a href="/businessBannerList"><i class="fa fa-circle-o"></i>List of Banners</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat6">
+                    <li>
+                        <a href="/discountManagement"><i class="fa fa-circle-o"></i>Discount Management</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat7 ">
+                    <li>
+                        <a href="/positionManagement"><i class="fa fa-circle-o"></i>Position Management</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- 7 -->
+        <li id="listborder" class="panel activeMenuSubmenu">
+            <a data-toggle="collapse" data-parent="#accordion1" href="#collapse8" class="menusidebarClass7 panelIcon">
+                <i class="fa fa-user"></i> <span>Business Ads</span>
+                <i class="fa fa-angle-right pull-right angleChange"></i>
+                
+            </a>
+            <div class="panel-collapse collapse " id="collapse8">
+                <ul class="sub-menu menuSubCat17">
+                    <li>
+                        <a href="/businessAds"><i class="fa fa-circle-o"></i>Add Business Ads</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat18">
+                    <li>
+                        <a href="/businessAdsList"><i class="fa fa-circle-o"></i>List of Ads</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat19">
+                    <li>
+                        <a href="/adsDiscountManagement"><i class="fa fa-circle-o"></i>Discount Management</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat20">
+                    <li>
+                        <a href="/adsPositionManagement"><i class="fa fa-circle-o"></i>Position Management</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <!-- sale report -->
+        
+        <li id="listborder" class="panel activeMenuSubmenu">
+            <a data-toggle="collapse" data-parent="#accordion1" href="#collapse5" class="menusidebarClass4 panelIcon"><i class="fa fa-users"></i> <span>Sales Report</span>
+                <i class="fa fa-angle-right pull-right angleChange"></i>
+                <!-- <i class="angleDown4"></i> -->
+            </a>
+            <div class="panel-collapse collapse" id="collapse5">
+                <ul class="sub-menu menuSubCat11">
+                    <li class="sidebarlink listOfUsers">
+                        <a href="/AdSaleReport"><i class="fa fa-circle-o"></i>Ads Sales Report</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat12">
+                    <li class="sidebarlink editRoles">
+                        <a href="/BannerSaleReport"><i class="fa fa-circle-o"></i>Banner Sales Report</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- 1 -->
+        <li id="listborder" class="panel activeMenuSubmenu">
+            <a data-toggle="collapse" data-parent="#accordion1" href="#secondLink" class="menusidebarClass1 panelIcon"><i class="fa fa-tasks"></i> <span>Webpages Form</span>
+                <i class="fa fa-angle-right pull-right angleChange"></i>
+                <!-- <i class="angleDown1"></i> -->
+            </a>
+            <div class="panel-collapse collapse" id="secondLink">
+                <ul class="sub-menu menuSubCat6">
+                    <li>
+                        <a href="/generalcontent-form"><i class="fa fa-circle-o"></i>General Content</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat7">
+                    <li>
+                        <a href="/contactUsList"><i class="fa fa-circle-o"></i><span>Help Us List</span></a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat8">
+                    <li class="sidebarlink admin-FAQ-form">
+                        <a href="/admin-FAQ-form"><i class="fa fa-circle-o"></i> FAQ</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat9">
+                    <li class="sidebarlink editPages">
+                        <a href="/editPages"><i class="fa fa-circle-o"></i> Edit Pages</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+            <!--2-->
+        <li id="listborder" class="panel activeMenuSubmenu">
+            <a data-toggle="collapse" data-parent="#accordion1" href="#thirdLink" class="menusidebarClass2 panelIcon"><i class="fa fa-bell"></i> <span>Notification</span>
+                <i class="fa fa-angle-right pull-right angleChange"></i>
+                <!-- <i class="angleDown2"></i> -->
+            </a>
+            <div class="panel-collapse collapse" id="thirdLink">
+                <ul class="sub-menu menuSubCat10">
+                    <li class="sidebarlink createEmailTemplate">
+                        <a href="/createEmailTemplate"><i class="fa fa-circle-o"></i>Create Template</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat16">
+                    <li class="sidebarlink ">
+                        <a href="/viewTemplate"><i class="fa fa-circle-o"></i>View Templates</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat21">
+                    <li class="sidebarlink ">
+                        <a href="/userDefinedTemplate"><i class="fa fa-circle-o"></i>User Defined Template</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+            <!-- 3 -->
+        <li id="listborder" class="panel activeMenuSubmenu">
+            <a data-toggle="collapse" data-parent="#accordion1" href="#fourthLink"  class="menusidebarClass3 panelIcon"><i aria-hidden="true" class="fa fa-bullseye"></i><span>Career</span>
+                <i class="fa fa-angle-right pull-right angleChange"></i>
+                <!-- <i class="angleDown3"></i> -->
+            </a>
+            <div class="panel-collapse collapse" id="fourthLink">
+                <ul class="sub-menu menuSubCat8">
+                    <li class="sidebarlink joinUsForm">
+                        <a href="/joinUsForm"><i class="fa fa-circle-o"></i>Job Applicant</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat9">
+                    <li class="sidebarlink ">
+                        <a href="/addNewJob"><i class="fa fa-circle-o"></i> Add a New Job</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat10">
+                    <li class="sidebarlink jobList">
+                        <a href="/jobList"><i class="fa fa-circle-o"></i> Job List </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+            <!-- 4 -->
+        <li id="listborder" class="panel activeMenuSubmenu">
+            <a data-toggle="collapse" data-parent="#accordion1" href="#collapse9" class="menusidebarClass8 panelIcon"><i class="fa fa-users"></i> <span>Users</span>
+                <i class="fa fa-angle-right pull-right angleChange"></i>
+                <!-- <i class="angleDown4"></i> -->
+            </a>
+            <div class="panel-collapse collapse" id="collapse9">
+                <ul class="sub-menu menuSubCat22">
+                    <li class="sidebarlink listOfUsers">
+                        <a href="/listOfUsers"><i class="fa fa-circle-o"></i>List Of Users</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat23">
+                    <li class="sidebarlink editRoles">
+                        <a href="/editRoles"><i class="fa fa-circle-o"></i>Manage Roles</a>
+                    </li>
+                </ul>
+                <ul class="sub-menu menuSubCat24">
+                    <li class="sidebarlink createUser">
+                        <a href="/createUser"><i class="fa fa-circle-o"></i>Create Staff</a>
+                    </li>
+                </ul>
+
+            </div>
+        </li>
+    </ul>
+</aside>
+  </template>

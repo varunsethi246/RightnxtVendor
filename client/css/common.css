@@ -1,0 +1,1247 @@
+@font-face {
+font-family:'PROXIMANOVA-BOLD';
+src:url(/fonts/PROXIMANOVA-BOLD.ttf),url(/fonts/PROXIMANOVA-BOLD.eot)
+}
+
+@font-face {
+font-family:'PROXIMANOVA-REGULAR';
+src:url(/fonts/PROXIMANOVA-REGULAR.ttf),url(/fonts/PROXIMANOVA-REGULAR.eot)
+}
+
+@font-face {
+font-family:'GOTHIC_0';
+src:url(/fonts/GOTHIC_0.ttf),url(/fonts/GOTHIC_0.eot)
+}
+
+.footerWrapper {
+background:#181818;
+padding:0 0 20px
+}
+
+.section-icon {
+float:left;
+padding:40px 70px
+}
+.locIcn{
+        margin-top: 9%!important;
+}
+.businessPhotofiles{
+    height: 40px;
+    z-index: 100;
+    margin-top: 5px;
+}
+
+.section1-head h3,.section5-head h3,.dowApp a {
+font-size:14px;
+font-family:'PROXIMANOVA-REGULAR';
+text-transform:uppercase;
+color:#fff;
+padding:0 0 20px;
+margin-top:32px;
+margin-left:-10px;
+text-decoration:none
+}
+
+.navbar-brand {
+margin-top:1px;
+margin-left:1px
+}
+
+.section1-head ul {
+list-style:none;
+margin-left:0
+}
+
+.section1-head li {
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.section1-head>ul >li >i {
+margin-left:-19px;
+padding-right:6px
+}
+
+.footerWrapper>.section-icon>img {
+padding-top:10px
+}
+
+.section3-head>ul {
+margin-top:75px
+}
+
+.section5-head>ul {
+margin-left:-4px
+}
+
+.section5-head>a {
+margin-left:-8px
+}
+
+.section1-head ul li a,.section5-head ul li a {
+text-decoration:none;
+color:#4E4F51
+}
+
+.section3-1 {
+margin-left:-36px
+}
+
+.section5-head {
+padding-right:2%;
+padding-left:0
+}
+
+.hoverme > li a:hover {
+color:#fff
+}
+
+.hoverme li i {
+padding-right:3px
+}
+
+.hoverme {
+margin-top:-13px
+}
+
+.dowApp {
+margin-top:22px;
+margin-bottom:15px!important
+}
+
+.footerbottom {
+width:100%;
+height:53px;
+background:#1F1F1F;
+list-style:none;
+color:#656249
+}
+
+.footerbottom ul {
+text-align:center;
+padding-top:20px;
+color:#6F6F6F;
+font-size:12px;
+font-family:'PROXIMANOVA-REGULAR';
+text-align:center
+}
+
+.transperent_bg {
+width:100%;
+height:20px;
+background:#F0F0F0
+}
+
+.logo {
+height:70px;
+margin-left:15%;
+margin-top:-2px
+}
+
+.login a,.howItWork a {
+font-size:13px;
+color:#666;
+text-decoration:none;
+list-style:none;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.login {
+padding-top:22px;
+text-align:right
+}
+
+.header {
+background:#fff;
+border:none;
+border-bottom:1px solid #B2B2B2;
+border-radius:0;
+z-index:9
+}
+
+.header-fix {
+position:fixed
+}
+
+.howItWork {
+padding:22px
+}
+
+.login a:hover,.howItWork a:hover {
+color:#F89B1C
+}
+
+.logoutRight {
+padding-left:2%;
+margin-right:14%;
+border-radius:0
+}
+
+.logoutBtnDropdown {
+border-radius:0;
+padding:0;
+padding:1px
+}
+
+.header-general {
+background:#fff;
+border:none;
+border-bottom:1px solid #B2B2B2;
+border-radius:0
+}
+
+.logo-generalHeader {
+height:70px;
+margin-left:32px;
+margin-top:-2px
+}
+
+.navbar-brand-generalLogo {
+margin-top:1px
+}
+
+.navbar-brand-generalLogo img {
+position:relative;
+top:16px;
+left:15px
+}
+
+.dropGeneral {
+text-decoration:none;
+list-style:none;
+margin-top:14px;
+margin-right:7%;
+font-size:13px;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.dropGeneral img {
+position:relative;
+right:1px
+}
+
+.dropGeneral a {
+text-decoration:none;
+list-style:none;
+color:#888585
+}
+
+.dropGeneral i {
+position:relative;
+left:3px;
+top:5px;
+color:#888585
+}
+
+.dropGeneral span {
+color:#888585;
+position:relative;
+top:4.5px;
+left:8px
+}
+
+.form4General {
+margin-top:16px
+}
+.form4General {
+margin-top:0px
+}
+
+.optionOfAreaG {
+float:left;
+margin-bottom:10px;
+border:1px solid #ccc;
+height:35px;
+cursor:pointer;
+width:26%;
+padding-left:5px;
+color:#666;
+background:#fff;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.downAreaG {
+float:left;
+margin-left:-20px;
+margin-top:10px;
+cursor:pointer;
+position:relative;
+top:-6px;
+right:3px;
+color:#666
+}
+
+.looking_newGeneral {
+height:35px;
+width:100%;
+padding:0 0 0 1%;
+border:1px solid #ccc;
+color:#000;
+font-family:"PROXIMANOVA-REGULAR";
+outline-color:#F89B1C;
+border-left:0;
+padding-left:10px
+}
+
+.thanksMsg {
+margin-top:36%;
+border:1px solid #ccc
+}
+
+.thanksMsg h3 {
+margin-left:86px!important;
+color:#f89b1c;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.thanksMsg h5 {
+margin-left:53px!important;
+padding-bottom:20px;
+color:#222;
+font-family:'PROXIMANOVA-REGULAR'
+}
+
+.thanksMsg p {
+font-size:13px!important;
+color:#222!important;
+font-family:'PROXIMANOVA-REGULAR';
+margin-left:-40px!important;
+margin-top:-33px
+}
+
+.error {
+color:#a94442;
+font-weight:400!important
+}
+
+.RModaleShare {
+top:87px
+}
+
+#loginModal {
+z-index:1300!important
+}
+
+.loginClosenew {
+z-index:1300;
+color:#000!important
+}
+
+.leftModal {
+width:45%;
+height:510px;
+background:#F89B1C
+}
+
+.rightModal {
+width:55%;
+height:510px;
+background:#fff
+}
+
+.modal-body {
+text-align:left
+}
+
+.leftModal img {
+margin-top:42%;
+margin-left:8%;
+margin-bottom:30%;
+width:85%
+}
+
+.leftModal h3 {
+color:#fff;
+border-bottom:2px solid #fff;
+padding:0 0 10px;
+font-size:20px;
+margin-left:10px
+}
+
+.leftModal-list {
+color:#fff;
+margin-left:22px;
+line-height:19px;
+font-size:14px;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.rightModal-Google {
+background:#D34836;
+height:40px;
+margin-top:53%;
+margin-bottom:8px;
+color:#fff
+}
+
+.rightModal-Google span {
+position:absolute;
+top:6px!important;
+margin-left:2px
+}
+
+.rightModal-Facebook span {
+position:absolute;
+top:6px!important;
+margin-left:2px
+}
+
+.rightModal-Facebook {
+background:#3B5998;
+height:40px;
+color:#fff
+}
+
+.rightModal-Google img {
+padding-top:10px;
+margin-left:19%
+}
+
+.rightModal-Facebook img {
+padding-top:10px;
+margin-left:19%
+}
+
+.rightModal p {
+padding-top:20px;
+padding-bottom:20px;
+font-size:16px;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.rightModal p.text-left {
+padding-left:55px
+}
+
+.rightModal span {
+position:relative;
+top:-1px
+}
+
+.login-btn {
+border:1px solid #ccc;
+padding:8px;
+padding-left:39%;
+margin-bottom:8px;
+cursor:pointer;
+font-size:14px;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.signUp-btn {
+border:1px solid #ccc;
+padding:8px;
+padding-left:37%;
+cursor:pointer;
+font-size:14px;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.signUpBtn {
+border:1px solid #ccc;
+padding:8px;
+cursor:pointer;
+width:100%;
+font-size:14px;
+margin-top:-8px;
+color:#fff;
+text-align:center;
+background:#f89b1c;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.signUpBtn:hover {
+background:#4e4f51
+}
+
+.login-btn:hover {
+background-color:#f89b1c;
+color:#fff
+}
+
+.signUp-btn:hover {
+background-color:#f89b1c;
+color:#fff
+}
+
+.close {
+z-index:999;
+margin-right:-25px
+}
+
+.close i {
+position:relative;
+top:-3px;
+right:0;
+color:#f0f8ff
+}
+
+.close i:hover {
+color:#fff
+}
+
+.closes {
+z-index:999
+}
+
+.closes i {
+color:#fff
+}
+
+.closes i:hover {
+color:#fff
+}
+
+.genLoginSignup {
+display:block;
+margin-top:-49px
+}
+
+.vendorRegister {
+margin-left:-16%
+}
+
+.modalBox {
+height:290px;
+width:71%;
+background:#fff
+}
+
+.frgtHeader {
+text-align:left;
+padding:9px;
+border-bottom:1px solid #ccc;
+color:#6cc233;
+height:49px
+}
+
+.frgtContent p {
+padding:0 0 10px!important
+}
+
+.resetPwd {
+background:#f89b1c;
+line-height:39px;
+padding:0 5px;
+color:#fff;
+border:0;
+border-radius:0;
+font-size:14px;
+font-family:"PROXIMANOVA-REGULAR";
+width:35%;
+margin-left:115px
+}
+
+.emailBox {
+border-radius:0;
+padding:5px;
+height:47px;
+width:115%
+}
+
+.frgtClose {
+margin-left:62%;
+position:absolute;
+color:#000
+}
+
+.frgtBody {
+margin-top:18%
+}
+
+.login-btn1 {
+border:1px solid #ccc;
+padding:8px;
+padding-right:44%;
+padding-left:44%;
+margin-bottom:8px;
+cursor:pointer;
+margin-top:20px;
+font-size:14px;
+color:#fff;
+background:#f89b1c;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.login-btn1:hover {
+background:#4e4f51
+}
+
+.forgotPwd {
+text-align:right;
+padding:5px 45px 0
+}
+
+.forgotPwd a {
+color:#4e4f51;
+padding:10px 0 0;
+font-size:13px;
+cursor:pointer
+}
+
+.forgotPwd a:hover {
+text-decoration:none;
+color:#f89b1c
+}
+
+.loginTxt {
+font-size:20px;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR";
+text-align:center;
+padding:10px 0 0;
+cursor:pointer
+}
+
+.signUp-btn1 {
+border:1px solid #ccc;
+padding:8px;
+cursor:pointer;
+width:100%;
+font-size:14px;
+margin-top:-8px;
+color:#fff;
+text-align:center;
+background:#f89b1c;
+font-family:"PROXIMANOVA-REGULAR"
+}
+
+.signUp-btn1:hover {
+background:#4e4f51
+}
+
+.signUpPara p {
+font-size:10px;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR";
+padding:10px 0 44px;
+text-align:center
+}
+
+.loginTxt1,.loginTxt2 {
+font-size:20px;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR";
+text-align:center;
+padding:10px 0 0;
+cursor:pointer
+}
+
+.loginTxt1 {
+margin-top:-60px
+}
+
+.loginTxt2 {
+margin-top:-1px
+}
+
+.loginForm {
+margin-top:70px
+}
+
+.loginEmail,.loginPassword,.signUpName,.signUpMobile,.signUpEmail,.signUpPassword,.vSignUp {
+padding:0 4%!important;
+height:45px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR';
+letter-spacing:1px;
+border-radius:1px!important;
+margin-top:-16px
+}
+
+.signUpName,.signUpMobile {
+padding:0 4%!important;
+height:50px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR';
+letter-spacing:1px;
+border-radius:1px!important;
+margin-top:-16px
+}
+
+.signUpForm {
+margin-top:10px;
+margin-bottom:10px
+}
+
+.vendorsignUpForm {
+margin-top:14px
+}
+
+.signupScreen {
+margin-top:50px
+}
+
+.signupScreen h4 {
+font-size:18px;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR";
+text-align:center;
+margin-top:-34px;
+padding-bottom:23px
+}
+
+.vendorFrom {
+position:relative;
+padding:10px;
+margin-top:20px
+}
+
+.vendorLabel {
+float:left!important
+}
+
+.vendorFrom h4 {
+font-size:18px;
+color:#4e4f51;
+font-family:"PROXIMANOVA-REGULAR";
+text-align:center;
+margin-top:-8px;
+padding-bottom:23px
+}
+
+.logoVender1 {
+padding-left:0
+}
+
+.dropVender .fa-angle-down {
+position:relative;
+top:4px
+}
+
+.dropVender {
+text-decoration:none;
+list-style:none;
+margin-top:14px;
+margin-right:6%;
+font-size:13px;
+font-family:'PROXIMANOVA-BOLD'
+}
+
+.img-circle {
+border-radius:100px;
+/*padding-right:5px*/
+}
+
+.dropVender a {
+text-decoration:none;
+list-style:none;
+color:#333;
+padding-right:4px
+}
+
+.dropVender a:hover {
+color:#F89B1C
+}
+
+.dropVender ul {
+padding:1px;
+border-radius:0
+}
+
+.dropVender ul li i {
+font-size:18px;
+padding-right:6px;
+margin-top:5px
+}
+
+.dropVender ul li a {
+color:#b2b2b2
+}
+
+.dropVender ul li a:hover {
+background:#F89B1C;
+color:#fff
+}
+
+.optionOfArea {
+float:left;
+margin-bottom:10px;
+border:1px solid #ccc;
+height:35px;
+cursor:pointer;
+width:25%;
+padding-left:5px
+}
+
+.form3 {
+margin-top:14px
+}
+
+.looking_new {
+height:35px;
+width:100%;
+padding:0 0 0 1%;
+border:1px solid #ccc;
+color:#000;
+font-family:"PROXIMANOVA-REGULAR";
+outline-color:#F89B1C
+}
+
+.input-group-addon {
+cursor:pointer;
+background:#fff;
+color:#000;
+border-radius:1px
+}
+
+.select .input-group-addon:hover {
+background:#f89b1c;
+color:#fff
+}
+
+.downArea {
+float:left;
+margin-left:-20px;
+margin-top:10px;
+cursor:pointer;
+outline-color:initial;
+}
+
+.gernalHeaderNav {
+margin-bottom:0!important
+}
+
+.primaryMenu {
+padding-top:24px;
+padding-left:0;
+padding-right:60px
+}
+
+.spanMainLoginEmail,.spanMainLoginPass {
+display:none
+}
+
+.ErrorRedText {
+display:block;
+color:red
+}
+
+.SpanLandLineRedBorder {
+border-color:red
+}
+
+.spanSignUpName,.spanSignUpEmail,.spanSignUpMobile,.spanSignUpPassword {
+display:none
+}
+
+.ErrorRedText {
+display:block;
+color:red
+}
+
+.SpanLandLineRedBorder {
+border-color:red
+}
+
+.passwordWrongSpan {
+display:none
+}
+
+.passwordWrongWar {
+color:#a94442;
+display:block
+}
+
+.reviewWrngErrorMsg {
+display:block;
+/*padding:10px;*/
+margin-top:28px;
+font-size:14px;
+color: red;
+}
+/*.reviewWrngErrorMsg {
+display:block;
+padding:10px;
+margin-top:50px;
+font-size:13px
+}
+*/
+label.error {
+margin-bottom:-5px!important
+}
+
+.loginLabel {
+position:absolute;
+margin-top:5px;
+margin-left:14px;
+color:#4e4f51;
+font-weight:100;
+font-family:'PROXIMANOVA-REGULAR';
+-webkit-transform:translateY(6px);
+transform:translateY(6px);
+-webkit-transition:all .25s ease;
+transition:all .25s ease;
+-webkit-backface-visibility:hidden
+}
+/*.loginLabel {
+position:absolute;
+margin-top:7px;
+margin-left:14px;
+color:#4e4f51;
+font-weight:100;
+font-family:'PROXIMANOVA-REGULAR';
+-webkit-transform:translateY(6px);
+transform:translateY(6px);
+-webkit-transition:all .25s ease;
+transition:all .25s ease;
+-webkit-backface-visibility:hidden
+}
+*/
+.loginFormGroup {
+margin-bottom:35px
+}
+
+.loginLabel.active {
+-webkit-transform:translate(20%,-4px) scale(1);
+transform:translate(20%,-4px) scale(1);
+left:2px;
+font-size:12px
+}
+
+.numberLabel.active {
+-webkit-transform:translate(20%,-4px) scale(1);
+transform:translate(20%,-4px) scale(1);
+left:2px;
+font-size:12px;
+margin-left:-8px
+}
+
+.loginLabel.highlight {
+color:#F89B1C
+}
+
+.resetWrapper {
+border:1px solid #f89b1c;
+height:283px;
+width:25%;
+margin-bottom:20px;
+margin-left:37.5%;
+margin-top:20px
+}
+
+.resetpass h2 {
+font-family:'PROXIMANOVA-REGULAR';
+font-weight:700;
+text-align:center;
+padding:10px;
+color:#3c8dbc;
+margin:auto;
+width:20%;
+margin-top:20px
+}
+
+.resetPwdinput {
+padding:0 4%!important;
+height:45px;
+color:#4e4f51;
+font-family:'PROXIMANOVA-REGULAR';
+letter-spacing:1px;
+margin-top:10px
+}
+
+.resetPwdinsideWrapper p {
+font-family:'PROXIMANOVA-REGULAR';
+font-weight:700;
+text-align:center;
+padding-top:20px
+}
+
+.resetButton {
+margin-top:12px;
+padding:8px;
+background:#f89b1c;
+border-radius:0;
+color:#fff;
+border-color:#f89b1c
+}
+
+.notifiacationUsers {
+top:28px;
+left:3%
+}
+
+.notifiacationUsers>ul {
+margin-right:-30px;
+height:0;
+position:relative;
+margin-top:-15px
+}
+
+.top-userNav>li>a {
+color:#777!important
+}
+
+.top-userNav>li>a:hover,.top-userNav>li>a:focus,.top-userNav>.open>a,.top-userNav>.open>a:hover,.top-userNav>.open>a:focus {
+color:#f89b1c!important
+}
+
+.top-userNav>.open>a {
+height:51px
+}
+
+.top-userNav>.open>.notif-dropdown {
+width: 448px;
+border-radius: 0;
+border-top-left-radius: 0;
+border-top-right-radius: 0;
+margin-top: 4px;
+margin-right: -2px;
+border-top-color: #ffb832;
+border-left-color: #f5f5f5;
+border-right-color: #f5f5f5;
+border-bottom-color: #ffb832;
+}
+/*.top-userNav>.open>.notif-dropdown {
+width:448px;
+border-radius:0;
+border-top-left-radius:0;
+border-top-right-radius:0;
+margin-top:4px;
+margin-right:-2px
+}
+*/
+.top-userNav .open > a,.top-userNav .open >a:hover,.top-userNav .open > a:focus {
+background:transparent!important
+}
+
+.top-userNav>.open>.notif-dropdown>li>a {
+    white-space: normal;
+    /* background-color: #fff!important; */
+    text-align: center;
+    color: #333;
+    font-size: 12px;
+    font-weight: 600;
+}
+/*.top-userNav>.open>.notif-dropdown>li>a {
+white-space:normal;
+background-color:#fff!important;
+text-align:center;
+color:#333;
+font-size:12px;
+font-weight:600
+}
+*/
+.top-userNav>.open>.userSettingadmin1 {
+width:160px;
+border-radius:0;
+border-top-left-radius:0;
+border-top-right-radius:0;
+margin-top:4px;
+margin-right:-2px
+}
+
+.top-userNav>.open>.userSettingadmin1>li>a {
+white-space:normal;
+background-color:#fff!important;
+padding:0;
+text-align:center;
+color:#333;
+font-size:12px;
+font-weight:600
+}
+
+/*.top-userNav>.open>.notif-dropdown>li>a:hover {
+text-decoration:underline
+}*/
+
+.top-userNav>.open>.userSettingadmin1>li>a:hover {
+text-decoration:underline
+}
+
+.notifbody {
+font-size:12px;
+color:#1d2129;
+padding:7px;
+font-family:inherit;
+font-weight:700;
+justify-content:center;
+min-height:24px;
+word-wrap:break-word;
+padding:5px 5px 5px 1px;
+cursor:pointer;
+font-size:12px
+}
+
+.notifdate {
+font-family:inherit;
+min-height:24px;
+word-wrap:break-word;
+color:#90949c;
+cursor:pointer;
+font-size:12px;
+margin-right:53%;
+justify-content:center;
+margin-top:-9px;
+padding-top:3px
+}
+
+.notifContent:hover {
+background:#F0F0F0
+}
+
+.notifDropdown {
+background:transparent!important;
+margin-right:-10px
+}
+
+.adminNotif {
+margin-top:1px!important
+}
+
+.hrViewAll {
+border-top:1px solid #ddd!important;
+    width: 100%;
+
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+}
+
+.notdate {
+font-family:inherit;
+word-wrap:break-word;
+color:#90949c;
+cursor:pointer;
+font-size:12px;
+justify-content:center;
+padding:0
+}
+
+.squarenotifAngle {
+padding-right:10px
+}
+.Valignspan{
+position: absolute;
+left: 6%;
+top: 49%
+}
+.Valign{
+position: absolute;
+top: 54%
+}
+
+.closeVideoModal {
+    z-index: 1051;
+    position: relative;
+    color: #000;
+    padding: 1px 5px !important;
+    margin: 3px;
+    border-radius: 50%;
+    background: none;
+}
+
+
+.loginClose-xsAdj {
+    z-index: 1051;
+    position: relative;
+    color: #000;
+    border-radius: 50%;
+    background: none;
+    top: 9px;
+    left: -30px;
+}
+
+@media screen and (max-width: 767px) {
+    .loginClose-xsAdj {
+        z-index: 1051;
+        position: relative;
+        color: #000;
+        border-radius: 50%;
+        background: none;
+        top: 30px;
+        right: 20px;
+    }
+}
+
+
+.imageReportCloseFirst{
+        margin-right: -40px;
+    margin-top: 1px;
+}
+
+.selectareaclose{
+    top: 18px!important;
+    right: 14px!important;
+}
+
+.fromtomargin{
+    margin-top: 7px!important;
+}
+#businessPhotofiles{
+margin-left: 0px;
+}
+#businessPhotofiles{
+    height: 39px;
+    margin-top: 2px;
+    z-index: 100;
+}
+.modalforgetpass{
+    height: 74%;
+}
+.newBackground{
+background-color: #ffe0b6;
+text-align: center;
+}
+
+@media only screen and (max-width: 1280px){
+
+    .aboutNavbar{
+        margin-left:35%;
+    }
+}
+/*.aboutNavbar{
+    margin-left:0px;
+} */ 
+.suggestedListScroll{
+        overflow-y: scroll;
+    height: 400px;
+    width: 100%;
+}
+.showreplyCmt,
+.hideReplyCmt{
+    text-align: center;
+    /* background: #c71010; */
+    background: #ffae40;
+    padding: 3px;
+    color: #000;
+    cursor: pointer;
+    font-size: 11px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.playpause {
+    background-image:url(http://png-4.findicons.com/files/icons/2315/default_icon/256/media_play_pause_resume.png);
+    background-repeat:no-repeat;
+    width:50%;
+    height:50%;
+    position:absolute;
+    left:0%;
+    right:0%;
+    top:0%;
+    bottom:0%;
+    margin:auto;
+    background-size:contain;
+    background-position: center;
+}
+.PictureOne{
+        color: #f9a638;
+}
+.new-class{
+        margin-top: 10px;
+        }
+.vendorLeftSideTNC{
+    text-align: left!important;
+}
+.left-Carousel{
+    width: 9%!important;
+}
+.right-Carousel{
+    width: 9%!important;
+}
+.myRatingOnBuss{
+    padding: 0;
+    margin: 0;
+}

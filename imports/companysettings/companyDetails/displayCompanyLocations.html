@@ -1,0 +1,82 @@
+<template name= "displayCompanyLocations">
+	<div class="companyHeader">
+		<a class="left"  role="button" data-target="#dispalyCarousel" data-slide-to="0">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+			<span class="header">Company Settings</span>
+		</a>
+	</div>
+	<h1 class="dispalyTitle">Company Address</h1>
+	<!-- <div class="description">
+		{{#with allILocationsnformation}}
+		{{#each companyLocationsInfo}}
+		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 outerborder">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 companyHeading">
+				{{companyCity}} ( {{companyLocation }} )
+				<hr>
+			</div>
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				{{companyAddress}}<br>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addressDetails">
+				{{companyCity}} ,
+				{{companyState}} 
+				{{companyCountry}}
+				{{companyPincode}}
+			</div>
+		</div>
+
+
+		{{/each}}                                          
+		{{/with}}
+	</div> -->
+
+	 <div class="description">
+	 	{{#with allHeadLocationsinformation}}
+				{{#with allILocationsnformation}}
+				{{#each companyLocationsInfo}}
+					{{#if isSelectedLocation 'Headoffice'}}
+						<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 outerborder">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 companyHeading">
+								{{companyCity}} ( {{mainLocation }} )
+								<hr>
+							</div>
+
+							<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								{{companyAddress}}<br>
+							</div> -->
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addressDetails">
+								{{companyAddress}}
+								{{companyCity}} ,
+								{{companyState}} 
+								{{companyCountry}}
+								{{companyPincode}}
+							</div>
+						</div>
+					{{else}}
+						<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 outerborder">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 companyHeading">
+								{{companyCity}}
+								<hr>
+							</div>
+
+							<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								{{companyAddress}}<br>
+							</div> -->
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addressDetails">
+								{{companyAddress}}
+								{{companyCity}} ,
+								{{companyState}} 
+								{{companyCountry}}
+								{{companyPincode}}
+							</div>
+						</div>
+					{{/if}}
+				
+				{{/each}}                                          
+				{{/with}}
+					
+		{{/with}}
+	</div>
+</template>

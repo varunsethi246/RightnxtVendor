@@ -1,0 +1,223 @@
+<template name="vendorOpeningAndClosing">
+	<form class="vendorBusOpClAC" novalidate> 
+		<div class="row">
+			<div class="col-lg-12 vBusGroupRow">
+				<!-- <h3 class="vOpenACloseTitle">Opening Days and Closing Days</h3> -->
+			</div>
+			<div class="col-lg-12 vBusGroupRow">
+				<div class="form-group">
+					<label>Categories</label>
+					<div class="row">
+						<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10 selectCategoryFocus">
+						{{#each editDisplayCategories businesscategories}}
+							<div class="js-click-tag1 str-tags-each1" id="catgI-{{dataI}}" > <div class="str-tag1 str-tag2 showCategory">{{category}} x </div> </div>
+						{{/each}}
+						</div>
+
+						<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10 categoryListEditadj">
+							{{> categoriesSearchField}}
+						</div>
+
+						<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+							<i class="fa fa-question-circle vBusTitleI pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Select the category according to your Business. For eg. Sweet Shop, Furniture Shop etc. You can select max upto 5 categories"></i>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label>Anything Else</label>
+					<div class="row">
+						<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+							<input type="text" class="form-control businessAnythingElseC" id="businessAnythingElse" name="businessAnythingElse" value="{{businessAnythingElse}}">
+							<span class="SpanBusinessAnythingElse"></span>
+						</div>
+						<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+							<i class="fa fa-question-circle vBusTitleI pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Manually enter the category if relevant category not found."></i>
+						</div>
+					</div>
+				</div>
+				<div class="form-group vContactInfoFormTwo">
+					<h5>Opening Days and Closing Days</h5>
+					<div class="row">
+						<!-- Week -->
+						<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+							<div class="vDateSelect">
+								<ul>
+									<li class="WeekClassPre" id="Monday" value="monday">MON</li>
+									<li class="WeekClassPre" id="Tuesday" value="tuesday">TUE</li>
+									<li class="WeekClassPre" id="Wednesday" value="wednesday">WED</li>
+									<li class="WeekClassPre" id="Thursday" value="thursday">THU</li>
+									<li class="WeekClassPre" id="Friday" value="friday">FRI</li>
+									<li class="WeekClassPre" id="Saturday" value="saturday">SAT</li>
+									<li class="WeekClassPre" id="Sunday" value="sunday">SUN</li>
+								</ul>
+							</div>
+							<div class="shwDayError"></div>
+						</div>
+						<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+							<i class="fa fa-question-circle vBusTitleI pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Time frame when Business is operational.">
+								
+							</i>
+						</div>
+						<!-- From -->
+						<div class="col-lg-4  col-md-4 col-sm-4 col-xs-12">
+							<div class="row">
+								<div class="col-lg-offset-1 col-lg-3 col-xs-2 fromtomargin">
+									<label class="">From</label>	
+								</div>
+								<div class="col-lg-8 col-xs-8">
+									<div class='input-group date' id='datetimepicker3'>
+					                    <input type='text' class="form-control" name="usrtimeOneFrame" id="fromTime" value="00:00" />
+					                    <span class="input-group-addon fromTimeC">
+					                        <span class="glyphicon glyphicon-time"></span>
+					                    </span>
+					                </div>
+								</div>
+							</div>
+						</div>
+						<!-- To -->
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 BussToTime ">
+							<div class="row">
+								<div class="col-lg-offset-2 col-lg-2 col-xs-2 fromtomargin">
+								<label class="">To</label>	
+								</div>
+								<div class="col-lg-8 col-xs-8">
+									<!-- <input type="time" name="usrtimeTwoFrame" class="form-control" id="toTime"> -->
+									<div class='input-group date' id='datetimepicker4'>
+					                    <input type='text' class="form-control" name="usrtimeTwoFrame" id="toTime" value="23:59" />
+					                    <span class="input-group-addon toTimeC">
+					                        <span class="glyphicon glyphicon-time"></span>
+					                    </span>
+					                </div>
+								</div>
+							</div>
+						</div>
+						<!-- Add Time Frame Button -->
+						<div class="col-lg-4 col-md-4 col-sm-4 outerTimeFrame">
+							<div class="visible-xs TimeFrameBtnPre"></div>
+							<div  class="btn TimeFrameBtn">Add Time Frame</div>
+							<div class="row">
+								
+							</div>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+							<!-- {{> showOpenCloseTiming }} -->
+							<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 BussTableOpenClose">
+								<table class="table table-bordered table-hover table-striped busTimeTable">
+									<tbody>
+										{{#each businessOpenCloseTiming }}
+										<tr> 
+											<td>{{day}}</td>
+											<td>{{fromTime}}</td>
+											<td>{{toTime}}</td>
+											<!-- <td> <a href="#"> close </a> </td> -->
+											<td class="text-center">
+												<a href="" id="bt-{{day}}" class="btClear"> 
+													<i class="fa fa-trash text-danger" aria-hidden="true"></i> 
+												</a>
+											</td>
+										</tr>
+										{{/each}}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group vContactInfoFormTwo">
+					<h5>Contact Information</h5>
+					<div class="row">
+						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+							<label>Landline</label><br>
+							<input type="text" class="form-control businessLandlineC" name="businessLandline" id="businessLandline" value="{{businessLandline}}" maxlength="12" placeholder="020-XXXXXXXX">
+							<span class="SpanLandLine"></span>
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+							<label>Mobile</label><br>
+							<div class="input-group MoBInputGroup">
+							  <span class="input-group-addon">+91</span>
+							  <input type="text" class="form-control businessMobileC" id="businessMobile" name="businessMobile" minlength="10" maxlength="10" value="{{businessMobile}}" placeholder="10 digit Mobile Number" required>
+							</div>
+							<span class="SpanMobile"></span>
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+							<label>Alternate Mobile</label><br>
+							<div class="input-group">
+							  <span class="input-group-addon">+91</span>
+							  <input type="text" class="form-control businessAltMobileC" name="businessAltMobile" id="businessAltMobile" minlength="10" maxlength="10" value="{{businessAltMobile}}" placeholder="10 digit Mobile Number" >
+							</div>
+							<span class="SpanAltMobile"></span>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<span class="SpanMobileErrors"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Website address</label>
+					<div class="row">
+						<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+							<input type="text" class="form-control businessWebAdressC" name="businessWebAdress" id="businessWebAdress" value="{{businessWebAdress}}" title="Please Enter Website URL as http://www.xyz.com" placeholder="Please Enter Website URL as http://www.xyz.com OR www.xyz.com">
+							<span class="SpanUrl"></span>
+						</div>
+						<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+							<i class="fa fa-question-circle vBusTitleI pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Website URL as http://www.xyz.com OR www.xyz.com"></i>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Tag</label>
+					<div class="row">
+						
+						<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+						{{#each editDisplayTags businessTag}}
+							<div class='js-click-tag1 str-tags-each1 ' id='tagIndexI-{{tagIndex}}'> 
+								<div class='str-tag1 showTagsEdit'> {{tags}} x </div> 
+							</div>
+						{{/each}}
+						</div>
+
+						<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+							{{> tagInputField}}
+						</div>
+						<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+							<i class="fa fa-question-circle vBusTitleI pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Keywords/Specialities by which customers can also search you."></i>
+						</div>
+						
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Mode of Payment</label>
+					<div class="row">
+						<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10 showHidePayment">
+							<div class="selectOption">
+								<span class="selecttext">{{originalSelText}}</span>
+								<span><i class="fa fa-angle-down pull-right" aria-hidden="true"></i></span>
+							</div>
+							<div class="showOption showOptionEdit hideDiv">
+								<input type="checkbox" name="paymentmode" value="selectAll"  id="editcheckAll" checked="{{#if businessModeOfPay.allVal}}checked{{/if}}"> Select All<br>
+								<input type="checkbox" class ="selectAll" name="paymentmode" value="CreditCard" checked="{{#if businessModeOfPay.CreditCard}}checked{{/if}}"> Credit Card<br>
+							    <input type="checkbox" class ="selectAll" name="paymentmode" value="DebitCard" checked="{{#if businessModeOfPay.DebitCard}}checked{{/if}}"> Debit Card<br>
+							    <input type="checkbox" class ="selectAll" name="paymentmode" value="Netbanking" checked="{{#if businessModeOfPay.Netbanking}}checked{{/if}}"> Netbanking<br>
+							    <input type="checkbox" class ="selectAll" name="paymentmode" value="Paytm" checked="{{#if businessModeOfPay.Paytm}}checked{{/if}}"> Paytm<br>
+							    <input type="checkbox" class ="selectAll" name="paymentmode" value="Cheque" checked="{{#if businessModeOfPay.Cheque}}checked{{/if}}"> Cheque<br>
+							    <input type="checkbox" class ="selectAll" name="paymentmode" value="Cash" checked="{{#if businessModeOfPay.Cash}}checked{{/if}}"> Cash<br>
+
+							</div>
+						</div>
+						<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+							<i class="fa fa-question-circle vBusTitleI pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Modes of payment accepted by the Business"></i>
+						</div>
+						<div class="col-lg-12 vendorPayHidden">
+							<input type="text" class="vendorPayHideInput">
+						</div>
+					</div>
+				</div>
+
+    			<input type="submit" class="btn vendor-formOne-save" value="SAVE">
+			</div>
+			
+		</div>
+	</form>
+</template>

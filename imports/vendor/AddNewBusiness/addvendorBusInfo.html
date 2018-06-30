@@ -1,0 +1,221 @@
+	<template name="addVendorBusInfo">
+	{{#with vendorBusInfoRetrive}}
+	<div class="adminsideAdjClass">
+		<div class="">
+			<div class="row">
+				<div class="col-lg-12">
+					<form class="businessInfo"  novalidate>
+						<div class="row addvenBusInfo">
+							<div class="col-lg-12 vBusGroupRow">
+								<div class="BussnessAboutTitle">
+									<h4>About Business</h4>
+								</div>
+							</div>
+							{{#if completedPercentShow completedPercent}}
+							<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 vBusGroupRow">
+								<div class="progress">
+								  <div class="progress-bar addVendorAddNewFormProgressbar" role="progressbar" aria-valuenow="{{completedPercent}}"
+								  aria-valuemin="0" aria-valuemax="100" style="width:{{completedPercent}}%">
+								    {{completedPercent}}% Completed
+								  </div>
+								</div>
+							</div>
+							{{/if}}
+
+							<div class="col-lg-12 vBusGroupRow">
+								<div class="form-group">
+									<label>Business Title</label>
+									<div class="row">
+										<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+											<input type="text" class="form-control businessTitleC" id="businessTitle" name="businessTitle" value="{{businessTitle}}" maxlength="100" placeholder="Maximum 100 characters" >
+											<span class="SpanBusinessTitle"></span>
+										</div>
+										<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+											<i class="fa fa-question-circle vBusTitleI pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Name of your Business"></i>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label>Business Link</label>
+									<div class="row">
+										<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
+											<span class="vBusWebAdress">www.rightNXT.com/</span>
+											<input type="text" class="form-control businessLinkC" id="businessLink" name="businessLink" maxlength="50" value="{{businessLink}}" placeholder="Maximum 50 characters" required>
+											<span class="SpanBusinessLink"></span>
+											<!-- <span class="linkValid"></span> -->
+										</div>
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-10 checkLinkOuter">
+											<button class="btn btn-success checkLink">Check Availability!</button>
+										</div>
+										<div class="col-lg-1 col-md-1 col-sm-2 col-xs-2 questionMarkOuter">
+											<i class="fa fa-question-circle vBusTitleI  pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Unique name used for Business URL. Can be used to share with your customers For eg:- On Business Card etc"></i>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label>About Business</label>
+									<div class="row">
+										<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12">
+											<textarea class="form-control businessAbtBus" id="businessAbtBus" name="businessAbtBus" value="{{businessAboutBus}}" maxlength="2500" placeholder="Minimum 150 and Maximum 2500 Characters"></textarea>
+											<div class="textRemain pull-right"></div>
+											<span class="SpanbusinessAbtBus"></span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label>Business Email ID</label>
+									<div class="row">
+										<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+											<input type="email" id="businessEmailId" class="form-control businessEmailIdC" name="businessEmailId" value="{{businessEmailId}}" required>
+											<span class="SpanBusinessEmailId"></span>
+										</div>
+										<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+											<i class="fa fa-question-circle vBusTitleI  pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Email id of Business used for Business interactions"></i>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label>Address</label>
+									<div class="row">
+										<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+											<input type="text" class="form-control businessAddressC" id="businessAddress" name="businessAddress" value="{{businessAddress}}" required>
+											<span class="SpanBusinessAddress"></span>
+										</div>
+										<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+											<i class="fa fa-question-circle vBusTitleI  pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Address of your business to be in mentioned format [Shop/Plot Number], [Opposite/Beside Landmark], [Road Number/Name], [Neighborhood], [City]"></i>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row vendor-colomnTw">
+										<div class="col-lg-12">
+											<div class="row">
+												<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+													<label>Country</label>
+													<select class="form-control selectpicker addVenCountry	" title="Select your Country" name="businessCountry" value="India" required>
+														<option selected>India</option>
+													</select>
+												</div>
+												<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+													<label>State</label>
+													<select class="form-control selectpicker addVenState" name="businessState" title="Select your State" required>
+														<option>--Select--</option>
+														{{#each states}}
+															<option {{selected}}>{{stateName}}</option>
+														{{/each}}
+													</select>
+													<span class="SpanBusinessState"></span>
+												</div>
+												<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+													<label>City</label>
+													<select class="form-control businessCityC addVenCity" name="businessCity" title="Select your City" required>
+														<option>--Select--</option>
+														{{#each cities}}
+															<option {{selected}}>{{cityName}}</option>
+														{{/each}}
+													</select>
+													<span class="SpanBusinessCity"></span>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="row">
+												<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+													<label>Area</label>
+													<select class="form-control businessAreaC addVenArea" name="businessArea" title="Select your Area" required>
+														<option>--Select--</option>
+														{{#each areas}}
+															<option {{selected}}>{{areaName}}</option>
+														{{/each}}
+													</select>
+													<span class="SpanBusinessArea"></span>
+												</div>
+												<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+													<label>Zip Code</label>
+													<!-- <input type="text" title="Six Digit PIN Code" class="form-control businessZipCodeC" id="businessZipCode" name="businessZipCode" maxlength="6" required>
+													 -->
+													<select class="form-control businessZipCodeC" name="businessZipCode" title="Select Pin Code" required>
+														<!-- <option>-Select-</option> -->
+														{{#each zipcodes}}
+														<option {{selected}}>{{zipcode}}</option>
+														{{/each}}
+													</select>
+													<span class="SpanBusinessZipCode"></span>
+												</div>
+											</div>
+										</div>	
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 vBusGroupRow">
+								<div class="row">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<span class="vendorLocTitle">Location on Google MAP</span>
+									</div>
+									<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<button class="btn vendorFetchBtn">Fetch Latitude / Longitude</button>
+									</div> -->
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				    					<label>Latitude</label><br>
+				    					<input type="text" id="lat" class="form-control businessLat" name="businessLatitude" value="{{businessLatitude}}">
+				    					<!-- businessLatitude -->
+				    					<!-- businessLatitudeC -->
+										<span class="SpanBusinessLatitude"></span>
+				    				</div>
+				    				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				    					<label>Longitude</label><br>
+				    					<input type="text" id="lng" name="businessLongitude" class="form-control businessLng" value="{{businessLongitude}}">
+										<span class="SpanBusinessLongitude"></span>
+				    				</div>
+				    				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				    					<div class="map-container vendor-map-container" id="map_canvas">
+										    {{> googleMap name="exampleMap" options=exampleMapOptions}}
+										</div>
+				    				</div>
+				    				<!-- <div class="col-lg-12">
+										<div class="floatingCircles text-center">
+											<ul>
+												<li class="active">
+													<a href="/addNewBusiness/businessInfo">
+														<span class="floatingCirclesSpanOne">
+															<span class="floatingCirclesSpanTwo floatingCirclesSpanColor"></span>
+														</span>
+													</a>
+												</li>
+												<li>
+													<a href="/addNewBusiness/openingAndClosingDays">
+														<span class="floatingCirclesSpanOne">
+															<span class="floatingCirclesSpanTwo"></span>
+														</span>
+													</a>
+												</li>
+												<li>
+													<a href="/addNewBusiness/aboutOwner">
+														<span class="floatingCirclesSpanOne">
+															<span class="floatingCirclesSpanTwo"></span>
+														</span>
+													</a>
+												</li>
+												<li>
+													<a href="/addNewBusiness/imagesAndVideos">
+														<span class="floatingCirclesSpanOne">
+															<span class="floatingCirclesSpanTwo"></span>
+														</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div> -->
+				    				<div class="col-lg-12 vendorFormOSave">
+				    					<input type="submit" class="btn vendor-formOne-save" value="Save and Next">
+				    				</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{/with}}
+</template>

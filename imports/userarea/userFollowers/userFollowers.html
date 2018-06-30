@@ -1,0 +1,170 @@
+<template name="userFollowers">
+	<div class="followersBlk borderleft">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">		
+			<h3>
+		       	Followers
+		       	<span>{{userFollowerCount}}</span>
+			</h3>
+	        <div class="row">
+				{{#if checkNetworkFlwrLoading userFollowerCount}}
+					<div class="checkNetworkFlwrLoading">
+						No followers yet.
+					</div>
+				{{else}}
+					<div class="addBoxs">
+					{{#each userFollowerData}}
+
+						<div class="followBox col-lg-4 col-md-4  col-sm-12 col-xs-12">
+							<div class="LoadMore1">
+								<div class="followTab" id="{{id}}">
+										<div class="photoSugg col-lg-2 col-md-2 col-sm-2 col-xs-2 userFollPhotoSugg">
+											<a href="/userReview/{{redirectid}}" target="_blank">
+												<img src="{{UserFollowerImg}}"  alt="" class="userImg" />
+											</a>
+										</div>
+									<div class="infoSugg userFollInfoSugg col-lg-10 col-md-10 col-sm-10 col-xs-10">
+										<h5>
+											<a href="/userReview/{{redirectid}}" target="_blank">{{followerInt}}</a>
+										</h5>
+									
+										<p>
+											{{#if reviewCountDis}}
+												<span>{{UserFollowerRev}} Reviews</span> ,
+											{{else}} 
+												<span>{{UserFollowerRev}} Review</span> , 
+											{{/if}}
+											{{#if followerCountDis}}
+												<span>{{userFollowFol}} Followers</span>
+											{{else}}
+												<span>{{userFollowFol}} Follower</span>
+											{{/if}}
+										</p>
+										<!-- {{#if followerCountDis}}
+											<p>{{UserFollowerRev}} Reviews , {{userFollowFol}} Followers</p>
+										{{else}}
+											<p>{{UserFollowerRev}} Review , {{userFollowFol}} Follower</p>
+										{{/if}} -->
+									</div>
+									<div class="followerSugg">
+										<!-- <a>
+											<i class="fa fa-user-plus followI" aria-hidden="true" title="Follow"></i>
+										</a> -->
+									</div>                
+								</div>
+							</div>
+						</div>
+					{{/each}}
+					</div>	
+				{{/if}}
+				
+			</div>
+		</div>
+	     
+	    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		    <div class="row">
+			    <div class="loadMoreBlock col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+			    	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 loadmore {{userFollowerData.showLoadMoreFollow}}">
+         				Load More...
+      				</div>
+		            <!-- <div class="LessMore">
+		            	Less
+		            </div> -->
+			    </div>
+			</div>
+		</div>
+
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<h3>
+			    Following
+			    <span>{{userFollowingCount}}</span>
+			</h3>
+      <div class="row">
+			{{#if checkNetworkFlwLoading userFollowingCount}}
+				<div class="checkNetworkFlwLoading">
+					You are not following anyone yet.
+				</div>
+			{{else}}
+				<div class="addBox">
+				{{#each userFollowingData}}
+					<div class="followBox1 col-lg-3 col-md-4 col-sm-12 col-xs-12">
+						<div class="LoadMore1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="followTab" id="{{id}}">
+							<a href="/userReview/{{redirectid}}" target="_blank">
+								<div class="photoSugg col-lg-2 col-md-2 col-sm-2 col-xs-2 userFollPhotoSugg">
+									<img src="{{UserFollowingImg}}"  alt="" class="userImg"/>
+								</div>
+							</a>
+						<div class="infoSugg userFollInfoSugg col-lg-10 col-md-10 col-sm-10 col-xs-10">
+							<h5>
+								<a href="/userReview/{{redirectid}}" target="_blank">{{followingInt}}</a>
+							</h5>
+							
+								<p>
+								{{#if reviewCountDis}}
+									<span>{{UserFollowingRev}} Reviews</span> ,
+								{{else}} 
+									<span>{{UserFollowingRev}} Review</span> , 
+								{{/if}}
+								{{#if followerCountDis}}
+									<span>{{userFollowingFol}} Followers</span>
+								{{else}}
+									<span>{{userFollowingFol}} Follower</span>
+								{{/if}}
+								</p>
+							
+<!-- 								<p>{{UserFollowingRev}} Review , </p> -->
+
+							
+							{{#if followShowHide}}
+								<div class="unfollowUserBtn btn" data-toggle="modal" data-target="#follwMod-{{followId}}">
+									Unfollow
+								</div>
+								<div class="modal fade" id="follwMod-{{followId}}" role="dialog">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header delete-close">
+												<a href="#" data-dismiss="modal" aria-hidden="true" class="close pull-right BussDeleteClose"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i></a>
+												</div>
+											<div class="modal-body">
+												<p class="text-center">Do you want to Unfollow this User?</p>
+												<div class="body-close">
+													<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+													<button type="button" class="btn btn-danger unfollowUserBtnMod" data-follow={{followId}} data-dismiss="modal">Unfollow</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							{{/if}}
+
+						</div>
+
+						<div class="followerSugg">
+							<!-- <a><i class="fa fa-user-plus followI" aria-hidden="true" title="Follow"></i></a> -->
+						</div>
+						</div>
+						</div>
+					</div>	
+				{{/each}}
+				</div>
+			{{/if}}
+        	
+		</div>
+  </div>
+
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="followingBox row">
+				<div class="AddFrid"> 
+					<img src="images/addYourFrd.jpg"  alt=""/>
+			        <h4>Add your friends and get updates</h4>
+			        <p>Track your friends’ Reviews and Photos. Bookmark, Searches when you like</p>
+			            
+			        <div class="addFrdButton">
+			            <a href="/findYourFriends">Find Friends</a>
+			        </div>
+			    </div>
+			</div>
+	    </div>
+
+    </div>
+</template>

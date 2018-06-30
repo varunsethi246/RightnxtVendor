@@ -1,0 +1,63 @@
+<template name="userBookmarks">
+
+  <div class="userBookMarks bookmarkHeight">
+    <div class="bookmarksBlk">
+      <h3>Bookmarks</h3>
+    </div>
+    {{#if checkBookmarkLoading}}
+      <div class="checkBookmarkLoading col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        Bookmark your favourite Business to keep them in one place.
+      </div>
+    {{else}}
+      <div class="MainBeens col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="">     
+              <div class="sort_menu col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                    <ul>
+                      <li class="sort_txt col-lg-1 col-sm-12 col-md-12 col-xs-12">Sort by</li>  
+                      <li  class="col-lg-3 col-sm-4 col-md-4 col-xs-4 menuItems1">
+                        <select class="selectNewest userSelectArrow form-control" id="sortBookmarkDate">
+                          <option value="" selected disabled>--Select--</option>
+                          <option value="newestRevFirst" class="newestRevFirst"> Newest First </option>
+                          <option value="oldestRevFirst" class="oldestRevFirst"> Oldest First </option>
+                        </select>
+                      </li>
+                      <li class="col-lg-3 col-sm-4 col-md-4 col-xs-4 menuItems">
+                        <select class="categorySelect userSelectArrow form-control">
+                          <option value="" selected disabled>--Select Categories--</option>
+                          <option value="-">All Categories</option>
+                          {{#each businessBookmarkCategoriesList}}
+                          <option value="{{this}}">{{this}}</option>
+                          {{/each}}
+                        </select>
+                      </li>
+                      <li class="col-lg-3 col-sm-4 col-md-4 col-xs-4 menuItems">
+                        <select class="locationSelect userSelectArrow form-control">
+                          <option value="" selected disabled>--Select Location--</option>
+                          <option value="-"> All Locations </option>
+                          {{#each businessBookmarkLocationList}}
+                          <option value="{{this}}">{{this}}</option>
+                          {{/each}}
+                        </select>
+                      </li>
+                    </ul>
+              </div>
+          </div>
+      </div>
+  
+      <div id="bookmarkDateSort">
+        {{#each bookmarkData}}
+          <div class="bookmarkImg col-lg-3 col-md-3 col-sm-3 col-xs-12 {{categoryClasses}} {{AreaClasses}} " data-date="{{bookmarkDateNumber}}">
+            <a href="/{{businessLink}}" target="_blank">
+                <img src="{{ownerPhoto}}"  alt=""/>
+                <h6>{{businessName}}</h6>
+                <p>{{businessArea}}, {{businessCity}}</p>
+            </a>
+          </div>
+        {{/each}}    
+      </div>
+    {{/if}}
+   
+
+  </div>
+
+</template>

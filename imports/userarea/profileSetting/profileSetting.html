@@ -1,0 +1,47 @@
+<template name="profileSetting">
+	<div class="profSetting col-lg-4 col-md-7 col-sm-7 col-xs-12 ">
+		<div class="yourSetting">
+        	<h3>Your Account</h3>
+        	<h4>Privacy Settings</h4>
+	       <form id="change-password">
+				<div class="form-group">
+				    <label for="pwd" class="privacyPassName">New Password</label>
+				    <input type="password" class="form-control privacyPass" id="pwd" placeholder="New Password" name="newPwd" required="true" minlength="6">
+				</div>
+				<div class="form-group">
+				    <label for="pwd" class="privacyPassName">Confirm Password</label>
+				    <input type="password" class="form-control privacyPass" id="pwd" placeholder="Confirm Password" name="confirmPwd" required="true">
+				</div>
+				<div class="form-group">
+				    <label for="pwd" class="privacyPassName">Current Password</label>
+				    <input type="password" class="form-control privacyPass" id="pwd" placeholder="Current Password" name="currentPwd" required="true">
+				</div>
+				<input type="submit" class="btn btn-default saveBtn" value="Save Password"/>
+			</form>
+         	<div class="deleteAcc" data-toggle="modal" data-target="#userDeleteModal">
+         		<i class="fa fa-trash-o" aria-hidden="true"></i>
+         		Delete My Account
+         	</div>
+
+         	<div class="modal fade modaldelete" id="userDeleteModal" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header delete-close editofferModal1">
+			        		<a href="#" data-dismiss="modal" aria-hidden="true" class="close pull-right">
+			        			<i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i>
+			        		</a>
+			   			</div>
+			            <div class="modal-body">
+		          			<p>Are you sure you want to delete your account?</p>
+		          			<div class="body-close">
+			                	<button type="button" id="{{_id}}" class="btn btn-default userYesbtn"><b>Yes</b></button>
+				            	<button type="button" class="btn btn-danger btn-ok" data-dismiss="modal"><b>No</b></button>
+			                </div>
+			            </div>
+			        </div>
+				</div>
+			</div>
+
+        </div>
+	</div>
+</template>

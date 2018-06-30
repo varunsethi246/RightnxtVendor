@@ -1,0 +1,39 @@
+<template name="vendorReport">
+	<div class="col-lg-9 vendorReportClass">
+		<div class="vendorReportCl">
+		{{#with businessName}}
+			<h3 class="vendorHotelReport">{{businessTitle}}</h3>
+		{{/with}}
+			{{#with businessReports}}
+			<h4 class="vendorHotelReportSec">Reports <span>({{noofreports}})</span></h4>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="nav-tabs">
+						<ul class="myreportList">
+							<li class="activeReportClass active" data-toggle="tab" href="#vBusiness" aria-expanded="true"><a href="">Business</a></li>
+							<li class="activeReportClass" data-toggle="tab" href="#vImage" aria-expanded="true"><a href="">Image</a></li>
+						</ul>
+					</div>
+					<div class="tab-content tab-contentOther">
+						<div id="vImage" class="tab-pane fade act">
+							{{#each reportImageArray}}
+								{{> imageReport }}
+							{{/each}}
+						</div>
+
+						<div id="vBusiness" class="tab-pane in active fade">
+							{{#each reportBusinessArray}}
+								{{> businessReport }}
+							{{/each}}
+						</div>
+					</div>
+				</div>
+			</div>
+			{{/with}}
+		</div>
+	</div>
+</template>
+
+
+
+						

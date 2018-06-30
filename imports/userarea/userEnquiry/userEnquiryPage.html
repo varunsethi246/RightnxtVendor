@@ -1,0 +1,148 @@
+<template name="userEnquiryPage">
+<div class="vendorEnquiryCl">
+	<div class="row vendorEnquiryRow">
+		<div class="col-lg-12 vendorEnquiryTitle">
+			<!-- {{#with userEnquiryBusName}}
+				<h3>{{businessTitle}}</h3>
+			{{/with}} -->
+			<h4 class="likesClass">Enquiry
+				{{#with userEnquiryCount}}
+					<span class="enquirySpan">({{userEnqcount}})</span>
+				{{/with}}
+			</h4>
+		</div>
+		{{#if checkEnquirykLoading userEnquiryCount}}
+			<div class="col-lg-12 checkEnquirykLoading">
+				Your all Enquiries will appear here.
+			</div>
+		{{else}}
+			<div class="col-lg-12">
+				<div class="row">
+					<!-- Template for Left Side -->
+					<div class="col-lg-6">
+						<div class="form-group">
+							<div class="input-group  ">
+								<input type="text" class="form-control userEnquiryFormSearch" placeholder="Search" name="vendorEnqSearch">
+								<div class="input-group-addon">
+									<i class="fa fa-search" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="nav-tabs activeEnquiryTabPre">
+									<ul>
+										<li class="active activeEnquiryTabs activeDownListPre" data-toggle="tab" href="#vEnqActive" aria-expanded="true" id="activeList">
+											<a href="" class="activeSelC">Active<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+											<div class="activeDownList">
+												<ul>
+													<li class="ADAll">All</li>
+													<li class="ADRead">Read</li>
+													<li class="ADUnread">Unread</li>
+												</ul>
+											</div>
+										</li>
+										<li class="activeEnquiryTabs activeDownListFlagPre" data-toggle="tab" href="#vEnqFlag" aria-expanded="true" id="flagList">
+											<a href="" class="flagSelC">Flagged<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+											<div class="activeDownListFlag">
+												<ul>
+													<li class="ADFAll">All</li>
+													<li class="ADFRead">Read</li>
+													<li class="ADFUnread">Unread</li>
+												</ul>
+											</div>
+										</li>
+										<li class="activeEnquiryTabs activeEnquiryTabsPre" data-toggle="tab" href="#vEnqArchive" aria-expanded="true" id="archiveList">
+											<a href="">Archive<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+										</li>
+									</ul>
+								</div>
+	
+								<div class="tab-content">
+									<div id="vEnqActive" class="tab-pane fade act active in">
+										<div class="row">
+											<div class="col-lg-12 vEnqSpan">
+												<span class="vEnqSpanFirstChild">Sort by</span>
+												{{#with userEnquirySortBy}}
+													<span>{{userSortTitle}} - {{userSort}}</span>
+												{{/with}}
+												<div class="pull-right vEnqActiveDiv">
+													<span id="moveToArchive">Move to Archive</span>
+													<span id="markWithFlag">Mark with Flag</span>
+													<span id="restoreArchive">Restore from Archive</span>
+													<span id="deleteSelected">Delete Selected</span>
+												</div>
+											</div>
+											<div class="col-lg-12">
+												<div class="vEnqListBorder">
+													<div class="row vEnqListBorderFirstRow">
+														<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+															<input type="checkbox" class="EnqListCheckbox commonCheckbox">
+														</div>
+														<div class="col-lg-4 col-md-5 col-sm-5 col-xs-4">
+															<div class="vEnqUserAdj vEnqTitleCen">Business</div>
+														</div>
+														<div class="col-lg-4 col-md-6 col-sm-6 col-xs-5 enqDateMargin">
+															<div class="vEnqUserAdj">Date</div>
+														</div>
+														<div class="col-lg-3 col-md-6 col-sm-6 col-xs-5 enqActionMargin">
+															<div class="vEnqUserAdj">Action</div>
+														</div>
+													</div>
+													{{#if userEnquiryActiveData}}
+														{{#each userEnquiryActiveData}}
+															{{> userEnquiry }}
+														{{/each}}
+													{{else}}
+														<div class="noactive">No Enquiry</div>
+													{{/if}}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+					<!-- Template for Right Side -->
+					{{#with userEnquiryDetailsData}}
+						<div class="col-lg-6">
+							<div class="row">
+								<div class="col-lg-12 hidden-xs hidden-sm vEnqFormAdj"></div>
+								<div class="show-xs show-sm"></div>
+								<div class="col-lg-12">
+									<div class="vEnqForm">
+										{{> userEnquiryDetails}}
+									</div>
+								</div>
+								<!-- <div class="col-lg-12">
+									<div class="vEnqFormButton">
+										<button class="btn pull-right">Block Vendor</button>
+									</div>
+								</div> -->
+								<div class="col-lg-12">
+									<div id="showEnquiryImgIdC"></div>
+								</div>
+								<div class="col-lg-12">
+									<textarea class="form-control vEnqFormTextarea" rows="5" ></textarea>
+								</div>
+								<div class="col-lg-12">
+									<div class="vEnqfileSendBtn">
+										<div class="vEnqfileUpload1 pull-right">
+											<span>Add Image<i class="fa fa-picture-o" aria-hidden="true"></i></span>
+											  <input id="uploadBtn" type="file" class="vEnqupload" name="files[]">
+										</div>
+										<input type="submit" value="Send" class="vEnqsndEnqBtn" id="{{_id}}" data-enquirySentBy={{enquirySentBy}} data-businessLink={{businessLink}}>
+									</div>
+								</div>
+							</div>
+						</div>
+					{{/with}}
+				</div>
+			</div>
+		{{/if}}
+		
+	</div>
+</div>
+</template>

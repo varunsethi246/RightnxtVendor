@@ -1,0 +1,64 @@
+<template name="taxSettings">
+	<form class="taxSettings" id="taxSettings" >
+		<div class="HRMSBackgroundWrapper col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<div id="HRMSHeaderTitle">Tax Settings</div>
+			<div class="formWrapper col-lg-12">
+				<!-- <ul class="faqStyle addtaxsettings" data-target=".taxDetailsFormWrapper"> -->
+					<!-- <i class="fa fa-caret-right moretax" aria-hidden="true"></i> -->
+					<label class="faqStyle">Add More Tax Settings</label>
+
+				<!-- </ul> -->
+				<div class="HRMSBackgroundWrapper taxDetailsFormWrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="HRMSform-group col-lg-6 col-md-6 col-sm-12 col-xs-12  ">
+						<label class="HRMSTitle">Application Tax</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-usd" aria-hidden="true"></i>
+							</div>
+							<select class="form-control HRMSTextbox" id="taxType" name="taxType" value="{{taxType}}">
+								<option value='vat'>VAT              </option>
+								<option value='sales tax'>Sales Tax  </option>
+								<option value='service tax'>Service Tax </option>	
+							</select>
+						</div>
+					</div>
+
+					<!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> -->
+					<div class="HRMSform-group HRMSform-head-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<label class="HRMSTitle">Applicable Tax Rate</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-money" aria-hidden="true"></i>
+							</div>
+							<input type="number" class="form-control HRMSTextbox" name="applicableTax" id="applicableTax" placeholder="Tax Rate" value="{{applicableTax}}" step="0.1" maxlength="30"><div class="input-group-addon">%</div>
+						</div>
+					</div>
+					<div class="HRMSform-group col-lg-6 col-md-6  col-sm-6 col-xs-12">
+						<label class="HRMSTitle">Effective From</label>
+						<div class="input-group">
+							<div class="input-group-addon HRMSAddon">
+								<i class="fa fa-calendar" aria-hidden="true"></i>
+							</div>
+							<input type="date" class="form-control HRMSTextbox" id="effectiveFrom" name="effectiveFrom" placeholder="Enter Date"  value="{{effectiveFrom}}" maxlength="6"> 
+						</div>
+					</div>
+					<div class="addmoretax col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="addmoretax col-lg-3 col-md-3 col-sm-12 col-xs-12 pull-right">
+							<label class="HRMSTitle">&nbsp;&nbsp;&nbsp;
+							</label>
+							{{#if edittaxSettings}}
+								<input type="button" class="btn btn-danger btnUpdatetaxsettings  clearfix" value="Update">
+								{{else}}
+								<input type="submit" class="btn companyBankDetails btn-primary clearfix" value="Add More Data">
+
+							{{/if}}
+						</div>
+
+					</div>
+				</div>			  		
+			</div>
+		</div>
+	</form>
+
+	
+</template>

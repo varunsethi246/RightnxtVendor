@@ -1,0 +1,19 @@
+<template name="errorMessageModal">
+	<div class="modal fade" id="errormodal" role="dialog">
+	    <div class="modal-dialog modal-sm">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="errormodal">&times;</button>
+	          <h4 class="modal-title"></h4>
+	        </div>
+	        <div class="modal-body">
+	          <p><b>The Empty Field must be filled.</b></p>
+	        </div>
+	        <div class="modal-footer">
+	         <!--  <button id="{{ cartId }}-{{ productId }}" type="button" data-dismiss="modal" class="btn btn-danger removeCartProd removeBtn" >Delete</button> -->
+			  <button type="button" data-dismiss="errormodal" class="btn btn-primary ">OK</button>
+	        </div>
+	      </div>
+	    </div>
+	</div>
+</template>

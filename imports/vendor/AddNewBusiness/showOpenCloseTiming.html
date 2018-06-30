@@ -1,0 +1,21 @@
+<template name="showOpenCloseTiming">
+	<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+		<table class="table table-bordered table-hover table-striped busTimeTable">
+			<tbody>
+				{{#each businessOpenCloseTiming }}
+				<tr> 
+					<td>{{day}}</td>
+					<td>{{fromTime}}</td>
+					<td>{{toTime}}</td>
+					<!-- <td> <a href="#"> close </a> </td> -->
+					<td class="text-center">
+						<a href="" id="bt-{{day}}" class="btClear"> 
+							<i class="fa fa-trash text-danger" aria-hidden="true"></i> 
+						</a>
+					</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</template>
