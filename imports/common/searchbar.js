@@ -375,6 +375,7 @@ Template.searchbar.events({
 	},
 	
 	'click .seachBusiness': function(e){
+		console.log("Me clicked");
 		$('.topSearchBarList').addClass('searchDisplayShow').removeClass('searchDisplayHide');
 		var currentPath = FlowRouter.current().path;
 		var currentParams 	= FlowRouter.getParam('businessurl');

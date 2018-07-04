@@ -98,6 +98,17 @@ Template.thumbnailBusinessList.helpers({
 				var currentLg = position.coords.longitude;
 				Session.set("currentLng",currentLg);
 			}
+		} else{
+			var cityPre = FlowRouter.getParam('city');
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode( { 'address': cityPre}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var latitude = results[0].geometry.location.lat();
+                    var longitude = results[0].geometry.location.lng();
+                    Session.set("currentLat",latitude);
+                    Session.set("currentLng",longitude);
+                } 
+            });
 		}
 		var currentLat = Session.get("currentLat");
 		var currentLng = Session.get("currentLng");
@@ -195,6 +206,21 @@ Template.thumbnailBusinessList.helpers({
 
 	isGridViewVisible(){
 		if(Session.get('showGridView')){
+			var searchText = FlowRouter.getParam('searchText');
+			if(!searchText){
+				searchText = " ";
+			}
+			var currentUrl = FlowRouter.current().path;
+			if(currentUrl){
+				var newURl = currentUrl.split('/');
+			} else{
+				var newURl = "";
+			}
+
+			if(newURl[1] == 'searchMap'){
+				var flowGo = "/search/"+FlowRouter.getParam('city')+"/"+FlowRouter.getParam('area')+"/"+searchText;
+				FlowRouter.go(flowGo);
+			}
 			return true;
 		}
 	},
@@ -735,6 +761,7 @@ Template.businessList.events({
 
 	// Map View Click Events
 	'click .mapVwPointer': function() {
+		console.log('mapVwPointer: ');
 		$('.displayMapView').show();
 		$('.displayMapView').addClass('col-lg-5');
 		$('.displayGridView').removeClass('col-lg-8');
@@ -759,10 +786,6 @@ Template.businessList.events({
 			var flowGo = "/search/"+FlowRouter.getParam('city')+"/"+FlowRouter.getParam('area');
 			FlowRouter.go(flowGo);
 		}
-
-		
-
-
 		setTimeout(function() {
         	if($('.listRelevance').hasClass('busListSelected')){
 				$('.listRelevance').click();
@@ -773,12 +796,11 @@ Template.businessList.events({
 			if($('.listDistance').hasClass('busListSelected')){
 				$('.listDistance').click();
 			}
-      	}, 1);
-
-		
+    	}, 1);
 	},
 	// Grid View Click Events
 	'click .gridVwBus': function() {
+		console.log('gridVwBus: ');
 		$('.sidebarMapPre').css('display','block');
 		$('.displayMapView').hide();
 		$('.displayGridView').addClass('col-lg-8');
@@ -853,6 +875,7 @@ Template.thumbnailBusinessList.events({
 		$('.vEnqModalCShowOne').children().attr('data-link',linkName);
 	},
 	'click .enqRightDiv':function(event){
+		console.log("enqRightDiv");
 		var currentMarker = $(event.currentTarget).attr('cords-ids');
 		$('.displayMapView').show();
 		$('.displayMapView').addClass('col-lg-5');
@@ -884,7 +907,30 @@ Template.thumbnailBusinessList.events({
 		  if(!searchText){
 			searchText = " ";
 		  }
+		  console.log("im clicked");
 		  
+
+
+		// var currentUrl = FlowRouter.current().path;
+		// console.log('currentUrl: ', currentUrl);
+		// if(currentUrl){
+		// 	var newURl = currentUrl.split('/');
+		// } else{
+		// 	var newURl = "";
+		// }
+		// console.log('newURl: ', newURl);
+
+		// if(newURl[1] == 'searchMap'){
+		// 	console.log("Im if");
+		// 	var flowGo = "/search/"+FlowRouter.getParam('city')+"/"+FlowRouter.getParam('area')+"/"+searchText;
+		// 	FlowRouter.go(flowGo);
+		// }else{
+		// 	console.log("Im else");
+		// 	var flowGo = "/searchMap/"+FlowRouter.getParam('city')+"/"+FlowRouter.getParam('area')+"/"+searchText+"/"+currentMarker;
+		// 	FlowRouter.go(flowGo);
+		// }
+
+
 		  var flowGo = "/searchMap/"+FlowRouter.getParam('city')+"/"+FlowRouter.getParam('area')+"/"+searchText+"/"+currentMarker;
 		  FlowRouter.go(flowGo);
 

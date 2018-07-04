@@ -52,13 +52,35 @@ Template.businessMap.helpers({
                    Session.set("currentLngMap",currentLg);
             }
         }
+        
+        function isEmpty(objMapCheck) {
+            for(var key in objMapCheck) {
+                if(objMapCheck.hasOwnProperty(key))
+                    return false;
+            }
+            return true;
+        }
+
+        if(isEmpty(navigator.geolocation)){
+            var cityPre = FlowRouter.getParam('city');
+            
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode( { 'address': cityPre}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var latitude = results[0].geometry.location.lat();
+                    var longitude = results[0].geometry.location.lng();
+                    Session.set("currentLatMap",latitude);
+                    Session.set("currentLngMap",longitude);
+                } 
+            }); 
+        }
         var currentLat = Session.get("currentLatMap");
         var currentLng = Session.get("currentLngMap");
 
-         return {
+        return {
             center: new google.maps.LatLng(currentLat, currentLng),
             zoom: 13
-         };
+        };
       }
    }
 });

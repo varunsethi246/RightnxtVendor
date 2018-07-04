@@ -249,7 +249,7 @@ Template.businessAds.helpers({
 
 Template.adsInvoice.events({
 	'click .bannerPayButton': function(event){
-		console.log('hi');
+		// console.log('hi');
 		var currentLink = $(event.currentTarget).attr('data-busLink');
 		console.log('data-busLink:',currentLink);
 		var currentVal = $(event.currentTarget).siblings('.bannerPayButtonRadio').val();
