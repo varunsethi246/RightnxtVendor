@@ -8,7 +8,7 @@ import { Business } from '/imports/api/businessMaster.js';
 import { Enquiry } from '/imports/api/enquiryMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';  
 
-import { BusinessImgUploadS3 } from '/client/businessImage.js';
+import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { Offers } from '/imports/api/offersMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 

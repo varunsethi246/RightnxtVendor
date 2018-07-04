@@ -7,8 +7,10 @@ import { Business } from '../../../api/businessMaster.js';
 import { Offers } from '../../../api/offersMaster.js';
 import { Payment } from '../../../api/paymentMaster.js';
 import { CompanySettings } from '../../../api/companysettingsAPI.js';
-import { OfferImagesS3 } from '/client/offersImagesS3.js';
+import { OfferImagesS3 } from '/client/cfsjs/offersImagesS3.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { OfferImage } from '/imports/videoUploadClient/offerImageClient.js';
+import ImageCompressor from 'image-compressor.js';
 
 import '../../vendor.js';
 import './VendorMyoffers.html';
@@ -176,36 +178,7 @@ Template.paymentSuccess.helpers({
 	},
 
 });
-Template.vendorOffer1.helpers({
-	// 'newdesc':function(){
-	// 	var dealdesOne = Session.get('dealDescriptionvalOne');
 
-	// 	console.log('dealdesOne get:',dealdesOne);
-	// 	// var dealdesOne = $('.dealx').val();
-	// 	if (dealdesOne == 'Percent Off') {
-	// 		var dealdes = 'X% off on your order';
-	// 	console.log('dealdes :',dealdes);
-
-	// 		return dealdes;
-	// 	}else if(dealdesOne == 'Price Off'){
-	// 		var dealdes = 'Rs.X off on your total bill (Eg. Any Salon Service)';
-	// 		return dealdes;
-	// 	}
-	// 	else if(dealdesOne == 'Fixed Price'){
-	// 		var dealdes = 'Rs. X for our fixed price menu(Mayur Thali)';
-	// 		return dealdes;
-	// 	}else if(dealdesOne == 'Free Item'){
-	// 		var dealdes = 'X free glass of juice with every Entrée before 7';
-	// 		return dealdes;
-	// 	}else if(dealdesOne == 'Create Your own Deal'){
-	// 		var dealdes = 'Create your own Deal';
-	// 		return dealdes;
-	// 	}
-	// 	else{
-	// 		return false;
-	// 	}
-	// }
-});
 Template.vendorMyOffers.events({
 	
 	'click .viewModal': function(event){
@@ -312,7 +285,7 @@ Template.vendorMyOffers.events({
     	}
 	},
 
-	'submit #OrderForm': function(event){
+	'submit #OrderForm': function(event,template){
 		event.preventDefault();
 		var $this = $(event.target);
 		$($this).find('input[name="save1"]').attr('disabled','disabled');
@@ -321,129 +294,155 @@ Template.vendorMyOffers.events({
 		var numOfMonths = $('input[name="numOfMonths"]').val();
 		var imgId = '';
 		if(files[0]){
-			Resizer.resize(files[0], {width: 300, height: 300, cropSquare: false}, function(err, file) {
-				if(err){
-					console.log('err ' , err.message);
-				}else{
-					OfferImagesS3.insert(files[0], function (err, fileObj) {
-				        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-				        if(err){
-				        	console.log('Error : ' + err.message);
-				        }else{
-				        	imgId =  fileObj._id ;
-						    var formValues = {
-								"businessId"			: businessId,
-								"vendorId"  			: Meteor.userId(),
-								"dealTemplate" 			: event.target.dealTemplate.value,
-								"dealHeadline"			: event.target.dealHeadline.value,
-								"dealDescription" 		: event.target.dealDescription.value,
-								"expirationFromDate" 	: event.target.expirationFromDate.value,
-								"expirationToDate" 		: event.target.expirationToDate.value,
-								"legalNotices"			: event.target.legalNotices.value,
-								"offerStatus"			: 'New',
-								"numOfMonths"			: numOfMonths,
-								"offerImage"			: imgId,
-							};
+			const imageCompressor = new ImageCompressor();
+		    imageCompressor.compress(files[0])
+		        .then((result) => {
+		          // console.log(result);
 
-							// var $this = $(event.target);
-							Meteor.call('insertOffers',formValues,
-								function(error, result, event){
-									if(error){
-										Bert.alert(error.reason, 'danger','growl-top-right');
-										$($this).find('input[name="save1"]').removeAttr('disabled');
-									}
-									else{
-										// Bert.alert("Offer saved sucessfully.",'success','growl-top-right');
-										// ============================================================
-										// 			Notification Email / SMS / InApp
-										// ============================================================
-										var vendorId = Meteor.userId();
-										// console.log('vendorId ',vendorId); 
-										var admin = Meteor.users.findOne({'roles':'admin'});
-										// console.log('admin ',admin);
+		          // Handle the compressed image file.
+		          // We upload only one file, in case
+		        // multiple files were selected
+		        const upload = OfferImage.insert({
+		          file: result,
+		          streams: 'dynamic',
+		          chunkSize: 'dynamic',
+		          // imagetype: 'profile',
+		        }, false);
 
-										var vendorDetail = Meteor.users.findOne({'_id':vendorId});
-										// console.log('vendorDetail ',vendorDetail);
+		        upload.on('start', function () {
+		          // template.currentUpload.set(this);
+		        });
 
-										var businessDetails = Business.findOne({"_id":businessId});
-										// console.log('businessDetails ',businessDetails);
-										if(businessDetails){
-											if(admin&&vendorDetail){
-										    	var adminId = admin._id;
+		        upload.on('end', function (error, fileObj) {
+		          if (error) {
+		            // alert('Error during upload: ' + error);
+		            console.log('Error during upload 1: ' + error);
+		            console.log('Error during upload 1: ' + error.reason);
+		          } else {
+		            // alert('File "' + fileObj._id + '" successfully uploaded');
+		            Bert.alert('Offer Image uploaded.','success','growl-top-right');
+		            // console.log(fileObj._id);
+		            // Session.set("vendorImgFilePath",fileObj._id);
+		            imgId =  fileObj._id ;
+				    var formValues = {
+						"businessId"			: businessId,
+						"vendorId"  			: Meteor.userId(),
+						"dealTemplate" 			: event.target.dealTemplate.value,
+						"dealHeadline"			: event.target.dealHeadline.value,
+						"dealDescription" 		: event.target.dealDescription.value,
+						"expirationFromDate" 	: event.target.expirationFromDate.value,
+						"expirationToDate" 		: event.target.expirationToDate.value,
+						"legalNotices"			: event.target.legalNotices.value,
+						"offerStatus"			: 'New',
+						"numOfMonths"			: numOfMonths,
+						"offerImage"			: imgId,
+					};
 
-												//Send Notification, Mail and SMS to Current Vendor
-												var vendorname 	= vendorDetail.profile.name;
-												var username 	= admin.profile.firstName;
+					// var $this = $(event.target);
+					Meteor.call('insertOffers',formValues,
+						function(error, result, event){
+							if(error){
+								Bert.alert(error.reason, 'danger','growl-top-right');
+								$($this).find('input[name="save1"]').removeAttr('disabled');
+							}
+							else{
+								// Bert.alert("Offer saved sucessfully.",'success','growl-top-right');
+								// ============================================================
+								// 			Notification Email / SMS / InApp
+								// ============================================================
+								var vendorId = Meteor.userId();
+								// console.log('vendorId ',vendorId); 
+								var admin = Meteor.users.findOne({'roles':'admin'});
+								// console.log('admin ',admin);
 
-							            		var date 		= new Date();
-							            		var currentDate = moment(date).format('DD/MM/YYYY');
-							            		var msgvariable = {
-													'[vendorname]' 	: vendorname,
-								   					'[currentDate]'	: currentDate,
-													'[businessName]': businessDetails.businessTitle,
-													'[dealHeadline]': formValues.dealHeadline
+								var vendorDetail = Meteor.users.findOne({'_id':vendorId});
+								// console.log('vendorDetail ',vendorDetail);
 
-								               	};
+								var businessDetails = Business.findOne({"_id":businessId});
+								// console.log('businessDetails ',businessDetails);
+								if(businessDetails){
+									if(admin&&vendorDetail){
+								    	var adminId = admin._id;
 
-												var inputObj = {
-													notifPath	 : businessDetails.businessLink,
-												    to           : vendorId,
-												    templateName : 'Thanks for Submiting Offer',
-												    variables    : msgvariable,
-												}
-												sendInAppNotification(inputObj);
+										//Send Notification, Mail and SMS to Current Vendor
+										var vendorname 	= vendorDetail.profile.name;
+										var username 	= admin.profile.firstName;
 
-												var inputObj = {
-													notifPath	 : businessDetails.businessLink,
-													from         : adminId,
-												    to           : vendorId,
-												    templateName : 'Thanks for Submiting Offer',
-												    variables    : msgvariable,
-												}
-												sendMailNotification(inputObj);
+					            		var date 		= new Date();
+					            		var currentDate = moment(date).format('DD/MM/YYYY');
+					            		var msgvariable = {
+											'[vendorname]' 	: vendorname,
+						   					'[currentDate]'	: currentDate,
+											'[businessName]': businessDetails.businessTitle,
+											'[dealHeadline]': formValues.dealHeadline
 
-												//Send Notification, Mail and SMS to Admin
-							            		var date 		= new Date();
-							            		var currentDate = moment(date).format('DD/MM/YYYY');
-							            		var msgvariable = {
-													'[vendorname]' 	: vendorname,
-													'[adminname]'	: username,
-								   					'[currentDate]'	: currentDate,
-													'[businessName]': businessDetails.businessTitle,
-													'[dealHeadline]': formValues.dealHeadline
-								               	};
+						               	};
 
-												var inputObj = {
-													notifPath	 : businessDetails.businessLink,
-												    to           : adminId,
-												    templateName : 'Vendor has Submiting Offer',
-												    variables    : msgvariable,
-												}
-												sendInAppNotification(inputObj);
-
-												var inputObj = {
-													notifPath	 : businessDetails.businessLink,
-													from         : adminId,
-												    to           : adminId,
-												    templateName : 'Vendor has Submiting Offer',
-												    variables    : msgvariable,
-												}
-												sendMailNotification(inputObj); 
-											}
+										var inputObj = {
+											notifPath	 : businessDetails.businessLink,
+										    to           : vendorId,
+										    templateName : 'Thanks for Submiting Offer',
+										    variables    : msgvariable,
 										}
-										//============================================================
-										// 			End Notification Email / SMS / InApp
-										//============================================================
-										
-										Bert.alert("Offer saved sucessfully.",'success','growl-top-right');
+										sendInAppNotification(inputObj);
 
+										var inputObj = {
+											notifPath	 : businessDetails.businessLink,
+											from         : adminId,
+										    to           : vendorId,
+										    templateName : 'Thanks for Submiting Offer',
+										    variables    : msgvariable,
+										}
+										sendMailNotification(inputObj);
+
+										//Send Notification, Mail and SMS to Admin
+					            		var date 		= new Date();
+					            		var currentDate = moment(date).format('DD/MM/YYYY');
+					            		var msgvariable = {
+											'[vendorname]' 	: vendorname,
+											'[adminname]'	: username,
+						   					'[currentDate]'	: currentDate,
+											'[businessName]': businessDetails.businessTitle,
+											'[dealHeadline]': formValues.dealHeadline
+						               	};
+
+										var inputObj = {
+											notifPath	 : businessDetails.businessLink,
+										    to           : adminId,
+										    templateName : 'Vendor has Submiting Offer',
+										    variables    : msgvariable,
+										}
+										sendInAppNotification(inputObj);
+
+										var inputObj = {
+											notifPath	 : businessDetails.businessLink,
+											from         : adminId,
+										    to           : adminId,
+										    templateName : 'Vendor has Submiting Offer',
+										    variables    : msgvariable,
+										}
+										sendMailNotification(inputObj); 
 									}
-								}	
-							);
-						}
-				    });
-				}
-			});
+								}
+								//============================================================
+								// 			End Notification Email / SMS / InApp
+								//============================================================
+								
+								Bert.alert("Offer saved sucessfully.",'success','growl-top-right');
+
+							}
+						}	
+					);
+		          }
+		          // template.currentUpload.set(false);
+		        });
+
+		        upload.start();
+		        })
+
+		        .catch((err) => {
+		          // Handle the error
+		    })    
 		}else{
 			imgId = '/images/rightnxt_image_nocontent.jpg';
 			var formValues = {
@@ -1133,7 +1132,7 @@ Template.viewVendorOffer.helpers({
 		var offerId = Session.get('id');
 		var offerObj = Offers.findOne({"_id":offerId});
 		if(offerObj){
-			var pic = OfferImagesS3.findOne({'_id' : offerObj.offerImage});
+			var pic = OfferImage.findOne({'_id' : offerObj.offerImage});
 		}
 		return pic;
 	}
@@ -1196,7 +1195,8 @@ Template.vendorOffer2.helpers({
 		var offerId = Session.get('id');
 		var offerObj = Offers.findOne({"_id":offerId});
 		if(offerObj){
-			var pic = OfferImagesS3.findOne({'_id' : offerObj.offerImage});
+			var pic = OfferImage.findOne({'_id' : offerObj.offerImage});
+			// console.log(pic);
 		}
 		return pic;
 	}
@@ -1252,48 +1252,72 @@ Template.vendorOffer2.events({
 		}
 		
 		if(files[0]){
-			Resizer.resize(files[0], {width: 300, height: 300, cropSquare: false}, function(err, file) {
-				if(err){
-					console.log('err ' , err.message);
-				}else{
-					OfferImagesS3.insert(files[0], function (err, fileObj) {
-				        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-				        if(err){
-				        	console.log('Error : ' + err.message);
+			const imageCompressor = new ImageCompressor();
+		    imageCompressor.compress(files[0])
+		        .then((result) => {
+		          // console.log(result);
 
-				        }else{
-				        	OfferImagesS3.remove(offersImgId);
-				        	imgId = fileObj._id;
-				        	var formValues = {
-								"dealTemplate" 			: event.target.dealTemplate.value,
-								"dealHeadline"			: event.target.dealHeadline.value,
-								"dealDescription" 		: event.target.dealDescription.value,
-								"expirationFromDate" 	: event.target.expirationFromDate.value,
-								"expirationToDate" 		: event.target.expirationToDate.value,
-								"legalNotices"			: event.target.legalNotices.value,
-								"numOfMonths"			: num,
-								"offerImage"			: imgId,
-								"offerStatus"			: offerStatus
-							};
+		          // Handle the compressed image file.
+		          // We upload only one file, in case
+		        // multiple files were selected
+		        const upload = OfferImage.insert({
+		          file: result,
+		          streams: 'dynamic',
+		          chunkSize: 'dynamic',
+		          // imagetype: 'profile',
+		        }, false);
 
-							Meteor.call('updateOffers',formValues,id,
-								function(error, result){
-									if(error){
-										Bert.alert(error.reason,"danger","growl-top-right");
-									}else{
-										Bert.alert("Offer updated sucessfully.","success","growl-top-right");
-										$('.modal-backdrop').hide();
-										$('.modaledit').hide();
-									}
-								}
-							);
+		        upload.on('start', function () {
+		          // template.currentUpload.set(this);
+		        });
+
+		        upload.on('end', function (error, fileObj) {
+		          if (error) {
+		            // alert('Error during upload: ' + error);
+		            console.log('Error during upload 1: ' + error);
+		            console.log('Error during upload 1: ' + error.reason);
+		          } else {
+		            // alert('File "' + fileObj._id + '" successfully uploaded');
+		            Bert.alert('Offer Image uploaded.','success','growl-top-right');
+		            console.log(fileObj._id);
+		            // Session.set("vendorImgFilePath",fileObj._id);
+		            imgId =  fileObj._id ;
+		            var formValues = {
+						"dealTemplate" 			: event.target.dealTemplate.value,
+						"dealHeadline"			: event.target.dealHeadline.value,
+						"dealDescription" 		: event.target.dealDescription.value,
+						"expirationFromDate" 	: event.target.expirationFromDate.value,
+						"expirationToDate" 		: event.target.expirationToDate.value,
+						"legalNotices"			: event.target.legalNotices.value,
+						"numOfMonths"			: num,
+						"offerImage"			: imgId,
+						"offerStatus"			: offerStatus
+					};
+
+					Meteor.call('updateOffers',formValues,id,
+						function(error, result){
+							if(error){
+								Bert.alert(error.reason,"danger","growl-top-right");
+							}else{
+								Bert.alert("Offer updated sucessfully.","success","growl-top-right");
+								$('.modal-backdrop').hide();
+								$('.modaledit').hide();
+							}
 						}
-					});
-		        }
-			});
+					);
+		          }
+		          // template.currentUpload.set(false);
+		        });
+
+		        upload.start();
+		        })
+
+		        .catch((err) => {
+		          // Handle the error
+		    })
 		}else{
 			if($(event.target).find('output').is(':empty') && $(event.target).find('.vendor2Img').is(':empty')){
-        		OfferImagesS3.remove(offersImgId);
+        		// OfferImagesS3.remove(offersImgId);
 				offerImageId = '/images/rightnxt_image_nocontent.jpg';
 			}else{
 				offerImageId = offersImgId;
@@ -1375,7 +1399,13 @@ Template.vendorOffer2.events({
               if(error) {
                 console.log ('Error Message: ' +error ); 
               }else{
-				OfferImagesS3.remove(imgId);
+				Meteor.call('removeOfferImage',imgId,
+		            function(error, result) { 
+		              if(error) {
+		                console.log ('Error Message: ' +error ); 
+		              }else{
+		            }
+				});
             }
 		});
 	}	
@@ -1550,6 +1580,15 @@ Template.editOffer.events({
 					$('.modal-backdrop').hide();
 				}else{
 					Bert.alert('Offer deleted sucessfully.','success',"growl-top-right");
+					// OfferImagesS3.remove(offerObj.offerImage);
+					Meteor.call('removeOfferImage',offerObj.offerImage,function(error,result){
+						if(error){
+							console.log(error.reason);
+							$('.modal-backdrop').hide();
+						}else{
+
+						}
+					});
 
 					// ============================================================
 					// 			Notification Email / SMS / InApp
@@ -1625,7 +1664,6 @@ Template.editOffer.events({
 					//============================================================
 					// 			End Notification Email / SMS / InApp
 					//============================================================
-					OfferImagesS3.remove(offerObj.offerImage);
 					$('.modal-backdrop').hide();
 
 				}

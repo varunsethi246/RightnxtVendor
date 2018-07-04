@@ -6,10 +6,10 @@ import { Bert } from 'meteor/themeteorchef:bert';
 
 import { Likes } from '/imports/api/businessMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';
-import { UserProfileStoreS3New } from '/client/UserProfileS3.js';
+import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { Business } from '/imports/api/businessMaster.js';
-import { BusinessImgUploadS3 } from '/client/businessImage.js';
-import { UserReviewStoreS3New } from '/client/UserReviewS3.js';
+import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
+import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 import './businessEventIcons.html';

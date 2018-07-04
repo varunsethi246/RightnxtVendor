@@ -6,9 +6,10 @@ import { Review } from '/imports/api/reviewMaster.js';
 import { State } from '/imports/api/masterData/stateMaster.js';
 import { City } from '/imports/api/masterData/cityMaster.js';
 import { Area } from '/imports/api/masterData/areaMaster.js';
-import { BusinessImgUploadS3 } from '/client/businessImage';
+import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { Categories } from '/imports/api/masterData/categoriesMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { OwnerImage } from '/imports/videoUploadClient/ownerImageClient.js';
 
 import '../../vendor.js';
 import '../../../common/starRating2.html';
@@ -17,8 +18,9 @@ import '../../../common/starRating2.html';
 // import './vendorAboutOwner.js';
 // import './VendorImagesVideos.js';
 
-
-
+Template.aboutBusiness.onCreated(function() {
+  this.subscribe('ownerImage');
+});
 Template.aboutBusiness.helpers({
 	// showRating(){
 	// 	var businessLink = FlowRouter.getParam('businessLink');
@@ -243,19 +245,17 @@ Template.aboutBusiness.helpers({
 
 			// Session.set('inputBoxVal',data.businessTitle);
 			Session.set('inputBoxLink',data.businessLink);
-			var pic = BusinessImgUploadS3.findOne({"_id":data.ownerPhoto});
+			var pic = OwnerImage.findOne({"_id":data.ownerPhoto});
 
 	      	if(pic){
-	      		if(pic.copies){
-	      			if(pic.copies.businessImgS3.type == 'image/png'){
-						data.checkpngImg = 'bkgImgNone';
-						$('#changeOwnerProfilePic').addClass(data.checkpngImg);
-					}else{
-						data.checkpngImg = '';
-						$('#changeOwnerProfilePic').addClass(data.checkpngImg);
-					}
-		      	}
-	      		data.ownerPhoto = pic.url();
+      			if(pic.type == 'image/png'){
+					data.checkpngImg = 'bkgImgNone';
+					$('#changeOwnerProfilePic').addClass(data.checkpngImg);
+				}else{
+					data.checkpngImg = '';
+					$('#changeOwnerProfilePic').addClass(data.checkpngImg);
+				}
+	      		data.ownerPhoto = pic.link();
 	      	}else {
 	      		data.ownerPhoto = '/users/profile/profile_image_dummy.svg';
 	      	}

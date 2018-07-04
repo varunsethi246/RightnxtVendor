@@ -5,7 +5,7 @@ import { Bert } from 'meteor/themeteorchef:bert';
 
 import { Business } from '../../api/businessMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';
-import { BusinessImgUploadS3 } from '/client/businessImage.js';
+import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 import '../userLayout.js';

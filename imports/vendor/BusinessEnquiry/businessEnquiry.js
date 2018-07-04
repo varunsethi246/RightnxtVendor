@@ -6,7 +6,7 @@ import { Bert } from 'meteor/themeteorchef:bert';
 
 import { Enquiry } from '/imports/api/enquiryMaster.js';
 import { Business } from '/imports/api/businessMaster.js';
-import { EnquiryImgUploadS3 } from '/client/enquiryImages.js';
+import { EnquiryImgUploadS3 } from '/client/cfsjs/enquiryImages.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 import './businessEnquiry.html'

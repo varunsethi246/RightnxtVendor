@@ -19,8 +19,6 @@ import { Reports } from '/imports/api/reportMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';
 import { ReviewCommentLikes } from '/imports/api/reviewCommentLikesMaster.js';
 
-
-
 export const Business = new Mongo.Collection('business');
 
 if (Meteor.isServer) {
@@ -464,46 +462,26 @@ Meteor.methods({
 		return id;
 	},
 	'updateBusAbOwnerAcc':function(id,formValues){
-		if(formValues.ownerPhoto){
-			Business.update(
-				{_id: id},
-				{$set : { 
-					"ownerFullName"  : formValues.ownerFullName,
-				    "ownerRole" 	 : formValues.ownerRole,
-				    "ownerMobile"    : formValues.ownerMobile,
-				    "ownerEmail"     : formValues.ownerEmail,
-				    "ownerDesc"  	 : formValues.ownerDesc,
-				    "ownerPhoto"     : formValues.ownerPhoto,
-					}
-				}, 
-				function(error,result){
-					if(error){
-						// console.log(error);
-						return error;
-					}
+		Business.update(
+			{_id: id},
+			{$set : { 
+				"ownerFullName"  : formValues.ownerFullName,
+			    "ownerRole" 	 : formValues.ownerRole,
+			    "ownerMobile"    : formValues.ownerMobile,
+			    "ownerEmail"     : formValues.ownerEmail,
+			    "ownerDesc"  	 : formValues.ownerDesc,
+			    // "ownerPhoto"     : formValues.ownerPhoto,
 				}
-			);
-		}else{
-			Business.update(
-				{_id: id},
-				{$set : { 
-					"ownerFullName"  : formValues.ownerFullName,
-				    "ownerRole" 	 : formValues.ownerRole,
-				    "ownerMobile"    : formValues.ownerMobile,
-				    "ownerEmail"     : formValues.ownerEmail,
-				    "ownerDesc"  	 : formValues.ownerDesc,
-				    // "ownerPhoto"     : formValues.ownerPhoto,
-					}
-				}, 
-				function(error,result){
-					if(error){
-						// console.log(error);
-						return error;
-					}
+			}, 
+			function(error,result){
+				if(error){
+					// console.log(error);
+					return error;
 				}
-			);
-		}
-			return id;
+			}
+		);
+	
+		return id;
 	},
 	'deleteBusiness':function(id,formValues){
 		var busId = Business.findOne({"_id":id});

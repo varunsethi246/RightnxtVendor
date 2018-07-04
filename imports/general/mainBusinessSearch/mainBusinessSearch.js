@@ -2,7 +2,7 @@ import '../../common/searchinitialisation.js'
 import './mainBusinessSearch.html';
 import { Business } from '/imports/api/businessMaster.js';
 // Meteor.subscribe('vendorBusiness');
-import { BusinessImgUploadS3 } from '/client/businessImage.js';
+import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 

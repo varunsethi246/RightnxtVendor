@@ -1,7 +1,7 @@
 import { Business } from '/imports/api/businessMaster.js';
 import { Enquiry } from '/imports/api/enquiryMaster.js';
-import { EnquiryImgUploadS3 } from '/client/enquiryImages.js';
-import { BusinessImgUploadS3 } from '/client/businessImage.js';
+import { EnquiryImgUploadS3 } from '/client/cfsjs/enquiryImages.js';
+import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 import '../userLayout.js';

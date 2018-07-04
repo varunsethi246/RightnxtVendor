@@ -6,7 +6,7 @@ import { Business } from '/imports/api/businessMaster.js';
 import { BeenThere } from '/imports/api/beenThereMaster.js';
 import { Review } from '../../../api/reviewMaster.js';
 
-import { UserProfileStoreS3New } from '/client/UserProfileS3.js';
+import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { FollowUser } from '/imports/api/userFollowMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 

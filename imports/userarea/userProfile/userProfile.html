@@ -7,7 +7,7 @@
 		    	<div class="prfPic col-lg-9 col-lg-offset-4 col-md-9 col-md-offset-2 col-sm-9 col-xs-12">
 			    	<a>
 			    		{{#if displayUserProfile profile.userProfilePic}}
-			    			<img  class="profilePic img-responsive profileBkImg" src="{{profile.userProfilePic}}" alt="profilePic" style="width:100%;height:100%;" id="userPic"/> 
+			    			<img  class="profilePic img-responsive profileBkImg {{checkPng}}" src="{{profile.userProfilePic}}" style="width:100%;height:100%;" id="userPic"/> 
 			    		<!-- {{else}}
 			    			<img  class="profilePic img-responsive" src="/users/profile/userPicDefault.png" alt="profilePic" style="width:200px;height:200px;"/>  -->
 			    		{{/if}}

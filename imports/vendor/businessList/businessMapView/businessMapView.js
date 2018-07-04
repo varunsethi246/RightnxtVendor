@@ -1,8 +1,8 @@
 // import { Enquiry } from '/imports/api/enquiryMaster.js';
 import '../../../common/searchinitialisation.js'
 import { Business } from '/imports/api/businessMaster.js';
-import { EnquiryImgUploadS3 } from '/client/enquiryImages.js';
-import { BusinessImgUploadS3 } from '/client/businessImage.js';
+import { EnquiryImgUploadS3 } from '/client/cfsjs/enquiryImages.js';
+import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { Bert } from 'meteor/themeteorchef:bert';
 // import { Review } from '/imports/api/reviewMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';

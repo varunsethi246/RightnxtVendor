@@ -1,6 +1,17 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 //============================================================
+//   Meteor Files or OSTRIO Files import for images
+//============================================================
+import { BusinessOwnerImages } from '/imports/api/ostriofiles/addBusinessOwnerServer.js';
+
+Meteor.publish('allBusinessOwnerImages', function () {
+  return BusinessOwnerImages.find().cursor;
+});
+
+
+
+//============================================================
 //   Admin Masters
 //============================================================
 import '../imports/api/UMAPI.js';
@@ -68,6 +79,12 @@ import '../imports/api/s3Details.js';
 import { BizVideo } from '/imports/videoUploadserver/videoUpload.js';
 import { BizVideoBanner } from '/imports/videoUploadserver/videoUploadBanner.js';
 import { FollowUser } from '/imports/api/userFollowMaster.js';
+import { VendorImage } from '/imports/videoUploadserver/vendorImageServer.js';
+import { OwnerImage } from '/imports/videoUploadserver/ownerImageServer.js';
+import { BusinessImage } from '/imports/videoUploadserver/businessImageServer.js';
+import { BusinessMenu } from '/imports/videoUploadserver/businessMenuServer.js';
+import { OfferImage } from '/imports/videoUploadserver/offerImageServer.js';
+import { EnquiryImage } from '/imports/videoUploadserver/enquiryImageServer.js';
 
 Meteor.publish('getBizVideo', function() {
     return BizVideo.find({}).cursor;
@@ -75,7 +92,21 @@ Meteor.publish('getBizVideo', function() {
 Meteor.publish('getBizVideoBanner', function() {
     return BizVideoBanner.find({}).cursor;
 });
-
+Meteor.publish('vendorImage', function() {
+    return VendorImage.find({}).cursor;
+});
+Meteor.publish('ownerImage', function() {
+    return OwnerImage.find({}).cursor;
+});
+Meteor.publish('businessImage', function() {
+    return BusinessImage.find({}).cursor;
+});
+Meteor.publish('businessOfferImage', function() {
+    return OfferImage.find({}).cursor;
+});
+Meteor.publish('businessEnquiryImage', function() {
+    return EnquiryImage.find({}).cursor;
+});
 
 
  // Meteor.publish('followUser', function() {
@@ -101,10 +132,10 @@ Meteor.startup(() => {
 	Accounts.emailTemplates.siteName = "RightNxt";
 	Accounts.emailTemplates.from = 'RightNxt Admin <rightnxt123@gmail.com>';
 
-  Meteor.AppCache.config({
-    chrome: false,
-    firefox: false
-  });
+  // Meteor.AppCache.config({
+  //   chrome: false,
+  //   firefox: false
+  // });
   // code to run on server at startup
 });
 
@@ -253,5 +284,24 @@ Meteor.methods({
     });
   },
 
+  'removeOwnerImage':function(){
+    var userId = Meteor.userId();
+    var allVendorImages = OwnerImage.find({'userId': userId}).fetch();
+    // console.log(allVendorImages);
+    if(allVendorImages){
+      for (var i = 0; i < allVendorImages.length-1; i++) {
+        OwnerImage.remove({'_id': allVendorImages[i]._id,'userId': userId});
+      }
+    }
+  },
+  'removeBusinessImage':function(imgId){
+    BusinessImage.remove({'_id':imgId});
+  },
+  'removeBusinessMenuImage':function(imgId){
+    BusinessMenu.remove({'_id':imgId});
+  },
+  'removeOfferImage':function(imgId){
+    OfferImage.remove({'_id':imgId});
+  },
 });
 

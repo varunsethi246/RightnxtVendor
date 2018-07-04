@@ -6,7 +6,7 @@ import { Business } from '../../api/businessMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 
-import { BusinessImgUploadS3 } from '/client/businessImage';
+import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage';
 
 import '../vendor.js';
 import './AddvendorAboutOwner.html';

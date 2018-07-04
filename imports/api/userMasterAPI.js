@@ -4,6 +4,7 @@ import { check } from 'meteor/check';
 import { Session } from 'meteor/session';
 import { Bert } from 'meteor/themeteorchef:bert';
 // import {Accounts} from 'meteor/accounts-base';
+import { VendorImage } from '/imports/videoUploadserver/vendorImageServer.js';
 
 if(Meteor.isServer){
 	Meteor.publish('userProfile' , function userspublish(userId){
@@ -150,6 +151,12 @@ Meteor.methods({
 
 	'updateUserProfileImage' : function(fileData){
 		var userId = Meteor.userId();
+		var allVendorImages = VendorImage.find({'userId': userId}).fetch();
+    	if(allVendorImages){
+    		for (var i = 0; i < allVendorImages.length-1; i++) {
+    			VendorImage.remove({'_id': allVendorImages[i]._id,'userId': userId});
+    		}
+    	}
 		Meteor.users.update(
 			{'_id': userId},
 			{$set:
@@ -296,8 +303,5 @@ Meteor.methods({
                 });
           	}
         });
-	  },
-
-
-
+	},
 });

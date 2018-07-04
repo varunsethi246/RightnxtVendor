@@ -1,11 +1,11 @@
 import './vendorBusinessCarousel.html';
 import './imageCarouselItems.js';
  
-import { BusinessImgUploadS3 } from '/client/businessImage.js';
+import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { Business } from '/imports/api/businessMaster.js';
 import { BussImgLikes } from '/imports/api/businessImageLikesMaster.js';
-import { BusinessVideoUpload } from '/client/businessVideo.js';
-import { UserReviewStoreS3New } from '/client/UserReviewS3.js';
+import { BusinessVideoUpload } from '/client/cfsjs/businessVideo.js';
+import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { BizVideo } from '/imports/videoUploadClient/videoUpload.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';

@@ -1,5 +1,5 @@
 import { Business } from '/imports/api/businessMaster.js';
-import { BusinessImgUploadS3 } from './businessImage.js';
+import { BusinessImgUploadS3 } from '../cfsjs/businessImage.js';
 import { BusinessAds } from '/imports/api/businessAdsMaster.js';
 import { Offers } from '/imports/api/offersMaster.js';
 

@@ -6,8 +6,8 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import { Business } from '/imports/api/businessMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';
 import { ReviewCommentLikes } from '/imports/api/reviewCommentLikesMaster.js';
-import { UserReviewStoreS3New } from '/client/UserReviewS3.js';
-import { UserProfileStoreS3New } from '/client/UserProfileS3.js';
+import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
+import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 
 
 var filesR = [];

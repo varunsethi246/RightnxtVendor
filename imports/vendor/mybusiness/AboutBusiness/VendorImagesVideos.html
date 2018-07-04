@@ -31,7 +31,7 @@
 											<div class="noworkDiv">
 												<i class="fa fa-times-circle pull-right delBusiImg cursorPointer positionCross" id="img-{{_id}}" aria-hidden="true"></i><br>
 												<div class="uploadPhotoSize">
-													<img src="{{url}}" class="img-responsive thumbnail cursorPointer {{checkpngImg}}" data-toggle="modal" data-target="#businessImgModal-{{_id}}">
+													<img src="{{link}}" class="img-responsive thumbnail cursorPointer {{checkpngImg}}" data-toggle="modal" data-target="#businessImgModal-{{_id}}">
 												</div>
 												<!-- Modal -->
 												<div id="businessImgModal-{{_id}}" class="modal fade" role="dialog">
@@ -41,7 +41,7 @@
 												    <div class="modal-content">
 												      <div class="modal-body">
 												      	<div class="alignCenter text-center">
-												        <img src="{{this.url}}" class="img-responsive imgAlignCenter {{checkpngImg}}">
+												        <img src="{{this.link}}" class="img-responsive imgAlignCenter {{checkpngImg}}">
 												        </div>
 												      </div>
 												      <div class="modal-footer">
@@ -138,7 +138,7 @@
 												<div class="">
 													<i class="fa fa-times-circle pull-right delBusiMenu cursorPointer positionCross" id="menu-{{_id}}" aria-hidden="true"></i>
 													<div class="uploadPhotoSize BussUploadSize">
-														<img src="{{this.url}}" class="img-responsive thumbnail cursorPointer {{checkpngImg}}" data-toggle="modal" data-target="#businessMenuModal-{{_id}}">
+														<img src="{{link}}" class="img-responsive thumbnail cursorPointer {{checkpngImg}}" data-toggle="modal" data-target="#businessMenuModal-{{_id}}">
 													</div>
 
 													<!-- Modal -->
@@ -149,7 +149,7 @@
 													    <div class="modal-content">
 													      <div class="modal-body">
 													      	<div class="alignCenter text-center">
-													        <img src="{{this.url}}" class="img-responsive imgAlignCenter {{checkpngImg}}">
+													        <img src="{{this.link}}" class="img-responsive imgAlignCenter {{checkpngImg}}">
 													        </div>
 													      </div>
 													      <div class="modal-footer">

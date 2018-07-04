@@ -1,9 +1,20 @@
 import './userProfile.html';
-import { UserProfileStoreS3New } from '/client/UserProfileS3.js';
+import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { FollowUser } from '/imports/api/userFollowMaster.js';
+import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
+import ImageCompressor from 'image-compressor.js';
+
+Template.userProfile.onCreated(function() {
+    this.currentUpload = new ReactiveVar(false);
+    this.subscribe('vendorImage');
+});
 
 Template.userProfile.helpers({
+	currentUpload: function() {
+        return Template.instance().currentUpload.get();
+    },
+
 	'userDetails' : function(){
 		if(Session.get("updateUserTimeline")==true){
 			var id = Meteor.userId();
@@ -20,9 +31,14 @@ Template.userProfile.helpers({
 				var data = Meteor.users.findOne({"_id":id},{"profile":1});
 				if(data){
 					// data.aboutText =  data.profile.aboutMe;
-					var pic = UserProfileStoreS3New.findOne({"_id":data.profile.userProfilePic});
+					var pic = VendorImage.findOne({"_id":data.profile.userProfilePic});
 					if(pic){
-						data.profile.userProfilePic = pic.url();	
+						if(pic.type=='image/png'){
+							data.checkPng = 'bkgImgNone';	
+						}else{
+							data.checkPng = '';	
+						}
+						data.profile.userProfilePic = pic.link();	
 					}
 					else{
 						data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
@@ -85,9 +101,14 @@ Template.userProfile.helpers({
 				var data = Meteor.users.findOne({"_id":id},{"profile":1});
 				if(data){
 					// data.aboutText =  data.profile.aboutMe;
-					var pic = UserProfileStoreS3New.findOne({"_id":data.profile.userProfilePic});
+					var pic = VendorImage.findOne({"_id":data.profile.userProfilePic});
 					if(pic){
-						data.profile.userProfilePic = pic.url();	
+						if(pic.type=='image/png'){
+							data.checkPng = 'bkgImgNone';	
+						}else{
+							data.checkPng = '';	
+						}
+						data.profile.userProfilePic = pic.link();	
 					}
 					else{
 						data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
@@ -195,28 +216,61 @@ Template.userProfile.events({
 		$("input[id='uploadImg']").click();
 	},
 	
-	'change .userProfileImg': function(event,Template){
-	     event.preventDefault();
-	     FS.Utility.eachFile(event, function(file) {
-	       UserProfileStoreS3New.insert(file, function (err, fileObj) {
-	         if (err){
-	            // handle error
-	         } else {
-	            // handle success
-	     		var filePath = fileObj._id;
-		        Meteor.call("updateUserProfileImage", filePath,
-		          function(error, result) { 
-		              if(error) {
-		                  console.log ('Error Message: ' +error ); 
-		              }else{
-		                  // Bert.alert( 'Image Updated successfully!!!!', 'success', 'growl-top-right' );
-		                     // $('.editBlogImage').hide();
-		              }
-		        });
-	     
-	          }
-	       });
-	     });
+	'change .userProfileImg': function(event,template){
+	    // event.preventDefault();
+	    if(event.currentTarget.files[0]){  
+	    	// console.log(event.currentTarget.files[0].size);
+	    	$('#userPic').removeClass('bkgImgNone');
+	    	$('#userPic').attr('src','');
+	    	const imageCompressor = new ImageCompressor();
+
+			imageCompressor.compress(event.currentTarget.files[0])
+			  .then((result) => {
+			    // console.log(result);
+
+			    // Handle the compressed image file.
+			    // We upload only one file, in case
+				// multiple files were selected
+				const upload = VendorImage.insert({
+					file: result,
+					streams: 'dynamic',
+					chunkSize: 'dynamic',
+					// imagetype: 'profile',
+				}, false);
+
+				upload.on('start', function () {
+					template.currentUpload.set(this);
+				});
+
+				upload.on('end', function (error, fileObj) {
+					if (error) {
+					  // alert('Error during upload: ' + error);
+					   console.log('Error during upload 1: ' + error);
+					   console.log('Error during upload 1: ' + error.reason);
+					} else {
+				  		// alert('File "' + fileObj._id + '" successfully uploaded');
+				    	Bert.alert('Vendor Image uploaded.','success','growl-top-right');
+				  	
+					  	// console.log(fileObj._id);
+					  	Meteor.call("updateUserProfileImage", fileObj._id,
+					        function(error, result) { 
+					            if(error) {
+					              console.log ('Error Message: ' +error ); 
+					            }else{
+					                // Bert.alert( 'Image Updated successfully!!!!', 'success', 'growl-top-right' );
+					                // $('.editBlogImage').hide();
+					        }
+					    });
+					}
+					template.currentUpload.set(false);
+				});
+
+				upload.start();
+			  })
+			  .catch((err) => {
+			    // Handle the error
+			})    
+	    }
 	},
 	'click .userFollow' : function(event){
 		event.preventDefault();

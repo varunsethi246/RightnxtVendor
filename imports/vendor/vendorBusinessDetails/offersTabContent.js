@@ -7,8 +7,8 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import { Business } from '/imports/api/businessMaster.js';
 import { Offers } from '/imports/api/offersMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';
-import { OfferImagesS3 } from '/client/offersImagesS3.js';
-import { BusinessImgUploadS3 } from '/client/businessImage.js';
+import { OfferImagesS3 } from '/client/cfsjs/offersImagesS3.js';
+import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 
 import './offersTabContent.html';
 

@@ -1,5 +1,5 @@
 import { Business } from '/imports/api/businessMaster.js';
-import { BusinessImgUploadS3 } from './businessImage.js';
+import { BusinessImgUploadS3 } from '../cfsjs/businessImage.js';
 import { BusinessBanner } from '/imports/api/businessBannerMaster.js';
 
 SearchSource.defineSource('sidebarBusinessBanners', (searchText, options)=> {

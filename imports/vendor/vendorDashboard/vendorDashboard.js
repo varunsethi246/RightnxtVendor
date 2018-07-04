@@ -429,7 +429,7 @@ Template.customerLeadsGraph.helpers({
 });
 
 
-vendorDashboardForm = function () {  
+vendorDashboardForm = function () {
   BlazeLayout.render("vendorLayout",{main: 'vendorDashboard'});
   // Blaze.render(Template.vendorLayout,document.body);
 }

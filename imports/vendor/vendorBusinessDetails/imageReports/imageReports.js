@@ -4,11 +4,11 @@ import './imageCommet.html';
 import '../vendorBusinessCarousel.html';
 import '../imageCarouselItems.html';
 
-import { BusinessImgUploadS3 } from '/client/businessImage.js';
-import { UserReviewStoreS3New } from '/client/UserReviewS3.js';
-import { UserProfileStoreS3New } from '/client/UserProfileS3.js';
-import { BusinessVideoUpload } from '/client/businessVideo.js';
-import { BusinessMenuUpload } from '/client/businessMenu.js';
+import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
+import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
+import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
+import { BusinessVideoUpload } from '/client/cfsjs/businessVideo.js';
+import { BusinessMenuUpload } from '/client/cfsjs/businessMenu.js';
 import { Business } from '/imports/api/businessMaster.js';
 import { Reports } from '/imports/api/reportMaster.js';
 import { BussImgLikes } from '/imports/api/businessImageLikesMaster.js';

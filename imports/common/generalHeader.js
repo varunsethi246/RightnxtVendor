@@ -1,5 +1,5 @@
 import './generalHeader.html';
-import { UserProfileStoreS3New } from '/client/UserProfileS3.js';
+import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { Notification } from '/imports/api/notification.js';
 import { ConfigSettings } from '/imports/api/companysettingsAPI.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';

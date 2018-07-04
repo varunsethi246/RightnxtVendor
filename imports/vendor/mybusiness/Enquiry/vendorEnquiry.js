@@ -1,8 +1,10 @@
 import { Business } from '/imports/api/businessMaster.js';
 import { Enquiry } from '/imports/api/enquiryMaster.js';
-import { EnquiryImgUploadS3 } from '/client/enquiryImages.js';
-import { UserProfileStoreS3New } from '/client/UserProfileS3.js';
+import { EnquiryImgUploadS3 } from '/client/cfsjs/enquiryImages.js';
+import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { EnquiryImage } from '/imports/videoUploadClient/enquiryImageClient.js';
+import ImageCompressor from 'image-compressor.js';
 
 import '../../vendor.js';
 import './allEnquries.html';
@@ -17,6 +19,11 @@ import './vendorEnquiry.html';
 // 	        console.log("bottom");
 // 	    }
 // 	}
+// });
+
+// Template.vendorEnquiry.onCreated(function() {
+//   // this.currentUpload = new ReactiveVar(false);
+//   this.subscribe('businessEnquiryImage');
 // });
 
 Template.vendorEnquiry.helpers({
@@ -276,7 +283,10 @@ Template.vendorEnquiry.helpers({
 					enqData.enquiryDesc[i].commentsTS = moment(enqData.enquiryDesc[i].commentsTS).fromNow();
 
 					if(enqData.enquiryDesc[i].commentImage != ''){
-						enqData.enquiryDesc[i].enquiryPhoto = EnquiryImgUploadS3.findOne({"_id":enqData.enquiryDesc[i].commentImage}).url();
+						var enquiryImage =	EnquiryImage.findOne({"_id":enqData.enquiryDesc[i].commentImage});
+						if(enquiryImage){
+							enqData.enquiryDesc[i].enquiryPhoto = enquiryImage.link();
+						}
 						enqData.enquiryDesc[i].enquiryImgVal = true;
 					}else{
 						enqData.enquiryDesc[i].enquiryImgVal = false;
@@ -396,7 +406,7 @@ Template.vendorEnquiry.events({
 		 
 	},
 
-	'click .vEnqsndEnqBtn': function(event) {
+	'click .vEnqsndEnqBtn': function(event,template) {
 		// event.preventDefault();
 		// var elem = $(event.currentTarget).attr('.vEnqFormImgOne');
 		// console.log(elem);
@@ -413,11 +423,11 @@ Template.vendorEnquiry.events({
 		var enquiryPhoto = '';
 		var enquiryCommentNew = $('.vEnqFormTextarea').val();
        	var id = event.currentTarget.id;
-       	console.log('id :',id);
+       	// console.log('id :',id);
        	var enquirySentBy = $(event.currentTarget).attr("data-enquirySentBy");
-       	console.log('enquiryName :',enquirySentBy);
+       	// console.log('enquiryName :',enquirySentBy);
        	var businessLink = $(event.currentTarget).attr("data-businessLink");
-       	console.log('hi');
+       	// console.log('hi');
 		var elem = $(event.currentTarget).attr('.vEnqFormImgOne');
 	    // if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight())
 	    // {
@@ -425,83 +435,111 @@ Template.vendorEnquiry.events({
 	    // }
        	if(filesM.length > 0){
 			for(i = 0 ; i < filesM.length; i++){
-			    EnquiryImgUploadS3.insert(filesM[i], function (err, fileObj) {
-		        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-					if(err){
-		              	console.log('Error : ' + err.message);
-		            }else{
-						  enquiryPhoto = fileObj._id;
 
-					  		var formValues ={
-								        	"id" 				: id,
-								        	"enquiryCommentNew" : enquiryCommentNew,
-								        	"enquiryPhoto" 		: enquiryPhoto,
-									   	}
-							// if(formValues.enquiryCommentNew){
-								Meteor.call('insertEnqCommentVendor',formValues,function(error,result){
-						      		$('.vEnqFormTextarea').val('');
-		        					$('#showEnquiryImgIdV>span').hide();
-						        	enquiryPhoto = '';
+				const imageCompressor = new ImageCompressor();
+			    imageCompressor.compress(filesM[i])
+			        .then((result) => {
+			          // console.log(result);
 
-						        	//============================================================
-									// 			Notification Email / SMS / InApp
-									//============================================================
-									var admin = Meteor.users.findOne({'roles':'admin'});
-								    if(admin){
-								    	console.log('admin:',admin);
-								    	var adminId = admin._id;
-								    }
-									var businessData = Business.findOne({"businessLink":businessLink});
-									if(businessData){
-										var vendorId = businessData.businessOwnerId;
-										console.log('vendor: ',vendorId);
-				        				var vendorDetail = Meteor.users.findOne({'_id':vendorId});
-				          	  			var userId = enquirySentBy;
-				          	  			cosnole.log('userId:',userId);
-										var userDetail = Meteor.users.findOne({'_id':userId});
-				        				if(vendorDetail&&userDetail){
+			          // Handle the compressed image file.
+			          // We upload only one file, in case
+			        // multiple files were selected
+			        const upload = EnquiryImage.insert({
+			          file: result,
+			          streams: 'dynamic',
+			          chunkSize: 'dynamic',
+			          // imagetype: 'profile',
+			        }, false);
 
-				        					//Send Notification, Mail and SMS to Vendor
-				        					var vendorname 	= vendorDetail.profile.name;
-				        					var username 	= userDetail.profile.name;
-					                		var date 		= new Date();
-					                		var currentDate = moment(date).format('DD/MM/YYYY');
-					                		var msgvariable = {
-												'[vendorname]' 	: vendorname,
-												'[username]' 	: username,
-							   					'[currentDate]'	: currentDate,
-				   								'[businessName]': businessData.businessTitle
-							               	};
+			        upload.on('start', function () {
+			          // template.currentUpload.set(this);
+			        });
 
-											var inputObj = {
-												notifPath	 : businessLink,
-												to           : enquirySentBy,
-												templateName : 'User Enquiry Messages',
-												variables    : msgvariable,
-											}
-											sendInAppNotification(inputObj);
-				
-				
-											var inputObj = {
-												notifPath	 : businessLink,
-												from         : adminId,
-												to           : enquirySentBy,
-												templateName : 'User Enquiry Messages',
-												variables    : msgvariable,
-											}
-											sendMailNotification(inputObj);
-											 
-				        				}
-									}
-									//============================================================
-									// 			End Notification Email / SMS / InApp
-									//============================================================
-						      	});
-							// }
-				         	
+			        upload.on('end', function (error, fileObj) {
+			          if (error) {
+			            // alert('Error during upload: ' + error);
+			            console.log('Error during upload 1: ' + error);
+			            console.log('Error during upload 1: ' + error.reason);
+			          } else {
+			            // alert('File "' + fileObj._id + '" successfully uploaded');
+			            Bert.alert('Enquiry Image uploaded.','success','growl-top-right');
+			            // console.log(fileObj._id);
+			            enquiryPhoto = fileObj._id;
+				  		var formValues ={
+				        	"id" 				: id,
+				        	"enquiryCommentNew" : enquiryCommentNew,
+				        	"enquiryPhoto" 		: enquiryPhoto,
+					   	}
+						// if(formValues.enquiryCommentNew){
+							Meteor.call('insertEnqCommentVendor',formValues,function(error,result){
+					      		$('.vEnqFormTextarea').val('');
+	        					$('#showEnquiryImgIdV>span').hide();
+					        	enquiryPhoto = '';
 
-		            }
-		        });
+					        	//============================================================
+								// 			Notification Email / SMS / InApp
+								//============================================================
+								var admin = Meteor.users.findOne({'roles':'admin'});
+							    if(admin){
+							    	// console.log('admin:',admin);
+							    	var adminId = admin._id;
+							    }
+								var businessData = Business.findOne({"businessLink":businessLink});
+								if(businessData){
+									var vendorId = businessData.businessOwnerId;
+									// console.log('vendor: ',vendorId);
+			        				var vendorDetail = Meteor.users.findOne({'_id':vendorId});
+			          	  			var userId = enquirySentBy;
+			          	  			// cosnole.log('userId:',userId);
+									var userDetail = Meteor.users.findOne({'_id':userId});
+			        				if(vendorDetail&&userDetail){
+
+			        					//Send Notification, Mail and SMS to Vendor
+			        					var vendorname 	= vendorDetail.profile.name;
+			        					var username 	= userDetail.profile.name;
+				                		var date 		= new Date();
+				                		var currentDate = moment(date).format('DD/MM/YYYY');
+				                		var msgvariable = {
+											'[vendorname]' 	: vendorname,
+											'[username]' 	: username,
+						   					'[currentDate]'	: currentDate,
+			   								'[businessName]': businessData.businessTitle
+						               	};
+
+										var inputObj = {
+											notifPath	 : businessLink,
+											to           : enquirySentBy,
+											templateName : 'User Enquiry Messages',
+											variables    : msgvariable,
+										}
+										sendInAppNotification(inputObj);
+			
+			
+										var inputObj = {
+											notifPath	 : businessLink,
+											from         : adminId,
+											to           : enquirySentBy,
+											templateName : 'User Enquiry Messages',
+											variables    : msgvariable,
+										}
+										sendMailNotification(inputObj);
+										 
+			        				}
+								}
+								//============================================================
+								// 			End Notification Email / SMS / InApp
+								//============================================================
+					      	});
+						// }
+			          }
+			          // template.currentUpload.set(false);
+			        });
+
+			        upload.start();
+			        })
+			        .catch((err) => {
+			          // Handle the error
+			    })
 		    }
 		    filesM = '';
 

@@ -1,8 +1,20 @@
 import { Business } from '/imports/api/businessMaster.js';
-import { BusinessImgUploadS3 } from '/client/businessImage';
+import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { OwnerImage } from '/imports/videoUploadClient/ownerImageClient.js';
+import ImageCompressor from 'image-compressor.js';
 
 import './VendorAboutOwner.html'
 
+Template.vendorAboutOwner.onCreated(function() {
+  this.currentUpload = new ReactiveVar(false);
+  this.subscribe('ownerImage');
+});
+Template.vendorAboutOwner.helpers({
+  currentUpload: function() {
+    return Template.instance().currentUpload.get();
+  },
+});
 Template.vendorAboutOwner.onRendered(function(){
   // $('#asearch  Categories').val(catList);
   $('#venFileUpldval').text('');
@@ -23,65 +35,93 @@ Template.vendorAboutOwner.events({
   'click #venFileUpldbutton': function(){
     $(".vendorImg").trigger('click');
   },
-  'change .vendorImg' : function(event,Template){
-     event.preventDefault();
-     files = event.target.files; // FileList object\
-     // $('#venFileUpldval').text("Picture Chosen");
+  'change .vendorImg' : function(event,template){
+    // event.preventDefault();
+    file = event.target.files[0]; // FileList object\
+    var businessLink = FlowRouter.getParam('businessLink');
     
-      // Loop through the FileList and render image files as thumbnails.
-      
-      for (var i = 0, f; f = files[i]; i++) {
-          // Only process image files.
-          if (!f.type.match('image.*')) {
-            continue;
-        }
+    if(file){
+      // Only process image files.
+      var reader = new FileReader();    
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="draggedImg businessOwnerImg" id="changeOwnerProfilePic" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('changeOwnerProfilePic').replaceWith(span);
 
-        var reader = new FileReader();
-        
-        // Closure to capture the file information.
-          reader.onload = (function(theFile) {
-            return function(e) {
-              // Render thumbnail.
-              var span = document.createElement('span');
-              span.innerHTML = ['<img class="draggedImg businessOwnerImg" id="changeOwnerProfilePic" src="', e.target.result,
-                                '" title="', escape(theFile.name), '"/>'].join('');
-              document.getElementById('changeOwnerProfilePic').replaceWith(span);
+          if(file){
+            if(file.type=="image/png"){
+              $('#changeOwnerProfilePic').addClass('bkgImgNone');
+            }
+          }
+          
+        };
+      })(file); //end of onload
 
-              if(files){
-                if(files[0].type=="image/png"){
-                  $('#changeOwnerProfilePic').addClass('bkgImgNone');
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(file);
+
+      const imageCompressor = new ImageCompressor();
+      imageCompressor.compress(file)
+        .then((result) => {
+          // console.log(result);
+
+          // Handle the compressed image file.
+          // We upload only one file, in case
+        // multiple files were selected
+        const upload = OwnerImage.insert({
+          file: result,
+          streams: 'dynamic',
+          chunkSize: 'dynamic',
+          // imagetype: 'profile',
+        }, false);
+
+        upload.on('start', function () {
+          template.currentUpload.set(this);
+        });
+
+        upload.on('end', function (error, fileObj) {
+          if (error) {
+            // alert('Error during upload: ' + error);
+            console.log('Error during upload 1: ' + error);
+            console.log('Error during upload 1: ' + error.reason);
+          } else {
+            // alert('File "' + fileObj._id + '" successfully uploaded');
+            Bert.alert('Owner Image uploaded.','success','growl-top-right');
+            // console.log(fileObj._id);
+            // Session.set("vendorImgFilePath",fileObj._id);
+            Meteor.call('updateBusinessAboutOwnerImage', businessLink, fileObj._id, 
+              function(error,result){
+                if(error){
+                  // Bert.alert('There is some error in submitting this form!','danger','growl-top-right');
+                  return;
+                }else{
+                  Meteor.call('removeOwnerImage', 
+                    function(error,result){
+                      if(error){
+                        // Bert.alert('There is some error in submitting this form!','danger','growl-top-right');
+                        return;
+                      }else{
+                        
+                      }
+                    }
+                  );
                 }
               }
-              
-            };
-          })(f); //end of onload
+            );
+          }
+          template.currentUpload.set(false);
+        });
 
-
-          // Read in the image file as a data URL.
-          reader.readAsDataURL(f);
-          
-      }
-
-     FS.Utility.eachFile(event, function(file) {
-        Resizer.resize(file, {width: 300, height: 300, cropSquare: false}, function(err, file) {
-          if(err){
-            console.log('err ' , err.message);
-          }else{
-
-           BusinessImgUploadS3.insert(file, function (err, fileObj) {
-             if (err){
-                console.log("Error : " + err.message);
-             } else {
-              
-                var filePath = fileObj._id;
-                Session.set("vendorImgFilePath",filePath);
-
-              }
-           });
-         }
-       });
-     });
-
+        upload.start();
+        })
+        .catch((err) => {
+          // Handle the error
+      })    
+    }    
   },
   'submit .vendorBusAbOwnerAC': function(event){
     event.preventDefault();
@@ -104,24 +144,15 @@ Template.vendorAboutOwner.events({
       if(ownerDescription){
         ownerDescription = ownerDescription.trim();
       }
-    if(Session.get("vendorImgFilePath")){
-      var formValues = {
-        "ownerFullName"    : event.target.ownerFullName.value,
-        "ownerRole"        : event.target.ownerRole.value,
-        "ownerMobile"      : ownerMob,
-        "ownerEmail"       : event.target.ownerEmail.value,
-        "ownerDesc"        : ownerDescription,
-        "ownerPhoto"       : Session.get("vendorImgFilePath"),
-      }
-    }else{
-      var formValues = {
-        "ownerFullName"    : event.target.ownerFullName.value,
-        "ownerRole"        : event.target.ownerRole.value,
-        "ownerMobile"      : ownerMob,
-        "ownerEmail"       : event.target.ownerEmail.value,
-        "ownerDesc"        : ownerDescription,
-      }
+   
+    var formValues = {
+      "ownerFullName"    : event.target.ownerFullName.value,
+      "ownerRole"        : event.target.ownerRole.value,
+      "ownerMobile"      : ownerMob,
+      "ownerEmail"       : event.target.ownerEmail.value,
+      "ownerDesc"        : ownerDescription,
     }
+    
 
     if(errorIn!="true") {
       Meteor.call('updateBusAbOwnerAcc', id, formValues, 
