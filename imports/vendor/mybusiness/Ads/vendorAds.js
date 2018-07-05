@@ -20,7 +20,8 @@ import { BusinessAds } from '/imports/api/businessAdsMaster.js';
 
 Template.vendorAds.helpers({
 	'paymentDetailsAds':function(){
-		var paymentDetails 	= Payment.find({"vendorId":Meteor.userId(),'orderType':'Ads'},{sort:{invoiceNumber:-1}}).fetch();
+		var businessLink = FlowRouter.getParam('businessLink');
+		var paymentDetails 	= Payment.find({"vendorId":Meteor.userId(),'orderType':'Ads','businessLink':businessLink},{sort:{invoiceNumber:-1}}).fetch();
 		// console.log('paymentDetails :',paymentDetails);
 		if(paymentDetails){
 		// console.log('paymentDetails 2 :',paymentDetails);

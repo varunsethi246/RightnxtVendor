@@ -4,8 +4,6 @@ import { Business } from '/imports/api/businessMaster.js';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { Template } from 'meteor/templating';
 import { BizVideo } from '/imports/videoUploadClient/videoUpload.js';
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
-import { BusinessMenuUpload } from '/client/cfsjs/businessMenu.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
 import { BusinessMenu } from '/imports/videoUploadClient/businessMenuClient.js';
@@ -80,7 +78,7 @@ Template.vendorImagesVideos.helpers({
 				{
 					var menuId =  data.businessMenu[i];
 					var menuData = BusinessMenu.findOne({"_id":menuId.menu});
-					console.log(menuData);
+					// console.log(menuData);
 					if(menuData){
 						if(menuData.type == 'image/png'){
 							menuData.checkpngImg = 'bkgImgNone';

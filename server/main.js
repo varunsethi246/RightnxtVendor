@@ -101,6 +101,9 @@ Meteor.publish('ownerImage', function() {
 Meteor.publish('businessImage', function() {
     return BusinessImage.find({}).cursor;
 });
+Meteor.publish('businessMenuImage', function() {
+    return BusinessMenu.find({}).cursor;
+});
 Meteor.publish('businessOfferImage', function() {
     return OfferImage.find({}).cursor;
 });
@@ -284,15 +287,16 @@ Meteor.methods({
     });
   },
 
-  'removeOwnerImage':function(){
+  'removeOwnerImage':function(imgId){
     var userId = Meteor.userId();
-    var allVendorImages = OwnerImage.find({'userId': userId}).fetch();
+    OwnerImage.remove({'_id': imgId,'userId': userId});
+    // var allVendorImages = OwnerImage.find({'_id':imgId,'userId': userId}).fetch();
     // console.log(allVendorImages);
-    if(allVendorImages){
-      for (var i = 0; i < allVendorImages.length-1; i++) {
-        OwnerImage.remove({'_id': allVendorImages[i]._id,'userId': userId});
-      }
-    }
+    // if(allVendorImages){
+      // for (var i = 0; i < allVendorImages.length-1; i++) {
+      //   OwnerImage.remove({'_id': allVendorImages[i]._id,'userId': userId});
+      // }
+    // }
   },
   'removeBusinessImage':function(imgId){
     BusinessImage.remove({'_id':imgId});

@@ -8,6 +8,7 @@ import { Position } from '/imports/api/discountMaster.js';
 import { CompanySettings } from '/imports/api/companysettingsAPI.js';
 import { BusinessBanner } from '/imports/api/businessBannerMaster.js';
 import { BusinessAds } from '/imports/api/businessAdsMaster.js';
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 import '../../vendor.js';
 import './vendorbanners.html';
@@ -16,8 +17,9 @@ import '../../VendorPayments/VendorPayments.js'
 
 Template.vendorbanners.helpers({
 	'paymentDetailsBanner':function(){
-		var paymentDetails 	= Payment.find({"vendorId":Meteor.userId(),'orderType':'Banner'}).fetch();
-		console.log('paymentDetails :',paymentDetails);
+		var businessLink = FlowRouter.getParam('businessLink');
+		var paymentDetails 	= Payment.find({"vendorId":Meteor.userId(),'orderType':'Banner','businessLink':businessLink}).fetch();
+		// console.log('paymentDetails :',paymentDetails);
 		if(paymentDetails){
 		// console.log('paymentDetails 2 :',paymentDetails);
 
@@ -42,7 +44,7 @@ Template.vendorbanners.helpers({
 	},
 });
 vendorbannersForm = function () {  
-	console.log('in function');
+	// console.log('in function');
   BlazeLayout.render("vendorLayout" ,{main: 'vendorbanners'});
   // Blaze.render(Template.claim,document.body);
 }

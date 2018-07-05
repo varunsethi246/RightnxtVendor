@@ -4,7 +4,6 @@ import { Template } from 'meteor/templating';
 import { Bert } from 'meteor/themeteorchef:bert';
 
 import { Business } from '../../../api/businessMaster.js';
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { Review } from '../../../api/reviewMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
@@ -164,7 +163,7 @@ Template.vendorPhotos.helpers({
 				for(i = 0 ; i < imgListCount ; i++)
 				{
 					var imgId =  data.businessImages[i];
-					var imgData = BusinessImgUploadS3.findOne({"_id":imgId.img});
+					var imgData = BusinessImage.findOne({"_id":imgId.img});
 					if(imgData){
 						count++;  					 
 					}
@@ -340,35 +339,6 @@ Template.vendorPhotos.events({
 			$('.displayDiv').css("display","none");	
 			$('.displayBtn').removeClass('marginBtnV');
 		}
-		// for(i = 0 ; i < files.length; i++){
-			
-		// 	BusinessImgUploadS3.insert(files[i], function (err, fileObj) {
-		//         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-		//         if(err){
-		//         	console.log('Error : ' + err.message);
-		//         }else{
-		//         	var businessLink = FlowRouter.getParam('businessLink');
-		        	
-		//         	var imgId =  fileObj._id ;
-		// 	        Meteor.call("updateVendorBulkImg", businessLink,imgId,
-		// 	          function(error, result) { 
-		// 	              if(error) {
-		// 	                  console.log ('Error Message: ' + error ); 
-		// 	              }else{
-		// 					// console.log('img upload ', fileObj._id);
-		// 					$('input[name="files[]"]').val('');	
-		// 	              }
-		// 	        });
-
-		//         }
-		//     });
-		// }
-		// files=[];
-		// counterImg = 0;
-		// $('#businessPhotolist').empty();
-		// $('.drag').show();
-		// $('.displayDiv').css("display","none");	
-		// $('.displayBtn').removeClass('marginBtnV');
 	},
 
 	'change #businessPhotofiles' : function(event){

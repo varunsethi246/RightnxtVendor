@@ -249,7 +249,7 @@ Meteor.methods({
 					"ownerMobile" 		: formValues.ownerMobile,
 					"ownerEmail" 		: formValues.ownerEmail,
 					"ownerDesc" 		: formValues.ownerDesc,
-					"ownerPhoto" 		: formValues.ownerPhoto,
+					// "ownerPhoto" 		: formValues.ownerPhoto,
 					"businessTermNCon" 	: formValues.businessTermNCon,
 					}
 			}, 	
@@ -263,6 +263,20 @@ Meteor.methods({
 		return businessLink;
 	},
 	'updateBusinessAboutOwnerImage':function(businessLink,filePath){
+		var businessLinkData = Business.findOne({'businessLink' : businessLink});
+        if(businessLinkData.ownerPhoto){
+            var delId = businessLinkData.ownerPhoto;
+	        Meteor.call('removeOwnerImage', delId,
+	            function(error,result){
+	              if(error){
+	                // Bert.alert('There is some error in submitting this form!','danger','growl-top-right');
+	                return;
+	              }else{
+	                
+	              }
+	            }
+	        );
+        }
 		Business.update(
 			{businessLink: businessLink},
 			{$set: { 

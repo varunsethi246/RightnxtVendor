@@ -4,7 +4,8 @@ import { Template } from 'meteor/templating';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { Business } from '../../api/businessMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
-
+import { OwnerImage } from '/imports/videoUploadClient/ownerImageClient.js';
+import ImageCompressor from 'image-compressor.js';
 
 import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage';
 
@@ -22,16 +23,16 @@ Template.addvendorAboutOwner.helpers({
 	    }
 	    //owner image
 	    if(busData.ownerPhoto){
-	    	var pic = BusinessImgUploadS3.findOne({"_id":busData.ownerPhoto});
+	    	var pic = OwnerImage.findOne({"_id":busData.ownerPhoto});
 	    	if(pic){
-	    		if(pic.copies){
-    				if(pic.copies.businessImgS3.type == 'image/png'){
+	    		// if(pic.copies){
+    				if(pic.type == 'image/png'){
 						busData.checkpngImg = 'bkgImgNone';
 					}else{
 						busData.checkpngImg = '';
 					}
-	    		}
-	    		busData.ownerPhoto = pic.url();
+	    		// }
+	    		busData.ownerPhoto = pic.link();
 	    	}else{
 	    		busData.ownerPhoto = '/images/RightNxt-Loading.gif';
 	    	}
@@ -91,35 +92,86 @@ Template.addvendorAboutOwner.events({
       }, 1);
    },
  
-	'change .vendorImg' : function(event,Template){
+	'change .vendorImg' : function(event,template){
      	// event.preventDefault();
 		var businessLink = FlowRouter.getParam('businessLink');
      	
-     	FS.Utility.eachFile(event, function(file) {
-     		Resizer.resize(file, {width: 300, height: 300, cropSquare: false}, function(err, file) {
-				if(err){
-					console.log('err ' , err.message);
-				}else{
-			       	BusinessImgUploadS3.insert(file, function (err, fileObj) {
-				        if (err){
-				            console.log("Error : " + err.message);
-				        } else {
-				     		var filePath = fileObj._id;
-					      	Session.set("vendorImgFilePath",filePath);
-				      	   	// userProfilePicId = fileObj._id;
-			              	Meteor.call("updateBusinessAboutOwnerImage", businessLink, filePath,
-			                function(error, result) { 
-			                    if(error) {
-			                    // Bert.alert('Error Message: ' +error.reason ); 
-			                    }else{
-			                    // Bert.alert( 'Image Updated successfully!!!!', 'success', 'growl-top-right' );
-			                    }
-			                });
-				        }
-				    });
-     			}
-     		});
-     	});
+     	file = event.target.files[0]; // FileList object\
+	    var businessLink = FlowRouter.getParam('businessLink');
+	    
+	    if(file){
+	      // // Only process image files.
+	      // var reader = new FileReader();    
+	      // // Closure to capture the file information.
+	      // reader.onload = (function(theFile) {
+	      //   return function(e) {
+	      //     // Render thumbnail.
+	      //     var span = document.createElement('span');
+	      //     span.innerHTML = ['<img class="draggedImg businessOwnerImg" id="changeOwnerProfilePic" src="', e.target.result,
+	      //                       '" title="', escape(theFile.name), '"/>'].join('');
+	      //     document.getElementById('changeOwnerProfilePic').replaceWith(span);
+
+	      //     if(file){
+	      //       if(file.type=="image/png"){
+	      //         $('#changeOwnerProfilePic').addClass('bkgImgNone');
+	      //       }
+	      //     }
+	          
+	      //   };
+	      // })(file); //end of onload
+
+	      // // Read in the image file as a data URL.
+	      // reader.readAsDataURL(file);
+
+	      const imageCompressor = new ImageCompressor();
+	      imageCompressor.compress(file)
+	        .then((result) => {
+	          // console.log(result);
+
+	          // Handle the compressed image file.
+	          // We upload only one file, in case
+	        // multiple files were selected
+	        const upload = OwnerImage.insert({
+	          file: result,
+	          streams: 'dynamic',
+	          chunkSize: 'dynamic',
+	          // imagetype: 'profile',
+	        }, false);
+
+	        upload.on('start', function () {
+	          // template.currentUpload.set(this);
+	        });
+
+	        upload.on('end', function (error, fileObj) {
+	          if (error) {
+	            // alert('Error during upload: ' + error);
+	            console.log('Error during upload 1: ' + error);
+	            console.log('Error during upload 1: ' + error.reason);
+	          } else {
+	            // alert('File "' + fileObj._id + '" successfully uploaded');
+	            Bert.alert('Owner Image uploaded.','success','growl-top-right');
+	            // console.log(fileObj._id);
+	            // Session.set("vendorImgFilePath",fileObj._id);
+	            Meteor.call('updateBusinessAboutOwnerImage', businessLink, fileObj._id, 
+	              function(error,result){
+	                if(error){
+	                  // Bert.alert('There is some error in submitting this form!','danger','growl-top-right');
+	                  return;
+	                }else{
+	                  
+	                }
+	              }
+	            );
+	          }
+	          // template.currentUpload.set(false);
+	        });
+
+	        upload.start();
+	        })
+	        .catch((err) => {
+	          // Handle the error
+	      })    
+	    }
 	},
 
 	'submit .businessAboutOwner': function(event){
@@ -133,7 +185,7 @@ Template.addvendorAboutOwner.events({
 		}
 
 		var businessLink = FlowRouter.getParam('businessLink');
-		var filePath = Session.get("vendorImgFilePath");
+		// var filePath = Session.get("vendorImgFilePath");
 		// console.log(agreeTerms);
 	    $('.SpanBusinessTandC').removeClass('ErrorRedText hvr-buzz-out tAndCBlock');
 
@@ -158,7 +210,7 @@ Template.addvendorAboutOwner.events({
 			"ownerMobile" 		: ownerMob,
 			"ownerEmail" 		: event.target.ownerEmail.value,
 			"ownerDesc" 		: ownerDescription,
-			"ownerPhoto" 		: filePath,
+			// "ownerPhoto" 		: filePath,
 			"businessTermNCon" 	: agreeTerms,
 		}
 

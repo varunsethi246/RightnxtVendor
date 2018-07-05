@@ -10,17 +10,18 @@ import { Offers } from '/imports/api/offersMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';
 import { Bookmark } from '/imports/api/bookmarkMaster.js';
 import { BeenThere } from '/imports/api/beenThereMaster.js';
-import { OfferImagesS3 } from '/client/cfsjs/offersImagesS3.js';
 import { BusinessVideoUpload } from '/client/cfsjs/businessVideo.js';
 import { Likes } from '/imports/api/likesMaster.js';
 import { BussImgLikes } from '/imports/api/businessImageLikesMaster.js';
 import { UserStatistics } from '/imports/api/userViewMaster.js';
 import { UserLatLng } from '/imports/api/userViewMaster.js';
-import { BusinessMenuUpload } from '/client/cfsjs/businessMenu.js';
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { SavedOffer } from '/imports/api/savedOffersMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
+import { BusinessMenu } from '/imports/videoUploadClient/businessMenuClient.js';
+import { OfferImage } from '/imports/videoUploadClient/offerImageClient.js';
+import { OwnerImage } from '/imports/videoUploadClient/ownerImageClient.js';
 
 import '../BusinessEnquiry/businessEnquiry.js';
 import './vendorBusinessLayout.html';
@@ -85,10 +86,18 @@ if (Meteor.isClient) {
   });
 }
 
+Template.offersTabContent.onCreated(function(){
+  this.subscribe('businessOfferImage');
+});
+Template.vendorBusinessLayout.onCreated(function(){
+  this.subscribe('businessImage');
+  this.subscribe('businessMenuImage');
+  this.subscribe('ownerImage');
+});
+
 Template.businessLocation.onRendered(function() {
   GoogleMaps.load();
 });
-
 
 Template.businessLocation.helpers({
     businessMapLocation: function() {
@@ -331,16 +340,16 @@ Template.vendorBusinessLayout.helpers({
 			//======================================================
 			if(businessObj.businessMenu){
 				for(var i=0; i<businessObj.businessMenu.length; i++){
-					var businessImgData = BusinessMenuUpload.findOne({"_id":businessObj.businessMenu[i].menu});
+					var businessImgData = BusinessMenu.findOne({"_id":businessObj.businessMenu[i].menu});
 					if(businessImgData){
-						if(businessImgData.copies){
-							if(businessImgData.copies.businessMenu.type == 'image/png'){
+						// if(businessImgData.copies){
+							if(businessImgData.type == 'image/png'){
 								businessObj.businessMenu[i].checkpngImg = 'bkgImgNone';
 							}else{
 								businessObj.businessMenu[i].checkpngImg = '';
 							}
-						}
-						businessObj.businessMenu[i].menuUrl = businessImgData.url();
+						// }
+						businessObj.businessMenu[i].menuUrl = businessImgData.link();
 						if(i < 6){
 							businessObj.businessMenu[i].showMenu = "";	
 						}else{
@@ -368,16 +377,16 @@ Template.vendorBusinessLayout.helpers({
 						businessObj.businessImages[i].imgUrl  = userImgData.url() ;
 						businessObj.businessImages[i].showImg  = "hideOffer" ;
 					}else{
-						var businessImgData = BusinessImgUploadS3.findOne({"_id":businessObj.businessImages[i].img});
+						var businessImgData = BusinessImage.findOne({"_id":businessObj.businessImages[i].img});
 						if(businessImgData){
-							if(businessImgData.copies){
-								if(businessImgData.copies.businessImgS3.type == 'image/png'){
+							// if(businessImgData.copies){
+								if(businessImgData.type == 'image/png'){
 									businessObj.businessImages[i].checkpngImage = 'bkgImgNone';
 								}else{
 									businessObj.businessImages[i].checkpngImage = '';
 								}
-							}	
-							businessObj.businessImages[i].imgUrl = businessImgData.url();
+							// }	
+							businessObj.businessImages[i].imgUrl = businessImgData.link();
 							businessObj.businessImages[i].showImg = "hideOffer";
 						}						
 					}
@@ -402,9 +411,14 @@ Template.vendorBusinessLayout.helpers({
 			}
 
 			if(businessObj.ownerPhoto){
-				var businessImgData = BusinessImgUploadS3.findOne({"_id":businessObj.ownerPhoto});	
+				var businessImgData = OwnerImage.findOne({"_id":businessObj.ownerPhoto});	
 				if(businessImgData){
-					businessObj.picUrl = businessImgData.url();
+					if(businessImgData.type == 'image/png'){
+						businessObj.checkpngImges = 'bkgImgNone';
+					}else{
+						businessObj.checkpngImges = '';
+					}
+					businessObj.picUrl = businessImgData.link();
 				}
 			}
 
@@ -551,7 +565,7 @@ Template.offersTabContent.helpers({
 	offerImgData(){
 		var businessOffers = Offers.findOne({"_id" : this._id, "offerStatus":'Active'});
 		if(businessOffers){
-			var pic = OfferImagesS3.findOne({'_id' : businessOffers.offerImage});
+			var pic = OfferImage.findOne({'_id' : businessOffers.offerImage});
 			if(pic){
 				return pic;
 			}	

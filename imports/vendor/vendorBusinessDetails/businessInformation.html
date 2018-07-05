@@ -90,12 +90,12 @@
 		    {{/if}}
 		    {{#if isInRole 'admin'}}
 			    {{#if ownerPhoto}}
-			    	<img src="{{picUrl}}" alt="ownerImg" class="bgGif">
+			    	<img src="{{picUrl}}" alt="ownerImg" class="bgGif {{checkpngImges}}">
 			    	<p>{{> editableText collection="business" field="ownerFullName"}}</p>
 			    {{/if}}
 			{{else}}
 				{{#if ownerPhoto}}
-			    	<img src="{{picUrl}}" alt="ownerImg" class="bgGif">
+			    	<img src="{{picUrl}}" alt="ownerImg" class="bgGif {{checkpngImges}}">
 			    	<p>{{ownerFullName}}</p>
 			    {{/if}}
 			{{/if}}

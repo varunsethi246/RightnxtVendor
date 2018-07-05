@@ -6,16 +6,18 @@ import { Business } from '/imports/api/businessMaster.js';
 import { BeenThere } from '/imports/api/beenThereMaster.js';
 import { Review } from '../../../api/reviewMaster.js';
 
-import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { FollowUser } from '/imports/api/userFollowMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
 
 import '../../vendor.js';
 
 
 // console.log('-------------before code----------');
 
-
+Template.VendorBeenThere.onCreated(function(){
+  this.subscribe('vendorImage');
+});
 Template.VendorBeenThere.helpers({
 	'businessBeenThereData': function(){
 		var businessLink = FlowRouter.getParam('businessLink');
@@ -24,16 +26,16 @@ Template.VendorBeenThere.helpers({
 			for(i=0; i<businessBeenThere.length; i++){
 				var id = businessBeenThere[i].userId;
 				if(id){
-					console.log("id",id);
+					// console.log("id",id);
 					var data = Meteor.users.findOne({"_id":id});
-					console.log("data",data);
+					// console.log("data",data);
 					if(data){
 						if(data.profile){
 							businessBeenThere[i].username = data.profile.name;
 							if(data.profile.userProfilePic){
-								var pic = UserProfileStoreS3New.findOne({"_id":data.profile.userProfilePic});
+								var pic = VendorImage.findOne({"_id":data.profile.userProfilePic});
 								if(pic){
-									businessBeenThere[i].userProfilePic = pic.url();	
+									businessBeenThere[i].userProfilePic = pic.link();	
 								}
 								else{
 									businessBeenThere[i].userProfilePic = "/users/profile/profile_image_dummy.svg";	

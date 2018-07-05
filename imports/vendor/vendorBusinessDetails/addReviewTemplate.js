@@ -5,10 +5,9 @@ import { Bert } from 'meteor/themeteorchef:bert';
 
 import {Review} from '/imports/api/reviewMaster.js';
 import { Business } from '/imports/api/businessMaster.js';
-import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
-
+import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
 
 
 var filesR = [];
@@ -25,6 +24,9 @@ tagFriend1 = new SearchSource('tagFriend', fields, options);
 // var tagedFriends = [];
 tagedFriends = [];
 
+Template.addReviewTemplate.onCreated(function(){
+  this.subscribe('vendorImage');
+});
 Template.addReviewTemplate.onRendered(function(){
 	counterImg = 0;
 });
@@ -611,10 +613,10 @@ Template.addReviewTemplate.helpers({
 			var data = Meteor.users.findOne({"_id":id},{"profile":1});
 			if(data){
 				
-				var pic = UserProfileStoreS3New.findOne({"_id":data.profile.userProfilePic});
+				var pic = VendorImage.findOne({"_id":data.profile.userProfilePic});
 				if(pic){
 					// console.log(pic);
-					data.profile.userProfilePic = pic.url();	
+					data.profile.userProfilePic = pic.link();	
 				}
 				else{
 					data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	

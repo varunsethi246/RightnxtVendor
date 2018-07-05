@@ -1,28 +1,11 @@
 import './generalHeader.html';
-import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { Notification } from '/imports/api/notification.js';
 import { ConfigSettings } from '/imports/api/companysettingsAPI.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
 
-Template.generalHeader.onRendered(function(){
-
-	// $(document).ready(function(){
-	// 	$('.userCommentWrapper').each(function(){
-	// 		var i = 0;
-	// 		$(this).children('.commentReplyArr').each(function(){
-	// 			if(i>1){
-	// 				$(this).hide();
-	// 				console.log('this :',$(this).attr('class'));
-	// 			}
-	// 			i++;
-	// 		});
-	// 		if($(this).children('.showreplyCmt').length == 0){
-	// 			$(this).append("<div class='col-lg-3 pull-right showreplyCmt'> Show all replies </div>");
-	// 		}
-	// 	});
-
-	// });
-
+Template.generalHeader.onCreated(function(){
+  this.subscribe('vendorImage');
 });
 Template.generalHeader.helpers({
 	'userDetails' : function(){
@@ -30,11 +13,16 @@ Template.generalHeader.helpers({
 		var id = Meteor.userId();
 		if(id){
 			var data = Meteor.users.findOne({"_id":id},{"profile":1});
+			// console.log(data);
 			if(data){
-
-				var pic = UserProfileStoreS3New.findOne({"_id":data.profile.userProfilePic});
+				var pic = VendorImage.findOne({"_id":data.profile.userProfilePic});
 				if(pic){
-					data.profile.userProfilePic = pic.url();	
+					if(pic.type == 'image/png'){
+						data.checkpngImg = 'bkgImgNone';
+					}else{
+						data.checkpngImg = '';
+					}
+					data.profile.userProfilePic = pic.link();	
 				}
 				else{
 					data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
@@ -225,4 +213,3 @@ Template.generalHeader.events({
 		
 	//  },
 });
-

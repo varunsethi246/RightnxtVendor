@@ -3686,7 +3686,8 @@ margin-bottom:8px
 .business_offer {
 color:#4e4f51;
 font-size:14px;
-font-family:'PROXIMANOVA-BOLD'
+font-family:'PROXIMANOVA-BOLD';
+margin-top: 10px;
 }
 
 .valid_txt {

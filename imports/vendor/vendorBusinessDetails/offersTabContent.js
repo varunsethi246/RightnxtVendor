@@ -7,8 +7,7 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import { Business } from '/imports/api/businessMaster.js';
 import { Offers } from '/imports/api/offersMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';
-import { OfferImagesS3 } from '/client/cfsjs/offersImagesS3.js';
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
+import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
 
 import './offersTabContent.html';
 
@@ -25,7 +24,9 @@ import './offersTabContent.html';
 // 	},
 
 // });
-
+Template.offersTabContent.onCreated(function(){
+  this.subscribe('businessImage');
+});
 
 Template.offersTabContent.events({
 	'click .offerContentfb':function(event){
@@ -40,9 +41,9 @@ Template.offersTabContent.events({
 			var businessData = Business.findOne({'_id':busId});
 			if(businessData){
 				if(businessData.businessImages){
-					var pic = BusinessImgUploadS3.findOne({"_id":businessData.businessImages[0].img});
+					var pic = BusinessImage.findOne({"_id":businessData.businessImages[0].img});
 					if(pic){
-						businessData.businessImages = pic.copies.businessImgS3.key;
+						businessData.businessImages = pic.path;
 					}else{
 						businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
 					}
@@ -74,9 +75,9 @@ Template.offersTabContent.events({
 			var businessData = Business.findOne({'_id':busId});
 			if(businessData){
 				if(businessData.businessImages){
-					var pic = BusinessImgUploadS3.findOne({"_id":businessData.businessImages[0].img});
+					var pic = BusinessImage.findOne({"_id":businessData.businessImages[0].img});
 					if(pic){
-						businessData.businessImages = pic.copies.businessImgS3.key;
+						businessData.businessImages = pic.path;
 					}else{
 						businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
 					}

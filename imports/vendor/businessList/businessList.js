@@ -2,12 +2,11 @@ import { Enquiry } from '/imports/api/enquiryMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';
 import { Offers } from '/imports/api/offersMaster.js';
 import { Business } from '/imports/api/businessMaster.js';
-import { EnquiryImgUploadS3 } from '/client/cfsjs/enquiryImages.js';
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { BusinessBanner } from '/imports/api/businessBannerMaster.js';
 import { BusinessAds } from '/imports/api/businessAdsMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { EnquiryImage } from '/imports/videoUploadClient/enquiryImageClient.js';
 
 import '../../common/searchinitialisation.js'
 import './businessList.html'
@@ -37,6 +36,9 @@ var options = {
 var fields = ['businessTitle','tags','businesscategories'];
 businessSearchbanner1 = new SearchSource('sidebarBusinessBanners', fields, options);
 
+Template.allbusinessList.onCreated(function(){
+  this.subscribe('businessEnquiryImage');
+});
 
 Template.businessList.onRendered(function(){
     $("html,body").scrollTop(0);
@@ -409,11 +411,35 @@ Template.allbusinessList.events({
 		if(errorIn!="true" && enquiryName && enquiryEmail && enquiryPhoneTwo && enquiryDesc) {
 			if(filesM.length > 0){
 		      for(i = 0 ; i < filesM.length; i++){
-		          	EnquiryImgUploadS3.insert(filesM[i], function (err, fileObj) {
-			            if(err){
+		      		const imageCompressor = new ImageCompressor();
+				    imageCompressor.compress(filesM[i])
+				        .then((result) => {
+				          // console.log(result);
 
-			            }	else{
-			              	enquiryPhoto = fileObj._id;
+				          // Handle the compressed image file.
+				          // We upload only one file, in case
+				        // multiple files were selected
+				        const upload = EnquiryImage.insert({
+				          file: result,
+				          streams: 'dynamic',
+				          chunkSize: 'dynamic',
+				          // imagetype: 'profile',
+				        }, false);
+
+				        upload.on('start', function () {
+				          // template.currentUpload.set(this);
+				        });
+
+				        upload.on('end', function (error, fileObj) {
+				          if (error) {
+				            // alert('Error during upload: ' + error);
+				            console.log('Error during upload 1: ' + error);
+				            console.log('Error during upload 1: ' + error.reason);
+				          } else {
+				            // alert('File "' + fileObj._id + '" successfully uploaded');
+				            Bert.alert('Enquiry Image uploaded.','success','growl-top-right');
+				            // console.log(fileObj._id);
+				            enquiryPhoto = fileObj._id;
 				            for(j=0;j<serched.length;j++){
 								var id = serched[j];
 								var businessid = Business.findOne({"businessLink":id});
@@ -565,8 +591,15 @@ Template.allbusinessList.events({
 									});
 								}
 							}
-			            }
-		          });
+				          }
+				          // template.currentUpload.set(false);
+				        });
+
+				        upload.start();
+				        })
+				        .catch((err) => {
+				          // Handle the error
+				    })
 		      	}
 
 		      	filesM = '';

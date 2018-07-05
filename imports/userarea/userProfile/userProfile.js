@@ -1,5 +1,4 @@
 import './userProfile.html';
-import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { FollowUser } from '/imports/api/userFollowMaster.js';
 import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';

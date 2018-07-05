@@ -4,18 +4,23 @@ import './businessReport.html';
 import './imageReport.html';
 import '../../vendorBusinessDetails/reportModalForm.html';
 
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { Business } from '/imports/api/businessMaster.js';
 import { Reports } from '/imports/api/reportMaster.js';
-import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
+import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
 
 import '../../vendor.js';
 
 // var tabStatus = '';
-
+Template.businessReport.onCreated(function(){
+  this.subscribe('vendorImage');
+});
+Template.imageReport.onCreated(function(){
+  this.subscribe('vendorImage');
+  this.subscribe('businessImage');
+});
 Template.vendorReport.helpers({
-	
 	'businessReports': function (){
 		var businessLink = FlowRouter.getParam('businessLink');
 		var reports = Reports.find({"businessLink":businessLink}).fetch();
@@ -73,9 +78,9 @@ Template.businessReport.helpers({
 		var userObj = Meteor.users.findOne({"_id":userid});
 		if (userObj){
 			if(userObj.profile.userProfilePic){
-				var pic = UserProfileStoreS3New.findOne({"_id":userObj.profile.userProfilePic});
+				var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
 				if(pic){
-					userProfilePic = pic.url();	
+					userProfilePic = pic.link();	
 				}
 				else{
 					userProfilePic = "/users/profile/profile_image_dummy.svg";	
@@ -107,11 +112,11 @@ Template.imageReport.helpers({
 		}
 	},
 	'imageReportPic':function(imgId){
-		var imgData = BusinessImgUploadS3.findOne({"_id":imgId});
+		var imgData = BusinessImage.findOne({"_id":imgId});
 		if(imgData)
 		{
 			var data = {
-				img : imgData.url(),
+				img : imgData.link(),
 			};
 		}else{
 			var data = {
@@ -124,9 +129,9 @@ Template.imageReport.helpers({
 		var userObj = Meteor.users.findOne({"_id":userid});
 		if (userObj){
 			if(userObj.profile.userProfilePic){
-				var pic = UserProfileStoreS3New.findOne({"_id":userObj.profile.userProfilePic});
+				var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
 				if(pic){
-					userProfilePic = pic.url();	
+					userProfilePic = pic.link();	
 				}
 				else{
 					userProfilePic = "/users/profile/profile_image_dummy.svg";	

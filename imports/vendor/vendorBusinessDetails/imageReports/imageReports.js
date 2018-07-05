@@ -4,11 +4,9 @@ import './imageCommet.html';
 import '../vendorBusinessCarousel.html';
 import '../imageCarouselItems.html';
 
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { BusinessVideoUpload } from '/client/cfsjs/businessVideo.js';
-import { BusinessMenuUpload } from '/client/cfsjs/businessMenu.js';
 import { Business } from '/imports/api/businessMaster.js';
 import { Reports } from '/imports/api/reportMaster.js';
 import { BussImgLikes } from '/imports/api/businessImageLikesMaster.js';
@@ -16,8 +14,17 @@ import { Review } from '/imports/api/reviewMaster.js';
 import { ImageComment } from '/imports/api/imageCommentMaster.js';
 import { ImageCommentLike } from '/imports/api/imageCommentLikeMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
+import { BusinessMenu } from '/imports/videoUploadClient/businessMenuClient.js';
 
 // hello
+Template.imageCommet.onCreated(function(){
+  this.subscribe('businessImage');
+});
+Template.imageReports.onCreated(function(){
+  this.subscribe('businessImage');
+  this.subscribe('businessMenuImage');
+});
 Template.imageCommet.helpers({
 	'businessComment' : function(){
 		var userInfo = Session.get("carouselLikeCount");	
@@ -73,9 +80,9 @@ Template.imageCommet.helpers({
 		if(businessName){
 			if(businessName.businessImages.length>0){
 				if(businessName.businessImages[0].img){
-					var pic = BusinessImgUploadS3.findOne({"_id":businessName.businessImages[0].img});
+					var pic = BusinessImage.findOne({"_id":businessName.businessImages[0].img});
 					if(pic){
-						var pic = pic.url();
+						var pic = pic.link();
 					}else{
 						var pic = '/images/rightnxt_image_nocontent.jpg';
 					}
@@ -475,7 +482,7 @@ Template.imageReports.helpers({
 			if(business.businessImages){
 				var picId = Session.get('ModalimageID')
 				for (var i = 0 ; i <  business.businessImages.length; i++) {
-					var pic = BusinessImgUploadS3.findOne({"_id":business.businessImages[i].img});
+					var pic = BusinessImage.findOne({"_id":business.businessImages[i].img});
 					var newObj = {};
 					newObj.imgLikesStatus 	= 'inactive';
 					newObj.imgLikeClass 	= 'fa-heart-o';
@@ -483,10 +490,10 @@ Template.imageReports.helpers({
 					newObj._id			= business.businessImages[i].img ;
 					if(pic){
 						if(pic._id == picId	){
-							newObj.img 			=  pic.url() ;
+							newObj.img 			=  pic.link() ;
 							newObj.activeClass 	= 'active';
 						}else{
-							newObj.img 			=  pic.url() ;
+							newObj.img 			=  pic.link() ;
 							newObj.activeClass 	= '';
 						}
 						// arrayBusiness.push(newObj);
@@ -513,7 +520,7 @@ Template.imageReports.helpers({
 			if(business.businessMenu){
 				var picId = Session.get('ModalimageID')
 				for (var i = 0 ; i <  business.businessMenu.length; i++) {
-					var picMenu = BusinessMenuUpload.findOne({"_id":business.businessMenu[i].menu});
+					var picMenu = BusinessMenu.findOne({"_id":business.businessMenu[i].menu});
 					var newObj = {};
 					newObj.imgLikesStatus 	= 'inactive';
 					newObj.imgLikeClass 	= 'fa-heart-o';
@@ -521,10 +528,10 @@ Template.imageReports.helpers({
 					newObj._id			= business.businessMenu[i].menu ;
 					if(picMenu){
 						if(picMenu._id == picId){
-							newObj.img 			=  picMenu.url() ;
+							newObj.img 			=  picMenu.link() ;
 							newObj.activeClass 	= 'active';
 						}else{
-							newObj.img 			=  picMenu.url() ;
+							newObj.img 			=  picMenu.link() ;
 							newObj.activeClass 	= '';
 						}
 					}
@@ -832,9 +839,9 @@ Template.imageReports.events({
 			}
 			if(businessData.businessImages){
 				var imgId = $('#myCarousel1 .carousel-inner').find('.active').children('img').attr('id');
-				var pic = BusinessImgUploadS3.findOne({"_id":imgId});
+				var pic = BusinessImage.findOne({"_id":imgId});
 				if(pic){
-					businessData.businessImages = pic.copies.businessImgS3.key;
+					businessData.businessImages = pic.path;
 				}else{
 					businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
 				}
@@ -857,9 +864,9 @@ Template.imageReports.events({
 		var businessData = Business.findOne({'businessLink':title});
 		if(businessData){
 			if(businessData.businessImages){
-				var pic = BusinessImgUploadS3.findOne({"_id":imageID});
+				var pic = BusinessImage.findOne({"_id":imageID});
 				if(pic){
-					businessData.businessImages = pic.copies.businessImgS3.key;
+					businessData.businessImages = pic.path;
 				}else{
 					businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
 				}

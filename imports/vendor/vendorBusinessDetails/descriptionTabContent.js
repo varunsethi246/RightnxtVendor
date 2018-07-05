@@ -9,10 +9,9 @@ import { Review } from '/imports/api/reviewMaster.js';
 import { ReviewCommentLikes } from '/imports/api/reviewCommentLikesMaster.js';
 
 import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
-import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { FollowUser } from '/imports/api/userFollowMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
 
 import './businessEventIcons.js'
 import './businessEvntIcons2.html'
@@ -27,6 +26,13 @@ tagedFriends = [];
 
 var filesR = [];
 var counterImg = 0;
+
+Template.userReviewTemplate.onCreated(function(){
+  this.subscribe('vendorImage');
+});
+Template.descriptionTabContent.onCreated(function(){
+  this.subscribe('vendorImage');
+});
 
 Template.userReviewTemplate.helpers({
 
@@ -162,9 +168,9 @@ Template.descriptionTabContent.helpers({
 				if (userObj){
 					if(userObj.profile.userProfilePic){
 
-							var pic = UserProfileStoreS3New.findOne({"_id":userObj.profile.userProfilePic});
+							var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
 							if(pic){
-								allReviews[i].revProfilePic = pic.url();	
+								allReviews[i].revProfilePic = pic.link();	
 							}
 							else{
 								allReviews[i].revProfilePic = "/users/profile/profile_image_dummy.svg";	
@@ -183,9 +189,9 @@ Template.descriptionTabContent.helpers({
 						if (userTagObj) {
 
 							if(userTagObj.profile.userProfilePic){
-								var imgData = UserProfileStoreS3New.findOne({"_id":userTagObj.profile.userProfilePic});
+								var imgData = VendorImage.findOne({"_id":userTagObj.profile.userProfilePic});
 								if(imgData)	{
-									dataImgUser = imgData.url();
+									dataImgUser = imgData.link();
 								}else{
 									dataImgUser = '/users/profile/profile_image_dummy.svg';
 								}
@@ -270,9 +276,9 @@ Template.descriptionTabContent.helpers({
 					var data = Meteor.users.findOne({"_id":id},{"profile":1});
 					if(data.profile.userProfilePic){
 
-						var pic = UserProfileStoreS3New.findOne({"_id":data.profile.userProfilePic});
+						var pic = VendorImage.findOne({"_id":data.profile.userProfilePic});
 						if(pic){
-							allReviews[i].userProfilePic = pic.url();	
+							allReviews[i].userProfilePic = pic.link();	
 						}
 						else{
 							allReviews[i].userProfilePic = "/users/profile/profile_image_dummy.svg";	
@@ -322,9 +328,9 @@ Template.descriptionTabContent.helpers({
 						if(userObj){
 							allReviews[i].userComments[k].commentUserName = userObj.profile.name;
 							if(userObj.profile.userProfilePic){								
-								var pic = UserProfileStoreS3New.findOne({"_id":userObj.profile.userProfilePic});
+								var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
 								if(pic){
-									allReviews[i].userComments[k].userProfileImgPath = pic.url();	
+									allReviews[i].userComments[k].userProfileImgPath = pic.link();	
 								}
 								else{
 									allReviews[i].userComments[k].userProfileImgPath = "/users/profile/profile_image_dummy.svg";
@@ -364,9 +370,9 @@ Template.descriptionTabContent.helpers({
 									if(userObj1){
 										replyObj.commentReplyUserName = userObj1.profile.name;
 										if(userObj1.profile.userProfilePic){								
-											var pic = UserProfileStoreS3New.findOne({"_id":userObj1.profile.userProfilePic});
+											var pic = VendorImage.findOne({"_id":userObj1.profile.userProfilePic});
 											if(pic){
-												replyObj.replyProfileImgPath = pic.url();	
+												replyObj.replyProfileImgPath = pic.link();	
 											}
 											else{
 												replyObj.replyProfileImgPath = "/users/profile/profile_image_dummy.svg";
@@ -1286,9 +1292,9 @@ Template.userReviewTemplate.events({
 			var userVar = Meteor.users.findOne({"_id":userData.tagedFriends[i]});
 			var userImg = "";
 			if(userVar.profile.userProfilePic){
-				var imgData = UserProfileStoreS3New.findOne({"_id":userVar.profile.userProfilePic});
+				var imgData = VendorImage.findOne({"_id":userVar.profile.userProfilePic});
 				if(imgData)	{
-				var userImg = imgData.url();
+				var userImg = imgData.link();
 				}else{
 				var userImg = '/users/profile/profile_image_dummy.svg';
 				}

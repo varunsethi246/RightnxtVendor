@@ -1,10 +1,9 @@
 import { Business } from '/imports/api/businessMaster.js';
 import { Enquiry } from '/imports/api/enquiryMaster.js';
-import { EnquiryImgUploadS3 } from '/client/cfsjs/enquiryImages.js';
-import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { EnquiryImage } from '/imports/videoUploadClient/enquiryImageClient.js';
 import ImageCompressor from 'image-compressor.js';
+import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
 
 import '../../vendor.js';
 import './allEnquries.html';
@@ -26,6 +25,9 @@ import './vendorEnquiry.html';
 //   this.subscribe('businessEnquiryImage');
 // });
 
+Template.vendorEnquiry.onCreated(function(){
+  this.subscribe('vendorImage');
+});
 Template.vendorEnquiry.helpers({
 	// Enquiry enquiryImages
 	vendorEnquiryBusName:function(){
@@ -61,9 +63,9 @@ Template.vendorEnquiry.helpers({
 								var userObj = Meteor.users.findOne({"_id":userId});
 								if (userObj){
 									if(userObj.profile.userProfilePic){
-										var pic = UserProfileStoreS3New.findOne({"_id":userObj.profile.userProfilePic});
+										var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
 										if(pic){
-											data[i].userProfilePic = pic.url();	
+											data[i].userProfilePic = pic.link();	
 										}
 										else{
 											data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";	
@@ -84,9 +86,9 @@ Template.vendorEnquiry.helpers({
 							var userObj = Meteor.users.findOne({"_id":userId});
 							if (userObj){
 								if(userObj.profile.userProfilePic){
-									var pic = UserProfileStoreS3New.findOne({"_id":userObj.profile.userProfilePic});
+									var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
 									if(pic){
-										data[i].userProfilePic = pic.url();	
+										data[i].userProfilePic = pic.link();	
 									}
 									else{
 										data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";	
@@ -127,9 +129,9 @@ Template.vendorEnquiry.helpers({
 								var userObj = Meteor.users.findOne({"_id":userId});
 								if (userObj){
 									if(userObj.profile.userProfilePic){
-										var pic = UserProfileStoreS3New.findOne({"_id":userObj.profile.userProfilePic});
+										var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
 										if(pic){
-											data[i].userProfilePic = pic.url();	
+											data[i].userProfilePic = pic.link();	
 										}
 										else{
 											data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";	
@@ -150,9 +152,9 @@ Template.vendorEnquiry.helpers({
 							var userObj = Meteor.users.findOne({"_id":userId});
 							if (userObj){
 								if(userObj.profile.userProfilePic){
-									var pic = UserProfileStoreS3New.findOne({"_id":userObj.profile.userProfilePic});
+									var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
 									if(pic){
-										data[i].userProfilePic = pic.url();	
+										data[i].userProfilePic = pic.link();	
 									}
 									else{
 										data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";	
@@ -194,9 +196,9 @@ Template.vendorEnquiry.helpers({
 								var userObj = Meteor.users.findOne({"_id":userId});
 								if (userObj){
 									if(userObj.profile.userProfilePic){
-										var pic = UserProfileStoreS3New.findOne({"_id":userObj.profile.userProfilePic});
+										var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
 										if(pic){
-											data[i].userProfilePic = pic.url();	
+											data[i].userProfilePic = pic.link();	
 										}
 										else{
 											data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";	
@@ -217,9 +219,9 @@ Template.vendorEnquiry.helpers({
 							var userObj = Meteor.users.findOne({"_id":userId});
 							if (userObj){
 								if(userObj.profile.userProfilePic){
-									var pic = UserProfileStoreS3New.findOne({"_id":userObj.profile.userProfilePic});
+									var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
 									if(pic){
-										data[i].userProfilePic = pic.url();	
+										data[i].userProfilePic = pic.link();	
 									}
 									else{
 										data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";	

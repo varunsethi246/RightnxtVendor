@@ -1,5 +1,4 @@
 import { Business } from '/imports/api/businessMaster.js';
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { OwnerImage } from '/imports/videoUploadClient/ownerImageClient.js';
 import ImageCompressor from 'image-compressor.js';
@@ -99,16 +98,7 @@ Template.vendorAboutOwner.events({
                   // Bert.alert('There is some error in submitting this form!','danger','growl-top-right');
                   return;
                 }else{
-                  Meteor.call('removeOwnerImage', 
-                    function(error,result){
-                      if(error){
-                        // Bert.alert('There is some error in submitting this form!','danger','growl-top-right');
-                        return;
-                      }else{
-                        
-                      }
-                    }
-                  );
+                  
                 }
               }
             );

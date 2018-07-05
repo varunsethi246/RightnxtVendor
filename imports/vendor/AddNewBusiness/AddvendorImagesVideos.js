@@ -4,10 +4,11 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { BizVideo } from '/imports/videoUploadClient/videoUpload.js';
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { BusinessMenuUpload } from '/client/cfsjs/businessMenu.js';
 import { Categories } from '/imports/api/masterData/categoriesMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
+import ImageCompressor from 'image-compressor.js';
 
 import '../vendor.js';
 import './AddvendorImagesVideos.html'
@@ -156,19 +157,19 @@ Template.addvendorImagesVideos.helpers({
 				for(i = 0 ; i < imgListCount ; i++)
 				{
 					var imgId =  data.businessImages[i];
-					var imgData = BusinessImgUploadS3.findOne({"_id":imgId.img});
+					var imgData = BusinessImage.findOne({"_id":imgId.img});
 					if(imgData){
-						if (imgData.copies) {
-							if(imgData.copies.businessImgS3.type == 'image/png'){
+						// if (imgData.copies) {
+							if(imgData.type == 'image/png'){
 								imgData.checkpngImg = 'bkgImgNone';
 							}else{
 								imgData.checkpngImg = '';
 							}
 							imgList[i] = imgData;
-						}
+						// }
 					}
 				}
-				console.log('imgList ' , imgList);
+				// console.log('imgList ' , imgList);
 				return imgList;
 			}
 		}
@@ -240,34 +241,54 @@ Template.addvendorImagesVideos.events({
 		
 		var businessLink = FlowRouter.getParam('businessLink');
 		for(i = 0 ; i < files.length; i++){
+			const imageCompressor = new ImageCompressor();
+		      imageCompressor.compress(files[i])
+		        .then((result) => {
+		          // console.log(result);
 
-			Resizer.resize(files[i], {width: 300, height: 300, cropSquare: false}, function(err, file) {
-				if(err){
-					console.log('err ' , err.message);
-				}else{
-				
-					BusinessImgUploadS3.insert(file, function (err, fileObj) {
-				        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-				        if(err){
-				        	console.log('Error : ' + err.message);
-				        }else{
-				        	var businessLink = FlowRouter.getParam('businessLink');
-				        	
-				        	var imgId =  fileObj._id ;
-					        Meteor.call("updateVendorBulkImg", businessLink,imgId,
-					          function(error, result) { 
-					              if(error) {
-					                  console.log ('Error Message: ' + error ); 
-					              }else{
-									// console.log('img upload ', fileObj._id);	
-					              }
+		          // Handle the compressed image file.
+		          // We upload only one file, in case
+		        // multiple files were selected
+		        const upload = BusinessImage.insert({
+		          file: result,
+		          streams: 'dynamic',
+		          chunkSize: 'dynamic',
+		          // imagetype: 'profile',
+		        }, false);
 
-					        });
+		        upload.on('start', function () {
+		          // template.currentUpload.set(this);
+		        });
 
-				        }
-				    });
-				}
-			});
+		        upload.on('end', function (error, fileObj) {
+		          if (error) {
+		            // alert('Error during upload: ' + error);
+		            console.log('Error during upload 1: ' + error);
+		            console.log('Error during upload 1: ' + error.reason);
+		          } else {
+		            // alert('File "' + fileObj._id + '" successfully uploaded');
+		            Bert.alert('Business Image uploaded.','success','growl-top-right');
+		            // console.log(fileObj._id);
+		            // Session.set("vendorImgFilePath",fileObj._id);
+		            Meteor.call('updateVendorBulkImg', businessLink, fileObj._id, 
+		              function(error,result){
+		                if(error){
+		                  // Bert.alert('There is some error in submitting this form!','danger','growl-top-right');
+		                  return;
+		                }else{
+
+		                }
+		              }
+		            );
+		          }
+		          // template.currentUpload.set(false);
+		        });
+
+		        upload.start();
+		        })
+		        .catch((err) => {
+		          // Handle the error
+		    })    
 		}
 		$('#businessImglist').empty();
 		$('#drag1').show();
@@ -483,21 +504,28 @@ Template.addvendorImagesVideos.events({
 	'click .delBusiImg' : function(event){
 		var businessLink = FlowRouter.getParam('businessLink');
 		var delId = ($(event.target).attr('id')).split('-');
-		
+		console.log(delId);
 		Meteor.call('deleteVendorImg',businessLink,delId[1],
-          function(error, result) { 
-              if(error) {
+            function(error, result) { 
+                if(error) {
                   console.log ('Error Message: ' +error ); 
-              }else{
-					  BusinessImgUploadS3.remove(delId[1]);
-              }
-	});
+                }else{
+					Meteor.call('removeBusinessImage',delId[1],
+			            function(error, result) { 
+			            if(error) {
+			                console.log ('Error Message: ' +error ); 
+		                }else{
+		                }
+					}
+				);
+            }
+		});
 	},
 
 	'click .deleteVideo' : function(event){
 		var businessLink = FlowRouter.getParam('businessLink');
 		var delId = ($(event.target).attr('id')).split('-');
-		console.log('delId ', delId);
+		// console.log('delId ', delId);
 		Meteor.call('deleteVendorVideo',businessLink,delId[1],
           function(error, result) { 
               if(error) {

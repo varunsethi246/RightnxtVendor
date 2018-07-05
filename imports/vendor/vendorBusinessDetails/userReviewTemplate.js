@@ -7,11 +7,14 @@ import { Business } from '/imports/api/businessMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';
 import { ReviewCommentLikes } from '/imports/api/reviewCommentLikesMaster.js';
 import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
-import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
-
+import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
 
 var filesR = [];
 var counterImg = 0;
+
+Template.userReviewTemplate.onCreated(function(){
+  this.subscribe('businessImage');
+});
 
 Template.userReviewTemplate.helpers({
 	userLoadmoreCmmnt(dataIndex){
@@ -464,9 +467,9 @@ Template.userReviewTemplate.events({
 			var businessData = Business.findOne({'businessLink':title});
 			if(businessData){
 				if(businessData.businessImages){
-					var pic = BusinessImgUploadS3.findOne({"_id":businessData.businessImages[0].img});
+					var pic = BusinessImage.findOne({"_id":businessData.businessImages[0].img});
 					if(pic){
-						businessData.businessImages = pic.copies.businessImgS3.key;
+						businessData.businessImages = pic.path;
 					}else{
 						businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
 					}
@@ -497,9 +500,9 @@ Template.userReviewTemplate.events({
 			var businessData = Business.findOne({'businessLink':title});
 			if(businessData){
 				if(businessData.businessImages){
-					var pic = BusinessImgUploadS3.findOne({"_id":businessData.businessImages[0].img});
+					var pic = BusinessImage.findOne({"_id":businessData.businessImages[0].img});
 					if(pic){
-						businessData.businessImages = pic.copies.businessImgS3.key;
+						businessData.businessImages = pic.path;
 					}else{
 						businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
 					}

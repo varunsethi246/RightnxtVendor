@@ -1,14 +1,16 @@
 import { Business } from '/imports/api/businessMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';
-import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { FollowUser } from '/imports/api/userFollowMaster.js';
 import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { Tracker } from 'meteor/tracker';
+import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
 
 import '../../vendor.js';
 
-
+Template.vendorComments.onCreated(function(){
+  this.subscribe('vendorImage');
+});
 Template.vendorComments.helpers({
 	businessComments:function () {
 		var businessLink = FlowRouter.getParam('businessLink');
@@ -28,9 +30,9 @@ Template.vendorComments.helpers({
 				if (userObj){
 					if(userObj.profile.userProfilePic){
 
-							var pic = UserProfileStoreS3New.findOne({"_id":userObj.profile.userProfilePic});
+							var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
 							if(pic){
-								allReviews[i].revProfilePic = pic.url();	
+								allReviews[i].revProfilePic = pic.link();	
 							}
 							else{
 								allReviews[i].revProfilePic = "/users/profile/profile_image_dummy.svg";	
@@ -109,9 +111,9 @@ Template.vendorComments.helpers({
 					var data = Meteor.users.findOne({"_id":id},{"profile":1});
 					if(data.profile.userProfilePic){
 
-						var pic = UserProfileStoreS3New.findOne({"_id":data.profile.userProfilePic});
+						var pic = VendorImage.findOne({"_id":data.profile.userProfilePic});
 						if(pic){
-							allReviews[i].userProfilePic = pic.url();	
+							allReviews[i].userProfilePic = pic.link();	
 						}
 						else{
 							allReviews[i].userProfilePic = "/users/profile/profile_image_dummy.svg";	
@@ -132,9 +134,9 @@ Template.vendorComments.helpers({
 						if(userObj){
 							allReviews[i].userComments[k].commentUserName = userObj.profile.name;
 										if(userObj.profile.userProfilePic){								
-											var pic = UserProfileStoreS3New.findOne({"_id":userObj.profile.userProfilePic});
+											var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
 											if(pic){
-												allReviews[i].userComments[k].userProfileImgPath = pic.url();	
+												allReviews[i].userComments[k].userProfileImgPath = pic.link();	
 											}
 											else{
 												allReviews[i].userComments[k].userProfileImgPath = "/users/profile/profile_image_dummy.svg";

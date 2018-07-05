@@ -7,7 +7,6 @@ import { Business } from '../../../api/businessMaster.js';
 import { Offers } from '../../../api/offersMaster.js';
 import { Payment } from '../../../api/paymentMaster.js';
 import { CompanySettings } from '../../../api/companysettingsAPI.js';
-import { OfferImagesS3 } from '/client/cfsjs/offersImagesS3.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { OfferImage } from '/imports/videoUploadClient/offerImageClient.js';
 import ImageCompressor from 'image-compressor.js';
@@ -1317,7 +1316,6 @@ Template.vendorOffer2.events({
 		    })
 		}else{
 			if($(event.target).find('output').is(':empty') && $(event.target).find('.vendor2Img').is(':empty')){
-        		// OfferImagesS3.remove(offersImgId);
 				offerImageId = '/images/rightnxt_image_nocontent.jpg';
 			}else{
 				offerImageId = offersImgId;
@@ -1580,7 +1578,6 @@ Template.editOffer.events({
 					$('.modal-backdrop').hide();
 				}else{
 					Bert.alert('Offer deleted sucessfully.','success',"growl-top-right");
-					// OfferImagesS3.remove(offerObj.offerImage);
 					Meteor.call('removeOfferImage',offerObj.offerImage,function(error,result){
 						if(error){
 							console.log(error.reason);

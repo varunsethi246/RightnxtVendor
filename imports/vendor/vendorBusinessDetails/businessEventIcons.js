@@ -6,15 +6,17 @@ import { Bert } from 'meteor/themeteorchef:bert';
 
 import { Likes } from '/imports/api/businessMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';
-import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { Business } from '/imports/api/businessMaster.js';
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
 
 import './businessEventIcons.html';
 import '../../notifications/sendMailnNotification.js';
 
+Template.businessEventIcons.onCreated(function(){
+  this.subscribe('businessImage');
+});
 
 Template.businessEventIcons.events({
 	'click #likeme': function(event){
@@ -264,9 +266,9 @@ Template.businessEventIcons.events({
 			}
 			
 			if(businessData.businessImages && businessData.businessImages.length>0){
-				var pic = BusinessImgUploadS3.findOne({"_id":businessData.businessImages[0].img});
+				var pic = BusinessImage.findOne({"_id":businessData.businessImages[0].img});
 				if(pic){
-					businessData.businessImages = pic.copies.businessImgS3.key;
+					businessData.businessImages = pic.path;
 				}else{
 					businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
 				}

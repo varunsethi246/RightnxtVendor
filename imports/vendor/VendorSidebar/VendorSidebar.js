@@ -8,10 +8,13 @@ import { Business } from '/imports/api/businessMaster.js';
 import { Enquiry } from '/imports/api/enquiryMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';  
 
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { Offers } from '/imports/api/offersMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
 
+Template.vendorSidebar.onCreated(function() {
+  this.subscribe('businessImage');
+});
 
 Template.vendorSidebar.helpers({
 	'bussinessDetails' : function () {
@@ -64,7 +67,7 @@ Template.vendorSidebar.helpers({
 					if(data[i].businessImages){
 						for(j = 0 ; j < data[i].businessImages.length ; j++){
 							var imgId =  data[i].businessImages[j];
-							var imgData = BusinessImgUploadS3.findOne({"_id":imgId.img});
+							var imgData = BusinessImage.findOne({"_id":imgId.img});
 							if(imgData){
 								busPhotoCount++;  					 
 							}

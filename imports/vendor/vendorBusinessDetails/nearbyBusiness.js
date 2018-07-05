@@ -6,9 +6,12 @@ import { Bert } from 'meteor/themeteorchef:bert';
 
 import { Business } from '/imports/api/businessMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
 
+Template.nearbyBusiness.onCreated(function(){
+  this.subscribe('businessImage');
+});
 Template.nearbyBusiness.helpers({
 	nearBusiness(){
 		var businessLink = FlowRouter.getParam('businessurl');
@@ -55,9 +58,9 @@ Template.nearbyBusiness.helpers({
 					}
 					for(i=0; i<actualBusiness.length;i++){
 						if(actualBusiness[i].businessImages && actualBusiness[i].businessImages.length>0){								
-							var pic = BusinessImgUploadS3.findOne({"_id":actualBusiness[i].businessImages[0].img});
+							var pic = BusinessImage.findOne({"_id":actualBusiness[i].businessImages[0].img});
 							if(pic){
-								actualBusiness[i].imgUrl = pic.url(); 
+								actualBusiness[i].imgUrl = pic.link(); 
 							}else{
 								actualBusiness[i].imgUrl = "images/search/nearby-testaurants1.jpg";
 							}
