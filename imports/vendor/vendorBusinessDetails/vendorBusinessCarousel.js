@@ -4,11 +4,11 @@ import './imageCarouselItems.js';
 import { Business } from '/imports/api/businessMaster.js';
 import { BussImgLikes } from '/imports/api/businessImageLikesMaster.js';
 import { BusinessVideoUpload } from '/client/cfsjs/businessVideo.js';
-import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { BizVideo } from '/imports/videoUploadClient/videoUpload.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
+import { ReviewImage } from '/imports/videoUploadClient/reviewImageClient.js';
  
 Template.vendorBusinessCarousel.onCreated(function(){
   this.subscribe('businessImage');
@@ -44,18 +44,18 @@ Template.vendorBusinessCarousel.helpers({
 									'checkImgPng'	 : business.businessImages[i].checkpngImges,
 								 };
 					}else{
-						var picreview = UserReviewStoreS3New.findOne({"_id":business.businessImages[i].img});
+						var picreview = ReviewImage.findOne({"_id":business.businessImages[i].img});
 						if(picreview){
-							if(picreview.copies){
-								if(picreview.copies.userReviewS3.type == 'image/png'){
+							// if(picreview.copies){
+								if(picreview.type == 'image/png'){
 									business.businessImages[i].checkpngImges = 'bkgImgNone';
 								}else{
 									business.businessImages[i].checkpngImges = '';
 								}
-							}
+							// }
 							newObj = {
 										'_id'			 : business.businessImages[i].img,
-										'img'			 : picreview.url(), 
+										'img'			 : picreview.link(), 
 										'checkImgPng'	 : business.businessImages[i].checkpngImges,
 									 };
 						}

@@ -85,6 +85,7 @@ import { BusinessImage } from '/imports/videoUploadserver/businessImageServer.js
 import { BusinessMenu } from '/imports/videoUploadserver/businessMenuServer.js';
 import { OfferImage } from '/imports/videoUploadserver/offerImageServer.js';
 import { EnquiryImage } from '/imports/videoUploadserver/enquiryImageServer.js';
+import { ReviewImage } from '/imports/videoUploadserver/reviewImageServer.js';
 
 Meteor.publish('getBizVideo', function() {
     return BizVideo.find({}).cursor;
@@ -110,7 +111,9 @@ Meteor.publish('businessOfferImage', function() {
 Meteor.publish('businessEnquiryImage', function() {
     return EnquiryImage.find({}).cursor;
 });
-
+Meteor.publish('reviewImage', function() {
+    return ReviewImage.find({}).cursor;
+});
 
  // Meteor.publish('followUser', function() {
  //    return FollowUser.find({});
@@ -130,10 +133,10 @@ Meteor.startup(() => {
   
   // process.env.MAIL_URL="smtp://rightnxt123:Rightnxt@123@smtp.gmail.com:587";
   process.env.MAIL_URL='smtp://rightnxt123%40gmail.com:' + encodeURIComponent("Rightnxt@123") + '@smtp.gmail.com:587';
-	// process.env.MAIL_URL="smtp://rightnxt123:Rightnxt@123@smtp.gmail.com:587";
-	Accounts.emailTemplates.resetPassword.from = () => 'rightnxt <rightnxt123@gmail.com>';
-	Accounts.emailTemplates.siteName = "RightNxt";
-	Accounts.emailTemplates.from = 'RightNxt Admin <rightnxt123@gmail.com>';
+  // process.env.MAIL_URL="smtp://rightnxt123:Rightnxt@123@smtp.gmail.com:587";
+  Accounts.emailTemplates.resetPassword.from = () => 'rightnxt <rightnxt123@gmail.com>';
+  Accounts.emailTemplates.siteName = "RightNxt";
+  Accounts.emailTemplates.from = 'RightNxt Admin <rightnxt123@gmail.com>';
 
   // Meteor.AppCache.config({
   //   chrome: false,
@@ -143,7 +146,7 @@ Meteor.startup(() => {
 });
 
 Meteor.methods({
-	sendEmailRightNxt: function (to , from, subject ,body) {
+  sendEmailRightNxt: function (to , from, subject ,body) {
     check([to, from, subject, body], [String]);
     // Let other method calls from the same client start running,
     // without waiting for the email sending to complete.
@@ -306,6 +309,9 @@ Meteor.methods({
   },
   'removeOfferImage':function(imgId){
     OfferImage.remove({'_id':imgId});
+  },
+  'removeReviewImage':function(imgId){
+    ReviewImage.remove({'_id':imgId});
   },
 });
 

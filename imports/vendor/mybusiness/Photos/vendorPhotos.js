@@ -4,11 +4,11 @@ import { Template } from 'meteor/templating';
 import { Bert } from 'meteor/themeteorchef:bert';
 
 import { Business } from '../../../api/businessMaster.js';
-import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { Review } from '../../../api/reviewMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
 import ImageCompressor from 'image-compressor.js';
+import { ReviewImage } from '/imports/videoUploadClient/reviewImageClient.js';
 
 import '../../vendor.js';
 import './vendorPhotos.html';
@@ -116,21 +116,21 @@ Template.vendorPhotos.helpers({
 					for(var j = 0 ; j < imgListCount ; j++)
 					{
 						var imgId =  data[i].reviewImages[j];
-						var imgData = UserReviewStoreS3New.findOne({"_id":imgId.img});
+						var imgData = ReviewImage.findOne({"_id":imgId.img});
 						if(imgData){
-							if(imgData.copies){
-								if(imgData.copies.userReviewS3.type == 'image/png'){
+							// if(imgData.copies){
+								if(imgData.type == 'image/png'){
 									imgData.checkpngImg = 'bkgImgNone';
 								}else{
 									imgData.checkpngImg = '';
 								}
-							}
+							// }
 							finalImgList.push(imgData);
 						}
 					}
 				}
 			}
-			console.log('finalImgList:',finalImgList);
+			// console.log('finalImgList:',finalImgList);
 			return finalImgList;
 		}
 	},
@@ -143,7 +143,7 @@ Template.vendorPhotos.helpers({
 				for(i = 0 ; i < imgListCount ; i++)
 				{
 					var imgId =  data.businessImages[i];
-					var imgData = UserReviewStoreS3New.findOne({"_id":imgId.img});
+					var imgData = ReviewImage.findOne({"_id":imgId.img});
 					if(imgData){
 						if(imgId.img == this._id){
 							return true;

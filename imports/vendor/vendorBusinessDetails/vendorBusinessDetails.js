@@ -15,13 +15,13 @@ import { Likes } from '/imports/api/likesMaster.js';
 import { BussImgLikes } from '/imports/api/businessImageLikesMaster.js';
 import { UserStatistics } from '/imports/api/userViewMaster.js';
 import { UserLatLng } from '/imports/api/userViewMaster.js';
-import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { SavedOffer } from '/imports/api/savedOffersMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
 import { BusinessMenu } from '/imports/videoUploadClient/businessMenuClient.js';
 import { OfferImage } from '/imports/videoUploadClient/offerImageClient.js';
 import { OwnerImage } from '/imports/videoUploadClient/ownerImageClient.js';
+import { ReviewImage } from '/imports/videoUploadClient/reviewImageClient.js';
 
 import '../BusinessEnquiry/businessEnquiry.js';
 import './vendorBusinessLayout.html';
@@ -365,16 +365,16 @@ Template.vendorBusinessLayout.helpers({
 			}
 			if(businessObj.businessImages){
 				for(var i=0; i<businessObj.businessImages.length; i++){
-					var userImgData = UserReviewStoreS3New.findOne({"_id":businessObj.businessImages[i].img});
+					var userImgData = ReviewImage.findOne({"_id":businessObj.businessImages[i].img});
 					if(userImgData){ 
-						if(userImgData.copies){
-							if(userImgData.copies.userReviewS3.type == 'image/png'){
+						// if(userImgData.copies){
+							if(userImgData.type == 'image/png'){
 								businessObj.businessImages[i].checkpngImage = 'bkgImgNone';
 							}else{
 								businessObj.businessImages[i].checkpngImage = '';
 							}
-						}
-						businessObj.businessImages[i].imgUrl  = userImgData.url() ;
+						// }
+						businessObj.businessImages[i].imgUrl  = userImgData.link() ;
 						businessObj.businessImages[i].showImg  = "hideOffer" ;
 					}else{
 						var businessImgData = BusinessImage.findOne({"_id":businessObj.businessImages[i].img});

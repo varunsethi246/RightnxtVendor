@@ -15,9 +15,9 @@ import '../../vendor.js';
 
 // console.log('-------------before code----------');
 
-Template.VendorBeenThere.onCreated(function(){
-  this.subscribe('vendorImage');
-});
+// Template.VendorBeenThere.onCreated(function(){
+//   this.subscribe('vendorImage');
+// });
 Template.VendorBeenThere.helpers({
 	'businessBeenThereData': function(){
 		var businessLink = FlowRouter.getParam('businessLink');

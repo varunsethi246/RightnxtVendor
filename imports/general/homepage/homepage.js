@@ -13,6 +13,8 @@ import './homepageBanner.js';
 import { City } from '../../api/masterData/cityMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { Template } from 'meteor/templating';
+import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
+import { ReviewImage } from '/imports/videoUploadClient/reviewImageClient.js';
 
 import '../mainBusinessSearch/mainBusinessSearch.js';
 
@@ -30,18 +32,19 @@ import '../mainBusinessSearch/mainBusinessSearch.js';
 });*/
 Template.anonymousUserLayout.onCreated(function () {
   // Use this.subscribe inside onCreated callback
-  // this.subscribe('userfunction');
-  // this.subscribe('allCity');
-  // this.subscribe('area');
-  // this.subscribe('homeBannerVideo');
-  // this.subscribe('getBizVideoBanner');
-  // this.subscribe('categories');
-  // this.subscribe('notification');
-  // this.subscribe('notificationTemplate');
-  // this.subscribe('vendorBusiness');
-  // this.subscribe('userProfileS3OneUser'); 
-  // this.subscribe('businessImgS3');
-  
+  this.subscribe('userfunction');
+  this.subscribe('allCity');
+  this.subscribe('area');
+  this.subscribe('homeBannerVideo');
+  this.subscribe('getBizVideoBanner');
+  this.subscribe('categories');
+  this.subscribe('notification');
+  this.subscribe('notificationTemplate');
+  this.subscribe('vendorBusiness');
+  this.subscribe('userProfileS3OneUser'); 
+  this.subscribe('businessImgS3');
+  this.subscribe('vendorImage');
+  this.subscribe('reviewImage');
 });
 
 Template.homepage.helpers({

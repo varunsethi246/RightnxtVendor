@@ -1,16 +1,16 @@
 import { Business } from '/imports/api/businessMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';
 import { FollowUser } from '/imports/api/userFollowMaster.js';
-import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { Tracker } from 'meteor/tracker';
 import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
+import { ReviewImage } from '/imports/videoUploadClient/reviewImageClient.js';
 
 import '../../vendor.js';
 
-Template.vendorComments.onCreated(function(){
-  this.subscribe('vendorImage');
-});
+// Template.vendorComments.onCreated(function(){
+//   this.subscribe('vendorImage');
+// });
 Template.vendorComments.helpers({
 	businessComments:function () {
 		var businessLink = FlowRouter.getParam('businessLink');
@@ -99,9 +99,9 @@ Template.vendorComments.helpers({
 
 				if(allReviews[i].reviewImages){
 					for(j=0;j<allReviews[i].reviewImages.length;j++){
-						var reviewPhoto = UserReviewStoreS3New.findOne({"_id":allReviews[i].reviewImages[j].img});
+						var reviewPhoto = ReviewImage.findOne({"_id":allReviews[i].reviewImages[j].img});
 						if(reviewPhoto){
-							allReviews[i].reviewImages[j].imagePath = reviewPhoto.url();
+							allReviews[i].reviewImages[j].imagePath = reviewPhoto.link();
 						}
 					}
 				}

@@ -4,7 +4,6 @@ import './imageCommet.html';
 import '../vendorBusinessCarousel.html';
 import '../imageCarouselItems.html';
 
-import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { BusinessVideoUpload } from '/client/cfsjs/businessVideo.js';
 import { Business } from '/imports/api/businessMaster.js';
@@ -16,6 +15,7 @@ import { ImageCommentLike } from '/imports/api/imageCommentLikeMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
 import { BusinessMenu } from '/imports/videoUploadClient/businessMenuClient.js';
+import { ReviewImage } from '/imports/videoUploadClient/reviewImageClient.js';
 
 // hello
 Template.imageCommet.onCreated(function(){
@@ -499,15 +499,15 @@ Template.imageReports.helpers({
 						// arrayBusiness.push(newObj);
 					}//if pic
 					else{
-						var picreview = UserReviewStoreS3New.findOne({"_id":business.businessImages[i].img});
+						var picreview = ReviewImage.findOne({"_id":business.businessImages[i].img});
 						// console.log("picreview: ",picreview);
 						// console.log("picId: ",picId);
 						if(picreview){
 							if(picreview._id == picId){
-								newObj.img 			=  picreview.url() ;
+								newObj.img 			=  picreview.link() ;
 								newObj.activeClass 	= 'active';
 							}else{
-								newObj.img 			=  picreview.url() ;
+								newObj.img 			=  picreview.link() ;
 								newObj.activeClass 	= '';
 							}
 						}

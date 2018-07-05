@@ -13,9 +13,9 @@ import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
 import '../../vendor.js';
 // import '../../vendorBusinessDetails/businessEventIcons.js';
 
-Template.VendorGotLikes.onCreated(function(){
-  this.subscribe('vendorImage');
-});
+// Template.VendorGotLikes.onCreated(function(){
+//   this.subscribe('vendorImage');
+// });
 
 Template.VendorGotLikes.helpers({
 	'businessLikesData': function(){

@@ -25,9 +25,9 @@ import './vendorEnquiry.html';
 //   this.subscribe('businessEnquiryImage');
 // });
 
-Template.vendorEnquiry.onCreated(function(){
-  this.subscribe('vendorImage');
-});
+// Template.vendorEnquiry.onCreated(function(){
+//   this.subscribe('vendorImage');
+// });
 Template.vendorEnquiry.helpers({
 	// Enquiry enquiryImages
 	vendorEnquiryBusName:function(){

@@ -5,10 +5,10 @@ import { Bert } from 'meteor/themeteorchef:bert';
 
 import {Review} from '/imports/api/reviewMaster.js';
 import { Business } from '/imports/api/businessMaster.js';
-import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
-
+import { ReviewImage } from '/imports/videoUploadClient/reviewImageClient.js';
+import ImageCompressor from 'image-compressor.js';
 
 var filesR = [];
 var counterImg = 0;
@@ -24,9 +24,9 @@ tagFriend1 = new SearchSource('tagFriend', fields, options);
 // var tagedFriends = [];
 tagedFriends = [];
 
-Template.addReviewTemplate.onCreated(function(){
-  this.subscribe('vendorImage');
-});
+// Template.addReviewTemplate.onCreated(function(){
+//   this.subscribe('vendorImage');
+// });
 Template.addReviewTemplate.onRendered(function(){
 	counterImg = 0;
 });
@@ -328,35 +328,59 @@ Template.addReviewTemplate.events({
 							//============================================================
 
 						    if(filesR){
-								for(i = 0 ; i < filesR.length; i++){		
-									Resizer.resize(filesR[i], {width: 300, height: 300, cropSquare: false}, function(err, file) {
-										if(err){
-											console.log('err ' , err.message);
-										}else{
-											UserReviewStoreS3New.insert(file, function (err, fileObj) {
-										        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-										        if(err){
-										        	console.log('Error : ' + err.message);
-										        }else{
-										        	var imgId =  fileObj._id ;
-											        Meteor.call("updateReviewBulkImg", reviewId, imgId,
-											          function(error1, result1) { 
-											              if(error1) {
-											                console.log ('Error Message: ' + error ); 
-											              }else{
-															// console.log('img upload ', fileObj._id);	
-															// console.log('img added');
-															$('.publishReview').show();
-															$('.openReviewBox').hide();
-															$('.reviewImages').hide();
-															event.target.review.value	= '';
-											              }
-											        });
+								for(i = 0 ; i < filesR.length; i++){
+									const imageCompressor = new ImageCompressor();
+								    imageCompressor.compress(filesR[i])
+								        .then((result) => {
+								          // console.log(result);
 
-										        }
-										    });
-										}
-									});
+								          // Handle the compressed image file.
+								          // We upload only one file, in case
+								        // multiple files were selected
+								        const upload = ReviewImage.insert({
+								          file: result,
+								          streams: 'dynamic',
+								          chunkSize: 'dynamic',
+								          // imagetype: 'profile',
+								        }, false);
+
+								        upload.on('start', function () {
+								          // template.currentUpload.set(this);
+								        });
+
+								        upload.on('end', function (error, fileObj) {
+								          if (error) {
+								            // alert('Error during upload: ' + error);
+								            console.log('Error during upload 1: ' + error);
+								            console.log('Error during upload 1: ' + error.reason);
+								          } else {
+								            // alert('File "' + fileObj._id + '" successfully uploaded');
+								            Bert.alert('Review Image uploaded.','success','growl-top-right');
+								            // console.log(fileObj._id);
+								            // Session.set("vendorImgFilePath",fileObj._id);
+								            var imgId =  fileObj._id ;
+									        Meteor.call("updateReviewBulkImg", reviewId, imgId,
+									          function(error1, result1) { 
+									              if(error1) {
+									                console.log ('Error Message: ' + error ); 
+									              }else{
+													// console.log('img upload ', fileObj._id);	
+													// console.log('img added');
+													$('.publishReview').show();
+													$('.openReviewBox').hide();
+													$('.reviewImages').hide();
+													event.target.review.value	= '';
+									              }
+									        });
+								          }
+								          // template.currentUpload.set(false);
+								        });
+
+								        upload.start();
+								        })
+								        .catch((err) => {
+								          // Handle the error
+								    })		
 								}
 								filesR = [];
 								counterImg = 0;
