@@ -1414,16 +1414,16 @@ Template.receipt.helpers({
 		var invNum 			= parseInt(FlowRouter.getParam('invoiceNumber'));
 
 		var paymentDetails 	= Payment.findOne({'invoiceNumber':invNum,"orderType":'Offer'});
-		console.log('paymentDetails :',paymentDetails);
+		// console.log('paymentDetails :',paymentDetails);
 		if(paymentDetails){
 			var paymentStatusOne = paymentDetails.paymentStatus;
 			if (paymentStatusOne == 'unpaid') {
-		console.log('paymentDetails true:',paymentStatusOne);
+		// console.log('paymentDetails true:',paymentStatusOne);
 
 				return true;
 
 			}else{
-		console.log('paymentDetails false:',paymentStatusOne);
+		// console.log('paymentDetails false:',paymentStatusOne);
 				
 				// var PaymentSuccess = 'Payment Successful';
 				return false;

@@ -873,7 +873,7 @@ padding-top:1%;
 hr {
 /*width:100%;*/
 /*margin-top: -17px;*/
-margin-top:0!important;
+/*margin-top:0!important;*/
 margin-bottom:0!important
 }
 .CreateStaffOne{
@@ -2621,7 +2621,7 @@ word-break:break-all
 
 .bannerHrLine {
 background:#F89B1C;
-margin:8px 0 20px;
+margin:15px 0 20px;
 padding:2px 0;
 width:100%
 }
@@ -2632,7 +2632,9 @@ padding-right:4%;
 background:#fff;
 border:1px solid #ccc;
 box-shadow:2px 2px 8px #ccc;
-margin:6% 4%
+margin:6% 4%;
+font-family: 'PROXIMANOVA-REGULAR';
+line-height: 20px;
 }
 
 .adminBannerIn {
@@ -2674,23 +2676,25 @@ text-align:center;
 background:#6cc233;
 padding:11px 0;
 cursor:pointer;
-color:#000
+color:#000;
+margin-top: 15px;
 }
 
 .bannerPayButton:hover {
 background:rgba(108,194,51,0.85)
+margin-top: 15px;
 }
 
 .bannerTermAndCond {
 padding-left:0
 }
 
-.bannerTermAndCond h4 {
-margin:0
+.bannerTermAndCond > h4 {
+margin:0;margin-bottom: 15px;
 }
-
+.bannerPaymentMode > h4{margin-top: 0px;}
 .bannerInvMar {
-margin-bottom:8%
+margin-bottom:8%;margin-top: 20px;
 }
 
 .bannerList,.bannerAdsList {

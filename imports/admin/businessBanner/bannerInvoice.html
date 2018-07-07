@@ -16,13 +16,13 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 bannerDataTextFont">
 					<div class="bannerTextFont">From</div>
-					<div class="bannerTextFont">{{companyName}}</div>
+					<div class="">{{companyName}}</div>
 					<div>{{companyAddress}},</div>
 					<div>{{companyCity}} , {{companyState}} - {{companyPincode}}</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 bannerDataTextFont">
 					<div class="bannerTextFont">To</div>
-					<div class="bannerTextFont">{{businessTitle}}</div>
+					<div class="">{{businessTitle}}</div>
 					<div>{{businessAddress}} , {{businessArea}} ,</div>
 					<div>{{businessCity}} , {{businessState}} - {{businessZipCode}}</div>
 				</div>
@@ -76,12 +76,12 @@
 					
 					{{#if checkPaymentStatus paymentCheck}}
 						<div class="col-lg-7 col-md-4 col-sm-4 col-xs-4">
-							<div>
-								<strong>Select Payment Mode:</strong><br>
+							<div class="bannerPaymentMode">
+								<h4><b>Select Payment Mode:</b></h4>
 								{{#if isInRole "Vendor"}}
-								<input type="radio" name="payBanner" class="bannerPayButtonRadio" value="online" checked> Creditcard / Debit Card / Netbanking <br>
+								<input type="radio" name="payBanner" class="bannerPayButtonRadio" value="online" checked> Credit Card / Debit Card / Netbanking <br>
 								{{else}}
-									<input type="radio" name="payBanner" class="bannerPayButtonRadio" value="Nocash" checked> Creditcard / Debit Card / Netbanking <br>
+									<input type="radio" name="payBanner" class="bannerPayButtonRadio" value="Nocash" checked> Credit Card / Debit Card / Netbanking <br>
 									<input type="radio" name="payBanner" class="bannerPayButtonRadio" value="cash" checked> Cash / Cheque (Subject to Amount Received)
 								{{/if}}
 								<h4 class="bannerPayButton" data-busLink="{{businessLink}}">

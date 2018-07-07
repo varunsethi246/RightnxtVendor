@@ -15,6 +15,9 @@ if (Meteor.isServer) {
   Meteor.publish('allbusinessBanner', function allbusinessBanner() {
     return BusinessBanner.find({});
   });
+  Meteor.publish('oneBusinessBanner', function oneBusinessBanner(businessLink) {
+    return BusinessBanner.find({'businessLink':businessLink});
+  });
 }
 
 

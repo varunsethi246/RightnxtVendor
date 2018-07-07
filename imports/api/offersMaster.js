@@ -12,6 +12,9 @@ if (Meteor.isServer) {
 	Meteor.publish('offers', function offers() {
 		return Offers.find({});
 	});
+	Meteor.publish('vendorOffer', function vendorOffer() {
+		return Offers.find({'vendorId':this.userId});
+	});
 	Meteor.publish('offersListSearch', function() {
 		return Offers.find({"offerStatus":"Active"},{fields:{"dealHeadline":1}});
 	});

@@ -1930,7 +1930,7 @@ font-family:'PROXIMANOVA-REGULAR'
 }
 
 .paymtInv hr {
-border-top:2px solid #f89b1c
+border-top:2px solid #f89b1c;margin-top: 0px;
 }
 
 .invRight {

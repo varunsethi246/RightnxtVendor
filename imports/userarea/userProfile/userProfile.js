@@ -6,7 +6,6 @@ import ImageCompressor from 'image-compressor.js';
 
 Template.userProfile.onCreated(function() {
     this.currentUpload = new ReactiveVar(false);
-    this.subscribe('vendorImage');
 });
 
 Template.userProfile.helpers({

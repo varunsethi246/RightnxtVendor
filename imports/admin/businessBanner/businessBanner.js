@@ -314,7 +314,7 @@ Template.bannerInvoice.helpers({
 
 		if(businessDetails){
 			if(paymentCheck) {
-				console.log('paymentCheck: ',paymentCheck);
+				// console.log('paymentCheck: ',paymentCheck);
 				businessDetails.invoiceNumber 	= paymentCheck.invoiceNumber;
 		    	businessDetails.discountPercent = paymentCheck.discountPercent;
 		    	businessDetails.totalDiscount 	= paymentCheck.totalDiscount;
@@ -333,19 +333,16 @@ Template.bannerInvoice.helpers({
 				businessDetails.companyCity = companyDetails.companyLocationsInfo[0].companyCity;
 				businessDetails.companyState = companyDetails.companyLocationsInfo[0].companyState;
 				businessDetails.companyPincode = companyDetails.companyLocationsInfo[0].companyPincode;
-
 			}
-
 			
 			var totalPrice = 0;
 			var businessBanner = [];
 			if(paymentCheck.paymentStatus == "paid"){
 				var selector = {"businessLink":businessLink,"status":"active"};
 			}else{
-				var selector = {"businessLink":businessLink,"status":"new"};
+				var selector = {"businessLink":businessLink};
 			}
 	    	businessBanner = BusinessBanner.find(selector).fetch();
-			
 			if(businessBanner && businessBanner.length>0){
 	    		for(i=0;i<businessBanner.length;i++){
 	    			if(businessBanner[i].areas){
@@ -365,6 +362,7 @@ Template.bannerInvoice.helpers({
 	    	businessDetails.totalPrice = totalPrice;
 	    	businessDetails.businessBanner = businessBanner;
     	}
+
 		return businessDetails;
 	},
 });
