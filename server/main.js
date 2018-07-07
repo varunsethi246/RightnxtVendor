@@ -314,4 +314,3 @@ Meteor.methods({
     ReviewImage.remove({'_id':imgId});
   },
 });
-

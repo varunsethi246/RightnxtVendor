@@ -3986,26 +3986,30 @@ color:#fff
 color:#f89b1c
 }
 
-.dropGeneral:hover .userFaAngle {
+.dropGeneral a:hover .userFaAngle {
 color:#f89b1c
 }
 
 .dropdown-menu > li > .hoverColor:hover,.dropdown-menu > li > .hoverColor:focus {
- color: #fff;
+ 	color: #fff;
     text-decoration: none;
     background-color: #ffe0b6;
     margin-left: 0;
-     padding-bottom: 0px; 
+    padding-bottom: 0px; 
     /* background: #000; */
 }
+.dropdown-menu > li > a{padding-bottom: 10px;}
 .dropdown-menu > li > a:hover,.dropdown-menu > li > a:focus {
 color:#fff;
 text-decoration:none;
 background-color:#f89b1c;
 margin-left:0;
-padding-bottom:8px
+/*padding-bottom:8px*/
 }
-
+.dropdown-menu > li > a:hover i,.dropdown-menu > li > a:focus i,
+.dropdown-menu > li > a:hover span,.dropdown-menu > li > a:focus span{
+color: #fff;
+}
 .dropdown-menu>li:hover .userFaSever,.dropdown-menu>li:hover .settingCog,.dropdown-menu>li:hover .powerOff {
 color:#fff
 }

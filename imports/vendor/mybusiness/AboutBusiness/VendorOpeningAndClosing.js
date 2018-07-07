@@ -429,6 +429,7 @@ Template.vendorOpeningAndClosing.helpers({
         var categoryString = businesscategories[i].toString();
         
         var category = categoryString.split('>');
+        console.log(category);
         var tempCategoryListCollection = '';
         if(category){
           for(var j = 0 ; j < category.length; j++){
@@ -445,7 +446,19 @@ Template.vendorOpeningAndClosing.helpers({
         // console.log('tempCategoryListCollection |', tempCategoryListCollection,'|');
         selectedCategoriesList.push(tempCategoryListCollection);
         // if(category)
-        var showData =category[4];
+        // if(category[4]){
+        //   var showData = category[4];
+        // }else if(category[3]){
+        //   var showData = category[3];
+        // }else if(category[2]){
+        //   var showData = category[2];
+        // }else if(category[1]){
+        //   var showData = category[1];
+        // }else if(category[0]){
+        //   var showData = category[0];
+        // }else{
+        //   var showData = '';
+        // }
         if(category[4] == ' --' || !category[4]){
           showData = category[3];
         }
@@ -468,7 +481,7 @@ Template.vendorOpeningAndClosing.helpers({
         };
       }
       dataIndex = businesscategories.length;
-      // console.log('categoryList');
+      console.log('categoryList',categoryList);
       return categoryList;
     }
 

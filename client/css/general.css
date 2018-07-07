@@ -4219,8 +4219,9 @@ text-align: center
 }
 .alternateNumbercss{
 	padding: 3.7px 4px;
-    margin-left: 15px!important;
+    margin-left: 16px!important;
     margin-bottom: 20px!important;
+    width: 80%;
 }
 .alternateNumberLable{
 	display: inline-block;

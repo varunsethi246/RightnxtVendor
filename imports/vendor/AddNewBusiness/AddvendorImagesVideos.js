@@ -31,7 +31,7 @@ Template.addvendorImagesVideos.onRendered(function () {
 
 Template.addvendorImagesVideos.onCreated(function() {
     this.currentUpload = new ReactiveVar(false);
-    this.subscribe('getBizVideo');
+    // this.subscribe('getBizVideo');
 });
 
 Template.addvendorImagesVideos.helpers({

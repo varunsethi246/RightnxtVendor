@@ -46,8 +46,8 @@ if (Meteor.isServer) {
 	Meteor.publish('allpayment', function allpayment() {
 		return Payment.find({});
 	});
-	Meteor.publish('bannerPayment', function bannerPayment() {
-		return Payment.find({'orderType':'Banner'});
+	Meteor.publish('bannerPayment', function bannerPayment(businessLink) {
+		return Payment.find({'orderType':'Banner','businessLink':businessLink});
 	});
 	Meteor.publish('offerPayment', function offerPayment(invNo) {
 		return Payment.find({'invoiceNumber':invNo,'orderType':'Offer'});

@@ -31,7 +31,12 @@ if (Meteor.isServer) {
   //  Meteor.publish('vendorBusiness', function vendorBusiness() {
   //   return Business.find({});
   // });
-
+  Meteor.publish('allBusinesses', function allBusinesses() {
+    return Business.find({});
+  });
+  Meteor.publish('cityBusinesses', function cityBusinesses(city) {
+    return Business.find({'businessCity':city});
+  });
   Meteor.publish('oneBusiness', function oneBusiness(businessurl) {
     return Business.find({"businessLink": businessurl});
   });

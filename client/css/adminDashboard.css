@@ -2677,12 +2677,12 @@ background:#6cc233;
 padding:11px 0;
 cursor:pointer;
 color:#000;
-margin-top: 15px;
+margin-top: 15px!important;
 }
 
 .bannerPayButton:hover {
 background:rgba(108,194,51,0.85)
-margin-top: 15px;
+margin-top: 15px!important;
 }
 
 .bannerTermAndCond {

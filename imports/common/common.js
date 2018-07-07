@@ -133,7 +133,9 @@ Template.header.helpers({
 Template.generalHeader.helpers({
 	showElement(){
 		var currentUrl = FlowRouter.current().path;
-		if(currentUrl == '/' || currentUrl == '/claim'){
+		var city = FlowRouter.getParam('city');
+		// if(currentUrl == '/' || currentUrl == '/claim'){
+		if(currentUrl == '/claim' || city || currentUrl == '/'){
 			return false;
 		}else{
 			return true;
