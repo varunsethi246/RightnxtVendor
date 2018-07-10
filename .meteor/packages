@@ -63,7 +63,6 @@ ostrio:files
 ostrio:flow-router-extra
 dynamic-import@0.2.0
 pfafman:plivo
-chuangbo:cookie
 meteorhacks:subs-manager
 staringatlights:inject-data
 initialinject
@@ -82,3 +81,4 @@ staringatlights:fast-render
 #appcache@1.1.0
 #thinksoftware:image-resize-client
 #djk:jquery-ui
+#chuangbo:cookie
