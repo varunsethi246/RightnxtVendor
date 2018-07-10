@@ -4239,3 +4239,12 @@ text-align: center
     margin-top: 15px;
 }
 .busiTimeOpenHrs{margin-top: 10px;margin-bottom: 0px;}
+.noPaddingGeneral{padding-right: 0px;padding-left: 0px;}
+.uploadpicv input[type="file"]{
+	position: relative;
+    height: 94%;
+    margin-left: 0px;
+    width: 100%;
+    top: -10px;
+}
+.uploadpicv h4{position: absolute;top: 0px;}

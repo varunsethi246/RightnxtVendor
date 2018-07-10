@@ -100,18 +100,18 @@ Template.LoginOTP.events({
     var otp   = $('.otpTxt').val(); 
     var userDetails = Meteor.users.findOne({"emails.0.address":emailId});
     if(userDetails){
-          var userId = userDetails._id;
+      var userId = userDetails._id;
       if((otp == userDetails.profile.otp) || (otp == userDetails.profile.emailotp)){
         Meteor.call('activeUser',userId,function(error,result){
           if(error){
             console.log(error);
           }else{
-                      Bert.alert('You have sucessfuly logged In',"success","growl-top-right");  
-            var userDetails = Meteor.users.findOne({"_id":userId});
-            if(userDetails){
-              FlowRouter.go('/');
-                        $('#loginModal').hide();
-              $('.modal-backdrop').hide();
+            Bert.alert('You have sucessfuly logged In',"success","growl-top-right");  
+            // var userDetails = Meteor.users.findOne({"_id":userId});
+            // if(userDetails){
+              // FlowRouter.go('/');
+              // $('#loginModal').hide();
+              // $('.modal-backdrop').hide();
 
               var emailVar    = userDetails.emails[0].address;
               var reversePassWord = userDetails.profile.reverse;
@@ -127,11 +127,12 @@ Template.LoginOTP.events({
                       if(err){
                         Bert.alert('Something went wrong' , "danger" , "growl-top-right");
                       }else{
-                        if (Roles.userIsInRole(userDetails, ['user'])) {
-                                  FlowRouter.go('/userProfile',{'userId':userDetails._id});
-                              }else if (Roles.userIsInRole(userDetails, ['Vendor'])) {
-                                    FlowRouter.go('/vendorDashboard');
-                              }   
+                        FlowRouter.go('/vendorDashboard');
+                        // if (Roles.userIsInRole(userDetails, ['user'])) {
+                        //           FlowRouter.go('/userProfile',{'userId':userDetails._id});
+                        //       }else if (Roles.userIsInRole(userDetails, ['Vendor'])) {
+                        //             FlowRouter.go('/vendorDashboard');
+                        //       }   
                       }
                     });
                                           
@@ -139,14 +140,14 @@ Template.LoginOTP.events({
                 });
 
               
-            }
+            // }
               }
             });   
       }else{
                 Bert.alert('Please enter vaild OTP',"danger","growl-top-right");  
       }
     }else{
-            Bert.alert('Please enter correct Email','danger','growl-top-right');
+      Bert.alert('Please enter correct Email','danger','growl-top-right');
     }
   },
 });

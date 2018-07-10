@@ -420,22 +420,31 @@ z-index:1
 }
 
 .outerDivOtp {
-text-align:center;
-height:500px;
-padding-top:2%;
-display:block
+text-align: center;
+min-height: 450px; 
+padding-top: 2%;
+padding-bottom: 2%;
+display: block;
+margin-bottom: 15px;
+box-shadow: 0px 0px 10px #aaa;
 }
 
 .outerDivOtp hr {
-border:2px solid #F89B1C!important
+border:2px solid #F89B1C!important;
+margin-bottom: 20px!important;
 }
 
 .otpForm {
 width:200px;
 margin:0 auto;
-padding-top:5%
+padding-top:5%;
 }
-
+.emailOtpSubmit{
+    margin-top: 20px;
+}
+.emailOtpSubmit .btn,.emailOtpSubmit input{
+    border-radius: 0px;
+}
 .verifyotp {
 padding:10px 20px 0 0;
 font-size:13px;

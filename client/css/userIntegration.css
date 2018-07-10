@@ -247,9 +247,14 @@ padding:5%
 }
 
 .vendortabs {
-width:50%
+width:50%;
 }
-
+.vendortabs a{
+color: #555;	
+}
+.vendortabs.active a{
+color: #f89b1c!important;	
+}
 .tabContents {
 width:100%
 }
@@ -280,7 +285,7 @@ background-color:#ccc
 }
 
 .feedBlock {
-background:#f5f5f5;
+background:#f0f0f0;
 padding:1%
 }
 
@@ -314,7 +319,7 @@ display:none
 }
 
 .custLead {
-padding:3%
+padding:0 0 3% 0;
 }
 
 .amcharts-chart-div a {

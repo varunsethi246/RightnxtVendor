@@ -400,7 +400,7 @@ font-family:'PROXIMANOVA-BOLD';
 border-radius:0
 }
 
-.vendor-formOne-save:hover {
+.vendor-formOne-save:hover, .vendor-formOne-save:focus{
 color:#fff!important;
 background:#4e4f51;
 cursor:pointer
@@ -2155,7 +2155,15 @@ color:#fff;
 margin-right:9px;
 /*display:none*/
 }
-
+.floatingCirclesSpanOne span i{
+	position: relative;
+    top: -1px;
+    right: 1px;
+}
+.floatingCirclesSpanOne:hover{
+	color: #fff!important;
+    background: #4e4f51;
+}
 .floatingCirclesSpanTwo {
 width:17px;
 height:17px;
@@ -3733,9 +3741,9 @@ video::-webkit-media-controls-panel {
     width: calc(100% + 30px); /* Adjust as needed */
 }
 .sidebarBustitles{
-	    width: 100%;
+	width: 100%;
     font-size: 12px;
-    padding: 2px 9px!important;
+    /*padding: 2px 9px!important;*/
 }
 .hoverEnqVendor:hover {
     background: #ccc!important;

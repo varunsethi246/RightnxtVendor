@@ -27,18 +27,18 @@ Template.profileSetting.events({
         if(newPwd == confirmPwd){
             Meteor.call('changeMyPassword',newPwd,function(err,result){
               if(err){
-                Bert.alert('Password can not be changed!', 'danger', 'fixed-top', 'fa-frown-o' );
+                Bert.alert('Password can not be changed!', 'danger', 'growl-top-right');
               }else{
-                Bert.alert( 'Your password has been changed successfully!', 'success', 'fixed-top' );
                 FlowRouter.go('/');
-                $("html,body").scrollTop(0);
+                Bert.alert('Your password has been changed successfully! Please login again!', 'success', 'growl-top-right' );
+                // $("html,body").scrollTop(0);
               }
           });
         }else{
-         Bert.alert('Your New Passwords do not match!', 'danger', 'fixed-top', 'fa-frown-o' );        
+         Bert.alert('Your New Password does not match with Confirm Password!', 'danger', 'growl-top-right', 'fa-frown-o' );        
         }
       }else{
-        Bert.alert('Your Old Password is not correct', 'danger', 'fixed-top', 'fa-frown-o' );        
+        Bert.alert('Your Old Password is not correct!', 'danger', 'growl-top-right', 'fa-frown-o' );        
       }
     }); 
   },
