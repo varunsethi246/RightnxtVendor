@@ -14,27 +14,31 @@ if (Meteor.isServer) {
 	Meteor.publish('businessEnquiryCount', function businessEnquiryCount() {
 		return Enquiry.find({});
 	});
-  	Meteor.publish('noOfEnqWeek', function() {
-  		var days = 7;
-  		var currentDate = new Date();
-  		var last = new Date(currentDate.getTime()-(days * 24 *60 *60 *1000));
-  		var first = currentDate.getDate() - currentDate.getDay();
-  		var lastDate = new Date(last).toLocaleString();
-  		var firstWeekDate = new Date(currentDate.setDate(first)).toISOString();
-		Counts.publish(this, 'noOfEnqWeek', Enquiry.find({'enquiryCreatedAt' : {$gte : new Date(firstWeekDate), $lt :new Date( new Date().toISOString())}}));
-	});
-	Meteor.publish('noOfEnqMonth', function() {
-  		var currentDate = new Date();
-  		var firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-  		var lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
-		Counts.publish(this, 'noOfEnqMonth', Enquiry.find({'enquiryCreatedAt' : {$gte : new Date(firstDay), $lt :new Date( new Date().toISOString())}}));
-	});
-	Meteor.publish('noOfEnqYear', function() {
-  		var currentDate = new Date();
-  		var endDate = new Date(currentDate.getFullYear(),11, 31);
-  		var startDate = new Date(new Date().getFullYear(), 0, 1);
-		Counts.publish(this, 'noOfEnqYear', Enquiry.find({'enquiryCreatedAt' : {$gte :startDate, $lt :endDate}}));
-	});
+	 Meteor.publish('enquiryCount', function(businessLink) {
+  		var userID = this.userId;
+		Counts.publish(this, 'enquiryCount', Enquiry.find({'businessLink':businessLink,'businessStatus':'active'}));
+  	});
+ //  	Meteor.publish('noOfEnqWeek', function() {
+ //  		var days = 7;
+ //  		var currentDate = new Date();
+ //  		var last = new Date(currentDate.getTime()-(days * 24 *60 *60 *1000));
+ //  		var first = currentDate.getDate() - currentDate.getDay();
+ //  		var lastDate = new Date(last).toLocaleString();
+ //  		var firstWeekDate = new Date(currentDate.setDate(first)).toISOString();
+	// 	Counts.publish(this, 'noOfEnqWeek', Enquiry.find({'enquiryCreatedAt' : {$gte : new Date(firstWeekDate), $lt :new Date( new Date().toISOString())}}));
+	// });
+	// Meteor.publish('noOfEnqMonth', function() {
+ //  		var currentDate = new Date();
+ //  		var firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+ //  		var lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+	// 	Counts.publish(this, 'noOfEnqMonth', Enquiry.find({'enquiryCreatedAt' : {$gte : new Date(firstDay), $lt :new Date( new Date().toISOString())}}));
+	// });
+	// Meteor.publish('noOfEnqYear', function() {
+ //  		var currentDate = new Date();
+ //  		var endDate = new Date(currentDate.getFullYear(),11, 31);
+ //  		var startDate = new Date(new Date().getFullYear(), 0, 1);
+	// 	Counts.publish(this, 'noOfEnqYear', Enquiry.find({'enquiryCreatedAt' : {$gte :startDate, $lt :endDate}}));
+	// });
 }
 
 Meteor.methods({

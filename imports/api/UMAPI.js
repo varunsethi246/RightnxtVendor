@@ -16,6 +16,11 @@ if(Meteor.isServer){
       // console.log('userfunction testing');
       return Meteor.users.find({});
   });
+  Meteor.publish('userRole', function userRole(){
+      // this.unblock();
+      // console.log('userfunction testing',Meteor.users.find({'roles':'user'}).fetch());
+      return Meteor.users.find({'roles':'user'});
+  });
 
   Meteor.publish('adminfunction', function(){
       // this.unblock();

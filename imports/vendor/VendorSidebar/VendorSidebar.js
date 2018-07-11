@@ -17,6 +17,22 @@ Template.vendorSidebar.onCreated(function() {
 });
 
 Template.vendorSidebar.helpers({
+	'likesCounts':function(){
+		var count = Counts.get('VendorLikesCount');
+				// var likedDataReturn = {
+				// 		noofLikes		: count,
+				// }
+				console.log('count ------>',count);
+					return count;
+	},
+	'reportsCount':function(){
+		var reportcount = Counts.get('VendorReportCount');
+		// var ReportDataReturn = {
+		// 	noofReport		: count,
+		// }
+		console.log('count report------>',reportcount);
+		return reportcount;
+	},
 	'bussinessDetails' : function () {
 		// console.log('bussinessDetails');
 		var usrId = Meteor.userId();
@@ -27,29 +43,30 @@ Template.vendorSidebar.helpers({
 				var businessLink = data[i].businessLink;
 
 				// Likes count noofLikes
-				var likesCount = Likes.find({"businessLink":businessLink}).count();
-				if(likesCount){
-					data[i].noofLikes = likesCount;
-				} else{
-					data[i].noofLikes = 0;
+				var count = Counts.get('VendorLikesCount');
+				if(count){
+					data[i].noofLikes = count;
+				}else{
+					data[i].noofLikes = 0 ;
 				}
-				var beenthereCount = BeenThere.find({"businessLink":businessLink}).count();
+
+				// Report Count noofReports
+				var reportcount = Counts.get('VendorReportCount');
+				if(reportcount){
+					data[i].reportcount = reportcount;
+				}else{
+					data[i].reportcount = 0;
+				}
+
+				var beenthereCount = Counts.get('VendorBeenThereCount');
+				// console.log('beenthereCount',beenthereCount);
 				if(beenthereCount){
 					data[i].noofbeenthere = beenthereCount;
 				} else{
 					data[i].noofbeenthere = 0;
 				}
-
-				// Report Count noofReports
-				var reportsCount = Reports.find({"businessLink":businessLink}).count();
-				if(reportsCount){
-					data[i].noofReports = reportsCount;
-				} else{
-					data[i].noofReports = 0;
-				}
-
 				// Comments Count noofComments
-				var commentsCount = Review.find({"businessLink":businessLink}).count();
+				var commentsCount = Counts.get('VendorCommentCount');
 				if(commentsCount){
 					data[i].noofComments = commentsCount;
 				}else{
@@ -57,50 +74,72 @@ Template.vendorSidebar.helpers({
 				}
 				
 				// Photos Count noofPhotosCount
-				var reviewPhotosCount = Review.find({'businessLink':businessLink}).fetch();
-				// console.log("photosCount: ",reviewPhotosCount);
-				// console.log("Review businessLink: ",businessLink);
-				var busPhotoCount = 0;
-				var userPhotoCount = 0;
 
-				if(data[i]){
-					if(data[i].businessImages){
-						for(j = 0 ; j < data[i].businessImages.length ; j++){
-							var imgId =  data[i].businessImages[j];
-							var imgData = BusinessImage.findOne({"_id":imgId.img});
-							if(imgData){
-								busPhotoCount++;  					 
-							}
-						}
-					}	
+				var ReviewsUserPhotoCount = Counts.get('ReviewsUserPhotoCount');
+				var ReviewsOwnerPhotoCount = Counts.get('ReviewsOwnerPhotoCount');
+				
+				console.log('ReviewsUserPhotoCount :',ReviewsUserPhotoCount);
+				console.log('ReviewsPhotoCount :',ReviewsOwnerPhotoCount);
+
+				if(ReviewsUserPhotoCount || ReviewsOwnerPhotoCount){
+					data[i].noofPhotosCount = ReviewsUserPhotoCount + ReviewsOwnerPhotoCount;
+				}else{
+					data[i].noofPhotosCount = 0;
 				}
-				if(reviewPhotosCount){
-					for (var k = 0; k < reviewPhotosCount.length; k++) {
-						if(reviewPhotosCount[k].reviewImages){
-							var imgListCount = reviewPhotosCount[k].reviewImages.length;
-							userPhotoCount = userPhotoCount + imgListCount;
-						}else{
-							userPhotoCount = 0;
-						}
-					}
-				}
-				var photosCount = busPhotoCount + userPhotoCount;
-				data[i].noofPhotosCount = photosCount;
+
+				// if(commentsCount){
+				// 	data[i].noofComments = commentsCount;
+				// }else{
+				// 	data[i].noofComments = 0;
+				// }
+
+
+				// var reviewPhotosCount = Review.find({'businessLink':businessLink}).fetch();
+				// // console.log("photosCount: ",reviewPhotosCount);
+				// // console.log("Review businessLink: ",businessLink);
+				// var busPhotoCount = 0;
+				// var userPhotoCount = 0;
+
+				// if(data[i]){
+				// 	if(data[i].businessImages){
+				// 		for(j = 0 ; j < data[i].businessImages.length ; j++){
+				// 			var imgId =  data[i].businessImages[j];
+				// 			var imgData = BusinessImage.findOne({"_id":imgId.img});
+				// 			if(imgData){
+				// 				busPhotoCount++;  					 
+				// 			}
+				// 		}
+				// 	}	
+				// }
+				// if(reviewPhotosCount){
+				// 	for (var k = 0; k < reviewPhotosCount.length; k++) {
+				// 		if(reviewPhotosCount[k].reviewImages){
+				// 			var imgListCount = reviewPhotosCount[k].reviewImages.length;
+				// 			userPhotoCount = userPhotoCount + imgListCount;
+				// 		}else{
+				// 			userPhotoCount = 0;
+				// 		}
+				// 	}
+				// }
+				// var photosCount = busPhotoCount + userPhotoCount;
+				// data[i].noofPhotosCount = photosCount;
 
 				
 				// My Offers Count noofOffersCount
-				var businessId = data[i]._id;
-				var offersCount = Offers.find({"businessId" : businessId}).count();
-				if(offersCount){
-					data[i].noofOffersCount = offersCount;
+	
+				var offerCount = Counts.get('offerCount');
+				console.log('offerCount :',offerCount);
+				if(offerCount){
+					data[i].noofOffersCount = offerCount;
 				} else{
 					data[i].noofOffersCount = 0;
 				}
 				
 				// Enquiry Count noofEnquiries
-				var enqCount = Enquiry.find({"businessid":businessId}).count();
-				if(enqCount){
-					data[i].noofEnquiries = enqCount;
+				var enquiryCount = Counts.get('enquiryCount');
+				// console.log('commentsCount sadas:',commentsCount);
+				if(enquiryCount){
+					data[i].noofEnquiries = enquiryCount;
 				}else{
 					data[i].noofEnquiries = 0;
 				}

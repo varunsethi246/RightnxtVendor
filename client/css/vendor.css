@@ -673,7 +673,7 @@ width:40px;
 display:inline-block;
 border-radius:50%;
 position:relative;
-top:-7px;
+top:-19px;
 }
 
 .vreportinfoClass {
@@ -2966,7 +2966,7 @@ padding:2px 14px!important
 
 .vreportdotClass img {
 width:100%;
-border-radius:50%
+border-radius:50%;
 height:40px;
 }
 

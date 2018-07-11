@@ -288,7 +288,7 @@ Template.vendorMyOffers.events({
 		event.preventDefault();
 		var $this = $(event.target);
 		$($this).find('input[name="save1"]').attr('disabled','disabled');
-
+		var businessLink = FlowRouter.getParam('businessLink');
 		var businessId =  $('input[name="businessId"]').val();
 		var numOfMonths = $('input[name="numOfMonths"]').val();
 		var imgId = '';
@@ -335,6 +335,7 @@ Template.vendorMyOffers.events({
 						"offerStatus"			: 'New',
 						"numOfMonths"			: numOfMonths,
 						"offerImage"			: imgId,
+						"businessLink"			: businessLink,
 					};
 
 					// var $this = $(event.target);

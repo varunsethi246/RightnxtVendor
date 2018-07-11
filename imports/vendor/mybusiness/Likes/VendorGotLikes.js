@@ -21,6 +21,8 @@ Template.VendorGotLikes.helpers({
 	'businessLikesData': function(){
 		var businessLink = FlowRouter.getParam('businessLink');
 		var businessLikes = Likes.find({"businessLink":businessLink}).fetch();
+					console.log("businessLikes",businessLikes);
+		
 		if(businessLikes){
 			for(i=0; i<businessLikes.length; i++){
 				var id = businessLikes[i].userid;
@@ -32,6 +34,7 @@ Template.VendorGotLikes.helpers({
 						if(data.profile){
 							if(data.profile.userProfilePic){
 								var pic = VendorImage.findOne({"_id":data.profile.userProfilePic});
+								// console.log("pic",pic);
 								if(pic){
 									businessLikes[i].userProfilePic = pic.link();	
 								}
@@ -55,10 +58,11 @@ Template.VendorGotLikes.helpers({
 
 	},
 	'businessName' : function(){
-		var businessLink = FlowRouter.getParam('businessLink');
-		var businessObj = Business.findOne({"businessLink":businessLink,"status": "active"});
+		var businessLink = 	FlowRouter.getParam('businessLink');
+		var businessObj  = 	Business.findOne({"businessLink":businessLink,"status": "active"});
+		var likeCount 	 =	Counts.get('VendorLikesCount');
 		if(businessObj){
-			var likeCount = Likes.find({"businessId":businessObj._id}).count();
+			// var likeCount = Likes.find({"businessId":businessObj._id}).count();
 			var value = {
 							"businessTitle" : businessObj.businessTitle,
 							"likeCount"		: likeCount,

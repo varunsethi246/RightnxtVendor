@@ -24,6 +24,8 @@ Template.vendorReport.helpers({
 	'businessReports': function (){
 		var businessLink = FlowRouter.getParam('businessLink');
 		var reports = Reports.find({"businessLink":businessLink}).fetch();
+		console.log(reports);
+		var reportcount = Counts.get('VendorReportCount');
 
 		// Added only to format time
 		if(reports){
@@ -35,7 +37,7 @@ Template.vendorReport.helpers({
 		if(reports){
 			var businessObj = Business.find({"businessLink":businessLink,"status": "active"});
 			var reportDataReturn = {
-				noofreports			: reports.length,
+				noofreports			: reportcount,
 				reportBusinessArray	: [],
 				reportImageArray	: [],
 				// "businessTitle" : businessObj.businessTitle,

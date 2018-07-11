@@ -25,6 +25,10 @@ if (Meteor.isServer) {
   Meteor.publish('businessLikesCount', function businessLikesCount() {
 	    return Likes.find({});  		
   });
+  Meteor.publish('VendorLikesCount', function(businessLink) {
+  		var userid = this.userId;
+		Counts.publish(this, 'VendorLikesCount', Likes.find({'businessStatus':'active','businessLink':businessLink}));
+  });
 }
 
 

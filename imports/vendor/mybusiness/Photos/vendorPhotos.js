@@ -64,7 +64,7 @@ Template.vendorPhotos.helpers({
 	},
 	vendorPhotosData: function(){
 		var businessLink = FlowRouter.getParam('businessLink');
-		// console.log('businessLink: '+businessLink);
+		console.log('businessLink: '+businessLink);
 		var data = Business.findOne({'businessLink':businessLink});
 		if(data){
 			if(data.businessImages){
@@ -107,7 +107,10 @@ Template.vendorPhotos.helpers({
 		}
 
 		var businessLink = FlowRouter.getParam('businessLink');
+		console.log('businessLink :',businessLink)
+
 		var data = Review.find({'businessLink':businessLink},{sort: { reviewDate: sortOrderUser } }).fetch();
+		console.log('date :',data)
 		var finalImgList = [];
 		if(data){
 			for(var i=0; i<data.length; i++){
@@ -154,37 +157,14 @@ Template.vendorPhotos.helpers({
 		}
 	},
 	photoByYou(){
-		var businessLink = FlowRouter.getParam('businessLink');
-		var data = Business.findOne({'businessLink':businessLink});
-		var count = 0;
-		if(data){
-			if(data.businessImages){
-				var imgListCount = data.businessImages.length;
-				for(i = 0 ; i < imgListCount ; i++)
-				{
-					var imgId =  data.businessImages[i];
-					var imgData = BusinessImage.findOne({"_id":imgId.img});
-					if(imgData){
-						count++;  					 
-					}
-				}
-			}	
-			return count;
-		}
+
+		var ReviewsOwnerPhotoCount = Counts.get('ReviewsOwnerPhotoCount');
+
+			return ReviewsOwnerPhotoCount;
 	},
 	photoByUser(){
-		var businessLink = FlowRouter.getParam('businessLink');
-		var data = Review.find({'businessLink':businessLink}).fetch();
-		if(data){
-			var sum = 0;
-			for (var i = 0; i < data.length; i++) {
-				if(data[i].reviewImages){
-					var imgListCount = data[i].reviewImages.length;
-					sum = sum + imgListCount;
-				}
-			}
-			return sum;
-		}
+		var ReviewsUserPhotoCount = Counts.get('ReviewsUserPhotoCount');
+		return ReviewsUserPhotoCount;
 	},
 });
 

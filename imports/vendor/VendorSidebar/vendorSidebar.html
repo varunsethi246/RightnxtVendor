@@ -34,7 +34,13 @@
 										<li class="menuSubCat menuSubCat2">
 											<a href="/businessLikes/{{businessLink}}" class="sidbarPadAdj">
 												<i class="fa fa-heart" aria-hidden="true"></i>
-												<span>Likes <span>({{noofLikes}})</span></span>
+
+												<span>Likes <span>
+													<!-- {{#if likesCounts}} -->
+														({{noofLikes}})
+													<!-- {{/if}} -->
+												</span>
+											</span>
 											</a>
 										</li>
 										<li class="menuSubCat menuSubCat7">
@@ -46,7 +52,8 @@
 										<li class="menuSubCat menuSubCat3">
 											<a href="/businessReports/{{businessLink}}" class="sidbarPadAdj">
 												<i class="fa fa-flag" aria-hidden="true"></i>
-												<span>Report <span>({{noofReports}})</span></span>
+												<span>Report <span>({{reportcount}})
+												</span></span>
 											</a>
 										</li>
 										<li class="menuSubCat menuSubCat4">

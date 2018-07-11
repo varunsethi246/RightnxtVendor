@@ -252,25 +252,26 @@ Template.vendorEnquiry.helpers({
 		return data;
 	},
 	vendorEnquiryCount: function(){
-		var businessLink = FlowRouter.getParam('businessLink');
-		// console.log('businessLink :',businessLink);
-		if (businessLink) {
+		// var businessLink = FlowRouter.getParam('businessLink');
+		// // console.log('businessLink :',businessLink);
+		// if (businessLink) {
 
-			var businessObj = Business.findOne({"businessLink":businessLink,"status": "active"});
+		// 	var businessObj = Business.findOne({"businessLink":businessLink,"status": "active"});
 			
-			var blockedUserArray;
-			if(businessObj){
-				// console.log('businessObj :',businessObj);
-				blockedUserArray = businessObj.blockedUsers;
-			}
-			var enqCount = Enquiry.find({"businessid":businessObj._id,'enquirySentBy': { $nin: blockedUserArray }}).count();	
-					
+		// 	var blockedUserArray;
+		// 	if(businessObj){
+		// 		// console.log('businessObj :',businessObj);
+		// 		blockedUserArray = businessObj.blockedUsers;
+		// 	}
+		// 	var enqCount = Enquiry.find({"businessid":businessObj._id,'enquirySentBy': { $nin: blockedUserArray }}).count();	
+			var enquiryCount = Counts.get('enquiryCount');		
 
-			var data = {
-				vendorcount : enqCount,	
-			}
-			return data;
-		}
+			// var data = {
+			// 	vendorcount : enquiryCount,	
+			// }
+			console.log('enquiryCount',enquiryCount);
+			return enquiryCount;
+		// }
 	},
 	vendorEnquiryDetails:function () {
 		if(Session.get("EnqIDSes")){

@@ -5,11 +5,13 @@ import { Session } from 'meteor/session';
 import { Bert } from 'meteor/themeteorchef:bert';
 
 import { ReviewCommentLikes } from './reviewCommentLikesMaster.js';
+import { Business } from './businessMaster.js';
 export const Review = new Mongo.Collection('review');
 
 if (Meteor.isServer) {
   // This code only runs on the server
   Meteor.publish('review', function review(businessLink) {
+  	console.log(Review.find({"businessLink": businessLink}).fetch());
     return Review.find({"businessLink": businessLink});
   });
 
@@ -37,8 +39,19 @@ if (Meteor.isServer) {
   Meteor.publish('searchListReview',function(){
   	return Review.find({},{fields:{"businessLink":1,"rating":1}});
   });
+	Meteor.publish('VendorCommentCount', function(businessLink) {
+		Counts.publish(this, 'VendorCommentCount', Review.find({'businessStatus':'active','businessLink':businessLink}));
+	});
 
+	Meteor.publish('ReviewsUserPhotoCount', function(businessLink) {
+		Counts.publish(this, 'ReviewsUserPhotoCount', Review.find({'businessLink':businessLink,'businessStatus':'active'},{fields : {"reviewImages" : 1, "_id" : 0} }), { countFromFieldLength: 'reviewImages' });
+	});
 
+	Meteor.publish('ReviewsOwnerPhotoCount', function(businessLink) {
+		// console.log('helo :',Business.find({'businessLink':businessLink},{fields : {"businessImages" : 1,'_id':0} }).fetch());
+		Counts.publish(this, 'ReviewsOwnerPhotoCount', Business.find({'businessLink':businessLink,'status':'active'},{fields : {"businessImages" : 1, "_id" : 0}}), { countFromFieldLength: 'businessImages' });
+		
+	});
 }
 
 Meteor.methods({

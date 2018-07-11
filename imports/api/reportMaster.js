@@ -17,6 +17,9 @@ if (Meteor.isServer) {
 	Meteor.publish('businessReportsCount', function businessReportsCount(businessLink) {
 		return Reports.find({});
 	});
+	Meteor.publish('VendorReportCount', function(businessLink) {
+		Counts.publish(this, 'VendorReportCount', Reports.find({'businessLink':businessLink}));
+  });
 }
 
 
