@@ -2965,3 +2965,24 @@ margin-top: 10px;
 .tableFontBus{
 	font-size: 12px;
 }
+.newStyle{
+	margin-top: -15px;
+}
+.newStyleTwo{
+	margin-top: 11px;
+}
+.marginCloseArea{
+	margin-right: 22px;
+}
+.centertextadmin{
+	text-align: center;
+}
+.cursor{    cursor: pointer;}
+.marginbtmProfile{
+	    margin-bottom: 35px;
+}
+.newCssNotif{
+	border-top: 3px solid #3c8dbc;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px;
+}

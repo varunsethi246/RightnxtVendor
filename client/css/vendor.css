@@ -3752,3 +3752,9 @@ video::-webkit-media-controls-panel {
 .noPaddingVendor{padding-left: 0px;padding-right: 0px;}
 .vendorHome{height: 335px;}
 .vendorHome h1{color: #f89b1c;}
+.marginRightEnq{
+	margin-right: 0px!important;
+}
+.beenthereImage{
+	margin-top: 15px!important;
+}
