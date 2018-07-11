@@ -40,6 +40,8 @@ Template.anonymousUserLayout.onCreated(function () {
   this.subscribe('notificationTemplate');
   this.subscribe('notification');
   this.subscribe('currentuser');
+  this.subscribe('vendorRole');
+  this.subscribe('userfunction');
   // this.subscribe('vendorBusiness');
   // this.subscribe('userProfileS3OneUser'); 
   // this.subscribe('businessImgS3');

@@ -15,16 +15,25 @@ var videoListCountEdit = 0;
 var uploader = new ReactiveVar();
 Template.vendorImagesVideos.onCreated(function() {
     this.currentUpload = new ReactiveVar(false);
+    this.imageUpload = new ReactiveVar(false);
+    this.menuUpload = new ReactiveVar(false);
     this.subscribe('businessImage');
     this.subscribe('businessMenuImage');
     this.subscribe('getBizVideo');
 });
 
 Template.vendorImagesVideos.helpers({
-	currentUpload: function() {
+	imageUpload: function() {
+		// console.log(Template.instance().imageUpload.get());
+        return Template.instance().imageUpload.get();
+    },
+    menuUpload: function() {
+		// console.log(Template.instance().menuUpload.get());
+        return Template.instance().menuUpload.get();
+    },
+    currentUpload: function() {
         return Template.instance().currentUpload.get();
     },
-
     files: function() {
 		var businessLink = FlowRouter.getParam('businessLink');
     	var bussData = Business.findOne({"businessLink":businessLink});
@@ -141,7 +150,7 @@ Template.vendorImagesVideos.events({
 		        }, false);
 
 		        upload.on('start', function () {
-		          // template.currentUpload.set(this);
+		          template.imageUpload.set(this);
 		        });
 
 		        upload.on('end', function (error, fileObj) {
@@ -160,12 +169,11 @@ Template.vendorImagesVideos.events({
 		                  // Bert.alert('There is some error in submitting this form!','danger','growl-top-right');
 		                  return;
 		                }else{
-
+				          template.imageUpload.set(false);
 		                }
 		              }
 		            );
 		          }
-		          // template.currentUpload.set(false);
 		        });
 
 		        upload.start();
@@ -203,7 +211,7 @@ Template.vendorImagesVideos.events({
 			        }, false);
 
 			        upload.on('start', function () {
-			          // template.currentUpload.set(this);
+			          template.menuUpload.set(this);
 			        });
 
 			        upload.on('end', function (error, fileObj) {
@@ -222,12 +230,11 @@ Template.vendorImagesVideos.events({
 			                  // Bert.alert('There is some error in submitting this form!','danger','growl-top-right');
 			                  return;
 			                }else{
-
+					          template.menuUpload.set(false);
 			                }
 			              }
 			            );
 			          }
-			          // template.currentUpload.set(false);
 			        });
 
 			        upload.start();
@@ -279,10 +286,10 @@ Template.vendorImagesVideos.events({
 			                  console.log ('Error Message: ' +error ); 
 			              }else{
 								  // process.exit();
+					        template.currentUpload.set(false);
 			              }
 			        });
 		        }
-		        template.currentUpload.set(false);
 		      });
 
 		      upload.start();

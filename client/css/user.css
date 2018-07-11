@@ -3292,7 +3292,8 @@ color:#4e4f51
     background-color: #f89b2fbf;
     border: 1px solid #f89b2f45;
     box-sizing: content-box;
-    color: #080808;
+    /*color: #080808;*/
+    color: #fff;
     cursor: pointer;
     display: inline-block;
     font-size: 13px;

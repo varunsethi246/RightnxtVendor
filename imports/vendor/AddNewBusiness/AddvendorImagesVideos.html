@@ -24,6 +24,16 @@
 								<input type="file" name="files[]" id="businessImgfiles" multiple="true" class="inputImg">
 								<h4 id="drag1">Drag new photos here</h4>
 							</div>
+							{{#with imageUpload}}
+						        Uploading <b>{{file.name}}</b>:
+						        <span id="progress">{{progress.get}}%</span>
+						        <div class="progress">
+								  <div class="progress-bar progress-bar-striped active" role="progressbar"
+								  aria-valuenow="{{progress.get}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progress.get}}%">
+								    {{progress.get}}%
+								  </div>
+								</div>
+						    {{/with}}
 							<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  vBusGroupRow vendorImgVidUpDiv">
 								<div class="vendorupImgC"  id="saveBusinessImg">
 									<span class="Vuploadicon"><i class="fa fa-folder-open-o vendorImgVidUploadSpan" aria-hidden="true"></i>
@@ -76,6 +86,12 @@
 							{{#with currentUpload}}
 						        Uploading <b>{{file.name}}</b>:
 						        <span id="progress">{{progress.get}}%</span>
+						        <div class="progress">
+								  <div class="progress-bar progress-bar-striped active" role="progressbar"
+								  aria-valuenow="{{progress.get}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progress.get}}%">
+								    {{progress.get}}%
+								  </div>
+								</div>
 						        {{else}}
 									{{#unless businessVideo}}
 							            <input id="fileInputOne" type="file" />
@@ -132,6 +148,16 @@
 									<input type="file" name="files[]" id="businessMenufiles" multiple="true" class="inputImg">
 									<h4 id="drag3">Drag new menu images here</h4>
 								</div>
+								{{#with menuUpload}}
+							        Uploading <b>{{file.name}}</b>:
+							        <span id="progress">{{progress.get}}%</span>
+							        <div class="progress">
+									  <div class="progress-bar progress-bar-striped active" role="progressbar"
+									  aria-valuenow="{{progress.get}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progress.get}}%">
+									    {{progress.get}}%
+									  </div>
+									</div>
+							    {{/with}}
 								<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  vBusGroupRow vendorImgVidUpDiv">
 									<div class="vendorupImgC" id="saveBusinessMenu">
 										<span class="Vuploadicon"><i class="fa fa-folder-open-o vendorImgVidUploadSpan" aria-hidden="true"></i>

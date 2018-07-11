@@ -24,14 +24,14 @@ Template.aboutUs.onCreated(function () {
   // this.subscribe('vendorBusiness');
   // this.subscribe('userProfileS3'); 
   // this.subscribe('businessImgS3');
-
-	this.subscribe('area');
-	this.subscribe('generalContent'); 
-	this.subscribe('userProfileS3');
-	this.subscribe('notification');
-	this.subscribe('userfunction');
 	this.subscribe('notificationTemplate') ;
-	this.subscribe('businessImgS3');
+	this.subscribe('notification');
+	this.subscribe('currentuser');
+	this.subscribe('area');
+	this.subscribe('vendorImage');
+	this.subscribe('generalContentURL','about'); 
+	// this.subscribe('userProfileS3');
+	// this.subscribe('businessImgS3');
 });
 
 Template.aboutUs.helpers({

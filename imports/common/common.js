@@ -166,10 +166,15 @@ Template.header.events({
 		$('.thankyouscreen').hide();
 	},
 	'click .signUp-btn': function(event){
+		// $('.loginScreen').hide();
+		// $('.genLoginSignup').hide();
+		// $('.signupScreen').show();
+		// $('.thankyouscreen').hide();
 		$('.loginScreen').hide();
 		$('.genLoginSignup').hide();
-		$('.signupScreen').show();
+		$('.signupScreen').hide();
 		$('.thankyouscreen').hide();
+		$('.signUpBox').show();
 	},
 	'click .signUp-btn1':function(event){
 		$('.loginScreen').hide();

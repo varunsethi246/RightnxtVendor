@@ -11,6 +11,9 @@ if (Meteor.isServer) {
   Meteor.publish('newjob', function newjob() {
     return Newjob.find({});
   });
+  Meteor.publish('onenewjob', function onenewjob(id) {
+    return Newjob.find({'_id':id});
+  });
 }
 
 Meteor.methods({

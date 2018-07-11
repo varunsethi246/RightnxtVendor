@@ -24,6 +24,7 @@ Template.codeOfConduct.onRendered(function(){
 	$("#visible-md").removeClass("merchantGuidelinesmd");
 	$("#visible-sm").removeClass("merchantGuidelinessm");
 	$("#visible-xs").removeClass("merchantGuidelinesxs");
+	$('html, body').scrollTop(0);
 	$(window).scroll(function() {
 	    if ($(document).scrollTop() > 25) {
 	    	$("#visible-lg").addClass("merchantGuidelineslg");
@@ -37,7 +38,6 @@ Template.codeOfConduct.onRendered(function(){
 	    	$("#visible-xs").removeClass("merchantGuidelinesxs");
 	    }
     });
-	$('html, body').scrollTop(0);
 });
 
 codeOfConductForm = function () {  

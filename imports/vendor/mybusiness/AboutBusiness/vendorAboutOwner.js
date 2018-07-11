@@ -1,3 +1,7 @@
+import { Session } from 'meteor/session';
+import { ReactiveVar } from 'meteor/reactive-var';
+import { Bert } from 'meteor/themeteorchef:bert';
+import { Template } from 'meteor/templating';
 import { Business } from '/imports/api/businessMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { OwnerImage } from '/imports/videoUploadClient/ownerImageClient.js';
@@ -40,28 +44,28 @@ Template.vendorAboutOwner.events({
     var businessLink = FlowRouter.getParam('businessLink');
     
     if(file){
-      // Only process image files.
-      var reader = new FileReader();    
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['<img class="draggedImg businessOwnerImg" id="changeOwnerProfilePic" src="', e.target.result,
-                            '" title="', escape(theFile.name), '"/>'].join('');
-          document.getElementById('changeOwnerProfilePic').replaceWith(span);
+      // // Only process image files.
+      // var reader = new FileReader();    
+      // // Closure to capture the file information.
+      // reader.onload = (function(theFile) {
+      //   return function(e) {
+      //     // Render thumbnail.
+      //     var span = document.createElement('span');
+      //     span.innerHTML = ['<img class="draggedImg businessOwnerImg" id="changeOwnerProfilePic" src="', e.target.result,
+      //                       '" title="', escape(theFile.name), '"/>'].join('');
+      //     document.getElementById('changeOwnerProfilePic').replaceWith(span);
 
-          if(file){
-            if(file.type=="image/png"){
-              $('#changeOwnerProfilePic').addClass('bkgImgNone');
-            }
-          }
+      //     if(file){
+      //       if(file.type=="image/png"){
+      //         $('#changeOwnerProfilePic').addClass('bkgImgNone');
+      //       }
+      //     }
           
-        };
-      })(file); //end of onload
+      //   };
+      // })(file); //end of onload
 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(file);
+      // // Read in the image file as a data URL.
+      // reader.readAsDataURL(file);
 
       const imageCompressor = new ImageCompressor();
       imageCompressor.compress(file)
@@ -98,12 +102,11 @@ Template.vendorAboutOwner.events({
                   // Bert.alert('There is some error in submitting this form!','danger','growl-top-right');
                   return;
                 }else{
-                  
+                  template.currentUpload.set(false);          
                 }
               }
             );
           }
-          template.currentUpload.set(false);
         });
 
         upload.start();
@@ -113,8 +116,9 @@ Template.vendorAboutOwner.events({
       })    
     }    
   },
-  'submit .vendorBusAbOwnerAC': function(event){
+  'submit .vendorBusAbOwnerAC': function(event,template){
     event.preventDefault();
+    // template.currentUpload.set(false);
     // var filePath = Session.get("vendorImgFilePath");
     var bizLink = FlowRouter.getParam('businessLink');
     var data = Business.findOne({'businessLink':bizLink}); 

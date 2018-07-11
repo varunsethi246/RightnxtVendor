@@ -3,13 +3,15 @@ import { Mongo } from 'meteor/mongo';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { ReactiveVar } from 'meteor/reactive-var';
 
 import { State } from '/imports/api/masterData/stateMaster.js';
 import { City } from '/imports/api/masterData/cityMaster.js';
 import { GeneralContent } from '../../api/webPages/generalContentMaster.js';
 import { Career } from '../../api/webPages/joinusMaster.js';
 import { Newjob } from '../../api/webPages/AddNewJobMaster.js';
-import { ResumeS3 } from '/client/resumeS3.js';
+import { ResumeImage } from '/imports/videoUploadClient/resumeImageClient.js';
+// import ImageCompressor from 'image-compressor.js';
 
 import '../generalLayout/generalLayout.js'
 import '../../admin/careerJoinUsForm/careerJoinUsForm.html';
@@ -24,23 +26,40 @@ import './jobList.html';
 
 var files = [];
 
-
 Template.career.onCreated(function () {
-	this.subscribe('area');
-	this.subscribe('generalContent');  
-	this.subscribe('newjob');
-	this.subscribe('userProfileS3'); 
-	this.subscribe('notification');
-	this.subscribe('userfunction');
 	this.subscribe('notificationTemplate') ;
-	this.subscribe('businessImgS3');
+	this.subscribe('notification');
+	this.subscribe('currentuser');
+	this.subscribe('area');
+	this.subscribe('newjob');
+	this.subscribe('vendorImage');
+	this.subscribe('generalContentUrl','career');  
+	// this.subscribe('resumeImage');
+	// this.subscribe('userProfileS3'); 
+	// this.subscribe('businessImgS3');
 });
-
-
+Template.jobApplicationForm.onCreated(function () {
+    this.currentUpload = new ReactiveVar(false);
+});
+Template.jobApplicationForm.helpers({
+    currentUpload: function() {
+        return Template.instance().currentUpload.get();
+    },
+});
 Template.career.helpers({
 	careerContent(){
 		var jobTitle = Newjob.find({"jobStatus" : 'active'}).fetch();
-		var getCity = FlowRouter.getParam('city');
+		// console.log(jobTitle);
+		if(FlowRouter.getParam('city')){
+			var getCity = FlowRouter.getParam('city');
+		}else{
+			var sesVal = Session.get('rxtNxtCityDatlist');
+		    if(sesVal){
+		      var getCity = sesVal;
+		    }else{
+		      var getCity = "Pune";
+		    }
+		}
 		if(jobTitle){
 			for (var i = 0; i < jobTitle.length; i++) {
 				jobTitle[i].expireDate = moment(jobTitle[i].date).format('DD/MM/YYYY');
@@ -51,9 +70,10 @@ Template.career.helpers({
 	},
 
 	joinusData(){
-		var currentURL = FlowRouter.current().path;
-		var actualURL = currentURL.split('/');
-		var career = GeneralContent.findOne({"url": actualURL[1]});
+		// var currentURL = FlowRouter.current().path;
+		// var actualURL = currentURL.split('/');
+		// var career = GeneralContent.findOne({"url": actualURL[1]});
+		var career = GeneralContent.findOne({"url": "career"});
 		if(career){
 			return career;
 		}
@@ -100,11 +120,11 @@ Template.careerJoinUsForm.helpers({
 	careerData:function() {
 		var careerDetails = [];
 		var careerDetails = Career.find({}).fetch();
-		console.log("careerDetails: ",careerDetails);
+		// console.log("careerDetails: ",careerDetails);
 
 		for(var i=0; i<careerDetails.length; i++){
 			if(careerDetails[i].ResumeId){
-				var resumeData = ResumeS3.findOne({"_id":careerDetails[i].ResumeId});
+				var resumeData = ResumeImage.findOne({"_id":careerDetails[i].ResumeId});
 				if(resumeData){
 					careerDetails[i].resume = resumeData					
 				}
@@ -122,7 +142,7 @@ Template.careerJoinUsForm.helpers({
 				};
 			// var dateofapplied = moment(careerDetails[i].createdAt).format('DD/MM/YYYY')
 		}
-		console.log('careerDetails:',careerDetails);
+		// console.log('careerDetails:',careerDetails);
 		return careerDetails;
 	},
 });
@@ -184,44 +204,64 @@ Template.jobApplicationForm.events({
 			$('#name-error').html('Name should only contains uppercase, lowercase letters and space.');
 		}
 	},
-	'submit #joinForm': function(event){
+	'submit #joinForm': function(event,template){
 		event.preventDefault();
+		if(files[0]){  
+			// console.log(files[0]);
+	        const upload = ResumeImage.insert({
+	          file: files[0],
+	          streams: 'dynamic',
+	          chunkSize: 'dynamic',
+	          // imagetype: 'profile',
+	        }, false);
 
-		if(files[0]){
-			ResumeS3.insert(files[0], function (err, fileObj){
-			 if(err){
-		        	console.log('Error : ' + err.message);
-		        }else{
-		        	imgId =  fileObj._id ;
-		        	var joinusFormValues = {
-						"name" 				: event.target.name.value,
-						"email" 			: event.target.email.value.trim(),
-						"MobileNo" 			: event.target.MobileNo.value,
-						"Qualification" 	: event.target.Qualification.value,
-						"PostForApply" 		: event.target.PostForApply.value.trim(),
-						"ResumeId"			: imgId,
-					};
+	        upload.on('start', function () {
+	          template.currentUpload.set(this);
+	        });
 
-					Meteor.call('insertCareer', joinusFormValues,
-						function(error,result){
-							if(error){
-								Bert.alert('Error occurs while submitting job application.', 'danger', 'growl-top-right' );
-								return;
-							}else{
-								Bert.alert('Your job application submitted successfully.', 'success', 'growl-top-right' );	
-								event.target.name.value				= '';
-								event.target.email.value			= '';
-								event.target.MobileNo.value			= '';
-								event.target.Qualification.value	= '';
-								// event.target.Qualification.value	= '--select--';
-								event.target.PostForApply.value		= '';
-								event.target.fileupload.value 		= '';
-								return;
-							}
-						}	
-					);
-		        }
-			});
+	        upload.on('end', function (error, fileObj) {
+	          if (error) {
+	            // alert('Error during upload: ' + error);
+	            console.log('Error during upload 1: ' + error);
+	            console.log('Error during upload 1: ' + error.reason);
+	          }else {
+	            // alert('File "' + fileObj._id + '" successfully uploaded');
+	            Bert.alert('Resume uploaded.','success','growl-top-right');
+	            imgId =  fileObj._id ;
+	            // console.log(imgId);
+	        	var joinusFormValues = {
+					"name" 				: event.target.name.value,
+					"email" 			: event.target.email.value.trim(),
+					"MobileNo" 			: event.target.MobileNo.value,
+					"Qualification" 	: event.target.Qualification.value,
+					"PostForApply" 		: event.target.PostForApply.value.trim(),
+					"ResumeId"			: imgId,
+				};
+
+				Meteor.call('insertCareer', joinusFormValues,
+					function(error,result){
+						if(error){
+							Bert.alert('Error occurs while submitting job application.', 'danger', 'growl-top-right' );
+							return;
+						}else{
+	          				template.currentUpload.set(false);
+							Bert.alert('Your job application submitted successfully.', 'success', 'growl-top-right' );	
+							event.target.name.value				= '';
+							event.target.email.value			= '';
+							event.target.MobileNo.value			= '';
+							event.target.Qualification.value	= '';
+							// event.target.Qualification.value	= '--select--';
+							event.target.PostForApply.value		= '';
+							event.target.fileupload.value 		= '';
+							return;
+						}
+					}	
+				);
+	          }
+	        });
+
+		    upload.start();
+
 		}else{
 			var joinusFormValues = {
 				"name" 				: event.target.name.value,

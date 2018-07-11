@@ -21,6 +21,16 @@
 			<input type="file" name="fileupload" value="fileupload" id="fileupload" class="form-control fileupload">
 			<output id="resumeList"></output>
 		</div>
+		{{#with currentUpload}}
+	        Uploading <b>{{file.name}}</b>:
+	        <span id="progress">{{progress.get}}%</span>
+	        <div class="progress">
+			  <div class="progress-bar progress-bar-striped active" role="progressbar"
+			  aria-valuenow="{{progress.get}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progress.get}}%">
+			    {{progress.get}}%
+			  </div>
+			</div>
+	    {{/with}}
 		<input type="submit" id="apply" class="btn btn-default form-control" value="Apply Now" /> 
 		<div class="form-group form_group" style="visibility: hidden; display:inline;">
 			<label for="PostForApply">Post For Apply</label>

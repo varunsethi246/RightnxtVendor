@@ -21,17 +21,18 @@ if(Meteor.isServer){
       // console.log('userfunction testing',Meteor.users.find({'roles':'user'}).fetch());
       return Meteor.users.find({'roles':'user'});
   });
-
+  Meteor.publish('vendorRole', function(){
+      // this.unblock();
+      return Meteor.users.find({'roles':'Vendor'});
+  });
   Meteor.publish('adminfunction', function(){
       // this.unblock();
       return Meteor.users.find({'roles':'admin'});
   });
-
   Meteor.publish('currentuser', function(){
       // this.unblock();
       return Meteor.users.find({'_id':this.userId});
   });
-
   Meteor.publish('userData', function(userId){
       // this.unblock();
       return Meteor.users.find({'_id':userId});

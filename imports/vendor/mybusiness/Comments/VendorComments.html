@@ -123,9 +123,15 @@
 						</div>
 						{{/each}}
 					</div> -->
-					{{#each businessComments}}
-					  	{{> userReviewTemplate}}
-					{{/each}}
+					{{#if businessComments}}
+						{{#each businessComments}}
+						  	{{> userReviewTemplate}}
+						{{/each}}
+					{{else}}
+						<div class="UserLikesList vendorlikelist">
+							<h4>No comments yet.</h4>
+						</div>
+					{{/if}}
 				</div>
 			</div>
 		</div>

@@ -24,11 +24,11 @@ Template.merchantGuidelines.helpers({
 });
 
 Template.merchantGuidelines.onRendered(function(){
-  $('html, body').scrollTop(0);
 	$("#visible-lg").removeClass("merchantGuidelineslg");
 	$("#visible-md").removeClass("merchantGuidelinesmd");
 	$("#visible-sm").removeClass("merchantGuidelinessm");
 	$("#visible-xs").removeClass("merchantGuidelinesxs");
+    $('html, body').scrollTop(0);
 	$(window).scroll(function() {
 	    if ($(document).scrollTop() > 25) {
 	    	$("#visible-lg").addClass("merchantGuidelineslg");

@@ -501,88 +501,80 @@ Template.claimOtp.events({
 		var businessObj = Business.findOne({'_id': id});
 		var typedOtp = $(event.target).siblings().val();
 		if(businessObj){
-			var savedOtp = businessObj.otp.otp;
-			if(typedOtp == ''){
-				Bert.alert('Please enter the OTP.','danger','growl-top-right'); 
+			var savedOtp = businessObj.otp.otp;						
+			if(typedOtp == savedOtp){
+				Meteor.call('updateOwnerID',id,savedOtp,
+				function(error,result){
+					if(error){
+						Bert.alert(error.reason,"danger","growl-top-right");
+					}else{
+						// Bert.alert('Entered OTP matches with existing OTP.','success',"growl-top-right");
+						$('.modal-backdrop').hide();
+						// FlowRouter.go('/addNewBusiness/businessInfo');
+						FlowRouter.go('/aboutBusiness/:businessLink',{'businessLink':businessObj.businessLink});
+					}
+				});
 			}else{
-				if(typedOtp == savedOtp){
-					Meteor.call('updateOwnerID',id,savedOtp,
-					function(error,result){
-						if(error){
-							Bert.alert(error.reason,"danger","growl-top-right");
-						}else{
-							// Bert.alert('Entered OTP matches with existing OTP.','success',"growl-top-right");
-							$('.modal-backdrop').hide();
-							// FlowRouter.go('/addNewBusiness/businessInfo');
-							FlowRouter.go('/aboutBusiness/:businessLink',{'businessLink':businessObj.businessLink});
-						}
-					});
-				}else{
-					Bert.alert('Entered OTP does not matches with existing OTP.','danger','growl-top-right'); 
-				}
-			}						
+				Bert.alert('Entered OTP does not matches with existing OTP.','danger','growl-top-right'); 
+			}
 		}
 	},
 	'click .callBkbtn' : function(event){
 		event.preventDefault();
 		var id = event.currentTarget.id;
 		var currentuser = Meteor.userId();
-		// console.log('currentuser :' ,currentuser);
+		console.log('currentuser :' ,currentuser);
 		var businessId = Session.get("idGVal");
 		var Alternate  = $('#alternatenmbers').val();
-		// console.log('Alternate',Alternate);
-		// console.log('businessId: ',businessId);
-		if(Alternate != ''){
-			var businessName = Business.findOne({"_id":businessId});
-			if(businessName){
-				var name 			= businessName.ownerFullName;
-				var businessTitle 	= businessName.businessTitle;
-			}//businessName
-			// console.log('businessName: ',businessName);
-			var newdate = new Date();
-			var currentdate = moment(newdate).format('DD/MM/YYYY');
-			var userData  = Meteor.users.findOne({'roles':'admin'});
-	        if(userData){
-	            var adminID = userData._id;
-	            var msgvariable = {
-					'[vendorname]' 		: name,
-					'[date]' 			: currentdate,
-		           	'[businessname]'	: businessTitle,
-		           	'[AlternateNumber]' : Alternate,
-		       	};
+		console.log('Alternate',Alternate);
+		console.log('businessId: ',businessId);
+		var businessName = Business.findOne({"_id":businessId});
+		if(businessName){
+			var name 			= businessName.ownerFullName;
+			var businessTitle 	= businessName.businessTitle;
+		}//businessName
+		console.log('businessName: ',businessName);
+		var newdate = new Date();
+		var currentdate = moment(newdate).format('DD/MM/YYYY');
+		var userData  = Meteor.users.findOne({'roles':'admin'});
+        if(userData){
+            var adminID = userData._id;
+            var msgvariable = {
+				'[vendorname]' 		: name,
+				'[date]' 			: currentdate,
+	           	'[businessname]'	: businessTitle,
+	           	'[AlternateNumber]' : Alternate,
+	       	};
 
 
-				var inputObj = {
-					from         : adminID,
-				    to           : adminID,
-				    templateName : 'Claim',
-				    variables    : msgvariable,
-				}
+			var inputObj = {
+				from         : adminID,
+			    to           : adminID,
+			    templateName : 'Claim',
+			    variables    : msgvariable,
+			}
 
-				sendMailNotification(inputObj);
+			sendMailNotification(inputObj);
 
-				var inputObj = {
-				    to           : adminID,
-				    templateName : 'Claim',
-				    variables    : msgvariable,
-				} 
+			var inputObj = {
+			    to           : adminID,
+			    templateName : 'Claim',
+			    variables    : msgvariable,
+			} 
 
-				sendInAppNotification(inputObj); 
+			sendInAppNotification(inputObj); 
 
-				// var inputObj = {
-		  //           roles       : 'admin',
-		  //           to          : adminID,
-		  //           templateName: 'Claim',
-		  //           OrderId     : id,
-		  //       }
+			// var inputObj = {
+	  //           roles       : 'admin',
+	  //           to          : adminID,
+	  //           templateName: 'Claim',
+	  //           OrderId     : id,
+	  //       }
 
-		  //       sendMailnNotif(inputObj); 
-		        $('#claimLoginModal').modal('hide');
-		        
-		    }//userData 
-		}else{
-			Bert.alert('Please enter the mobile number.','danger','growl-top-right'); 
-		}
+	  //       sendMailnNotif(inputObj); 
+	        $('#claimLoginModal').modal('hide');
+	        
+	    }//userData 
 	},
 });
 

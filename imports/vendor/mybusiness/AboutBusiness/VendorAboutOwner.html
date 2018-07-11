@@ -106,13 +106,23 @@
 									</div>
 								<!-- <span id='venFileUpldval'></span> -->
 							</div>
-							
 							<!-- <input class="uploadButton1" value="Choose Picture" type="button">
                 			<input class="uploadButton2" type="file">
                 			<span class="fileName">No File Chosen</span> -->
 						</div>
 					</div>
 				</div>
+				{{#with currentUpload}}
+			        Uploading <b>{{file.name}}</b>:
+			        <span id="progress">{{progress.get}}%</span>
+			        <div class="progress">
+					  <div class="progress-bar progress-bar-striped active" role="progressbar"
+					  aria-valuenow="{{progress.get}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progress.get}}%">
+					    {{progress.get}}%
+					  </div>
+					</div>
+					{{else}}
+			    {{/with}}
     			<input type="submit" class="btn vendor-formOne-save" value="SAVE">
 			</div>
 		</div>

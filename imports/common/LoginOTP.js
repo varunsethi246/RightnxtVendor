@@ -65,26 +65,26 @@ Template.LoginOTP.events({
     // e.preventDefault();
     var emailId = $('#userEmail').val();
     if(!emailId ){
-      Bert.alert('Please enter registered emailId',"danger","growl-top-right");   
+      Bert.alert('Please enter registered email address.',"danger","growl-top-right");   
     }else{
       var newID = Meteor.users.findOne({"emails.address":emailId});
       if(newID){
         var otp = newID.profile.emailotp;
-        if(otp == 0){
-          Bert.alert("Email already Verified");
-          FlowRouter.go('/');
-                        $('#loginModal').modal();
-              $('.signUpBox').hide(); 
-                        $('.loginScreen').show(); 
-                        $('.genLoginSignup').hide();
-              $('.signupScreen').hide();
-              $('.thankyouscreen').hide();
+        if(!otp){
+          Bert.alert("Email already Verified.",'danger','growl-top-right');
+          // FlowRouter.go('/');
+                        // $('#loginModal').modal();
+              // $('.signUpBox').hide(); 
+                        // $('.loginScreen').show(); 
+                        // $('.genLoginSignup').hide();
+              // $('.signupScreen').hide();
+              // $('.thankyouscreen').hide();
         }else{
               Meteor.call('sendVerificationLink', newID._id, function(error,result){
                   if(error){
                     Bert.alert(error.reason);
                   }else{                        
-                    Bert.alert("Check your email for verification",'success');
+                    Bert.alert("Check your email for verification",'success','growl-top-right');
                   } //end else
               }); // send verification mail ends
         }   

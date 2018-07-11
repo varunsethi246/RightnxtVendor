@@ -86,6 +86,7 @@ import { BusinessMenu } from '/imports/videoUploadserver/businessMenuServer.js';
 import { OfferImage } from '/imports/videoUploadserver/offerImageServer.js';
 import { EnquiryImage } from '/imports/videoUploadserver/enquiryImageServer.js';
 import { ReviewImage } from '/imports/videoUploadserver/reviewImageServer.js';
+import { ResumeImage } from '/imports/videoUploadserver/resumeImageServer.js';
 
 Meteor.publish('getBizVideo', function() {
     return BizVideo.find({}).cursor;
@@ -113,6 +114,9 @@ Meteor.publish('businessEnquiryImage', function() {
 });
 Meteor.publish('reviewImage', function() {
     return ReviewImage.find({}).cursor;
+});
+Meteor.publish('resumeImage', function() {
+    return ResumeImage.find({}).cursor;
 });
 
  // Meteor.publish('followUser', function() {

@@ -6,31 +6,37 @@
 				<h4 class="likesClass">Been There <span class="likesSpan">({{beenthereCount}})</span></h4>
 			{{/with}}
 
-			{{#each businessBeenThereData}}
+			{{#if businessBeenThereData}}
+				{{#each businessBeenThereData}}
+					<div class="UserLikesList vendorlikelist">
+						<img src="{{userProfilePic}}" alt="" class="margintopBeenThere">
+						<span class="UserInfoClass">
+							<div class="LikesUserName">
+								{{username}}
+							</div>
+							<div class="LikesReviewsandFollow revClass">
+								
+								{{#with UserReviewCount userid}}
+									{{UserReviewNo}} Reviews
+								{{/with}}
+
+								{{#with UserFollowerCount userid}}
+									{{UserFollowerNo}} Followers
+								{{/with}}
+
+							</div>
+							<div class="LikesReviewsandFollowTime revClass">
+								<!-- 20 min ago -->
+								{{timeAgo}}
+							</div>
+						</span>
+					</div>
+				{{/each}}
+			{{else}}
 				<div class="UserLikesList vendorlikelist">
-					<img src="{{userProfilePic}}" alt="" class="margintopBeenThere beenthereImage">
-					<span class="UserInfoClass">
-						<div class="LikesUserName">
-							{{username}}
-						</div>
-						<div class="LikesReviewsandFollow revClass">
-							
-							{{#with UserReviewCount userid}}
-								{{UserReviewNo}} Reviews
-							{{/with}}
-
-							{{#with UserFollowerCount userid}}
-								{{UserFollowerNo}} Followers
-							{{/with}}
-
-						</div>
-						<div class="LikesReviewsandFollowTime revClass">
-							<!-- 20 min ago -->
-							{{timeAgo}}
-						</div>
-					</span>
+					<h4>No users visited yet.</h4>
 				</div>
-			{{/each}}
+			{{/if}}
 		</div>
 	</div>
 </template>

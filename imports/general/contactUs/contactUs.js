@@ -11,18 +11,27 @@ import './contactUs.html';
 
 
 Template.contactUs.onCreated(function () {
-	this.subscribe('businessImgS3');  
-	this.subscribe('area');
-	this.subscribe('notification');
-	this.subscribe('userfunction');
 	this.subscribe('notificationTemplate') ;  
-	this.subscribe('userProfileS3');  
-	
+	this.subscribe('notification');
+	this.subscribe('currentuser');
+	this.subscribe('area');
+	this.subscribe('vendorImage');
+	// this.subscribe('userProfileS3');  
+	// this.subscribe('businessImgS3');  
 });
 
 Template.contactUs.helpers({
 	getCityName(){
-		var currentCity = FlowRouter.getParam('city');
+		if(FlowRouter.getParam('city')){
+			var currentCity = FlowRouter.getParam('city');
+		}else{
+			var sesVal = Session.get('rxtNxtCityDatlist');
+		    if(sesVal){
+		      currentCity = sesVal;
+		    }else{
+		      var currentCity = "Pune";
+		    }
+		}
 		return currentCity;		
 	}
 });
