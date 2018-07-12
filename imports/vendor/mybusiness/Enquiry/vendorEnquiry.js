@@ -831,21 +831,25 @@ Template.vendorEnquiry.events({
     	event.preventDefault();
     	event.stopPropagation();
 
-		$('.activeDownList').toggleClass('activeDownListBlock');
-		$('.activeDownListFlag').removeClass('activeDownListBlockFlag');
+		// $('.activeDownListFlag').removeClass('activeDownListBlockFlag');
+		$('.activeDownListFlag').hide();
 		$('.activeDownList').toggle();
+		$('.activeDownList').toggleClass('activeDownListBlock');
+		// $('.activeDownList').toggle();
 	},
 	'click .activeDownListFlagPre': function(){
     	event.preventDefault();
     	event.stopPropagation();
 
-		$('.activeDownListFlag').toggleClass('activeDownListBlockFlag');
-		$('.activeDownList').removeClass('activeDownListBlock');
+		// $('.activeDownList').removeClass('activeDownListBlock');
+		$('.activeDownList').hide();
 		$('.activeDownListFlag').toggle();
+		$('.activeDownListFlag').toggleClass('activeDownListBlockFlag');
+		// $('.activeDownListFlag').toggle();
 	},
 	'click .activeEnquiryTabsPre': function(){
-		$('.activeDownListFlag').removeClass('activeDownListBlockFlag');
-		$('.activeDownList').removeClass('activeDownListBlock');
+		// $('.activeDownListFlag').removeClass('activeDownListBlockFlag');
+		// $('.activeDownList').removeClass('activeDownListBlock');
 	},
 
 	// Checked Items Click Events
@@ -857,14 +861,14 @@ Template.vendorEnquiry.events({
 		var businessLink = FlowRouter.getParam('businessLink');
 		var enqListCount = Enquiry.find({"businessLink":businessLink,"vendorArchive":"noArchived"}).count();
 		var getChecked = false;
-		console.log("enqListCount: ",enqListCount);
+		// console.log("enqListCount: ",enqListCount);
 		$(".vEnqListBorder").find(".commonCheckbox").each(function(){
 			if ($(this).prop('checked')==true){ 
 				getChecked = true;
 			}
 		});
-		console.log("getChecked: ",getChecked);
-		console.log("businessLink: ",businessLink);
+		// console.log("getChecked: ",getChecked);
+		// console.log("businessLink: ",businessLink);
 		
 
 		if(enqListCount>0 && getChecked){

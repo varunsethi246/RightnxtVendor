@@ -2440,7 +2440,8 @@ background:#fff;
 border:1px solid #ccc;
 display: none;	
 top:25px;
-width:69px;
+width:81px;
+left: 88px;
 }
 .activeDownList {
 position:absolute;
@@ -2475,7 +2476,7 @@ z-index:1;
 background:#fff;
 border:1px solid #ccc;
 top:25px;
-width:69px;
+width:81px;
 left:88px;
 display:block
 }

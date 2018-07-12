@@ -434,7 +434,8 @@ font-weight:700
 }
 
 .radioOuterwrapper-label-off {
-padding-right:2px;color: #fff;
+padding-right:2px;
+/*color: #fff;*/
 }
 
 .radioOuterwrapper-label-on {

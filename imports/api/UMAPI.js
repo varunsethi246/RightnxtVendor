@@ -78,10 +78,12 @@ Meteor.methods({
                   rating  : "true",
                   payment : "true",
                   follow  : "true",
-                  unfollow: "true",
+                  // unfollow: "true",
                   like    : "true",
-                  unlike  : "true",
+                  // unlike  : "true",
                   comment : "true",
+                  editbusiness : "true",
+                  report  : "true",
                 }
               }
           },function(error,result){

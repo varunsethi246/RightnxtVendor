@@ -11,7 +11,7 @@
 						{{/with}}
 					</h4>
 				</div>
-				{{#if vendorEnquiryDetails}}
+				<!-- {{#if vendorEnquiryDetails}} -->
 					<div class="col-lg-12">
 						<div class="row">
 							<!-- Template for Left Side -->
@@ -96,7 +96,10 @@
 																		{{> allEnquries }}
 																	{{/each}}
 																{{else}}
-																	<div class="noactive">No Enquiry</div>
+																	<!-- <div class="noactive">No Enquiry</div> -->
+																	<div class="UserLikesList vendorlikelist col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+																		<h4>No enquiries.</h4>
+																	</div>
 																{{/if}}
 														</div>
 													</div>
@@ -162,11 +165,11 @@
 							{{/with}}
 						</div>
 					</div>
-				{{else}}
+				<!--{{else}} 
 					<div class="UserLikesList vendorlikelist col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<h4>No enquiries yet.</h4>
 					</div>
-				{{/if}}
+				{{/if}} -->
 			</div>
 		</div>
 </template>

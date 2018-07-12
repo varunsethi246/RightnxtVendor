@@ -18,15 +18,15 @@
 // 		$("#inject-loader-wrapper").fadeOut(1500, function() { $(this).remove(); });
 // 	})
 // }
-// ResetPasswordFunc= function () { 
-// 	// console.log('infunction');   
-// 	import('/imports/common/passwords.js').then(function (handle) {           
-// 		handle.ResetPasswordForm();    
-// 	})
-// 	.then(function(){
-// 		$("#inject-loader-wrapper").fadeOut(1500, function() { $(this).remove(); });
-// 	})
-// }
+ResetPasswordFunc= function () { 
+	// console.log('infunction');   
+	import('/imports/common/passwords.js').then(function (handle) {           
+		handle.ResetPasswordForm();    
+	})
+	.then(function(){
+		$("#inject-loader-wrapper").fadeOut(1500, function() { $(this).remove(); });
+	})
+}
 
 
 

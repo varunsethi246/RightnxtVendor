@@ -20,6 +20,7 @@ import '/imports/common/common.js';
         return val.replace(/^\s*|\s*$/g, "");
       }
 
+      if(emailVar){
         emailtrim = trimInput(emailVar);
         email     = emailtrim.toLowerCase();
 
@@ -27,23 +28,31 @@ import '/imports/common/common.js';
         if(!vendorObj){
           Bert.alert('This email address does not exist.','danger','growl-top-right');
         }else{
-          $('.enteredEmail').text(emailVar);
-          $('.forgotEmailMessage').show();
-          Accounts.forgotPassword({email: email}, function(err) {
-            if (err) {
-              if (err.message === 'User not found [403]') {
-                // console.log('This email does not exist.');
-                Bert.alert('This email does not exist:'+err.reason);
+          if(vendorObj.roles[0] == 'Vendor'){
+            $('.enteredEmail').text(emailVar);
+            $('.forgotEmailMessage').show();
+            $('.disableBtn').attr('disabled','disabled');
+            Accounts.forgotPassword({email: email}, function(err) {
+              if (err) {
+                if (err.message === 'User not found [403]') {
+                  // console.log('This email does not exist.');
+                  Bert.alert('This email does not exist:'+err.reason);
+                } else {
+                  // console.log('We are sorry but something went wrong.');
+                  Bert.alert('We are sorry but something went wrong:'+err.reason);
+                }
               } else {
-                // console.log('We are sorry but something went wrong.');
-                Bert.alert('We are sorry but something went wrong:'+err.reason);
+                // console.log('Email Sent. Check your mailbox.');
+                Bert.alert('Email Sent. Check your mailbox.',"success","growl-top-right");
               }
-            } else {
-              // console.log('Email Sent. Check your mailbox.');
-              Bert.alert('Email Sent. Check your mailbox.',"success","growl-top-right");
-            }
-          });
+            });
+          }else{
+            Bert.alert('This email address is registered as rightNXT user.',"danger","growl-top-right");
+          }
         }
+      }else{
+        Bert.alert('Please enter the email address.',"danger","growl-top-right");
+      }
           
         // Bert.alert( "Instructions sent! We've sent an email with instructions on how to reset your password.If you don't receive an email within a few minutes, check your spam and junk folders.", 'success', 'growl-top-right' );
       return false;
@@ -233,7 +242,7 @@ Template.header.events({
 
 
 Template.loginScreen.onRendered(function(){
-  $('.disableBtn').attr('disabled','disabled');
+  // $('.disableBtn').attr('disabled','disabled');
 
   $.validator.addMethod("regex_1", function(value, element, regexpr) {          
 

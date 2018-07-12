@@ -955,14 +955,22 @@ font-weight:700;
 text-align:center;
 padding-top:20px
 }
+#resetPasswordForm input[type="password"]:focus{
+    outline: none;
+    border: 1px solid #f89b1c;
+}
+.resetPwd[disabled]{
+    opacity: 0.5;
+}
 
-.resetButton {
+.resetButton,.resetButton:hover,.resetButton:focus {
 margin-top:12px;
-padding:8px;
+/*padding:8px;*/
 background:#f89b1c;
 border-radius:0;
 color:#fff;
-border-color:#f89b1c
+border-color:#f89b1c;
+text-align: center;
 }
 
 .notifiacationUsers {
