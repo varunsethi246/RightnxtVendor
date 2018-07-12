@@ -8,7 +8,9 @@ import '/imports/common/common.js';
 // import './forgotPassword.js';
 
 Template.vendorSignUpForm.events({
-
+  'click .forgotPass': function(event) {
+    $('label.error').hide();
+  },
   'click .loginLabel' : function(event){
       $(event.target).siblings().focus();
     },

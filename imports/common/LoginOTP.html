@@ -8,13 +8,13 @@
 					<span> One Time Password (OTP) has been sent to your registered email address, please enter the same here to login </span>
 						<form class="form-horizontal otpForm emailOtpSubmit" name="loginOtp">
 						  <div class="form-group">
-							<input type="hidden" name="userEmail" placeholder="Enter registered Email" value="{{emailId}}" id="userEmail">
-						    <input type="text" class="form-control otpTxt" id="loginOTP" placeholder="OTP">
+							<input type="email" class="required" name="userEmail" placeholder="Enter registered Email" value="{{emailId}}" id="userEmail">
+						    <input type="number" class="form-control otpTxt required no-spinner" id="loginOTP" placeholder="OTP" maxlength="4" autocomplete="off">
 						   
 						    <input type="hidden" id="otpemailSaved" value="{{profile.emailotp}}" >
 						  </div>
 							<button type="submit" class="btn btn-success">Submit</button>
-						  <span class="resendotp btn btn-danger"> Resend OTP</span>
+						  <span class="resendotp btn btn-danger">Resend OTP</span>
 							
 						</form>
 				</div>
@@ -26,8 +26,8 @@
 				<span> One Time Password (OTP) has been sent to your registerd email address, please enter the same here to login </span>
 				<form class="form-horizontal emailOtpSubmit" name="loginOtp">
 				  <div class="form-group">
-					<input type="email" class="form-control" name="userEmail" id="userEmail" placeholder="Enter registered Email">
-				    <input type="text" class="form-control otpTxt" id="loginOTP" placeholder="OTP">
+					<input type="email" class="form-control required" name="userEmail" id="userEmail" placeholder="Enter registered Email">
+				    <input type="number" class="form-control otpTxt required no-spinner" id="loginOTP" placeholder="OTP" maxlength="4" autocomplete="off">
 				  </div>
 				  <!-- <div class="col-lg-12 col-md-12"> -->
 					<!-- <span class="resendotp col-lg-12 col-md-12"> Resend OTP</span> -->

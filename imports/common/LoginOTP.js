@@ -7,6 +7,10 @@ import '/imports/common/common.js';
 
 
 Template.LoginOTP.onRendered(function(){
+  // $(".emailOtpSubmit").validate({
+  //   rules: {
+  //   }
+  // });
   $('#loginModal').modal('hide'); 
 });
 
@@ -89,7 +93,7 @@ Template.LoginOTP.events({
               }); // send verification mail ends
         }   
       } else{
-        Bert.alert('Please enter correct Email','danger','growl-top-right');
+        Bert.alert('Please enter a registered email address.','danger','growl-top-right');
       }
     }
   },
@@ -98,56 +102,78 @@ Template.LoginOTP.events({
 
     var emailId = $('#userEmail').val();
     var otp   = $('.otpTxt').val(); 
-    var userDetails = Meteor.users.findOne({"emails.0.address":emailId});
-    if(userDetails){
-      var userId = userDetails._id;
-      if((otp == userDetails.profile.otp) || (otp == userDetails.profile.emailotp)){
-        Meteor.call('activeUser',userId,function(error,result){
-          if(error){
-            console.log(error);
-          }else{
-            Bert.alert('You have sucessfuly logged In',"success","growl-top-right");  
-            // var userDetails = Meteor.users.findOne({"_id":userId});
-            // if(userDetails){
-              // FlowRouter.go('/');
-              // $('#loginModal').hide();
-              // $('.modal-backdrop').hide();
-
-              var emailVar    = userDetails.emails[0].address;
-              var reversePassWord = userDetails.profile.reverse;
-              // console.log("reversePassWord",reversePassWord); 
-                var passwordVar   = reversePassWord.split("").reverse().join("");
-                // console.log("passwordVar",passwordVar);
-
-                Meteor.loginWithPassword(emailVar,passwordVar, function(err,result){
-                  if(err){
-                    Bert.alert('Something went wrong' , "danger" , "growl-top-right");
+    if(emailId){
+      var userDetails = Meteor.users.findOne({"emails.0.address":emailId});
+      if(userDetails){
+        if(userDetails.roles[0] == 'Vendor'){
+          var userId = userDetails._id;
+          // if(otp){
+            if(userDetails.profile.otp || userDetails.profile.emailotp){
+              if((otp == userDetails.profile.otp) || (otp == userDetails.profile.emailotp)){
+                Meteor.call('activeUser',userId,function(error,result){
+                  if(error){
+                    console.log(error);
                   }else{
-                    Meteor.call('removeReverse',userDetails._id,function(err,result){
-                      if(err){
-                        Bert.alert('Something went wrong' , "danger" , "growl-top-right");
-                      }else{
-                        FlowRouter.go('/vendorDashboard');
-                        // if (Roles.userIsInRole(userDetails, ['user'])) {
-                        //           FlowRouter.go('/userProfile',{'userId':userDetails._id});
-                        //       }else if (Roles.userIsInRole(userDetails, ['Vendor'])) {
-                        //             FlowRouter.go('/vendorDashboard');
-                        //       }   
-                      }
-                    });
-                                          
-                  }
-                });
+                    Bert.alert('You have sucessfuly logged In',"success","growl-top-right");  
+                    // var userDetails = Meteor.users.findOne({"_id":userId});
+                    // if(userDetails){
+                      // FlowRouter.go('/');
+                      // $('#loginModal').hide();
+                      // $('.modal-backdrop').hide();
 
-              
-            // }
+                      var emailVar    = userDetails.emails[0].address;
+                      var reversePassWord = userDetails.profile.reverse;
+                      // console.log("reversePassWord",reversePassWord); 
+                        var passwordVar   = reversePassWord.split("").reverse().join("");
+                        // console.log("passwordVar",passwordVar);
+
+                        Meteor.loginWithPassword(emailVar,passwordVar, function(err,result){
+                          if(err){
+                            Bert.alert('Something went wrong' , "danger" , "growl-top-right");
+                          }else{
+                            Meteor.call('removeReverse',userDetails._id,function(err,result){
+                              if(err){
+                                Bert.alert('Something went wrong' , "danger" , "growl-top-right");
+                              }else{
+                                FlowRouter.go('/vendorDashboard');
+                                // if (Roles.userIsInRole(userDetails, ['user'])) {
+                                //           FlowRouter.go('/userProfile',{'userId':userDetails._id});
+                                //       }else if (Roles.userIsInRole(userDetails, ['Vendor'])) {
+                                //             FlowRouter.go('/vendorDashboard');
+                                //       }   
+                              }
+                            });
+                                                  
+                          }
+                        });
+
+                      
+                    // }
+                      }
+                    });   
+              }else{
+                Bert.alert('Please enter a vaild OTP.',"danger","growl-top-right");  
               }
-            });   
+            }else{
+              Bert.alert('This email address is already verified.','danger','growl-top-right');
+            }
+          // }else{
+          //   Bert.alert('Please enter the OTP.','danger','growl-top-right');
+          // }
+        }else{
+          Bert.alert('This email address is registered as rightNXT user.','danger','growl-top-right');
+        }
       }else{
-                Bert.alert('Please enter vaild OTP',"danger","growl-top-right");  
+        Bert.alert('Please enter a registered email address.','danger','growl-top-right');
       }
     }else{
-      Bert.alert('Please enter correct Email','danger','growl-top-right');
+      Bert.alert('Please enter the email address.','danger','growl-top-right');
+      // if(!emailId){
+      //   Bert.alert('Please enter an email address.','danger','growl-top-right');
+      // }
+      // if(!otp){
+      //   Bert.alert('Please enter a 4 digit otp.','danger','growl-top-right');
+      // }
     }
   },
 });

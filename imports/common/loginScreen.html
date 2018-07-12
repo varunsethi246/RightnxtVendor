@@ -2,12 +2,12 @@
 	<div class="loginScreen">
 		<form class="loginForm">
 			<div class="form-group loginFormGroup">
-			    <label for="email" class="loginLabel">Email</label>
+			    <label for="email" class="loginLabel mailLogin">Email</label>
 			    <input type="email" class="form-control loginEmail" id="emailLogin" name="email" required="true">
 			    <span class="wrongLoginEmailSpan"></span>
 			</div>
 			<div class="form-group">
-			    <label for="pwd" class="loginLabel">Password</label>
+			    <label for="pwd" class="loginLabel passLogin">Password</label>
 			    <input type="password" class="form-control loginPassword" id="pwdlogin" name="pwd" required="true">
 			    <span class="passwordWrongSpan"></span>
 			</div>
@@ -19,7 +19,7 @@
 				<a href="/LoginOTP" >Verify Account?</a>	
 			</span>
 			<span class="forgotPwd">
-				<a href="/UMforgotpassword" data-toggle="modal" data-target="#forgotPwdModal">Forgot Password?</a>
+				<a href="/UMforgotpassword" data-toggle="modal" data-target="#forgotPwdModal" class="forgotPass">Forgot Password?</a>
 				<!-- {{> forgotPasswords}}	 -->
 				<div id="forgotPwdModal" class="frgtBody modal fade" role="dialog">
 
@@ -57,7 +57,7 @@
 		</div>
 		<div class="loginTxt">
 			<i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
-			<span>Sign Up With Your Email</span>
+			<span class="forgotPass">Sign Up With Your Email</span>
 		</div> 
 	</div>
 </template>

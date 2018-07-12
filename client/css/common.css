@@ -866,14 +866,17 @@ margin-top:50px;
 font-size:13px
 }
 */
-label.error {
-margin-bottom:-5px!important
+.emailOtpSubmit label.error {
+/*margin-bottom:-5px!important*/
+    /*position: relative;*/
+    /*left: -34%;*/
 }
+/*label#userEmail-error{top: -10px;}*/
 
 .loginLabel {
 position:absolute;
 margin-top:5px;
-margin-left:14px;
+margin-left:15px;
 color:#4e4f51;
 font-weight:100;
 font-family:'PROXIMANOVA-REGULAR';
@@ -882,6 +885,12 @@ transform:translateY(6px);
 -webkit-transition:all .25s ease;
 transition:all .25s ease;
 -webkit-backface-visibility:hidden
+}
+.mailLogin.active{
+    left: 8px;
+}
+.passLogin.active{
+    left: 2px;
 }
 /*.loginLabel {
 position:absolute;
@@ -904,7 +913,7 @@ margin-bottom:35px
 .loginLabel.active {
 -webkit-transform:translate(20%,-4px) scale(1);
 transform:translate(20%,-4px) scale(1);
-left:2px;
+/*left:2px;*/
 font-size:12px
 }
 

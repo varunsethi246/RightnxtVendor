@@ -1379,12 +1379,12 @@ font-family:"PROXIMANOVA-REGULAR"
 margin-top:-8%
 }
 
-.login-btn1:hover {
-border:1px solid #4e4f51
+.login-btn1:hover,.login-btn1:focus {
+border:1px solid #4e4f51;
 }
 
 .login-btn1 {
-border:1px solid #f89b1c
+border:1px solid #f89b1c;
 }
 
 .alreadyClaimed p a {

@@ -69,7 +69,7 @@ Template.vendorBusinessCarousel.helpers({
 			for (var j = arrayBusiness.length ; j < 6 ; j++){
 				arrayBusiness.push({
 					'_id'			 : j,
-					'img'			 : '/images/rightnxt_image_nocontent.jpg', 
+					'img'			 : '../images/rightnxt_image_nocontent.jpg', 
 				});
 			}
 			
@@ -77,7 +77,7 @@ Template.vendorBusinessCarousel.helpers({
 		}
 	},
 	'showImageModal' : function(){
-		if(this.img == '/images/rightnxt_image_nocontent.jpg'){
+		if(this.img == '../images/rightnxt_image_nocontent.jpg'){
 			return false;
 		}else{
 			return true;

@@ -125,7 +125,7 @@ Template.imageReport.helpers({
 			};
 		}else{
 			var data = {
-				img : '/images/rightnxt_image_nocontent.jpg',
+				img : '../images/rightnxt_image_nocontent.jpg',
 			};
 		}
 			return data;

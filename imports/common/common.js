@@ -144,7 +144,10 @@ Template.generalHeader.helpers({
 });
 
 Template.header.events({
-	
+	'click .forgotPass': function(event) {
+	    $('.passwordWrongSpan').removeClass('passwordWrongWar');
+	    $('label.error').hide();
+	},
 	'click .login-btn': function(event){
 		$('.genLoginSignup').hide();
 		$('.signupScreen').hide();
