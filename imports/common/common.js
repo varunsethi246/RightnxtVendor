@@ -122,6 +122,7 @@ Template.footer.helpers({
 Template.header.helpers({
 	showElement(){
 		var currentUrl = FlowRouter.current().path;
+		// console.log(currentUrl);
 		if(currentUrl == '/' || currentUrl == '/claim'){
 			return false;
 		}else{
@@ -147,6 +148,10 @@ Template.header.events({
 	'click .forgotPass': function(event) {
 	    $('.passwordWrongSpan').removeClass('passwordWrongWar');
 	    $('label.error').hide();
+	    $('input[type="text"]').val('');
+	    $('input[type="password"]').val('');
+	    $('input[type="tel"]').val('');
+    	$('.loginLabel').removeClass('active');
 	},
 	'click .login-btn': function(event){
 		$('.genLoginSignup').hide();

@@ -2736,7 +2736,7 @@ color:#484747
 }
 
 .citySearchMheader {
-height:220px
+height:160px
 }
 
 .businessCityListShow {
@@ -3751,7 +3751,14 @@ video::-webkit-media-controls-panel {
 }
 .removeMargTopImg{margin-top: 0px!important;}
 .noPaddingVendor{padding-left: 0px;padding-right: 0px;}
-.vendorHome{height: 335px;}
+.vendorHome{
+	background:url(../images/claim/banner.jpg) no-repeat;
+	background-attachment:fixed;
+	background-position:center;
+	background-size:cover;
+	min-height:500px;
+	padding-top: 50px;
+}
 .vendorHome h1{color: #f89b1c;}
 .marginRightEnq{
 	margin-right: 0px!important;

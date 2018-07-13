@@ -10,6 +10,10 @@ import '/imports/common/common.js';
 Template.vendorSignUpForm.events({
   'click .forgotPass': function(event) {
     $('label.error').hide();
+    $('input[type="text"]').val('');
+    $('input[type="password"]').val('');
+    $('input[type="tel"]').val('');
+    $('.loginLabel').removeClass('active');
   },
   'click .loginLabel' : function(event){
       $(event.target).siblings().focus();
@@ -64,8 +68,8 @@ Template.vendorSignUpForm.events({
             console.log(error);
           }else{
             // location.reload();
-            $('#loginModal').hide();
-            $(".modal-backdrop").remove(); 
+            // $('#loginModal').hide();
+            // $(".modal-backdrop").remove(); 
             FlowRouter.go("/LoginOTP");
             
           }
@@ -100,31 +104,31 @@ Template.vendorSignUpForm.events({
         //   }
         // });
 
-      var userObj = Meteor.users.find({}).fetch();
-      if(userObj){
-        for (var i = 0; i < userObj.length; i++) {
-            if(userObj[i].emails){
-              var verify = userObj[i].emails[0].verified; 
-              if(verify == true){
-                  var emailVal = userObj[i].emails[0].address;
-              }
-              // console.log("emailVal: "+userObj[i].emails[0].address);
-              if(email == emailVal){
-                $(' .wrongVendorEmailSpan').text("Email already exists.");
-                $('.wrongVendorEmailSpan').addClass('passwordWrongWar');
-              }else{    
-                $('.signupScreen').hide();
-                $('.signUpBox').hide();
-                $('.genLoginSignup').hide();
-                $('.loginScreen').hide();
-                $('.thankyouscreen').show();
-              }
-            }
-        }
-      }
-      Meteor.logout();
-      // Bert.alert( 'User created successfully!', 'success', 'fixed-top' );
-      FlowRouter.go('/');
+      // var userObj = Meteor.users.find({}).fetch();
+      // if(userObj){
+      //   for (var i = 0; i < userObj.length; i++) {
+      //       if(userObj[i].emails){
+      //         var verify = userObj[i].emails[0].verified; 
+      //         if(verify == true){
+      //             var emailVal = userObj[i].emails[0].address;
+      //         }
+      //         // console.log("emailVal: "+userObj[i].emails[0].address);
+      //         if(email == emailVal){
+      //           $(' .wrongVendorEmailSpan').text("Email already exists.");
+      //           $('.wrongVendorEmailSpan').addClass('passwordWrongWar');
+      //         }else{    
+      //           $('.signupScreen').hide();
+      //           $('.signUpBox').hide();
+      //           $('.genLoginSignup').hide();
+      //           $('.loginScreen').hide();
+      //           $('.thankyouscreen').show();
+      //         }
+      //       }
+      //   }
+      // }
+      // Meteor.logout();
+      // // Bert.alert( 'User created successfully!', 'success', 'fixed-top' );
+      // FlowRouter.go('/');
     }
   }); //End of User Creation
   } //end of submit

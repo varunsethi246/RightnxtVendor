@@ -38,7 +38,7 @@ Template.passwords.events({
     //Check password is at least 6 chars long
     var isValidPassword = function(password, passwordConfirm) {
        if (password === passwordConfirm) {
-        console.log('passwordVar.length'+ password.length >= 6 ? true : false);
+        // console.log('passwordVar.length'+ password.length >= 6 ? true : false);
          return password.length >= 6 ? true : false;
        } else {
          return swal({
@@ -56,7 +56,7 @@ Template.passwords.events({
         if (err) {
           console.log('We are sorry but something went wrong.');
         } else {
-          console.log('Your password has been changed. Welcome back!');
+          // console.log('Your password has been changed. Welcome back!');
           Session.set('resetPassword', null);
           FlowRouter.go('/');
         }
@@ -77,7 +77,7 @@ Template.passwords.events({
 });
 
 ResetPasswordForm = function () {  
-  console.log('in reset');
+  // console.log('in reset');
   BlazeLayout.render("anonymousUserLayout",{main: 'passwords'});
   // Blaze.render(Template.vendorLayout,document.body);
 }

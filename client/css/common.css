@@ -892,6 +892,9 @@ transition:all .25s ease;
 .passLogin.active{
     left: 2px;
 }
+.FrontLoginPage.active{
+    left: 0px;
+}
 /*.loginLabel {
 position:absolute;
 margin-top:7px;

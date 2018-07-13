@@ -95,7 +95,7 @@ Meteor.publish('getBizVideoBanner', function() {
     return BizVideoBanner.find({}).cursor;
 });
 Meteor.publish('vendorImage', function() {
-    return VendorImage.find({}).cursor;
+    return VendorImage.find({'userId':this.userId}).cursor;
 });
 Meteor.publish('ownerImage', function() {
     return OwnerImage.find({}).cursor;

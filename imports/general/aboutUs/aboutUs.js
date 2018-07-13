@@ -13,6 +13,11 @@ import './aboutUs.html';
 import './aboutUsForm.html';
 
 Template.aboutUs.onCreated(function () {
+  this.subscribe('notificationTemplate') ;
+  this.subscribe('notification');
+  this.subscribe('currentuser');
+  this.subscribe('area');
+  this.subscribe('generalContentURL','about'); 
   // // Use this.subscribe inside onCreated callback
   // this.subscribe('userfunction');
   // this.subscribe('allCity');
@@ -24,14 +29,8 @@ Template.aboutUs.onCreated(function () {
   // this.subscribe('vendorBusiness');
   // this.subscribe('userProfileS3'); 
   // this.subscribe('businessImgS3');
-	this.subscribe('notificationTemplate') ;
-	this.subscribe('notification');
-	this.subscribe('currentuser');
-	this.subscribe('area');
-	this.subscribe('vendorImage');
-	this.subscribe('generalContentURL','about'); 
-	// this.subscribe('userProfileS3');
-	// this.subscribe('businessImgS3');
+  // this.subscribe('userProfileS3');
+  // this.subscribe('businessImgS3');
 });
 
 Template.aboutUs.helpers({
@@ -48,9 +47,9 @@ Template.aboutUs.helpers({
 		console.log('currentURL :',currentURL);
 		var splitUlr = currentURL.split('/');
 		var actualURL = currentURL.substring(1);
-		console.log('actualURL :',actualURL);
+		// console.log('actualURL :',actualURL);
 		var vision = GeneralContent.findOne({"url": splitUlr[1] , "tabName": "COMPANY" , "sectionHeading": "Our Vision"});
-		console.log('vision',vision);
+		// console.log('vision',vision);
 		return vision;
 	},
 

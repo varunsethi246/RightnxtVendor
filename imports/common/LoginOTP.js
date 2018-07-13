@@ -73,25 +73,29 @@ Template.LoginOTP.events({
     }else{
       var newID = Meteor.users.findOne({"emails.address":emailId});
       if(newID){
-        var otp = newID.profile.emailotp;
-        if(!otp){
-          Bert.alert("Email already Verified.",'danger','growl-top-right');
-          // FlowRouter.go('/');
-                        // $('#loginModal').modal();
-              // $('.signUpBox').hide(); 
-                        // $('.loginScreen').show(); 
-                        // $('.genLoginSignup').hide();
-              // $('.signupScreen').hide();
-              // $('.thankyouscreen').hide();
+        if(newID.roles[0] == 'Vendor'){
+          var otp = newID.profile.emailotp;
+          if(!otp){
+            Bert.alert("This email address is already verified.",'danger','growl-top-right');
+            // FlowRouter.go('/');
+                          // $('#loginModal').modal();
+                // $('.signUpBox').hide(); 
+                          // $('.loginScreen').show(); 
+                          // $('.genLoginSignup').hide();
+                // $('.signupScreen').hide();
+                // $('.thankyouscreen').hide();
+          }else{
+                Meteor.call('sendVerificationLink', newID._id, function(error,result){
+                    if(error){
+                      Bert.alert(error.reason);
+                    }else{                        
+                      Bert.alert("Check your email for verification",'success','growl-top-right');
+                    } //end else
+                }); // send verification mail ends
+          } 
         }else{
-              Meteor.call('sendVerificationLink', newID._id, function(error,result){
-                  if(error){
-                    Bert.alert(error.reason);
-                  }else{                        
-                    Bert.alert("Check your email for verification",'success','growl-top-right');
-                  } //end else
-              }); // send verification mail ends
-        }   
+          Bert.alert('This email address is registered as rightNXT user.','danger','growl-top-right');
+        }  
       } else{
         Bert.alert('Please enter a registered email address.','danger','growl-top-right');
       }

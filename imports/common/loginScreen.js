@@ -220,10 +220,20 @@ import '/imports/common/common.js';
   'click .verifyotp': function(event) {
     $('.passwordWrongSpan').removeClass('passwordWrongWar');
     $('label.error').hide();
+    $('input[type="text"]').val('');
+    $('input[type="password"]').val('');
+    $('input[type="tel"]').val('');
+    $('.loginLabel').removeClass('active');
+    $('#loginModal').modal('hide'); 
+    $('.modal-backdrop').hide(); 
   },
   'click .forgotPass': function(event) {
     $('.passwordWrongSpan').removeClass('passwordWrongWar');
     $('label.error').hide();
+    $('input[type="text"]').val('');
+    $('input[type="password"]').val('');
+    $('input[type="tel"]').val('');
+    $('.loginLabel').removeClass('active');
   },
 });
  

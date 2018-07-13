@@ -1,6 +1,6 @@
 .anonymousUserContainer {
 padding-right:0;
-padding-left:0
+padding-left:0;
 }
 
 .video {
@@ -147,7 +147,9 @@ color:#333
 }
 
 .homepageForms {
-margin-top:-36%
+/*margin-top:-36%*/
+/*position: relative;*/
+/*bottom: 200px;*/
 }
 
 .homepageBannerlg {

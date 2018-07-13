@@ -32,8 +32,8 @@ Template.career.onCreated(function () {
 	this.subscribe('currentuser');
 	this.subscribe('area');
 	this.subscribe('newjob');
-	this.subscribe('vendorImage');
 	this.subscribe('generalContentUrl','career');  
+	// this.subscribe('vendorImage');
 	// this.subscribe('resumeImage');
 	// this.subscribe('userProfileS3'); 
 	// this.subscribe('businessImgS3');

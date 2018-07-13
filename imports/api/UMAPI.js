@@ -199,7 +199,7 @@ Meteor.methods({
   },
 
     addRoles: function(newID , defaultRoleconfig){
-    console.log('newID-server'+ newID);
+    // console.log('newID-server'+ newID);
     Roles.addUsersToRoles(newID, defaultRoleconfig);
 
   },
@@ -343,8 +343,8 @@ Meteor.methods({
 
  'sendVerificationLink' : function(newID) {
     
-     this.unblock();
-     let userId = newID;
+    this.unblock();
+    let userId = newID;
 
     if ( userId ) {
       var user = Meteor.users.findOne({'_id' : userId});

@@ -8,8 +8,8 @@
 					<span> One Time Password (OTP) has been sent to your registered email address, please enter the same here to login </span>
 						<form class="form-horizontal otpForm emailOtpSubmit" name="loginOtp">
 						  <div class="form-group">
-							<input type="email" class="required" name="userEmail" placeholder="Enter registered Email" value="{{emailId}}" id="userEmail">
-						    <input type="number" class="form-control otpTxt required no-spinner" id="loginOTP" placeholder="OTP" maxlength="4" autocomplete="off">
+							<input type="email" class="form-control" name="userEmail" placeholder="Enter registered Email" value="{{emailId}}" id="userEmail">
+						    <input type="number" class="form-control otpTxt no-spinner" id="loginOTP" placeholder="OTP" maxlength="4" autocomplete="off">
 						   
 						    <input type="hidden" id="otpemailSaved" value="{{profile.emailotp}}" >
 						  </div>

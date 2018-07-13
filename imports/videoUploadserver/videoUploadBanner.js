@@ -74,7 +74,7 @@ if(s3Data)
                         // We use Random.id() instead of real file's _id
                         // to secure files from reverse engineering on the AWS client
                         const filePath = 'files/' + (Random.id()) + '-' + version + '.' + fileRef.extension;
-                        console.log("filePath: ", filePath);
+                        // console.log("filePath: ", filePath);
 
                         // Create the AWS:S3 object.
                         // Feel free to change the storage class from, see the documentation,
@@ -89,22 +89,22 @@ if(s3Data)
                             Body         : fs.createReadStream(vRef.path),
                             ContentType  : vRef.type,
                         }, (error) => {
-                            // console.log("error: ", error);
+                            console.log("error: ", error);
                             bound(() => {
                                 if (error) {
-                                    console.error(error);
+                                    // console.error(error);
                                 } else {
                                     // Update FilesCollection with link to the file at AWS
                                     const upd = { $set: {} };
                                     upd['$set']['versions.' + version + '.meta.pipePath'] = filePath;
-                                    console.log("upd: ", upd);
+                                    // console.log("upd: ", upd);
 
                                     this.collection.update({
                                         _id: fileRef._id
                                     }, upd, (updError) => {
                                         if (updError) {
-                                            // console.log("updError: ", updError);
-                                            console.error(updError);
+                                            console.log("updError: ", updError);
+                                            // console.error(updError);
                                         } else {
                                             // Unlink original files from FS after successful upload to AWS:S3
                                             // console.log("unlink: ", fileRef._id);

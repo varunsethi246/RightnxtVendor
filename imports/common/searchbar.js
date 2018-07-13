@@ -65,15 +65,29 @@ Template.searchbar.helpers({
 			if(cityObject.selectedCity){
 				var currentCity = cityObject.selectedCity;
 			}else {
-				var currentCity = "Pune";
+				var sesVal = Session.get('rxtNxtCityDatlist');
+		        if(sesVal){
+		          currentCity = sesVal;
+		        }else{
+		          var currentCity = "Pune";
+		        }
+		          // var currentCity = "Pune";
+		        
 			}
 		}else{
-			if(currentParams){
-				var busCity = Business.findOne({"businessLink":currentParams},{fields: {'businessCity': 1}});
-				var currentCity = busCity.businessCity;
-			}else{
-				var currentCity = FlowRouter.getParam('city');
-			}
+			var sesVal = Session.get('rxtNxtCityDatlist');
+	        if(sesVal){
+	          currentCity = sesVal;
+	        }else{
+	          var currentCity = "Pune";
+	        }
+			// if(currentParams){
+			// 	var busCity = Business.findOne({"businessLink":currentParams},{fields: {'businessCity': 1}});
+			// 	var currentCity = busCity.businessCity;
+			// }else{
+			// 	// var currentCity = FlowRouter.getParam('city');
+			// 	var currentCity = "Pune";
+			// }
 		}
 
 	    var currentArea =  FlowRouter.getParam('area');
@@ -93,7 +107,6 @@ Template.searchbar.helpers({
 		  		currentAreaData[i].selected = '';
 		  	}
 		}
-		
 	    return currentAreaData;
 	},
 
