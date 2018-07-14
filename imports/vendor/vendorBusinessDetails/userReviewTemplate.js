@@ -33,8 +33,10 @@ Template.userReviewTemplate.helpers({
 		}else{
 			return false;
 		}
-		
 	},
+	or: function(a, b) {
+        return a || b;
+    },
 });
 
 

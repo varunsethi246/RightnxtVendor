@@ -123,10 +123,15 @@ Template.claim.helpers({
   },
   showAreasClaim: function(){
     var currentCity = '';
-    if(Session.get("claimSelectedCity")){
-      currentCity =  Session.get("claimSelectedCity");
-    } else {
-      currentCity = 'Pune';
+    var city = FlowRouter.getParam('city');
+    if(city){
+	    currentCity = city;
+    }else{
+	    if(Session.get("claimSelectedCity")){
+	      currentCity =  Session.get("claimSelectedCity");
+	    } else {
+	      currentCity = 'Pune';
+	    }
     }
     
     var currentArea = Area.find({'city':currentCity,"status":"active"}).fetch();
@@ -231,8 +236,14 @@ Template.claim.onRendered(function(){
   	});
 	Session.set('idVal','');
 	Session.set('idGVal','');
-	Session.set("claimSelectedCity",'Pune');
-	
+	var city = FlowRouter.getParam('city');
+    if(city){
+		Session.set("claimSelectedCity",city);
+		$('.claimUserCity').html(city);
+    }else{
+		Session.set("claimSelectedCity",'Pune');
+		$('.claimUserCity').html('Pune');
+	}
 });
 
 Template.claim.events({

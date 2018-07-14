@@ -22,7 +22,7 @@ Template.vendorSidebar.helpers({
 				// var likedDataReturn = {
 				// 		noofLikes		: count,
 				// }
-				console.log('count ------>',count);
+				// console.log('count ------>',count);
 					return count;
 	},
 	'reportsCount':function(){
@@ -30,7 +30,7 @@ Template.vendorSidebar.helpers({
 		// var ReportDataReturn = {
 		// 	noofReport		: count,
 		// }
-		console.log('count report------>',reportcount);
+		// console.log('count report------>',reportcount);
 		return reportcount;
 	},
 	'bussinessDetails' : function () {
@@ -78,8 +78,8 @@ Template.vendorSidebar.helpers({
 				var ReviewsUserPhotoCount = Counts.get('ReviewsUserPhotoCount');
 				var ReviewsOwnerPhotoCount = Counts.get('ReviewsOwnerPhotoCount');
 				
-				console.log('ReviewsUserPhotoCount :',ReviewsUserPhotoCount);
-				console.log('ReviewsPhotoCount :',ReviewsOwnerPhotoCount);
+				// console.log('ReviewsUserPhotoCount :',ReviewsUserPhotoCount);
+				// console.log('ReviewsPhotoCount :',ReviewsOwnerPhotoCount);
 
 				if(ReviewsUserPhotoCount || ReviewsOwnerPhotoCount){
 					data[i].noofPhotosCount = ReviewsUserPhotoCount + ReviewsOwnerPhotoCount;
@@ -128,7 +128,7 @@ Template.vendorSidebar.helpers({
 				// My Offers Count noofOffersCount
 	
 				var offerCount = Counts.get('offerCount');
-				console.log('offerCount :',offerCount);
+				// console.log('offerCount :',offerCount);
 				if(offerCount){
 					data[i].noofOffersCount = offerCount;
 				} else{

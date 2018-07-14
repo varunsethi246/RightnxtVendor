@@ -24,7 +24,7 @@ Template.vendorReport.helpers({
 	'businessReports': function (){
 		var businessLink = FlowRouter.getParam('businessLink');
 		var reports = Reports.find({"businessLink":businessLink}).fetch();
-		console.log(reports);
+		// console.log(reports);
 		var reportcount = Counts.get('VendorReportCount');
 
 		// Added only to format time
@@ -250,15 +250,16 @@ Template.businessReport.events({
 		event.preventDefault();
 		var userId = Meteor.userId();
 		var adminUser 	= Meteor.users.findOne({'roles':'admin'});
+		// console.log('adminUser:',adminUser);
 		var adminID		= adminUser._id;
 		var userDetails = Meteor.users.findOne({'_id':userId});
-		console.log('userDetails:',userDetails);
+		// console.log('userDetails:',userDetails);
 		var email = $(event.currentTarget).attr('id');
 		var res = email.split(" ");
 		var userID = res[1];
 		var userDet = Reports.findOne({'_id':userID});
 		var usermailID = userDet.userid;
-		console.log('usermailID:',usermailID);
+		// console.log('usermailID:',usermailID);
 		if(userDetails){
 			var mailAdmin 		= userDetails.emails[0].address;
 			var date 			= new Date();

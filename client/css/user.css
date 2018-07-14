@@ -844,7 +844,7 @@ font-size:13px;
 color:#4e4f51;
 font-weight:600;
 font-family:'PROXIMANOVA-REGULAR';
-cursor:pointer
+/*cursor:pointer*/
 }
 
 .userRevEdit {
@@ -863,7 +863,7 @@ margin-bottom:10px
 
 .editBoxComment {
     margin-top:10px;
-    margin-bottom:10px
+    /*margin-bottom:10px*/
 }
 
 .loadmore {
@@ -3509,7 +3509,7 @@ padding:0
 .userRepName {
 color:#4e4f51;
 font-family:'PROXIMANOVA-REGULAR';
-cursor:pointer;
+/*cursor:pointer;*/
 font-size:12px;
 font-weight:600;
 margin-top:10px;
@@ -3565,12 +3565,14 @@ margin-top:5px
 .commentReplyBox > .userReplyComent > input {
 border:0;
 padding-left:8px;
-width:100%
+width:100%;
+font-size: 13px;
 }
 
 .userRevRepEdit,.userRevvReplyDel {
 padding-left:10px;
-color:#4e4f51
+color:#4e4f51;
+font-size: 11px;
 }
 
 .userTimelineCommentText {
@@ -4131,7 +4133,7 @@ color:#fff!important
 .userRevCommEdit,.userRevvCommentDel,.userRevCommentEditPen,.userRevCommentDel {
 cursor:pointer;
 padding-left:10px;
-font-size:14px;
+font-size:12px;
 color:#4e4f51;
 font-family:'PROXIMANOVA-REGULAR'
 }

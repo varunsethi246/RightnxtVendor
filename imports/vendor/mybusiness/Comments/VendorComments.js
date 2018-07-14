@@ -5,6 +5,7 @@ import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { Tracker } from 'meteor/tracker';
 import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
 import { ReviewImage } from '/imports/videoUploadClient/reviewImageClient.js';
+import { ReviewCommentLikes } from '/imports/api/reviewCommentLikesMaster.js';
 
 import '../../vendor.js';
 
@@ -44,9 +45,9 @@ Template.vendorComments.helpers({
 						}
 				}
 				if(allReviews[i].tagedFriends){
-					console.log('allReviews[i].tagedFriends:',allReviews[i].tagedFriends);
+					// console.log('allReviews[i].tagedFriends:',allReviews[i].tagedFriends);
 					if(allReviews[i].tagedFriends.length != 0){
-						console.log('allReviews[i].tagedFriends:',allReviews[i].tagedFriends.length);
+						// console.log('allReviews[i].tagedFriends:',allReviews[i].tagedFriends.length);
 
 						allReviews[i].tagedFriendsValidate = true;
 
@@ -129,29 +130,130 @@ Template.vendorComments.helpers({
 					allReviews[i].userCommentsCount = allReviews[i].userComments.length;
 					allReviews[i].userComments = allReviews[i].userComments.reverse();
 					for(k=0;k<allReviews[i].userComments.length; k++){
-						var userId  = allReviews[i].userComments[k].userId;
-						var userObj = Meteor.users.findOne({"_id":userId});
-						if(userObj){
-							allReviews[i].userComments[k].commentUserName = userObj.profile.name;
-										if(userObj.profile.userProfilePic){								
-											var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
-											if(pic){
-												allReviews[i].userComments[k].userProfileImgPath = pic.link();	
-											}
-											else{
-												allReviews[i].userComments[k].userProfileImgPath = "/users/profile/profile_image_dummy.svg";
-											}				
-										}else{
+						if(allReviews[i].userComments[k]){
 
-											allReviews[i].userComments[k].userProfileImgPath = '/users/profile/profile_image_dummy.svg';
+							var userId  = allReviews[i].userComments[k].userId;
+							var userObj = Meteor.users.findOne({"_id":userId});
+							if(userObj){
+								allReviews[i].userComments[k].commentUserName = userObj.profile.name;
+									if(userObj.profile.userProfilePic){								
+										var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
+										if(pic){
+											allReviews[i].userComments[k].userProfileImgPath = pic.link();	
+										}
+										else{
+											allReviews[i].userComments[k].userProfileImgPath = "/users/profile/profile_image_dummy.svg";
+										}				
+									}else{
+
+										allReviews[i].userComments[k].userProfileImgPath = '/users/profile/profile_image_dummy.svg';
+									}
+
+								allReviews[i].userComments[k].userCommentDateAgo = moment(allReviews[i].userComments[k].userCommentDate).fromNow();
+							}
+
+							var selector = {
+												"reviewId" 		: allReviews[i]._id,
+												"commentId" 	: allReviews[i].userComments[k].userCommentId.toString(),
+												"likedByUserId"	: Meteor.userId(),
+												"replyId" 		: '',
+											};
+							var checkCommentLike =  ReviewCommentLikes.findOne(selector);
+							if(checkCommentLike){
+								allReviews[i].userComments[k].likeUnlike = true;	
+							}else{
+								allReviews[i].userComments[k].likeUnlike = false;
+							}
+							var commentLikeCount = ReviewCommentLikes.find({
+														"reviewId" 		: allReviews[i]._id,
+														"commentId" 	: allReviews[i].userComments[k].userCommentId.toString(),
+														"replyId" 		: '',
+													}).fetch();
+							if(commentLikeCount){
+								allReviews[i].userComments[k].commentLikeCount = commentLikeCount.length;
+							} 
+
+							if(allReviews[i].commentReply){
+								// console.log(allReviews[i].commentReply);
+								var commentReplyArr = [];
+								var rn = 0;
+								for(l=0;l<allReviews[i].commentReply.length; l++){
+									var replyObj = {};
+									if(allReviews[i].commentReply[l].userCommentId == allReviews[i].userComments[k].userCommentId){
+										replyObj.commentReplyUserId = allReviews[i].commentReply[l].userId;
+										replyObj.commentReply = allReviews[i].commentReply[l].commentReply;
+										replyObj.userCommentID = allReviews[i].commentReply[l].userCommentId;
+										var replyId  = allReviews[i].commentReply[l].userReplyId;
+										var reviewId  = allReviews[i]._id;
+										replyObj.replyId = replyId;
+										replyObj.reviewId = reviewId;
+										var userId1  = allReviews[i].commentReply[l].userId;
+										var userObj1 = Meteor.users.findOne({"_id":userId1});
+
+										var newUserIdTwo = Meteor.userId();
+										if(newUserIdTwo){
+											if((Meteor.users.findOne({"_id": newUserIdTwo}).roles[0] === 'admin') || (userId1 === Meteor.userId()) ){
+												replyObj.repEditBlock = 'show';
+											} else{
+												replyObj.repEditBlock = 'hide';
+											}
+										} else{
+											replyObj.repEditBlock = 'hide';
+										}
+								
+										if(userObj1){
+											replyObj.commentReplyUserName = userObj1.profile.name;
+											if(userObj1.profile.userProfilePic){								
+												var pic = VendorImage.findOne({"_id":userObj1.profile.userProfilePic});
+												if(pic){
+													replyObj.replyProfileImgPath = pic.link();	
+												}
+												else{
+													replyObj.replyProfileImgPath = "/users/profile/profile_image_dummy.svg";
+												}				
+											}else{
+												replyObj.replyProfileImgPath = '/users/profile/profile_image_dummy.svg';
+											}
+											replyObj.commentReplyDateAgo = moment(allReviews[i].commentReply[l].commentReplyDate).fromNow();
+											var replySelector = {
+																"reviewId" 		: allReviews[i]._id,
+																"replyId"		: replyObj.replyId.toString(),
+																"likedByUserId"	: Meteor.userId(),
+																"commentId" 	: replyObj.userCommentID.toString(),
+															};
+											var checkCommentReplyLike =  ReviewCommentLikes.findOne(replySelector);
+
+											if(checkCommentReplyLike){
+												replyObj.replyLikeUnlike = true;	
+											}else{
+												replyObj.replyLikeUnlike = false;
+											}
+											var commentReplyLikeCount = ReviewCommentLikes.find({
+																			"reviewId" 		: allReviews[i]._id,
+																			"replyId" 		: replyObj.replyId.toString(),
+																			"commentId" 	: replyObj.userCommentID.toString(),
+																		}).fetch();
+											if(commentReplyLikeCount){
+												replyObj.commentReplyLikeCount = commentReplyLikeCount.length;
+											}
 										}
 
-									allReviews[i].userComments[k].userCommentDateAgo = moment(allReviews[i].userComments[k].userCommentDate).fromNow();
-								}						
+										commentReplyArr.push(replyObj);
+										rn++;
+									}//if
+								}//for
+
+								allReviews[i].userComments[k].commentReplyArr = commentReplyArr;
+								allReviews[i].userComments[k].commentReplyCount = rn;
+								commentReplyArr = [];
+							}else{
+								allReviews[i].userComments[k].commentReplyCount = 0;
 							}
-						}else{
-							allReviews[i].userCommentsCount = 0;					
 						}
+					}
+				}else{
+					allReviews[i].userCommentsCount = 0;					
+				}
 
 				if(allReviews[i].reviewLikes){					
 					allReviews[i].reviewLikeCount = allReviews[i].reviewLikes.length;
@@ -168,9 +270,6 @@ Template.vendorComments.helpers({
 					allReviews[i].likeClass = '';
 				} 
 
-
-
-
 				var verifyFollow = FollowUser.findOne({
 														"userId": Meteor.userId(),
 														"followUserId": allReviews[i].userId
@@ -185,6 +284,7 @@ Template.vendorComments.helpers({
 			}//end i loop
 			var totalReview = allReviews.length;
 			Session.set('totalReview', totalReview);
+		// console.log(allReviews);
 		return allReviews;
 		}
 

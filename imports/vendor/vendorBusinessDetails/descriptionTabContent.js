@@ -134,6 +134,7 @@ Template.descriptionTabContent.helpers({
 		var businessData= Business.findOne({"businessLink":businessLink});
 		var allReviewsTotalCount = Review.find({"businessLink": businessLink},{sort: {reviewDate:-1}}).count();
 		var allReviews = Review.find({"businessLink": businessLink},{sort: {"reviewDate": -1}, limit:limitFollows }).fetch();
+		// console.log(allReviews);
 		if(allReviews){
 			if(allReviews.length < 5 || allReviews.length == allReviewsTotalCount){
 				allReviews.showLoadMore = 'hideFollowButton';

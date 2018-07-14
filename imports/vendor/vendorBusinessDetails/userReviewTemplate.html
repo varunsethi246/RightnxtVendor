@@ -7,8 +7,9 @@
 				    	<a href="#"><img src="{{revProfilePic}}" alt=""></a>
 				    </div>
 				    <div class="userRevTempRightTxt col-lg-6 col-md-6 col-xs-6 col-sm-6"> 
-				        <a href="/userReview/{{userProfileUrl}}">{{username}}</a>
-				        <p>{{#if area}}{{area}},{{/if}} {{city}}</p>
+				        <!-- <a href="/userReview/{{userProfileUrl}}">{{username}}</a> -->
+				        <div>{{username}}</div>
+				        {{#if or area city}}<p>{{#if area}}{{area}},{{/if}} {{city}}</p>{{/if}}
 				        <p>{{reviewDateAgo}}</p>
 				    </div>
 				    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-3 myRatingOnBuss">
@@ -60,7 +61,7 @@
 		     	</div>
 		    </div>
 
-		    <div class="editBoxCommentRev-{{_id}} editBoxComment col-lg-11 col-md-11 col-sm-11 col-xs-11 ">
+		    <div class="editBoxCommentRev-{{_id}} editBoxComment col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			  	<textarea class="form-control editReviewTextArea editReviewOneTime" rows="5" name="review"  id="{{_id}}" placeholder="at least 140 characters" minlength="140" value="{{reviewComment}}"></textarea>
 				<p class="textRemain">0 / 140</p>
 		  		<span class="passwordWrongSpan passwordWrongSpans"></span>
@@ -300,8 +301,8 @@
 	  		
 			{{#each userComments}}
 				{{#if userLoadmoreCmmnt @index }}
-				<div class="userCommentRepliesBox">
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " id="{{../_id}}-{{userCommentId}}" data-reviewId="{{../_id}}" data-reviewPostedBy="{{../userId}}" data-commentId="{{userCommentId}}" data-businesslink="{{../businessLink}}" > 
+				<div class="userCommentRepliesBox noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 noPaddingGeneral" id="{{../_id}}-{{userCommentId}}" data-reviewId="{{../_id}}" data-reviewPostedBy="{{../userId}}" data-commentId="{{userCommentId}}" data-businesslink="{{../businessLink}}" > 
 						<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 userRevTempPic">  
 							<img class="commentImg" src="{{userProfileImgPath}}" /> 
 						</div>
@@ -340,7 +341,7 @@
 									</div>
 								</div>
 
-						  		<div class="editCommentBox_{{userCommentId}} editBoxComment col-lg-11 col-md-11 col-sm-11 col-xs-11">
+						  		<div class="editCommentBox_{{userCommentId}} editBoxComment col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					  				<input class="editCommentInput" data-commentId="{{userCommentId}}" id="editComment-{{../_id}}" value="{{userComment}}" type="text">
 						  		</div>
 
@@ -354,7 +355,7 @@
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 userlike">	
 									<span class="{{#if isInRole 'user,Vendor'}}commentLike{{else}}unuserLike{{/if}}" data-userCommentId={{userId}}> 
 										{{#if likeUnlike}}
-											Like
+											Unlike
 										{{else}}
 											Like
 										{{/if}} 
@@ -405,7 +406,7 @@
 										<div class="col-lg-11 col-md-12 col-sm-12 col-xs-12  userCommentText usercomRevTemtext userReplyText-{{replyId}}">	{{commentReply}} 
 										</div>
 
-										<div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 commentReplyInputBox-{{replyId}} commentReplyBox focusInput">
+										<div class="col-lg-11 col-md-12 col-sm-12 col-xs-12 commentReplyInputBox-{{replyId}} commentReplyBox focusInput">
 									  		<div class="col-lg-12 col-md-11 col-sm-11 col-xs-11 userReplyComent focusInput">
 								  				<input class="commentReplyEditInput" placeholder="Add your Reply here" value="{{commentReply}}" type="text" id="{{../../_id}}" data-reviewPostedBy="{{../userId}}" data-replyId="{{replyId}}" data-businesslink="{{../businessLink}}">
 									  		</div>
@@ -418,13 +419,13 @@
 										<div class="col-lg-11 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12 userlike">	
 											<span class="{{#if isInRole 'user, Vendor'}}commentReplyLike{{else}}unuserLike{{/if}}" data-commentPostedUser={{../userId}} data-commentReplyPostedUser={{commentReplyUserId}}> 
 												{{#if replyLikeUnlike}}
-													Like
+													Unlike
 												{{else}}
 													Like
 												{{/if}} 
 												<span>({{commentReplyLikeCount}})</span>
 											</span>
-											&nbsp;.&nbsp;
+											<!-- &nbsp;.&nbsp; -->
 											<!-- <span class="{{#if isInRole 'user, Vendor'}}usrCommentReply{{else}}unuserLike{{/if}}"> 
 												Reply
 											</span> -->
@@ -487,7 +488,7 @@
 									</div>
 								</div>
 
-						  		<div class="editCommentBox_{{userCommentId}} editBoxComment col-lg-11 col-md-11 col-sm-11 col-xs-11">
+						  		<div class="editCommentBox_{{userCommentId}} editBoxComment col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					  				<input class="editCommentInput" data-commentId="{{userCommentId}}" id="editComment-{{../_id}}" value="{{userComment}}" type="text">
 						  		</div>
 
@@ -552,7 +553,7 @@
 										<div class="col-lg-11 col-md-12 col-sm-12 col-xs-12  userCommentText usercomRevTemtext userReplyText-{{replyId}}">	{{commentReply}} 
 										</div>
 
-										<div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 commentReplyInputBox-{{replyId}} commentReplyBox focusInput">
+										<div class="col-lg-11 col-md-12 col-sm-12 col-xs-12 commentReplyInputBox-{{replyId}} commentReplyBox focusInput">
 									  		<div class="col-lg-12 col-md-11 col-sm-11 col-xs-11 userReplyComent focusInput">
 								  				<input class="commentReplyEditInput" placeholder="Add your Reply here" value="{{commentReply}}" type="text" id="{{../../_id}}" data-reviewPostedBy="{{../userId}}" data-replyId="{{replyId}}" data-businesslink="{{../businessLink}}">
 									  		</div>
@@ -565,13 +566,13 @@
 										<div class="col-lg-11 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12 userlike">	
 											<span class="{{#if isInRole 'user, Vendor'}}commentReplyLike{{else}}unuserLike{{/if}}" data-commentPostedUser={{../userId}} data-commentReplyPostedUser={{commentReplyUserId}}> 
 												{{#if replyLikeUnlike}}
-													Like
+													Unike
 												{{else}}
 													Like
 												{{/if}} 
 												<span>({{commentReplyLikeCount}})</span>
 											</span>
-											&nbsp;.&nbsp;
+											<!-- &nbsp;.&nbsp; -->
 											<!-- <span class="{{#if isInRole 'user, Vendor'}}usrCommentReply{{else}}unuserLike{{/if}}"> 
 												Reply
 											</span> -->

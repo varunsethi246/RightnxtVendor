@@ -22,15 +22,15 @@ Template.VendorBeenThere.helpers({
 	'businessBeenThereData': function(){
 		var businessLink = FlowRouter.getParam('businessLink');
 		var businessBeenThere = BeenThere.find({"businessLink":businessLink}).fetch();
-		console.log(businessLink);
-		console.log(businessBeenThere);
+		// console.log(businessLink);
+		// console.log(businessBeenThere);
 		if(businessBeenThere){
 			for(i=0; i<businessBeenThere.length; i++){
 				var id = businessBeenThere[i].userId;
 				if(id){
-					console.log("id",id);
+					// console.log("id",id);
 					var data = Meteor.users.findOne({"_id":id});
-					console.log("data",data);
+					// console.log("data",data);
 					if(data){
 						if(data.profile){
 							businessBeenThere[i].username = data.profile.name;
@@ -49,7 +49,7 @@ Template.VendorBeenThere.helpers({
 					}		
 				}
 				var timeAgo = moment(businessBeenThere[i].createdAt).fromNow();
-				// businessBeenThere[i].timeAgo = timeAgo;
+				businessBeenThere[i].timeAgo = timeAgo;
 			}	
 			// console.log('businessBeenThere ',businessBeenThere);
 			return businessBeenThere;
