@@ -316,6 +316,7 @@ Meteor.methods({
 	'updateVendorBulkImg' : function(businessLink,filePath){
 		var imgData = {
 			img : filePath,
+			uploadedAt : new Date(),
 		}
 		Business.update(
 			{"businessLink": businessLink},  
@@ -329,11 +330,22 @@ Meteor.methods({
 			{$pull : {"businessImages" : {"img": imgId}}},
 			function(error, result) { 
 			              if(error) {
-			                  console.log ('Error Message: ' +error ); 
-			              }else{
-								  
-			              }
-			});	
+		                  console.log ('Error Message: ' +error ); 
+		              }else{
+							  
+		              }
+		});
+
+		// Business.update(
+		// 	{"businessLink": businessLink},
+		// 	{$set : {"publishedImage" : ''}},
+		// 	function(error, result) { 
+  //             if(error) {
+  //                 console.log ('Error Message: ' +error ); 
+  //             }else{
+		// 			  // BizVideo.remove(imgId);  
+  //             }
+		// });		
 	},
 
 	'deleteVendorVideo' : function(businessLink,imgId){

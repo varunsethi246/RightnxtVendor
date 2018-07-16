@@ -80,11 +80,29 @@ Template.vendorPhotos.helpers({
 						if(imgData.type == 'image/png'){
 							imgData.businessId = data._id;
 							imgData.checkpngImg = 'bkgImgNone';
+							imgData.businessImg = true;
+							imgData.uploadedAt = imgId.uploadedAt;
 						}else{
 							imgData.businessId = data._id;
 							imgData.checkpngImg = '';
+							imgData.businessImg = true;
+							imgData.uploadedAt = imgId.uploadedAt;
 						}
 						imgList[i] = imgData;
+					}else{
+						var imgObj = ReviewImage.findOne({"_id":imgId.img});
+						if(imgObj.type == 'image/png'){
+							imgObj.businessId = data._id;
+							imgObj.checkpngImg = 'bkgImgNone';
+							imgObj.businessImg = false;
+							imgObj.uploadedAt = imgId.uploadedAt;
+						}else{
+							imgObj.businessId = data._id;
+							imgObj.checkpngImg = '';
+							imgObj.businessImg = false;
+							imgObj.uploadedAt = imgId.uploadedAt;
+						}
+						imgList[i] = imgObj;
 					}
 				}
 				imgList.sort(sortDescImgUploadAt);
@@ -203,7 +221,7 @@ Template.vendorPhotos.events({
 		var $this = $(event.target);
 		
 		if($($this).prop( "checked" )){
-			var imgObj = {"img":event.currentTarget.id};
+			var imgObj = {"img":event.currentTarget.id,"uploadedAt":new Date()};
 		    checked.push(imgObj);
 		    // console.log("checked push: ",checked);
 		}
@@ -362,16 +380,18 @@ Template.vendorPhotos.events({
 
 	},	
 
-	'click .delBusiImg' : function(event){
+	'click .DeleteBusImage' : function(event){
 		var businessLink = FlowRouter.getParam('businessLink');
-		var delId = ($(event.target).attr('id')).split('-');
+		var delId = $(event.currentTarget).attr('data-imgId');
 		
-		Meteor.call('deleteVendorImg',businessLink,delId[1],
+		Meteor.call('deleteVendorImg',businessLink,delId,
             function(error, result) { 
                 if(error) {
                   console.log ('Error Message: ' +error ); 
                 }else{
-					Meteor.call('removeBusinessImage',delId[1],
+                	$('#DeleteBusImage-'+delId).modal('hide');
+                	$('.modal-backdrop').hide();
+					Meteor.call('removeBusinessImage',delId,
 			            function(error, result) { 
 			            if(error) {
 			                console.log ('Error Message: ' +error ); 

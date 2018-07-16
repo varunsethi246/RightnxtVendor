@@ -313,8 +313,14 @@ Template.claim.events({
 	'change #getClaimCity': function(event){
 	    var selectedCityClaim = event.currentTarget.value;
 	    var id = selectedCityClaim.trim();
-	    Session.set("claimSelectedCity",id);
-	    $('.claimUserCity').text(id)
+	    var city = FlowRouter.getParam('city');
+	    if(city){
+			Session.set("claimSelectedCity",city);
+			$('.claimUserCity').html(city);
+	    }else{
+	    	Session.set("claimSelectedCity",id);
+	    	$('.claimUserCity').text(id)
+	    }
 	    $('#changeCityModal').modal('hide');
 	  },
 	'click .reclaim' : function(event){
