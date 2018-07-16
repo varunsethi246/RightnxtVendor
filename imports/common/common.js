@@ -88,6 +88,15 @@ Template.anonymousUserLayout1.helpers({
 });
 
 Template.footer.helpers({
+	fixedfooter(){
+		var currentUrl = FlowRouter.current().path;
+		// console.log(currentUrl);
+		if(currentUrl == '/'){
+			return true;
+		}else{
+			return false;
+		}
+	},
 	currentYear(){
 		return (new Date()).getFullYear();
 	},

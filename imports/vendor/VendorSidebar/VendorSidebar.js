@@ -178,6 +178,8 @@ Template.vendorSidebar.events({
 
 	//Sidebar Menu My Business, Add New Business, Payment Menu Click Events for Selected item
 	'click .menusidebarClass0':function(){
+		$('#myBussiness').removeClass('in');
+		$('.sidebarCollabse').removeClass('in');
 		$('.menusidebarClass0').toggleClass('mymenucolorSelect');
 		$('.menusidebarClass1').removeClass('mymenucolorSelect');
 		$('.menusidebarClass2').removeClass('mymenucolorSelect');
@@ -197,6 +199,8 @@ Template.vendorSidebar.events({
 		// Session.set("backlinkurl",'');
 	},
 	'click .menusidebarClass3': function(){
+		$('#myBussiness').removeClass('in');
+		$('.sidebarCollabse').removeClass('in');
 		$('.menusidebarClass0').removeClass('mymenucolorSelect');
 		$('.menusidebarClass1').removeClass('mymenucolorSelect');
 		$('.menusidebarClass2').removeClass('mymenucolorSelect');
@@ -205,6 +209,13 @@ Template.vendorSidebar.events({
 	},
 
 	//Sidebar Business Sub-Menu Click Events for Selected item
+	'click .editSidebarBusiness': function(event){
+		var businessLink = $(event.currentTarget).attr('data-link');
+		$('.menuSubCat').removeClass('mymenucolorSelect');
+		$(".menuSubCat1").addClass('mymenucolorSelect');
+		FlowRouter.go('/aboutBusiness/'+businessLink);
+		$("html,body").scrollTop(0);
+	},
 	'click .menuSubCat1': function(event){
 		$('.menuSubCat').removeClass('mymenucolorSelect');
 		$(".menuSubCat1").addClass('mymenucolorSelect');
