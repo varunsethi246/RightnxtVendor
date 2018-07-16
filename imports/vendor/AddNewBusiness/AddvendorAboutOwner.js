@@ -41,7 +41,7 @@ Template.addvendorAboutOwner.helpers({
 	    		// }
 	    		busData.ownerPhoto = pic.link();
 	    	}else{
-	    		busData.ownerPhoto = '../images/RightNxt-Loading.gif';
+	    		busData.ownerPhoto = '/images/RightNxt-Loading.gif';
 	    	}
 	    }else{
 	    	busData.ownerPhoto = '/users/profile/profile_image_dummy.svg';

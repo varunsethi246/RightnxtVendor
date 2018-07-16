@@ -62,10 +62,10 @@ Template.nearbyBusiness.helpers({
 							if(pic){
 								actualBusiness[i].imgUrl = pic.link(); 
 							}else{
-								actualBusiness[i].imgUrl = "../images/search/nearby-testaurants1.jpg";
+								actualBusiness[i].imgUrl = "/images/search/nearby-testaurants1.jpg";
 							}
 						}else{
-							actualBusiness[i].imgUrl = "../images/search/nearby-testaurants1.jpg";
+							actualBusiness[i].imgUrl = "/images/search/nearby-testaurants1.jpg";
 						}
 					}
 

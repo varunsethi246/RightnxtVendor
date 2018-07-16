@@ -444,7 +444,7 @@ Template.vendorMyOffers.events({
 		          // Handle the error
 		    })    
 		}else{
-			imgId = '../images/rightnxt_image_nocontent.jpg';
+			imgId = '/images/rightnxt_image_nocontent.jpg';
 			var formValues = {
 				"businessId"			: businessId,
 				"vendorId"  			: Meteor.userId(),
@@ -1319,7 +1319,7 @@ Template.vendorOffer2.events({
 		    })
 		}else{
 			if($(event.target).find('output').is(':empty') && $(event.target).find('.vendor2Img').is(':empty')){
-				offerImageId = '../images/rightnxt_image_nocontent.jpg';
+				offerImageId = '/images/rightnxt_image_nocontent.jpg';
 			}else{
 				offerImageId = offersImgId;
 			}

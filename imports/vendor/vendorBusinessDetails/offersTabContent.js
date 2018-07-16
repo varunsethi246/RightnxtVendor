@@ -45,11 +45,11 @@ Template.offersTabContent.events({
 					if(pic){
 						businessData.businessImages = pic.path;
 					}else{
-						businessData.businessImages = '../images/rightnxt_image_nocontent.jpg';
+						businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
 					}
 
 				}else{
-					businessData.businessImages = '../images/rightnxt_image_nocontent.jpg';
+					businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
 				}
 
 				var img = businessData.businessImages;
@@ -79,11 +79,11 @@ Template.offersTabContent.events({
 					if(pic){
 						businessData.businessImages = pic.path;
 					}else{
-						businessData.businessImages = '../images/rightnxt_image_nocontent.jpg';
+						businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
 					}
 
 				}else{
-					businessData.businessImages = '../images/rightnxt_image_nocontent.jpg';
+					businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
 				}
 
 				var img = businessData.businessImages;
@@ -110,11 +110,11 @@ Template.offersTabContent.events({
 		}
 		
 		var toEmail = $('#toVEmail-'+id).val();		
-		var imgUri = "../images/logo.png";
+		var imgUri = "/images/logo.png";
 	    var image  = Meteor.absoluteUrl(imgUri)
 	    var name = Meteor.users.findOne({_id:Meteor.userId()}).profile.name;
 	    var addText = $('#toVAddNote-'+id).val();
-		console.log("addText ",addText);	
+		// console.log("addText ",addText);	
 
 	    var msg = 'Hi there, <br/><br/>'+name+ ' has share offer with you. Check it out.<p>'+addText+'</p><br/><div style="border: 1px solid #ccc; width: 800px;"><img src='+image+' alt="" style="height: 60px; width: 60px; padding-left: 15px; padding-top: 15px;" /><SPAN style= "font-size: 16px; font-weight: 700; position:absolute; top: 40%; padding-left: 2%;">'+subj+'</SPAN><span style=""><h5 style="padding-right: 15px; padding-left: 15px;">Expiration Date: From '+from+' To '+to+' </h5><hr style="margin-right: 15px; margin-left: 15px;"><p style="font-size: 14px; padding-right: 15px; padding-left: 15px; text-align: justify; font-weight: 400; color: #555;">'+dealDesc+'</p></span></div>';
 
