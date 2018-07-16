@@ -81,4 +81,5 @@ staringatlights:fast-render
 #appcache@1.1.0
 #thinksoftware:image-resize-client
 #djk:jquery-ui
-#chuangbo:cookie
+chuangbo:cookie
+codechimera:meteor-bootstrap-sweetalert

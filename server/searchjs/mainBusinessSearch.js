@@ -7,7 +7,7 @@ import { Offers } from '/imports/api/offersMaster.js';
 
 
 SearchSource.defineSource('business', (searchText, options)=> {
-    //searchText = "city|area|categories OR text to search"
+    searchText = "city|area|categories OR text to search"
     var splitData = searchText.split('|');
     var searchResult = '';
     var selector = '';

@@ -5,6 +5,7 @@ import { City } from '/imports/api/masterData/cityMaster.js';
 import '/imports/common/common.js';
 import './adminVendorHomepage.html';
 import '../../general/mainBusinessSearch/mainBusinessSearch.js';
+import '/imports/general/homepage/homepageBanner.js';
 
 var options = {
   keepHistory: 0,

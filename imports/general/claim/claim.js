@@ -247,6 +247,11 @@ Template.claim.onRendered(function(){
 });
 
 Template.claim.events({
+	'click .clearValue':function(event){
+		event.preventDefault();
+		$('#claimOtps').val('');
+		$('#alternatenmbers').val('');
+	},
 	"keyup #claimBusiness": _.throttle(function(e) {
 		$('.footer-row').removeClass("hidden-lg");
 		var claimSearchCity = $("#getClaimCity").val();
@@ -590,6 +595,8 @@ Template.claimOtp.events({
 
 	  //       sendMailnNotif(inputObj); 
 	        $('#claimLoginModal').modal('hide');
+	        $('#claimOtps').val('');
+		$('#alternatenmbers').val('');
 	        
 	    }//userData 
 	},

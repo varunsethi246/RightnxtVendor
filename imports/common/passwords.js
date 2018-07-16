@@ -38,15 +38,17 @@ Template.passwords.events({
     //Check password is at least 6 chars long
     var isValidPassword = function(password, passwordConfirm) {
        if (password === passwordConfirm) {
-        // console.log('passwordVar.length'+ password.length >= 6 ? true : false);
+        console.log('passwordVar.length'+ password.length >= 6 ? true : false);
          return password.length >= 6 ? true : false;
        } else {
-         return swal({
-            title: 'Passwords dont match',
-            text: 'Please try again',
-            showConfirmButton: true,
-            type: 'error'
-         }); //End of error swal
+         // return swal({
+         //    title: 'Passwords dont match',
+         //    text: 'Please try again',
+         //    showConfirmButton: true,
+         //    type: 'error'
+         // }); //End of error swal
+        Bert.alert('Passwords dont match','danger','growl-top-right');
+         
        } //End of else
      }
 
@@ -62,13 +64,13 @@ Template.passwords.events({
         }
       });
     }else{
-            return swal({
-            title: "password should be at least 6 characters long",
-            text: "Please try again",
-            timer: 1700,
-            showConfirmButton: false,
-            type: "error"
-        });
+            // return swal({
+            // title: "password should be at least 6 characters long",
+            // text: "Please try again",
+            // timer: 1700,
+            // showConfirmButton: false,
+            // type: "error"
+        // });
 
     }
     // }

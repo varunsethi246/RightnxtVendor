@@ -89,6 +89,7 @@ Template.thumbnailBusinessList.helpers({
 	gridviewBusinessList() {
 		var listCategory = [];
 		var busList = businessSearch1.getData();
+		console.log('busList :',busList);
 		//**************************************************************
 		//*******************To get Current Location********************
 		//**************************************************************

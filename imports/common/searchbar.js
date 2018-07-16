@@ -52,7 +52,7 @@ Template.searchbar.helpers({
 	//To get business list of search results
 	businessSearchList() {
 		var busList 		= dropdownSearchList.getData();
-		// console.log("busList: ",busList);
+		console.log("busList: ",busList);
 		if(busList){
 			return busList;
 		}
