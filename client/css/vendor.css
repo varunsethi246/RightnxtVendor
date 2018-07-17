@@ -3766,3 +3766,27 @@ video::-webkit-media-controls-panel {
 .beenthereImage{
 	margin-top: 15px!important;
 }
+@media screen and (min-width: 1900px){
+	.prfPic{
+		height: 280px!important;
+	    width: 280px!important;
+	    border: 1px solid #ccc;
+	    top: 32px;
+	    padding-right: 0;
+	    padding-left: 0;
+	}
+}
+
+@media  screen and (max-width: 1600px) {
+    .prfPic{
+		height: 280px!important;
+	    width: 280px!important;
+	    border: 1px solid #ccc;
+	    top: 32px;
+	    padding-right: 0;
+	    padding-left: 0;
+	}
+}
+.vendorHome{
+	    height: 380px!important;
+}
