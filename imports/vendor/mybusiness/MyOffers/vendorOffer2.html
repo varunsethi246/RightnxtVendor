@@ -1,5 +1,5 @@
 <template name="vendorOffer2">
-	<form id="OfferForm" class="vendorOfferForm2">
+	<form id="OfferForm" class="vendorOfferForm2-{{i}}">
 		<div class="row">
 			<div class="col-lg-12 col-md-12  col-sm-12 col-xs-12 ">			
 				<div class="form-group">
@@ -7,7 +7,7 @@
 						{{#with formvaluesData}}
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<label class="bold">Deal Templates</label>
-								<select class="form-control vendorSelectArrow selectpicker dealy required" name="dealTemplate">
+								<select class="form-control vendorSelectArrow selectpicker dealy" name="dealTemplate">
 									<option {{selectedPercent}}>Percent Off</option>
 									<option {{selectedPrice}}>Price Off</option>
 									<option {{selectedFixed}}>Fixed Price</option>

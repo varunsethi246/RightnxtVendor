@@ -1,13 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
-import { Template } from 'meteor/templating';
 import { Bert } from 'meteor/themeteorchef:bert';
+import { Template } from 'meteor/templating';
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { ReactiveVar } from 'meteor/reactive-var';
 
 import { Business } from '../../../api/businessMaster.js';
 import { Offers } from '../../../api/offersMaster.js';
 import { Payment } from '../../../api/paymentMaster.js';
 import { CompanySettings } from '../../../api/companysettingsAPI.js';
-import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { OfferImage } from '/imports/videoUploadClient/offerImageClient.js';
 import ImageCompressor from 'image-compressor.js';
 
@@ -27,8 +28,7 @@ import './viewVendorOffer.html';
 
 var files = [];
 
-function printDiv() 
-	{
+function printDiv() {
   var divToPrint=document.getElementById('DivIdToPrint');
 
   var newWin=window.open('', 'PRINT', 'height=400,width=600');
@@ -46,37 +46,6 @@ function printDiv()
   // setTimeout(function(){newWin.close();},10);
 
 }
-
-Template.vendorOffer1.onRendered(function(){
-	// $('.changeDate').val(moment(new Date()).add(1, 'days').format('YYYY-MM-DD'));
-	// $("#usrtimeFrom").datepicker({
-	// 	    changeMonth: true,
-	// 	    changeYear: true,
-	// 	    minDate: new Date() // set the minDate to the today's date
-	// 	    // you can add other options here
-	// 	});
-	var todayNext = new Date().toISOString().split('T')[0];
-	document.getElementsByName("expirationToDate")[0].setAttribute('min', todayNext);
-	
-	var today = new Date().toISOString().split('T')[0];
-	document.getElementsByName("expirationFromDate")[0].setAttribute('min', today);
-	
-	var dates = $("#from").datepicker({
-	    minDate: "0",
-	    maxDate: "+2Y",
-	    defaultDate: "+1w",
-	    dateFormat: 'mm/dd/yy',
-	    numberOfMonths: 1,
-	    onSelect: function(date) {
-	        for(var i = 0; i < dates.length; ++i) {
-	            if(dates[i].id < this.id)
-	                $(dates[i]).datepicker('option', 'maxDate', date);
-	            else if(dates[i].id > this.id)
-	                $(dates[i]).datepicker('option', 'minDate', date);
-	        }
-	    } 
-	});
-});
 
 Template.vendorMyOffers.helpers({
 	businessName(){
@@ -112,7 +81,6 @@ Template.vendorMyOffers.helpers({
 		}
 	},
 });
-
 
 Template.paymentSuccess.helpers({
 	paymentSuccessfull(){
@@ -185,18 +153,18 @@ Template.vendorMyOffers.events({
 		var id = event.currentTarget.id;
 		Session.set('id',id);
 	},
-	'click .editModal': function(event){
-		event.preventDefault();
-		var id = event.currentTarget.id;
-		Session.set('id',id);
+	// 'click .editModal': function(event){
+	// 	event.preventDefault();
+	// 	var id = event.currentTarget.id;
+	// 	Session.set('id',id);
 
-		// $('.modal-backdrop').hide();
+	// 	// $('.modal-backdrop').hide();
 		
-		if($(event.target).hasClass('inactiveOk')){
-			$('#inactOfferModal-'+id).modal('hide');
-			// $('#editDataModal-'+id).modal('show');
-		}
-	},
+	// 	if($(event.target).hasClass('inactiveOk')){
+	// 		$('#inactOfferModal-'+id).modal('hide');
+	// 		// $('#editDataModal-'+id).modal('show');
+	// 	}
+	// },
 	'change .offrdInput': function(event){		
 		var offrdInput = event.currentTarget.value;
 		Session.set('numberOfOffers', offrdInput);
@@ -457,6 +425,7 @@ Template.vendorMyOffers.events({
 				"offerStatus"			: 'New',
 				"numOfMonths"			: numOfMonths,
 				"offerImage"			: imgId,
+				"businessLink"			: businessLink,
 			};
 
 			// var $this = $(event.target);
@@ -785,7 +754,7 @@ Template.paymentInvoice.helpers({
 				totalPrice				: totalPrice,
 				paymentMode 			: paymentDetails.modeOfPayment,
 			}
-			console.log(data);
+			// console.log(data);
 			return data;
 		}
 	},
@@ -1055,6 +1024,7 @@ Template.vendorOffer1.events({
 		var imageId = $this.parent().parent().find('output').attr('id');
 		files = event.target.files; // FileList object\
 		// Loop through the FileList and render image files as thumbnails.
+		console.log(files);
 		for (var i = 0, f; f = files[i]; i++) {
 			files[i].businessLink = Session.get('SessionBusinessLink');
 			
@@ -1081,8 +1051,10 @@ Template.vendorOffer1.events({
 		}// end of for loop
 	},
 	'click .exitOfferImage' :  function(event){
+		files = [];
 		var $this = $(event.target);
 		$this.parent().parent().empty();
+		$('.businessPhotofiles').val('');
 	},	
 	'click #imgVendorSpan' :  function(event){
 		// $(event.target).parent().parent().empty();
@@ -1251,6 +1223,7 @@ Template.vendorOffer2.events({
 		}else{
 			var offerStatus = 'New';
 		}
+		var businessLink = FlowRouter.getParam('businessLink');
 		
 		if(files[0]){
 			const imageCompressor = new ImageCompressor();
@@ -1280,7 +1253,7 @@ Template.vendorOffer2.events({
 		          } else {
 		            // alert('File "' + fileObj._id + '" successfully uploaded');
 		            Bert.alert('Offer Image uploaded.','success','growl-top-right');
-		            console.log(fileObj._id);
+		            // console.log(fileObj._id);
 		            // Session.set("vendorImgFilePath",fileObj._id);
 		            imgId =  fileObj._id ;
 		            var formValues = {
@@ -1292,7 +1265,8 @@ Template.vendorOffer2.events({
 						"legalNotices"			: event.target.legalNotices.value,
 						"numOfMonths"			: num,
 						"offerImage"			: imgId,
-						"offerStatus"			: offerStatus
+						"offerStatus"			: offerStatus,
+						"businessLink" 			: businessLink,
 					};
 
 					Meteor.call('updateOffers',formValues,id,
@@ -1332,7 +1306,8 @@ Template.vendorOffer2.events({
 				"legalNotices"			: event.target.legalNotices.value,
 				"numOfMonths"			: num,
 				"offerImage"			: offerImageId,
-				"offerStatus"			: offerStatus
+				"offerStatus"			: offerStatus,
+				"businessLink" 			: businessLink,
 			};
 
 			Meteor.call('updateOffers',formValues,id,
@@ -1386,8 +1361,10 @@ Template.vendorOffer2.events({
 		}// end of for loop
 	},
 	'click .exitOfferImage' :  function(event){
+		files = [];
 		var $this = $(event.target);
 		$this.parent().parent().empty();
+		$('.businessPhotofiles').val('');
 	},
 	'click .delOfferImage' :  function(event){
 		var $this = $(event.target);
@@ -1556,7 +1533,29 @@ Template.receipt.events({
 Template.editOffer.events({
 	'click .editModal': function(event){
 		event.preventDefault();
-		
+		$(".vendorOfferForm2-"+this.i).validate({
+		 	rules: {
+		        dealHeadline: {
+		            required: true,
+		        },
+		        dealDescription: {
+		        	required: true,
+		        },
+		        expirationFromDate: {
+		        	required: true,
+		        },
+		        expirationToDate: {
+		        	required: true,
+		        },
+		        legalNotices: {
+		        	required: true,
+		        },
+		        dealTemplate: {
+		        	required: true,
+		        },
+	    	},
+	    });
+
 		var id = event.currentTarget.id;
 		Session.set('id',id);
 
@@ -1826,57 +1825,30 @@ Template.offerAccordian.onRendered(function(){
 	Session.set('numberOfOffers','');
 });
 
-Template.vendorOffer1.onRendered(function(){
-	$("html,body").scrollTop(0);
-	Session.set('SessionBusinessLink','');
-	$("#OrderForm").validate({
-	 	rules: {
-	        dealHeadline: {
-	            required: true,
-	        },
-	        dealDescription: {
-	        	required: true,
-	        },
-	        expirationFromDate: {
-	        	required: true,
-	        },
-	        expirationToDate: {
-	        	required: true,
-	        },
-	        legalNotices: {
-	        	required: true,
-	        },
-	        // dealTemplate: {
-	        // 	required: true,
-	        // },
-    	},
-    });
-});
-
 Template.vendorOffer2.onRendered(function(){
+	// $("#OfferForm").validate({
+	//  	rules: {
+	//         dealHeadline: {
+	//             required: true,
+	//         },
+	//         dealDescription: {
+	//         	required: true,
+	//         },
+	//         expirationFromDate: {
+	//         	required: true,
+	//         },
+	//         expirationToDate: {
+	//         	required: true,
+	//         },
+	//         legalNotices: {
+	//         	required: true,
+	//         },
+	//         dealTemplate: {
+	//         	required: true,
+	//         },
+ //    	},
+ //    });
 	Session.set('SessionBusinessLink','');
-	$("#OfferForm").validate({
-	 	rules: {
-	        dealHeadline: {
-	            required: true,
-	        },
-	        dealDescription: {
-	        	required: true,
-	        },
-	        expirationFromDate: {
-	        	required: true,
-	        },
-	        expirationToDate: {
-	        	required: true,
-	        },
-	        legalNotices: {
-	        	required: true,
-	        },
-	        // dealTemplate: {
-	        // 	required: true,
-	        // },
-    	},
-    });
 });
 
 Template.paymentInvoice.onRendered(function(){
@@ -1897,6 +1869,60 @@ Template.editOffer.onRendered(function(){
 	Session.set('id','');
 });
 
+Template.vendorOffer1.onRendered(function(){
+	$("html,body").scrollTop(0);
+	Session.set('SessionBusinessLink','');
+	$("#OrderForm").validate({
+	 	rules: {
+	        dealHeadline: {
+	            required: true,
+	        },
+	        dealDescription: {
+	        	required: true,
+	        },
+	        expirationFromDate: {
+	        	required: true,
+	        },
+	        expirationToDate: {
+	        	required: true,
+	        },
+	        legalNotices: {
+	        	required: true,
+	        },
+	        dealTemplate: {
+	        	required: true,
+	        },
+    	},
+    });
+	// $('.changeDate').val(moment(new Date()).add(1, 'days').format('YYYY-MM-DD'));
+	// $("#usrtimeFrom").datepicker({
+	// 	    changeMonth: true,
+	// 	    changeYear: true,
+	// 	    minDate: new Date() // set the minDate to the today's date
+	// 	    // you can add other options here
+	// 	});
+	var todayNext = new Date().toISOString().split('T')[0];
+	document.getElementsByName("expirationToDate")[0].setAttribute('min', todayNext);
+	
+	var today = new Date().toISOString().split('T')[0];
+	document.getElementsByName("expirationFromDate")[0].setAttribute('min', today);
+	
+	var dates = $("#from").datepicker({
+	    minDate: "0",
+	    maxDate: "+2Y",
+	    defaultDate: "+1w",
+	    dateFormat: 'mm/dd/yy',
+	    numberOfMonths: 1,
+	    onSelect: function(date) {
+	        for(var i = 0; i < dates.length; ++i) {
+	            if(dates[i].id < this.id)
+	                $(dates[i]).datepicker('option', 'maxDate', date);
+	            else if(dates[i].id > this.id)
+	                $(dates[i]).datepicker('option', 'minDate', date);
+	        }
+	    } 
+	});
+});
 
 vendorMyOffersForm = function () {  
   BlazeLayout.render("vendorLayout",{main: 'vendorMyOffers'});

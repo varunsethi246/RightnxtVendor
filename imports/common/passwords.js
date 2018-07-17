@@ -38,7 +38,7 @@ Template.passwords.events({
     //Check password is at least 6 chars long
     var isValidPassword = function(password, passwordConfirm) {
        if (password === passwordConfirm) {
-        console.log('passwordVar.length'+ password.length >= 6 ? true : false);
+        // console.log('passwordVar.length'+ password.length >= 6 ? true : false);
          return password.length >= 6 ? true : false;
        } else {
          // return swal({
@@ -47,7 +47,7 @@ Template.passwords.events({
          //    showConfirmButton: true,
          //    type: 'error'
          // }); //End of error swal
-        Bert.alert('Passwords dont match','danger','growl-top-right');
+        Bert.alert('Passwords does not match.','danger','growl-top-right');
          
        } //End of else
      }

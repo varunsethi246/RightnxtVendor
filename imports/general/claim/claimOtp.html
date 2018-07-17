@@ -9,7 +9,7 @@
 	        	<input type="hidden" name="claimName" value={{id}} >
 
 		        <form id="otp" class="form-inline">
-					<input type="number" name="claimOtp" required="true" minlength="4" maxlength="4" class="no-spinner" id="claimOtps">
+					<input type="number" name="claimOtp" class="no-spinner" id="claimOtps">
 					<button type="button" class="claimModalBtn otpbtn btn">Submit</button> 
 				</form>
 				
@@ -18,7 +18,7 @@
 			<p class="{{#if mobile}}claimpp{{else}}claimp{{/if}}"> Get a phone call from rightNXT team within 24 hours.</p>
 			<label for="alternatenmbers" class="alternateNumberLable">Your 10 Digit Alternate Mobile Number</label>
 			
-			<input type="number" class="alternateNumbercss" id="alternatenmbers" name="alternatenmbers" maxlength="10" required="true">
+			<input type="number" class="alternateNumbercss no-spinner" id="alternatenmbers" name="alternatenmbers" maxlength="10" required="true">
 
 			<button class="callBkbtn" id="{{id}}">Call Back</button>
 		{{/with}}

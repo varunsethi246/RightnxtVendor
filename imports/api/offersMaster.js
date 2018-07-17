@@ -92,7 +92,8 @@ Meteor.methods({
 					"legalNotices"			: formValues.legalNotices,
 					"numOfMonths"			: formValues.numOfMonths,
 					"offerImage"			: formValues.offerImage,
-					"offerStatus"			: formValues.offerStatus
+					"offerStatus"			: formValues.offerStatus,
+					"businessLink"			: formValues.businessLink
 				}, 
 			},
 			function(error,result){
