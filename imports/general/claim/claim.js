@@ -24,6 +24,41 @@ var totalpgno = 1;
 Template.claim.onRendered(function(){
 	Session.set('pgno',1);
 	totalpgno = 1;
+	$('.outerPaginationDiv').find('input').val('');
+	$('.outerPaginationDiv').find('input').removeClass('active');
+	$('#claimBusiness').val('');
+	$('.claimRow').hide();
+	$(".visible-lg").removeClass("claimlg");
+	$(".visible-md").removeClass("claimmd");
+	$(".visible-sm").removeClass("claimsm");
+	$(".visible-xs").removeClass("claimxs");
+	$(window).scroll(function() {
+	    if ($(document).scrollTop() > 25) {
+	      $(".visible-lg").addClass("claimlg");
+	      $(".visible-md").addClass("claimmd");
+	      $(".visible-sm").addClass("claimsm");
+	      $(".visible-xs").addClass("claimxs");
+	    } else {
+	   	  $(".visible-lg").removeClass("claimlg");
+	      $(".visible-md").removeClass("claimmd");
+	      $(".visible-sm").removeClass("claimsm");
+	      $(".visible-xs").removeClass("claimxs");
+	    }
+  	});
+	Session.set('idVal','');
+	Session.set('idGVal','');
+	var city = FlowRouter.getParam('city');
+    if(city){
+		Session.set("claimSelectedCity",city);
+		$('.claimUserCity').html(city);
+    }else if(Session.get("rxtNxtCityDatlist")){
+		Session.set("claimSelectedCity",Session.get("rxtNxtCityDatlist"));
+		$('.claimUserCity').html(Session.get("rxtNxtCityDatlist"));
+    }else{
+		Session.set("claimSelectedCity",'Pune');
+		$('.claimUserCity').html('Pune');
+	}
+	// Session.set('pgno','');
 });
 
 Template.claim.helpers({ 
@@ -123,15 +158,10 @@ Template.claim.helpers({
   },
   showAreasClaim: function(){
     var currentCity = '';
-    var city = FlowRouter.getParam('city');
-    if(city){
-	    currentCity = city;
-    }else{
-	    if(Session.get("claimSelectedCity")){
-	      currentCity =  Session.get("claimSelectedCity");
-	    } else {
-	      currentCity = 'Pune';
-	    }
+    if(Session.get("claimSelectedCity")){
+      currentCity =  Session.get("claimSelectedCity");
+    } else {
+      currentCity = 'Pune';
     }
     
     var currentArea = Area.find({'city':currentCity,"status":"active"}).fetch();
@@ -215,37 +245,6 @@ Template.alreadyClaimed.helpers({
 	}
 });
 
-
-Template.claim.onRendered(function(){
-	$(".visible-lg").removeClass("claimlg");
-	$(".visible-md").removeClass("claimmd");
-	$(".visible-sm").removeClass("claimsm");
-	$(".visible-xs").removeClass("claimxs");
-	$(window).scroll(function() {
-	    if ($(document).scrollTop() > 25) {
-	      $(".visible-lg").addClass("claimlg");
-	      $(".visible-md").addClass("claimmd");
-	      $(".visible-sm").addClass("claimsm");
-	      $(".visible-xs").addClass("claimxs");
-	    } else {
-	   	  $(".visible-lg").removeClass("claimlg");
-	      $(".visible-md").removeClass("claimmd");
-	      $(".visible-sm").removeClass("claimsm");
-	      $(".visible-xs").removeClass("claimxs");
-	    }
-  	});
-	Session.set('idVal','');
-	Session.set('idGVal','');
-	var city = FlowRouter.getParam('city');
-    if(city){
-		Session.set("claimSelectedCity",city);
-		$('.claimUserCity').html(city);
-    }else{
-		Session.set("claimSelectedCity",'Pune');
-		$('.claimUserCity').html('Pune');
-	}
-});
-
 Template.claim.events({
 	'click .clearValue':function(event){
 		event.preventDefault();
@@ -254,7 +253,11 @@ Template.claim.events({
 	},
 	"keyup #claimBusiness": _.throttle(function(e) {
 		$('.footer-row').removeClass("hidden-lg");
-		var claimSearchCity = $("#getClaimCity").val();
+	    if(Session.get("claimSelectedCity")){
+	    	var claimSearchCity = Session.get("claimSelectedCity");
+	    }else{
+			var claimSearchCity = 'Pune';
+	    }
 		var claimSearchArea = $("#getAreaClaim").val();
     var text = $(e.target).val().trim();
     var searchBusinessText = claimSearchCity + '|' + claimSearchArea + '|' + text;
@@ -316,15 +319,22 @@ Template.claim.events({
 	},
 
 	'change #getClaimCity': function(event){
+	    $('.claimRow').hide();
+		$('.outerPaginationDiv').find('input').val('');
+		$('.outerPaginationDiv').find('input').removeClass('active');
+		$('#claimBusiness').val('');
+		$('.footer-row').addClass("hidden-lg");
+
 	    var selectedCityClaim = event.currentTarget.value;
 	    var id = selectedCityClaim.trim();
 	    var city = FlowRouter.getParam('city');
 	    if(city){
-			Session.set("claimSelectedCity",city);
-			$('.claimUserCity').html(city);
+	    	FlowRouter.go('/claim/'+id)
+			Session.set("claimSelectedCity",id);
+			$('.claimUserCity').text(id);
 	    }else{
 	    	Session.set("claimSelectedCity",id);
-	    	$('.claimUserCity').text(id)
+	    	$('.claimUserCity').text(id);
 	    }
 	    $('#changeCityModal').modal('hide');
 	  },
@@ -545,17 +555,17 @@ Template.claimOtp.events({
 		event.preventDefault();
 		var id = event.currentTarget.id;
 		var currentuser = Meteor.userId();
-		console.log('currentuser :' ,currentuser);
+		// console.log('currentuser :' ,currentuser);
 		var businessId = Session.get("idGVal");
 		var Alternate  = $('#alternatenmbers').val();
-		console.log('Alternate',Alternate);
-		console.log('businessId: ',businessId);
+		// console.log('Alternate',Alternate);
+		// console.log('businessId: ',businessId);
 		var businessName = Business.findOne({"_id":businessId});
 		if(businessName){
 			var name 			= businessName.ownerFullName;
 			var businessTitle 	= businessName.businessTitle;
 		}//businessName
-		console.log('businessName: ',businessName);
+		// console.log('businessName: ',businessName);
 		var newdate = new Date();
 		var currentdate = moment(newdate).format('DD/MM/YYYY');
 		var userData  = Meteor.users.findOne({'roles':'admin'});

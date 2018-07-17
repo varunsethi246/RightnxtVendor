@@ -72,7 +72,7 @@ Meteor.methods({
 				for(i=0; i<newOffers.length; i++){
 					newOffersArr.push(newOffers[i]._id);
 					offers[i] = { "offerId": newOffers[i]._id };
-			    	totalAmount += parseInt(newOffers[i].numOfMonths) * parseInt(companyRates.rates.ratePerOffer);
+			    	totalAmount += parseInt(newOffers[i].numOfMonths) * parseInt(companyRates.rates[0].ratePerOffer);
 				}
 
 				var maxInvNum = Payment.find({}, {sort: {invoiceNumber:-1, limit:1}}).fetch();
@@ -87,7 +87,7 @@ Meteor.methods({
 					"offerId"				: newOffersArr,
 					"invoiceNumber"			: invNum,
 					"invoiceDate"			: new Date(), 
-					"offerPricePerMonth"	: companyRates.rates.ratePerOffer, 
+					"offerPricePerMonth"	: companyRates.rates[0].ratePerOffer, 
 					"numberOfOffers"		: newOffers.length, 
 					"totalAmount"			: totalAmount, 
 					"paymentStatus"			: 'unpaid',

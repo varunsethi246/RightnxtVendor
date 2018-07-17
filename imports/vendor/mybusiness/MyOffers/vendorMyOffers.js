@@ -740,7 +740,6 @@ Template.paymentInvoice.helpers({
 
 		var businessDetails = Business.findOne({"businessLink":businessLink, "status":"active"});
 		var companyDetails 	= CompanySettings.findOne({'companyId':101});
-
 		// var paymentDetails 	= Payment.findOne({'invoiceNumber':invNum,"orderType":'Offer'});
 
 		var paymentDetails 	= Payment.findOne({'invoiceNumber':invNum});
@@ -777,7 +776,7 @@ Template.paymentInvoice.helpers({
 				vendorCity				: businessDetails.businessCity,
 				vendorState				: businessDetails.businessState,
 				vendorArea				: businessDetails.businessArea,
-				ratePerOffer 			: companyDetails.rates.ratePerOffer,
+				ratePerOffer 			: companyDetails.rates[0].ratePerOffer,
 				invDate					: moment(paymentDetails.invoiceDate).format('DD/MM/YYYY'),
 				invNum 					: paymentDetails.invoiceNumber,
 				numberOfMonths			: paymentDetails.numberOfMonths,
@@ -786,6 +785,7 @@ Template.paymentInvoice.helpers({
 				totalPrice				: totalPrice,
 				paymentMode 			: paymentDetails.modeOfPayment,
 			}
+			console.log(data);
 			return data;
 		}
 	},
@@ -916,7 +916,6 @@ Template.paymentInvoice.events({
 Template.offerPayment.helpers({
 	orderData(){
 		var companyRates = CompanySettings.findOne({'companyId':101},{"rates":1,"_id":0});
-
 		if(Session.get('numberOfOffers')){
 			var numOfOffers = Session.get('numberOfOffers');
 		}else{
@@ -931,10 +930,10 @@ Template.offerPayment.helpers({
 
 		if(companyRates){
 			var value = {
-				"ratePerOffer" 	: companyRates.rates.ratePerOffer,
+				"ratePerOffer" 	: companyRates.rates[0].ratePerOffer,
 				"numOfOffers"	: numOfOffers,
 				"numOfMonths"	: numOfMonths,
-				"totalPrice"	: companyRates.rates.ratePerOffer * numOfOffers * numOfMonths,
+				"totalPrice"	: companyRates.rates[0].ratePerOffer * numOfOffers * numOfMonths,
 			}
 			return value;			
 		}
@@ -1748,7 +1747,7 @@ Template.editOffer.helpers({
 				}
 				if(companyRates){
 					if(companyRates.rates){
-						var payment = companyRates.rates.ratePerOffer * allPages[i].numOfMonths;
+						var payment = companyRates.rates[0].ratePerOffer * allPages[i].numOfMonths;
 					}else{
 						var payment = 0;
 					}			
