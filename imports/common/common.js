@@ -145,7 +145,7 @@ Template.generalHeader.helpers({
 		var currentUrl = FlowRouter.current().path;
 		var city = FlowRouter.getParam('city');
 		// if(currentUrl == '/' || currentUrl == '/claim'){
-		if(currentUrl == '/claim' || city || currentUrl == '/'){
+		if(currentUrl == '/claim' || currentUrl == '/claim/'+city || currentUrl == '/'){
 			return false;
 		}else{
 			return true;
