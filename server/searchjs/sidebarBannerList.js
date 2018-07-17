@@ -1,5 +1,6 @@
 import { Business } from '/imports/api/businessMaster.js';
-import { BusinessImgUploadS3 } from '../cfsjs/businessImage.js';
+// import { BusinessImgUploadS3 } from '../cfsjs/businessImage.js';
+import { BusinessImage } from '/imports/videoUploadserver/businessImageServer.js';
 import { BusinessBanner } from '/imports/api/businessBannerMaster.js';
 
 SearchSource.defineSource('sidebarBusinessBanners', (searchText, options)=> {
@@ -70,12 +71,15 @@ SearchSource.defineSource('sidebarBusinessBanners', (searchText, options)=> {
     // =========================================================
     var searchPageShowImage = (imgId)=> {
 		if(imgId){
-			var imgData = BusinessImgUploadS3.findOne({"_id":imgId});
+			var imgData = BusinessImage.findOne({"_id":imgId});
+            // console.log('imgData :',imgData);
+            // console.log('imgData :',imgData.link());
 			if(imgData)	{
 				var data = {
-					img : imgData.url(),
+					img : imgData.link(),
 				}
-				if(imgData.copies.businessImgS3.type == 'image/png'){
+                // if(imgData.copies.businessImgS3.type == 'image/png'){
+				if(imgData.type == 'image/png'){
 					data.checkpngImg = 'bkgImgNone';
 				}else{
 					data.checkpngImg = '';
@@ -194,10 +198,15 @@ SearchSource.defineSource('sidebarBusinessBanners', (searchText, options)=> {
         
     } else{
         businessBannerListB = _.uniq(businessBannerListB, function(p){ return p.businessLink; });
+        console.log('businessBannerListB :',businessBannerListB);
         if(businessBannerListB){
             for(i=0;i<businessBannerListB.length;i++){
                 for(j=0;j<searchResult.length;j++){
                     if(businessBannerListB[i].businessLink==searchResult[j].businessLink){
+                    console.log('searchResult[j] ',searchResult[j]);
+        console.log('businessBannerListB [j]:',businessBannerListB [j]);
+
+
                         var getBannnerImage = Business.findOne({"businessLink":businessBannerListB[i].businessLink});
                         if(getBannnerImage){
                             if(getBannnerImage.publishedImage){
@@ -230,6 +239,7 @@ SearchSource.defineSource('sidebarBusinessBanners', (searchText, options)=> {
                         }
 
                         businessBannerListB[i].businessAboutBus = searchResult[j].businessAboutBus;
+                        console.log('businessBannerListB[i].businessAboutBus :',businessBannerListB[i].businessAboutBus);
                         break;
                     }
                 }

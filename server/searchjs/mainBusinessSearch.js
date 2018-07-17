@@ -1,5 +1,5 @@
 import { Business } from '/imports/api/businessMaster.js';
-import { BusinessImgUploadS3 } from '../cfsjs/businessImage.js';
+import { BusinessImage } from '/imports/videoUploadserver/businessImageServer.js';
 import { BusinessAds } from '/imports/api/businessAdsMaster.js';
 import { Offers } from '/imports/api/offersMaster.js';
 
@@ -7,7 +7,7 @@ import { Offers } from '/imports/api/offersMaster.js';
 
 
 SearchSource.defineSource('business', (searchText, options)=> {
-    searchText = "city|area|categories OR text to search"
+    // searchText = "city|area|categories OR text to search";
     var splitData = searchText.split('|');
     var searchResult = '';
     var selector = '';
@@ -73,12 +73,12 @@ SearchSource.defineSource('business', (searchText, options)=> {
     // =========================================================
     var searchPageShowImage = (imgId)=> {
 		if(imgId){
-            var imgData = BusinessImgUploadS3.findOne({"_id":imgId});
+            var imgData = BusinessImage.findOne({"_id":imgId});
 			if(imgData)	{
 				var data = {
-					img : imgData.url(),
+					img : imgData.link(),
 				}
-				if(imgData.copies.businessImgS3.type == 'image/png'){
+				if(imgData.type == 'image/png'){
 					data.checkpngImg = 'bkgImgNone';
 				}else{
 					data.checkpngImg = '';
@@ -133,7 +133,6 @@ SearchSource.defineSource('business', (searchText, options)=> {
             textAdsSelector["$or"].push({"businessTitle" : textAdsRegExp});
             textAdsSelector["$or"].push({"category" : textAdsRegExp});
         }
-        // console.log("currentDate: ",currentDate);
         var adsSelector = {}; 
         adsSelector["$and"] = [];
         adsSelector["$and"].push(textAdsSelector);
@@ -155,7 +154,6 @@ SearchSource.defineSource('business', (searchText, options)=> {
         } else {
             var businessAds =  BusinessAds.find(adsSelector,{"areas":{ $in: [areaSelector] }}, adsSort).fetch();
         }
-        // console.log("businessAds: ",businessAds);
 
         // var adsSort     = {sort: { "position" : 1 } } ;
         // var businessAds =  BusinessAds.find(adsSelector, adsSort).fetch();
@@ -170,11 +168,9 @@ SearchSource.defineSource('business', (searchText, options)=> {
                 commonLink.push(paidBizLink);
             }//for i
         
-            // console.log("commonLink: ",commonLink);
             
             //Now get all object documents for commonLink from business collection
             commonLink = _.unique(commonLink);
-            // console.log("commonLink: ",commonLink);
             
             // businessAdsDocs = [];
             // businessAdsDocs = Business.find({"businessLink":{$in : commonLink},"status":"active"}).fetch();
@@ -183,12 +179,11 @@ SearchSource.defineSource('business', (searchText, options)=> {
                 var businessAdsDocsNew = Business.findOne({"businessLink":commonLink[n],"status":"active"});
                 businessAdsDocs.push(businessAdsDocsNew);  
             }
-            // console.log("businessAdsDocs: ",businessAdsDocs);
             
         }		
     }
-    businessAdsDocs = businessAdsDocs.concat(searchResult);					
-    
+    businessAdsDocs = businessAdsDocs.concat(searchResult);	
+    // return businessAdsDocs;
     
     if(businessAdsDocs){
         for(i=0;i<businessAdsDocs.length;i++){
@@ -300,6 +295,8 @@ SearchSource.defineSource('business', (searchText, options)=> {
             // Find Total count of rating End
         }
         return businessAdsDocs;
+        // var data = Business.findOne({});
+        // return data;
     }else{
         return [];
     }

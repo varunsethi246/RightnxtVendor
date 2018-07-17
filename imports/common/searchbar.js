@@ -20,6 +20,7 @@ var options = {
 
 var fields = ['businessTitle','tags','businesscategories'];
 dropdownSearchList = new SearchSource('dropdownSearch', fields, options);
+businessSearch1 = new SearchSource('business', fields, options);
 
 if (Meteor.isClient) {
   Meteor.startup(function() {
@@ -52,7 +53,7 @@ Template.searchbar.helpers({
 	//To get business list of search results
 	businessSearchList() {
 		var busList 		= dropdownSearchList.getData();
-		console.log("busList: ",busList);
+		// console.log("busList: ",busList);
 		if(busList){
 			return busList;
 		}
@@ -387,12 +388,11 @@ Template.searchbar.events({
 	},
 	
 	'click .seachBusiness': function(e){
-		console.log("Me clicked");
+		// console.log("Me clicked");
 		$('.topSearchBarList').addClass('searchDisplayShow').removeClass('searchDisplayHide');
 		var currentPath = FlowRouter.current().path;
 		var currentParams 	= FlowRouter.getParam('businessurl');
 		var currentText = $('#gridSearchBusiness').val();
-		
 		// if(!currentText){
 		// 	currentText = "*";
 		// }
@@ -412,26 +412,35 @@ Template.searchbar.events({
 			if(currentParams){
 				var busCity = Business.findOne({"businessLink":currentParams},{fields: {'businessCity': 1}});
 				var currentCity = busCity.businessCity;
+				
+
 			}else{
 				var currentCity = FlowRouter.getParam('city');
 			}
 		}
-
+		// console.log('url :',newURl[2]);
 		if(newURl[1] == 'search'){
 			// From Business List Page
 			var	area = $('#getArea').val();
-			
+			// console.log('area :',area);
 			if(currentText){
 				var flowGo = "/search/"+currentCity+"/"+area+"/"+currentText;
 				FlowRouter.go(flowGo);
 				var searchText = currentCity + '|' + area + '|' + currentText;
+				// business.search(searchText);
+				// console.log('search :',business.search(searchText));
 				businessSearch1.search(searchText);
+				// console.log('search :',businessSearch1.getData());
 				businessSearchbanner1.search(searchText);
+
 			}else{
 				var flowGo = "/search/"+currentCity+"/"+area;
 				FlowRouter.go(flowGo);
 				var searchText = currentCity + '|' + area + '|' + "";
+
+				// businessSearch1.search(searchText);
 				businessSearch1.search(searchText);
+
 				businessSearchbanner1.search(searchText);
 			}
 			
@@ -567,7 +576,7 @@ Template.searchbar.events({
 		event.preventDefault();
 
 		var data = Template.currentData(self.view);
-		console.log('data:',data);
+		// console.log('data:',data);
         Blaze.renderWithData(Template.businessMap, data, $(".mapContainer")[0]);
         $('.sidebarMapPre').css('display','none');
 		

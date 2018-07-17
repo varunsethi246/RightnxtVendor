@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
-import { UserProfileStoreS3New } from '../cfsjs/UserProfileS3.js';
+import { VendorImage } from '/imports/videoUploadserver/vendorImageServer.js';
 import { FollowUser } from '/imports/api/userFollowMaster.js';
 
 SearchSource.defineSource('tagFriend', function(searchText, options) {
@@ -12,7 +12,7 @@ SearchSource.defineSource('tagFriend', function(searchText, options) {
     // =========================================================
     var userPageShowImage = (imgId)=> {
       if(imgId){
-          var imgData = UserProfileStoreS3New.findOne({"_id":imgId});
+          var imgData = VendorImage.findOne({"_id":imgId});
           if(imgData) {
             var data = imgData.url();
           }else{
@@ -35,7 +35,6 @@ SearchSource.defineSource('tagFriend', function(searchText, options) {
     }
     var tagListUsers = Meteor.users.find({ $and: [{"_id" : {$in: userList}} , { "profile.name" : regExp}]}).fetch();
     if(tagListUsers){
-      console.log('tagListUsers ',tagListUsers);
       for(i=0;i<tagListUsers.length;i++){
         if(tagListUsers[i].profile.userProfilePic){
           tagListUsers[i].userPhoto = userPageShowImage(tagListUsers[i].profile.userProfilePic);
