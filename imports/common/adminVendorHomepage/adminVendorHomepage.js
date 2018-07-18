@@ -134,6 +134,7 @@ Template.adminVendorHomepage.events({
     citySearch1.search(text);
     $(".curUserCity").text(text);
     Session.set("userSelecetedRXTCity",text);
+    Session.set("rxtNxtCityDatlist",text);
 
     var userId = Meteor.userId();
     if(userId){
@@ -142,9 +143,10 @@ Template.adminVendorHomepage.events({
   },
 
   'change #getCity': function(e) {
-    if(e.keyCode === 13){
-      $('#changeCityModal').modal('hide');
-    }
+    // if(e.keyCode === 13){
+    $('#changeCityModal').modal('hide');
+    $('.modal-backdrop').hide();
+    // }
     var text=$('#getCity').val().trim();
 
     if(!text){
@@ -152,6 +154,7 @@ Template.adminVendorHomepage.events({
     }
     $(".curUserCity").text(text);
     Session.set("userSelecetedRXTCity",text);
+    Session.set("rxtNxtCityDatlist",text);
 
     var userId = Meteor.userId();
     if(userId){

@@ -65,6 +65,7 @@ Template.mainBusinessSearch.events({
 	'keydown #getBusiness':function(e){
 		//For Up and Down arrow selection in dropdown
 		e.stopPropagation(); 
+		$('.homeSearchBarList').addClass('searchDisplayShow').removeClass('searchDisplayHide');
 		var current_index = $('.selectedSearchHomePage').index();
 	    var $number_list = $('.homeSearchBarListWrapper');
 	    var $options = $number_list.find('.optionSearchHomePage');
@@ -99,8 +100,9 @@ Template.mainBusinessSearch.events({
 
 		var selectedBus = $('.selectedSearchHomePage').attr('data-busLink');
 		if(selectedBus&&e.keyCode===13){
-			var flowGo = "/" + selectedBus;
-	    	FlowRouter.go(flowGo);
+			// var flowGo = "/" + selectedBus;
+	    	// FlowRouter.go(flowGo);
+	    	$('#getBusiness').val('');
 		}else if(!selectedBus&&e.keyCode===13){
 			var searchCatg = $('.selectedSearchHomePage').attr('data-catg');
 			var searchString = $('#getBusiness').val();
@@ -132,8 +134,9 @@ Template.mainBusinessSearch.events({
 
 		var selectedBus = $('.selectedSearchHomePage').attr('data-busLink');
 		if(selectedBus){
-			var flowGo = "/" + selectedBus;
-	    	FlowRouter.go(flowGo);
+			// var flowGo = "/" + selectedBus;
+	  //   	FlowRouter.go(flowGo);
+	    	$('#getBusiness').val('');
 		}
 		if(!selectedBus){
 			var searchCatg = $(e.currentTarget).attr('data-catg');
@@ -148,7 +151,8 @@ Template.mainBusinessSearch.events({
 	
 	'click #getBusiness':function(e){
 		e.stopPropagation(); 
-		$('.homeSearchBarList').addClass('searchDisplayShow').removeClass('searchDisplayHide');
+		// $('.homeSearchBarList').removeClass('searchDisplayShow').addClass('searchDisplayHide');
+		// $('.homeSearchBarList').addClass('searchDisplayShow').removeClass('searchDisplayHide');
 	},
 });
 
