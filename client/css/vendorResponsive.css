@@ -297,7 +297,9 @@ right:38px
 .profSettingsidebarUl li {
 width:100%;
 padding-left:10px;
-margin-left:0
+margin-left:0;
+margin-top: 1px;
+margin-bottom: 1px;
 }
 
 #businessSettingCollapse {

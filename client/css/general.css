@@ -4233,8 +4233,13 @@ text-align: center
     margin-left: 15px!important;
 }
 @media screen and (min-width: 1920px){
+	.aboutNavbar {
+	    padding-left: 72px;
+	}
+}
+@media (min-width: 768px){
 	.aboutNavbar{
-		margin-left: 37%;
+		margin-left: 28%;
 	}
 }
 .otpOuterDiv{

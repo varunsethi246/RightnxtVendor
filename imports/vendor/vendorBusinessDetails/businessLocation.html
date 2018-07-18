@@ -32,7 +32,7 @@
 		{{#if isInRole 'admin'}}
 			<p class="addrBusi">{{> editableText collection="business" field="businessAddress"}},&nbsp;{{> editableText collection="business" field="businessCity"}},&nbsp;{{> editableText collection="business" field="businessState"}}</p>
 		{{else}}
-			<p class="addrBusi">{{businessAddress}},&nbsp;{{businessArea}},&nbsp;{{businessCity}},&nbsp;{{businessState}}</p>
+			<p class="addrBusi col-lg-12 col-md-12 col-sm-12 col-xs-12">{{businessAddress}},&nbsp;{{businessArea}},&nbsp;{{businessCity}},&nbsp;{{businessState}}</p>
 		{{/if}}
 		<div class="mapRight">
 			<div class="map-container bussMapContainer">
