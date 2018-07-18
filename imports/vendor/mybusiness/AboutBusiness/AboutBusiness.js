@@ -328,9 +328,8 @@ Template.aboutBusiness.helpers({
 			    			
 			    			if(catVal){
 			    				if(catVal.menuStatus=="Disable"){
-
 			    					statusEnable = "disabledCatMenu";
-			    				} else {
+			    				}else {
 			    					statusEnable = "enabledCatMenu";
 			    					break;
 			    				}

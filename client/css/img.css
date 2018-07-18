@@ -166,7 +166,8 @@ position: relative
 
 .videoBkImg {
 background-image:url(/images/loading5.gif);
-background-repeat:no-repeat
+background-repeat:no-repeat;
+/*border: 1px solid #aaa;*/
 }
 
 .profileBkImg {

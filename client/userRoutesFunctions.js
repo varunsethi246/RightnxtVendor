@@ -19,14 +19,14 @@
 // 	})
 // }
 
-// userReviewPageFunc= function () {    
-// 	import('/imports/userarea/userReview/userReviewPage.js').then(function (handle) {        
-// 		handle.userReviewPageForm();    
-// 	})
-// 	.then(function(){
-// 		$("#inject-loader-wrapper").fadeOut(1500, function() { $(this).remove(); });
-// 	})
-// }
+userReviewPageFunc= function () {    
+	import('/imports/userarea/userReview/userReviewPage.js').then(function (handle) {        
+		handle.userReviewPageForm();    
+	})
+	.then(function(){
+		$("#inject-loader-wrapper").fadeOut(1500, function() { $(this).remove(); });
+	})
+}
 
 // userPhotosFunc= function () {    
 // 	import('/imports/userarea/userPhotos/userPhotos.js').then(function (handle) {        

@@ -380,18 +380,16 @@ Template.vendorPhotos.events({
 
 	},	
 
-	'click .DeleteBusImage' : function(event){
+	'click .delBusiImg' : function(event){
 		var businessLink = FlowRouter.getParam('businessLink');
-		var delId = $(event.currentTarget).attr('data-imgId');
+		var delId = ($(event.target).attr('id')).split('-');
 		
-		Meteor.call('deleteVendorImg',businessLink,delId,
+		Meteor.call('deleteVendorImg',businessLink,delId[1],
             function(error, result) { 
                 if(error) {
                   console.log ('Error Message: ' +error ); 
                 }else{
-                	$('#DeleteBusImage-'+delId).modal('hide');
-                	$('.modal-backdrop').hide();
-					Meteor.call('removeBusinessImage',delId,
+					Meteor.call('removeBusinessImage',delId[1],
 			            function(error, result) { 
 			            if(error) {
 			                console.log ('Error Message: ' +error ); 

@@ -1449,8 +1449,8 @@ Template.receipt.helpers({
 				// var statusPayment = Offers.findOne({})
 			}
 			
-			var dateTime = paymentDetails.invoiceDate.toLocaleString();
-			var newDateTime = moment(dateTime).format('DD/MM/YYYY hh:mm:ss');
+			var dateTime = paymentDetails.invoiceDate;
+			var newDateTime = moment(dateTime).format('DD/MM/YYYY hh:mm');
 
 			var data = {
 				businessName			: businessDetails.businessTitle ,
@@ -1526,7 +1526,7 @@ Template.receipt.events({
 				sendMailReceiptNotification(inputObj);
 			}
 		}
-
+		$(event.target).parent().parent().find('input').val('');
 	},
 });
 

@@ -2055,7 +2055,9 @@ text-decoration:none
 
 .recLine {
 padding-left:6.5%;
-border-top:2px solid #b2b2b2
+border-top:2px solid #b2b2b2;
+margin-top: 0px;
+margin-bottom: 10px!important;
 }
 
 .recBorder {
@@ -2095,7 +2097,7 @@ text-align:left
 .recMargin {
 margin-left:15%;
 margin-right:15%;
-margin-top:-2%
+/*margin-top:-2%*/
 }
 
 .recMargin p {
@@ -2527,7 +2529,9 @@ margin-bottom:15px
 .addrBusi {
 font-size:16px;
 margin-bottom:0;
-word-break:break-all
+word-break:break-all;
+padding-left: 0px;
+padding-right: 0px;
 }
 
 .reportModalForm ul {
@@ -2782,7 +2786,8 @@ margin-left:-6%
 
 .hrBorderBuss {
 margin-left:0;
-width:100%
+width:100%;
+margin-top: 0px;
 }
 
 .mainConBusi .nav li.descData a {

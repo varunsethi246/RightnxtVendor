@@ -26,6 +26,7 @@ Template.vendorComments.helpers({
 				allReviews.showLoadMore = '';
 			}
 			for(i=0; i<allReviews.length; i++){				
+				allReviews[i].userProfileUrl = generateURLid(allReviews[i].userId);	
 				var userId = allReviews[i].userId;
 				var userObj = Meteor.users.findOne({"_id":userId});
 				if (userObj){
@@ -284,7 +285,7 @@ Template.vendorComments.helpers({
 			}//end i loop
 			var totalReview = allReviews.length;
 			Session.set('totalReview', totalReview);
-		// console.log(allReviews);
+		console.log(allReviews);
 		return allReviews;
 		}
 

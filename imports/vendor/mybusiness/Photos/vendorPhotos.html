@@ -73,7 +73,7 @@
 																		<div class="col-lg-3 col-md-4 col-sm-4  col-xs-12 vPhotosUserRowSec vPhotosUserRowSecAdj">
 																			<div class="noworkDiv1">
 																				{{#if businessImg}}
-																				<i class="fa fa-times-circle pull-right delBusiImg cursorPointer" id="photo-{{_id}}" aria-hidden="true" data-toggle="modal" data-target="#DeleteBusImage-{{_id}}"  title="Delete Image"></i>{{/if}}
+																				<i class="fa fa-times-circle pull-right delBusiImg cursorPointer" id="photo-{{_id}}" aria-hidden="true"></i>{{/if}}
 																				<br>
 																				<div class="uploadPhotoSize" data-toggle="modal" data-target="#confirmBusImage-{{_id}}"  title="Click on Image to select as Business Image">
 																					<img src="{{link}}" class="img-responsive thumbnail cursorPointer {{checkpngImg}}">
@@ -82,7 +82,7 @@
 																		</div>
 
 
-																		<div class="modal fade" id="DeleteBusImage-{{_id}}" role="dialog">
+																		<!-- <div class="modal fade" id="DeleteBusImage-{{_id}}" role="dialog">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header delete-close ">
@@ -97,7 +97,7 @@
 			            </div>
 			        </div>
 				</div>
-			</div>
+			</div> -->
 
 																		<div class="modal fade" id="confirmBusImage-{{_id}}" role="dialog">
 																			<div class="modal-dialog">

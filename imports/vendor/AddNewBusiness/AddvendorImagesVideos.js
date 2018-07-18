@@ -9,6 +9,7 @@ import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { BusinessMenu } from '/imports/videoUploadClient/businessMenuClient.js';
 import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
 import ImageCompressor from 'image-compressor.js';
+import { ReviewImage } from '/imports/videoUploadClient/reviewImageClient.js';
 
 import '../vendor.js';
 import './AddvendorImagesVideos.html'
@@ -172,11 +173,23 @@ Template.addvendorImagesVideos.helpers({
 						// if (imgData.copies) {
 							if(imgData.type == 'image/png'){
 								imgData.checkpngImg = 'bkgImgNone';
+								imgData.businessImg = true;
 							}else{
 								imgData.checkpngImg = '';
+								imgData.businessImg = true;
 							}
 							imgList[i] = imgData;
 						// }
+					}else{
+						var imgObj = ReviewImage.findOne({"_id":imgId.img});
+						if(imgObj.type == 'image/png'){
+							imgObj.checkpngImg = 'bkgImgNone';
+							imgObj.businessImg = false;
+						}else{
+							imgObj.checkpngImg = '';
+							imgObj.businessImg = false;
+						}
+						imgList[i] = imgObj;
 					}
 				}
 				// console.log('imgList ' , imgList);
@@ -246,14 +259,14 @@ Template.addvendorImagesVideos.events({
 		video.pause();
 	},
 
-	'click #saveBusinessImg' : function(event){
+	'click #saveBusinessImg' : function(event,template){
 		
 		var businessLink = FlowRouter.getParam('businessLink');
 		for(i = 0 ; i < files.length; i++){
 			const imageCompressor = new ImageCompressor();
 		      imageCompressor.compress(files[i])
 		        .then((result) => {
-		          // console.log(result);
+		          console.log(result);
 
 		          // Handle the compressed image file.
 		          // We upload only one file, in case
@@ -277,7 +290,7 @@ Template.addvendorImagesVideos.events({
 		          } else {
 		            // alert('File "' + fileObj._id + '" successfully uploaded');
 		            Bert.alert('Business Image uploaded.','success','growl-top-right');
-		            // console.log(fileObj._id);
+		            console.log(fileObj._id);
 		            // Session.set("vendorImgFilePath",fileObj._id);
 		            Meteor.call('updateVendorBulkImg', businessLink, fileObj._id, 
 		              function(error,result){

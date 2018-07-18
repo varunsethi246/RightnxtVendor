@@ -8,6 +8,7 @@ import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
 import { BusinessMenu } from '/imports/videoUploadClient/businessMenuClient.js';
 import ImageCompressor from 'image-compressor.js';
+import { ReviewImage } from '/imports/videoUploadClient/reviewImageClient.js';
 
 import './VendorImagesVideos.html'
 
@@ -62,13 +63,24 @@ Template.vendorImagesVideos.helpers({
 						if(imgData.type == 'image/png'){
 							imgData.checkpngImg = 'bkgImgNone';
 							$('.uPhotoYouRow').children('.vPhotosUserRowSec:nth-child('+i+') > .noworkDiv > .uploadPhotoSize > img').css('background-image','');
+							imgData.businessImg = true;
 						}else{
 							imgData.checkpngImg = '';
+							imgData.businessImg = true;
 						}	
+					}else{
+						var imgObj = ReviewImage.findOne({"_id":imgId.img});
+						if(imgObj.type == 'image/png'){
+							imgObj.checkpngImg = 'bkgImgNone';
+							imgObj.businessImg = false;
+						}else{
+							imgObj.checkpngImg = '';
+							imgObj.businessImg = false;
+						}
+						imgList[i] = imgObj;
 					}
 				}
 				// console.log("photos");
-				// console.log(imgList);
 				return imgList;
 			}
 		}
@@ -276,6 +288,7 @@ Template.vendorImagesVideos.events({
 		      upload.on('end', function (error, fileObj) {
 		        if (error) {
 		          alert('Error during upload: ' + error);
+				  template.currentUpload.set(false);
 		        } else {
 		          // alert('File "' + fileObj._id + '" successfully uploaded');
 		          Bert.alert('Business Video uploaded','success','growl-top-right');
@@ -284,6 +297,7 @@ Template.vendorImagesVideos.events({
 			          function(error, result) { 
 			              if(error) {
 			                  console.log ('Error Message: ' +error ); 
+					        template.currentUpload.set(false);
 			              }else{
 								  // process.exit();
 					        template.currentUpload.set(false);

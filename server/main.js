@@ -89,7 +89,7 @@ import { ReviewImage } from '/imports/videoUploadserver/reviewImageServer.js';
 import { ResumeImage } from '/imports/videoUploadserver/resumeImageServer.js';
 
 Meteor.publish('getBizVideo', function() {
-    return BizVideo.find({}).cursor;
+    return BizVideo.find({'userId':this.userId}).cursor;
 });
 Meteor.publish('getBizVideoBanner', function() {
     return BizVideoBanner.find({}).cursor;
@@ -98,16 +98,16 @@ Meteor.publish('vendorImage', function() {
     return VendorImage.find({'userId':this.userId}).cursor;
 });
 Meteor.publish('ownerImage', function() {
-    return OwnerImage.find({}).cursor;
+    return OwnerImage.find({'userId':this.userId}).cursor;
 });
 Meteor.publish('businessImage', function() {
-    return BusinessImage.find({}).cursor;
+    return BusinessImage.find({'userId':this.userId}).cursor;
 });
 Meteor.publish('businessMenuImage', function() {
-    return BusinessMenu.find({}).cursor;
+    return BusinessMenu.find({'userId':this.userId}).cursor;
 });
 Meteor.publish('businessOfferImage', function() {
-    return OfferImage.find({}).cursor;
+    return OfferImage.find({'userId':this.userId}).cursor;
 });
 Meteor.publish('businessEnquiryImage', function() {
     return EnquiryImage.find({}).cursor;
