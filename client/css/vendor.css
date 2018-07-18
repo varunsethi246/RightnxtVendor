@@ -3779,8 +3779,8 @@ video::-webkit-media-controls-panel {
 
 @media  screen and (max-width: 1600px) {
     .prfPic{
-		height: 280px!important;
-	    width: 280px!important;
+	/*	height: 280px!important;
+	    width: 280px!important;*/
 	    border: 1px solid #ccc;
 	    top: 32px;
 	    padding-right: 0;
