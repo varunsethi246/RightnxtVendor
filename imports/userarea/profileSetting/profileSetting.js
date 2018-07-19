@@ -44,17 +44,17 @@ Template.profileSetting.events({
   },
 
   'click .userYesbtn': function(event) {
-  Meteor.call('blockUser',function(err, result) {
-      if (err) {
-        console.log("err",err);
-        }else {
-            Meteor.logout();
-            FlowRouter.go('/');
-            $('.modal-backdrop').hide();
-        }
-    });
-  },  
-
+    $('#userDeleteModal').modal('hide');
+              $('.modal-backdrop').hide();
+              FlowRouter.go('/');
+    Meteor.call('blockUser',function(err, result) {
+        if (err) {
+          console.log("err",err);
+          }else {
+              Meteor.logout();
+          }
+      });
+    },  
 });
 
 

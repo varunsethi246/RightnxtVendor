@@ -301,6 +301,7 @@ Template.businessBanner.helpers({
 
 Template.bannerInvoice.helpers({
 	checkPaymentStatus(data){
+		// console.log(data);
 		if(data == "paid"){
 			return false;
 		}else{
@@ -319,8 +320,6 @@ Template.bannerInvoice.helpers({
 		    	businessDetails.discountPercent = paymentCheck.discountPercent;
 		    	businessDetails.totalDiscount 	= paymentCheck.totalDiscount;
 		    	businessDetails.discountedPrice = paymentCheck.discountedPrice;
-
-
 			}else{
 				businessDetails.invoiceNumber = 'None';
 			}

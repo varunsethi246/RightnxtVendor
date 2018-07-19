@@ -49,6 +49,9 @@ if (Meteor.isServer) {
 	Meteor.publish('bannerPayment', function bannerPayment(businessLink) {
 		return Payment.find({'orderType':'Banner','businessLink':businessLink});
 	});
+	Meteor.publish('adsPayment', function adsPayment(businessLink) {
+		return Payment.find({'orderType':'Ads','businessLink':businessLink});
+	});
 	Meteor.publish('offerPayment', function offerPayment(invNo) {
 		return Payment.find({'invoiceNumber':invNo,'orderType':'Offer'});
 	});
@@ -72,7 +75,7 @@ Meteor.methods({
 				for(i=0; i<newOffers.length; i++){
 					newOffersArr.push(newOffers[i]._id);
 					offers[i] = { "offerId": newOffers[i]._id };
-			    	totalAmount += parseInt(newOffers[i].numOfMonths) * parseInt(companyRates.rates[0].ratePerOffer);
+			    	totalAmount += parseInt(newOffers[i].numOfMonths) * parseInt(companyRates.rates.ratePerOffer);
 				}
 
 				var maxInvNum = Payment.find({}, {sort: {invoiceNumber:-1, limit:1}}).fetch();
@@ -87,7 +90,7 @@ Meteor.methods({
 					"offerId"				: newOffersArr,
 					"invoiceNumber"			: invNum,
 					"invoiceDate"			: new Date(), 
-					"offerPricePerMonth"	: companyRates.rates[0].ratePerOffer, 
+					"offerPricePerMonth"	: companyRates.rates.ratePerOffer, 
 					"numberOfOffers"		: newOffers.length, 
 					"totalAmount"			: totalAmount, 
 					"paymentStatus"			: 'unpaid',

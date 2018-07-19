@@ -16,7 +16,7 @@
                         <hr class="bannerHrLine">
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <h2 class="adminBannerIn">Invoice for Banner Payment</h2>
+                        <h2 class="adminBannerIn">Invoice for {{#if isAd}}Ads{{else}}Banner{{/if}} Payment</h2>
                         <div class="pull-right bannerInvDate">
                             <div class="bannerTextFont">Date: <span class="bannerSpanTextFont">{{invoiceDate}}</span></div>
                             <div class="bannerTextFont">Invoice Number: <span class="bannerSpanTextFont">{{invoiceNumber}}</span></div>
@@ -24,15 +24,15 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 bannerDataTextFont">
                         <div class="bannerTextFont">From</div>
-                        <div class="bannerTextFont">{{companyName}}</div>
+                        <div class="">{{companyName}}</div>
                         <div>{{companyAddress}},</div>
-                        <div>{{companyCity}} , {{companyState}} - {{companyPincode}}</div>
+                        <div>{{companyCity}}, {{companyState}} - {{companyPincode}}</div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 bannerDataTextFont">
                         <div class="bannerTextFont">To</div>
-                        <div class="bannerTextFont">{{businessTitle}}</div>
-                        <div>{{businessAddress}} , {{businessArea}} ,</div>
-                        <div>{{businessCity}} , {{businessState}} - {{businessZipCode}}</div>
+                        <div class="">{{businessTitle}}</div>
+                        <div>{{businessAddress}}, {{businessArea}},</div>
+                        <div>{{businessCity}}, {{businessState}} - {{businessZipCode}}</div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bannerMargin ">
                         <table class="table table-bordered table-striped table-hover tablePayDetails">
@@ -48,7 +48,7 @@
                                 {{ #each businessBanner	 }}
                                 <tr>
                                     <td> {{category}} </td>
-                                    <td> {{position}}-{{rank}} </td>
+                                    <td> {{position}}{{#if isAd}}{{else}}-{{rank}}{{/if}} </td>
                                     <td> {{monthlyRate}} </td>
                                     <td> {{numOfAreas}} </td>
                                     <td> {{noOfMonths}} </td>

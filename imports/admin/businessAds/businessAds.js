@@ -271,6 +271,7 @@ Template.adsInvoice.events({
 
 Template.adsInvoice.helpers({
 	checkPaymentStatus(data){
+		// console.log(data);
 		if(data == "paid"){
 			return false;
 		}else{
@@ -280,15 +281,13 @@ Template.adsInvoice.helpers({
 	adsInvoiceData(){
 		var businessLink = FlowRouter.getParam('businessLink');
   		var businessDetails = Business.findOne({"businessLink":businessLink, "status":"active"});
-		var paymentCheck = Payment.find({"businessLink":businessLink,"orderType":"Ads"}).fetch();
+		var paymentCheck = Payment.findOne({"businessLink":businessLink,"orderType":"Ads"});
 
-		if(paymentCheck.length>0) {
-			businessDetails.invoiceNumber 	= paymentCheck[0].invoiceNumber;
-	    	businessDetails.discountPercent = paymentCheck[0].discountPercent;
-	    	businessDetails.totalDiscount 	= paymentCheck[0].totalDiscount;
-	    	businessDetails.discountedPrice = paymentCheck[0].discountedPrice;
-
-
+		if(paymentCheck) {
+			businessDetails.invoiceNumber 	= paymentCheck.invoiceNumber;
+	    	businessDetails.discountPercent = paymentCheck.discountPercent;
+	    	businessDetails.totalDiscount 	= paymentCheck.totalDiscount;
+	    	businessDetails.discountedPrice = paymentCheck.discountedPrice;
 		}else{
 			businessDetails.invoiceNumber = 'None';
 		}
@@ -305,7 +304,8 @@ Template.adsInvoice.helpers({
 		}
 
 		var totalPrice = 0;
-    	var businessAds = BusinessAds.find({"businessLink":businessLink,"status":"new"}).fetch();
+    	var businessAds = BusinessAds.find({"businessLink":businessLink}).fetch();
+    	// console.log(businessAds);
     	if(businessAds){
     		for(i=0;i<businessAds.length;i++){
     			if(businessAds[i].areas){
@@ -321,7 +321,7 @@ Template.adsInvoice.helpers({
     	}
 
 
-
+	    businessDetails.paymentCheck = paymentCheck.paymentStatus;
     	businessDetails.totalPrice = totalPrice;
     	businessDetails.businessAds = businessAds;
 		return businessDetails;

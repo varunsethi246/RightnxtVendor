@@ -745,7 +745,7 @@ Template.paymentInvoice.helpers({
 				vendorCity				: businessDetails.businessCity,
 				vendorState				: businessDetails.businessState,
 				vendorArea				: businessDetails.businessArea,
-				ratePerOffer 			: companyDetails.rates[0].ratePerOffer,
+				ratePerOffer 			: companyDetails.rates.ratePerOffer,
 				invDate					: moment(paymentDetails.invoiceDate).format('DD/MM/YYYY'),
 				invNum 					: paymentDetails.invoiceNumber,
 				numberOfMonths			: paymentDetails.numberOfMonths,
@@ -899,10 +899,10 @@ Template.offerPayment.helpers({
 
 		if(companyRates){
 			var value = {
-				"ratePerOffer" 	: companyRates.rates[0].ratePerOffer,
+				"ratePerOffer" 	: companyRates.rates.ratePerOffer,
 				"numOfOffers"	: numOfOffers,
 				"numOfMonths"	: numOfMonths,
-				"totalPrice"	: companyRates.rates[0].ratePerOffer * numOfOffers * numOfMonths,
+				"totalPrice"	: companyRates.rates.ratePerOffer * numOfOffers * numOfMonths,
 			}
 			return value;			
 		}
@@ -1746,7 +1746,7 @@ Template.editOffer.helpers({
 				}
 				if(companyRates){
 					if(companyRates.rates){
-						var payment = companyRates.rates[0].ratePerOffer * allPages[i].numOfMonths;
+						var payment = companyRates.rates.ratePerOffer * allPages[i].numOfMonths;
 					}else{
 						var payment = 0;
 					}			

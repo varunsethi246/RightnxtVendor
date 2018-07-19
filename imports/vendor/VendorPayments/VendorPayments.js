@@ -10,6 +10,7 @@ import { CompanySettings } from '/imports/api/companysettingsAPI.js';
 import { BusinessBanner } from '/imports/api/businessBannerMaster.js';
 import { BusinessAds } from '/imports/api/businessAdsMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { AdsPosition } from '/imports/api/discountMaster.js';
 
 import './VendorPayments.js';
 import './VendorPayments.html';
@@ -34,6 +35,7 @@ Template.paymentSuccessAdsBanners.helpers({
 		var payId    	= FlowRouter.getQueryParam('payId');
 		var businessLink = FlowRouter.getQueryParam('BusLink');
 		var getPayData = Payment.findOne({"_id":payId});
+		// console.log(getPayData);
 		var checkAdspayment = Payment.find({'_id':payId,'orderType':'Ads'}).fetch();
 
 		// if(getPayData && getPayData.paymentStatus != "paid"){
@@ -46,12 +48,12 @@ Template.paymentSuccessAdsBanners.helpers({
 		//   }
 		// }
 		if(checkAdspayment){
-			console.log('in updateAdsInvoiceforPayment');
+			// console.log('in updateAdsInvoiceforPayment');
 			if(getPayData && getPayData.paymentStatus != "paid"){
-			console.log('in updateAdsInvoiceforPayment 2');
+			// console.log('in updateAdsInvoiceforPayment 2');
 
 				if(status == 'paid'){
-					console.log('in updateAdsInvoiceforPayment 3');
+					// console.log('in updateAdsInvoiceforPayment 3');
 
 					Meteor.call("updateAdsInvoiceforPayment",id, billnumbers, payId, businessLink, function(err,result){
 					  if(result){
@@ -61,7 +63,7 @@ Template.paymentSuccessAdsBanners.helpers({
 			  }
 			}
 		}else{
-			console.log('in updateAdsInvoiceforPayment');
+			// console.log('in updateAdsInvoiceforPayment');
 			if(getPayData && getPayData.paymentStatus != "paid"){
 				if(status == 'paid'){
 					Meteor.call("updateAdsBannerInvoiceforPayment",id, billnumbers, payId, businessLink, function(err,result){
@@ -92,27 +94,44 @@ Template.paymentSuccessAdsBanners.helpers({
 		  businessDetails.companyState = companyDetails.companyLocationsInfo[0].companyState;
 		  businessDetails.companyPincode = companyDetails.companyLocationsInfo[0].companyPincode;
 	  }
-
+	
 	  var totalPrice = 0;
-	  var businessBanner = BusinessBanner.find({"businessLink":businessLink,"status":"active"}).fetch();
-	  console.log("businessBanner: ",businessBanner);
-	  if(businessBanner){
-		  for(i=0;i<businessBanner.length;i++){
-			  if(businessBanner[i].areas){
-				  businessBanner[i].numOfAreas=businessBanner[i].areas.length;
-			  }else{
-				  businessBanner[i].numOfAreas=0;
-			  }
-			  var monthlyRate = Position.findOne({'position':businessBanner[i].position});
-			  businessBanner[i].monthlyRate 	= monthlyRate.rate;
-			  businessBanner[i].totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessBanner[i].areas.length) * parseInt(businessBanner[i].noOfMonths);
-			  totalPrice= totalPrice + businessBanner[i].totalAmount;
-		  }
+	  var checkAdspayment = Payment.find({'_id':payId,'orderType':'Ads'}).fetch();
+	  if(checkAdspayment){
+    	var businessBanner = BusinessAds.find({"businessLink":businessLink}).fetch();
+    	// console.log(businessBanner);
+    	if(businessBanner){
+    		for(i=0;i<businessBanner.length;i++){
+    			if(businessBanner[i].areas){
+    				businessBanner[i].numOfAreas=businessBanner[i].areas.length;
+    			}else{
+    				businessBanner[i].numOfAreas=0;
+    			}
+				var monthlyRate = AdsPosition.findOne({'position':parseInt(businessBanner[i].position)});
+    			businessBanner[i].monthlyRate 	= monthlyRate.rate;
+				businessBanner[i].totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessBanner[i].areas.length) * parseInt(businessBanner[i].noOfMonths);
+				businessBanner[i].isAd 	= true;
+    			totalPrice= totalPrice + businessBanner[i].totalAmount;
+    		}
+    	}
+	  }else{
+	  	var businessBanner = BusinessBanner.find({"businessLink":businessLink,"status":"active"}).fetch();
+		// console.log("businessBanner: ",businessBanner);
+		if(businessBanner){
+			for(i=0;i<businessBanner.length;i++){
+				if(businessBanner[i].areas){
+					businessBanner[i].numOfAreas=businessBanner[i].areas.length;
+				}else{
+					businessBanner[i].numOfAreas=0;
+				}
+				var monthlyRate = Position.findOne({'position':businessBanner[i].position});
+				businessBanner[i].monthlyRate 	= monthlyRate.rate;
+				businessBanner[i].totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessBanner[i].areas.length) * parseInt(businessBanner[i].noOfMonths);
+				businessBanner[i].isAd 	= false;
+				totalPrice= totalPrice + businessBanner[i].totalAmount;
+			}
+		}
 	  }
-
-	  console.log("businessBanner: ",businessBanner);
-
-
 
 	  businessDetails.businessLink = businessLink;
 	  businessDetails.totalPrice = totalPrice;
