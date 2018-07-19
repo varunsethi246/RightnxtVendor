@@ -3,6 +3,7 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 import { Session } from 'meteor/session';
 import { Bert } from 'meteor/themeteorchef:bert';
+import { Business } from './businessMaster.js';
 
 export const Enquiry = new Mongo.Collection('enquiry');
 
@@ -16,7 +17,13 @@ if (Meteor.isServer) {
 	});
 	 Meteor.publish('enquiryCount', function(businessLink) {
   		var userID = this.userId;
-		Counts.publish(this, 'enquiryCount', Enquiry.find({'businessLink':businessLink,'businessStatus':'active'}));
+  		var businessObj = Business.findOne({"businessLink":businessLink,"status": "active"});	
+		var blockedUserArray;
+		if(businessObj){
+			// console.log('businessObj :',businessObj);
+			blockedUserArray = businessObj.blockedUsers;
+		}
+		Counts.publish(this, 'enquiryCount', Enquiry.find({'businessLink':businessLink,'businessStatus':'active','enquirySentBy': { $nin: blockedUserArray }}));
   	});
  //  	Meteor.publish('noOfEnqWeek', function() {
  //  		var days = 7;

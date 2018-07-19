@@ -269,7 +269,7 @@ Template.vendorEnquiry.helpers({
 			// var data = {
 			// 	vendorcount : enquiryCount,	
 			// }
-			console.log('enquiryCount',enquiryCount);
+			// console.log('enquiryCount',enquiryCount);
 			return enquiryCount;
 		// }
 	},
@@ -280,7 +280,7 @@ Template.vendorEnquiry.helpers({
 			id = '';
 		}
 		var enqData = Enquiry.findOne({'_id':id});
-		console.log('enqData:',enqData);
+		// console.log('enqData:',enqData);
 		if(enqData){
 			if(enqData.enquiryDesc){
 				for(i=0; i<enqData.enquiryDesc.length; i++){

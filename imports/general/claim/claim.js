@@ -559,7 +559,7 @@ Template.claimOtp.events({
 		event.preventDefault();
 		var id = event.currentTarget.id;
 		var currentuser = Meteor.userId();
-		// console.log('currentuser :' ,currentuser);
+		console.log('currentuser :' ,currentuser);
 		var businessId = Session.get("idGVal");
 		var Alternate  = $('#alternatenmbers').val();
 		// console.log('Alternate',Alternate);
