@@ -126,8 +126,9 @@ Template.paymentSuccess.helpers({
 				totalPrice     = (totalPrice + offers[i].totalAmount);
 			}
 			
-			var dateTime = paymentDetails.invoiceDate.toLocaleString();
-			var newDateTime = moment(dateTime).format('DD/MM/YYYY hh:mm:ss');
+			// var dateTime = paymentDetails.invoiceDate.toLocaleString();
+			var dateTime = paymentDetails.invoiceDate;
+			var newDateTime = moment(dateTime).format('DD/MM/YYYY hh:mm');
 
 			var data = {
 				businessName			: businessDetails.businessTitle ,
@@ -144,6 +145,66 @@ Template.paymentSuccess.helpers({
 		}
 	},
 
+});
+
+Template.paymentSuccess.events({
+	'click .button2': function(event){
+		var invNum       = FlowRouter.getParam('invoiceNumber');
+		var businessLink = FlowRouter.getParam('businessLink');
+		if(invNum || businessLink){
+			if(invNum.split('-')[1]){
+				FlowRouter.go('/VendorPayments');
+			}else{
+				FlowRouter.go('/businessOffers/:businessLink',{'businessLink':businessLink});
+			}	
+		}else{
+			FlowRouter.go('/VendorPayments');
+		}
+	},
+	'click .button1': function(event){
+		printDiv();
+	},
+	'click .shareReceiptEmail' : function(event){
+		var userId = Meteor.userId();
+		var userDetails = Meteor.users.findOne({'_id':userId});
+		if(userDetails){
+			if(userDetails.profile){
+				var name = userDetails.profile.name;
+			}else{
+				var name = '';
+			}
+			var email = $('#toVEmail').val();
+		    var divToPrint=document.getElementById('DivIdToPrint');
+			var message = '<html><head></head><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>'; 
+			// console.log('message ',message);
+
+			var date 		= new Date();
+			var currentDate = moment(date).format('DD/MM/YYYY');
+			var businessLink = FlowRouter.getParam('businessLink');
+			var businessDetails = Business.findOne({"businessLink":businessLink});
+			if(businessDetails){
+				var msgvariable = {
+					'[receipt]' 	: message,
+					'[currentDate]'	: currentDate,
+					'[username]' 	: name,
+					'[businessName]': businessDetails.businessTitle,
+					'[message]'		: message,
+					// '[dealHeadline]': offerObj.dealHeadline
+
+		       	};
+
+				var inputObj = {
+					notifPath	 : "",
+					from 		 : userDetails.emails[0].address,
+				    to           : email,
+				    templateName : 'Mail Receipt',
+				    variables    : msgvariable,
+				}
+				sendMailReceiptNotification(inputObj);
+			}
+		}
+		$(event.target).parent().parent().find('input').val('');
+	},
 });
 
 Template.vendorMyOffers.events({

@@ -305,7 +305,6 @@ Template.adsInvoice.helpers({
 
 		var totalPrice = 0;
     	var businessAds = BusinessAds.find({"businessLink":businessLink}).fetch();
-    	// console.log(businessAds);
     	if(businessAds){
     		for(i=0;i<businessAds.length;i++){
     			if(businessAds[i].areas){
