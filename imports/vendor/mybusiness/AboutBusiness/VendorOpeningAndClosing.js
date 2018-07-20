@@ -142,7 +142,9 @@ Template.vendorOpeningAndClosing.events({
           "allCategories"           : allCategories,
           "alltags"                 : alltags,
       }
-      $(".SpanMobileErrors").removeClass("ErrorRedText");
+
+      // console.log(formValues.businesscategories.length);
+      // console.log(formValues.businessModeOfPay);
 
       //Check Anything Else Field Before Submiting if its touched/changed
       var oldAnythingElse = '';
@@ -151,8 +153,23 @@ Template.vendorOpeningAndClosing.events({
       } else {
         oldAnythingElse = true;
       }
-
-      if(errorIn!="true" && (formValues.businessMobile||formValues.businessLandline)) {
+// errorIn!="true" && 
+      if((formValues.businessMobile||formValues.businessLandline) && 
+        (formValues.businessModeOfPay.CreditCard||formValues.businessModeOfPay.Cash||
+          formValues.businessModeOfPay.Cheque||formValues.businessModeOfPay.DebitCard||
+          formValues.businessModeOfPay.Netbanking||formValues.businessModeOfPay.Paytm) 
+        && formValues.businesscategories.length > 0) {
+        // console.log('true');
+        $(".SpanMobileErrors").removeClass("ErrorRedText");
+        $(".SpanModeOfPayErrors").removeClass("ErrorRedText");
+        $(".SpanCategoryErrors").removeClass("ErrorRedText");
+        $(".SpanMobileErrors").text("");
+        $(".SpanModeOfPayErrors").text("");
+        $(".SpanCategoryErrors").text("");
+        $(".businessLandlineC").removeClass("SpanLandLineRedBorder");
+        $(".businessMobileC").removeClass("SpanLandLineRedBorder");
+        $(".selectOption").removeClass("SpanLandLineRedBorder");
+        $(".focus-agetCategory1").removeClass("SpanLandLineRedBorder");
         Meteor.call('updateBusOpClAcc', id, formValues, 
           function(error,result){
             if(error){
@@ -226,13 +243,34 @@ Template.vendorOpeningAndClosing.events({
           // Bert.alert('Please fill all the fields in form!','danger','growl-top-right');
           var mobNumberBox = $('businessMobileC').val();
 
-          if (!formValues.businessLandline||!mobNumberBox) {
+          if(formValues.businessLandline || formValues.businessMobile) {
+          }else{
+            // console.log('false1');
             $(".SpanMobileErrors").addClass("ErrorRedText");
             $(".businessLandlineC").addClass("SpanLandLineRedBorder");
             $(".businessMobileC").addClass("SpanLandLineRedBorder");
             $(".SpanMobileErrors").text("Please Enter Valid Landline or 10 digit Mobile Number");
           }
-          $('.SpanLandLineRedBorder:visible:first').focus();
+
+          if (formValues.businessModeOfPay.CreditCard || formValues.businessModeOfPay.Cash ||
+          formValues.businessModeOfPay.Cheque || formValues.businessModeOfPay.DebitCard ||
+          formValues.businessModeOfPay.Netbanking || formValues.businessModeOfPay.Paytm) {
+          }else{
+          // console.log('false2');
+            $(".SpanModeOfPayErrors").addClass("ErrorRedText");
+            $(".selectOption").addClass("SpanLandLineRedBorder");
+            $(".SpanModeOfPayErrors").text("Please select mode of payment.");
+          }
+
+          if(formValues.businesscategories.length == 0){
+          // console.log('false3');
+            $(".SpanCategoryErrors").addClass("ErrorRedText");
+            $(".focus-agetCategory1").addClass("SpanLandLineRedBorder");
+            $(".SpanCategoryErrors").text("Please enter the relevant category."); 
+            $('.SpanLandLineRedBorder').find('input').focus();
+          }else{
+            $('.SpanLandLineRedBorder:visible:first').focus();
+          }
       }
     }
     
@@ -335,11 +373,16 @@ Template.vendorOpeningAndClosing.events({
     });
     if(newSelText2 !== ''){
       var newSelText = newSelText1 + newSelText2 + ']';
-      $('.selecttext').text(newSelText);      
+      $('.selecttext').text(newSelText); 
+      $(".SpanModeOfPayErrors").removeClass("ErrorRedText");
+      $(".SpanModeOfPayErrors").text("");
+      $(".selectOption").removeClass("SpanLandLineRedBorder");     
     }else{
       $('.selecttext').text('Select Payment Modes');
+      $(".SpanModeOfPayErrors").addClass("ErrorRedText");
+      $(".SpanModeOfPayErrors").text("Please select mode of payment.");
+      $(".selectOption").addClass("SpanLandLineRedBorder");
     }
-
   },
 
   'click .selectOption': function(e){
@@ -380,10 +423,15 @@ Template.vendorOpeningAndClosing.events({
     if(newSelText2 !== ''){
       var newSelText = newSelText1 + newSelText2 + ']';
       $('.selecttext').text(newSelText);      
+      $(".SpanModeOfPayErrors").removeClass("ErrorRedText");
+      $(".SpanModeOfPayErrors").text("");
+      $(".selectOption").removeClass("SpanLandLineRedBorder");
     }else{
       $('.selecttext').text('Select Payment Modes');
+      $(".SpanModeOfPayErrors").addClass("ErrorRedText");
+      $(".SpanModeOfPayErrors").text("Please select mode of payment.");
+      $(".selectOption").addClass("SpanLandLineRedBorder");
     }
-
   },
 });
 
@@ -509,6 +557,12 @@ Template.vendorOpeningAndClosing.events({
         console.log('error ', err.reason);
       }
       else{
+        // console.log(integerInd);
+        if(integerInd==0){
+          $(".SpanCategoryErrors").addClass("ErrorRedText");
+          $(".SpanCategoryErrors").text("Please enter the relevant category.");
+          $(".focus-agetCategory1").addClass("SpanLandLineRedBorder");
+        }
         var indexx = selectedCategoriesList.indexOf(removeCategory.businesscategories[integerInd]);
      
         if (indexx > -1) {
@@ -531,8 +585,7 @@ Template.vendorOpeningAndClosing.events({
           // $(event.target).parent().remove();      
         }
       });
-    },
-
+  },
   'click .btClear': function(event){
     var btId = event.currentTarget.id;
     // console.log(btId);

@@ -1,5 +1,7 @@
 import './categoriesSearchField.html';
 import { Categories } from '/imports/api/masterData/categoriesMaster.js';
+import { Business } from '/imports/api/businessMaster.js';
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 Meteor.subscribe('categories');
 
 var options = {
@@ -16,71 +18,86 @@ var dataIndex = 0;
 
 Template.categoriesSearchField.events({
 	'focusout #agetCategory' : function(event){
+		var businessLink = FlowRouter.getParam("businessLink");
 		var data = event.currentTarget.value;
 		if(data == ''){
 			// $('#businessAnythingElse').focus();
 			return;
 		}
-		var data1  = data.split('>');
-		if(data1.length == 1 ){
-			if(data1[0]=='Products' || data1[0]=='Services'){
+		if(data){
+			// console.log(data);
+			var dbCategory = Business.findOne({'businessLink':businessLink,'businesscategories': {$in : [data] }});
+			// console.log(dbCategory);
+			if(!dbCategory){	
+				var data1  = data.split('>');
+				if(data1.length == 1 ){
+					if(data1[0]=='Products' || data1[0]=='Services'){
 
+					}else{
+						$('#agetCategory').val('');
+						$('#agetCategory').focus();
+						return;
+					}
+				}
+				for(var i = 0 ; i < data1.length; i++){
+					data1[i] = data1[i].trim();
+				}
+				
+				
+				var showData =data1[4];
+				if(data1[4] == ' --' || !data1[4]){
+					showData = data1[3];
+				}
+				if(data1[3] == ' -- ' || !data1[3]){
+					showData = data1[2];
+				}
+				if(data1[2] == ' -- ' || !data1[2]){
+					showData = data1[1];
+				}
+				if(data1[1] == ' -- ' || !data1[1]){
+					showData = data1[0];
+				}
+				data = data1[0];
+				for(var k = 1 ; k < data1.length; k++){
+					if(data1[k] != '' || !(typeof data1[k] == 'undefined')){
+						data = data + ' > ' + data1[k];
+					}
+				}
+
+				var temp = 0;
+				for(var j = 0 ; j < selectedCategoriesList.length; j++){
+					if(data == selectedCategoriesList[j] ){
+						temp = 1;
+					}
+				}
+				if(temp == 0){
+					selectedCategoriesList.push(data);	
+					$('#alistCategory').append("<div class='js-click-tag1 str-tags-each1' id='catgIndex-" + dataIndex + "' > <div class='str-category str-category1' > " + showData + " x </div> </div>");
+					dataIndex = dataIndex + 1;
+					$('.category').text('');
+					$('#agetCategory').val('');
+					var catgList = $('#asearchCategories').val();
+					if(catgList){
+						catgList = catgList + '|' + data;
+					}
+					else{
+						catgList = data;
+					}
+					$('#asearchCategories').val(catgList);
+			        $(".SpanCategoryErrors").removeClass("ErrorRedText");
+			        $(".SpanCategoryErrors").text("");
+			        $(".focus-agetCategory1").removeClass("SpanLandLineRedBorder");
+				}else{
+					$('#agetCategory').val('');
+					// $(".SpanCategoryErrors").addClass("ErrorRedText");
+			  //       $(".SpanCategoryErrors").text("Please enter the relevant category.");
+			  //       $(".focus-agetCategory1").addClass("SpanLandLineRedBorder");
+				}
+				$('#agetCategory').focus();
 			}else{
 				$('#agetCategory').val('');
-				$('#agetCategory').focus();
-				return;
 			}
 		}
-		for(var i = 0 ; i < data1.length; i++){
-			data1[i] = data1[i].trim();
-		}
-		
-		
-		var showData =data1[4];
-		if(data1[4] == ' --' || !data1[4]){
-			showData = data1[3];
-		}
-		if(data1[3] == ' -- ' || !data1[3]){
-			showData = data1[2];
-		}
-		if(data1[2] == ' -- ' || !data1[2]){
-			showData = data1[1];
-		}
-		if(data1[1] == ' -- ' || !data1[1]){
-			showData = data1[0];
-		}
-		data = data1[0];
-		for(var k = 1 ; k < data1.length; k++){
-			if(data1[k] != '' || !(typeof data1[k] == 'undefined')){
-				data = data + ' > ' + data1[k];
-			}
-		}
-
-		var temp = 0;
-		for(var j = 0 ; j < selectedCategoriesList.length; j++){
-			if(data == selectedCategoriesList[j] ){
-				temp = 1;
-			}
-		}
-		if(temp == 0){
-			selectedCategoriesList.push(data);	
-			$('#alistCategory').append("<div class='js-click-tag1 str-tags-each1' id='catgIndex-" + dataIndex + "' > <div class='str-category str-category1' > " + showData + " x </div> </div>");
-			dataIndex = dataIndex + 1;
-			$('.category').text('');
-			$('#agetCategory').val('');
-			var catgList = $('#asearchCategories').val();
-			if(catgList){
-				catgList = catgList + '|' + data;
-			}
-			else{
-				catgList = data;
-			}
-			$('#asearchCategories').val(catgList);
-		}else{
-			$('#agetCategory').val('');
-		}
-		$('#agetCategory').focus();
-
 	},
 	
 	
@@ -106,7 +123,7 @@ Template.categoriesSearchField.events({
 			selectedCategoriesList.splice(indexofSelectedCat,1);			
 			//remove entry from  asearchCategories
 			splitvarCategoryValue[ind] = '';
-			console.log('splitvarCategoryValue : ',splitvarCategoryValue);
+			// console.log('splitvarCategoryValue : ',splitvarCategoryValue);
 			var newSplitvarCategoryValue = '';
 			for(var i = 0 ; i < splitvarCategoryValue.length; i++){
 				if(splitvarCategoryValue[i] != ''){
@@ -117,8 +134,11 @@ Template.categoriesSearchField.events({
 					}
 				}
 			}
-			console.log('newSplitvarCategoryValue : ',newSplitvarCategoryValue);
+			// console.log('newSplitvarCategoryValue : ',newSplitvarCategoryValue);
 			$('#asearchCategories').val(newSplitvarCategoryValue);
+			// $(".SpanCategoryErrors").addClass("ErrorRedText");
+	  //       $(".SpanCategoryErrors").text("Please enter the relevant category.");
+	  //       $(".focus-agetCategory1").addClass("SpanLandLineRedBorder");
 		}
 		
 	},
@@ -200,5 +220,3 @@ Template.categoriesSearchField.helpers({
 
   	
 });
-
-
