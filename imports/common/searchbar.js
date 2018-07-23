@@ -76,19 +76,18 @@ Template.searchbar.helpers({
 		        
 			}
 		}else{
-			var sesVal = Session.get('rxtNxtCityDatlist');
-	        if(sesVal){
-	          currentCity = sesVal;
-	        }else{
-	          var currentCity = "Pune";
-	        }
-			// if(currentParams){
-			// 	var busCity = Business.findOne({"businessLink":currentParams},{fields: {'businessCity': 1}});
-			// 	var currentCity = busCity.businessCity;
-			// }else{
-			// 	// var currentCity = FlowRouter.getParam('city');
-			// 	var currentCity = "Pune";
-			// }
+			if(currentParams){
+				var busCity = Business.findOne({"businessLink":currentParams},{fields: {'businessCity': 1}});
+				var currentCity = busCity.businessCity;
+			}else{
+				// var currentCity = FlowRouter.getParam('city');
+				var sesVal = Session.get('rxtNxtCityDatlist');
+		        if(sesVal){
+		          currentCity = sesVal;
+		        }else{
+		          var currentCity = "Pune";
+		        }
+			}
 		}
 
 	    var currentArea =  FlowRouter.getParam('area');
@@ -186,7 +185,13 @@ Template.searchbar.events({
 				var busCity = Business.findOne({"businessLink":currentParams},{fields: {'businessCity': 1}});
 				var currentCity = busCity.businessCity;
 			}else{
-				var currentCity = FlowRouter.getParam('city');
+				var sesVal = Session.get('rxtNxtCityDatlist');
+		        if(sesVal){
+		          currentCity = sesVal;
+		        }else{
+		          var currentCity = "Pune";
+		        }
+				// var currentCity = FlowRouter.getParam('city');
 			}
 		}
 
@@ -326,7 +331,13 @@ Template.searchbar.events({
 				var busCity = Business.findOne({"businessLink":currentParams},{fields: {'businessCity': 1}});
 				var currentCity = busCity.businessCity;
 			}else{
-				var currentCity = FlowRouter.getParam('city');
+				var sesVal = Session.get('rxtNxtCityDatlist');
+		        if(sesVal){
+		          currentCity = sesVal;
+		        }else{
+		          var currentCity = "Pune";
+		        }
+				// var currentCity = FlowRouter.getParam('city');
 			}
 		}
 		$('#gridSearchBusiness').val(currentCatg); 
@@ -412,10 +423,14 @@ Template.searchbar.events({
 			if(currentParams){
 				var busCity = Business.findOne({"businessLink":currentParams},{fields: {'businessCity': 1}});
 				var currentCity = busCity.businessCity;
-				
-
 			}else{
-				var currentCity = FlowRouter.getParam('city');
+				var sesVal = Session.get('rxtNxtCityDatlist');
+		        if(sesVal){
+		          currentCity = sesVal;
+		        }else{
+		          var currentCity = "Pune";
+		        }
+				// var currentCity = FlowRouter.getParam('city');
 			}
 		}
 		// console.log('url :',newURl[2]);
@@ -524,7 +539,13 @@ Template.searchbar.events({
 					var busCity = Business.findOne({"businessLink":currentParams},{fields: {'businessCity': 1}});
 					var currentCity = busCity.businessCity;
 				}else{
-					var currentCity = FlowRouter.getParam('city');
+					var sesVal = Session.get('rxtNxtCityDatlist');
+			        if(sesVal){
+			          currentCity = sesVal;
+			        }else{
+			          var currentCity = "Pune";
+			        }
+					// var currentCity = FlowRouter.getParam('city');
 				}
 			}
 

@@ -42,7 +42,7 @@
 											<span class="thumBusOffersSnO">
 												<i class="fa fa-percent" aria-hidden="true"></i>
 											</span>
-											<span class="thumBusOffersSnT">{{busOffer}}</span>
+											<span class="thumBusOffersSnT">{{busNoOffer}} Offer</span>
 										</div>
 										<div class="thumbEnqBtn" data-link="{{businessLink}}" data-toggle="modal" data-target="#vEnqModal">
 											<button class="btn btn-success">Enquiry</button>
@@ -51,7 +51,7 @@
 											</span>
 										</div>
 										<div class="thumBusDistance pull-right">
-											{{busDist}} km
+											{{#if busDist}}{{busDist}}{{else}}--{{/if}} km
 										</div>
 									</div>
 								</div>
@@ -118,9 +118,11 @@
 													{{> businessEnquiry}}
 												</span>
 											</div>
+											
 											<div class="thumBusDistance pull-right">
-												{{busDist}} km
+												{{#if busDist}}{{busDist}}{{else}}--{{/if}} km
 											</div>
+
 										</div>
 
 									</div>
@@ -129,7 +131,7 @@
 											<span class="thumBusOffersSnO">
 												<i class="fa fa-percent" aria-hidden="true"></i>
 											</span>
-											<span class="thumBusOffersSnT">{{busOffer}}</span>
+											<span class="thumBusOffersSnT">{{busNoOffer}} Offer</span>
 										</div>
 									</div>
 								</div>

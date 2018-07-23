@@ -4,7 +4,6 @@ import './imageCommet.html';
 import '../vendorBusinessCarousel.html';
 import '../imageCarouselItems.html';
 
-import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
 import { BusinessVideoUpload } from '/client/cfsjs/businessVideo.js';
 import { Business } from '/imports/api/businessMaster.js';
 import { Reports } from '/imports/api/reportMaster.js';
@@ -16,15 +15,16 @@ import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
 import { BusinessMenu } from '/imports/videoUploadClient/businessMenuClient.js';
 import { ReviewImage } from '/imports/videoUploadClient/reviewImageClient.js';
+import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
 
 // hello
-Template.imageCommet.onCreated(function(){
-  this.subscribe('businessImage');
-});
-Template.imageReports.onCreated(function(){
-  this.subscribe('businessImage');
-  this.subscribe('businessMenuImage');
-});
+// Template.imageCommet.onCreated(function(){
+//   this.subscribe('businessImage');
+// });
+// Template.imageReports.onCreated(function(){
+//   this.subscribe('businessImage');
+//   this.subscribe('businessMenuImage');
+// });
 Template.imageCommet.helpers({
 	'businessComment' : function(){
 		var userInfo = Session.get("carouselLikeCount");	
@@ -50,15 +50,19 @@ Template.imageCommet.helpers({
 							var reviewTimeAgo = moment(reviewDetails[i].reviewDate).fromNow();
 							var userName = Meteor.users.findOne({"_id":reviewDetails[i].userId});
 							if(userName){
-								if(userName.profile.userProfilePic){
-									var pic = UserProfileStoreS3New.findOne({"_id":userName.profile.userProfilePic});
-									if(pic){
-										var pic = pic.url();
+								if(userName.profile){
+									if(userName.profile.userProfilePic){
+										var pic = VendorImage.findOne({"_id":userName.profile.userProfilePic});
+										if(pic){
+											var pic = pic.link();
+										}else{
+											var pic = '/users/profile/profile_image_dummy.svg';
+										}
 									}else{
-										var pic = '/user/profile/profile_image_dummy.svg';
+										var pic = '/users/profile/profile_image_dummy.svg';
 									}
 								}else{
-									var pic = '/user/profile/profile_image_dummy.svg';
+									var pic = '/users/profile/profile_image_dummy.svg';
 								}
 								var dataReturn = {
 									reviewCounts   : reviewCounts,
@@ -78,20 +82,30 @@ Template.imageCommet.helpers({
 		}
 		var businessName = Business.findOne({"businessLink":busLink});
 		if(businessName){
-			if(businessName.businessImages.length>0){
-				if(businessName.businessImages[0].img){
-					var pic = BusinessImage.findOne({"_id":businessName.businessImages[0].img});
-					if(pic){
-						var pic = pic.link();
+			if(businessName.publishedImage){
+				var pic = BusinessImage.findOne({"_id":businessName.publishedImage});
+				if(pic){
+					var pic = pic.link();
+				}else{
+					var pic = '/images/rightnxt_image_nocontent.jpg';
+				}
+			}else{
+				if(businessName.businessImages.length>0){
+					if(businessName.businessImages[0].img){
+						var pic = BusinessImage.findOne({"_id":businessName.businessImages[0].img});
+						if(pic){
+							var pic = pic.link();
+						}else{
+							var pic = '/images/rightnxt_image_nocontent.jpg';
+						}
 					}else{
 						var pic = '/images/rightnxt_image_nocontent.jpg';
 					}
 				}else{
 					var pic = '/images/rightnxt_image_nocontent.jpg';
-				}
-			}else{
-				var pic = '/images/rightnxt_image_nocontent.jpg';
+				}	
 			}
+			
 			var dataReturn = {
 				businessName    : businessName.businessTitle,
 				businessaddress : businessName.businessCity,
@@ -577,7 +591,7 @@ Template.imageReports.events({
 	'click .nextImageID':function(event){
 		var imgIdNext = $('#myCarousel1 .carousel-inner').find('.active').next().children('img').attr('id');
 		if(!imgIdNext){
-			imgIdNext = $('#myCarousel1 .carousel-inner').find('.active').first().children('img').attr('id');
+			imgIdNext = $('#myCarousel1 .carousel-inner').find('.imageReportSlider').first().children('img').attr('id');
 		}
 		Session.set("ModalimageID",imgIdNext);
 		var ImageCount = BussImgLikes.find({'LikedImage':imgIdNext}).count();
@@ -589,10 +603,10 @@ Template.imageReports.events({
 	},
 	'click .previousImageID':function(event){
 		var imgIdPrevious = $('#myCarousel1 .carousel-inner').find('.active').prev().children('img').attr('id');
-		// console.log('a' ,a);
-		if(!imgIdPrevious){
-			imgIdPrevious = $('#myCarousel1 .carousel-inner').find('.active').last().children('img').attr('id');
-		}
+		// if(!imgIdPrevious){
+		// 	imgIdPrevious = $('#myCarousel1 .carousel-inner').find('.active').last().children('img').attr('id');
+		// console.log('imgIdPrevious',imgIdPrevious);
+		// }
 		Session.set("ModalimageID",imgIdPrevious);
 		var ImageCount = BussImgLikes.find({'LikedImage':imgIdPrevious}).count();
 		Session.set('carouselLikeCount', ImageCount);

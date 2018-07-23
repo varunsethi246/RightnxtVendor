@@ -2594,7 +2594,7 @@ outline:none
 }
 
 .vEnqBtnC button:hover {
-font-size:14px;
+/*font-size:14px;*/
 font-family:"PROXIMANOVA-REGULAR";
 background:#f89b1c;
 border-radius:0;
@@ -2941,7 +2941,7 @@ color:#a94442
 }
 
 .revwTnumCnt {
-top:-13px;
+top:-15px;
 position:relative;
 left:17px
 }

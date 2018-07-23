@@ -277,13 +277,13 @@ SearchSource.defineSource('business', (searchText, options)=> {
 
             // Find Offers of Business Start
                 var bussId = businessAdsDocs[i]._id;		
-                var busOffer = Offers.findOne({"businessId":bussId,"offerStatus":"active"});
+                var busOffer = Offers.find({"businessId":bussId,"offerStatus":"Active"}).count();
                 if(busOffer){
-                    businessAdsDocs[i].busOffer = busOffer.dealHeadline;
-                    businessAdsDocs[i].busNoOffer = '';
+                    // businessAdsDocs[i].busOffer = busOffer.dealHeadline;
+                    businessAdsDocs[i].busNoOffer = busOffer;
                 }else{
-                    businessAdsDocs[i].busOffer = '';
-                    businessAdsDocs[i].busNoOffer = 'busNoOffer';
+                    // businessAdsDocs[i].busOffer = '';
+                    businessAdsDocs[i].busNoOffer = 0;
                 }
             // Find Offers of Business End
             

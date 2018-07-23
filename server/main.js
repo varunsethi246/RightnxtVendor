@@ -87,9 +87,23 @@ import { OfferImage } from '/imports/videoUploadserver/offerImageServer.js';
 import { EnquiryImage } from '/imports/videoUploadserver/enquiryImageServer.js';
 import { ReviewImage } from '/imports/videoUploadserver/reviewImageServer.js';
 import { ResumeImage } from '/imports/videoUploadserver/resumeImageServer.js';
+import { Business } from  '/imports/api/businessMaster.js';
 
 Meteor.publish('getBizVideo', function() {
     return BizVideo.find({'userId':this.userId}).cursor;
+});
+Meteor.publish('oneBusinessVideo', function(businessLink) {
+  var businessObj = Business.findOne({'businessLink':businessLink});
+  if(businessObj){
+    if(businessObj.businessVideo){
+      var businessOwnerId = businessObj.businessOwnerId;
+    }
+  }
+  if(Meteor.userId()){
+    return BizVideo.find({'userId':businessOwnerId}).cursor;
+  }else{
+    return BizVideo.find({}).cursor;
+  }
 });
 Meteor.publish('getBizVideoBanner', function() {
     return BizVideoBanner.find({}).cursor;
@@ -97,17 +111,73 @@ Meteor.publish('getBizVideoBanner', function() {
 Meteor.publish('vendorImage', function() {
     return VendorImage.find({'userId':this.userId}).cursor;
 });
+Meteor.publish('allVendorImages', function() {
+  return VendorImage.find({}).cursor;
+});
 Meteor.publish('ownerImage', function() {
     return OwnerImage.find({'userId':this.userId}).cursor;
+});
+Meteor.publish('ownerImageBusiness', function(businessLink) {
+  var businessObj = Business.findOne({'businessLink':businessLink});
+  if(businessObj){
+    if(businessObj.ownerPhoto){
+      return OwnerImage.find({'_id':businessObj.ownerPhoto}).cursor;
+    }else{
+      return OwnerImage.find({}).cursor;
+    }
+  }
 });
 Meteor.publish('businessImage', function() {
     return BusinessImage.find({'userId':this.userId}).cursor;
 });
+Meteor.publish('oneBusinessImages', function(businessLink) {
+  var businessObj = Business.findOne({'businessLink':businessLink});
+  if(businessObj){
+    if(businessObj.businessImages){
+      if(businessObj.businessImages.length > 0){
+        var businessOwnerId = businessObj.businessOwnerId;
+      }
+    }
+  }
+  if(Meteor.userId()){
+    return BusinessImage.find({'userId':businessOwnerId}).cursor;
+  }else{
+    return BusinessImage.find({}).cursor;
+  }
+});
 Meteor.publish('businessMenuImage', function() {
     return BusinessMenu.find({'userId':this.userId}).cursor;
 });
+Meteor.publish('oneBusiMenuImages', function(businessLink) {
+  var businessObj = Business.findOne({'businessLink':businessLink});
+  if(businessObj){
+    if(businessObj.businessMenu){
+      if(businessObj.businessMenu.length > 0){
+        var businessOwnerId = businessObj.businessOwnerId;
+      }
+    }
+  }
+  if(Meteor.userId()){
+    return BusinessMenu.find({'userId':businessOwnerId}).cursor;
+  }else{
+    return BusinessMenu.find({}).cursor;
+  }
+});
 Meteor.publish('businessOfferImage', function() {
     return OfferImage.find({'userId':this.userId}).cursor;
+});
+Meteor.publish('oneBusiOffersImages', function(businessLink) {
+  var businessObj = Business.findOne({'businessLink':businessLink});
+  if(businessObj){
+    if(businessObj.businessOwnerId){
+      var businessOwnerId = businessObj.businessOwnerId;
+    }
+  }
+  if(Meteor.userId()){
+    return OfferImage.find({'userId':businessOwnerId}).cursor;
+  }else{
+    return OfferImage.find({}).cursor;
+  }
 });
 Meteor.publish('businessEnquiryImage', function() {
     return EnquiryImage.find({}).cursor;

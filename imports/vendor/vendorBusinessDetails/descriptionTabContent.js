@@ -391,11 +391,11 @@ Template.descriptionTabContent.helpers({
 														};
 										var checkCommentReplyLike =  ReviewCommentLikes.findOne(replySelector);
 
-										// if(checkCommentReplyLike){
-										// 	replyObj.replyLikeUnlike = true;	
-										// }else{
-										// 	replyObj.replyLikeUnlike = false;
-										// }
+										if(checkCommentReplyLike){
+											replyObj.replyLikeUnlike = true;	
+										}else{
+											replyObj.replyLikeUnlike = false;
+										}
 										var commentReplyLikeCount = ReviewCommentLikes.find({
 																		"reviewId" 		: allReviews[i]._id,
 																		"replyId" 		: replyObj.replyId.toString(),

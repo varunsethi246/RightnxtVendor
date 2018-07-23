@@ -24,11 +24,6 @@ import '../../common/common.js';
 import '../BusinessEnquiry/businessEnquiry.js';
 import './businessMapView/businessMapView.js';
 
-
-Session.set('showMapView',false);
-Session.set('showGridView',true);
-
-
 var options = {
 	keepHistory: 0,
 	localSearch: true
@@ -81,6 +76,8 @@ Template.businessList.onRendered(function(){
 		$('#gridSearchBusiness').val("");
 	}
 
+	Session.set('showMapView',false);
+	Session.set('showGridView',true);
 });
 
 
@@ -202,7 +199,7 @@ Template.thumbnailBusinessList.helpers({
 		//*********************************************************************
 
 		}
-
+		// console.log(busList);
 		return busList;
 
 	},
@@ -259,7 +256,7 @@ Template.allbusinessList.events({
 		$('.listOffers').addClass('busListSelected');
 		$('.thumBusDistance').css('display','none');
 		$('.thumBusOffers').css('display','block');
-		$('.busNoOffer').css('display','none');
+		// $('.busNoOffer').css('display','none');
 	},
 	'click .listDistance': function(){
 		$('.busListSelectedPre').removeClass('busListSelected');
