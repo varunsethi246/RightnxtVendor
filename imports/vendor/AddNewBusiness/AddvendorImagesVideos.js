@@ -182,14 +182,16 @@ Template.addvendorImagesVideos.helpers({
 						// }
 					}else{
 						var imgObj = ReviewImage.findOne({"_id":imgId.img});
-						if(imgObj.type == 'image/png'){
-							imgObj.checkpngImg = 'bkgImgNone';
-							imgObj.businessImg = false;
-						}else{
-							imgObj.checkpngImg = '';
-							imgObj.businessImg = false;
+						if(imgObj){
+							if(imgObj.type == 'image/png'){
+								imgObj.checkpngImg = 'bkgImgNone';
+								imgObj.businessImg = false;
+							}else{
+								imgObj.checkpngImg = '';
+								imgObj.businessImg = false;
+							}
+							imgList[i] = imgObj;
 						}
-						imgList[i] = imgObj;
 					}
 				}
 				// console.log('imgList ' , imgList);

@@ -548,7 +548,7 @@ Template.claimOtp.events({
 						}
 					});
 				}else{
-					Bert.alert('Entered OTP does not matches with existing OTP.','danger','growl-top-right'); 
+					Bert.alert('Entered OTP does not match with existing OTP.','danger','growl-top-right'); 
 				}
 			}
 		}else{

@@ -91,18 +91,20 @@ Template.vendorPhotos.helpers({
 						imgList[i] = imgData;
 					}else{
 						var imgObj = ReviewImage.findOne({"_id":imgId.img});
-						if(imgObj.type == 'image/png'){
-							imgObj.businessId = data._id;
-							imgObj.checkpngImg = 'bkgImgNone';
-							imgObj.businessImg = false;
-							imgObj.uploadedAt = imgId.uploadedAt;
-						}else{
-							imgObj.businessId = data._id;
-							imgObj.checkpngImg = '';
-							imgObj.businessImg = false;
-							imgObj.uploadedAt = imgId.uploadedAt;
+						if(imgObj){
+							if(imgObj.type == 'image/png'){
+								imgObj.businessId = data._id;
+								imgObj.checkpngImg = 'bkgImgNone';
+								imgObj.businessImg = false;
+								imgObj.uploadedAt = imgId.uploadedAt;
+							}else{
+								imgObj.businessId = data._id;
+								imgObj.checkpngImg = '';
+								imgObj.businessImg = false;
+								imgObj.uploadedAt = imgId.uploadedAt;
+							}
+							imgList[i] = imgObj;
 						}
-						imgList[i] = imgObj;
 					}
 				}
 				imgList.sort(sortDescImgUploadAt);

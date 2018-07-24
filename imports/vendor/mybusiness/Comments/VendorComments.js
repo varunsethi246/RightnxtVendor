@@ -285,7 +285,7 @@ Template.vendorComments.helpers({
 			}//end i loop
 			var totalReview = allReviews.length;
 			Session.set('totalReview', totalReview);
-		console.log(allReviews);
+		// console.log(allReviews);
 		return allReviews;
 		}
 

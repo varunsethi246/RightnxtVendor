@@ -21,7 +21,7 @@ Template.VendorGotLikes.helpers({
 	'businessLikesData': function(){
 		var businessLink = FlowRouter.getParam('businessLink');
 		var businessLikes = Likes.find({"businessLink":businessLink}).fetch();
-					console.log("businessLikes",businessLikes);
+					// console.log("businessLikes",businessLikes);
 		
 		if(businessLikes){
 			for(i=0; i<businessLikes.length; i++){

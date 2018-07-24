@@ -11,7 +11,7 @@ export const Review = new Mongo.Collection('review');
 if (Meteor.isServer) {
   // This code only runs on the server
   Meteor.publish('review', function review(businessLink) {
-  	console.log(Review.find({"businessLink": businessLink}).fetch());
+  	// console.log(Review.find({"businessLink": businessLink}).fetch());
     return Review.find({"businessLink": businessLink});
   });
 
