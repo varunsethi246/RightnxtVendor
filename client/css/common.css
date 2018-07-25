@@ -1089,7 +1089,10 @@ min-height:24px;
 word-wrap:break-word;
 padding:5px 5px 5px 1px;
 cursor:pointer;
-font-size:12px
+font-size:12px;
+white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .notifdate {

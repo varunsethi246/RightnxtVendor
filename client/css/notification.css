@@ -683,7 +683,10 @@ font-weight:600
 }
 */
 .notifbody {
-font-size:12px
+font-size:12px;
+white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .notifdate {
