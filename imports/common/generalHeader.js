@@ -15,17 +15,23 @@ Template.generalHeader.helpers({
 			var data = Meteor.users.findOne({"_id":id},{"profile":1});
 			// console.log(data);
 			if(data){
-				var pic = VendorImage.findOne({"_id":data.profile.userProfilePic});
-				if(pic){
-					if(pic.type == 'image/png'){
-						data.checkpngImg = 'bkgImgNone';
-					}else{
-						data.checkpngImg = '';
+				if(data.profile){
+					var pic = VendorImage.findOne({"_id":data.profile.userProfilePic});
+					if(pic){
+						if(pic.type == 'image/png'){
+							data.checkpngImg = 'bkgImgNone';
+						}else{
+							data.checkpngImg = '';
+						}
+						data.profile.userProfilePic = pic.link();	
 					}
-					data.profile.userProfilePic = pic.link();	
-				}
-				else{
-					data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
+					else{
+						data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
+					}
+
+					if(data.profile.name){
+						data.firstName = (data.profile.name).split(' ')[0];
+					}
 				}
 				return data;
 			}

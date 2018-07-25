@@ -47,7 +47,7 @@ import '/imports/common/common.js';
               }
             });
           }else{
-            Bert.alert('This email address is registered as rightNXT user.',"danger","growl-top-right");
+            Bert.alert("You can't change your password. Please contact Admin.","danger","growl-top-right");
           }
         }
       }else{
@@ -179,8 +179,7 @@ import '/imports/common/common.js';
           }
         });
       }else{
-        // Bert.alert("This email address is registered as rightNXT user.", 'danger', 'growl-top-right');
-        $('.passwordWrongSpan').text("This email address is registered as rightNXT user.");
+        $('.passwordWrongSpan').text("You can't login into the system. Please contact Admin.");
         $('.passwordWrongSpan').addClass('passwordWrongWar');
       }
     }
@@ -234,6 +233,7 @@ import '/imports/common/common.js';
     $('input[type="text"]').val('');
     $('input[type="password"]').val('');
     $('input[type="tel"]').val('');
+    $('input[type="email"]').val('');
     $('.loginLabel').removeClass('active');
   },
 });

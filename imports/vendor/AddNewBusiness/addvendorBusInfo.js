@@ -563,53 +563,53 @@ Template.addVendorBusInfo.events({
                         var date        = new Date();
                         var currentDate = moment(date).format('DD/MM/YYYY');
                         var msgvariable = {
-                                             '[vendorname]'    : vendorname,
-                                             '[currentDate]'   : currentDate,
-                                             '[businessName]'  : formValues.businessTitle
-                                          };
+                           '[vendorname]'    : vendorname,
+                           '[currentDate]'   : currentDate,
+                           '[businessName]'  : formValues.businessTitle
+                        };
 
                         var inputObj = {
-                                          notifPath    : formValues.businessLink,
-                                          to           : Meteor.userId(),
-                                          templateName : 'Thanks for Registering New Business',
-                                          variables    : msgvariable,
-                                       }
+                           notifPath    : formValues.businessLink,
+                           to           : Meteor.userId(),
+                           templateName : 'Thanks for Registering New Business',
+                           variables    : msgvariable,
+                        }
                         sendInAppNotification(inputObj);
 
                         var inputObj = {
-                                          notifPath     : formValues.businessLink,
-                                          from          : adminId,
-                                          to            : Meteor.userId(),
-                                          templateName  : 'Thanks for Registering New Business',
-                                          variables     : msgvariable,
-                                       }
+                           notifPath     : formValues.businessLink,
+                           from          : adminId,
+                           to            : Meteor.userId(),
+                           templateName  : 'Thanks for Registering New Business',
+                           variables     : msgvariable,
+                        }
                         sendMailNotification(inputObj);
 
                         //Send Notification, Mail and SMS to Admin
                         var date       = new Date();
                         var currentDate = moment(date).format('DD/MM/YYYY');
                         var msgvariable = {
-                                             '[vendorname]'    : vendorname,
-                                             '[adminname]'     : username,
-                                             '[currentDate]'   : currentDate,
-                                             '[businessName]'  : formValues.businessTitle,
-                                          };
+                           '[vendorname]'    : vendorname,
+                           '[adminname]'     : username,
+                           '[currentDate]'   : currentDate,
+                           '[businessName]'  : formValues.businessTitle,
+                        };
 
                         var inputObj = {
-                                          notifPath    : formValues.businessLink,
-                                          to           : adminId,
-                                          templateName : 'Vendor Added New Business',
-                                          variables    : msgvariable,
-                                       }
+                           notifPath    : formValues.businessLink,
+                           to           : adminId,
+                           templateName : 'Vendor Added New Business',
+                           variables    : msgvariable,
+                        }
                         sendInAppNotification(inputObj);
 
                         var inputObj = {
-                                          notifPath    : formValues.businessLink,
-                                          from         : adminId,
-                                          to           : adminId,
-                                          templateName : 'Vendor Added New Business',
-                                          variables    : msgvariable,
-                                       }
+                           notifPath    : formValues.businessLink,
+                           from         : adminId,
+                           to           : adminId,
+                           templateName : 'Vendor Added New Business',
+                           variables    : msgvariable,
+                        }
                         sendMailNotification(inputObj);  
                      }
                      //============================================================

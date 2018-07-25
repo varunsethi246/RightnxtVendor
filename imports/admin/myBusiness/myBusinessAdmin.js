@@ -658,7 +658,7 @@ Template.listOfBusiness.events({
 
 				var admin = Meteor.users.findOne({'roles':'admin'});
 				var vendorDetail = Meteor.users.findOne({'_id':vendoriDS});
-				console.log('vendorDetail :',vendorDetail);
+				// console.log('vendorDetail :',vendorDetail);
 				var vendorids = vendorDetail._id;
 				// var notificationOn = vendorDetail.notificationConfiguration;
 

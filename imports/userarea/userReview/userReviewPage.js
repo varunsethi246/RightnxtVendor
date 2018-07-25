@@ -894,7 +894,7 @@ Template.userReview.events({
 						'[businessName]'	: businessData.businessTitle,
 						'[currentPath]' 	: currentPath,
 						'[note]'			: currentUserNote,
-					   };
+					};
 	
 					var inputObj = {
 						from         : adminId,

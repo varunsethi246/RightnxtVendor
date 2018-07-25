@@ -438,26 +438,26 @@ Template.addvendorOpeningAndClosing.events({
                         var date    = new Date();
                         var currentDate = moment(date).format('DD/MM/YYYY');
                         var msgvariable = {
-                           '[vendorname]'   : vendorname,
-                           '[adminname]'    : username,
-                           '[currentDate]'  : currentDate,
-                           '[businessName]' : dbCategories.businessTitle
+                          '[vendorname]'   : vendorname,
+                          '[adminname]'    : username,
+                          '[currentDate]'  : currentDate,
+                          '[businessName]' : dbCategories.businessTitle
                         };
 
                         var inputObj = {
-                                    notifPath     : businessLink,
-                                    to            : adminId,
-                                    templateName  : 'Anything Else Business Admin',
-                                    variables     : msgvariable,
+                          notifPath     : businessLink,
+                          to            : adminId,
+                          templateName  : 'Anything Else Business Admin',
+                          variables     : msgvariable,
                         }
                         sendInAppNotification(inputObj);
 
                         var inputObj = {
-                                    notifPath     : businessLink,
-                                    from          : adminId,
-                                    to            : adminId,
-                                    templateName  : 'Anything Else Business Admin',
-                                    variables     : msgvariable,
+                          notifPath     : businessLink,
+                          from          : adminId,
+                          to            : adminId,
+                          templateName  : 'Anything Else Business Admin',
+                          variables     : msgvariable,
                         }
                         sendMailNotification(inputObj); 
                       }

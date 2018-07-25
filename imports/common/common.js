@@ -161,6 +161,7 @@ Template.header.events({
 	    $('input[type="text"]').val('');
 	    $('input[type="password"]').val('');
 	    $('input[type="tel"]').val('');
+	    $('input[type="email"]').val('');
     	$('.loginLabel').removeClass('active');
 	},
 	'click .login-btn': function(event){

@@ -13,6 +13,7 @@ Template.vendorSignUpForm.events({
     $('input[type="text"]').val('');
     $('input[type="password"]').val('');
     $('input[type="tel"]').val('');
+    $('input[type="email"]').val('');
     $('.loginLabel').removeClass('active');
   },
   'click .loginLabel' : function(event){

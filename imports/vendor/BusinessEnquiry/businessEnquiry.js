@@ -251,19 +251,18 @@ Template.businessEnquiry.events({
                                             // var notifConfig = userVar.notificationConfiguration.enquiry;
                                             // if(notifConfig == "true"){
                                                 var msgvariable = {
-                                                        '[businessTitle]'       : businessTitle,
-                                                        '[enquiryName]'         : userVar.profile.name,
-                                                        '[enquiryEmail]'        : enquiryEmail,
-                                                        '[enquiryPhoneTwo]'     : enquiryPhoneTwo,
-                                                        '[enquiryDesc]'         : enquiryDesc,
-
-                                                    };
-                                                    var inputObj = {
-                                                        from         : adminID,
-                                                        to           : userId,
-                                                        templateName : 'User Business Enquiry',
-                                                        variables    : msgvariable,
-                                                    }
+                                                    '[businessTitle]'       : businessTitle,
+                                                    '[enquiryName]'         : userVar.profile.name,
+                                                    '[enquiryEmail]'        : enquiryEmail,
+                                                    '[enquiryPhoneTwo]'     : enquiryPhoneTwo,
+                                                    '[enquiryDesc]'         : enquiryDesc,
+                                                };
+                                                var inputObj = {
+                                                    from         : adminID,
+                                                    to           : userId,
+                                                    templateName : 'User Business Enquiry',
+                                                    variables    : msgvariable,
+                                                }
 
                                                 sendMailNotification(inputObj); 
                                                 

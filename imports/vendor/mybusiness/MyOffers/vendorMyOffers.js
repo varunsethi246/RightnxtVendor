@@ -931,7 +931,7 @@ Template.paymentInvoice.events({
 			else{
 				//Send user to Payment Gateway link
 				var current = window.location.host;
-				console.log("window.location : ",current );
+				// console.log("window.location : ",current );
 
 				Meteor.call('updateInvoiceforOnlinePayment', businessLink, parseInt(invoiceNumber), current, (error, result)=>{
 					if(result){

@@ -94,7 +94,7 @@ Template.LoginOTP.events({
                 }); // send verification mail ends
           } 
         }else{
-          Bert.alert('This email address is registered as rightNXT user.','danger','growl-top-right');
+          Bert.alert("Please contact Admin to activate your account.",'danger','growl-top-right');
         }  
       } else{
         Bert.alert('Please enter a registered email address.','danger','growl-top-right');
@@ -165,7 +165,7 @@ Template.LoginOTP.events({
           //   Bert.alert('Please enter the OTP.','danger','growl-top-right');
           // }
         }else{
-          Bert.alert('This email address is registered as rightNXT user.','danger','growl-top-right');
+          Bert.alert('Please contact Admin to activate your account.','danger','growl-top-right');
         }
       }else{
         Bert.alert('Please enter a registered email address.','danger','growl-top-right');

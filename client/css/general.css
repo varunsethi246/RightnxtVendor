@@ -3229,7 +3229,8 @@ margin-left:30px
 
 .aboutNavbar {
 padding-left:17px;
-padding-right:20px
+padding-right:20px;
+margin-left: 0px;
 }
 
 .comingSoon .h1Div {
@@ -3359,7 +3360,7 @@ margin-top:0
 .dropGeneral {
 margin-right:0;
 position:relative;
-right:12px
+right:5px;
 }
 
 .dropmenu > .dropGeneral {
@@ -3368,10 +3369,10 @@ margin-top:0
 
 .dropmenu {
 padding-right:0;
-padding-left:0;
+padding-left:0px;
 position:relative;
 top:-105px;
-right:8px
+right:5px;
 }
 
 .dropmenuGen {
@@ -3390,7 +3391,8 @@ padding-right:0
 
 .header-general .form4General {
 padding-right:15px;
-padding-left:15px
+padding-left:15px;
+margin-top: -18px;
 }
 
 .gernalHeaderNavBar {
@@ -3492,6 +3494,9 @@ width:100%!important
 #busiRate .col-lg-12 {
 padding-left:10px
 }
+/*.navbar-brand-generalLogo img{left:8px;}*/
+.squarenotifAngle:before,.squarenotifAngle:after{border-width: 0px!important;}
+.logoutRight{margin-right: 0px;margin-top: 25px;box-shadow: 0px 0px 10px #aaa;}
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
@@ -4001,7 +4006,7 @@ margin-left:0
 }
 
 .top-userNav > .open > .notif-dropdown {
-max-width:200px
+max-width:200px;box-shadow: 0px 0px 10px #aaa;
 }
 
 .notifContent {
@@ -4023,7 +4028,7 @@ top:20px
 @media screen and (min-width:360px) and (max-width:767px) {
 .notifiacationUsers {
 position:absolute;
-left:35%;
+left:38%;
 top:20px
 }
 }
