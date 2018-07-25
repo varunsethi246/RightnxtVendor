@@ -4247,11 +4247,11 @@ text-align: center
 	    padding-left: 72px;
 	}
 }
-@media (min-width: 768px){
+/*@media (min-width: 768px){
 	.aboutNavbar{
 		margin-left: 28%;
 	}
-}
+}*/
 .otpOuterDiv{
 	border: 1px solid #bbbbbb;
     margin-top: 15px;
