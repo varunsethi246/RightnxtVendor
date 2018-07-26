@@ -3941,6 +3941,7 @@ font-weight:600
 }
 
 .notifyreportWrapper {
+	border: 1px solid #ccc;
 width:100%;
 height:auto;
 margin:auto;
