@@ -701,6 +701,7 @@ Template.listOfBusiness.events({
 					sendMailNotification(inputObj);
 				}
 				$('.fade').hide();
+				$('.modal-backdrop').remove();
 			}
 		});
 	},
@@ -716,7 +717,8 @@ Template.listOfBusiness.events({
 			}else{
 				Bert.alert('Business Inactived','success','growl-top-right');
 			}
-				$('.fade').hide();	
+				$('.fade').hide();
+				$('.modal-backdrop').remove();	
 		});
 	},
 
