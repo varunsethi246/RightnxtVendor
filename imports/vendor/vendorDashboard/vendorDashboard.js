@@ -3,7 +3,7 @@ import { UserLatLng } from '../../api/userViewMaster.js';
 import { UserStatistics } from '../../api/userViewMaster.js';
 import { Business } from '../../api/businessMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
-
+import Chart from 'chart.js';
 import './vendorDashboard.html';
 import './userViewGraph.html';
 import './customerLeadsGraph.js';
@@ -22,20 +22,28 @@ Template.vendorDashboard.onRendered(function(){
     Tracker.autorun(function () {
     	if (chart.ready()) {
 	    	var date = new Date();
-		    var first = new Date(date.getFullYear(), date.getMonth(), 1);
-		    var twoYear  = date.setYear(date.getFullYear() + 2);
-		    var last = new Date(date.getFullYear() , date.getMonth() + 1, 0);
+		    var first = new Date(date.getFullYear()-1, 0, 1);
+		    var last = new Date(date.getFullYear() , 12, 0);
 		    var user = Meteor.userId();
 
 	        var dateArray      = [];
-	        var dataWithLabels = [];
-	        var datavalues     = [];
-	        var datalabels     = [];
+	        var colorval1     = 0;
+	        var colorval2     = 0;
 	        var businessDetails = Business.find({'businessOwnerId':user}).fetch();
 	        if(businessDetails){
 	      		for(var k=0 ; k<businessDetails.length ; k++){
 	      	  		var businessLink = businessDetails[k].businessLink;
+	      	  		var businessName = businessDetails[k].businessTitle;
 		      		var statisticData  = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte:new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
+
+		      		if(colorval1 >= 255){
+			           	colorval2 += 50;
+			           	var finalColorVal = "rgba(255,0,"+colorval2+",0.8)";
+		           	}else{
+		           		colorval1 += 50;
+			           	var finalColorVal = "rgba(255,"+colorval1+",0,0.8)";
+		           	}
+
 		        	if(statisticData){
 		          		for(var i= 0 ; i<statisticData.length ; i++){
 		           			var date = statisticData[i].date;
@@ -48,29 +56,52 @@ Template.vendorDashboard.onRendered(function(){
 				        var createdDate        = _.pluck(dateArray,"date");
 				        var uniquecreatedDate  = _.uniq(createdDate);
 
-				        if(uniquecreatedDate.length>0){
+				      	if(uniquecreatedDate.length>0){
+		          			var dataVals   = [];
+		        			for(var j=0 ; j<uniquecreatedDate.length ; j++){ //number of instances of the date '23'
+		        				var y = uniquecreatedDate[j];
+		        				var statFirstDate = new Date(y, 0, 1);  
+		        				var statLastDate = new Date(y, 12, 0);
+		          				var monthStat = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(statFirstDate.toISOString()),$lt: new Date(statLastDate.toISOString())}}).fetch();
+		          				if(monthStat.length > 0){
+						    		var totalCount = 0;
+		          					for (var l = 0; l < monthStat.length; l++) {
+										totalCount += parseInt(monthStat[l].count) ;
+		          					}
+		          				}
+		          				dataVals.push(totalCount);
+		        			}// j
+		      			}// if uniquecreatedDate
 
-				        	for(var j=0 ; j<uniquecreatedDate.length ; j++){ //number of instances of the date '23'
-				          		var dateValue      = uniquecreatedDate[j];
-				          		var totalCount = 0;
-				          		for(l=0;l<statisticData.length;l++){ //number of instances of Orders
-				            		var x = statisticData[l].date;
-				            		var splitd = x.split("/")
-				      	    		var formattedM = moment(splitd[2], 'YYYY').format('YYYY');
-					            	if(dateValue == formattedM){
-					            		totalCount += parseInt  (statisticData[l].count) ;
-					            	}
-				          		} //l
+						$("#twoYearChart").append(
+			        		"<div class='noPaddingGeneral col-lg-6 col-md-6 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-yearly' style='max-height: 100%;'></canvas></div>"
+			        	);
 
-				          		datalabels.push(dateValue);
-				          		datavalues.push(totalCount);
-				          		dataWithLabels.push({'label':dateValue,'value':totalCount});
-				        	}// j
-				      	}// if uniquecreatedDate
+				      	var ctx = document.getElementById(businessLink+"-yearly").getContext("2d");
+					    var myChart = new Chart(ctx, {
+						  type: 'bar',
+						  data: {
+						    labels: uniquecreatedDate,
+						    datasets: [{
+						      label: businessName,
+						      data: dataVals,
+						      backgroundColor: finalColorVal,
+						      borderWidth: 1
+						    }]
+					   	  },
+						    options: {
+						        scales: {
+						            yAxes: [{
+						                ticks: {
+						                    beginAtZero:true
+						                }
+						            }]
+						        }
+						    }
+						});
 			        }//if statisticData
 			    }//k
 	        }//businessDetails
-	        drawchart1(datalabels,datavalues);
         }//if(chart.ready)
       }); //tracker.autorun
     // ---End User two year Chart--- //
@@ -82,15 +113,24 @@ Template.vendorDashboard.onRendered(function(){
 		  	var first = new Date(date.getFullYear(), date.getMonth(), 1);
 		  	var last = new Date(date.getFullYear() , date.getMonth() + 1, 0);
 	      	var dateArray      = [];
-	      	var dataWithLabels = [];
-	      	var datavalues     = [];
-	      	var datalabels     = [];
+			var colorval1      = 0;
+			var colorval2      = 0;
 	      	var user = Meteor.userId();
 	      	var businessDetails = Business.find({'businessOwnerId':user}).fetch();
 	      	if(businessDetails){
 	      		for(var k=0 ; k<businessDetails.length ; k++){
+	      			var businessName = businessDetails[k].businessTitle;
 	      			var businessLink = businessDetails[k].businessLink;
 	      			var statisticData  = UserStatistics.find({'businessLink':businessLink , 'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
+		           	
+		           	if(colorval1 >= 255){
+			           	colorval2 += 50;
+			           	var finalColorVal = "rgba(255,0,"+colorval2+",0.8)";
+		           	}else{
+		           		colorval1 += 50;
+			           	var finalColorVal = "rgba(255,"+colorval1+",0,0.8)";
+		           	}
+
 	        		if(statisticData){
 	          			for(var i= 0 ; i<statisticData.length ; i++){
 	           				var date = statisticData[i].date;
@@ -98,29 +138,53 @@ Template.vendorDashboard.onRendered(function(){
 	              				'date' : date,
 	           				});
 	          			}//i
+		      			
 		      			var createdDate        = _.pluck(dateArray,"date");
 				      	var uniquecreatedDate  = _.uniq(createdDate);
 
-		      			if(uniquecreatedDate.length>0){
+				      	if(uniquecreatedDate.length>0){
+	      					var dataVals 	   = [];
 		        			for(var j=0 ; j<uniquecreatedDate.length ; j++){ //number of instances of the date '23'
-		          				var dateValue      = uniquecreatedDate[j];
-		          				var totalCount = 0;
-		          				for(l=0;l<statisticData.length;l++){ //number of instances of Orders
-		            				var x = statisticData[l].date;
-		            				if(dateValue == x){
-		            					totalCount += parseInt  (statisticData[l].count) ;
-		            				}
-		          				} //l
-
-		          				datalabels.push(dateValue);
-		          				datavalues.push(totalCount);
-		          				dataWithLabels.push({'label':dateValue,'value':totalCount});
+		          				var totalCount = UserStatistics.findOne({'businessLink':businessLink , 'date':uniquecreatedDate[j]});
+		          				dataVals.push(totalCount.count);
 		        			}// j
 		      			}// if uniquecreatedDate
+
+		      			if(uniquecreatedDate.length < 15){
+							$("#monthChart").append(
+				        		"<div class='noPaddingGeneral col-lg-6 col-md-6 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-daily' style='max-height: 100%;'></canvas></div>"
+				        	);
+		      			}else{
+							$("#monthChart").append(
+				        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-daily' style='max-height: 100%;'></canvas></div>"
+				        	);
+		      			}
+
+				      	var ctx = document.getElementById(businessLink+"-daily").getContext("2d");
+					    var myChart = new Chart(ctx, {
+						  type: 'bar',
+						  data: {
+						    labels: uniquecreatedDate,
+						    datasets: [{
+						      label: businessName,
+						      data: dataVals,
+						      backgroundColor: finalColorVal,
+						      borderWidth: 1
+						    }]
+					   	  },
+						    options: {
+						        scales: {
+						            yAxes: [{
+						                ticks: {
+						                    beginAtZero:true
+						                }
+						            }]
+						        }
+						    }
+						});
 	        		}//if statisticData
 	        	}//k
 		    }//businessDetails
-	        drawchart(datalabels,datavalues);
         }//if(chart.ready)
     }); //tracker.autorun
     // ---End User Month Chart--- //
@@ -131,49 +195,85 @@ Template.vendorDashboard.onRendered(function(){
 	      	var date  = new Date();
 		  	var first = new Date(date.getFullYear(), 0, 1);
 		  	var last  = new Date(date.getFullYear(), 11, 31);
-	      	var dateArray      = [];
-	      	var dataWithLabels = [];
-	      	var datavalues     = [];
-	      	var datalabels     = [];
+	      	var monthArray      = [];
+	      	var colorval1      = 0;
+			var colorval2      = 0;
 	      	var user = Meteor.userId();
 	      	var businessDetails = Business.find({'businessOwnerId':user}).fetch();
 	      	if(businessDetails){
 	      		for(var k=0 ; k<businessDetails.length ; k++){
 		      		var businessLink = businessDetails[k].businessLink;
+		      		var businessName = businessDetails[k].businessTitle;
 		      		var statisticData  = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
+
+		      		if(colorval1 >= 255){
+			           	colorval2 += 50;
+			           	var finalColorVal = "rgba(255,0,"+colorval2+",0.8)";
+		           	}else{
+		           		colorval1 += 50;
+			           	var finalColorVal = "rgba(255,"+colorval1+",0,0.8)";
+		           	}
+
 		        	if(statisticData){
 			        	for(var i= 0 ; i<statisticData.length ; i++){
 				        	var date = statisticData[i].date;
-				        	var splitdate      = date.split("/")
+				        	var splitdate      = date.split("/");
 					    	var formattedMonth = moment(splitdate[1], 'MM').format('MMMM');
-				        	dateArray.push({
-				            	'date' : formattedMonth,
+				        	monthArray.push({
+				            	'month' : formattedMonth,
 				        	});
 	          			}//i
-		      			var createdDate        = _.pluck(dateArray,"date");
-			        	var uniquecreatedDate  = _.uniq(createdDate);
-		      			if(uniquecreatedDate.length>0){
-	        
-			        		for(var j=0 ; j<uniquecreatedDate.length ; j++){ //number of instances of the date '23'
-			          			var dateValue      = uniquecreatedDate[j];
-						        var totalCount = 0;
-			          			for(l=0;l<statisticData.length;l++){ //number of instances of Orders
-			            			var x = statisticData[l].date;
-	                    			var splitd = x.split("/")
-			      	    			var formattedM = moment(splitd[1], 'MM').format('MMMM');
-			            			if(dateValue == formattedM){
-			            				totalCount += parseInt  (statisticData[l].count) ;
-			            			}
-			          			} //l
-			          			datalabels.push(dateValue);
-			          			datavalues.push(totalCount);
-			          			dataWithLabels.push({'label':dateValue,'value':totalCount});
-			        		}// j
+
+			        	var createdMonth        = _.pluck(monthArray,"month");
+			        	var uniquecreatedMonth  = _.uniq(createdMonth);
+
+		      			if(uniquecreatedMonth.length>0){
+						    var y = new Date().getFullYear();
+		          			var dataVals   = [];
+		        			for(var j=0 ; j<uniquecreatedMonth.length ; j++){ //number of instances of the date '23'
+		        				var m = moment().month(uniquecreatedMonth[j]).format("M");
+		        				var statFirstDate = new Date(y, m-1, 1);  
+		        				var statLastDate = new Date(y, m, 0);
+		          				var monthStat = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(statFirstDate.toISOString()),$lt: new Date(statLastDate.toISOString())}}).fetch();
+		          				if(monthStat.length > 0){
+						    		var totalCount = 0;
+		          					for (var l = 0; l < monthStat.length; l++) {
+										totalCount += parseInt(monthStat[l].count) ;
+		          					}
+		          				}
+		          				dataVals.push(totalCount);
+		        			}// j
 		      			}// if uniquecreatedDate
+
+						$("#yearChart").append(
+			        		"<div class='noPaddingGeneral col-lg-6 col-md-6 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-monthly' style='max-height: 100%;'></canvas></div>"
+			        	);
+
+				      	var ctx = document.getElementById(businessLink+"-monthly").getContext("2d");
+					    var myChart = new Chart(ctx, {
+						  type: 'bar',
+						  data: {
+						    labels: uniquecreatedMonth,
+						    datasets: [{
+						      label: businessName,
+						      data: dataVals,
+						      backgroundColor: finalColorVal,
+						      borderWidth: 1
+						    }]
+					   	  },
+						    options: {
+						        scales: {
+						            yAxes: [{
+						                ticks: {
+						                    beginAtZero:true
+						                }
+						            }]
+						        }
+						    }
+						});
 	        		}//if setatisticData
 	        	}//k
 	      	}//businessDetails
-	      	drawchart2(datalabels,datavalues);
         }//if(chart.ready)
     }); //tracker.autorun
     // ---End User year Chart--- //
@@ -216,10 +316,10 @@ Template.vendorDashboard.events({
 		Session.set('month', null);
 		Session.set('twoYear', null);
 		var now = new Date();
-		var oneYr = new Date();
-		oneYr.setYear(now.getFullYear() + 1);
-		var currMonth = moment().format("MMMM YYYY");
-		var nextMonth = moment(oneYr).format("MMMM YYYY");
+		var firstDate = new Date(now.getFullYear(), 0, 1);
+		var lastDate = new Date(now.getFullYear(), 12, 0);
+		var currMonth = moment(firstDate).format("MMMM YYYY");
+		var nextMonth = moment(lastDate).format("MMMM YYYY");
 		var yearVar   = currMonth +'-'+ nextMonth;
 		Session.set("year",yearVar);
 	},
@@ -235,10 +335,10 @@ Template.vendorDashboard.events({
 		Session.set('month', null);
 		Session.set('year', null);
 		var today = new Date();
-		var nowD = new Date();
-		nowD.setYear(today.getFullYear() + 2);
-		var currentM   = moment().format("MMMM YYYY");
-		var twoYrMonth = moment(nowD).format("MMMM YYYY");
+		var firstDate = new Date(today.getFullYear()-1, 0, 1);
+		var lastDate = new Date(today.getFullYear(), 12, 0);
+		var currentM   = moment(firstDate).format("MMMM YYYY");
+		var twoYrMonth = moment(lastDate).format("MMMM YYYY");
 		var TwoyearVar = currentM +'-'+ twoYrMonth;
 		Session.set("twoYear",TwoyearVar);
 	}
@@ -257,111 +357,17 @@ Template.vendorDashboard.helpers({
 			return Twoyear;
 		}else{
 			var today = new Date();
-			var nowD = new Date();
-			nowD.setYear(today.getFullYear() + 2);
-			var currentM   = moment().format("MMMM YYYY");
-			var twoYrMonth = moment(nowD).format("MMMM YYYY");
+			var firstDate = new Date(today.getFullYear()-1, 0, 1);
+			var lastDate = new Date(today.getFullYear(), 12, 0);
+			var currentM   = moment(firstDate).format("MMMM YYYY");
+			var twoYrMonth = moment(lastDate).format("MMMM YYYY");
 			var TwoyearVar = currentM +'-'+ twoYrMonth;
 			return TwoyearVar;
 		}
 	},
 });
 
-
-
-drawchart1 = function(datalabels,datavalues){
-  var data = {
-        labels: datalabels,
-        datasets: [
-            
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: datavalues
-            }
-        ]
-    };
-    var ctx = document.getElementById("twoYearChart").getContext("2d");
-    var options = { };
-    var lineChart = new Chart(ctx).Bar(data, options);
-
-}
-
-drawchart = function(datalabels,datavalues){
-  var data = {
-        labels: datalabels,
-        datasets: [
-            
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: datavalues
-            }
-        ]
-    };
-    var ctx = document.getElementById("monthChart").getContext("2d");
-    var options = { };
-    var lineChart = new Chart(ctx).Bar(data, options);
-
-}
-
-
-drawchart2 = function(datalabels,datavalues){
-  var data = {
-        labels: datalabels,
-        datasets: [
-            
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: datavalues
-            }
-        ]
-    };
-    var ctx = document.getElementById("yearChart").getContext("2d");
-    var options = { };
-    var lineChart = new Chart(ctx).Bar(data, options);
-
-}
-
-
 Template.userViewGraph.helpers({
-	// 'customerActivity':function(){
-	// 	var userId            = Meteor.userId();
-	// 	var custActivityArray = [];
-	// 	var businessData      = Business.findOne({'businessOwnerId':userId});
-	// 	if(businessData){
-	// 		var businessUrl = businessData.businessLink;
-	// 		var userData    = UserLatLng.find({'businessLink':businessUrl}, {sort: {createdAt: -1}, limit: 10}).fetch();
-	// 		if(userData){
-	// 			for(var i=0 ; i<userData.length ; i++){
-	// 				var city     = userData[i].city;
-	// 				var date     = userData[i].createdAt;
-	// 				var dateTime = moment(date).format('MMMM Do YYYY, h:mm:ss a');
-	// 				custActivityArray.push({
-	// 					'city' : city,
-	// 					'date' : dateTime,
-	// 				});
-	// 			}//i
-	// 		}//userData
-	// 	}//businessData	
-	// 	return custActivityArray;
-	// }
 	'customerActivity':function(){
 		var userId            = Meteor.userId();
 		var custActivityArray = [];
@@ -400,29 +406,29 @@ Template.customerLeadsGraph.helpers({
 			return Twoyear;
 		}else{
 			var today = new Date();
-			var nowD = new Date();
-			nowD.setYear(today.getFullYear() + 2);
-			var currentM   = moment().format("MMMM YYYY");
-			var twoYrMonth = moment(nowD).format("MMMM YYYY");
+			var firstDate = new Date(today.getFullYear()-1, 0, 1);
+			var lastDate = new Date(today.getFullYear(), 12, 0);
+			var currentM   = moment(firstDate).format("MMMM YYYY");
+			var twoYrMonth = moment(lastDate).format("MMMM YYYY");
 			var TwoyearVar = currentM +'-'+ twoYrMonth;
 			return TwoyearVar;
 		}
 	},
 
-	'totalClicks':function(){
-		
+	'totalClicks':function(){	
 		var userId    = Meteor.userId();
-		var dateArray = [];
-		var businessData      = Business.findOne({'businessOwnerId':userId});
+		var totalCount = 0;
+		var businessData      = Business.find({'businessOwnerId':userId}).fetch();
 		if(businessData){
-			var businessUrl   = businessData.businessLink;
-			var statisticData = UserStatistics.find({'businessLink':businessUrl}).fetch();
-			if(statisticData){
-			  var totalCount = 0;
-	          for(k=0;k<statisticData.length;k++){ //number of instances 
-	            totalCount += parseInt  (statisticData[k].count) ;
-	          } //k
-			}//statisticData
+			for (var i = 0; i < businessData.length; i++) {
+				var businessUrl   = businessData[i].businessLink;
+				var statisticData = UserStatistics.find({'businessLink':businessUrl}).fetch();
+				if(statisticData){
+		          for(k=0;k<statisticData.length;k++){ //number of instances 
+		            totalCount += parseInt(statisticData[k].count) ;
+		          } //k
+				}//statisticData
+			}
 		}//businessData
 		return totalCount;
 	},
@@ -435,6 +441,3 @@ vendorDashboardForm = function () {
 }
 
 export { vendorDashboardForm };
-
-
-

@@ -1,13 +1,13 @@
 <template name="userViewGraph">
 <div class="graphWrapper">
 	{{#if customerActivity}}
-		<canvas id="monthChart" class="monthChart" style="height: 200px;"></canvas>
-		<canvas id="yearChart" class="yearChart" style="height: 200px;"></canvas>
-		<canvas id="twoYearChart" class="twoYearChart" style="height: 200px;"></canvas>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 monthChart noPaddingGeneral" id="monthChart"></div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 yearChart noPaddingGeneral" id="yearChart"></div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 twoYearChart noPaddingGeneral" id="twoYearChart"></div>
 	{{else}}
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="noData"><p style="text-align: center;">No Data Found</p></div>
 	{{/if}}
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 feedBlock">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 feedBlock customerActivityStat">
 		<h4><b>Customer Activity Feed</b></h4>
 		<br>
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custActivity">

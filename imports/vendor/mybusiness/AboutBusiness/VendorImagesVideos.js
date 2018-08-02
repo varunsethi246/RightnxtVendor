@@ -9,7 +9,6 @@ import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js
 import { BusinessMenu } from '/imports/videoUploadClient/businessMenuClient.js';
 import ImageCompressor from 'image-compressor.js';
 import { ReviewImage } from '/imports/videoUploadClient/reviewImageClient.js';
-
 import './VendorImagesVideos.html'
 
 var videoListCountEdit = 0;
@@ -147,6 +146,7 @@ Template.vendorImagesVideos.events({
 	'click #editsaveBusinessImg' : function(event,template){
 		var businessLink = FlowRouter.getParam('businessLink');
 		if(files.length > 0){
+			// template.imageUpload.set(false);
 			for(i = 0 ; i < files.length; i++){
 			  const imageCompressor = new ImageCompressor();
 		      imageCompressor.compress(files[i])
