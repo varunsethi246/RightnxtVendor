@@ -3752,7 +3752,7 @@ video::-webkit-media-controls-panel {
 .hoverEnqVendor:hover {
     background: #ccc!important;
 }
-.removeMargTopImg{margin-top: 0px!important;}
+.removeMargTopImg{margin-top: 0px!important;padding: 0px;}
 .noPaddingVendor{padding-left: 0px;padding-right: 0px;}
 .vendorHome{
 	background:url(../images/claim/banner.jpg) no-repeat;
