@@ -6,6 +6,7 @@ import { UserStatistics } from '../../api/userViewMaster.js';
 import { Business } from '../../api/businessMaster.js';
 import { Review } from '../../api/reviewMaster.js';
 import { Bookmark } from '../../api/bookmarkMaster.js';
+import Chart from 'chart.js';
 
 Template.customerLeadsGraph.onCreated(function() {
   chart1 = this.subscribe('allBookmark');
@@ -18,82 +19,123 @@ Template.customerLeadsGraph.onRendered(function(){
     // ---customer 24month Chart--- //
     Tracker.autorun(function () {
       	if (chart1.ready() && chart2.ready() && chart3.ready()) {
+	      	$('#custtwoYearChart').empty();
 	      	var date = new Date();
-		  	var first = new Date(date.getFullYear(), date.getMonth(), 1);
-		  	var twoYear  = date.setYear(date.getFullYear() + 2);
-		  	var last = new Date(date.getFullYear() , date.getMonth() + 1, 0);
-
-		  	var year = first.getFullYear();
-		  	var month = first.getMonth();
-		  	var day = first.getDate();
-		  	var nextYrDate = new Date(year + 1, month, day)
-		  	var currentYr = moment(first).format('YYYY');
-		  	var nextYr = moment(nextYrDate).format('YYYY');
-
-		  	var yearArray = [currentYr,nextYr];
-		 
+			var first = new Date(date.getFullYear()-1, 0, 1);
+		    var last = new Date(date.getFullYear() , 12, 0);
+		 	
 		  	var dateArray      = [];
 	      	var dataWithLabels = [];
 	      	var datavalues     = [];
 	      	var datalabels     = [];
-
+			var colorval1      = 0;
+			var colorval2      = 0;
+		  	
 		  	var Id    = Meteor.userId();
 
-		  	var businessVar      = Business.find({'businessOwnerId':Id}).fetch();
+		  	var businessVar      = Business.find({'businessOwnerId':Id,'status':'active'}).fetch();
 		  	if(businessVar){
 		  		for(var i=0 ; i<businessVar.length ; i++){
 					var businessUrl   = businessVar[i].businessLink;
-					var bookmarkData  = Bookmark.find({'businessLink':businessUrl, 'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
-					if(bookmarkData){
-		      			if(yearArray.length>0){
-		        			for(var j=0 ; j<yearArray.length ; j++){ //number of instances of the date '23'
-		          				var dateValue      = yearArray[j];
-		          				var totalCount = 0;
-		          				for(k=0;k<bookmarkData.length;k++){ //number of instances of Orders
-		            				var x = bookmarkData[k].date;
-		            				var splitd = x.split("/")
-			      					var formattedM = moment(splitd[2], 'YYYY').format('YYYY');
-		            				if(yearArray[j] == formattedM){
-		            					totalCount ++ ;
-		            				}
-		          				} //k
-		          				var statisticData = UserStatistics.find({'businessLink':businessUrl,'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
-								if(statisticData){
-					  				var Count = 0;
-			          				for(m=0;m<statisticData.length;m++){ //number of instances 
-			          					var y = statisticData[m].date;
-			            				var splitStatDate = y.split("/")
-				      					var formattedStatMonth = moment(splitStatDate[2], 'YYYY').format('YYYY');
-			          					if(yearArray[j] == formattedStatMonth){
-		           							Count += parseInt  (statisticData[m].count) ;
-		           						} //yearArray[j] == formattedStatMonth
-			          				} //m
-									var reviewData = Review.find({'businessLink':businessUrl,'reviewDate':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
-									if(reviewData){
-										var count = 0;
-										for(var l=0 ; l<reviewData.length ; l++){
-											var reviewdate = reviewData[l].reviewDate;
-											var formattedReviewDate = moment(reviewdate).format('YYYY');
-											if(yearArray[j] == formattedReviewDate){
-												if(reviewData[l].reviewImages){
-													var reviewLength = reviewData[l].reviewImages.length;
-													if(reviewLength > 0){
-														count ++;
-													}//reviewLength > 0
-												}//reviewImages
-											}//yearArray[j] == formattedReviewDate
-										}//l
-										var totalCustLeads = totalCount+Count+count;
-				          				datalabels.push(dateValue);
-				          				datavalues.push(totalCustLeads);
-				          				dataWithLabels.push({'label':dateValue,'value':totalCustLeads});
-				        			}//reviewData
-		            			}//statisticData
-		        			}// j
-		      			}// if uniquecreatedDate
-					}//bookmarkData
+					var businessName  = businessVar[i].businessTitle;
+					if(colorval1 >= 255){
+			           	colorval2 += 50;
+			           	var finalColorVal = "rgba(255,0,"+colorval2+",0.8)";
+		           	}else{
+		           		colorval1 += 50;
+			           	var finalColorVal = "rgba(255,"+colorval1+",0,0.8)";
+		           	}
+
+		           	dateArray = [{"date":date.getFullYear()-1} , {"date":date.getFullYear()}];
+					var createdDate        = _.pluck(dateArray,"date");
+		        	var uniquecreatedDate  = _.uniq(createdDate);
+					var dataVals 	   = [];
+
+		        	for(var j=0 ; j<uniquecreatedDate.length ; j++){ //number of instances of the date '23'
+						var y = uniquecreatedDate[j];
+        				var statFirstDate = new Date(y, 0, 1);  
+        				var statLastDate = new Date(y, 12, 0);
+		          		var bookmarkData  = Bookmark.find({'businessLink':businessUrl, 'createdAt':{$gte: new Date(statFirstDate.toISOString()),$lt: new Date(statLastDate.toISOString())}}).fetch();
+						if(bookmarkData){
+			          		var totalCount = 0;
+	          				for(k=0;k<bookmarkData.length;k++){ //number of instances of Orders
+	            				var x = bookmarkData[k].date;
+	            				var splitd = x.split("/");
+		      					var formattedM = moment(splitd[2], 'YYYY').format('YYYY');
+	            				if(uniquecreatedDate[j] == formattedM){
+	            					totalCount ++ ;
+	            				}
+	          				} //k
+						}else{
+							var totalCount = 0;
+						}//bookmarkData
+
+		          		var statisticData = UserStatistics.find({'businessLink':businessUrl,'createdAt':{$gte: new Date(statFirstDate.toISOString()),$lt: new Date(statLastDate.toISOString())}}).fetch();
+						if(statisticData){
+					  		var Count = 0;
+	          				for(m=0;m<statisticData.length;m++){ //number of instances 
+	          					var y = statisticData[m].date;
+	            				var splitStatDate = y.split("/");
+		      					var formattedStatMonth = moment(splitStatDate[2], 'YYYY').format('YYYY');
+	          					if(uniquecreatedDate[j] == formattedStatMonth){
+           							Count += parseInt(statisticData[m].count);
+           						} 
+	          				} //m
+		            	}else{
+		            		var Count = 0;
+		            	}//statisticData
+
+
+						var reviewData = Review.find({'businessLink':businessUrl , 'reviewDate': {$gte: new Date(statFirstDate.toISOString()),$lt: new Date(statLastDate.toISOString())}}).fetch();
+						if(reviewData){
+					  		var count = 0;
+							for(var l=0 ; l<reviewData.length ; l++){
+								var reviewdate = reviewData[l].reviewDate;
+								var formattedReviewDate = moment(reviewdate).format('YYYY');
+								if(uniquecreatedDate[j] == formattedReviewDate){
+									if(reviewData[l].reviewImages){
+										var reviewLength = reviewData[l].reviewImages.length;
+										if(reviewLength > 0){
+											count ++;
+										}//reviewLength > 0
+									}//reviewImages
+								}
+							}//l
+				       	}else{
+					  		var count = 0;
+				       	}//reviewData
+						
+						var totalCustLeads = totalCount+Count+count;
+		          		dataVals.push(totalCustLeads);
+		        	}// j
+
+					$("#custtwoYearChart").append(
+		        		"<div class='noPaddingGeneral col-lg-6 col-md-6 col-sm-12 col-xs-12'><canvas id='"+businessUrl+"-custyearly' style='max-height: 100%;'></canvas></div>"
+		        	);
+
+			      	var ctx = document.getElementById(businessUrl+"-custyearly").getContext("2d");
+				    var myChart = new Chart(ctx, {
+					  type: 'bar',
+					  data: {
+					    labels: uniquecreatedDate,
+					    datasets: [{
+					      label: businessName,
+					      data: dataVals,
+					      backgroundColor: finalColorVal,
+					      borderWidth: 1
+					    }]
+				   	  },
+					    options: {
+					        scales: {
+					            yAxes: [{
+					                ticks: {
+					                    beginAtZero:true
+					                }
+					            }]
+					        }
+					    }
+					});
 		  		}//i
-		  		drawchart3(datalabels,datavalues);
 		  	}//businessVar
         }//if(chart1.ready)
     }); //tracker.autorun
@@ -102,6 +144,7 @@ Template.customerLeadsGraph.onRendered(function(){
     // ---customer year Chart--- //
     Tracker.autorun(function () {
       	if (chart1.ready() && chart2.ready() && chart3.ready()) {
+    		$("#custyearChart").empty();
 	      	var date  = new Date();
 		  	var first = new Date(date.getFullYear(), 0, 1);
 		  	var last  = new Date(date.getFullYear(), 11, 31);
@@ -109,31 +152,36 @@ Template.customerLeadsGraph.onRendered(function(){
 		  	var lastDay = moment(last).format("DD/MM/YYYY");
 		 
 		  	var dateArray      = [];
-	      	var dataWithLabels = [];
-	      	var datavalues     = [];
-	      	var datalabels     = [];
+	      	var colorval1      = 0;
+			var colorval2      = 0;
 
 		  	var Id    = Meteor.userId();
-		  	var businessVar      = Business.findOne({'businessOwnerId':Id});
+		  	var businessVar      = Business.find({'businessOwnerId':Id,'status':'active'}).fetch();
 		  	if(businessVar){
-				var businessUrl   = businessVar.businessLink;
-				var bookmarkData  = Bookmark.find({'businessLink':businessUrl, 'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
-				if(bookmarkData){
-					for(var i=0 ; i<bookmarkData.length ; i++){
-						var date = bookmarkData[i].date;
-						var splitdate      = date.split("/")
-			        	var formattedMonth = moment(splitdate[1], 'MM').format('MMMM');
-		           		dateArray.push({
-		              		'date' : formattedMonth,
-		           		});
-					}//i
+		  		for (var i = 0; i < businessVar.length; i++) {
+					var businessUrl   = businessVar[i].businessLink;
+					var businessName  = businessVar[i].businessTitle;
+					if(colorval1 >= 255){
+			           	colorval2 += 50;
+			           	var finalColorVal = "rgba(255,0,"+colorval2+",0.8)";
+		           	}else{
+		           		colorval1 += 50;
+			           	var finalColorVal = "rgba(255,"+colorval1+",0,0.8)";
+		           	}
+
+					dateArray = [{"date":"January"} , {"date":"February"} , {"date":"March"} , {"date":"April"}, {"date":"May"} , {"date":"June"},{"date":"July"},{"date":"August"},{"date":"September"},{"date":"October"},{"date":"November"},{"date":"December"}];
 					var createdDate        = _.pluck(dateArray,"date");
-		      		var uniquecreatedDate  = _.uniq(createdDate);
-		      		if(uniquecreatedDate.length>0){
-		        		for(var j=0 ; j<uniquecreatedDate.length ; j++){ //number of instances of the date '23'
-		          			var dateValue      = uniquecreatedDate[j];
-		          			var totalCount = 0;
-		          			for(k=0;k<bookmarkData.length;k++){ //number of instances of Orders
+		        	var uniquecreatedDate  = _.uniq(createdDate);
+		      		var dataVals 	   = [];
+		        	for(var j=0 ; j<uniquecreatedDate.length ; j++){ //number of instances of the date '23'
+						var y = new Date().getFullYear();
+		      			var m = moment().month(uniquecreatedDate[j]).format("M");
+        				var statFirstDate = new Date(y, m-1, 1);  
+        				var statLastDate = new Date(y, m, 0);
+		          		var bookmarkData  = Bookmark.find({'businessLink':businessUrl, 'createdAt':{$gte: new Date(statFirstDate.toISOString()),$lt: new Date(statLastDate.toISOString())}}).fetch();
+						if(bookmarkData){
+			          		var totalCount = 0;
+			          		for(k=0;k<bookmarkData.length;k++){ //number of instances of Orders
 		            			var x = bookmarkData[k].date;
 		            			var splitd = x.split("/")
 			      				var formattedM = moment(splitd[1], 'MM').format('MMMM');
@@ -141,42 +189,76 @@ Template.customerLeadsGraph.onRendered(function(){
 		            				totalCount ++ ;
 		            			}//uniquecreatedDate[j] == formattedM
 		          			} //k
-		          			var statisticData = UserStatistics.find({'businessLink':businessUrl,'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
-							if(statisticData){
-					  			var Count = 0;
-			          			for(k=0;k<statisticData.length;k++){ //number of instances 
-			          				var y = statisticData[k].date;
-			            			var splitStatDate = y.split("/")
-				      				var formattedStatMonth = moment(splitStatDate[1], 'MM').format('MMMM');
-			          				if(uniquecreatedDate[j] == formattedStatMonth){
-		           						Count += parseInt  (statisticData[k].count) ;
-		           					}
-			          			} //k
-								var reviewData = Review.find({'businessLink':businessUrl,'reviewDate':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
-								if(reviewData){
-									var count = 0;
-									for(var l=0 ; l<reviewData.length ; l++){
-										var reviewdate = reviewData[l].reviewDate;
-										var formattedReviewDate = moment(reviewdate).format('MMMM');
-										if(uniquecreatedDate[j] == formattedReviewDate){
-											if(reviewData[l].reviewImages){
-												var reviewLength = reviewData[l].reviewImages.length;
-												if(reviewLength > 0){
-													count ++;
-												}
-											}//reviewImages
+						}else{
+							var totalCount = 0;
+						}//bookmarkData
+
+		          		var statisticData = UserStatistics.find({'businessLink':businessUrl,'createdAt':{$gte: new Date(statFirstDate.toISOString()),$lt: new Date(statLastDate.toISOString())}}).fetch();
+						if(statisticData){
+					  		var Count = 0;
+		          			for(m=0;m<statisticData.length;m++){ //number of instances 
+		          				var y = statisticData[m].date;
+		            			var splitStatDate = y.split("/")
+			      				var formattedStatMonth = moment(splitStatDate[1], 'MM').format('MMMM');
+		          				if(uniquecreatedDate[j] == formattedStatMonth){
+	           						Count += parseInt  (statisticData[m].count) ;
+	           					}
+		          			} //m
+		            	}else{
+		            		var Count = 0;
+		            	}//statisticData
+
+
+						var reviewData = Review.find({'businessLink':businessUrl , 'reviewDate': {$gte: new Date(statFirstDate.toISOString()),$lt: new Date(statLastDate.toISOString())}}).fetch();
+						if(reviewData){
+					  		var count = 0;
+							for(var l=0 ; l<reviewData.length ; l++){
+								var reviewdate = reviewData[l].reviewDate;
+								var formattedReviewDate = moment(reviewdate).format('MMMM');
+								if(uniquecreatedDate[j] == formattedReviewDate){
+									if(reviewData[l].reviewImages){
+										var reviewLength = reviewData[l].reviewImages.length;
+										if(reviewLength > 0){
+											count ++;
 										}
-									}//i	
-									var totalCustLeads = totalCount+Count+count;
-				          			datalabels.push(dateValue);
-				          			datavalues.push(totalCustLeads);
-				          			dataWithLabels.push({'label':dateValue,'value':totalCustLeads});
-				        		}//reviewData
-		            		}//statisticData
-		        		}// j
-		      		}// if uniquecreatedDate
-				}//bookmarkData
-				drawchart4(datalabels,datavalues);
+									}//reviewImages
+								}
+							}//l
+				       	}else{
+					  		var count = 0;
+				       	}//reviewData
+						
+						var totalCustLeads = totalCount+Count+count;
+		          		dataVals.push(totalCustLeads);
+		        	}// j
+
+					$("#custyearChart").append(
+		        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessUrl+"-custmonthly' style='max-height: 100%;'></canvas></div>"
+		        	);
+
+			      	var ctx = document.getElementById(businessUrl+"-custmonthly").getContext("2d");
+				    var myChart = new Chart(ctx, {
+					  type: 'bar',
+					  data: {
+					    labels: uniquecreatedDate,
+					    datasets: [{
+					      label: businessName,
+					      data: dataVals,
+					      backgroundColor: finalColorVal,
+					      borderWidth: 1
+					    }]
+				   	  },
+					    options: {
+					        scales: {
+					            yAxes: [{
+					                ticks: {
+					                    beginAtZero:true
+					                }
+					            }]
+					        }
+					    }
+					});
+		  		}//i
 		  	}//businessVar
         }//if(chart1.ready)
     }); //tracker.autorun
@@ -185,6 +267,7 @@ Template.customerLeadsGraph.onRendered(function(){
      // ---customer month Chart--- //
     Tracker.autorun(function () {
       	if (chart1.ready() && chart2.ready() && chart3.ready()) {
+    		$("#custmonthChart").empty();
 	      	var date = new Date();
 		  
 		  	var first = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -194,19 +277,15 @@ Template.customerLeadsGraph.onRendered(function(){
 		  	var lastDay = moment(last).format("DD/MM/YYYY");
 		  		 
 		  	var dateArray      = [];
-	      	// var dataWithLabels = [];
-	      	// var datalabels     = [];
-	      	// var custLeadArray  = [];
-	      	var dataVals 	   = [];
 	      	var colorval1      = 0;
 			var colorval2      = 0;
 
 		  	var Id    = Meteor.userId();
-		  	var businessVar      = Business.find({'businessOwnerId':Id}).fetch();
+		  	var businessVar      = Business.find({'businessOwnerId':Id,'status':'active'}).fetch();
 		  	if(businessVar){
 		  		for (var i = 0; i < businessVar.length; i++) {
 					var businessUrl   = businessVar[i].businessLink;
-					var businessName   = businessVar[i].businessTitle;
+					var businessName  = businessVar[i].businessTitle;
 
 					if(colorval1 >= 255){
 			           	colorval2 += 50;
@@ -220,7 +299,7 @@ Template.customerLeadsGraph.onRendered(function(){
 					var createdDate        = _.pluck(dateArray,"date");
 		        	var uniquecreatedDate  = _.uniq(createdDate);
 		        	for(var j=0 ; j<uniquecreatedDate.length ; j++){ //number of instances of the date '23'
-		          		// var dateValue     = uniquecreatedDate[j];
+		      			var dataVals 	   = [];
 		          		var bookmarkData  = Bookmark.find({'businessLink':businessUrl, 'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
 						if(bookmarkData){
 			          		var firsttotalCount = 0;
@@ -246,6 +325,13 @@ Template.customerLeadsGraph.onRendered(function(){
 			            			sixthtotalCount ++ ;
 			            		}
 			          		} //k
+						}else{
+							var firsttotalCount = 0;
+			          		var secondtotalCount = 0;
+			          		var thirdtotalCount = 0;
+			          		var forthtotalCount = 0;
+			          		var fifthtotalCount = 0;
+			          		var sixthtotalCount = 0;
 						}//bookmarkData
 
 		          		var statisticData = UserStatistics.find({'businessLink':businessUrl,'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
@@ -258,21 +344,28 @@ Template.customerLeadsGraph.onRendered(function(){
 			          		var sixthCount = 0;
 			          		for(m=0;m<statisticData.length;m++){ //number of instances 
 			          			var y = statisticData[m].date;
-			            		var d = moment(x,'DD').format('DD');
+			            		var d = moment(y,'DD').format('DD');
 			          			if(d<=5){
-		            				firstCount ++ ;
+		            				firstCount += parseInt(statisticData[m].count);
 			            		}else if(d>5 && d<=10){
-			            			secondCount ++ ;
+			            			secondCount += parseInt(statisticData[m].count);
 			            		}else if(d>10 && d<=15){
-			            			thirdCount ++ ;
+			            			thirdCount += parseInt(statisticData[m].count);
 			            		}else if(d>15 && d<=20){
-			            			forthCount ++ ;
+			            			forthCount += parseInt(statisticData[m].count);
 			            		}else if(d>20 && d<=25){
-			            			fifthCount ++ ;
+			            			fifthCount += parseInt(statisticData[m].count);
 			            		}else if(d>25 && d<=31){
-			            			sixthCount ++ ;
+			            			sixthCount += parseInt(statisticData[m].count);
 			            		}
 			          		} //m
+		            	}else{
+		            		var firstCount = 0;
+			          		var secondCount = 0;
+			          		var thirdCount = 0;
+			          		var forthCount = 0;
+			          		var fifthCount = 0;
+			          		var sixthCount = 0;
 		            	}//statisticData
 
 
@@ -304,6 +397,13 @@ Template.customerLeadsGraph.onRendered(function(){
 						            }
 								}//reviewImages
 							}//l
+				       	}else{
+				       		var firstcount = 0;
+			          		var secondcount = 0;
+			          		var thirdcount = 0;
+			          		var forthcount = 0;
+			          		var fifthcount = 0;
+			          		var sixthcount = 0;
 				       	}//reviewData
 						
 						var firsttotalCustLeads = firsttotalCount+firstCount+firstcount;
@@ -312,20 +412,14 @@ Template.customerLeadsGraph.onRendered(function(){
 						var forthtotalCustLeads = forthtotalCount+forthCount+forthcount;
 						var fifthtotalCustLeads = fifthtotalCount+fifthCount+fifthcount;
 						var sixthtotalCustLeads = sixthtotalCount+sixthCount+sixthcount;
-						// custLeadArray = [{"value":firsttotalCustLeads} , {"value":secondtotalCustLeads} , {"value":thirdtotalCustLeads} , {"value":forthtotalCustLeads}, {"value":fifthtotalCustLeads} , {"value":sixthtotalCustLeads}]
-						// var custLead        = _.pluck(custLeadArray,"value");
-			        	// var uniquecustLead  = _.uniq(custLead);
-		          		// datalabels.push(dateValue);
-		          		// dataWithLabels.push({'label':dateValue,'value':custLead});
 		          		dataVals.push(firsttotalCustLeads,secondtotalCustLeads,thirdtotalCustLeads,forthtotalCustLeads,fifthtotalCustLeads,sixthtotalCustLeads);
 		        	}// j
 
-
 					$("#custmonthChart").append(
-		        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-custdaily' style='max-height: 100%;'></canvas></div>"
+		        		"<div class='noPaddingGeneral col-lg-6 col-md-6 col-sm-12 col-xs-12'><canvas id='"+businessUrl+"-custdaily' style='max-height: 100%;'></canvas></div>"
 		        	);
 
-			      	var ctx = document.getElementById(businessLink+"-custdaily").getContext("2d");
+			      	var ctx = document.getElementById(businessUrl+"-custdaily").getContext("2d");
 				    var myChart = new Chart(ctx, {
 					  type: 'bar',
 					  data: {
@@ -348,95 +442,45 @@ Template.customerLeadsGraph.onRendered(function(){
 					    }
 					});
 		  		}//i
-				// drawchart5(datalabels,custLead);
 		  	}//businessVar
         }//if(chart1.ready)
     }); //tracker.autorun
     // ---End customer month Chart--- //
-
-
 });
-
-drawchart3 = function(datalabels,datavalues){
-  var data = {
-        labels: datalabels,
-        datasets: [
-            
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: datavalues
-            }
-        ]
-    };
-    var ctx = document.getElementById("custtwoYearChart").getContext("2d");
-    var options = { };
-    // var lineChart = new Chart(ctx).Bar(data, options);
-
-}
-
-drawchart4 = function(datalabels,datavalues){
-  var data = {
-        labels: datalabels,
-        datasets: [
-            
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: datavalues
-            }
-        ]
-    };
-    var ctx = document.getElementById("custyearChart").getContext("2d");
-    var options = { };
-    // var lineChart = new Chart(ctx).Bar(data, options);
-
-}
-
-drawchart5 = function(datalabels,datavalues){
-  var data = {
-        labels: datalabels,
-        datasets: [
-            
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: datavalues
-            }
-        ]
-    };
-    var ctx = document.getElementById("custmonthChart").getContext("2d");
-    var options = { };
-    // var lineChart = new Chart(ctx).Bar(data, options);
-
-}
-
-
 
 Template.customerLeadsGraph.helpers({
 	'totalUpload':function(){
+		var month    = Session.get("month");
+		var year     = Session.get("year");
+		var Twoyear  = Session.get("twoYear");
 		var userId    = Meteor.userId();
-		var businessData = Business.find({'businessOwnerId':userId}).fetch();
+		var businessData = Business.find({'businessOwnerId':userId,'status':'active'}).fetch();
 		if(businessData){
 			var total = 0;
 			for(var j=0 ; j<businessData.length ; j++){
 				var businessUrl   = businessData[j].businessLink;
-				var reviewData = Review.find({'businessLink':businessUrl}).fetch();
+				if(month){
+					var splitDate = month.split(' ');
+					var y = splitDate[4];
+		        	var m = moment().month(splitDate[1]).format("M");
+					var first = new Date(y, m-1, 1);
+					var last = new Date(y, m, 0);
+					var reviewData = Review.find({'businessLink':businessUrl,'reviewDate': {$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
+				}else if(year){
+					var splitDate1 = year.split('-')[0].split(' ')[0];
+					var splitDate2 = year.split('-')[1].split(' ')[0];
+					var y = year.split(' ')[2];
+		        	var m1 = moment().month(splitDate1).format("M");
+		        	var m2 = moment().month(splitDate2).format("M");
+					var first = new Date(y, m1-1, 1);
+					var last = new Date(y, m2, 0);
+					var reviewData = Review.find({'businessLink':businessUrl,'reviewDate': {$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
+				}else{
+					var y = moment().year();
+					var first = new Date(y-1, 0, 1);
+					var last = new Date(y, 12, 0);
+					var reviewData = Review.find({'businessLink':businessUrl,'reviewDate': {$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
+				}
 				if(reviewData){
 					var count = 0;
 					for(var i=0 ; i<reviewData.length ; i++){
@@ -450,6 +494,8 @@ Template.customerLeadsGraph.helpers({
 					}//i
 					total = total+count;
 					// console.log('total: '+total);
+				}else{
+					total = 0;
 				}//reviewData
 			}//j
 		}//businessData
@@ -457,22 +503,45 @@ Template.customerLeadsGraph.helpers({
 	},
 
 	'bookmarks':function(){
+		var month    = Session.get("month");
+		var year     = Session.get("year");
+		var Twoyear  = Session.get("twoYear");
 		var Id    = Meteor.userId();
-		var businessVar      = Business.find({'businessOwnerId':Id}).fetch();
+		var businessVar      = Business.find({'businessOwnerId':Id,'status':'active'}).fetch();
 		if(businessVar){
 			var totalUpload = 0;
 			for(var i=0 ; i<businessVar.length ; i++){
 				var businessUrl   = businessVar[i].businessLink;
-				var bookmarkData  = Bookmark.find({'businessLink':businessUrl}).fetch();
+				if(month){
+					var splitDate = month.split(' ');
+					var y = splitDate[4];
+		        	var m = moment().month(splitDate[1]).format("M");
+					var first = new Date(y, m-1, 1);
+					var last = new Date(y, m, 0);
+					var bookmarkData  = Bookmark.find({'businessLink':businessUrl, 'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
+				}else if(year){
+					var splitDate1 = year.split('-')[0].split(' ')[0];
+					var splitDate2 = year.split('-')[1].split(' ')[0];
+					var y = year.split(' ')[2];
+		        	var m1 = moment().month(splitDate1).format("M");
+		        	var m2 = moment().month(splitDate2).format("M");
+					var first = new Date(y, m1-1, 1);
+					var last = new Date(y, m2, 0);
+					var bookmarkData  = Bookmark.find({'businessLink':businessUrl, 'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
+				}else{
+					var y = moment().year();
+					var first = new Date(y-1, 0, 1);
+					var last = new Date(y, 12, 0);
+					var bookmarkData  = Bookmark.find({'businessLink':businessUrl, 'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
+				}
 				if(bookmarkData){
 					var BookmarkLength = bookmarkData.length;
+					totalUpload = totalUpload + BookmarkLength;
+				}else{
+					totalUpload = 0;
 				}//bookmarkData
-				totalUpload = totalUpload + BookmarkLength;
 			}//i
 		}//businessVar
 		return totalUpload;
 	}
 });
-
-
-

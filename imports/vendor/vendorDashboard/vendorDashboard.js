@@ -21,15 +21,16 @@ Template.vendorDashboard.onRendered(function(){
     // // ---User two year Chart--- //
     Tracker.autorun(function () {
     	if (chart.ready()) {
+    		$("#twoYearChart").empty();
 	    	var date = new Date();
 		    var first = new Date(date.getFullYear()-1, 0, 1);
 		    var last = new Date(date.getFullYear() , 12, 0);
 		    var user = Meteor.userId();
 
-	        var dateArray      = [];
+	        var dateArray     = [];
 	        var colorval1     = 0;
 	        var colorval2     = 0;
-	        var businessDetails = Business.find({'businessOwnerId':user}).fetch();
+	        var businessDetails = Business.find({'businessOwnerId':user,'status':'active'}).fetch();
 	        if(businessDetails){
 	      		for(var k=0 ; k<businessDetails.length ; k++){
 	      	  		var businessLink = businessDetails[k].businessLink;
@@ -109,6 +110,7 @@ Template.vendorDashboard.onRendered(function(){
     // // ---User Month Chart--- //
     Tracker.autorun(function () {
     	if (chart.ready()) {
+    		$("#monthChart").empty();
 	      	var date = new Date();
 		  	var first = new Date(date.getFullYear(), date.getMonth(), 1);
 		  	var last = new Date(date.getFullYear() , date.getMonth() + 1, 0);
@@ -116,7 +118,7 @@ Template.vendorDashboard.onRendered(function(){
 			var colorval1      = 0;
 			var colorval2      = 0;
 	      	var user = Meteor.userId();
-	      	var businessDetails = Business.find({'businessOwnerId':user}).fetch();
+	      	var businessDetails = Business.find({'businessOwnerId':user,'status':'active'}).fetch();
 	      	if(businessDetails){
 	      		for(var k=0 ; k<businessDetails.length ; k++){
 	      			var businessName = businessDetails[k].businessTitle;
@@ -146,11 +148,14 @@ Template.vendorDashboard.onRendered(function(){
 	      					var dataVals 	   = [];
 		        			for(var j=0 ; j<uniquecreatedDate.length ; j++){ //number of instances of the date '23'
 		          				var totalCount = UserStatistics.findOne({'businessLink':businessLink , 'date':uniquecreatedDate[j]});
-		          				dataVals.push(totalCount.count);
+		          				if(totalCount){
+		          					dataVals.push(totalCount.count);
+		          				}else{
+		          					dataVals.push(0);
+		          				}
 		        			}// j
 		      			}// if uniquecreatedDate
-
-		      			if(uniquecreatedDate.length < 15){
+		      			if(uniquecreatedDate.length < 7){
 							$("#monthChart").append(
 				        		"<div class='noPaddingGeneral col-lg-6 col-md-6 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-daily' style='max-height: 100%;'></canvas></div>"
 				        	);
@@ -192,6 +197,7 @@ Template.vendorDashboard.onRendered(function(){
     // // ---User year Chart--- //
     Tracker.autorun(function () {
       	if (chart.ready() && chart1.ready()) {
+    		$("#yearChart").empty();
 	      	var date  = new Date();
 		  	var first = new Date(date.getFullYear(), 0, 1);
 		  	var last  = new Date(date.getFullYear(), 11, 31);
@@ -199,7 +205,7 @@ Template.vendorDashboard.onRendered(function(){
 	      	var colorval1      = 0;
 			var colorval2      = 0;
 	      	var user = Meteor.userId();
-	      	var businessDetails = Business.find({'businessOwnerId':user}).fetch();
+	      	var businessDetails = Business.find({'businessOwnerId':user,'status':'active'}).fetch();
 	      	if(businessDetails){
 	      		for(var k=0 ; k<businessDetails.length ; k++){
 		      		var businessLink = businessDetails[k].businessLink;
@@ -245,9 +251,15 @@ Template.vendorDashboard.onRendered(function(){
 		        			}// j
 		      			}// if uniquecreatedDate
 
-						$("#yearChart").append(
-			        		"<div class='noPaddingGeneral col-lg-6 col-md-6 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-monthly' style='max-height: 100%;'></canvas></div>"
-			        	);
+		      			if(uniquecreatedMonth.length < 7){
+							$("#yearChart").append(
+				        		"<div class='noPaddingGeneral col-lg-6 col-md-6 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-monthly' style='max-height: 100%;'></canvas></div>"
+				        	);
+		      			}else{
+							$("#yearChart").append(
+				        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-monthly' style='max-height: 100%;'></canvas></div>"
+				        	);
+		      			}
 
 				      	var ctx = document.getElementById(businessLink+"-monthly").getContext("2d");
 					    var myChart = new Chart(ctx, {
@@ -298,8 +310,8 @@ Template.vendorDashboard.events({
 		var firstDay = new Date(y, m, 1);
 		var lastDay = new Date(y, m + 1, 0);
 
-		firstDay = moment(firstDay).format("Do MMM YYYY");
-		lastDay = moment(lastDay).format("Do MMM YYYY");
+		firstDay = moment(firstDay).format("Do MMMM YYYY");
+		lastDay = moment(lastDay).format("Do MMMM YYYY");
 		var monthVar = firstDay +'-'+ lastDay;
 		Session.set("month",monthVar);
 	},
@@ -371,7 +383,7 @@ Template.userViewGraph.helpers({
 	'customerActivity':function(){
 		var userId            = Meteor.userId();
 		var custActivityArray = [];
-		var businessData      = Business.find({'businessOwnerId':userId}).fetch();
+		var businessData      = Business.find({'businessOwnerId':userId,'status':'active'}).fetch();
 		if(businessData){
 			for(j = 0 ; j < businessData.length; j++){
 				var businessUrl = businessData[j].businessLink;
@@ -415,18 +427,44 @@ Template.customerLeadsGraph.helpers({
 		}
 	},
 
-	'totalClicks':function(){	
+	'totalClicks':function(){
+		var month    = Session.get("month");
+		var year     = Session.get("year");
+		var Twoyear  = Session.get("twoYear");	
 		var userId    = Meteor.userId();
 		var totalCount = 0;
-		var businessData      = Business.find({'businessOwnerId':userId}).fetch();
+		var businessData      = Business.find({'businessOwnerId':userId,'status':'active'}).fetch();
 		if(businessData){
 			for (var i = 0; i < businessData.length; i++) {
 				var businessUrl   = businessData[i].businessLink;
-				var statisticData = UserStatistics.find({'businessLink':businessUrl}).fetch();
+				if(month){
+					var splitDate = month.split(' ');
+					var y = splitDate[4];
+		        	var m = moment().month(splitDate[1]).format("M");
+					var first = new Date(y, m-1, 1);
+					var last = new Date(y, m, 0);
+					var statisticData  = UserStatistics.find({'businessLink':businessUrl, 'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
+				}else if(year){
+					var splitDate1 = year.split('-')[0].split(' ')[0];
+					var splitDate2 = year.split('-')[1].split(' ')[0];
+					var y = year.split(' ')[2];
+		        	var m1 = moment().month(splitDate1).format("M");
+		        	var m2 = moment().month(splitDate2).format("M");
+					var first = new Date(y, m1-1, 1);
+					var last = new Date(y, m2, 0);
+					var statisticData  = UserStatistics.find({'businessLink':businessUrl, 'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
+				}else{
+					var y = moment().year();
+					var first = new Date(y-1, 0, 1);
+					var last = new Date(y, 12, 0);
+					var statisticData = UserStatistics.find({'businessLink':businessUrl, 'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
+				}
 				if(statisticData){
 		          for(k=0;k<statisticData.length;k++){ //number of instances 
 		            totalCount += parseInt(statisticData[k].count) ;
 		          } //k
+				}else{
+					totalCount = 0;
 				}//statisticData
 			}
 		}//businessData

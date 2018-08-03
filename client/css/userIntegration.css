@@ -287,9 +287,9 @@ background-color:#ccc
 .feedBlock {
 background:#f0f0f0;
 padding:1%;
+margin-top: 30px;
 }
 .customerActivityStat {
-margin-top: 30px;
 height: 450px;
 overflow-y: auto;
 }
