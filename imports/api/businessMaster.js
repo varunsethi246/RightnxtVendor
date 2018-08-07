@@ -407,7 +407,7 @@ Meteor.methods({
 		);
 	},
 	
-	'deleteBusinessTime' : function(btId, docId){
+	'deleteBusinessTime' : function(btId, docId,index){
 		var id = btId.split('-');
 		var day = id[1];
 		
@@ -415,11 +415,22 @@ Meteor.methods({
 		var busLink = busId.businessLink;
 		
 		Business.update(
-				{"_id": docId},
-				{$pull: {"businessTimings" : {"day":day } }}
+			{"_id": docId},
+			{$unset: 
+				{
+					['businessTimings.'+index] : index, 
+				}
+			}
 		);
 
-		
+		Business.update(
+			{"_id": docId},
+			{$pull: 
+				{
+					'businessTimings' : null, 
+				}
+			}
+		);		
 		
 		BusinessBanner.update(
 			{"businessLink":busLink}, 

@@ -460,6 +460,7 @@ Template.vendorOpeningAndClosing.helpers({
         }
         return 0;
       });
+      // console.log(result);
     return result;     
     }
   },
@@ -588,6 +589,7 @@ Template.vendorOpeningAndClosing.events({
   },
   'click .btClear': function(event){
     var btId = event.currentTarget.id;
+    var index = $(event.currentTarget).attr('data-index');
     // console.log(btId);
     // var docId = FlowRouter.getParam('id');
 
@@ -595,7 +597,7 @@ Template.vendorOpeningAndClosing.events({
     var data = Business.findOne({"businessLink":businessLink});
     var docId = data._id;
     
-    Meteor.call('deleteBusinessTime',btId,docId,
+    Meteor.call('deleteBusinessTime',btId,docId,index,
           function(error,result){
             return;
           });

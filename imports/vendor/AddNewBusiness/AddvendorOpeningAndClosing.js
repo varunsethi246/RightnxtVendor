@@ -764,10 +764,11 @@ Template.showOpenCloseTiming.helpers({
 Template.showOpenCloseTiming.events({
   'click .btClear': function(event){
     var btId = event.currentTarget.id;
+    var index = $(event.currentTarget).attr('data-index');
     // console.log(btId);
     var docLink = FlowRouter.getParam('businessLink');
     var docId = Business.findOne({"businessLink" : docLink});
-    Meteor.call('deleteBusinessTime',btId,docId._id,
+    Meteor.call('deleteBusinessTime',btId,docId._id,index,
           function(error,result){
             return;
           });
