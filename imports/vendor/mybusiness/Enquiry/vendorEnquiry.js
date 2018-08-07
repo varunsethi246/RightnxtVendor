@@ -354,6 +354,17 @@ Template.allEnquries.events({
 	'click .deleteEnqBtn': function(event){
 		var thisid = event.currentTarget;
 		var id = $(thisid).parent().parent().parent().parent().parent().parent().parent().attr('id');
+		var enquiryObj = Enquiry.findOne({'_id':id});
+		if(enquiryObj){
+			if(enquiryObj.enquiryDesc.length > 0){
+				for (var i = 0; i < enquiryObj.enquiryDesc.length; i++) {
+					if(enquiryObj.enquiryDesc[i].commentImage){
+						var imgId = enquiryObj.enquiryDesc[i].commentImage;
+						Meteor.call('removeEnquiryImage',imgId ,function(err,rslt){});
+					}
+				}
+			}
+		}
 		Meteor.call('deleteEnquiry',id ,function(err,rslt){
 		});	
 		$('.modal-backdrop').hide();
@@ -764,8 +775,19 @@ Template.vendorEnquiry.events({
 		$('.EnqListCheckboxAll:input:checked').each(function() {
 		    selected.push($(this).parent().parent().attr('id'));
 		});
-		for(i=0;i<selected.length;i++){
+		for(var i=0;i<selected.length;i++){
 			var id = selected[i];
+			var enquiryObj = Enquiry.findOne({'_id':id});
+			if(enquiryObj){
+				if(enquiryObj.enquiryDesc.length > 0){
+					for (var j = 0; j < enquiryObj.enquiryDesc.length; j++) {
+						if(enquiryObj.enquiryDesc[j].commentImage){
+							var imgId = enquiryObj.enquiryDesc[j].commentImage;
+							Meteor.call('removeEnquiryImage',imgId ,function(err,rslt){});
+						}
+					}
+				}
+			}
 			Meteor.call('deleteEnquiry',id ,function(err,rslt){});	
 		}
 		$(".commonCheckbox").prop('checked', false);

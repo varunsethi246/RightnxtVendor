@@ -1767,7 +1767,7 @@ display:none
 }
 
 .imgVendorSpan {
-margin-left:65px;
+margin-left:0px!important;
 box-shadow:1px 1px 2px #aaa
 }
 
@@ -4243,19 +4243,14 @@ text-align: center
     margin-left: 15px!important;
 }
 @media screen and (min-width: 1920px){
-	.aboutNavbar {
-	    padding-left: 72px;
-	}
+	.aboutNavbar {padding-left: 72px;}
 }
 /*@media (min-width: 768px){
 	.aboutNavbar{
 		margin-left: 28%;
 	}
 }*/
-.otpOuterDiv{
-	border: 1px solid #bbbbbb;
-    margin-top: 15px;
-}
+.otpOuterDiv{border: 1px solid #bbbbbb;margin-top: 15px;}
 .busiTimeOpenHrs{margin-top: 10px;margin-bottom: 0px;}
 .noPaddingGeneral{padding-right: 0px;padding-left: 0px;}
 .uploadpicv input[type="file"],#div1 input[type="file"]{
@@ -4268,3 +4263,30 @@ text-align: center
 .uploadpicv h4, #div1 h4{position: absolute;top: 0px;}
 .userCommentRepliesBox{margin-top: 10px}
 .removeMargTopImg h5 p{line-height: 18px;}
+#uploadImgDivHide,#uploadMenuDivHide{display: none;margin-top: 10px;}
+.hideMe {
+	display: none;
+    -moz-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+}

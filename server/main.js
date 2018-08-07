@@ -367,13 +367,6 @@ Meteor.methods({
   'removeOwnerImage':function(imgId){
     var userId = Meteor.userId();
     OwnerImage.remove({'_id': imgId,'userId': userId});
-    // var allVendorImages = OwnerImage.find({'_id':imgId,'userId': userId}).fetch();
-    // console.log(allVendorImages);
-    // if(allVendorImages){
-      // for (var i = 0; i < allVendorImages.length-1; i++) {
-      //   OwnerImage.remove({'_id': allVendorImages[i]._id,'userId': userId});
-      // }
-    // }
   },
   'removeBusinessImage':function(imgId){
     BusinessImage.remove({'_id':imgId});
@@ -387,4 +380,7 @@ Meteor.methods({
   'removeReviewImage':function(imgId){
     ReviewImage.remove({'_id':imgId});
   },
+  'removeEnquiryImage':function(imgId){
+    EnquiryImage.remove({'_id':imgId});
+  }
 });

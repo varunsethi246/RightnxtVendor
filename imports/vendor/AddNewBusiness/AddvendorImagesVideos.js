@@ -264,11 +264,27 @@ Template.addvendorImagesVideos.events({
 	'click #saveBusinessImg' : function(event,template){
 		
 		var businessLink = FlowRouter.getParam('businessLink');
+		$('#uploadImgDivHide').show();
 		for(i = 0 ; i < files.length; i++){
+			if(i == files.length-1){
+	          	$('#uploadImgDivHide').find('.progress-bar').css('width','40%');
+	          	$('#uploadImgDivHide').find('b').html('40%');
+	        }else{
+	          	$('#uploadImgDivHide').find('.progress-bar').css('width','30%');
+	          	$('#uploadImgDivHide').find('b').html('30%');
+	        }
 			const imageCompressor = new ImageCompressor();
 		      imageCompressor.compress(files[i])
 		        .then((result) => {
-		          console.log(result);
+		          // console.log(result);
+
+		          if(i == files.length){
+		          	$('#uploadImgDivHide').find('.progress-bar').css('width','55%');
+		          	$('#uploadImgDivHide').find('b').html('55%');
+		          }else{
+		          	$('#uploadImgDivHide').find('.progress-bar').css('width','85%');
+		          	$('#uploadImgDivHide').find('b').html('85%');
+		          }
 
 		          // Handle the compressed image file.
 		          // We upload only one file, in case
@@ -281,7 +297,14 @@ Template.addvendorImagesVideos.events({
 		        }, false);
 
 		        upload.on('start', function () {
-		          template.imageUpload.set(this);
+		          // template.imageUpload.set(this);
+		          if(i == files.length){
+		          	$('#uploadImgDivHide').find('.progress-bar').css('width','70%');
+		          	$('#uploadImgDivHide').find('b').html('70%');
+		          }else{
+		          	$('#uploadImgDivHide').find('.progress-bar').css('width','100%');
+		          	$('#uploadImgDivHide').find('b').html('100%');
+		          }
 		        });
 
 		        upload.on('end', function (error, fileObj) {
@@ -300,7 +323,20 @@ Template.addvendorImagesVideos.events({
 		                  // Bert.alert('There is some error in submitting this form!','danger','growl-top-right');
 		                  return;
 		                }else{
-				          template.imageUpload.set(false);
+				          // template.imageUpload.set(false);
+				          if(i == files.length){
+				          	$('#uploadImgDivHide').find('.progress-bar').css('width','100%');
+				          	$('#uploadImgDivHide').find('b').html('100%');
+				          	// $('#uploadImgDivHide').find('.progress').addClass('hideMe');
+				   			counterImg = 0;
+							files=[];
+							$('#businessImglist').empty();
+							$('#drag1').show();
+							$('#businessImgfiles').val('');
+				            Bert.alert('Business Image uploaded.','success','growl-top-right');
+				          }else{
+							$('#uploadImgDivHide').hide();
+				          }
 		                }
 		              }
 		            );
@@ -313,21 +349,31 @@ Template.addvendorImagesVideos.events({
 		          // Handle the error
 		    })    
 		}
-		$('#businessImglist').empty();
-		$('#drag1').show();
-		counterImg = 0;
-		files=[];
-		$('#businessImgfiles').val('');
 	},
 
 	'click #saveBusinessMenu' : function(event){
 		var businessLink = FlowRouter.getParam('businessLink');
+		$('#uploadMenuDivHide').show();
 		for(i = 0 ; i < filesM.length; i++){
+			if(i == filesM.length-1){
+	          	$('#uploadImgDivHide').find('.progress-bar').css('width','40%');
+	          	$('#uploadImgDivHide').find('b').html('40%');
+	        }else{
+	          	$('#uploadMenuDivHide').find('.progress-bar').css('width','30%');
+	          	$('#uploadMenuDivHide').find('b').html('30%');
+	        }
 			const imageCompressor = new ImageCompressor();
 			    imageCompressor.compress(filesM[i])
 			    .then((result) => {
 			          // console.log(result);
 
+			          if(i == filesM.length){
+			          	$('#uploadMenuDivHide').find('.progress-bar').css('width','55%');
+			          	$('#uploadMenuDivHide').find('b').html('55%');
+			          }else{
+			          	$('#uploadMenuDivHide').find('.progress-bar').css('width','85%');
+			          	$('#uploadMenuDivHide').find('b').html('85%');
+			          }
 			          // Handle the compressed image file.
 			          // We upload only one file, in case
 			        // multiple files were selected
@@ -339,7 +385,14 @@ Template.addvendorImagesVideos.events({
 			        }, false);
 
 			        upload.on('start', function () {
-			          template.menuUpload.set(this);
+			          // template.menuUpload.set(this);
+			          if(i == filesM.length){
+			          	$('#uploadMenuDivHide').find('.progress-bar').css('width','70%');
+			          	$('#uploadMenuDivHide').find('b').html('70%');
+			          }else{
+			          	$('#uploadMenuDivHide').find('.progress-bar').css('width','100%');
+			          	$('#uploadMenuDivHide').find('b').html('100%');
+			          }
 			        });
 
 			        upload.on('end', function (error, fileObj) {
@@ -361,7 +414,20 @@ Template.addvendorImagesVideos.events({
 				                  console.log ('Error Message: ' +error ); 
 				              }else{
 									  // process.exit();
-						          template.menuUpload.set(false);
+								  if(i == filesM.length){
+						          	$('#uploadMenuDivHide').find('.progress-bar').css('width','100%');
+						          	$('#uploadMenuDivHide').find('b').html('100%');
+						          	// $('#uploadImgDivHide').find('.progress').addClass('hideMe');
+									counterMenu = 0;
+									filesM=[];
+						   			$('#businessMenulist').empty();
+									$('#drag3').show();
+									$('#businessMenulist').val('');
+				            		Bert.alert('Business Menu Image uploaded.','success','growl-top-right');
+						          }else{
+									$('#uploadMenuDivHide').hide();
+						          }
+						          // template.menuUpload.set(false);
 				              }
 				        });
 			          }
@@ -373,11 +439,6 @@ Template.addvendorImagesVideos.events({
 		          // Handle the error
 		    }) 
 		}
-		$('#businessMenulist').empty();
-		$('#drag3').show();
-		counterMenu = 0;
-		filesM=[];
-		$('#businessMenulist').val('');
 	},
 
 	'change #fileInputOne'(e, template) {

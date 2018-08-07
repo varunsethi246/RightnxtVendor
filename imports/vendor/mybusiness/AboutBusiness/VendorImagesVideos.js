@@ -145,13 +145,27 @@ Template.vendorImagesVideos.events({
 
 	'click #editsaveBusinessImg' : function(event,template){
 		var businessLink = FlowRouter.getParam('businessLink');
+		$('#uploadImgDivHide').show();
 		if(files.length > 0){
-			// template.imageUpload.set(false);
-			for(i = 0 ; i < files.length; i++){
+			for(var i = 0 ; i < files.length; i++){
+				if(i == files.length-1){
+		          	$('#uploadImgDivHide').find('.progress-bar').css('width','40%');
+		          	$('#uploadImgDivHide').find('b').html('40%');
+		        }else{
+		          	$('#uploadImgDivHide').find('.progress-bar').css('width','30%');
+		          	$('#uploadImgDivHide').find('b').html('30%');
+		        }
 			  const imageCompressor = new ImageCompressor();
 		      imageCompressor.compress(files[i])
 		        .then((result) => {
 		          // console.log(result);
+		          if(i == files.length){
+		          	$('#uploadImgDivHide').find('.progress-bar').css('width','55%');
+		          	$('#uploadImgDivHide').find('b').html('55%');
+		          }else{
+		          	$('#uploadImgDivHide').find('.progress-bar').css('width','85%');
+		          	$('#uploadImgDivHide').find('b').html('85%');
+		          }
 
 		          // Handle the compressed image file.
 		          // We upload only one file, in case
@@ -160,11 +174,17 @@ Template.vendorImagesVideos.events({
 		          file: result,
 		          streams: 'dynamic',
 		          chunkSize: 'dynamic',
-		          // imagetype: 'profile',
 		        }, false);
 
 		        upload.on('start', function () {
-		          template.imageUpload.set(this);
+		          // template.imageUpload.set(this);
+		          if(i == files.length){
+		          	$('#uploadImgDivHide').find('.progress-bar').css('width','70%');
+		          	$('#uploadImgDivHide').find('b').html('70%');
+		          }else{
+		          	$('#uploadImgDivHide').find('.progress-bar').css('width','100%');
+		          	$('#uploadImgDivHide').find('b').html('100%');
+		          }
 		        });
 
 		        upload.on('end', function (error, fileObj) {
@@ -174,7 +194,6 @@ Template.vendorImagesVideos.events({
 		            console.log('Error during upload 1: ' + error.reason);
 		          } else {
 		            // alert('File "' + fileObj._id + '" successfully uploaded');
-		            Bert.alert('Business Image uploaded.','success','growl-top-right');
 		            // console.log(fileObj._id);
 		            // Session.set("vendorImgFilePath",fileObj._id);
 		            Meteor.call('updateVendorBulkImg', businessLink, fileObj._id, 
@@ -183,7 +202,20 @@ Template.vendorImagesVideos.events({
 		                  // Bert.alert('There is some error in submitting this form!','danger','growl-top-right');
 		                  return;
 		                }else{
-				          template.imageUpload.set(false);
+				          // template.imageUpload.set(false);
+				          if(i == files.length){
+				          	$('#uploadImgDivHide').find('.progress-bar').css('width','100%');
+				          	$('#uploadImgDivHide').find('b').html('100%');
+				          	// $('#uploadImgDivHide').find('.progress').addClass('hideMe');
+				   			counterImg = 0;
+							files=[];
+							$('#editbusinessImglist').empty();
+							$('#dragEdit1').show();
+							$('#editbusinessImgfiles').val('');
+				            Bert.alert('Business Image uploaded.','success','growl-top-right');
+				          }else{
+							$('#uploadImgDivHide').hide();
+				          }
 		                }
 		              }
 		            );
@@ -194,25 +226,35 @@ Template.vendorImagesVideos.events({
 		        })
 		        .catch((err) => {
 		          // Handle the error
-		      })    
+		      })      
 			}//end of for loop
-
-			$('#editbusinessImglist').empty();
-			$('#dragEdit1').show();
-			counterImg = 0;
-			files=[];
-			$('#editbusinessImgfiles').val('');
 		}
 	},
 
 	'click #editsaveBusinessMenu' : function(event,template){
 		var businessLink = FlowRouter.getParam('businessLink');
+		$('#uploadMenuDivHide').show();
 		if(filesM.length > 0){
-			for(i = 0 ; i < filesM.length; i++){
+			for(var i = 0 ; i < filesM.length; i++){
+				if(i == filesM.length-1){
+		          	$('#uploadImgDivHide').find('.progress-bar').css('width','40%');
+		          	$('#uploadImgDivHide').find('b').html('40%');
+		        }else{
+		          	$('#uploadMenuDivHide').find('.progress-bar').css('width','30%');
+		          	$('#uploadMenuDivHide').find('b').html('30%');
+		        }
 				const imageCompressor = new ImageCompressor();
 			      imageCompressor.compress(filesM[i])
 			        .then((result) => {
 			          // console.log(result);
+
+			          if(i == filesM.length){
+			          	$('#uploadMenuDivHide').find('.progress-bar').css('width','55%');
+			          	$('#uploadMenuDivHide').find('b').html('55%');
+			          }else{
+			          	$('#uploadMenuDivHide').find('.progress-bar').css('width','85%');
+			          	$('#uploadMenuDivHide').find('b').html('85%');
+			          }
 
 			          // Handle the compressed image file.
 			          // We upload only one file, in case
@@ -225,7 +267,14 @@ Template.vendorImagesVideos.events({
 			        }, false);
 
 			        upload.on('start', function () {
-			          template.menuUpload.set(this);
+			          // template.menuUpload.set(this);
+			          if(i == filesM.length){
+			          	$('#uploadMenuDivHide').find('.progress-bar').css('width','70%');
+			          	$('#uploadMenuDivHide').find('b').html('70%');
+			          }else{
+			          	$('#uploadMenuDivHide').find('.progress-bar').css('width','100%');
+			          	$('#uploadMenuDivHide').find('b').html('100%');
+			          }
 			        });
 
 			        upload.on('end', function (error, fileObj) {
@@ -235,7 +284,6 @@ Template.vendorImagesVideos.events({
 			            console.log('Error during upload 1: ' + error.reason);
 			          } else {
 			            // alert('File "' + fileObj._id + '" successfully uploaded');
-			            Bert.alert('Business Menu Image uploaded.','success','growl-top-right');
 			            // console.log(fileObj._id);
 			            // Session.set("vendorImgFilePath",fileObj._id);
 			            Meteor.call('updateVendorBulkMenu', businessLink, fileObj._id, 
@@ -244,7 +292,20 @@ Template.vendorImagesVideos.events({
 			                  // Bert.alert('There is some error in submitting this form!','danger','growl-top-right');
 			                  return;
 			                }else{
-					          template.menuUpload.set(false);
+					          // template.menuUpload.set(false);
+					          if(i == filesM.length){
+					          	$('#uploadMenuDivHide').find('.progress-bar').css('width','100%');
+					          	$('#uploadMenuDivHide').find('b').html('100%');
+					          	// $('#uploadImgDivHide').find('.progress').addClass('hideMe');
+								counterMenu = 0;
+								filesM=[];
+					   			$('#editbusinessMenulist').empty();
+								$('#dragEdit3').show();
+								$('#editbusinessMenulist').val('');
+			            		Bert.alert('Business Menu Image uploaded.','success','growl-top-right');
+					          }else{
+								$('#uploadMenuDivHide').hide();
+					          }
 			                }
 			              }
 			            );
@@ -257,12 +318,6 @@ Template.vendorImagesVideos.events({
 			          // Handle the error
 			    })    
 			}//end of for loop
-
-			$('#editbusinessMenulist').empty();
-			$('#dragEdit3').show();
-			counterMenu = 0;
-			filesM=[];
-			$('#editbusinessMenulist').val('');
 		}
 	},
 

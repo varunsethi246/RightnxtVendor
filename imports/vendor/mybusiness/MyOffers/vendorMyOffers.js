@@ -1085,7 +1085,7 @@ Template.vendorOffer1.events({
 		var imageId = $this.parent().parent().find('output').attr('id');
 		files = event.target.files; // FileList object\
 		// Loop through the FileList and render image files as thumbnails.
-		console.log(files);
+		// console.log(files);
 		for (var i = 0, f; f = files[i]; i++) {
 			files[i].businessLink = Session.get('SessionBusinessLink');
 			

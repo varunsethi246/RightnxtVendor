@@ -40,9 +40,9 @@ bottom:0
     display: inline-block;
     font-size: 13px;
     height: 32px;
-    width: 53%;
+    width: 60%;
     position: absolute;
-    top: 64%;
+    top: 0%;
     /* z-index: 100; */
     opacity: 0;
 }

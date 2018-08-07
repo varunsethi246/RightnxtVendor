@@ -372,6 +372,25 @@ Meteor.methods({
         return "notfound";
     }
   },
+  removeUserProfilePic: function() {
+    var user = Meteor.users.findOne({ '_id' : Meteor.userId() });
+    if(user){
+      if(user.profile){
+        Meteor.users.update(
+        {"_id": Meteor.userId()},
+          {
+            $set: { 'profile.userProfilePic' : ''
+          }
+        },function(error,result){
+          if(error){
+            return error;
+          }else{
+            return result;
+          }
+        });  
+      }
+    }
+  },
 
 });
 

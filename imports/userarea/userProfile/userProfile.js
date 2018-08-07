@@ -30,17 +30,21 @@ Template.userProfile.helpers({
 				var data = Meteor.users.findOne({"_id":id},{"profile":1});
 				if(data){
 					// data.aboutText =  data.profile.aboutMe;
-					var pic = VendorImage.findOne({"_id":data.profile.userProfilePic});
-					if(pic){
-						if(pic.type=='image/png'){
-							data.checkPng = 'bkgImgNone';	
-						}else{
-							data.checkPng = '';	
+					if(data.profile.userProfilePic){	
+						var pic = VendorImage.findOne({"_id":data.profile.userProfilePic});
+						if(pic){
+							if(pic.type=='image/png'){
+								data.checkPng = 'bkgImgNone';	
+							}else{
+								data.checkPng = '';	
+							}
+							data.profile.userProfilePic = pic.link();	
 						}
-						data.profile.userProfilePic = pic.link();	
-					}
-					else{
-						data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
+						else{
+							data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
+						}
+					}else{
+						// data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
 					}
 					if(Roles.userIsInRole(id, ['Vendor'])){
 						data.statusClass = 'show';
@@ -100,17 +104,21 @@ Template.userProfile.helpers({
 				var data = Meteor.users.findOne({"_id":id},{"profile":1});
 				if(data){
 					// data.aboutText =  data.profile.aboutMe;
-					var pic = VendorImage.findOne({"_id":data.profile.userProfilePic});
-					if(pic){
-						if(pic.type=='image/png'){
-							data.checkPng = 'bkgImgNone';	
-						}else{
-							data.checkPng = '';	
+					if(data.profile.userProfilePic){	
+						var pic = VendorImage.findOne({"_id":data.profile.userProfilePic});
+						if(pic){
+							if(pic.type=='image/png'){
+								data.checkPng = 'bkgImgNone';	
+							}else{
+								data.checkPng = '';	
+							}
+							data.profile.userProfilePic = pic.link();	
 						}
-						data.profile.userProfilePic = pic.link();	
-					}
-					else{
-						data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
+						else{
+							data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
+						}
+					}else{
+						// data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
 					}
 					if(Roles.userIsInRole(id, ['Vendor'])){
 						data.statusClass = 'show';
@@ -219,10 +227,8 @@ Template.userProfile.events({
 	    // event.preventDefault();
 	    if(event.currentTarget.files[0]){  
 	    	// console.log(event.currentTarget.files[0].size);
-	    	$('#userPic').removeClass('bkgImgNone');
-	    	$('#userPic').attr('src','');
+	    	Meteor.call('removeUserProfilePic',function(err,rslt){});
 	    	const imageCompressor = new ImageCompressor();
-
 			imageCompressor.compress(event.currentTarget.files[0])
 			  .then((result) => {
 			    // console.log(result);

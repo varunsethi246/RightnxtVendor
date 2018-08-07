@@ -14,6 +14,13 @@
 								<input type="file" name="files[]" id="editbusinessImgfiles" multiple="true" class="inputImg">
 								<h4 id="dragEdit1">Drag new photos here</h4>
 							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 noPaddingGeneral" id="uploadImgDivHide">
+								<div class="progress">
+				                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style='width: 10%'>
+				                    	<b>10%</b>
+				                    </div>
+				                </div>
+							</div>
 							{{#with imageUpload}}
 						        Uploading <b>{{file.name}}</b>:
 						        <span id="progress">{{progress.get}}%</span>
@@ -140,6 +147,13 @@
 									<output id="editbusinessMenulist"></output>
 									<input type="file" name="files[]" id="editbusinessMenufiles" multiple="true" class="inputImg">
 									<h4 id="dragEdit3">Drag new menu images here</h4>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 noPaddingGeneral" id="uploadMenuDivHide">
+									<div class="progress">
+					                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style='width: 10%'>
+					                    	<b>10%</b>
+					                    </div>
+					                </div>
 								</div>
 								{{#with menuUpload}}
 							        Uploading <b>{{file.name}}</b>:

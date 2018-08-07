@@ -3289,8 +3289,8 @@ color:#4e4f51
 }
 
 .uploadButton1 {
-    background-color: #f89b2fbf;
-    border: 1px solid #f89b2f45;
+    background-color: #f89b1c;
+    border: 1px solid #f89b1c;
     box-sizing: content-box;
     /*color: #080808;*/
     color: #fff;
@@ -3298,7 +3298,7 @@ color:#4e4f51
     display: inline-block;
     font-size: 13px;
     height: 33px;
-    width: 53%;
+    width: 60%;
     /*margin-left: 21px;*/
     position: absolute;
     top: 65%;
