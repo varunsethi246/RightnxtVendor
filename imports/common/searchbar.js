@@ -30,13 +30,13 @@ if (Meteor.isClient) {
 
 
 Template.searchbar.onRendered(function(){
-	var getCityVal = FlowRouter.getParam('city');
-	// if(getCityVal){
-	// 	$('.hiddenCitySearchInpBox').val(getCityVal);
-	// }else{
-	// 	var oldVal = $('.hiddenCitySearchInpBox').val();
-	// 	$('.hiddenCitySearchInpBox').val(oldVal);
-	// }
+	var sesVal = Session.get('rxtNxtCityDatlist');
+    if(sesVal){
+      var getCityVal = sesVal;
+    }else{
+      var getCityVal = "Pune";
+    }
+	// var getCityVal = FlowRouter.getParam('city');
 	Session.set("userSelecetedRXTCity",getCityVal);
 });
 
@@ -66,24 +66,16 @@ Template.searchbar.helpers({
 			if(cityObject.selectedCity){
 				var currentCity = cityObject.selectedCity;
 			}else {
-				var sesVal = Session.get('rxtNxtCityDatlist');
-		        if(sesVal){
-		          currentCity = sesVal;
-		        }else{
-		          var currentCity = "Pune";
-		        }
-		          // var currentCity = "Pune";
-		        
+		        var currentCity = "Pune";
 			}
 		}else{
 			if(currentParams){
 				var busCity = Business.findOne({"businessLink":currentParams},{fields: {'businessCity': 1}});
 				var currentCity = busCity.businessCity;
 			}else{
-				// var currentCity = FlowRouter.getParam('city');
 				var sesVal = Session.get('rxtNxtCityDatlist');
 		        if(sesVal){
-		          currentCity = sesVal;
+		         var currentCity = sesVal;
 		        }else{
 		          var currentCity = "Pune";
 		        }
@@ -187,7 +179,7 @@ Template.searchbar.events({
 			}else{
 				var sesVal = Session.get('rxtNxtCityDatlist');
 		        if(sesVal){
-		          currentCity = sesVal;
+		         var currentCity = sesVal;
 		        }else{
 		          var currentCity = "Pune";
 		        }
@@ -333,7 +325,7 @@ Template.searchbar.events({
 			}else{
 				var sesVal = Session.get('rxtNxtCityDatlist');
 		        if(sesVal){
-		          currentCity = sesVal;
+		          var currentCity = sesVal;
 		        }else{
 		          var currentCity = "Pune";
 		        }
@@ -426,7 +418,7 @@ Template.searchbar.events({
 			}else{
 				var sesVal = Session.get('rxtNxtCityDatlist');
 		        if(sesVal){
-		          currentCity = sesVal;
+		          var currentCity = sesVal;
 		        }else{
 		          var currentCity = "Pune";
 		        }
@@ -541,7 +533,7 @@ Template.searchbar.events({
 				}else{
 					var sesVal = Session.get('rxtNxtCityDatlist');
 			        if(sesVal){
-			          currentCity = sesVal;
+			          var currentCity = sesVal;
 			        }else{
 			          var currentCity = "Pune";
 			        }

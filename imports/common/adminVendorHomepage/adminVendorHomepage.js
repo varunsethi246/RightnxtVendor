@@ -84,12 +84,11 @@ Template.adminVendorHomepage.helpers({
         // }else{
         //   var currentCity = "Pune";
         // }
+       
+        // Most Important Sesion to pass Dynamic City to footer links
+        Session.set("rxtNxtCityDatlist",currentCity);
       }
 
-      // Most Important Sesion to pass Dynamic City to footer links
-      Session.set("rxtNxtCityDatlist",currentCity);
-  
-    
       var currentAreaList = Area.find({'city':currentCity,"status":"active"}).fetch();
       currentAreaList.sort(function(a, b) {
         var textA = a.area.toUpperCase();
@@ -134,11 +133,12 @@ Template.adminVendorHomepage.events({
     citySearch1.search(text);
     $(".curUserCity").text(text);
     Session.set("userSelecetedRXTCity",text);
-    Session.set("rxtNxtCityDatlist",text);
 
     var userId = Meteor.userId();
     if(userId){
       Meteor.call("storeUserSelectedCity", userId, text);
+    }else{
+      Session.set("rxtNxtCityDatlist",text);
     }
   },
 
@@ -154,11 +154,12 @@ Template.adminVendorHomepage.events({
     }
     $(".curUserCity").text(text);
     Session.set("userSelecetedRXTCity",text);
-    Session.set("rxtNxtCityDatlist",text);
 
     var userId = Meteor.userId();
     if(userId){
       Meteor.call("storeUserSelectedCity", userId, text);
+    }else{
+      Session.set("rxtNxtCityDatlist",text);
     }
   },
 
