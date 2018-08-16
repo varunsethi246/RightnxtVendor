@@ -3730,8 +3730,11 @@ border-radius: 0px!important;
 	z-index: 1;
     position: absolute;
     color: black;
-    top: 45%;
-    left: 45%;
+    top: 40%;
+    left: 40%;
+    border-radius: 50%;
+    width: 19%;
+    background-color: #ffffff00;
 }
 video::-internal-media-controls-download-button {
     display:none;
@@ -3793,4 +3796,7 @@ video::-webkit-media-controls-panel {
 }
 .vendorHome{
 	    height: 380px!important;
+}
+.heightCommentModal{
+	height:450px;
 }

@@ -123,20 +123,20 @@ Template.vendorBusinessCarousel.events({
 		$('#bussVideo').attr('src',newbusVideo);
 		
 	},
-	'click .video':function(event){
-		console.log('click');
-		$('.video').parent().click(function () {
-		console.log('click this: ',$(this).attr('class'));
+	// 'click .video':function(event){
+	// 	console.log('click');
+	// 	$('.video').parent().click(function () {
+	// 	console.log('click this: ',$(this).attr('class'));
 
-		  if($(this).children(".video").get(0).paused)
-		  	{        
-		  		$(this).children(".video").get(0).play();   
-		  		$(this).children(".playpause").fadeOut();
-		    }else{       
-		    	$(this).children(".video").get(0).pause();
-		  		$(this).children(".playpause").fadeIn();
-		    }
-		});
-	}
+	// 	  if($(this).children(".video").get(0).paused)
+	// 	  	{        
+	// 	  		$(this).children(".video").get(0).play();   
+	// 	  		$(this).children(".playpause").fadeOut();
+	// 	    }else{       
+	// 	    	$(this).children(".video").get(0).pause();
+	// 	  		$(this).children(".playpause").fadeIn();
+	// 	    }
+	// 	});
+	// }
 });
 

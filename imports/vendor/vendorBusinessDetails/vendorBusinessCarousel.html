@@ -5,14 +5,9 @@
 			<div class="vedio col-lg-2 col-md-2 col-sm-3 col-xs-6" >
 				{{#each showVideo }}
 					<video  src="{{fileURL this}}?play=true" data-toggle="modal" data-target="#carouselvideo" class="showVideoDiv video-js vjs-default-skin video" type="video/mp4" id="bussCarouselVideo" ></video>
-					<!-- <video controls="controls" width="300" height="200" src="{{fileURL this}}?play=true" class="videoBkImg"> -->
-													<!-- </video> -->
-					<!-- Modal  -->
-					<!-- <div class="playpause"></div> -->
-					<i class="fa fa-play fa-2x playButtonCss"></i>
+					<button class="btn playButtonCss" id="playvideo" data-toggle="modal" data-target="#carouselvideo"><i class="fa fa-play fa-2x"></i></button>
 					<div id="carouselvideo" class="modal fade" role="dialog">
 						<div class="modal-dialog">
-					<!-- Modal content-->
 							<button type="button" class="close closeVideo closeVideoModal" data-dismiss="modal">&times;</button>
 							<div class="modal-content">
 						 		<div class="carouselVideoBody modal-body">
@@ -35,7 +30,7 @@
 			</div>
 		{{else}}
 			<!-- </div> -->
-			<div id="ImgCarousel" class="col-lg-12 col-md-12 col-sm-11 col-xs-6 imgCarouselBusPadding">
+			<div id="ImgCarousel" class="col-lg-12 col-md-12 col-sm-11 col-xs-12 imgCarouselBusPadding">
 			    <div id="imageSliderCarousel">
 				    {{#each imageCarouselSlide}}
 				    	<div  data-toggle="modal" data-target="{{#if showImageModal}}#bigImageCarousel{{/if}}" class="imgCarouselBuss">
