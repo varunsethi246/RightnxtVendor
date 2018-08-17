@@ -464,7 +464,7 @@ margin-left:0
 }
 
 .venMerRef {
-padding-left:0
+word-break: break-all;
 }
 
 .recDiv {

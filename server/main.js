@@ -225,7 +225,7 @@ Meteor.methods({
     // Let other method calls from the same client start running,
     // without waiting for the email sending to complete.
     this.unblock();
-    // console.log('to ',to,' from ',from,' subject ',subject,' body ',body);
+    console.log('to ',to,' from ',from,' subject ',subject,' body ',body);
     Email.send({
       to: to,
       from: from,

@@ -539,7 +539,7 @@ margin-bottom:15px
 
 @media (min-width: 768px) and (max-width: 991px) {
 .addPhotoTxt {
-left:19px!important
+left:28px!important
 }
 
 .rightBtn {
@@ -646,7 +646,7 @@ top:8.5px
 }
 
 .addPhotoTxt {
-right:30px!important
+right:16px!important
 }
 }
 

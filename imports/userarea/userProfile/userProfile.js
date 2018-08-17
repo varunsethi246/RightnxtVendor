@@ -44,7 +44,7 @@ Template.userProfile.helpers({
 							data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
 						}
 					}else{
-						// data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
+						data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
 					}
 					if(Roles.userIsInRole(id, ['Vendor'])){
 						data.statusClass = 'show';
@@ -118,7 +118,7 @@ Template.userProfile.helpers({
 							data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
 						}
 					}else{
-						// data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
+						data.profile.userProfilePic = "/users/profile/profile_image_dummy.svg";	
 					}
 					if(Roles.userIsInRole(id, ['Vendor'])){
 						data.statusClass = 'show';
@@ -227,7 +227,7 @@ Template.userProfile.events({
 	    // event.preventDefault();
 	    if(event.currentTarget.files[0]){  
 	    	// console.log(event.currentTarget.files[0].size);
-	    	$('.propicloading').attr('src','/images/Rightnext-Loading.gif');
+	    	// $('.propicloading').attr('src','/images/Rightnext-Loading.gif');
 	    	Meteor.call('removeUserProfilePic',function(err,rslt){});
 	    	const imageCompressor = new ImageCompressor();
 			imageCompressor.compress(event.currentTarget.files[0])

@@ -172,13 +172,12 @@ sendPageShareMail = function(inputObj) {
 		var to 		= inputObj.to;  
 		var subject	= getSubject(inputObj.templateName);
 		var body	= getMessageContent(inputObj.templateName,inputObj.variables);
-
+		
 		Meteor.call('sendEmailRightNxt',to, fromId, subject, body,function(error,result){
 			if(error){
 				Bert.alert(error,'danger', 'growl-top-right');
 			}else{
-				// console.log('Mail Sent','success', 'growl-top-right');
-					
+				console.log('Mail Sent','success', 'growl-top-right');
 			}
 		});
 	}

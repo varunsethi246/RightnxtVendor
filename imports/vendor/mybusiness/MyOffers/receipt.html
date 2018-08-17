@@ -13,38 +13,38 @@
 							<h4> Payment Receipt for {{businessName}} </h4>
 							<div class="recMargin">
 								<hr class="col-lg-11 col-md-11 col-sm-11 col-xs-11 recLine">
-								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-5">Merchant Ref.:</p>
-								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-7 venMerRef">{{merchantRef}}</span>
-								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-8">Transaction ID:</p>
-								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-4"></span>
+								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Merchant Ref.:</p>
+								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 venMerRef noPaddingxs">{{merchantRef}}</span>
+								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Transaction ID:</p>
+								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 noPaddingxs"></span>
 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Transaction Message:</p>
-								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 {{paymentclass}}">{{transactionMsg}}</span>
+								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 {{paymentclass}} noPaddingxs">{{transactionMsg}}</span>
 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Transaction Date &amp; Time:</p>
-								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{invDate}}</span>
+								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 noPaddingxs">{{invDate}}</span>
 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Payment Method:</p>
-								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{paymentMode}}</span>
+								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 noPaddingxs">{{paymentMode}}</span>
 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Amount Paid:</p>
-								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{totalPrice}}</span>
+								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 noPaddingxs">{{totalPrice}}</span>
 								<hr class="col-lg-11 col-md-11 col-sm-11 col-xs-11 recLine">
 							</div>
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center recDiv">
 							{{#if paymentcheck}}
 								<button class="buttonMakePaymet">
 									<i class="btn fa fa-check" aria-hidden="true"></i>
-									<span>Make Payment</span>
+									<span class="">Make Payment</span>
 								</button>
 								<button class="button2">
 									<i class="btn fa fa-times" aria-hidden="true"></i>
-									<span>Close</span>
+									<span class="">Close</span>
 								</button>
 							{{else}}
 								<button class="button1">
 									<i class="btn fa fa-print" aria-hidden="true"></i>
-									<span>Print</span>
+									<span class="hidden-xs">Print</span>
 								</button>
 								<button class="button3" data-toggle="modal" data-target="#shareReceipt" title="Share">
 									<i class="btn fa fa-envelope-o " aria-hidden="true"></i>
-									<span>Email</span>
+									<span class="hidden-xs">Email</span>
 								</button>
 								<div class="modal fade" id="shareReceipt" role="dialog">
 						            <div class="modal-dialog">
@@ -84,7 +84,7 @@
 						         </div>
 								<button class="button2">
 									<i class="btn fa fa-times" aria-hidden="true"></i>
-									<span>Close</span>
+									<span class="hidden-xs">Close</span>
 								</button>
 							{{/if}}
 							</div>

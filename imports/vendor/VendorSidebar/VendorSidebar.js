@@ -169,6 +169,13 @@ Template.vendorSidebar.helpers({
 });
 
 Template.vendorSidebar.events({
+	'click .closeMenuTab': function(event){
+		$(event.currentTarget).parent().parent().removeClass('in');
+	},
+	'click .closeSubMenuTab': function(event){
+		$(event.currentTarget).parent().parent().removeClass('in');
+		$(event.currentTarget).parent().parent().parent().parent().parent().removeClass('in');
+	},
 	'click .clickAddNewBusi': function(){
     	Session.set("backlinkurl",'');
 	},

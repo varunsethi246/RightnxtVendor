@@ -3368,16 +3368,9 @@ margin-top:0
 }
 
 .dropmenu {
-padding-right:0;
-padding-left:0px;
 position:relative;
 top:-105px;
 right:5px;
-}
-
-.dropmenuGen {
-padding-right:0;
-padding-left:0
 }
 
 .notificationUser {
@@ -3500,6 +3493,7 @@ padding-left:10px
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
+.venMerRef {word-break: break-all;}
 .footerWrapper-xs {
 padding-left:45px
 }
@@ -3739,6 +3733,7 @@ right:236px!important
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
+#businessMenuCollapse > li,#businessMenuCollapse{padding-left: 0px;padding-right: 0px;}
 .products {
 height:110px
 }
@@ -3781,7 +3776,7 @@ padding-right:0!important
 }
 
 .notifiacationUsers {
-left:-2%!important
+left:12%!important
 }
 
 .homepageForms-xs {
@@ -3950,87 +3945,82 @@ padding:4px 5px!important
 }
 
 @media screen and (min-width:320px) and (max-width:767px) {
-.mapViewBusList .mapVBusTitle,.mapViewBusList .mapVBusAddr,.mapViewBusList .mapVBusPhnNum {
-width:90%
-}
+	.noPaddingxs{padding-right: 0px;padding-left: 0px;}
+	.notifiacationUsers {
+	position:absolute;
+	left:38%;
+	top:18px
+	}
+	.recBorder{margin-top: 0%;}
+	.receipt h4{margin-left: 0%;}
+	.mapViewBusList .mapVBusTitle,.mapViewBusList .mapVBusAddr,.mapViewBusList .mapVBusPhnNum {
+	width:90%
+	}
 
-.displayMapView {
-min-height:720px!important
-}
+	.displayMapView {
+	min-height:720px!important
+	}
 
-.thumbBusDivs {
-width:93%
-}
+	.thumbBusDivs {
+	width:93%
+	}
 
-.optionOfAreaG {
-width:30%
-}
+	.optionOfAreaG {
+	width:30%
+	}
 
-.mapContainer {
-padding:10px 15px 0
-}
+	.mapContainer {
+	padding:10px 15px 0
+	}
 
-.scrollMapVwBus {
-overflow-y:initial!important;
-height:auto!important
-}
+	.scrollMapVwBus {
+	overflow-y:initial!important;
+	height:auto!important
+	}
 
-.fa.pull-right {
-margin-left:0!important
-}
+	.carousel-inner > .item > img {
+	width:100%!important;
+	height:250px!important
+	}
 
-.imageReportLarge {
-width:auto
-}
+	.imageReportLarge {
+	width:auto
+	}
 
-.carousel-inner > .item > img {
-width:100%!important;
-height:250px!important
-}
+	.carousel-inner > .item > img {
+	width:100%!important;
+	height:100%!important
+	}
 
-#imageSliderCarousel {
-overflow:hidden
-}
+	#imageSliderCarousel {
+	overflow:hidden
+	}
 
-.imageReportSlider {
-width:auto;
-height:auto
-}
+	.imageReportSlider {
+	width:auto;
+	height:auto
+	}
 
-.imageReportBody,.imageReportContent {
-height:auto
-}
+	.imageReportBody,.imageReportContent {
+	height:auto
+	}
 
-.imageCommentReviewOne {
-margin-left:0
-}
+	.imageCommentReviewOne {
+	margin-left:0
+	}
 
-.top-userNav > .open > .notif-dropdown {
-max-width:200px;box-shadow: 0px 0px 10px #aaa;
-}
+	.top-userNav > .open > .notif-dropdown {
+	max-width:200px;box-shadow: 0px 0px 10px #aaa;position: absolute;
+	}
 
-.notifContent {
-white-space:normal!important
-}
+	.notifContent {
+	white-space:normal!important
+	}
 
-.propic {
-width:25px!important;
-height:25px!important
-}
-
-.notifiacationUsers {
-position:absolute;
-left:31%;
-top:20px
-}
-}
-
-@media screen and (min-width:360px) and (max-width:767px) {
-.notifiacationUsers {
-position:absolute;
-left:38%;
-top:20px
-}
+	.propic {
+	width:25px!important;
+	height:25px!important
+	}
 }
 
 .notifvalMenu {
@@ -4289,4 +4279,10 @@ text-align: center
         height:0;
         visibility:hidden;
     }
+}
+.prfSpan{left: 0px!important;top: 0px!important;}
+@media only screen and (orientation: landscape) {
+	@media screen and (min-width: 320px) and (max-width: 767px) {
+		.notifiacationUsers {left: 48%;}
+	}
 }

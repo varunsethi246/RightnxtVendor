@@ -577,6 +577,7 @@ Template.claimOtp.events({
 				var userData  = Meteor.users.findOne({'roles':'admin'});
 		        if(userData){
 		            var adminID = userData._id;
+		            var adminEmail = userData.emails[0].address;
 		            var msgvariable = {
 						'[vendorname]' 		: name,
 						'[date]' 			: currentdate,
@@ -586,13 +587,13 @@ Template.claimOtp.events({
 
 
 					var inputObj = {
-						from         : adminID,
-					    to           : adminID,
+						from         : adminEmail,
+					    to           : adminEmail,
 					    templateName : 'Claim',
 					    variables    : msgvariable,
 					}
 
-					sendMailNotification(inputObj);
+					sendMailReceiptNotification(inputObj);
 
 					var inputObj = {
 					    to           : adminID,

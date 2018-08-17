@@ -6,6 +6,17 @@
 <meta property="og:description"   content="RightNXT is the local expert, and an easy to use online resource for finding useful information and insights on local businesses and nearby retailers." />
 <meta property="og:image"         content="http://vendor.facealbum.in/images/logo.png" />
 <link rel='icon' href='/images/favicon.ico'>
+<style>
+@media screen and (min-width: 320px) and (max-width: 767px) {
+	.loadingImg{right: 20%!important;}
+}
+@media only screen and (orientation: landscape) {
+	@media screen and (min-width: 320px) and (max-width: 767px) {
+		.loadingImg{right: 31%!important;bottom: 30%!important;}
+	}
+}
+</style>
 <div class="container-fluid anonymousUserContainer" id="inject-loader-wrapper">
-    <img src='/images/loading/loading-squares2.gif' alt="Loading" class=" col-lg-2 col-lg-offset-5 col-md-12 col-sm-12 col-xs-12 col-xs-12" style="padding: 0px!important;margin: 0px!important;position: absolute;bottom: 40%;left: 43%;" >
+    <!-- <img src='/images/loading/loading-squares2.gif' alt="Loading" class=" col-lg-2 col-lg-offset-5 col-md-12 col-sm-12 col-xs-12 col-xs-12" style="padding: 0px!important;margin: 0px!important;position: absolute;bottom: 40%;left: 43%;" > -->
+    <img src='/images/loading/loading-squares2.gif' alt="Loading" class="loadingImg" style="position: absolute;bottom: 40%;right: 40%;z-index: 999;height: 200px;width: 200px;"> 
 </div>
