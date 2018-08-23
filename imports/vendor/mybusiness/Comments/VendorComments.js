@@ -91,14 +91,22 @@ Template.vendorComments.helpers({
 					}
 					
 				}
-
+				if(allReviews[i].reviewComment){
+				// console.log("allReviews[i].reviewComment :",allReviews[i].reviewComment);
+					if(allReviews[i].reviewComment.length > 300){
+						var desc3 = allReviews[i].reviewComment.substring(0,300);
+						var desc4 = allReviews[i].reviewComment.substring(300,allReviews[i].reviewComment.length);
+						allReviews[i].ownerDesc3 = desc3;
+						allReviews[i].ownerDesc4 = desc4;
+					}
+				}
 				if(allReviews[i].userId === Meteor.userId()){
 					allReviews[i].deleteButton = 'showDeleteButton';
 				}else{
 					allReviews[i].deleteButton = '';
 				}
 
-
+				
 				if(allReviews[i].reviewImages){
 					for(j=0;j<allReviews[i].reviewImages.length;j++){
 						var reviewPhoto = ReviewImage.findOne({"_id":allReviews[i].reviewImages[j].img});
@@ -303,6 +311,20 @@ Template.vendorComments.helpers({
 			return busComment;
 		}
 	}
+});
+
+Template.vendorComments.events({
+	'click .review-read-more': function(event){
+		$('.ownerDesc4').show();
+		$('.review-read-less').show();
+		$('.review-read-more').hide();
+	},
+
+	'click .review-read-less': function(event){
+		$('.ownerDesc4').hide();
+		$('.review-read-less').hide();
+		$('.review-read-more').show();
+	},
 });
 
 vendorCommentsForm = function () {  

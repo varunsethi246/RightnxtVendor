@@ -54,7 +54,6 @@ Meteor.methods({
 			'createdAt'						: new Date(),
 			},function(error,result){
 				if(error){
-					console.log('insertreports error ' , error.reason);
 					return error;
 				}if(result){
 					return result; 
@@ -65,6 +64,26 @@ Meteor.methods({
 	'removeImageReport' : function(formValues){
 		Reports.remove(formValues);
 	},
+	'updateReportStatus': function(userID){
+		// console.log(userID);
+		Reports.update(
+			{"_id": userID},
+			{ $set:	
+				{ 
+					'mailStatus' : 'active',
+				}, 
+			},
+			function(error,result){
+				if(error){
+					return error;
+				}
+				if(result){
+					return result;
+				}
+			}
+		);
+	}
+
 
 });
 

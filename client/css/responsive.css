@@ -122,6 +122,24 @@
 		padding: 0px;
 	}
 }
+@media only screen and (max-device-width : 1919px) {
+	.playButtonCss .fa-play{
+		    margin-left: 4px;
+	}
+	.playButtonCss{
+		z-index: 1;
+	    position: absolute;
+	    color: black;
+	    top: 40%;
+	    left: 42%;
+	    border-radius: 50%;
+	    width: 15%;
+	}
+	.myRatingOnBuss{
+		padding: 0;
+    	width: 20%;
+	}
+}
 @media only screen and (width : 640px) {
 /* Styles */
 	.howitworks{

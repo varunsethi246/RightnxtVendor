@@ -223,7 +223,7 @@ Meteor.methods({
 	    }
 	},
 
-	'insertUserNotifConfig' : function(Enquiry,Rating,Follow,Like,Comment,editbusiness,report){
+	'insertUserNotifConfig' : function(Enquiry,Rating,Follow,Like,Comment,Editbusiness,report){
 		Meteor.users.update(
 					{"_id": Meteor.userId()},
 					{
@@ -238,7 +238,7 @@ Meteor.methods({
 									"like"	    	: Like,
 									// "unlike"	: UnLike,
 									"comment"  		: Comment,
-									"editbusiness"  : editbusiness,
+									"editbusiness"  : Editbusiness,
 									"report"  		: report,
 								}
 							}

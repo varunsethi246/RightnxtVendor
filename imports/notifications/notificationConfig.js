@@ -12,7 +12,7 @@ import '../userarea/profileSetting/editProfile.js';
 import '../userarea/profileSetting/editProfile.html';
 
 Template.notificationConfig.events({
-	'click .submitConfig':function(){
+	'click .submitConfig':function(event){
 		event.preventDefault();
 		var Enquiry = $('input[name=Enquiry]:checked').val();
 		// var Invoice = $('input[name=Invoice]:checked').val();
@@ -24,11 +24,18 @@ Template.notificationConfig.events({
 		// var UnLike  = $('input[name=UnLike]:checked').val();
 		var Comment = $('input[name=Comment]:checked').val();
 
-		var editbusiness = $('input[name=editbusiness]:checked').val();
+		var Editbusiness = $('input[name=editbusiness]:checked').val();
 		
 		var report	 = $('input[name=report]:checked').val();
-		
-		Meteor.call('insertUserNotifConfig',Enquiry,Rating,Follow,Like,Comment,editbusiness,report,function(error,result){
+
+		console.log('Enquiry=',Enquiry);
+		console.log('Rating=',Rating);
+		// console.log('Follow=',Follow);
+		console.log('Like=',Like);
+		// console.log('Comment=',Comment);
+		console.log('Editbusiness=',Editbusiness);
+		console.log('report=',report);
+		Meteor.call('insertUserNotifConfig',Enquiry,Rating,Follow,Like,Comment,Editbusiness,report,function(error,result){
 			if(error){
 				Bert.alert('Something went wrong :',error);
 			}else{
