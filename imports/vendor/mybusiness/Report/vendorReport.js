@@ -9,6 +9,8 @@ import { Reports } from '/imports/api/reportMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
 import { BusinessImage } from '/imports/videoUploadClient/businessImageClient.js';
+import { ReviewImage } from '/imports/videoUploadClient/reviewImageClient.js';
+import { BusinessMenu } from '/imports/videoUploadClient/businessMenuClient.js';
 
 import '../../vendor.js';
 
@@ -23,7 +25,7 @@ import '../../vendor.js';
 Template.vendorReport.helpers({
 	'businessReports': function (){
 		var businessLink = FlowRouter.getParam('businessLink');
-		var reports = Reports.find({"businessLink":businessLink}).fetch();
+		var reports = Reports.find({"businessLink":businessLink},{sort:{'createdAt':-1}}).fetch();
 		// console.log(reports);
 		var reportcount = Counts.get('VendorReportCount');
 
@@ -141,11 +143,25 @@ Template.imageReport.helpers({
 				img : imgData.link(),
 			};
 		}else{
-			var data = {
-				img : '/images/rightnxt_image_nocontent.jpg',
-			};
+			var imgData1 = ReviewImage.findOne({"_id":imgId});
+			if(imgData1){
+				var data = {
+					img : imgData1.link(),
+				};	
+			}else{
+				var imgData2 = BusinessMenu.findOne({"_id":imgId});
+				if(imgData2){
+					var data = {
+						img : imgData2.link(),
+					};	
+				}else{			
+					var data = {
+						img : '/images/rightnxt_image_nocontent.jpg',
+					};
+				}
+			}
 		}
-			return data;
+		return data;
 	},
 	'reportVendorImg':function(userid){
 		var userObj = Meteor.users.findOne({"_id":userid});

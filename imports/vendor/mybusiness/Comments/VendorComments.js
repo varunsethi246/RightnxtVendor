@@ -55,9 +55,24 @@ Template.vendorComments.helpers({
 						var tagedFriendsArray = [];
 						for(m=0;m<allReviews[i].tagedFriends.length;m++){
 							var userTagObj = Meteor.users.findOne({"_id":allReviews[i].tagedFriends[m]});
+							if(userTagObj){
+								if(userTagObj.profile){
+									if(userTagObj.profile.userProfilePic){
+										var userImage = VendorImage.findOne({'_id':userTagObj.profile.userProfilePic});
+										if(userImage){
+											var userImg = userImage.link();
+										}else{
+											var userImg = '/users/profile/profile_image_dummy.svg';
+										}
+									}else{
+										var userImg = '/users/profile/profile_image_dummy.svg';
+									}
+								}
+							}
 							var obj = {
 								'tagedFriends'   : userTagObj.profile.name,
 								'tagedFriendsUrl': generateURLid(allReviews[i].tagedFriends[m]),
+								'imagePath' 	 : userImg,
 							}
 							tagedFriendsArray.push(obj);
 

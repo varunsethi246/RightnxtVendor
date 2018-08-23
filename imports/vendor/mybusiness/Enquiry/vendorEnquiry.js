@@ -421,8 +421,228 @@ Template.vendorEnquiry.events({
 		 
 	},
 
+	'keypress .vEnqFormTextarea': function(event,template){
+		if(event.which === 13){
+			// var elem = $(event.currentTarget).attr('.vEnqFormImgOne');
+			// console.log(elem);
+			// console.log('elem.outerHeight():',elem.outerHeight());
+			// console.log('elem[0].scrollHeight:',elem[0].scrollHeight);
+			// console.log('elem.scrollTop():',elem.scrollTop());
+			// elem.animate({ scrollTop: elem.prop('scrollHeight') }, 300);
+			    // if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight())
+			    // {
+			    //     console.log("bottom");
+			    // }
+	 		// 	}
+			$('.vEnqFormImgOne').animate({ scrollTop: $(document).height() }, 1);
+			var enquiryPhoto = '';
+			var enquiryCommentNew = $('.vEnqFormTextarea').val();
+	       	var id = event.currentTarget.id;
+	       	// console.log('id :',id);
+	       	var enquirySentBy = $(event.currentTarget).attr("data-enquirySentBy");
+	       	// console.log('enquiryName :',enquirySentBy);
+	       	var businessLink = $(event.currentTarget).attr("data-businessLink");
+	       	// console.log('hi');
+			var elem = $(event.currentTarget).attr('.vEnqFormImgOne');
+		    // if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight())
+		    // {
+		    //     console.log("bottom");
+		    // }
+		    // console.log(filesM.length);
+	       	if(filesM.length > 0){
+				for(i = 0 ; i < filesM.length; i++){
+
+					const imageCompressor = new ImageCompressor();
+				    imageCompressor.compress(filesM[i])
+				        .then((result) => {
+				          // console.log(result);
+
+				          // Handle the compressed image file.
+				          // We upload only one file, in case
+				        // multiple files were selected
+				        const upload = EnquiryImage.insert({
+				          file: result,
+				          streams: 'dynamic',
+				          chunkSize: 'dynamic',
+				          // imagetype: 'profile',
+				        }, false);
+
+				        upload.on('start', function () {
+				          // template.currentUpload.set(this);
+				        });
+
+				        upload.on('end', function (error, fileObj) {
+				          if (error) {
+				            // alert('Error during upload: ' + error);
+				            console.log('Error during upload 1: ' + error);
+				            console.log('Error during upload 1: ' + error.reason);
+				          } else {
+				            // alert('File "' + fileObj._id + '" successfully uploaded');
+				            Bert.alert('Enquiry Image uploaded.','success','growl-top-right');
+				            // console.log(fileObj._id);
+				            enquiryPhoto = fileObj._id;
+					  		var formValues ={
+					        	"id" 				: id,
+					        	"enquiryCommentNew" : enquiryCommentNew,
+					        	"enquiryPhoto" 		: enquiryPhoto,
+						   	}
+							// if(formValues.enquiryCommentNew){
+								Meteor.call('insertEnqCommentVendor',formValues,function(error,result){
+						      		$('.vEnqFormTextarea').val('');
+		        					$('#showEnquiryImgIdV>span').hide();
+						        	enquiryPhoto = '';
+
+						        	//============================================================
+									// 			Notification Email / SMS / InApp
+									//============================================================
+									var admin = Meteor.users.findOne({'roles':'admin'});
+								    if(admin){
+								    	// console.log('admin:',admin);
+								    	var adminId = admin._id;
+								    }
+									var businessData = Business.findOne({"businessLink":businessLink});
+									if(businessData){
+										var vendorId = businessData.businessOwnerId;
+										// console.log('vendor: ',vendorId);
+				        				var vendorDetail = Meteor.users.findOne({'_id':vendorId});
+				          	  			var userId = enquirySentBy;
+				          	  			// cosnole.log('userId:',userId);
+										var userDetail = Meteor.users.findOne({'_id':userId});
+				        				if(vendorDetail&&userDetail){
+
+				        					//Send Notification, Mail and SMS to Vendor
+				        					var vendorname 	= vendorDetail.profile.name;
+				        					var username 	= userDetail.profile.name;
+					                		var date 		= new Date();
+					                		var currentDate = moment(date).format('DD/MM/YYYY');
+					                		var msgvariable = {
+												'[vendorname]' 	: vendorname,
+												'[username]' 	: username,
+							   					'[currentDate]'	: currentDate,
+				   								'[businessName]': businessData.businessTitle
+							               	};
+
+											var inputObj = {
+												notifPath	 : businessLink,
+												to           : enquirySentBy,
+												templateName : 'User Enquiry Messages',
+												variables    : msgvariable,
+											}
+											sendInAppNotification(inputObj);
+				
+				
+											var inputObj = {
+												notifPath	 : businessLink,
+												from         : adminId,
+												to           : enquirySentBy,
+												templateName : 'User Enquiry Messages',
+												variables    : msgvariable,
+											}
+											sendMailNotification(inputObj);
+											 
+				        				}
+									}
+									//============================================================
+									// 			End Notification Email / SMS / InApp
+									//============================================================
+						      	});
+							// }
+				          }
+				          // template.currentUpload.set(false);
+				        });
+
+				        upload.start();
+				        })
+				        .catch((err) => {
+				          // Handle the error
+				    })
+			    }
+			    filesM = '';
+
+	       	}else{
+				var formValues = {
+		        	"id" 				: id,
+		        	"enquiryCommentNew" : enquiryCommentNew,
+		        	"enquiryPhoto" 		: '',
+			    }
+							console.log('true');
+
+				if(formValues.enquiryCommentNew){
+					Meteor.call('insertEnqCommentVendor',formValues,function(error,result){
+						if(error){
+							console.log('error: ',error);
+						}else{ 
+							console.log(result);
+					      	$('.vEnqFormTextarea').val('');
+
+					      	//============================================================
+							// 			Notification Email / SMS / InApp
+							//============================================================
+							var admin = Meteor.users.findOne({'roles':'admin'});
+						    if(admin){
+						    	var adminId = admin._id;
+						    }
+							var businessData = Business.findOne({"businessLink":businessLink});
+
+							if(businessData){
+								var vendorId = businessData.businessOwnerId;
+								// console.log('vendorId :',vendorId);
+		        				var vendorDetail = Meteor.users.findOne({'_id':vendorId});
+
+								// var userId = Meteor.userId();
+								var userId = enquirySentBy;
+									// console.log('userId :',userId);
+		        				var userDetail = Meteor.users.findOne({'_id':userId});
+		        				
+		        				if(vendorDetail&&userDetail){
+
+		        					//Send Notification, Mail and SMS to Vendor
+		        					var vendorname 	= vendorDetail.profile.name;
+		        					var username 	= userDetail.profile.name;
+			                		var date 		= new Date();
+			                		var currentDate = moment(date).format('DD/MM/YYYY');
+			                		var msgvariable = {
+										'[vendorname]' 	: vendorname,
+										'[username]' 	: username,
+					   					'[currentDate]'	: currentDate,
+		   								'[businessName]': businessData.businessTitle
+					               	};
+
+									var inputObj = {
+										notifPath	 : businessLink,
+									    to           : userId,
+									    templateName : 'User Enquiry Messages',
+									    variables    : msgvariable,
+									}
+									sendInAppNotification(inputObj);
+
+
+									var inputObj = {
+										notifPath	 : businessLink,
+										from         : adminId,
+										to           : userId,
+										templateName : 'User Enquiry Messages',
+										variables    : msgvariable,
+									}
+									sendMailNotification(inputObj);
+									 
+		        				}
+							}
+							//============================================================
+							// 			End Notification Email / SMS / InApp
+							//============================================================
+						}
+					});
+				}else{
+					Bert.alert('Please enter comment or add image.','danger','growl-top-right');
+				}
+			 
+			}
+		}
+	},
+
 	'click .vEnqsndEnqBtn': function(event,template) {
-		// event.preventDefault();
+		event.preventDefault();
 		// var elem = $(event.currentTarget).attr('.vEnqFormImgOne');
 		// console.log(elem);
 		// console.log('elem.outerHeight():',elem.outerHeight());
@@ -433,7 +653,7 @@ Template.vendorEnquiry.events({
 		    // {
 		    //     console.log("bottom");
 		    // }
-// // 	}
+ 		// 	}
 		$('.vEnqFormImgOne').animate({ scrollTop: $(document).height() }, 1);
 		var enquiryPhoto = '';
 		var enquiryCommentNew = $('.vEnqFormTextarea').val();
@@ -574,18 +794,19 @@ Template.vendorEnquiry.events({
 					//============================================================
 					var admin = Meteor.users.findOne({'roles':'admin'});
 				    if(admin){
+						// console.log('admin:',admin);
 				    	var adminId = admin._id;
 				    }
 					var businessData = Business.findOne({"businessLink":businessLink});
 
 					if(businessData){
 						var vendorId = businessData.businessOwnerId;
-						console.log('vendorId :',vendorId);
+						// console.log('vendorId :',vendorId);
         				var vendorDetail = Meteor.users.findOne({'_id':vendorId});
 
 						// var userId = Meteor.userId();
 						var userId = enquirySentBy;
-							console.log('userId :',userId);
+							// console.log('userId :',userId);
         				var userDetail = Meteor.users.findOne({'_id':userId});
         				
         				if(vendorDetail&&userDetail){
@@ -626,11 +847,18 @@ Template.vendorEnquiry.events({
 					// 			End Notification Email / SMS / InApp
 					//============================================================
 				});
+			}else{
+				Bert.alert('Please enter comment or add image.','danger','growl-top-right');
 			}
 		 
 		}
     },
 
+    'click .exitEnquiryImage' :  function(event){
+		filesM = [];
+		$('#showEnquiryImgIdV').empty();
+		$('.vEnqupload').val('');
+	},
 
 	'change .vEnqupload' : function(event){
 	    filesM = event.target.files; 
@@ -640,7 +868,7 @@ Template.vendorEnquiry.events({
 	        	alert('Please select image only!!!');
 	          continue;
 	      	}else{
-	    		console.log('image file');
+	    		// console.log('image file');
 		    	var reader = new FileReader();
 		        reader.onload = (function(theFile) {
 		          	return function(e) {
@@ -648,7 +876,7 @@ Template.vendorEnquiry.events({
 
 		            var span = document.createElement('span');
 
-		            span.innerHTML = ['<img class="draggedImgenq img-responsive" src="', e.target.result,
+		            span.innerHTML = ['<i class="fa fa-times-circle cursorPointer exitEnquiryImage"></i><img class="draggedImgenq img-responsive" src="', e.target.result,
 		                              '" title="', escape(theFile.name), '"/>'].join('');
 		            document.getElementById('showEnquiryImgIdV').insertBefore(span, null);
 		          };

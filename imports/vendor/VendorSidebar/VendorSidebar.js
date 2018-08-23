@@ -173,8 +173,11 @@ Template.vendorSidebar.events({
 		$(event.currentTarget).parent().parent().removeClass('in');
 	},
 	'click .closeSubMenuTab': function(event){
-		$(event.currentTarget).parent().parent().removeClass('in');
-		$(event.currentTarget).parent().parent().parent().parent().parent().removeClass('in');
+		var windowWidth = $(window).width();
+		if (windowWidth >= 320 && windowWidth <= 767){
+			$(event.currentTarget).parent().parent().removeClass('in');
+			$(event.currentTarget).parent().parent().parent().parent().parent().removeClass('in');
+		}
 	},
 	'click .clickAddNewBusi': function(){
     	Session.set("backlinkurl",'');

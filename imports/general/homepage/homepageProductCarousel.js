@@ -26,12 +26,12 @@ Template.homepageProductCarousel.events({
    'click .item' : function(event){
         event.preventDefault();
         var searchCatg = $(event.target).attr('title'); 
-        console.log("searchCatg; ",searchCatg);
+        // console.log("searchCatg; ",searchCatg);
         
         var currentCity = $('#getCity').val();
         var currentArea = $('#getArea').val();
         var path =  "/search/"+currentCity+"/"+currentArea+"/"+searchCatg;
-        console.log(path);
+        // console.log(path);
         FlowRouter.go(path);
   },
 });

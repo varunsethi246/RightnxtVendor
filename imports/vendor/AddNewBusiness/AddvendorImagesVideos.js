@@ -441,7 +441,7 @@ Template.addvendorImagesVideos.events({
 		}
 	},
 
-	'change #fileInputOne'(e, template) {
+	'change #fileInputOne': function(e, template) {
 	    if (e.currentTarget.files && e.currentTarget.files[0]) {
 			var businessLink = FlowRouter.getParam('businessLink');
 			var bussData = Business.findOne({"businessLink":businessLink});
@@ -574,7 +574,7 @@ Template.addvendorImagesVideos.events({
 	'change #businessVideofiles' : function(event){
 		$('#drag2').hide();
 		 filesV = event.target.files; // FileList object
-		 console.log('filesV ', filesV.length);
+		 // console.log('filesV ', filesV.length);
 		 if(filesV.length > 1 || videoListCount == 1){
 		 	Bert.alert('Only One can be upload','danger','growl-top-right');
 			$('#businessVideofiles').val('');
@@ -611,7 +611,7 @@ Template.addvendorImagesVideos.events({
 	'click .delBusiImg' : function(event){
 		var businessLink = FlowRouter.getParam('businessLink');
 		var delId = ($(event.target).attr('id')).split('-');
-		console.log(delId);
+		// console.log(delId);
 		Meteor.call('deleteVendorImg',businessLink,delId[1],
             function(error, result) { 
                 if(error) {

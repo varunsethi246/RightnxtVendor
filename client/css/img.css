@@ -391,7 +391,7 @@ margin-right: 3px;
 color: #f89b1c;
 margin-bottom: 3px;
 display: inline-block;
-cursor: pointer;
+/*cursor: pointer;*/
 }
 /*.tagedFrndSpans {
 background:#ccc;

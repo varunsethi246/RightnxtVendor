@@ -73,6 +73,7 @@
 											                    </div>
 											                </div>
 														</div>
+														{{#if vendorPhotosData}}
 														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 															<div class="vPhotosYouRepeat">
 																<div class="row vPhotosYouRow">
@@ -82,9 +83,12 @@
 																				{{#if businessImg}}
 																				<i class="fa fa-times-circle pull-right delBusiImg cursorPointer" id="photo-{{_id}}" aria-hidden="true"></i>{{/if}}
 																				<br>
-																				<div class="uploadPhotoSize" data-toggle="modal" data-target="#confirmBusImage-{{_id}}"  title="Click on Image to select as Business Image">
-																					<img src="{{link}}" class="img-responsive thumbnail cursorPointer {{checkpngImg}}">
+																				<div class="uploadPhotoSize" >
+																					<img src="{{link}}" class="img-responsive thumbnail {{checkpngImg}}">
 																				</div>
+<!-- 																				<div class="uploadPhotoSize" data-toggle="modal" data-target="#confirmBusImage-{{_id}}"  title="Click on Image to select as Business Image">
+																					<img src="{{link}}" class="img-responsive thumbnail cursorPointer {{checkpngImg}}">
+																				</div> -->
 																			</div>
 																		</div>
 
@@ -131,6 +135,7 @@
 																</div>
 															</div>
 														</div>
+														{{/if}}
 													</div>
 												</div>
 											</div>
@@ -162,6 +167,7 @@
 															<h4 class="vPhotosYouNewBtnPre">Photos by users <span>({{photoByUser}})</span></h4>
 															<button id="pp" class="btn btn-success vPhotosYouNewBtn pull-right publishUserPic">Publish in Main Page</button>
 														</div>
+														{{#if vendorPhotosUserData}}
 														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 															<div class="vPhotosYouRepeat vPhotosYouRe bussVendorRepeatPic">
 																<div class="row vPhotosYouRow">
@@ -178,6 +184,7 @@
 																</div>
 															</div>
 														</div>
+														{{/if}}
 													</div>
 												</div>
 											</div>

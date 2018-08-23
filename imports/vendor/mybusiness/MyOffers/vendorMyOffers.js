@@ -47,7 +47,15 @@ function printDiv() {
 
 }
 
+Template.vendorMyOffers.onCreated(function() {
+    this.currentUpload = new ReactiveVar(false);
+});
+
 Template.vendorMyOffers.helpers({
+	currentUpload: function() {
+        return Template.instance().currentUpload.get();
+    },
+    
 	businessName(){
 		var businessLink = FlowRouter.getParam('businessLink');
 		var businessName = Business.findOne({"businessLink":businessLink, "status":"active"},{"businessTitle":1});
@@ -279,6 +287,24 @@ Template.vendorMyOffers.events({
 		}
 	},
 
+	'click .angleToggle': function(event){
+    	var $this = $(event.currentTarget);
+    	$this.parent().parent().parent().toggleClass('accordianSelect');
+		$this.addClass('fa-angle-up');
+		$this.removeClass('fa-angle-down');
+		var toggleClass = $this.parent().parent().parent().parent().find('.panel-collapse');
+		if(toggleClass.hasClass('in')){
+			$this.removeClass('fa-angle-up');
+    		$this.addClass('fa-angle-down');
+		}else{
+			
+		}
+		var panelHeading = $this.parent().parent().parent();
+		$('.panel-heading').not(panelHeading).removeClass('accordianSelect');
+    	$('.panel-heading').not(panelHeading).find('i').removeClass('fa-angle-up');
+		$('.panel-heading').not(panelHeading).find('i').addClass('fa-angle-down');
+	},
+
 	'click .panel-heading': function(event){
     	var $this = $(event.target);
    		if($this.hasClass('panel-heading')){
@@ -338,7 +364,7 @@ Template.vendorMyOffers.events({
 		        }, false);
 
 		        upload.on('start', function () {
-		          // template.currentUpload.set(this);
+		          template.currentUpload.set(this);
 		        });
 
 		        upload.on('end', function (error, fileObj) {
@@ -463,7 +489,7 @@ Template.vendorMyOffers.events({
 						}	
 					);
 		          }
-		          // template.currentUpload.set(false);
+		          template.currentUpload.set(false);
 		        });
 
 		        upload.start();
@@ -1256,13 +1282,6 @@ Template.vendorOffer2.events({
 		// console.log('$#dealHeadline).val(dealdes);',$('#dealHeadline').val(dealdes));
 		// var dealDescriptionvalone = Session.set('dealDescriptionvalOne',dealDescriptionval);
 		
-	},
-	'click #locationIcon': function(event){
-		event.preventDefault();
-		FlowRouter.go('/webpage/terms-of-service');
-		if(FlowRouter.current().path == '/webpage/terms-of-service'){
-			$('.modal-backdrop').hide();
-		}
 	},
 	'submit #OfferForm': function(event){
 		event.preventDefault();

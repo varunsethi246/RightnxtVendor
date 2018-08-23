@@ -972,7 +972,7 @@ padding-top:20px
     border: 1px solid #f89b1c;
 }
 .resetPwd[disabled]{
-    opacity: 0.5;
+    opacity: 0.5;cursor:not-allowed;
 }
 
 .resetButton,.resetButton:hover,.resetButton:focus {
