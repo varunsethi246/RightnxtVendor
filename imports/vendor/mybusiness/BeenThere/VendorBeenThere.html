@@ -12,7 +12,7 @@
 						<img src="{{userProfilePic}}" alt="" class="margintopBeenThere">
 						<span class="UserInfoClass">
 							<div class="LikesUserName">
-								{{username}}
+								{{username}} {{#if isUserDeleted}}<span>Deleted User</span>{{/if}}
 							</div>
 							<div class="LikesReviewsandFollow revClass">
 								

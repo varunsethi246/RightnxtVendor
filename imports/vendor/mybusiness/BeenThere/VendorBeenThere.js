@@ -46,6 +46,11 @@ Template.VendorBeenThere.helpers({
 								businessBeenThere[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
 							}
 						}
+						businessBeenThere[i].isUserDeleted = false;
+
+					}else{
+						businessBeenThere[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
+						businessBeenThere[i].isUserDeleted = true;
 					}		
 				}
 				var timeAgo = moment(businessBeenThere[i].createdAt).fromNow();

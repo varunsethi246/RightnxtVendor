@@ -122,6 +122,8 @@
 												{{> enquiryDetails}}
 											</div>
 										</div>
+										{{#if isUserDeleted}}
+										{{else}}
 										<div class="col-lg-12">
 											<div class="vEnqFormButton">
 											{{#with blockUsers}}
@@ -179,6 +181,7 @@
 									            <input type="submit" value="Send" class="vEnqsndEnqBtn"  id="{{_id}}" data-enquirySentBy={{enquirySentBy}} data-businessLink={{businessLink}}>
 									        </div>
 										</div>
+										{{/if}}
 									</div>
 								</div>
 								<!-- {{/with}} -->

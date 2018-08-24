@@ -45,6 +45,10 @@ Template.VendorGotLikes.helpers({
 								businessLikes[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
 							}
 						}
+						businessLikes[i].isUserDeleted = false;
+					}else{
+						businessLikes[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
+						businessLikes[i].isUserDeleted = true;
 					}
 					
 				}

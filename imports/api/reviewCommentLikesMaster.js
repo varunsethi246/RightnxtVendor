@@ -8,7 +8,7 @@ export const ReviewCommentLikes = new Mongo.Collection('reviewCommentLikes');
 
 if (Meteor.isServer) {
   // This code only runs on the server
-  Meteor.publish('reviewCommentLikes', function review(businessLink) {
+  Meteor.publish('reviewCommentLikes', function reviewCommentLikes(businessLink) {
     return ReviewCommentLikes.find({"businessLink": businessLink});
   });
 

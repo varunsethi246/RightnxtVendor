@@ -14,7 +14,7 @@
 	                    <p>{{createdAt}}</p>
 					</span>
 					<span class="vreportinfoButton pull-right">
-						<button type="button" class="btn btn-warning sendBusImgReportEmail" id="stateDelete {{_id}}" disabled="{{status}}">Done</button>
+						{{#if isUserDeleted}}<h5>Deleted User</h5>{{else}}<button type="button" class="btn btn-warning sendBusImgReportEmail" id="stateDelete {{_id}}" disabled="{{status}}">Done</button>{{/if}}
 						
 						<!-- <div class="modal fade" id="deleteDataModal-{{_id}}" role="dialog">
 								<div class="modal-dialog">

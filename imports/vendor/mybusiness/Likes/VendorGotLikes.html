@@ -12,7 +12,7 @@
 					<span class="UserInfoClass">
 						<div class="LikesUserName">
 							<!-- Ravi Jadhav -->
-							{{username}}
+							{{#if isUserDeleted}}&nbsp;<span>Deleted User</span>{{else}}{{username}}{{/if}}
 						</div>
 						<div class="LikesReviewsandFollow revClass">
 							<!-- 92 reviews, 217 Followers -->

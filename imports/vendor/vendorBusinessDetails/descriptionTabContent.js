@@ -170,16 +170,18 @@ Template.descriptionTabContent.helpers({
 				if (userObj){
 					if(userObj.profile.userProfilePic){
 
-							var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
-							if(pic){
-								allReviews[i].revProfilePic = pic.link();	
-							}
-							else{
-								allReviews[i].revProfilePic = "/users/profile/profile_image_dummy.svg";	
-							}
-						}else{
-							allReviews[i].revProfilePic = "/users/profile/profile_image_dummy.svg";
+						var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
+						if(pic){
+							allReviews[i].revProfilePic = pic.link();	
 						}
+						else{
+							allReviews[i].revProfilePic = "/users/profile/profile_image_dummy.svg";	
+						}
+					}else{
+						allReviews[i].revProfilePic = "/users/profile/profile_image_dummy.svg";
+					}
+				}else{
+					allReviews[i].revProfilePic = "/users/profile/profile_image_dummy.svg";
 				}
 				if(allReviews[i].tagedFriends && allReviews[i].tagedFriends.length != 0){
 					allReviews[i].tagedFriendsValidate = true;
@@ -189,7 +191,7 @@ Template.descriptionTabContent.helpers({
 						// console.log('userTagObj:',userTagObj);
 						var dataImgUser = '';
 						if (userTagObj) {
-
+							var tagfrndName = userTagObj.profile.name;
 							if(userTagObj.profile.userProfilePic){
 								var imgData = VendorImage.findOne({"_id":userTagObj.profile.userProfilePic});
 								if(imgData)	{
@@ -200,19 +202,17 @@ Template.descriptionTabContent.helpers({
 							}else{
 								dataImgUser = '/users/profile/profile_image_dummy.svg';
 							}
-							var obj = {
-								'tagedFriends'   : userTagObj.profile.name,
-								'tagedFriendsUrl': generateURLid(allReviews[i].tagedFriends[m]),
-								'userTagged':allReviews[i].tagedFriends[m],
-								'imagePath':dataImgUser,
-							}
-
 						}else{
-								dataImgUser = '/users/profile/profile_image_dummy.svg';
-
+							dataImgUser = '/users/profile/profile_image_dummy.svg';
+							var tagfrndName = 'Deleted User';
 						}
 
-
+						var obj = {
+							'tagedFriends'   : tagfrndName,
+							'tagedFriendsUrl': generateURLid(allReviews[i].tagedFriends[m]),
+							'userTagged':allReviews[i].tagedFriends[m],
+							'imagePath':dataImgUser,
+						}
 						tagedFriendsArray.push(obj);
 					}
 					allReviews[i].tagedFriendsArray = tagedFriendsArray;
@@ -227,6 +227,8 @@ Template.descriptionTabContent.helpers({
 					if(!allReviews[i].username){
 						allReviews[i].username = "Anonymous User";
 					}
+				}else{
+					allReviews[i].username = 'Deleted User';
 				}
 
 				if(allReviews[i].userId === Meteor.userId()){
@@ -341,7 +343,11 @@ Template.descriptionTabContent.helpers({
 								allReviews[i].userComments[k].userProfileImgPath = '/users/profile/profile_image_dummy.svg';
 							}
 							allReviews[i].userComments[k].userCommentDateAgo = moment(allReviews[i].userComments[k].userCommentDate).fromNow();
+						}else{
+							allReviews[i].userComments[k].commentUserName = 'Deleted User';
+							allReviews[i].userComments[k].userProfileImgPath = '/users/profile/profile_image_dummy.svg';
 						}
+						
 						if(allReviews[i].commentReply){
 							var commentReplyArr = [];
 							var rn = 0;
@@ -383,29 +389,32 @@ Template.descriptionTabContent.helpers({
 											replyObj.replyProfileImgPath = '/users/profile/profile_image_dummy.svg';
 										}
 										replyObj.commentReplyDateAgo = moment(allReviews[i].commentReply[l].commentReplyDate).fromNow();
-										var replySelector = {
-															"reviewId" 		: allReviews[i]._id,
-															"replyId"		: replyObj.replyId.toString(),
-															"likedByUserId"	: Meteor.userId(),
-															"commentId" 	: replyObj.userCommentID.toString(),
-														};
-										var checkCommentReplyLike =  ReviewCommentLikes.findOne(replySelector);
-
-										if(checkCommentReplyLike){
-											replyObj.replyLikeUnlike = true;	
-										}else{
-											replyObj.replyLikeUnlike = false;
-										}
-										var commentReplyLikeCount = ReviewCommentLikes.find({
-																		"reviewId" 		: allReviews[i]._id,
-																		"replyId" 		: replyObj.replyId.toString(),
-																		"commentId" 	: replyObj.userCommentID.toString(),
-																	}).fetch();
-										if(commentReplyLikeCount){
-											replyObj.commentReplyLikeCount = commentReplyLikeCount.length;
-										}
+									}else{
+										replyObj.commentReplyUserName = 'Deleted User';
+										replyObj.replyProfileImgPath = '/users/profile/profile_image_dummy.svg';
 									}
 
+									var replySelector = {
+														"reviewId" 		: allReviews[i]._id,
+														"replyId"		: replyObj.replyId.toString(),
+														"likedByUserId"	: Meteor.userId(),
+														"commentId" 	: replyObj.userCommentID.toString(),
+													};
+									var checkCommentReplyLike =  ReviewCommentLikes.findOne(replySelector);
+
+									if(checkCommentReplyLike){
+										replyObj.replyLikeUnlike = true;	
+									}else{
+										replyObj.replyLikeUnlike = false;
+									}
+									var commentReplyLikeCount = ReviewCommentLikes.find({
+																	"reviewId" 		: allReviews[i]._id,
+																	"replyId" 		: replyObj.replyId.toString(),
+																	"commentId" 	: replyObj.userCommentID.toString(),
+																}).fetch();
+									if(commentReplyLikeCount){
+										replyObj.commentReplyLikeCount = commentReplyLikeCount.length;
+									}
 									commentReplyArr.push(replyObj);
 									rn++;
 								}//if
@@ -417,6 +426,7 @@ Template.descriptionTabContent.helpers({
 						}else{
 							allReviews[i].userComments[k].commentReplyCount = 0;
 						}
+
 						if(allReviews[i].userComments[k]){
 							var selector = {
 												"reviewId" 		: allReviews[i]._id,

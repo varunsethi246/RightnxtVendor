@@ -97,6 +97,8 @@ Template.vendorEnquiry.helpers({
 									}else{
 										data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
 									}
+								}else{
+									data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
 								}
 					        	newobj.push(data[i]);
 					        } 
@@ -120,6 +122,8 @@ Template.vendorEnquiry.helpers({
 								}else{
 									data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
 								}
+							}else{
+								data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
 							}
 						}
 						return data;
@@ -163,6 +167,8 @@ Template.vendorEnquiry.helpers({
 									}else{
 										data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
 									}
+								}else{
+									data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
 								}
 					        	newobj.push(data[i]);
 					        } 
@@ -186,6 +192,8 @@ Template.vendorEnquiry.helpers({
 								}else{
 									data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
 								}
+							}else{
+								data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
 							}
 						}
 						return data;
@@ -231,6 +239,8 @@ Template.vendorEnquiry.helpers({
 									}else{
 										data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
 									}
+								}else{
+									data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
 								}
 					        	newobj.push(data[i]);
 					        } 
@@ -254,6 +264,8 @@ Template.vendorEnquiry.helpers({
 								}else{
 									data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
 								}
+							}else{
+								data[i].userProfilePic = "/users/profile/profile_image_dummy.svg";
 							}	
 						}
 						return data;
@@ -334,6 +346,13 @@ Template.vendorEnquiry.helpers({
 					}
 				}
 			}
+			var userObj = Meteor.users.findOne({'_id':enqData.enquirySentBy});
+			if(userObj){
+				enqData.isUserDeleted = false;
+			}else{
+				enqData.isUserDeleted = true;
+			}
+
 			// $('.vEnqFormImgOne').animate({ scrollTop: $(document).height() }, 1);
 			return enqData;			
 		}

@@ -58,6 +58,14 @@ Template.vendorReport.helpers({
 						}else{
 							reports[i].status = true;
 						}
+
+						var userObj = Meteor.users.findOne({'_id':reports[i].userid});
+						if(userObj){
+							reports[i].isUserDeleted = false;
+						}else{
+							reports[i].isUserDeleted = true;
+						}
+
 						reportDataReturn.reportBusinessArray.push(reports[i]);
 					}
 					if(reports[i].reportType == 'image')
@@ -67,6 +75,14 @@ Template.vendorReport.helpers({
 						}else{
 							reports[i].status = true;
 						}
+
+						var userObj = Meteor.users.findOne({'_id':reports[i].userid});
+						if(userObj){
+							reports[i].isUserDeleted = false;
+						}else{
+							reports[i].isUserDeleted = true;
+						}
+
 						reportDataReturn.reportImageArray.push(reports[i]);
 						
 					}
@@ -112,13 +128,16 @@ Template.businessReport.helpers({
 			}else{
 				userProfilePic = "/users/profile/profile_image_dummy.svg";
 			}
-			// console.log("userProfilePic: ",userProfilePic);
-			objImg = {
-				"userProfilePic":userProfilePic,
-			}
-			// console.log('objImg :',objImg);
-			return objImg;
+		}else{
+			userProfilePic = "/users/profile/profile_image_dummy.svg";
 		}
+
+		// console.log("userProfilePic: ",userProfilePic);
+		objImg = {
+			"userProfilePic":userProfilePic,
+		}
+		// console.log('objImg :',objImg);
+		return objImg;
 	}
 });
 
@@ -166,7 +185,6 @@ Template.imageReport.helpers({
 	'reportVendorImg':function(userid){
 		var userObj = Meteor.users.findOne({"_id":userid});
 		if (userObj){
-
 			if(userObj.profile.userProfilePic){
 				var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
 				if(pic){
@@ -178,12 +196,14 @@ Template.imageReport.helpers({
 			}else{
 				userProfilePic = "/users/profile/profile_image_dummy.svg";
 			}
-			// console.log("userProfilePic: ",userProfilePic);
-			objImg = {
-				"userProfilePic":userProfilePic,
-			}
-			return objImg;
+		}else{
+			userProfilePic = "/users/profile/profile_image_dummy.svg";
 		}
+		// console.log("userProfilePic: ",userProfilePic);
+		objImg = {
+			"userProfilePic":userProfilePic,
+		}
+		return objImg;
 	},
 
 });
