@@ -10,10 +10,10 @@ export const Enquiry = new Mongo.Collection('enquiry');
 if (Meteor.isServer) {
   // This code only runs on the server
 	Meteor.publish('vendorBusinessEnquiry', function vendorBusinessEnquiry() {
-		return Enquiry.find({});
+		return Enquiry.find({'deleteStatusVen' 	: false});
 	});
 	Meteor.publish('businessEnquiryCount', function businessEnquiryCount() {
-		return Enquiry.find({});
+		return Enquiry.find({'deleteStatusVen' : false});
 	});
 	 Meteor.publish('enquiryCount', function(businessLink) {
   		var userID = this.userId;
@@ -23,7 +23,7 @@ if (Meteor.isServer) {
 			// console.log('businessObj :',businessObj);
 			blockedUserArray = businessObj.blockedUsers;
 		}
-		Counts.publish(this, 'enquiryCount', Enquiry.find({'businessLink':businessLink,'businessStatus':'active','enquirySentBy': { $nin: blockedUserArray }}));
+		Counts.publish(this, 'enquiryCount', Enquiry.find({'businessLink':businessLink,'deleteStatusVen' : false,'businessStatus':'active','enquirySentBy': { $nin: blockedUserArray }}));
   	});
  //  	Meteor.publish('noOfEnqWeek', function() {
  //  		var days = 7;
@@ -72,7 +72,7 @@ Meteor.methods({
 			"userReadFlag"	    : 'unread',
 			"userSpecialFlag"	: 'noflag',
 			"userArchive"		: 'noArchived',
-		
+			'deleteStatusVen' 	: false
 		});	
 		return id;	
 	},
@@ -120,7 +120,8 @@ Meteor.methods({
 		return Enquiry.update({"_id":id},{$set:{"vendorSpecialFlag":value}});
 	},
 	'deleteEnquiry':function(id){
-		return Enquiry.remove({"_id":id});
+		// return Enquiry.remove({"_id":id});
+		return Enquiry.update({"_id":id},{$set:{'deleteStatusVen' : true}});
 	},
 	'updateEnquiryForArchive':function(id,value){
 		return Enquiry.update({"_id":id},{$set:{"vendorArchive":value}});

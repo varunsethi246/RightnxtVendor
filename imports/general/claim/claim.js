@@ -124,7 +124,8 @@ Template.claim.helpers({
   	var businessObj = Business.find({});
   	if(businessObj){
   		var ownerId = businessOwnerId;
-  		if(ownerId == "null"){
+  		console.log('ownerId :',ownerId);
+  		if(ownerId == null){
   			var statusClaim    = 'Claim your business';
   			var statusClass    = 'statusClass-g';
   			var newStatusClass = 'statusClass-green';
@@ -136,10 +137,10 @@ Template.claim.helpers({
   		}
 
   		var data = {
-  			statusClaim 	  : statusClaim,
-  			statusClass 	  : statusClass,
-  			newStatusClass 	: newStatusClass,
-  			id 				      : this._id,
+  			statusClaim 	  	: statusClaim,
+  			statusClass 	  	: statusClass,
+  			newStatusClass 		: newStatusClass,
+  			id 				    : this._id,
   		}
   	}
   	return data;

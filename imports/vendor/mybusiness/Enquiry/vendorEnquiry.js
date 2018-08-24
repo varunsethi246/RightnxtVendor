@@ -43,7 +43,7 @@ Template.vendorEnquiry.helpers({
 			var blockedUserArray = businessObj.blockedUsers;
 			var tabStatusVar = Session.get("tabStatus");
 			if(tabStatusVar == "archiveTab"){
-				var data = Enquiry.find({"businessid":businessObj._id,"vendorArchive":"archived","enquirySentBy": { $nin: blockedUserArray }},{sort: {enquiryCreatedAt:-1}}).fetch();	
+				var data = Enquiry.find({"businessid":businessObj._id,'deleteStatusVen': false,"vendorArchive":"archived","enquirySentBy": { $nin: blockedUserArray }},{sort: {enquiryCreatedAt:-1}}).fetch();	
 				
 				if(data){
 					if(Session.get("nameKey")){
@@ -108,7 +108,7 @@ Template.vendorEnquiry.helpers({
 				}
 			}else if(tabStatusVar == "flagTab"){
 				var blockedUserArray = businessObj.blockedUsers;
-				var data = Enquiry.find({"businessid":businessObj._id,"vendorSpecialFlag":"flag","enquirySentBy": { $nin: blockedUserArray }},{sort: {enquiryCreatedAt:-1}}).fetch();	
+				var data = Enquiry.find({"businessid":businessObj._id,'deleteStatusVen': false,"vendorSpecialFlag":"flag","enquirySentBy": { $nin: blockedUserArray }},{sort: {enquiryCreatedAt:-1}}).fetch();	
 
 				
 				if(data){
@@ -175,7 +175,7 @@ Template.vendorEnquiry.helpers({
 
 			}else if(tabStatusVar == "activeTab"){
 				var blockedUserArray = businessObj.blockedUsers;
-				var data = Enquiry.find({"businessid":businessObj._id,"vendorArchive":"noArchived","enquirySentBy": { $nin: blockedUserArray }},{sort: {enquiryCreatedAt:-1}}).fetch();
+				var data = Enquiry.find({"businessid":businessObj._id,'deleteStatusVen':false,"vendorArchive":"noArchived","enquirySentBy": { $nin: blockedUserArray }},{sort: {enquiryCreatedAt:-1}}).fetch();
 
 				if(data){
 					// Session is for Search in Enquiry search only
@@ -355,16 +355,16 @@ Template.allEnquries.events({
 		var thisid = event.currentTarget;
 		var id = $(thisid).parent().parent().parent().parent().parent().parent().parent().attr('id');
 		var enquiryObj = Enquiry.findOne({'_id':id});
-		if(enquiryObj){
-			if(enquiryObj.enquiryDesc.length > 0){
-				for (var i = 0; i < enquiryObj.enquiryDesc.length; i++) {
-					if(enquiryObj.enquiryDesc[i].commentImage){
-						var imgId = enquiryObj.enquiryDesc[i].commentImage;
-						Meteor.call('removeEnquiryImage',imgId ,function(err,rslt){});
-					}
-				}
-			}
-		}
+		// if(enquiryObj){
+		// 	if(enquiryObj.enquiryDesc.length > 0){
+		// 		for (var i = 0; i < enquiryObj.enquiryDesc.length; i++) {
+		// 			if(enquiryObj.enquiryDesc[i].commentImage){
+		// 				var imgId = enquiryObj.enquiryDesc[i].commentImage;
+		// 				Meteor.call('removeEnquiryImage',imgId ,function(err,rslt){});
+		// 			}
+		// 		}
+		// 	}
+		// }
 		Meteor.call('deleteEnquiry',id ,function(err,rslt){
 		});	
 		$('.modal-backdrop').hide();

@@ -551,7 +551,8 @@ Meteor.methods({
 		Business.update(
 			{_id: id},
 			{$set : { 
-				"status"  : "inactive",
+				"status"  			: "inactive",
+				"businessOwnerId"	: null,
 				}
 			}, 
 			function(error,result){
