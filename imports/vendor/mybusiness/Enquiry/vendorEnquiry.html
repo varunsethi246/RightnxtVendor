@@ -124,7 +124,9 @@
 										</div>
 										<div class="col-lg-12">
 											<div class="vEnqFormButton">
-												<button class="btn pull-right"  data-toggle="modal" data-target="#vEnqBlock">Block User</button>
+											{{#with blockUsers}}
+												<button class="btn pull-right"  data-toggle="modal" data-target="{{#if blockStatus}}#vEnqUnblock{{else}}#vEnqBlock{{/if}}">{{blockText}}</button>
+											{{/with}}
 											</div>
 											<div class="modal fade" id="vEnqBlock" role="dialog">
 												<div class="modal-dialog">
@@ -138,6 +140,23 @@
 											         		<div class="body-close">
 											                	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 												            	<button type="button" class="btn btn-danger btn-ok blockedUsers" id="{{businessid}}-{{enquirySentBy}}" data-dismiss="modal">Block User</button>
+											                </div>
+											            </div>
+											        </div>
+												</div>
+											</div>
+											<div class="modal fade" id="vEnqUnblock" role="dialog">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header delete-close">
+											        		<a href="#" data-dismiss="modal" aria-hidden="true" class="close pull-left"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i></a>
+											   			 </div>
+											            <div class="modal-body">
+											            	<p class="text-center">Do you want to unblock this User?</p>
+											            	<p class="text-center">All Enquiries from this User will be shown to you</p>
+											         		<div class="body-close">
+											                	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+												            	<button type="button" class="btn btn-danger btn-ok unblockedUsers" id="{{businessid}}-{{enquirySentBy}}" data-dismiss="modal">Unblock User</button>
 											                </div>
 											            </div>
 											        </div>

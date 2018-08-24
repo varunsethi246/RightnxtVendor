@@ -636,6 +636,21 @@ Meteor.methods({
 		);
 		return id;
 	},
+	'updateUnblockUser':function(formValues){
+		Business.update(
+			{_id: formValues.currentBusiness},
+			{$pull : { 
+				"blockedUsers"  : formValues.currentUser,
+				}
+			}, 
+			function(error,result){
+				if(error){
+					return error;
+				}
+			}
+		);
+		return id;
+	},
 	'updateVendorPhotos':function(businessLink,vendorId,formValues){
 		for(var i = 0; i<formValues.length; i++){
 			Business.update(

@@ -23,7 +23,8 @@ if (Meteor.isServer) {
 			// console.log('businessObj :',businessObj);
 			blockedUserArray = businessObj.blockedUsers;
 		}
-		Counts.publish(this, 'enquiryCount', Enquiry.find({'businessLink':businessLink,'deleteStatusVen' : false,'businessStatus':'active','enquirySentBy': { $nin: blockedUserArray }}));
+		// Counts.publish(this, 'enquiryCount', Enquiry.find({'businessLink':businessLink,'deleteStatusVen' : false,'businessStatus':'active','enquirySentBy': { $nin: blockedUserArray }}));
+		Counts.publish(this, 'enquiryCount', Enquiry.find({'businessLink':businessLink,'businessStatus':'active','deleteStatusVen' : false}));
   	});
  //  	Meteor.publish('noOfEnqWeek', function() {
  //  		var days = 7;
@@ -109,6 +110,10 @@ Meteor.methods({
 				"userReadFlag"	    : 'unread',
 				}
 			});
+	},
+
+	'updateCommentBlock':function(formValues){
+		return Enquiry.update({"enquirySentBy":formValues.currentUser,"enquiryDesc.commentBy":'User'},{$set:{"enquiryDesc.$.commentblock":false}});
 	},
 
 	// For Vendor Side

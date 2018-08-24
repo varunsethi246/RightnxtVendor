@@ -20,6 +20,7 @@ var filesM = [];
 var filesV = [];
 var counterImg = 0;
 var counterMenu = 0;
+var uploader = new ReactiveVar();
 Template.addvendorImagesVideos.onRendered(function () {
 	var businessLink = FlowRouter.getParam('businessLink');
 	Session.set('SessionBusinessLink',businessLink);

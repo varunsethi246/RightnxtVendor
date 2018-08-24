@@ -47,15 +47,7 @@ function printDiv() {
 
 }
 
-Template.vendorMyOffers.onCreated(function() {
-    this.currentUpload = new ReactiveVar(false);
-});
-
 Template.vendorMyOffers.helpers({
-	currentUpload: function() {
-        return Template.instance().currentUpload.get();
-    },
-    
 	businessName(){
 		var businessLink = FlowRouter.getParam('businessLink');
 		var businessName = Business.findOne({"businessLink":businessLink, "status":"active"},{"businessTitle":1});
@@ -364,7 +356,7 @@ Template.vendorMyOffers.events({
 		        }, false);
 
 		        upload.on('start', function () {
-		          template.currentUpload.set(this);
+		          // template.currentUpload.set(this);
 		        });
 
 		        upload.on('end', function (error, fileObj) {
@@ -489,7 +481,7 @@ Template.vendorMyOffers.events({
 						}	
 					);
 		          }
-		          template.currentUpload.set(false);
+		          // template.currentUpload.set(false);
 		        });
 
 		        upload.start();

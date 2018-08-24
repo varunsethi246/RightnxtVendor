@@ -30,6 +30,29 @@ import './vendorEnquiry.html';
 // });
 Template.vendorEnquiry.helpers({
 	// Enquiry enquiryImages
+	blockUsers:function(){
+		var businessLink = FlowRouter.getParam('businessLink');
+		var businessObj = Business.findOne({"businessLink":businessLink,"status": "active"});
+
+		if(businessObj){
+			var blockedUserArray = businessObj.blockedUsers;
+		}
+		var id = this._id;
+		var enqData = Enquiry.findOne({'_id':id,"enquirySentBy": { $nin: blockedUserArray }});
+		// console.log('enqData:',enqData);
+		if(enqData){
+			var data = {
+				'blockText'   : 'Block User',
+				'blockStatus' : false,
+			};
+		}else{
+			var data = {
+				'blockText'   : 'Unblock User',
+				'blockStatus' : true,
+			};
+		}		
+		return data;
+	},
 	vendorEnquiryBusName:function(){
 		var businessLink = FlowRouter.getParam('businessLink');
 		var data = Business.findOne({"businessLink":businessLink,"status": "active"});
@@ -40,10 +63,11 @@ Template.vendorEnquiry.helpers({
 		var businessObj = Business.findOne({"businessLink":businessLink,"status": "active"});
 
 		if(businessObj){
-			var blockedUserArray = businessObj.blockedUsers;
+			// var blockedUserArray = businessObj.blockedUsers;
 			var tabStatusVar = Session.get("tabStatus");
 			if(tabStatusVar == "archiveTab"){
-				var data = Enquiry.find({"businessid":businessObj._id,'deleteStatusVen': false,"vendorArchive":"archived","enquirySentBy": { $nin: blockedUserArray }},{sort: {enquiryCreatedAt:-1}}).fetch();	
+				var data = Enquiry.find({"businessid":businessObj._id,'deleteStatusVen': false,"vendorArchive":"archived"},{sort: {enquiryCreatedAt:-1}}).fetch();	
+				// var data = Enquiry.find({"businessid":businessObj._id,"vendorArchive":"archived","enquirySentBy": { $nin: blockedUserArray }},{sort: {enquiryCreatedAt:-1}}).fetch();	
 				
 				if(data){
 					if(Session.get("nameKey")){
@@ -107,9 +131,9 @@ Template.vendorEnquiry.helpers({
 					return data;
 				}
 			}else if(tabStatusVar == "flagTab"){
-				var blockedUserArray = businessObj.blockedUsers;
-				var data = Enquiry.find({"businessid":businessObj._id,'deleteStatusVen': false,"vendorSpecialFlag":"flag","enquirySentBy": { $nin: blockedUserArray }},{sort: {enquiryCreatedAt:-1}}).fetch();	
-
+				// var blockedUserArray = businessObj.blockedUsers;
+				// var data = Enquiry.find({"businessid":businessObj._id,"vendorSpecialFlag":"flag","enquirySentBy": { $nin: blockedUserArray }},{sort: {enquiryCreatedAt:-1}}).fetch();	
+				var data = Enquiry.find({"businessid":businessObj._id,"vendorSpecialFlag":"flag",'deleteStatusVen': false},{sort: {enquiryCreatedAt:-1}}).fetch();	
 				
 				if(data){
 					if(Session.get("nameKey")){
@@ -174,8 +198,9 @@ Template.vendorEnquiry.helpers({
 				}
 
 			}else if(tabStatusVar == "activeTab"){
-				var blockedUserArray = businessObj.blockedUsers;
-				var data = Enquiry.find({"businessid":businessObj._id,'deleteStatusVen':false,"vendorArchive":"noArchived","enquirySentBy": { $nin: blockedUserArray }},{sort: {enquiryCreatedAt:-1}}).fetch();
+				// var blockedUserArray = businessObj.blockedUsers;
+				// var data = Enquiry.find({"businessid":businessObj._id,"vendorArchive":"noArchived","enquirySentBy": { $nin: blockedUserArray }},{sort: {enquiryCreatedAt:-1}}).fetch();
+				var data = Enquiry.find({"businessid":businessObj._id,'deleteStatusVen': false,"vendorArchive":"noArchived"},{sort: {enquiryCreatedAt:-1}}).fetch();
 
 				if(data){
 					// Session is for Search in Enquiry search only
@@ -279,6 +304,7 @@ Template.vendorEnquiry.helpers({
 		}else{
 			id = '';
 		}
+
 		var enqData = Enquiry.findOne({'_id':id});
 		// console.log('enqData:',enqData);
 		if(enqData){
@@ -413,6 +439,29 @@ Template.vendorEnquiry.events({
 			var allBlockusers = $.inArray(formValues.currentUser,data.blockedUsers);
 			if(allBlockusers == -1) {
 				Meteor.call('updateBlockUser',formValues,function(error,result){});
+				Session.set("EnqIDSes",'');
+				$('.modal-backdrop').hide();
+			}
+		}
+		
+		 
+	},
+
+	'click .unblockedUsers': function(event){
+		var businessUser = $(event.currentTarget).attr('id');
+		var currentUserArray = businessUser.split("-");
+		
+		formValues = {
+			'currentBusiness' 	: currentUserArray[0],
+			'currentUser'  		: currentUserArray[1]
+		}
+
+		var data = Business.findOne({"_id":formValues.currentBusiness,"status": "active"});
+		if(data){
+			var allBlockusers = $.inArray(formValues.currentUser,data.blockedUsers);
+			if(allBlockusers >= 0) {
+				Meteor.call('updateUnblockUser',formValues,function(error,result){});
+				Meteor.call('updateCommentBlock',formValues,function(error,result){});
 				Session.set("EnqIDSes",'');
 				$('.modal-backdrop').hide();
 			}

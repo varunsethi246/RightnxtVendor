@@ -20,25 +20,28 @@
              <div class="vEnqFormImgOne">
                 <h4>Description</h4>
                 {{#each enquiryDesc}}
-                    <div class="row">
-                        <div class="col-lg-8 {{posClass}} formBreakWord">
-                        	{{#if comment}}
-	                            <div class="{{posClassTringl}} {{posClass}}-bkgBorder"></div>
-								<p class="{{posClass}}-bkg">{{comment}}</p>
-							{{else}}
-								<div class="{{posClassTringl}} {{posClass}}-bkgBorder displayNone"></div>
-								<p class="{{posClass}}-bkg displayNone">{{comment}}</p>
-							{{/if}}
-							{{#if enquiryImgVal}}
-                             	<div class="vEnqFormImgThreeImg">
-                                	<img src="{{enquiryPhoto}}" class="img-responsive">
-								</div>
-							{{/if}}
-							<!-- <div class="{{posClassTringl}}-msgTimeStmp">
-								{{commentsTS}}
-							</div> -->
-                        </div>
-                    </div>
+                	{{#if commentblock}}
+                	{{else}}
+	                    <div class="row">
+	                        <div class="col-lg-8 {{posClass}} formBreakWord">
+	                        	{{#if comment}}
+		                            <div class="{{posClassTringl}} {{posClass}}-bkgBorder"></div>
+									<p class="{{posClass}}-bkg">{{comment}}</p>
+								{{else}}
+									<div class="{{posClassTringl}} {{posClass}}-bkgBorder displayNone"></div>
+									<p class="{{posClass}}-bkg displayNone">{{comment}}</p>
+								{{/if}}
+								{{#if enquiryImgVal}}
+	                             	<div class="vEnqFormImgThreeImg">
+	                                	<img src="{{enquiryPhoto}}" class="img-responsive">
+									</div>
+								{{/if}}
+								<!-- <div class="{{posClassTringl}}-msgTimeStmp">
+									{{commentsTS}}
+								</div> -->
+	                        </div>
+	                    </div>
+	                {{/if}}
                 {{/each}}
             </div>
 			<!-- <div class="vEnqFormImgTwo">
