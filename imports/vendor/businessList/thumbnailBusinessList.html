@@ -1,11 +1,11 @@
 <template name="thumbnailBusinessList">
-	<div class="thumbBusList">
+	<div class="thumbBusList {{#if isGridViewVisible }}{{else}}col-lg-12 col-md-6{{/if}}">
 		<div class="row">
 			{{#if isGridViewVisible }}
 				<!-- {{#if gridviewBusinessList}} -->
 						{{#each gridviewBusinessList}}
 								<!-- Grid View -->
-								<div class="col-lg-4 gridViewBusList {{busNoOffer}}">
+								<div class="col-lg-4 gridViewBusList {{busNoOffer}}" id={{_id}} data-offer={{busNoOffer}}>
 									<div class="thumbBusDiv">
 										<div class="thumImgDim">
 											<div class="enqRatingBus">
@@ -79,7 +79,7 @@
 			{{#if isMapViewVisible }}
 				{{#each gridviewBusinessList}}
 					<!-- Map View -->
-						<div class="col-lg-11 col-xs-12 mapViewBusList {{busNoOffer}}" style="padding:0 5px !important">
+						<div class="col-lg-11 col-xs-12 mapViewBusList {{busNoOffer}}" style="padding:0 5px !important" id={{_id}} data-target={{busNoOffer}}>
 							<div class="thumbBusDivs">
 								<div class="row">
 									<div class="thumImgDims col-xs-5 col-lg-5" >
