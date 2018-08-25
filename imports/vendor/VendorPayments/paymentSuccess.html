@@ -10,7 +10,7 @@
         {{#with bannerInvoiceDataFinal}}
             <div class="manageRowBanner">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 noPaddingxs">
                         <img src="/images/logo.png" class="bannerInvoiceLogo">
                         <!-- <h3>{{companyName}}</h3> -->
                         <hr class="bannerHrLine">
@@ -22,19 +22,19 @@
                             <div class="bannerTextFont">Invoice Number: <span class="bannerSpanTextFont">{{invoiceNumber}}</span></div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 bannerDataTextFont">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 bannerDataTextFont">
                         <div class="bannerTextFont">From</div>
                         <div class="">{{companyName}}</div>
                         <div>{{companyAddress}},</div>
                         <div>{{companyCity}}, {{companyState}} - {{companyPincode}}</div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 bannerDataTextFont">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 bannerDataTextFont">
                         <div class="bannerTextFont">To</div>
                         <div class="">{{businessTitle}}</div>
                         <div>{{businessAddress}}, {{businessArea}},</div>
                         <div>{{businessCity}}, {{businessState}} - {{businessZipCode}}</div>
                     </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bannerMargin ">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bannerMargin noPaddingxs table-responsive">
                         <table class="table table-bordered table-striped table-hover tablePayDetails">
                             <thead>
                                 <th>Category</th>		                			
@@ -69,13 +69,16 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <hr class="bannerHrLine">
+                        <hr class="bannerHrLine hidden-xs">
                     </div>
+                    
+                    <hr class="bannerHrLine visible-xs col-xs-12">
+
                     <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div>Total Price: {{totalPrice}}</div>
                     </div> -->
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bannerInvMar">
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 bannerTermAndCond">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bannerTermAndCond">
                             <h4><b>Terms &amp; Conditions</b></h4>
                             <p>1) xxx xxx xxx xxx xxx xxx</p> 						
                             <p>2) xxx xxx xxx xxx xxx xxx</p>

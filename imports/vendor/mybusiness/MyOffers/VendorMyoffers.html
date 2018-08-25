@@ -18,7 +18,7 @@
             	</div>
              	
             	<div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12 offerFormDiv">
-              		<label class="col-lg-8 col-md-8 col-sm-7 col-xs-7 offerPara"> Select month for duration: </label>
+              		<label class="col-lg-8 col-md-8 col-sm-7 col-xs-7 offerPara vofferPara"> Select month for duration: </label>
               		<input type="number" min="1" id="" name="numOfMonths" value="{{#if monthChange}}{{monthChange}}{{else}}1{{/if}}" class="numOfMonths text-center col-lg-2 col-md-2 col-sm-2 col-xs-2"> &nbsp; Months
             	</div>
             	<div class="hidden">
@@ -27,6 +27,10 @@
             	</div>
           </form>
         </div>
+
+        <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 bussVendorOfferPayment hidden-lg">
+			{{> offerPayment}}
+		</div>
 		
  		{{> offerAccordian }}
  		
@@ -37,7 +41,7 @@
 		</div>
 	</div>
 	
-	<div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 bussVendorOfferPayment">
+	<div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 bussVendorOfferPayment hidden-md hidden-sm hidden-xs">
 		{{> offerPayment}}
 	</div>		
 	

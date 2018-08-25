@@ -156,23 +156,12 @@ background-repeat:no-repeat;
 background-size:100% 100%
 }
 
-.addPhotoTxt {
-height:18px!important;
-padding:0!important;
-position:absolute!important;
-right:15px!important;
-cursor:pointer!important;
-opacity:.8!important;
-bottom:-27px!important;
-z-index:1!important
-}
-
 .prfContent {
 padding-top:11px!important
 }
 
 .prfContent h3 {
-font-size:25px!important;
+font-size:24px!important;
 padding:0!important;
 margin:0!important;
 font-weight:400!important;

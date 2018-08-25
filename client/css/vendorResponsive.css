@@ -39,10 +39,10 @@ padding-top:4.5%
 height:140px
 }
 
-.vPhotosUserRowSec {
+/*.vPhotosUserRowSec {
 padding-left:0;
 padding-right:0
-}
+}*/
 
 .delBusiImg {
 right:2%
@@ -255,7 +255,7 @@ padding-left:0
 }
 
 .vreportinfoButton > button {
-padding:1px 12px
+padding:1px 12px;margin-top: 50%;
 }
 
 .vreportinfoButton {

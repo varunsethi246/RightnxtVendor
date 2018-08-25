@@ -3493,7 +3493,8 @@ padding-left:10px
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
-.venMerRef {word-break: break-all;}
+.offerPay{box-shadow: 0px 0px 6px #aaa;margin-bottom: 30px;}
+.recBorder{margin-top: -2%;}
 .footerWrapper-xs {
 padding-left:45px
 }
@@ -3733,7 +3734,15 @@ right:236px!important
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
-#businessMenuCollapse > li,#businessMenuCollapse{padding-left: 0px;padding-right: 0px;}
+.viewModal{margin-top: 5px;}
+.offerPay{box-shadow: 0px 0px 6px #aaa;margin-bottom: 30px;}
+.viphotoUpload{margin-top: 8%!important;}
+.sidbarPadAdj.closeSubMenuTab{padding-left: 15px!important;padding-right: 15px!important;}
+.vendorLayoutCss{margin-left: 2%!important;}
+.recBorder{margin-top: -2.5%!important;}
+.noPaddingsm{padding-left: 0px;padding-right: 0px;}
+.prfContent h3{font-size: 30px!important;}
+#businessMenuCollapse > li,#businessMenuCollapse{padding-left: 0px;padding-right: 8px;}
 .products {
 height:110px
 }
@@ -3773,10 +3782,6 @@ height:40px
 .form4General {
 padding-left:0!important;
 padding-right:0!important
-}
-
-.notifiacationUsers {
-left:12%!important
 }
 
 .homepageForms-xs {
@@ -3945,6 +3950,9 @@ padding:4px 5px!important
 }
 
 @media screen and (min-width:320px) and (max-width:767px) {
+	.saveoffer {padding-left:8px!important}
+	.offerPay{box-shadow: 0px 0px 6px #aaa;margin-bottom: 30px;}
+	.bannerInvoiceLogo{padding-right: 15px;padding-left: 15px;}
 	.noPaddingxs{padding-right: 0px;padding-left: 0px;}
 	.notifiacationUsers {
 	position:absolute;
@@ -4234,12 +4242,10 @@ text-align: center
 }
 @media screen and (min-width: 1920px){
 	.aboutNavbar {padding-left: 72px;}
+	.notifiacationUsers{left: 8%;}
+	.dropmenu{width: 12%;}
+	.vOfferTopImg{width: 26%;}
 }
-/*@media (min-width: 768px){
-	.aboutNavbar{
-		margin-left: 28%;
-	}
-}*/
 .otpOuterDiv{border: 1px solid #bbbbbb;margin-top: 15px;}
 .busiTimeOpenHrs{margin-top: 10px;margin-bottom: 0px;}
 .noPaddingGeneral{padding-right: 0px;padding-left: 0px;}
@@ -4283,6 +4289,67 @@ text-align: center
 .prfSpan{left: 0px!important;top: 0px!important;}
 @media only screen and (orientation: landscape) {
 	@media screen and (min-width: 320px) and (max-width: 767px) {
+		.vOfferTopImg{width: 36%!important}
 		.notifiacationUsers {left: 48%;}
+		.dropmenu{width: 12%;}
+		.addPhotoTxt{right: 41%!important;}
+		.proLeftMargDiv{margin-left: -12%;}
+		.uploadPhotoSize{height: 185px!important;}
+		.vPhotosYouUploadTxt{margin-top: 7px!important;}
+		.viphotoUpload{margin-top: 6%!important;}
+		.vofferPara{width: 65.5%;}
+		.expireLabelfromDate{width: 10%;}
+		.fromDate{width: 8%;}
+		.toVen2Buss{width: 4%!important;}
+		.toVen2Buss1,.vtoVen2Buss1{width: 43%;}
+		.fromDateBuss,.toDateBusiness,.veditOfferOfferImg{width: 40%;}
+		.body-close{margin-left: 38%!important;}
+	}
+	@media screen and (min-width: 1024px) and (max-width: 1366px) {
+		.addPhotoTxt{right: 35px!important;}
+	}
+	@media screen and (max-width: 1024px) and (min-width: 768px){
+		.viphotoUpload{position: absolute;right: 0px;top: 3%;}
+		.vPhotosYoui{margin-bottom: 3%!important;}
+		.vPhotosYouUpload{padding: 20px 12px!important;}
+	}
+	#businessMenuCollapse{padding-left: 0px;padding-right: 0px;}
+}
+@media only screen and (orientation: portrait) {
+	@media screen and (max-width: 991px) and (min-width: 768px){
+		.dropmenu{width: 12%}
+		.notifiacationUsers {left:4%!important}
+		.proLeftMargDiv{margin-left: -4%;}		
+		.vPhotosYouRepeatImgO {height: 115px!important;}
+	}
+	@media screen and (min-width: 320px) and (max-width: 767px) {
+		.locIcn {margin-top: 14%!important;}
+		.vPhotosYouNewBtn.publishUserPic{float: none!important;position: relative;top: 4px;}
+		.vPhotosYouRepeatImgO{height: 105px!important;}
+		.vDragText{font-size: 15px!important;}
+		.viphotoUpload{margin-top: 15%!important;}
+		.vPhotosYouUploadImg{width: 25%;float: left;}
+		.vPhotosYouUploadTxt{width: 70%;margin-top: 9px!important;}
+		.addPhotoTxt {
+			height:18px!important;
+			padding:0!important;
+			position:absolute!important;
+			right:15px!important;
+			cursor:pointer!important;
+			opacity:.8!important;
+			bottom:-27px!important;
+			z-index:1!important
+		}
+		.uploadPhotoSize{height: 115px!important;}
+	}
+	@media screen and (min-width: 992px) and (max-width: 1199px){
+		.viphotoUpload{position: absolute;right: 0px;top: 3%;}
+		.vPhotosYoui{margin-bottom: 3%!important;}
+		.vPhotosYouUpload{padding: 20px 12px!important;}
+		.vPhotosYouRepeatImgO {height: 125px!important;}
 	}
 }
+.venMerRef {word-break: break-all;}
+.numOfMonths,.offrdInput{border: 1px solid #ccc;}
+.modaledit{overflow-y: scroll;}
+.saveoffer .col-lg-12{padding-left: 0px;}

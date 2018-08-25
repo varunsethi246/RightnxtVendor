@@ -808,9 +808,9 @@ font-weight:700;
 color:#3c8dbc
 }
 
-.saveoffer {
+/*.saveoffer {
 padding-left:0!important
-}
+}*/
 
 .bold {
 font-weight:400
@@ -2910,10 +2910,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-size: 20px !important;
     cursor: pointer;
 }
-.table-responsive .table {
+/*.table-responsive .table {
     max-width: none !important;
     -webkit-overflow-scrolling: touch !important;
-}
+}*/
 .myTable, .hrTableHeader {
     text-align: center;
 }
