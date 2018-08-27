@@ -55,14 +55,14 @@
 			{{#if isInRole 'user'}}
 			 <div class="notifyreportWrapper">
 				<h2 class="notifyWrapper">All Notifications</h2>
-				<hr class="notify">
+				<hr class="notify col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="box-body">
 					<!-- {{#if AllnotifCounts}} -->
 						{{#each notifRes}}
-							<div class="{{statusBackground}} notifRowBunch" id="{{id}}">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  {{statusBackground}} notifRowBunch" id="{{id}}">
 								<span class="col-lg-12 col-md-12 col-sm-12 col-xs-12  notifyBody"> {{ notifBody }} <i class="fa fa-trash fa-lg pull-right deleteTrash"></i> </span>
 								<span class="col-lg-12 col-md-12 col-sm-12 col-xs-12 notidate"> {{ createdAt }} </span>
-								<hr class="hrViewAll">
+								<hr class="hrViewAll col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							</div>
 						{{/each}}
 					<!-- {{else}}
@@ -77,14 +77,14 @@
 			{{#if isInRole 'Vendor'}}
 			<div class="notifyreportWrapper">
 				<h2 class="notifyWrapper">All Notifications</h2>
-				<hr class="notify">
+				<hr class="notify col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="box-body">
 					<!-- {{#if AllnotifCounts}} -->
 						{{#each notifRes}}
-							<div class="{{statusBackground}} notifRowBunch" id="{{id}}">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  {{statusBackground}} notifRowBunch" id="{{id}}">
 								<span class="col-lg-12 col-md-12 col-sm-12 col-xs-12  notifyBody"> {{ notifBody }} <i class="fa fa-trash fa-lg pull-right deleteTrash"></i> </span>
 								<span class="col-lg-12 col-md-12 col-sm-12 col-xs-12 notidate"> {{ createdAt }} </span>
-								<hr class="hrViewAll">
+								<hr class="hrViewAll col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							</div>
 						{{/each}}
 					<!-- {{else}}

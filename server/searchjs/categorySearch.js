@@ -12,7 +12,8 @@ SearchSource.defineSource('categories', function(searchText, options) {
       {level1: regExp},
       {level2: regExp},
       {level3: regExp},
-      {level4: regExp}
+      {level4: regExp},
+      {menuStatus:'Enable'}
       // {tags: regExp}
     ]};
 
