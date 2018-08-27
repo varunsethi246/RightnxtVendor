@@ -376,6 +376,9 @@ Template.vendorEnquiry.onRendered(function(){
 Template.allEnquries.events({
 	
 	'click .readEnClass':function(event){
+		$('html, body').animate({
+	        'scrollTop' : $("#vScrollToEnquiry").position().top
+	    });
 		var id = $(event.currentTarget).parent().attr('id');
 		Session.set("EnqIDSes",id);
 
@@ -416,10 +419,13 @@ Template.allEnquries.events({
 	},
 	
 	'mouseover .readEnClass':function(event){
-		var thisid = event.currentTarget;
-		var id = $(thisid).parent().attr('id');
-		var applyClass = "#"+id ;
-		$(applyClass).children().css('background','#ccc');
+        var windowWidth = $(window).width();
+		if(windowWidth >=1024){
+			var thisid = event.currentTarget;
+			var id = $(thisid).parent().attr('id');
+			var applyClass = "#"+id ;
+			$(applyClass).children().css('background','#ccc');
+		}
 	},
 	'mouseleave .readEnClass':function(event){
 		var thisid = event.currentTarget;

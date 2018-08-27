@@ -307,7 +307,7 @@ position:relative
 
 .flagEnq {
 right:-12px;
-top:-12px!important
+top:-12px;
 }
 
 .delEnq {
@@ -341,7 +341,7 @@ margin-left:0!important
 }
 
 .vEnqUserAdj {
-font-size:11px
+font-size:12px;
 }
 
 .vEnqActiveDiv span {
@@ -2402,7 +2402,8 @@ border-style:solid;
 border-color:#ccc;
 border-image:initial;
 margin-left:8px;
-padding:4px 0 0 6px
+padding:4px 0 0 6px;
+text-align: center;
 }
 .businessDetailsreview:hover{
 color:#f89b1c;
@@ -2417,7 +2418,8 @@ cursor:pointer;
 border-width:1px;
 border-style:solid;
 border-color:#ccc;
-padding:2px 0 2px 7px
+padding:2px 0 2px 7px;
+text-align: center;
 }
 
 .reportBox:hover {
@@ -3454,7 +3456,7 @@ border-radius:100%
 .userCommDt {
 font-size:11px;
 color:#999;
-padding-left:50px
+/*padding-left:50px*/
 }
 
 .userCommentText {
@@ -3517,7 +3519,7 @@ cursor:pointer
 .userCommRepDt {
 font-size:11px;
 color:#999;
-padding-left:50px;
+padding-left:30px;
 padding-right:0;
 margin-top:10px
 }

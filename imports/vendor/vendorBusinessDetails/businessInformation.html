@@ -84,7 +84,7 @@
 	    	{{/if}}
 	    </div>
 
-	    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 owner_lft">
+	    <div class="col-lg-3 col-md-4 col-sm-3 col-xs-4 owner_lft">
 	    	{{#if or ownerPhoto ownerDesc}}
 		    	<h4>About Owner</h4>
 		    {{/if}}
@@ -100,7 +100,7 @@
 			    {{/if}}
 			{{/if}}
 	    </div>
-	    <div class="aboutOwnerContent {{#if ownerPhoto}}col-lg-9 col-md-9 col-sm-9 col-xs-12 owner_rht{{else}}col-lg-12{{/if}}" id="reviewslide">
+	    <div class="aboutOwnerContent {{#if ownerPhoto}}col-lg-9 col-md-8 col-sm-9 col-xs-12 owner_rht{{else}}col-lg-12{{/if}}" id="reviewslide">
 	    	{{#if isInRole 'admin'}}
 		        	<p>
 		        		{{> editableText collection="business" field="ownerDesc"}}

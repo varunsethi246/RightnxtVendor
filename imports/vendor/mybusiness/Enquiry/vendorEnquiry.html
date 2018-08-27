@@ -20,7 +20,7 @@
 				                    <div class="input-group  ">
 				                    	<!-- <input type="text" list="enuiryListShow" class="form-control vendorEnquiryFormSearch" placeholder="Search" name="vendorEnqSearch"> -->
 				                    	<input type="text" class="form-control vendorEnquiryFormSearch" placeholder="Search" name="vendorEnqSearch">
-				                    	<div class="input-group-addon">
+				                    	<div class="input-group-addon vSearchBorder">
 				                    		<i class="fa fa-search" aria-hidden="true"></i>
 				                    	</div>
 				                    	<!-- <datalist id="enuiryListShow">
@@ -81,13 +81,13 @@
 																<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
 																	<input type="checkbox" class="EnqListCheckbox commonCheckbox">
 																</div>
-																<div class="col-lg-4 col-md-5 col-sm-5 col-xs-5">
-																	<div class="vEnqUserAdj vEnqTitleCen">User</div>
+																<div class="col-lg-4 col-md-4 col-sm-5 col-xs-4 vEnqHeaderMagTop">
+																	<div class="vEnqUserAdj vEnqTitleCen vUserUndoAlign">User</div>
 																</div>
-																<div class="col-lg-4 col-md-6 col-sm-6 col-xs-5">
+																<div class="col-lg-4 col-md-5 col-sm-3 col-xs-3 vDateTextCenter">
 																	<div class="vEnqUserAdj" style="left:10px">Date</div>
 																</div>
-																<div class="col-lg-3 col-md-6 col-sm-6 col-xs-5">
+																<div class="col-lg-3 col-md-2 col-sm-2 col-xs-3 vEnqAction vEnqHeaderMagTop">
 																	<div class="vEnqUserAdj" >Action</div>
 																</div>
 															</div>
@@ -111,12 +111,13 @@
 							</div>
 
 							<!-- Template for Right Side -->
+							<div id="vScrollToEnquiry">
 							{{#with vendorEnquiryDetails}}
 								<!-- {{#with vendorEnquiryActiveData}} -->
 								<div class="col-lg-6">
 									<div class="row">
-										<div class="col-lg-12 hidden-xs hidden-sm vEnqFormAdj"></div>
-										<div class="show-xs show-sm"></div>
+										<div class="col-lg-12 hidden-md hidden-xs hidden-sm vEnqFormAdj"></div>
+										<div class="visible-xs visible-sm visible-md vEnqMarginTop"></div>
 										<div class="col-lg-12">
 											<div class="vEnqForm">
 												{{> enquiryDetails}}
@@ -186,6 +187,7 @@
 								</div>
 								<!-- {{/with}} -->
 							{{/with}}
+							</div>
 						</div>
 					</div>
 				<!--{{else}} 

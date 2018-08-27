@@ -10,7 +10,7 @@
 				        <p class="userName">{{userName}}</p>
 				        <div class="review-flw">{{reviewCounts}} Reviews, {{followerCounts}} Followers</div>
 				        <a href="#">
-				        <div class="flw_btn imageReportFollowing">Following</div>
+				        {{#if isInRole 'user'}}<div class="flw_btn imageReportFollowing">Following</div>{{/if}}
 				        </a>
 				    </div>
 				</div>
@@ -32,17 +32,19 @@
 
 	{{/with}}
 	{{#if isInRole 'user ,Vendor'}}
-		<div class="bg_gry col-lg-12 imageCommentReviewOne">
-			{{#unless showComment}}
-			    <div class="review-flw col-lg-12">
-			    	No comments yet. Be the first one to comment!
+		{{#if isInRole 'user'}}
+			<div class="bg_gry col-lg-12 imageCommentReviewOne">
+				{{#unless showComment}}
+				    <div class="review-flw col-lg-12">
+				    	No comments yet. Be the first one to comment!
+				    </div>
+			    {{/unless}}
+			    <div class="user_image2 col-lg-12">
+			    	<img alt="" src="/images/user-profile/following2.png" class="userComment">
+			    	<input id="commentone" class="comment_txt modalComments" placeholder="Comment" name="comment" type="text">
 			    </div>
-		    {{/unless}}
-		    <div class="user_image2 col-lg-12">
-		    	<img alt="" src="/images/user-profile/following2.png" class="userComment">
-		    	<input id="commentone" class="comment_txt modalComments" placeholder="Comment" name="comment" type="text">
-		    </div>
-		</div>
+			</div>
+		{{/if}}
 		<div class="modalCommentWrpr">
 			{{#each showComment}}
 	            <div class="col-lg-12 col-xs-12 col-md-12 userCommentWrapper">

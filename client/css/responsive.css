@@ -135,10 +135,10 @@
 	    border-radius: 50%;
 	    width: 15%;
 	}
-	.myRatingOnBuss{
+	/*.myRatingOnBuss{
 		padding: 0;
     	width: 20%;
-	}
+	}*/
 }
 @media only screen and (width : 640px) {
 /* Styles */

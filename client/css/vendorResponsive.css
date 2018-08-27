@@ -31,10 +31,6 @@ padding-top:4%
 padding-left:8%!important
 }
 
-.outerTimeFrame {
-padding-top:4.5%
-}
-
 .uploadPhotoSize {
 height:140px
 }
@@ -141,7 +137,7 @@ float:left
 
 .deleteBus {
 position:relative;
-top:0;
+top:36px;
 right:190px;
 padding:3px 6px
 }
@@ -168,7 +164,7 @@ margin-bottom:4px
 }
 
 .BussAbtTtl {
-margin-top:26%
+margin-top:16%;
 }
 
 .body-close {

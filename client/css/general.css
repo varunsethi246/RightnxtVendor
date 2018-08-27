@@ -3493,6 +3493,11 @@ padding-left:10px
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
+.vNoPaddingComntRply{padding-left: 5px!important}
+.vendor_wrapper{margin-top: 30px;}
+.vEnqMarginTop{margin-top: 20px;}
+.vDateTextCenter{text-align: center;}
+.vSearchBorder{border: 2px solid #ccc;}
 .offerPay{box-shadow: 0px 0px 6px #aaa;margin-bottom: 30px;}
 .recBorder{margin-top: -2%;}
 .footerWrapper-xs {
@@ -3547,8 +3552,9 @@ margin-left:9%
 }
 
 .dayBuss {
-padding-left:25px;
-margin-left:0
+padding-left:35px;
+margin-left:0;
+padding-right: 0px;
 }
 
 .blk_bgright {
@@ -3614,11 +3620,6 @@ margin-left:0
 
 .rateBusi {
 width:27%
-}
-
-.userRevTempRightTxt {
-margin-left:-14px!important;
-margin-top:0!important
 }
 
 .bussReviewRow {
@@ -3698,7 +3699,7 @@ min-height:310px!important
 }
 
 .userRevTempCommentText {
-padding-left:8px
+padding-left:8px!important;
 }
 
 .slick-next {
@@ -3734,6 +3735,8 @@ right:236px!important
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
+.vEnqMarginTop{margin-top: 20px;}
+.vSearchBorder{border: 2px solid #ccc;}
 .viewModal{margin-top: 5px;}
 .offerPay{box-shadow: 0px 0px 6px #aaa;margin-bottom: 30px;}
 .viphotoUpload{margin-top: 8%!important;}
@@ -3950,6 +3953,13 @@ padding:4px 5px!important
 }
 
 @media screen and (min-width:320px) and (max-width:767px) {
+	.myRatingOnBuss{margin-top: 10px!important;}
+	.myRatingOnBuss > div{padding-left: 0px;padding-right: 0px;}
+	.hoverEnqVendor:hover{background-color: #f9b81c!important;}
+	.vEnqAction{padding-left: 28px;}
+	.vEnqMarginTop{margin-top: 20px;}
+	.vSearchBorder{border: 2px solid #ccc;}
+	.vDateTextCenter,.vEnqHeaderMagTop{margin-top: 3px!important;}
 	.saveoffer {padding-left:8px!important}
 	.offerPay{box-shadow: 0px 0px 6px #aaa;margin-bottom: 30px;}
 	.bannerInvoiceLogo{padding-right: 15px;padding-left: 15px;}
@@ -4245,6 +4255,9 @@ text-align: center
 	.notifiacationUsers{left: 8%;}
 	.dropmenu{width: 12%;}
 	.vOfferTopImg{width: 26%;}
+	.userRevTempleftImg img{height: 125px!important;}
+	.userCommRepDt{padding-left: 42px!important}
+	.days,.rateBusi{width: 19%;}
 }
 .otpOuterDiv{border: 1px solid #bbbbbb;margin-top: 15px;}
 .busiTimeOpenHrs{margin-top: 10px;margin-bottom: 0px;}
@@ -4304,9 +4317,20 @@ text-align: center
 		.toVen2Buss1,.vtoVen2Buss1{width: 43%;}
 		.fromDateBuss,.toDateBusiness,.veditOfferOfferImg{width: 40%;}
 		.body-close{margin-left: 38%!important;}
+		.flagEnq {right: 46px!important;top: -3px!important;}
+		.delEnq {right: 26px!important;top: -3px!important;}
+		.vDatePaddLeft{padding-left: 20px!important;}
+		.vEnqUserNameMargLeft{margin-left: -20px;}
+		.vUserUndoAlign{text-align: left!important;}
+		.vImgWidth{width: 50%;}
+		.deleteBus{float: none!important;top: 45px!important;right: 0%!important;}
+		.ReviewBusiness{float: none!important;top: -24px!important;}
+		.BussAbtTtl {margin-top: 5%!important;}
+		.userRevTempleftImg img{height: 130px!important;}
 	}
 	@media screen and (min-width: 1024px) and (max-width: 1366px) {
 		.addPhotoTxt{right: 35px!important;}
+		.vSearchBorder{border: 2px solid #ccc;}
 	}
 	@media screen and (max-width: 1024px) and (min-width: 768px){
 		.viphotoUpload{position: absolute;right: 0px;top: 3%;}
@@ -4321,8 +4345,11 @@ text-align: center
 		.notifiacationUsers {left:4%!important}
 		.proLeftMargDiv{margin-left: -4%;}		
 		.vPhotosYouRepeatImgO {height: 115px!important;}
+		.BussAbtTtl{margin-bottom: 22px!important;}
 	}
 	@media screen and (min-width: 320px) and (max-width: 767px) {
+		.userRepName{padding-left: 8px!important;margin-top: 12px!important;}
+		.ReviewBusiness{float: none!important;top: 0px!important;}
 		.locIcn {margin-top: 14%!important;}
 		.vPhotosYouNewBtn.publishUserPic{float: none!important;position: relative;top: 4px;}
 		.vPhotosYouRepeatImgO{height: 105px!important;}
@@ -4341,6 +4368,8 @@ text-align: center
 			z-index:1!important
 		}
 		.uploadPhotoSize{height: 115px!important;}
+		.userCommRepDt.vUserCommentReplyDate{padding-left: 8px!important;}
+		.userCommentText.vUserCommentPadding,.userlike.vUserCommentPadding{padding-left: 9px!important;}
 	}
 	@media screen and (min-width: 992px) and (max-width: 1199px){
 		.viphotoUpload{position: absolute;right: 0px;top: 3%;}
@@ -4353,3 +4382,4 @@ text-align: center
 .numOfMonths,.offrdInput{border: 1px solid #ccc;}
 .modaledit{overflow-y: scroll;}
 .saveoffer .col-lg-12{padding-left: 0px;}
+.slick-prev,.slick-next{height: 100px;width: 60px;}
