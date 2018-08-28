@@ -45,7 +45,7 @@
 			    </div>
 			</div>
 		{{/if}}
-		<div class="modalCommentWrpr">
+		<div class="{{#unless showComment}}vModalCommentWrpr{{else}}modalCommentWrpr{{/unless}}">
 			{{#each showComment}}
 	            <div class="col-lg-12 col-xs-12 col-md-12 userCommentWrapper">
 	               <div class="col-lg-1 col-xs-1 col-md-1 userPic">

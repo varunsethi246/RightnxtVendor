@@ -310,7 +310,7 @@ margin:35px 0 30px
 }
 
 .aboutNavbar {
-padding-left:40px
+padding-left:48px;
 }
 
 .aboutNavbar .nav-pills > li.active > a {
@@ -2813,9 +2813,10 @@ padding:0
 
 .comingSoon h1 {
 color:#f89b1c;
-position:fixed;
+padding-top: 10%;
+/*position:fixed;
 top:26%;
-left:37%;
+left:37%;*/
 font-size:60px
 }
 
@@ -2877,10 +2878,6 @@ margin-left:6px
 }*/
 
 @media screen and (max-width: 767px) {
-.homepageForms-xs {
-margin-top:4.5%
-}
-
 .groupHeight-xs {
 height:44px
 }
@@ -3385,7 +3382,7 @@ padding-right:0
 .header-general .form4General {
 padding-right:15px;
 padding-left:15px;
-margin-top: -18px;
+/*margin-top: -18px;*/
 }
 
 .gernalHeaderNavBar {
@@ -3449,11 +3446,11 @@ margin-bottom:5px
 }
 
 .slick-next {
-right:26%!important
+right:0%!important
 }
 
-.slick-prev {
-left:-98%!important
+.slick-prev.vSlickPrev{
+left:0%!important
 }
 
 .spanEnqPhone {
@@ -3493,6 +3490,9 @@ padding-left:10px
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
+.section5-head{padding-right: 0px;position: relative;left: -2%;}
+.section3-1{margin-left: -40px;}
+.footerCompany{padding-left: 0px;padding-right: 0px}
 .vNoPaddingComntRply{padding-left: 5px!important}
 .vendor_wrapper{margin-top: 30px;}
 .vEnqMarginTop{margin-top: 20px;}
@@ -3507,14 +3507,12 @@ padding-left:45px
 .footerWrapper-xs a img {
 height:60px
 }
-
-.footerItems-xs {
-padding-left:40px
-}
+.groups{width: 12px;}
+.footerItems-xs {padding-left:30px;padding-right: 6px;}
 
 .section3-head {
 padding-left:0;
-margin-left:-5px
+margin-left:10px
 }
 
 .headerPull-xs {
@@ -3534,9 +3532,10 @@ padding-left:0
 }
 
 .comingSoon h1 {
-position:relative;
+font-size: 50px; padding-top: 7%;
+/*position:relative;
 top:16%;
-left:0
+left:0*/
 }
 
 .comingSoon .h1Div {
@@ -3735,6 +3734,8 @@ right:236px!important
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
+.dayBuss{margin-left: 0px!important;padding-left: 0px;}
+.bussMapContainer{margin-bottom: 50px!important;}
 .vEnqMarginTop{margin-top: 20px;}
 .vSearchBorder{border: 2px solid #ccc;}
 .viewModal{margin-top: 5px;}
@@ -3749,7 +3750,7 @@ right:236px!important
 .products {
 height:110px
 }
-
+.groups{width: 12px;}
 .logo {
 margin-top:0
 }
@@ -3771,7 +3772,7 @@ padding-right:9px
 .headerLogin-xs {
 padding-top:0;
 position:relative;
-top:-36px
+top:25px;
 }
 
 .gernalHeaderNav-sm .headerImgPadding-xs .logo {
@@ -3785,10 +3786,6 @@ height:40px
 .form4General {
 padding-left:0!important;
 padding-right:0!important
-}
-
-.homepageForms-xs {
-margin-top:2.5%
 }
 
 .location-city {
@@ -3861,18 +3858,18 @@ margin-top:5%
 }
 
 #faqCollapse {
-margin-bottom:30px
+margin-bottom:30px;padding-left: 22px!important;
 }
 
 .contact-margin {
-padding-right:0;
+/*padding-right:0;*/
 margin-top:12%
 }
 
 .comingSoon h1 {
-top:10%;
-left:32%;
-font-size:50px
+/*top:10%;
+left:32%;*/
+font-size:40px;padding-top: 4%;
 }
 
 .comingSoon .h1Div {
@@ -3885,7 +3882,7 @@ margin-left:25%
 
 .mainConBusi {
 padding-right:0;
-margin-bottom:15%
+margin-bottom:0%;
 }
 
 .busiVendorRightOfferText i {
@@ -3953,6 +3950,10 @@ padding:4px 5px!important
 }
 
 @media screen and (min-width:320px) and (max-width:767px) {
+	.bussMapContainer{margin-bottom: 35px!important;}
+	.vAddBussMarginTop{margin-top: 10px!important;}
+	.forgotPwd{float: right;}
+	.headerLogin-xs{position: absolute;right: 18px;top: 22px;}
 	.myRatingOnBuss{margin-top: 10px!important;}
 	.myRatingOnBuss > div{padding-left: 0px;padding-right: 0px;}
 	.hoverEnqVendor:hover{background-color: #f9b81c!important;}
@@ -3964,6 +3965,7 @@ padding:4px 5px!important
 	.offerPay{box-shadow: 0px 0px 6px #aaa;margin-bottom: 30px;}
 	.bannerInvoiceLogo{padding-right: 15px;padding-left: 15px;}
 	.noPaddingxs{padding-right: 0px;padding-left: 0px;}
+	.vModalCommentWrpr{height: auto;}
 	.notifiacationUsers {
 	position:absolute;
 	left:38%;
@@ -4251,13 +4253,15 @@ text-align: center
     margin-left: 15px!important;
 }
 @media screen and (min-width: 1920px){
-	.aboutNavbar {padding-left: 72px;}
+	.merchantGuidelineslg {margin-top: 3.5%;}
+	.aboutNavbar {padding-left: 15px;margin-left: 40.5%}
 	.notifiacationUsers{left: 8%;}
 	.dropmenu{width: 12%;}
 	.vOfferTopImg{width: 26%;}
 	.userRevTempleftImg img{height: 125px!important;}
 	.userCommRepDt{padding-left: 42px!important}
 	.days,.rateBusi{width: 19%;}
+	#faqCollapse{margin-left: 34.5%;}
 }
 .otpOuterDiv{border: 1px solid #bbbbbb;margin-top: 15px;}
 .busiTimeOpenHrs{margin-top: 10px;margin-bottom: 0px;}
@@ -4302,6 +4306,8 @@ text-align: center
 .prfSpan{left: 0px!important;top: 0px!important;}
 @media only screen and (orientation: landscape) {
 	@media screen and (min-width: 320px) and (max-width: 767px) {
+		.dayBuss {margin-left: -44px!important;}
+		.groupHeight1-xs{margin-left: 0px;}
 		.vOfferTopImg{width: 36%!important}
 		.notifiacationUsers {left: 48%;}
 		.dropmenu{width: 12%;}
@@ -4327,6 +4333,15 @@ text-align: center
 		.ReviewBusiness{float: none!important;top: -24px!important;}
 		.BussAbtTtl {margin-top: 5%!important;}
 		.userRevTempleftImg img{height: 130px!important;}
+		.venGenClaimButt{width: 10.5%!important;}
+		.claimRightModal form {margin-left: 3%;}
+		.placeOrder .btn{margin-left: 25px!important;}
+		.review_left{height: 115px!important;}
+		.closeLogout{margin-left: 80px!important;}
+		.imageReportCloseFirst{margin-right: -75px!important;}
+		.rateBusi{width: 20%!important;}
+		.uploadPicSize{height: 88px!important;}
+		.businessPicSize {height: 185px!important;}
 	}
 	@media screen and (min-width: 1024px) and (max-width: 1366px) {
 		.addPhotoTxt{right: 35px!important;}
@@ -4383,3 +4398,4 @@ text-align: center
 .modaledit{overflow-y: scroll;}
 .saveoffer .col-lg-12{padding-left: 0px;}
 .slick-prev,.slick-next{height: 100px;width: 60px;}
+#faqCollapse{padding-left: 30px;}

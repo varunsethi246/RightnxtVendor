@@ -64,6 +64,12 @@ Template.aboutUs.helpers({
  	}
 });
 
+Template.aboutUs.events({
+	'click .closeMenuTab': function(event){
+		$(event.currentTarget).parent().parent().removeClass('in');
+	},
+});
+
 Template.aboutUsForm.events({
 	'submit .aboutUsForm': function(event){
 		event.preventDefault();

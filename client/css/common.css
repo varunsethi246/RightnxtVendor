@@ -209,7 +209,7 @@ left:15px
 .dropGeneral {
 text-decoration:none;
 list-style:none;
-margin-top:14px;
+margin-top:15px;
 margin-right:7%;
 font-size:13px;
 font-family:'PROXIMANOVA-BOLD'
@@ -1215,12 +1215,12 @@ background-color: #ffe0b6;
 text-align: center;
 }
 
-@media only screen and (max-width: 1280px){
+/*@media only screen and (max-width: 1280px){
 
     .aboutNavbar{
         margin-left:35%;
     }
-}
+}*/
 /*.aboutNavbar{
     margin-left:0px;
 } */ 

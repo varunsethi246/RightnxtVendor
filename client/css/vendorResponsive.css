@@ -395,9 +395,12 @@ margin-left:15px
 }
 
 .venGenClaimButt {
-margin-left:1px;
-margin-top:0
+margin-left:0px;
+margin-top:0px;padding-right: 0px;padding-left: 0px;width: 13%;
 }
+.vClaimPadding{padding-right: 0px;padding-left: 0px;}
+.vClaimPaddingGroup{padding-right: 0px;margin-bottom: 0px;}
+#claimLoginModal .modal-dialog{padding-right: 30px;padding-left: 20px;}
 
 .venGenClaimButt1 {
 margin-top:0

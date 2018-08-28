@@ -337,6 +337,9 @@ Template.businessOwners.events({
 });
 
 Template.faq.events({
+	'click .closeMenuTab': function(event){
+		$(event.currentTarget).parent().parent().removeClass('in');
+	},
 	'click .home': function(event){
     	FlowRouter.go('/faqs/Introduction');
 	    $('.pillsContent').find('.active').removeClass('in active');

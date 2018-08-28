@@ -3759,7 +3759,7 @@ video::-webkit-media-controls-panel {
 .noPaddingVendor{padding-left: 0px;padding-right: 0px;}
 .vendorHome{
 	background:url(../images/claim/banner.jpg) no-repeat;
-	background-attachment:fixed;
+	/*background-attachment:fixed;*/
 	background-position:center;
 	background-size:cover;
 	min-height:500px;

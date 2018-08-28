@@ -254,6 +254,9 @@ Template.claim.events({
 	},
 	"keyup #claimBusiness": _.throttle(function(e) {
 		$('.footer-row').removeClass("hidden-lg");
+		$('.footer-row').removeClass("hidden-md");
+		$('.footer-row').removeClass("hidden-sm");
+		$('.footer-row').removeClass("hidden-xs");
 	    if(Session.get("claimSelectedCity")){
 	    	var claimSearchCity = Session.get("claimSelectedCity");
 	    }else{
@@ -325,6 +328,9 @@ Template.claim.events({
 		$('.outerPaginationDiv').find('input').removeClass('active');
 		$('#claimBusiness').val('');
 		$('.footer-row').addClass("hidden-lg");
+		$('.footer-row').addClass("hidden-md");
+		$('.footer-row').addClass("hidden-sm");
+		$('.footer-row').addClass("hidden-xs");
 
 	    var selectedCityClaim = event.currentTarget.value;
 	    var id = selectedCityClaim.trim();

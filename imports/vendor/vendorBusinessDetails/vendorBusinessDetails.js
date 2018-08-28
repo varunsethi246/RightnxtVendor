@@ -181,7 +181,7 @@ Template.vendorBusinessLayout.events({
 
 });
 
-Template.vendorBusinessLayout.onRendered(function(){
+Template.vendorBusinessLayout.onRendered(function(){	
 	$(window).scroll(function() {
      	if ($(document).scrollTop() > 80) {
 	    	$('.bussScrollTop').fadeIn("slow");
