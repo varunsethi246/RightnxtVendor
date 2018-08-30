@@ -1121,12 +1121,17 @@ margin-right:-10px
 margin-top:1px!important
 }
 
-.hrViewAll {
-border-top:1px solid #ddd!important;
-    width: 100%;
+.vAllNotifWrprHead{padding-left: 15px;padding-right: 15px;margin-bottom: 0px;}
 
-    margin-top: 0!important;
-    margin-bottom: 0!important;
+.vboxBody{
+    /*background-color: #F6F6F7;*/
+    padding-top: 5px;}
+
+.hrViewAll {
+    border-bottom:1px solid #ccc;
+    /*width: 100%;*/
+    /*margin-top: 0!important;*/
+    /*margin-bottom: 0!important;*/
 }
 
 .notdate {

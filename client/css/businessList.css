@@ -70,7 +70,7 @@ margin-bottom:15px
 }
 
 .listofTypeUl {
-overflow-y:scroll;
+overflow-y:auto;
 height:720px;
 overflow-x:hidden
 }
@@ -403,7 +403,7 @@ color:#666
 }
 
 .scrollMapVwBus {
-overflow-y:scroll;
+overflow-y:auto;
 height:720px;
 overflow-x:hidden
 }

@@ -3490,6 +3490,10 @@ padding-left:10px
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
+.notifyreportWrapper{padding: 3% 0%!important;}
+.thumbBusDivs{left: 0px;}
+.mapViewBusList{padding-left: 40px!important;}
+.displayMapView{position: relative;left: 15px;}
 .section5-head{padding-right: 0px;position: relative;left: -2%;}
 .section3-1{margin-left: -40px;}
 .footerCompany{padding-left: 0px;padding-right: 0px}
@@ -3734,6 +3738,10 @@ right:236px!important
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
+.notifyreportWrapper{padding: 4% 0%!important;}
+.thumbBusDivs{left: 0px;}
+.mapViewBusList{padding-left: 30px!important;}
+.displayMapView{position: relative;left: 15px;}
 .dayBuss{margin-left: 0px!important;padding-left: 0px;}
 .bussMapContainer{margin-bottom: 50px!important;}
 .vEnqMarginTop{margin-top: 20px;}
@@ -3950,6 +3958,8 @@ padding:4px 5px!important
 }
 
 @media screen and (min-width:320px) and (max-width:767px) {
+	.notifyreportWrapper{padding: 5% 0%!important;}
+	.busListEnq{margin-bottom: 12px!important;width: 100%;}
 	.bussMapContainer{margin-bottom: 35px!important;}
 	.vAddBussMarginTop{margin-top: 10px!important;}
 	.forgotPwd{float: right;}
@@ -4256,12 +4266,14 @@ text-align: center
 	.merchantGuidelineslg {margin-top: 3.5%;}
 	.aboutNavbar {padding-left: 15px;margin-left: 40.5%}
 	.notifiacationUsers{left: 8%;}
-	.dropmenu{width: 12%;}
+	.dropmenu,.dropmenuGen{width: 12%;}
 	.vOfferTopImg{width: 26%;}
 	.userRevTempleftImg img{height: 125px!important;}
 	.userCommRepDt{padding-left: 42px!important}
 	.days,.rateBusi{width: 19%;}
 	#faqCollapse{margin-left: 34.5%;}
+	.mapViewBusList .mapVBusTitle, .mapViewBusList .mapVBusAddr, .mapViewBusList .mapVBusPhnNum {width: 200px!important;}
+	.mapViewBusList .imgMapview{max-height: 150px!important;}
 }
 .otpOuterDiv{border: 1px solid #bbbbbb;margin-top: 15px;}
 .busiTimeOpenHrs{margin-top: 10px;margin-bottom: 0px;}
@@ -4306,6 +4318,9 @@ text-align: center
 .prfSpan{left: 0px!important;top: 0px!important;}
 @media only screen and (orientation: landscape) {
 	@media screen and (min-width: 320px) and (max-width: 767px) {
+		.gridViewBusList{width: 50%;}
+		.gridViewBusList:nth-child(even){padding-left: 7.5px;}
+		.gridViewBusList:nth-child(odd){padding-right: 7.5px;}
 		.dayBuss {margin-left: -44px!important;}
 		.groupHeight1-xs{margin-left: 0px;}
 		.vOfferTopImg{width: 36%!important}

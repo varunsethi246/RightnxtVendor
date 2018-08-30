@@ -5,7 +5,7 @@
 				<!-- {{#if gridviewBusinessList}} -->
 						{{#each gridviewBusinessList}}
 								<!-- Grid View -->
-								<div class="col-lg-4 gridViewBusList {{busNoOffer}}" id={{_id}} data-offer={{busNoOffer}}>
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 gridViewBusList {{busNoOffer}}" id={{_id}} data-offer={{busNoOffer}}>
 									<div class="thumbBusDiv">
 										<div class="thumImgDim">
 											<div class="enqRatingBus">
@@ -18,7 +18,7 @@
 													
 												</div>
 												<div class="enqMidDiv">{{totalVote}} votes</div>
-												<div class="enqRightDiv pull-right" cords-ids="{{businessLongitude}}-{{businessLatitude}}-{{_id}}">
+												<div class="enqRightDiv pull-right hidden-xs" cords-ids="{{businessLongitude}}-{{businessLatitude}}-{{_id}}">
 													<i class="fa fa-map-marker pull-right" aria-hidden="true"></i>
 												</div>
 											</div>
@@ -56,7 +56,7 @@
 									</div>
 								</div>
 						{{/each}}
-						<div class="col-lg-12 col-md-4 col-sm-4 gridViewBusLists" style="display: none;" id={{_id}} data-offer=0>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 gridViewBusLists" style="display: none;" id={{_id}} data-offer=0>
 									<h3 style="text-align: center;">No Offer Available</h3>
 								</div>
 				<!-- {{else}}
@@ -82,7 +82,7 @@
 			{{#if isMapViewVisible }}
 				{{#each gridviewBusinessList}}
 					<!-- Map View -->
-						<div class="col-lg-11 col-xs-12 mapViewBusList {{busNoOffer}}" style="padding:0 5px !important" id={{_id}} data-target={{busNoOffer}}>
+						<div class="col-lg-11 col-xs-12 mapViewBusList {{busNoOffer}}" style="padding:0 5px" id={{_id}} data-target={{busNoOffer}}>
 							<div class="thumbBusDivs">
 								<div class="row">
 									<div class="thumImgDims col-xs-5 col-lg-5" >

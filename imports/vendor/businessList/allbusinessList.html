@@ -35,17 +35,18 @@
 			</span>
 		</div>
 	</div>
-	<div class="col-lg-12 xs-visible hidden-sm hidden-md hidden-lg catListShowHidePre">
+	<!-- <div class="col-lg-12 xs-visible hidden-sm hidden-md hidden-lg catListShowHidePre"> -->
+	<div class="col-lg-12 hidden-xs hidden-sm hidden-md hidden-lg catListShowHidePre">
 		<div class="col-xs-12 catListShowHide listofTypeRed">Hide Category List</div>
 	</div>
 	<div class="col-lg-12 busThumbnailsSection">
 		<div class="row busThumbnailsRow">
-			<div class="col-lg-2">				
+			<div class="col-lg-2 hidden-md hidden-sm hidden-xs">				
 				{{> sidebarBusinessList}}
 			</div>
 
 			<!-- Insert Map on Map View -->
-			<div class="displayMapView">
+			<div class="displayMapView col-md-6">
 				{{> businessMap}}
 			</div>
 
@@ -55,7 +56,7 @@
 			</div>
 
 			<!-- Right side Banner list -->
-			<div class="col-lg-2 displayGridBus">
+			<div class="col-lg-2 hidden-md hidden-sm hidden-xs displayGridBus">
 				{{> rightSidebarBusList}}
 			</div>
 		</div>

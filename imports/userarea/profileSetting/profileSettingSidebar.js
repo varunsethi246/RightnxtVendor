@@ -9,4 +9,7 @@ Template.profileSettingSidebar.events({
         $('.menuItem').removeClass('active');
         $(event.currentTarget).addClass('active');
 	},
+	'click .closeMenuTab': function(event){
+		$(event.currentTarget).parent().parent().removeClass('in');
+	},
 });
