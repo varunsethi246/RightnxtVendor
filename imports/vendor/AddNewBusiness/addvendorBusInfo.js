@@ -422,7 +422,7 @@ Template.addVendorBusInfo.events({
       $('.businessLinkC').val(myBusinessTitle.substring(0,50));
    },
    'submit .businessInfo': function(event){
-      // alert('businessInfo');
+      alert('businessInfo');
       event.preventDefault();
       var id = FlowRouter.getParam('id');
 
@@ -551,9 +551,9 @@ Template.addVendorBusInfo.events({
                      var admin = Meteor.users.findOne({'roles':'admin'});
                     //  console.log('admin ',admin);
                      var vendorDetail = Meteor.users.findOne({'_id':Meteor.userId()});
-                    //  console.log('vendorDetail ',vendorDetail);
+                     // console.log('formValues ',formValues);
 
-                     if(admin&&vendorDetail){
+                     // if(admin || vendorDetail){
                         var adminId = admin._id;
 
                         //Send Notification, Mail and SMS to Current Vendor
@@ -601,6 +601,8 @@ Template.addVendorBusInfo.events({
                            templateName : 'Vendor Added New Business',
                            variables    : msgvariable,
                         }
+                        // console.log('inputObj:' ,inputObj);
+
                         sendInAppNotification(inputObj);
 
                         var inputObj = {
@@ -611,7 +613,7 @@ Template.addVendorBusInfo.events({
                            variables    : msgvariable,
                         }
                         sendMailNotification(inputObj);  
-                     }
+                     // }
                      //============================================================
                      //          End Notification Email / SMS / InApp
                      //============================================================
