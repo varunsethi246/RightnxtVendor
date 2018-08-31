@@ -354,6 +354,8 @@ Template.vendorEnquiry.helpers({
 			}
 
 			// $('.vEnqFormImgOne').animate({ scrollTop: $(document).height() }, 1);
+			var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
+        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
 			return enqData;			
 		}
 	},
@@ -386,17 +388,22 @@ Template.allEnquries.events({
 
 		$("#"+id).addClass('selectedEnqRead');
 		$("#"+id).addClass('selectedEnq');
-
+		var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
+        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
 		Meteor.call('updateEnquiryForRead',id,'read',function(err,rslt){});
 	},
 	'click .flagEnquiry':function(event){
 		var thisFlag = event.currentTarget;
 		id = $(thisFlag).parent().parent().attr('id');
+		var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
+        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
 		Meteor.call('updateEnquiryForFlag',id,'noflag',function(err,rslt){});
 	},
 	'click .noflagEnquiry':function(event){
 		var thisFlag = event.currentTarget;
 		id = $(thisFlag).parent().parent().attr('id');
+		var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
+        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
 		Meteor.call('updateEnquiryForFlag',id,'flag',function(err,rslt){});
 	},
 	'click .deleteEnqBtn': function(event){
@@ -440,7 +447,10 @@ Template.allEnquries.events({
 var filesM = [];
 
 Template.vendorEnquiry.events({
-
+	'click .vEnqAllC':function(event){
+		var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
+        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
+	},
 	"keyup .vendorEnquiryFormSearch": _.throttle(function(e) {
 	    var text = $(e.target).val().trim();
 	    Session.set("nameKey",text);
