@@ -2,6 +2,8 @@ import { Session } from 'meteor/session';
 import { UserLatLng } from '../../api/userViewMaster.js';
 import { UserStatistics } from '../../api/userViewMaster.js';
 import { Business } from '../../api/businessMaster.js';
+import { BusinessAds } from '../../api/businessAdsMaster.js';
+import { BusinessBanner } from '../../api/businessBannerMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import Chart from 'chart.js';
 import './vendorDashboard.html';
@@ -16,93 +18,162 @@ Template.vendorDashboard.onCreated(function() {
 });
 
 Template.vendorDashboard.onRendered(function(){
+    var businessLink = $('#graphBusinessTitle').val(); 
+    Session.set('busLink',businessLink);
 	$(".twoYr").addClass('addYearClass');
 
     // // ---User two year Chart--- //
     Tracker.autorun(function () {
     	if (chart.ready()) {
+    		var businessLink = Session.get('busLink');
     		$("#twoYearChart").empty();
 	    	var date = new Date();
-		    var first = new Date(date.getFullYear()-1, 0, 1);
-		    var last = new Date(date.getFullYear() , 12, 0);
-		    var user = Meteor.userId();
+		    var LastYrFD = new Date(date.getFullYear()-1, 0, 1);
+		    var LastYrLD = new Date(date.getFullYear()-1, 12, 0);
+		    var ThisYrFD = new Date(date.getFullYear() , 0, 1);
+		    var ThisYrLD = new Date(date.getFullYear() , 12, 0);
+	     	var dateArray 		 = [];
+	     	var dataArray    	 = [];
+	      	var bgcolorArray     = [];
+	      	var datasetsArray    = [];
 
-	        var dateArray     = [];
-	        var colorval1     = 0;
-	        var colorval2     = 0;
-	        var businessDetails = Business.find({'businessOwnerId':user,'status':'active'}).fetch();
-	        if(businessDetails){
-	      		for(var k=0 ; k<businessDetails.length ; k++){
-	      	  		var businessLink = businessDetails[k].businessLink;
-	      	  		var businessName = businessDetails[k].businessTitle;
-		      		var statisticData  = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte:new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
+		    var lastYrStatisticData  = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte:new Date(LastYrFD.toISOString()),$lt: new Date(LastYrLD.toISOString())}}).fetch();
+		    if(lastYrStatisticData){
+			    if(lastYrStatisticData.length > 0){
+	    			var totalCount = 0;
+					for (var i = 0; i < lastYrStatisticData.length; i++) {
+						totalCount += parseInt(lastYrStatisticData[i].count) ;
+					}
+	  				$('.legendUserVws').show();
+					dateArray.push(date.getFullYear()-1);
+					dataArray.push(totalCount);
+					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
+				}
+		    }
 
-		      		if(colorval1 >= 255){
-			           	colorval2 += 50;
-			           	var finalColorVal = "rgba(255,0,"+colorval2+",0.8)";
-		           	}else{
-		           		colorval1 += 50;
-			           	var finalColorVal = "rgba(255,"+colorval1+",0,0.8)";
-		           	}
+		    var thisYrStatisticData  = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte:new Date(ThisYrFD.toISOString()),$lt: new Date(ThisYrLD.toISOString())}}).fetch();
+		    if(thisYrStatisticData){
+			    if(thisYrStatisticData.length > 0){
+	    			var totalCount = 0;
+					for (var i = 0; i < thisYrStatisticData.length; i++) {
+						totalCount += parseInt(thisYrStatisticData[i].count) ;
+					}
+	  				$('.legendUserVws').show();
+					dateArray.push(date.getFullYear());
+					dataArray.push(totalCount);
+					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
+				}
+		    }
 
-		        	if(statisticData){
-		          		for(var i= 0 ; i<statisticData.length ; i++){
-		           			var date = statisticData[i].date;
-		           			var splitdate      = date.split("/")
-			       			var formattedMonth = moment(splitdate[2], 'YYYY').format('YYYY');
-		           			dateArray.push({
-		              			'date' : formattedMonth,
-		           			});
-		          		}//i
-				        var createdDate        = _.pluck(dateArray,"date");
-				        var uniquecreatedDate  = _.uniq(createdDate);
+		    var businessAdsDetails = BusinessAds.findOne({'businessLink':businessLink,'status':'active'});
+	        if(businessAdsDetails){
+	        	if(date.getFullYear()-1 == businessAdsDetails.createdAt.getFullYear()){
+		      	  	var busAdsFirstDate = new Date(businessAdsDetails.startDate);  
+					var busAdsLastDate = new Date(businessAdsDetails.endDate);
+					var lastYrStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
+      				if(lastYrStatisticData){
+	      				if(lastYrStatisticData.length > 0){
+				    		var totalCount = 0;
+	      					for (var i = 0; i < lastYrStatisticData.length; i++) {
+								totalCount += parseInt(lastYrStatisticData[i].count) ;
+	      					}
+	  						$('.legendUserVwsAds').show();
+		      				dateArray.push(date.getFullYear()-1);
+							dataArray.push(totalCount);
+							bgcolorArray.push("rgba(255, 206, 86, 0.8)");
+	      				}
+      				}
+				}
+	       		if(date.getFullYear() == businessAdsDetails.createdAt.getFullYear()){
+		      	  	var busAdsFirstDate = new Date(businessAdsDetails.startDate);  
+					var busAdsLastDate = new Date(businessAdsDetails.endDate);
+					var thisYrStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
+      				if(thisYrStatisticData){
+	      				if(thisYrStatisticData.length > 0){
+				    		var totalCount = 0;
+	      					for (var i = 0; i < thisYrStatisticData.length; i++) {
+								totalCount += parseInt(thisYrStatisticData[i].count) ;
+	      					}
+	  						$('.legendUserVwsAds').show();
+		      				dateArray.push(date.getFullYear());
+							dataArray.push(totalCount);
+							bgcolorArray.push("rgba(255, 206, 86, 0.8)");
+	      				}
+      				}
+				}
+	      	}
 
-				      	if(uniquecreatedDate.length>0){
-		          			var dataVals   = [];
-		        			for(var j=0 ; j<uniquecreatedDate.length ; j++){ //number of instances of the date '23'
-		        				var y = uniquecreatedDate[j];
-		        				var statFirstDate = new Date(y, 0, 1);  
-		        				var statLastDate = new Date(y, 12, 0);
-		          				var monthStat = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(statFirstDate.toISOString()),$lt: new Date(statLastDate.toISOString())}}).fetch();
-		          				if(monthStat.length > 0){
-						    		var totalCount = 0;
-		          					for (var l = 0; l < monthStat.length; l++) {
-										totalCount += parseInt(monthStat[l].count) ;
-		          					}
-		          				}
-		          				dataVals.push(totalCount);
-		        			}// j
-		      			}// if uniquecreatedDate
+	      	var businessBannersDetails = BusinessBanner.findOne({'businessLink':businessLink,'status':'active'});
+	        if(businessBannersDetails){
+	        	if(date.getFullYear()-1 == businessBannersDetails.createdAt.getFullYear()){
+		      	  	var busAdsFirstDate = new Date(businessBannersDetails.startDate);  
+					var busAdsLastDate = new Date(businessBannersDetails.endDate);
+					var lastYrStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
+      				if(lastYrStatisticData){
+	      				if(lastYrStatisticData.length > 0){
+				    		var totalCount = 0;
+	      					for (var i = 0; i < lastYrStatisticData.length; i++) {
+								totalCount += parseInt(lastYrStatisticData[i].count) ;
+	      					}
+	  						$('.legendUserVwsBanners').show();
+		      				dateArray.push(date.getFullYear()-1);
+							dataArray.push(totalCount);
+							bgcolorArray.push("rgba(255, 159, 64, 0.8)");
+	      				}
+      				}
+				}
+	       		if(date.getFullYear() == businessBannersDetails.createdAt.getFullYear()){
+		      	  	var busAdsFirstDate = new Date(businessBannersDetails.startDate);  
+					var busAdsLastDate = new Date(businessBannersDetails.endDate);
+					var thisYrStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
+      				if(thisYrStatisticData){
+	      				if(thisYrStatisticData.length > 0){
+				    		var totalCount = 0;
+	      					for (var i = 0; i < thisYrStatisticData.length; i++) {
+								totalCount += parseInt(thisYrStatisticData[i].count) ;
+	      					}
+	  						$('.legendUserVwsBanners').show();
+		      				dateArray.push(date.getFullYear());
+							dataArray.push(totalCount);
+							bgcolorArray.push("rgba(255, 159, 64, 0.8)");
+	      				}
+      				}
+				}
+	      	}
 
-						$("#twoYearChart").append(
-			        		"<div class='noPaddingGeneral col-lg-6 col-md-6 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-yearly' style='max-height: 100%;'></canvas></div>"
-			        	);
+	      	datasetsArray.push({
+		      // label: 'User Views',
+		      data: dataArray,
+		      backgroundColor: bgcolorArray,
+		      borderWidth: 1
+		    });
 
-				      	var ctx = document.getElementById(businessLink+"-yearly").getContext("2d");
-					    var myChart = new Chart(ctx, {
-						  type: 'bar',
-						  data: {
-						    labels: uniquecreatedDate,
-						    datasets: [{
-						      label: businessName,
-						      data: dataVals,
-						      backgroundColor: finalColorVal,
-						      borderWidth: 1
-						    }]
-					   	  },
-						    options: {
-						        scales: {
-						            yAxes: [{
-						                ticks: {
-						                    beginAtZero:true
-						                }
-						            }]
-						        }
-						    }
-						});
-			        }//if statisticData
-			    }//k
-	        }//businessDetails
+
+			$("#twoYearChart").append(
+        		"<div class='noPaddingGeneral col-lg-10 col-md-6 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-yearly' style='max-height: 100%;'></canvas></div>"
+        	);
+
+	      	var ctx = document.getElementById(businessLink+"-yearly").getContext("2d");
+		    var myChart = new Chart(ctx, {
+			  type: 'bar',
+			  data: {
+			    labels: dateArray,
+			    datasets: datasetsArray
+		   	  },
+			    options: {
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true
+			                }
+			            }]
+			        },
+			        legend: {
+			            display: false,
+			        }
+			    }
+			});
+
         }//if(chart.ready)
       }); //tracker.autorun
     // ---End User two year Chart--- //
@@ -111,85 +182,102 @@ Template.vendorDashboard.onRendered(function(){
     Tracker.autorun(function () {
     	if (chart.ready()) {
     		$("#monthChart").empty();
+    		var businessLink = Session.get('busLink');
 	      	var date = new Date();
-		  	var first = new Date(date.getFullYear(), date.getMonth(), 1);
-		  	var last = new Date(date.getFullYear() , date.getMonth() + 1, 0);
+		  	var firstDate = new Date(date.getFullYear(), date.getMonth(), 1);
+    		var days = [];
+		    while (firstDate.getMonth() === date.getMonth()) {
+		        days.push(new Date(firstDate.toISOString()));
+		        firstDate.setDate(firstDate.getDate() + 1);
+		    }
 	      	var dateArray      = [];
-			var colorval1      = 0;
-			var colorval2      = 0;
-	      	var user = Meteor.userId();
-	      	var businessDetails = Business.find({'businessOwnerId':user,'status':'active'}).fetch();
-	      	if(businessDetails){
-	      		for(var k=0 ; k<businessDetails.length ; k++){
-	      			var businessName = businessDetails[k].businessTitle;
-	      			var businessLink = businessDetails[k].businessLink;
-	      			var statisticData  = UserStatistics.find({'businessLink':businessLink , 'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
-		           	
-		           	if(colorval1 >= 255){
-			           	colorval2 += 50;
-			           	var finalColorVal = "rgba(255,0,"+colorval2+",0.8)";
-		           	}else{
-		           		colorval1 += 50;
-			           	var finalColorVal = "rgba(255,"+colorval1+",0,0.8)";
-		           	}
+	      	var dataArray      = [];
+	      	var datasetsArray  = [];
+	      	var bgcolorArray   = [];
+	      	
 
-	        		if(statisticData){
-	          			for(var i= 0 ; i<statisticData.length ; i++){
-	           				var date = statisticData[i].date;
-	           				dateArray.push({
-	              				'date' : date,
-	           				});
-	          			}//i
-		      			
-		      			var createdDate        = _.pluck(dateArray,"date");
-				      	var uniquecreatedDate  = _.uniq(createdDate);
+	      	for (var j = 0; j < days.length; j++) {
+    			var currentDate = moment(days[j]).format('DD/MM/YYYY');
+	      		var totalCount = UserStatistics.findOne({'businessLink':businessLink , 'date':currentDate});
+  				if(totalCount){
+	  				$('.legendUserVws').show();
+  					dataArray.push(totalCount.count);
+  					dateArray.push(currentDate);
+  					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
+  				}
+	      	}
 
-				      	if(uniquecreatedDate.length>0){
-	      					var dataVals 	   = [];
-		        			for(var j=0 ; j<uniquecreatedDate.length ; j++){ //number of instances of the date '23'
-		          				var totalCount = UserStatistics.findOne({'businessLink':businessLink , 'date':uniquecreatedDate[j]});
-		          				if(totalCount){
-		          					dataVals.push(totalCount.count);
-		          				}else{
-		          					dataVals.push(0);
-		          				}
-		        			}// j
-		      			}// if uniquecreatedDate
-		      			if(uniquecreatedDate.length < 7){
-							$("#monthChart").append(
-				        		"<div class='noPaddingGeneral col-lg-6 col-md-6 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-daily' style='max-height: 100%;'></canvas></div>"
-				        	);
-		      			}else{
-							$("#monthChart").append(
-				        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-daily' style='max-height: 100%;'></canvas></div>"
-				        	);
-		      			}
+	      	var businessAdsDetails = BusinessAds.findOne({'businessLink':businessLink,'status':'active'});
+        	if(businessAdsDetails){
+        		if(date.getMonth() == businessAdsDetails.createdAt.getMonth()){
+		      	  	var busAdsFirstDate = new Date(businessAdsDetails.startDate);  
+					var busAdsLastDate = new Date(businessAdsDetails.endDate);
+					var thisMnthStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
+	  				if(thisMnthStatisticData){
+	      				if(thisMnthStatisticData.length > 0){
+	      					$('.legendUserVwsAds').show();
+				    		var totalCount = 0;
+	      					for (var k = 0; k < thisMnthStatisticData.length; k++) {
+								dateArray.push(thisMnthStatisticData[k].date);
+			  					bgcolorArray.push("rgba(255, 206, 86, 0.8)");
+			  					dataArray.push(thisMnthStatisticData[k].count);
+	      					}
+	      				}
+	  				}
+	  			}
+			}
 
-				      	var ctx = document.getElementById(businessLink+"-daily").getContext("2d");
-					    var myChart = new Chart(ctx, {
-						  type: 'bar',
-						  data: {
-						    labels: uniquecreatedDate,
-						    datasets: [{
-						      label: businessName,
-						      data: dataVals,
-						      backgroundColor: finalColorVal,
-						      borderWidth: 1
-						    }]
-					   	  },
-						    options: {
-						        scales: {
-						            yAxes: [{
-						                ticks: {
-						                    beginAtZero:true
-						                }
-						            }]
-						        }
-						    }
-						});
-	        		}//if statisticData
-	        	}//k
-		    }//businessDetails
+			var businessBannersDetails = BusinessBanner.findOne({'businessLink':businessLink,'status':'active'});
+        	if(businessBannersDetails){
+        		if(date.getMonth() == businessBannersDetails.createdAt.getMonth()){
+		      	  	var busAdsFirstDate = new Date(businessBannersDetails.startDate);  
+					var busAdsLastDate = new Date(businessBannersDetails.endDate);
+					var thisMnthStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
+	  				if(thisMnthStatisticData){
+	      				if(thisMnthStatisticData.length > 0){
+		      				$('.legendUserVwsBanners').show();
+				    		var totalCount = 0;
+	      					for (var l = 0; l < thisMnthStatisticData.length; l++) {
+								dateArray.push(thisMnthStatisticData[l].date);
+			  					bgcolorArray.push("rgba(255, 159, 64, 0.8)");
+			  					dataArray.push(thisMnthStatisticData[l].count);
+	      					}
+	      				}
+	  				}
+	  			}
+			}
+	      	datasetsArray.push({
+		      // label: 'User Views',
+		      data: dataArray,
+		      backgroundColor: bgcolorArray,
+		      borderWidth: 1
+		    });
+
+	      	$("#monthChart").append(
+        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-daily' style='max-height: 100%;'></canvas></div>"
+        	);
+
+	      	var ctx = document.getElementById(businessLink+"-daily").getContext("2d");
+		    var myChart = new Chart(ctx, {
+			  type: 'bar',
+			  data: {
+			    labels: dateArray,
+			    datasets: datasetsArray
+		   	  },
+			    options: {
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true
+			                }
+			            }]
+			        },
+			        legend: {
+			            display: false,
+			        }
+			    }
+			});
+	      	
         }//if(chart.ready)
     }); //tracker.autorun
     // ---End User Month Chart--- //
@@ -198,94 +286,124 @@ Template.vendorDashboard.onRendered(function(){
     Tracker.autorun(function () {
       	if (chart.ready() && chart1.ready()) {
     		$("#yearChart").empty();
-	      	var date  = new Date();
-		  	var first = new Date(date.getFullYear(), 0, 1);
-		  	var last  = new Date(date.getFullYear(), 11, 31);
-	      	var monthArray      = [];
-	      	var colorval1      = 0;
-			var colorval2      = 0;
-	      	var user = Meteor.userId();
-	      	var businessDetails = Business.find({'businessOwnerId':user,'status':'active'}).fetch();
-	      	if(businessDetails){
-	      		for(var k=0 ; k<businessDetails.length ; k++){
-		      		var businessLink = businessDetails[k].businessLink;
-		      		var businessName = businessDetails[k].businessTitle;
-		      		var statisticData  = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(first.toISOString()),$lt: new Date(last.toISOString())}}).fetch();
+    		var businessLink = Session.get('busLink');
+	      	var monthsArray      = [];
+	      	var dataArray    	 = [];
+	      	var bgcolorArray     = [];
+	      	var datasetsArray    = [];
+    		for (var i = 0; i < 12; i++) {
+				var date  = new Date();
+			  	var firstDate = new Date(date.getFullYear(), i, 1);
+			  	var lastDate  = new Date(date.getFullYear(), i, 31);    			
+		      	var statisticData  = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(firstDate.toISOString()),$lt: new Date(lastDate.toISOString())}}).fetch();
+		      	if(statisticData){
+		      		if(statisticData.length > 0){
+			      		var totalCount = 0;
+	  					for (var j = 0; j < statisticData.length; j++) {
+							totalCount += parseInt(statisticData[j].count) ;
+	  					}
+	  					$('.legendUserVws').show();
+	  					monthsArray.push(moment(firstDate).format('MMMM'));
+						dataArray.push(totalCount);
+    					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
+		      		}
+		      	}
+    		}
 
-		      		if(colorval1 >= 255){
-			           	colorval2 += 50;
-			           	var finalColorVal = "rgba(255,0,"+colorval2+",0.8)";
-		           	}else{
-		           		colorval1 += 50;
-			           	var finalColorVal = "rgba(255,"+colorval1+",0,0.8)";
-		           	}
+		    var businessAdsDetails = BusinessAds.findOne({'businessLink':businessLink,'status':'active'});
+        	if(businessAdsDetails){
+        		if(date.getFullYear() == businessAdsDetails.createdAt.getFullYear()){
+		      	  	var busAdsFirstDate = new Date(businessAdsDetails.startDate);  
+					var busAdsLastDate = new Date(businessAdsDetails.endDate);
+					
+		      		$('.legendUserVwsAds').show();
+					var monthValue = date.getMonth();
+					for (var k = 0; k < (businessAdsDetails.noOfMonths+1).length; k++) {
+						console.log(k);
+						if(k==0){
+							var firstDate = busAdsFirstDate;
+						}else{
+							var firstDate = new Date(date.getFullYear(), monthValue, 1);
+						}
 
-		        	if(statisticData){
-			        	for(var i= 0 ; i<statisticData.length ; i++){
-				        	var date = statisticData[i].date;
-				        	var splitdate      = date.split("/");
-					    	var formattedMonth = moment(splitdate[1], 'MM').format('MMMM');
-				        	monthArray.push({
-				            	'month' : formattedMonth,
-				        	});
-	          			}//i
+						if(k==businessAdsDetails.noOfMonths){
+			  				var lastDate  = busAdsLastDate;
+						}else{
+		  					var lastDate  = new Date(date.getFullYear(), monthValue, 31);
+						}
 
-			        	var createdMonth        = _.pluck(monthArray,"month");
-			        	var uniquecreatedMonth  = _.uniq(createdMonth);
+						console.log(new Date(firstDate.toISOString()));
+						console.log(new Date(lastDate.toISOString()));
+		  				var thisMnthStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(firstDate.toISOString()),$lte: new Date(lastDate.toISOString())}}).fetch();
+						console.log(thisMnthStatisticData);
+		  				if(thisMnthStatisticData){
+		      				if(thisMnthStatisticData.length > 0){
+					    		var totalCount = 0;
+		      					for (var j = 0; j < thisMnthStatisticData.length; j++) {
+									totalCount += parseInt(thisMnthStatisticData[j].count) ;
+		      					}
+			      				monthsArray.push(moment(thisMnthStatisticData.date).format('MMMM'));
+								dataArray.push(totalCount);
+	    						bgcolorArray.push("rgba(255, 206, 86, 0.8)");
+		      				}
+		  				}
+		  				monthValue++;
+					}
+	  			}
+			}
 
-		      			if(uniquecreatedMonth.length>0){
-						    var y = new Date().getFullYear();
-		          			var dataVals   = [];
-		        			for(var j=0 ; j<uniquecreatedMonth.length ; j++){ //number of instances of the date '23'
-		        				var m = moment().month(uniquecreatedMonth[j]).format("M");
-		        				var statFirstDate = new Date(y, m-1, 1);  
-		        				var statLastDate = new Date(y, m, 0);
-		          				var monthStat = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(statFirstDate.toISOString()),$lt: new Date(statLastDate.toISOString())}}).fetch();
-		          				if(monthStat.length > 0){
-						    		var totalCount = 0;
-		          					for (var l = 0; l < monthStat.length; l++) {
-										totalCount += parseInt(monthStat[l].count) ;
-		          					}
-		          				}
-		          				dataVals.push(totalCount);
-		        			}// j
-		      			}// if uniquecreatedDate
+			var businessBannersDetails = BusinessBanner.findOne({'businessLink':businessLink,'status':'active'});
+        	if(businessBannersDetails){
+        		if(date.getFullYear() == businessBannersDetails.createdAt.getFullYear()){
+		      	  	var busAdsFirstDate = new Date(businessBannersDetails.startDate);  
+					var busAdsLastDate = new Date(businessBannersDetails.endDate);
+					var thisMnthStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
+	  				if(thisMnthStatisticData){
+	      				if(thisMnthStatisticData.length > 0){
+				    		var totalCount = 0;
+	      					for (var j = 0; j < thisMnthStatisticData.length; j++) {
+								totalCount += parseInt(thisMnthStatisticData[j].count) ;
+	      					}
+		      				$('.legendUserVwsBanners').show();
+		      				monthsArray.push(moment(busAdsFirstDate).format('MMMM'));
+							dataArray.push(totalCount);
+    						bgcolorArray.push("rgba(255, 159, 64, 0.8)");
+	      				}
+	  				}
+	  			}
+			}
 
-		      			if(uniquecreatedMonth.length < 7){
-							$("#yearChart").append(
-				        		"<div class='noPaddingGeneral col-lg-6 col-md-6 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-monthly' style='max-height: 100%;'></canvas></div>"
-				        	);
-		      			}else{
-							$("#yearChart").append(
-				        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-monthly' style='max-height: 100%;'></canvas></div>"
-				        	);
-		      			}
+			datasetsArray.push({
+		      // label: 'User Views',
+		      data: dataArray,
+		      backgroundColor: bgcolorArray,
+		      borderWidth: 1
+		    });
 
-				      	var ctx = document.getElementById(businessLink+"-monthly").getContext("2d");
-					    var myChart = new Chart(ctx, {
-						  type: 'bar',
-						  data: {
-						    labels: uniquecreatedMonth,
-						    datasets: [{
-						      label: businessName,
-						      data: dataVals,
-						      backgroundColor: finalColorVal,
-						      borderWidth: 1
-						    }]
-					   	  },
-						    options: {
-						        scales: {
-						            yAxes: [{
-						                ticks: {
-						                    beginAtZero:true
-						                }
-						            }]
-						        }
-						    }
-						});
-	        		}//if setatisticData
-	        	}//k
-	      	}//businessDetails
+			$("#yearChart").append(
+        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-monthly' style='max-height: 100%;'></canvas></div>"
+        	);
+
+	      	var ctx = document.getElementById(businessLink+"-monthly").getContext("2d");
+		    var myChart = new Chart(ctx, {
+			  type: 'bar',
+			  data: {
+			    labels: monthsArray,
+			    datasets: datasetsArray 
+		   	  },
+			    options: {
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true
+			                }
+			            }]
+			        },
+			        legend: {
+			            display: false,
+			        }
+			    }
+			});
         }//if(chart.ready)
     }); //tracker.autorun
     // ---End User year Chart--- //
@@ -293,9 +411,17 @@ Template.vendorDashboard.onRendered(function(){
 })
 
 Template.vendorDashboard.events({
+	'change #graphBusinessTitle':function(event){
+		event.preventDefault();
+		var businessLink = $('#graphBusinessTitle').val(); 
+	    Session.set('busLink',businessLink);
+	},
 	'click .monthDate':function(event){
 		event.preventDefault();
-		$(".twoYr").removeClass('addYearClass');
+		var currentEvent = $(event.currentTarget);
+		$(currentEvent).addClass('addYearClass');
+		$(currentEvent).siblings().removeClass('addYearClass');
+		// $(".twoYr").removeClass('addYearClass');
 		$(".monthChart").show();
 		$(".custmonthChart").show();
 		$(".yearChart").hide();
@@ -318,7 +444,10 @@ Template.vendorDashboard.events({
 
 	'click .yearDate':function(event){
 		event.preventDefault();
-		$(".twoYr").removeClass('addYearClass');
+		var currentEvent = $(event.currentTarget);
+		$(currentEvent).addClass('addYearClass');
+		$(currentEvent).siblings().removeClass('addYearClass');
+		// $(".twoYr").removeClass('addYearClass');
 		$(".yearChart").show();
 		$(".custyearChart").show();
 		$(".monthChart").hide();
@@ -338,6 +467,9 @@ Template.vendorDashboard.events({
 
 	'click .twoYr':function(event){
 		event.preventDefault();
+		var currentEvent = $(event.currentTarget);
+		$(currentEvent).addClass('addYearClass');
+		$(currentEvent).siblings().removeClass('addYearClass');
 		$(".twoYearChart").show();
 		$(".custtwoYearChart").show();
 		$(".yearChart").hide();
@@ -377,31 +509,64 @@ Template.vendorDashboard.helpers({
 			return TwoyearVar;
 		}
 	},
+	'businessNameData':function(){
+		var businessNameArr = [];
+		var businessObj = Business.find({'businessOwnerId':Meteor.userId(),'status':'active'}).fetch();
+		if(businessObj){
+			for (var i = 0; i < businessObj.length; i++) {
+				businessNameArr.push({'businessTitle':businessObj[i].businessTitle,'businessLink':businessObj[i].businessLink});
+			}
+		}
+		return businessNameArr;
+	}
 });
 
 Template.userViewGraph.helpers({
 	'customerActivity':function(){
 		var userId            = Meteor.userId();
 		var custActivityArray = [];
-		var businessData      = Business.find({'businessOwnerId':userId,'status':'active'}).fetch();
-		if(businessData){
-			for(j = 0 ; j < businessData.length; j++){
-				var businessUrl = businessData[j].businessLink;
-				var userData    = UserLatLng.find({'businessLink':businessUrl}, {sort: {createdAt: -1}, limit: 10}).fetch();
-				if(userData){
-					for(var i=0 ; i<userData.length ; i++){
-						var city     = userData[i].city;
-						var date     = userData[i].createdAt;
-						var dateTime = moment(date).format('MMMM Do YYYY, h:mm:ss a');
-						custActivityArray.push({
-							'city' : city,
-							'date' : dateTime,
-						});
-					}//i
-				}//userData
-			}//j
-		}//businessData	
-		return custActivityArray;
+		var businessLink = Session.get('busLink');
+		if(businessLink){
+			var businessData      = Business.findOne({'businessLink':businessLink,'status':'active'});
+			if(businessData){
+				var businessTitle = businessData.businessTitle;
+			}
+			var userData    = UserLatLng.find({'businessLink':businessLink}, {sort: {createdAt: -1}, limit: 10}).fetch();
+			if(userData){
+				for(var i=0 ; i<userData.length ; i++){
+					var city     = userData[i].city;
+					var date     = userData[i].createdAt;
+					var dateTime = moment(date).format('MMMM Do YYYY, h:mm:ss a');
+					custActivityArray.push({
+						'city' : city,
+						'date' : dateTime,
+						'businessTitle' : businessTitle,
+					});
+				}//i
+			}//userData
+			return custActivityArray;
+		}else{
+			var businessData      = Business.find({'businessOwnerId':userId,'status':'active'}).fetch();
+			if(businessData){
+				for(j = 0 ; j < businessData.length; j++){
+					var businessUrl = businessData[j].businessLink;
+					var userData    = UserLatLng.find({'businessLink':businessUrl}, {sort: {createdAt: -1}, limit: 10}).fetch();
+					if(userData){
+						for(var i=0 ; i<userData.length ; i++){
+							var city     = userData[i].city;
+							var date     = userData[i].createdAt;
+							var dateTime = moment(date).format('MMMM Do YYYY, h:mm:ss a');
+							custActivityArray.push({
+								'city' : city,
+								'date' : dateTime,
+								'businessTitle' : businessData[j].businessTitle,
+							});
+						}//i
+					}//userData
+				}//j
+			}//businessData	
+			return custActivityArray;
+		}
 	}
 });
 
