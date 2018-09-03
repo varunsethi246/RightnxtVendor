@@ -3801,3 +3801,7 @@ video::-webkit-media-controls-panel {
 	height:450px;
 }
 .exitEnquiryImage{position: absolute;}
+
+.textAlignCenter{
+	text-align: center;
+}

@@ -11,7 +11,7 @@
 							</div>
 							<div class="col-lg-12" id="div1" style=""  >
 								<output id="editbusinessImglist"></output>
-								<input type="file" name="files[]" id="editbusinessImgfiles" multiple="true" class="inputImg">
+								<input type="file" name="files[]" id="editbusinessImgfiles" multiple="true" class="inputImg" accept=".jpg,.jpeg,.png"/>
 								<h4 id="dragEdit1">Drag new photos here</h4>
 							</div>
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 noPaddingGeneral" id="uploadImgDivHide">
@@ -94,7 +94,7 @@
 								</div>
 						        {{else}}
 									{{#unless businessVideo}}
-							            <input id="fileInput" type="file" />
+							            <input id="fileInput" type="file" accept=".mp4,.3gp,.ogv,.webm"/>
 						            {{/unless}}
 						    {{/with}}
 
@@ -145,7 +145,7 @@
 								</div>
 								<div class="col-lg-12 businessDivOpen" id="div1" style=""  >
 									<output id="editbusinessMenulist"></output>
-									<input type="file" name="files[]" id="editbusinessMenufiles" multiple="true" class="inputImg">
+									<input type="file" name="files[]" id="editbusinessMenufiles" multiple="true" class="inputImg" accept=".jpg,.jpeg,.png"/>
 									<h4 id="dragEdit3">Drag new menu images here</h4>
 								</div>
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 noPaddingGeneral" id="uploadMenuDivHide">

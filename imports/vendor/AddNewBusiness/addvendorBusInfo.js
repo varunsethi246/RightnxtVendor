@@ -422,7 +422,7 @@ Template.addVendorBusInfo.events({
       $('.businessLinkC').val(myBusinessTitle.substring(0,50));
    },
    'submit .businessInfo': function(event){
-      alert('businessInfo');
+      // alert('businessInfo');
       event.preventDefault();
       var id = FlowRouter.getParam('id');
 

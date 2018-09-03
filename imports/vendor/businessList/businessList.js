@@ -296,7 +296,7 @@ Template.allbusinessList.events({
 		});
 		$(".listOffers").parent().parent().parent().parent().siblings(".busThumbnailsSection").children(".busThumbnailsRow").children(".displayGridView").children(".thumbBusList").children(".row").children('.mapViewBusLists').each(function(){
 			if($(this).attr("data-offer") == 0){
-				$(this).show();
+				$(this).hide();
 			}
 		});
 		/*==offer==*/
@@ -307,7 +307,7 @@ Template.allbusinessList.events({
 		});
 		$(".listOffers").parent().parent().parent().parent().siblings(".busThumbnailsSection").children(".busThumbnailsRow").children(".displayGridView").children(".thumbBusList").children(".row").children('.gridViewBusLists').each(function(){
 			if($(this).attr("data-offer") == 0){
-				$(this).show();
+				$(this).hide();
 			}
 		});
 	},
