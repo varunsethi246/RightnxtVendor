@@ -734,6 +734,17 @@ Template.businessLocation.events({
 	    var urlLink = "http://maps.google.com/maps?q="+busLat+"+"+busLong+"&t=h&z=17";
 	    window.open(urlLink,'_blank');
 
+		var count = 1;
+		
+		var now = moment();
+		var date = moment(now).format('DD/MM/YYYY');
+		Meteor.call('insertMapViewStats',date,count,businessLink,function(error,result){
+			if(error){
+				console.log(error);
+			}else{
+			}
+		});
+
 
 	},
 });

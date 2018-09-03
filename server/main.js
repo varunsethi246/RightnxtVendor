@@ -38,6 +38,7 @@ import '../imports/api/businessImageLikesMaster.js';
 import '../imports/api/UserImgLikesMaster.js';
 import '../imports/api/imageCommentMaster.js';
 import '../imports/api/imageCommentLikeMaster.js';
+import '../imports/api/mapViewMaster.js';
 
 
 

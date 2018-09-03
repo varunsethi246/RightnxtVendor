@@ -4353,6 +4353,7 @@ text-align: center
 		.placeOrder .btn{margin-left: 25px!important;}
 		.review_left{height: 115px!important;}
 		.closeLogout{margin-left: 80px!important;}
+		#graphBusinessTitle{width: 50%;}
 		.imageReportCloseFirst{margin-right: -75px!important;}
 		.rateBusi{width: 20%!important;}
 		.uploadPicSize{height: 88px!important;}
@@ -4397,6 +4398,7 @@ text-align: center
 			bottom:-27px!important;
 			z-index:1!important
 		}
+		.dateTimeDiv{margin-left: 19%!important;}
 		.uploadPhotoSize{height: 115px!important;}
 		.userCommRepDt.vUserCommentReplyDate{padding-left: 8px!important;}
 		.userCommentText.vUserCommentPadding,.userlike.vUserCommentPadding{padding-left: 9px!important;}
@@ -4414,3 +4416,4 @@ text-align: center
 .saveoffer .col-lg-12{padding-left: 0px;}
 .slick-prev,.slick-next{height: 100px;width: 60px;}
 #faqCollapse{padding-left: 30px;}
+.custLead > div{margin-bottom: 15px;}

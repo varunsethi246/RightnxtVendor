@@ -10,7 +10,7 @@ padding:0
 .threeTabs {
 font-size:11px
 }
-
+.periodMargin{margin-left: 0px;margin-top: 12px;}
 .periodDate {
 padding:0
 }
@@ -77,7 +77,7 @@ height:136px
 .offerPay {
 margin-top:0
 }
-
+.periodMargin{width: 48%;margin-left: 0px;}
 .outerPaymentoption {
 padding:0
 }
@@ -126,7 +126,8 @@ padding-left:0;
 padding-right:0;
 margin-bottom:18px
 }
-
+.periodMargin{padding: 0px;margin-top: 10px;margin-left: 0px;}
+.periodMargin > button{padding: 6px 5px;}
 .starRatingClass {
 margin-left:0;
 position:relative;

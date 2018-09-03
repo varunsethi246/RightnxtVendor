@@ -296,7 +296,7 @@ overflow-y: auto;
 .legendBgCls{height: 18px;background-color: rgba(54, 162, 235, 0.8);}
 .legendBgClsAds{height: 18px;background-color: rgba(255, 206, 86, 0.8);}
 .legendBgClsBanners{height: 18px;background-color: rgba(255, 159, 64, 0.8);}
-.legendUserVws,.legendUserVwsAds,.legendUserVwsBanners{display: none;}
+.legendUserVws,.legendUserVwsAds,.legendUserVwsBanners,.legendCustVws{display: none;}
 .graphWrapper {
 background:#fff
 }

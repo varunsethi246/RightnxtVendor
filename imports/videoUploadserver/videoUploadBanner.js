@@ -56,11 +56,11 @@ if(s3Data)
                 streams: 'dynamic',
                 chunkSize: 'dynamic',
                 onBeforeUpload: function(file) {
-                    if ( /mp4|3gp/i.test(file.extension)) {
+                    if ( /mp4|3gp|ogv|webm/i.test(file.extension)) {
                         // limit size to 1GB and in mp4 format
                         return true;
                     } else {
-                        return "Please upload video";
+                        return "Please upload video of type .mp4, .3gp, .ogv or .webm";
                     }
 
                 },

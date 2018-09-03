@@ -21,7 +21,18 @@
           {{/if}}
        	</div>
     {{else}}
-      <div class="no"> 
+      <div class="no hidden-lg hidden-md hidden-sm"> 
+          {{#if businessLandline }}
+            <a href="tel:{{businessLandline}}" class="mobileCalls"><i class="fa fa-phone" aria-hidden="true"></i> {{businessLandline}}</a><br>
+          {{/if}}
+          {{#if businessMobile}}
+            <a href="tel:{{businessMobile}}" class="mobileCalls"><i class="fa fa-phone" aria-hidden="true"></i> {{businessMobile}}</a><br> 
+          {{/if}}
+          {{#if businessAltMobile}} 
+            <a href="tel:{{businessAltMobile}}" class="mobileCalls"><i class="fa fa-phone" aria-hidden="true"></i> {{businessAltMobile}}</a> 
+          {{/if}}
+        </div>
+        <div class="no hidden-xs"> 
           {{#if businessLandline }}
             <i class="fa fa-phone" aria-hidden="true"></i> {{businessLandline}}<br>
           {{/if}}

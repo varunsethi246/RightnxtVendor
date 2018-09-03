@@ -62,3 +62,19 @@ Template.businessContactDetails.helpers({
 		return ratingObj;
 	},
 });
+
+Template.businessContactDetails.events({
+	'click .mobileCalls':function(){
+	    var businessLink = FlowRouter.getParam('businessurl');
+		var count = 1;
+		
+		var now = moment();
+		var date = moment(now).format('DD/MM/YYYY');
+		Meteor.call('insertCallStatistics',date,count,businessLink,function(error,result){
+			if(error){
+				console.log(error);
+			}else{
+			}
+		});
+	},
+});
