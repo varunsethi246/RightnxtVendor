@@ -203,7 +203,13 @@ Template.thumbnailBusinessList.helpers({
 		return busList;
 
 	},
-
+	'offerIngridview'(){
+		var offerCount = Offers.find({"offerStatus":"Active"}).fetch();
+		var offerLength = offerCount.length;
+		console.log(offerCount);
+		console.log(offerLength);
+		return offerLength;
+	},
 	isGridViewVisible(){
 		if(Session.get('showGridView')){
 			var searchText = FlowRouter.getParam('searchText');
@@ -296,7 +302,7 @@ Template.allbusinessList.events({
 		});
 		$(".listOffers").parent().parent().parent().parent().siblings(".busThumbnailsSection").children(".busThumbnailsRow").children(".displayGridView").children(".thumbBusList").children(".row").children('.mapViewBusLists').each(function(){
 			if($(this).attr("data-offer") == 0){
-				$(this).hide();
+				$(this).show();
 			}
 		});
 		/*==offer==*/
@@ -307,7 +313,7 @@ Template.allbusinessList.events({
 		});
 		$(".listOffers").parent().parent().parent().parent().siblings(".busThumbnailsSection").children(".busThumbnailsRow").children(".displayGridView").children(".thumbBusList").children(".row").children('.gridViewBusLists').each(function(){
 			if($(this).attr("data-offer") == 0){
-				$(this).hide();
+				$(this).show();
 			}
 		});
 	},
