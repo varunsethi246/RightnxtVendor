@@ -174,33 +174,37 @@ Template.paymentSuccess.events({
 				var name = '';
 			}
 			var email = $('#toVEmail').val();
-		    var divToPrint=document.getElementById('DivIdToPrint');
-			var message = '<html><head></head><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>'; 
-			// console.log('message ',message);
+			if(email){
+			    var divToPrint=document.getElementById('DivIdToPrint');
+				var message = '<html><head></head><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>'; 
+				// console.log('message ',message);
 
-			var date 		= new Date();
-			var currentDate = moment(date).format('DD/MM/YYYY');
-			var businessLink = FlowRouter.getParam('businessLink');
-			var businessDetails = Business.findOne({"businessLink":businessLink});
-			if(businessDetails){
-				var msgvariable = {
-					'[receipt]' 	: message,
-					'[currentDate]'	: currentDate,
-					'[username]' 	: name,
-					'[businessName]': businessDetails.businessTitle,
-					'[message]'		: message,
-					// '[dealHeadline]': offerObj.dealHeadline
+				var date 		= new Date();
+				var currentDate = moment(date).format('DD/MM/YYYY');
+				var businessLink = FlowRouter.getParam('businessLink');
+				var businessDetails = Business.findOne({"businessLink":businessLink});
+				if(businessDetails){
+					var msgvariable = {
+						'[receipt]' 	: message,
+						'[currentDate]'	: currentDate,
+						'[username]' 	: name,
+						'[businessName]': businessDetails.businessTitle,
+						'[message]'		: message,
+						// '[dealHeadline]': offerObj.dealHeadline
 
-		       	};
+			       	};
 
-				var inputObj = {
-					notifPath	 : "",
-					from 		 : userDetails.emails[0].address,
-				    to           : email,
-				    templateName : 'Mail Receipt',
-				    variables    : msgvariable,
+					var inputObj = {
+						notifPath	 : "",
+						from 		 : userDetails.emails[0].address,
+					    to           : email,
+					    templateName : 'Mail Receipt',
+					    variables    : msgvariable,
+					}
+					sendMailReceiptNotification(inputObj);
 				}
-				sendMailReceiptNotification(inputObj);
+			}else{
+				Bert.alert('Please enter email address.','danger','growl-top-right');
 			}
 		}
 		$(event.target).parent().parent().find('input').val('');
@@ -376,8 +380,10 @@ Template.vendorMyOffers.events({
 						"dealTemplate" 			: event.target.dealTemplate.value,
 						"dealHeadline"			: event.target.dealHeadline.value,
 						"dealDescription" 		: event.target.dealDescription.value,
-						"expirationFromDate" 	: event.target.expirationFromDate.value,
-						"expirationToDate" 		: event.target.expirationToDate.value,
+						// "expirationFromDate" 	: event.target.expirationFromDate.value,
+						// "expirationToDate" 		: event.target.expirationToDate.value,
+						"expirationFromDate" 	: $this.find('#usrtimeFrom').val(),
+						"expirationToDate" 		: $this.find('#usrtimeTo').val(),
 						"legalNotices"			: event.target.legalNotices.value,
 						"offerStatus"			: 'New',
 						"numOfMonths"			: numOfMonths,
@@ -498,8 +504,10 @@ Template.vendorMyOffers.events({
 				"dealTemplate" 			: event.target.dealTemplate.value,
 				"dealHeadline"			: event.target.dealHeadline.value,
 				"dealDescription" 		: event.target.dealDescription.value,
-				"expirationFromDate" 	: event.target.expirationFromDate.value,
-				"expirationToDate" 		: event.target.expirationToDate.value,
+				// "expirationFromDate" 	: event.target.expirationFromDate.value,
+				// "expirationToDate" 		: event.target.expirationToDate.value,
+				"expirationFromDate" 	: $this.find('#usrtimeFrom').val(),
+				"expirationToDate" 		: $this.find('#usrtimeTo').val(),
 				"legalNotices"			: event.target.legalNotices.value,
 				"offerStatus"			: 'New',
 				"numOfMonths"			: numOfMonths,
@@ -1061,7 +1069,7 @@ Template.vendorOffer1.helpers({
 });
 
 Template.vendorOffer1.events({
-	'click .dealx':function(event){
+	'change .dealx':function(event){
 		// var dealDescriptionval = event.target.dealTemplate.value;
 		var dealDescriptionval = $(event.currentTarget).val();
 		// console.log(dealDescriptionval);
@@ -1104,34 +1112,39 @@ Template.vendorOffer1.events({
 		files = event.target.files; // FileList object\
 		// Loop through the FileList and render image files as thumbnails.
 		// console.log(files);
-		for (var i = 0, f; f = files[i]; i++) {
-			files[i].businessLink = Session.get('SessionBusinessLink');
-			
-		    // Only process image files.
-		    if (!f.type.match('image.*')) {
-		      continue;
-			}
+		if(files){
+			$this.siblings('.vUploadButton1Offer').hide();
+			$this.hide();
+			for (var i = 0, f; f = files[i]; i++) {
+				files[i].businessLink = Session.get('SessionBusinessLink');
+				
+			    // Only process image files.
+			    if (!f.type.match('image.*')) {
+			      continue;
+				}
 
-			var reader = new FileReader();
-			
-			// Closure to capture the file information.
-		    reader.onload = (function(theFile) {
-		      return function(e) {
-		        // Render thumbnail.
-		        var span = document.createElement('span');
-		        span.innerHTML = ['<i class="pull-right fa fa-times-circle cursorPointer exitOfferImage"></i><img class="thumbnail draggedImgOffers imgVendorSpan" src="', e.target.result,
-		                          '" title="', escape(theFile.name), '"/>'].join('');
-		        document.getElementById(imageId).insertBefore(span, null);
-		      };
-		    })(f); //end of onload
+				var reader = new FileReader();
+				
+				// Closure to capture the file information.
+			    reader.onload = (function(theFile) {
+			      return function(e) {
+			        // Render thumbnail.
+			        var span = document.createElement('span');
+			        span.innerHTML = ['<i class="pull-right fa fa-times-circle cursorPointer exitOfferImage"></i><img class="thumbnail draggedImgOffers imgVendorSpan" src="', e.target.result,
+			                          '" title="', escape(theFile.name), '"/>'].join('');
+			        document.getElementById(imageId).insertBefore(span, null);
+			      };
+			    })(f); //end of onload
 
-		    // Read in the image file as a data URL.
-		    reader.readAsDataURL(f);
-		}// end of for loop
+			    // Read in the image file as a data URL.
+			    reader.readAsDataURL(f);
+			}// end of for loop
+		}
 	},
 	'click .exitOfferImage' :  function(event){
 		files = [];
 		var $this = $(event.target);
+		$this.parent().parent().siblings('input').show();
 		$this.parent().parent().empty();
 		$('.businessPhotofiles').val('');
 	},	
@@ -1255,7 +1268,7 @@ Template.vendorOffer2.helpers({
 });
 
 Template.vendorOffer2.events({
-	'click .dealy':function(event){
+	'change .dealy':function(event){
 		// var dealDescriptionval = event.target.dealTemplate.value;
 		var dealDescriptionval = $('.dealy').val();
 		if (dealDescriptionval == 'Percent Off') {
@@ -1332,8 +1345,10 @@ Template.vendorOffer2.events({
 						"dealTemplate" 			: event.target.dealTemplate.value,
 						"dealHeadline"			: event.target.dealHeadline.value,
 						"dealDescription" 		: event.target.dealDescription.value,
-						"expirationFromDate" 	: event.target.expirationFromDate.value,
-						"expirationToDate" 		: event.target.expirationToDate.value,
+						// "expirationFromDate" 	: event.target.expirationFromDate.value,
+						// "expirationToDate" 		: event.target.expirationToDate.value,
+						"expirationFromDate" 	: $(event.target).find('#usrtimeOne').val(),
+						"expirationToDate" 		: $(event.target).find('#usrtimeTwo').val(),
 						"legalNotices"			: event.target.legalNotices.value,
 						"numOfMonths"			: num,
 						"offerImage"			: imgId,
@@ -1373,8 +1388,10 @@ Template.vendorOffer2.events({
 				"dealTemplate" 			: event.target.dealTemplate.value,
 				"dealHeadline"			: event.target.dealHeadline.value,
 				"dealDescription" 		: event.target.dealDescription.value,
-				"expirationFromDate" 	: event.target.expirationFromDate.value,
-				"expirationToDate" 		: event.target.expirationToDate.value,
+				// "expirationFromDate" 	: event.target.expirationFromDate.value,
+				// "expirationToDate" 		: event.target.expirationToDate.value,
+				"expirationFromDate" 	: $(event.target).find('#usrtimeOne').val(),
+				"expirationToDate" 		: $(event.target).find('#usrtimeTwo').val(),
 				"legalNotices"			: event.target.legalNotices.value,
 				"numOfMonths"			: num,
 				"offerImage"			: offerImageId,
@@ -1406,35 +1423,40 @@ Template.vendorOffer2.events({
 		// $this.parent().parent().css('margin-bottom','-30px');
 
 		files = event.target.files; // FileList object\
-		// Loop through the FileList and render image files as thumbnails.
-		for (var i = 0, f; f = files[i]; i++) {
-			files[i].businessLink = Session.get('SessionBusinessLink');
-			
-		    // Only process image files.
-		    if (!f.type.match('image.*')) {
-		      continue;
-			}
+		if(files){
+			$this.siblings('.vUploadButton1Offer').hide();
+			$this.hide();
+			// Loop through the FileList and render image files as thumbnails.
+			for (var i = 0, f; f = files[i]; i++) {
+				files[i].businessLink = Session.get('SessionBusinessLink');
+				
+			    // Only process image files.
+			    if (!f.type.match('image.*')) {
+			      continue;
+				}
 
-			var reader = new FileReader();
-			
-			// Closure to capture the file information.
-		    reader.onload = (function(theFile) {
-		      return function(e) {
-		        // Render thumbnail.
-		        var span = document.createElement('span');
-		        span.innerHTML = ['<i class="pull-right fa fa-times-circle cursorPointer exitOfferImage"></i><img class="thumbnail draggedImgOffers imgVendorSpan" src="', e.target.result,
-		                          '" title="', escape(theFile.name), '"/>'].join('');
-		        document.getElementById(imageId).insertBefore(span, null);
-		      };
-		    })(f); //end of onload
+				var reader = new FileReader();
+				
+				// Closure to capture the file information.
+			    reader.onload = (function(theFile) {
+			      return function(e) {
+			        // Render thumbnail.
+			        var span = document.createElement('span');
+			        span.innerHTML = ['<i class="pull-right fa fa-times-circle cursorPointer exitOfferImage"></i><img class="thumbnail draggedImgOffers imgVendorSpan" src="', e.target.result,
+			                          '" title="', escape(theFile.name), '"/>'].join('');
+			        document.getElementById(imageId).insertBefore(span, null);
+			      };
+			    })(f); //end of onload
 
-		    // Read in the image file as a data URL.
-		    reader.readAsDataURL(f);
-		}// end of for loop
+			    // Read in the image file as a data URL.
+			    reader.readAsDataURL(f);
+			}// end of for loop
+		}
 	},
 	'click .exitOfferImage' :  function(event){
 		files = [];
 		var $this = $(event.target);
+		$this.parent().parent().siblings('input').show();
 		$this.parent().parent().empty();
 		$('.businessPhotofiles').val('');
 	},
@@ -1569,33 +1591,37 @@ Template.receipt.events({
 				var name = '';
 			}
 			var email = $('#toVEmail').val();
-		    var divToPrint=document.getElementById('DivIdToPrint');
-			var message = '<html><head></head><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>'; 
-			// console.log('message ',message);
+			if(email){
+			    var divToPrint=document.getElementById('DivIdToPrint');
+				var message = '<html><head></head><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>'; 
+				// console.log('message ',message);
 
-			var date 		= new Date();
-			var currentDate = moment(date).format('DD/MM/YYYY');
-			var businessLink = FlowRouter.getParam('businessLink');
-			var businessDetails = Business.findOne({"businessLink":businessLink});
-			if(businessDetails){
-				var msgvariable = {
-					'[receipt]' 	: message,
-					'[currentDate]'	: currentDate,
-					'[username]' 	: name,
-					'[businessName]': businessDetails.businessTitle,
-					'[message]'		: message,
-					// '[dealHeadline]': offerObj.dealHeadline
+				var date 		= new Date();
+				var currentDate = moment(date).format('DD/MM/YYYY');
+				var businessLink = FlowRouter.getParam('businessLink');
+				var businessDetails = Business.findOne({"businessLink":businessLink});
+				if(businessDetails){
+					var msgvariable = {
+						'[receipt]' 	: message,
+						'[currentDate]'	: currentDate,
+						'[username]' 	: name,
+						'[businessName]': businessDetails.businessTitle,
+						'[message]'		: message,
+						// '[dealHeadline]': offerObj.dealHeadline
 
-		       	};
+			       	};
 
-				var inputObj = {
-					notifPath	 : "",
-					from 		 : userDetails.emails[0].address,
-				    to           : email,
-				    templateName : 'Mail Receipt',
-				    variables    : msgvariable,
+					var inputObj = {
+						notifPath	 : "",
+						from 		 : userDetails.emails[0].address,
+					    to           : email,
+					    templateName : 'Mail Receipt',
+					    variables    : msgvariable,
+					}
+					sendMailReceiptNotification(inputObj);
 				}
-				sendMailReceiptNotification(inputObj);
+			}else{
+				Bert.alert('Please enter email address.','danger','growl-top-right');
 			}
 		}
 		$(event.target).parent().parent().find('input').val('');

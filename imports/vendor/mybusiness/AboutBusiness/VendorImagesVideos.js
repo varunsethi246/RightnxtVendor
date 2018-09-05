@@ -52,7 +52,7 @@ Template.vendorImagesVideos.helpers({
 			if(data.businessImages){
 				var imgListCount = data.businessImages.length;
 				var imgList = [];
-				for(i = 0 ; i < imgListCount ; i++)
+				for(var i = 0 ; i < imgListCount ; i++)
 				{
 					var imgId =  data.businessImages[i];
 					var imgData = BusinessImage.findOne({"_id":imgId.img});
@@ -96,7 +96,7 @@ Template.vendorImagesVideos.helpers({
 			if(data.businessMenu){
 				var menuListCount = data.businessMenu.length;
 				var menuList = [];
-				for(i = 0 ; i < menuListCount ; i++)
+				for(var i = 0 ; i < menuListCount ; i++)
 				{
 					var menuId =  data.businessMenu[i];
 					var menuData = BusinessMenu.findOne({"_id":menuId.menu});
@@ -129,11 +129,11 @@ var counterMenu = 0;
 Template.vendorImagesVideos.onRendered(function () {
 	var businessLink = FlowRouter.getParam('businessLink');
 	Session.set('SessionBusinessLink',businessLink);
-	files = [];
-	filesM = [];
-	counterImg = 0;
-	counterMenu = 0;
-	videoListCountExit = 0;
+	var files = [];
+	var filesM = [];
+	var counterImg = 0;
+	var counterMenu = 0;
+	var videoListCountExit = 0;
 
 	// filesV = [];
 });
@@ -145,16 +145,14 @@ Template.vendorImagesVideos.events({
 
 	'click #editsaveBusinessImg' : function(event,template){
 		var businessLink = FlowRouter.getParam('businessLink');
-		$('#uploadImgDivHide').show();
 		if(files.length > 0){
+			$('#uploadImgDivHide').show();
 			for(var i = 0 ; i < files.length; i++){
 				if(i == files.length-1){
 		          	$('#uploadImgDivHide').find('.progress-bar').css('width','40%');
 		          	$('#uploadImgDivHide').find('b').html('40%');
-		        }else{
-		          	$('#uploadImgDivHide').find('.progress-bar').css('width','30%');
-		          	$('#uploadImgDivHide').find('b').html('30%');
 		        }
+
 			  const imageCompressor = new ImageCompressor();
 		      imageCompressor.compress(files[i])
 		        .then((result) => {
@@ -162,9 +160,6 @@ Template.vendorImagesVideos.events({
 		          if(i == files.length){
 		          	$('#uploadImgDivHide').find('.progress-bar').css('width','55%');
 		          	$('#uploadImgDivHide').find('b').html('55%');
-		          }else{
-		          	$('#uploadImgDivHide').find('.progress-bar').css('width','85%');
-		          	$('#uploadImgDivHide').find('b').html('85%');
 		          }
 
 		          // Handle the compressed image file.
@@ -181,9 +176,6 @@ Template.vendorImagesVideos.events({
 		          if(i == files.length){
 		          	$('#uploadImgDivHide').find('.progress-bar').css('width','70%');
 		          	$('#uploadImgDivHide').find('b').html('70%');
-		          }else{
-		          	$('#uploadImgDivHide').find('.progress-bar').css('width','100%');
-		          	$('#uploadImgDivHide').find('b').html('100%');
 		          }
 		        });
 
@@ -193,7 +185,6 @@ Template.vendorImagesVideos.events({
 		            console.log('Error during upload 1: ' + error);
 		            console.log('Error during upload 1: ' + error.reason);
 		          } else {
-		            // alert('File "' + fileObj._id + '" successfully uploaded');
 		            // console.log(fileObj._id);
 		            // Session.set("vendorImgFilePath",fileObj._id);
 		            Meteor.call('updateVendorBulkImg', businessLink, fileObj._id, 
@@ -204,9 +195,15 @@ Template.vendorImagesVideos.events({
 		                }else{
 				          // template.imageUpload.set(false);
 				          if(i == files.length){
-				          	$('#uploadImgDivHide').find('.progress-bar').css('width','100%');
-				          	$('#uploadImgDivHide').find('b').html('100%');
-				          	// $('#uploadImgDivHide').find('.progress').addClass('hideMe');
+				          	if(files.length == 1){
+								$('#uploadImgDivHide').find('.progress-bar').css('width','100%');
+		          				$('#uploadImgDivHide').find('b').html('100%');
+								$('#uploadImgDivHide').hide();					          	
+					          	// $('#uploadImgDivHide').addClass('hideMe');
+				          	}else{
+				          		$('#uploadImgDivHide').find('.progress-bar').css('width','100%');
+		          				$('#uploadImgDivHide').find('b').html('100%');
+				          	}
 				   			counterImg = 0;
 							files=[];
 							$('#editbusinessImglist').empty();
@@ -233,15 +230,12 @@ Template.vendorImagesVideos.events({
 
 	'click #editsaveBusinessMenu' : function(event,template){
 		var businessLink = FlowRouter.getParam('businessLink');
-		$('#uploadMenuDivHide').show();
 		if(filesM.length > 0){
+			$('#uploadMenuDivHide').show();
 			for(var i = 0 ; i < filesM.length; i++){
 				if(i == filesM.length-1){
-		          	$('#uploadImgDivHide').find('.progress-bar').css('width','40%');
-		          	$('#uploadImgDivHide').find('b').html('40%');
-		        }else{
-		          	$('#uploadMenuDivHide').find('.progress-bar').css('width','30%');
-		          	$('#uploadMenuDivHide').find('b').html('30%');
+		          	$('#uploadMenuDivHide').find('.progress-bar').css('width','40%');
+		          	$('#uploadMenuDivHide').find('b').html('40%');
 		        }
 				const imageCompressor = new ImageCompressor();
 			      imageCompressor.compress(filesM[i])
@@ -251,9 +245,6 @@ Template.vendorImagesVideos.events({
 			          if(i == filesM.length){
 			          	$('#uploadMenuDivHide').find('.progress-bar').css('width','55%');
 			          	$('#uploadMenuDivHide').find('b').html('55%');
-			          }else{
-			          	$('#uploadMenuDivHide').find('.progress-bar').css('width','85%');
-			          	$('#uploadMenuDivHide').find('b').html('85%');
 			          }
 
 			          // Handle the compressed image file.
@@ -271,9 +262,6 @@ Template.vendorImagesVideos.events({
 			          if(i == filesM.length){
 			          	$('#uploadMenuDivHide').find('.progress-bar').css('width','70%');
 			          	$('#uploadMenuDivHide').find('b').html('70%');
-			          }else{
-			          	$('#uploadMenuDivHide').find('.progress-bar').css('width','100%');
-			          	$('#uploadMenuDivHide').find('b').html('100%');
 			          }
 			        });
 
@@ -294,9 +282,15 @@ Template.vendorImagesVideos.events({
 			                }else{
 					          // template.menuUpload.set(false);
 					          if(i == filesM.length){
-					          	$('#uploadMenuDivHide').find('.progress-bar').css('width','100%');
-					          	$('#uploadMenuDivHide').find('b').html('100%');
-					          	// $('#uploadImgDivHide').find('.progress').addClass('hideMe');
+					          	if(filesM.length == 1){
+						          	$('#uploadMenuDivHide').find('.progress-bar').css('width','100%');
+						          	$('#uploadMenuDivHide').find('b').html('100%');
+									$('#uploadMenuDivHide').hide();
+						          	// $('#uploadMenuDivHide').addClass('hideMe');
+					          	}else{
+					          		$('#uploadMenuDivHide').find('.progress-bar').css('width','100%');
+						          	$('#uploadMenuDivHide').find('b').html('100%');
+					          	}
 								counterMenu = 0;
 								filesM=[];
 					   			$('#editbusinessMenulist').empty();
@@ -325,7 +319,7 @@ Template.vendorImagesVideos.events({
 	    if (e.currentTarget.files && e.currentTarget.files[0]) {
 			var businessLink = FlowRouter.getParam('businessLink');
 			var bussData = Business.findOne({"businessLink":businessLink});
-	    	if(bussData.businessVideo && bussData.businessVideo != 0){
+	    	if(bussData.businessVideo && bussData.businessVideo != ''){
 			 	Bert.alert('Only One can be upload','danger','growl-top-right');
 		    }else{
 

@@ -3278,7 +3278,20 @@ position:relative;
 width:auto;
 color:#4e4f51
 }
-
+.vUploadButton1Offer {
+    background-color: #f89b1c;
+    border: 1px solid #f89b1c;
+    /*box-sizing: content-box;*/
+    color: #fff;
+    /*cursor: pointer;*/
+    /*display: inline-block;*/
+    /*font-size: 13px;*/
+    /*height: 33px;*/
+    /*width: 60%;*/
+    /*margin-left: 21px;*/
+    /*position: absolute;*/
+    /*top: 65%;*/
+}
 .uploadButton1 {
     background-color: #f89b1c;
     border: 1px solid #f89b1c;

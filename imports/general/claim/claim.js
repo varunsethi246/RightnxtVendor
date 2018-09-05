@@ -124,7 +124,7 @@ Template.claim.helpers({
   	var businessObj = Business.find({});
   	if(businessObj){
   		var ownerId = businessOwnerId;
-  		console.log('ownerId :',ownerId);
+  		// console.log('ownerId :',ownerId);
   		if(ownerId == null){
   			var statusClaim    = 'Claim your business';
   			var statusClass    = 'statusClass-g';
@@ -221,7 +221,7 @@ Template.claimOtp.helpers({
 			}else{
 				var newMobile = mobile;
 			}
-			console.log('newMobile :',newMobile);
+			// console.log('newMobile :',newMobile);
 			var sub = newMobile.substring(2,8);
 			var res = newMobile.replace(sub , "******"); 
 			// console.log('mobile: '+res);

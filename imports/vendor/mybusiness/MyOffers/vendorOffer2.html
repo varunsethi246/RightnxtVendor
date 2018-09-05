@@ -28,7 +28,7 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<label class="bold expireLabel col-lg-12 col-sm-12 col-md-12 col-xs-12">Expiration Date</label> 
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-									<div class="row">
+									<div class="row hidden-xs">
 										<div class="col-lg-1 col-md-1 col-sm-1 col-xs-4 fromDate">
 											<label class="bold">From</label>	
 										</div>
@@ -42,6 +42,22 @@
 											<input type="date" class="form-control" id="usrtimeOne" name="expirationToDate" value="{{expirationToDate}}" required="true" disabled="true">
 										</div>
 									</div>
+									<div class="row hidden-md hidden-sm hidden-lg">
+										<div class="col-lg-1 col-md-1 col-sm-1 col-xs-4 fromDate">
+											<label class="bold">From</label>	
+										</div>
+										<div class="col-lg-5 col-md-5 col-sm-5 col-xs-8 toVen2Buss1">
+											<input type="date" class="form-control changeDate" id="usrtimeOne" name="expirationFromDate" value="{{expirationFromDate}}" required="true" disabled="true">		
+										</div>
+									</div>
+									<div class="row hidden-md hidden-sm hidden-lg">
+										<div class="col-lg-1 col-md-1 col-sm-1 col-xs-4 fromDate toVen2Buss">
+											<label class="bold toDate">To</label>	
+										</div>
+										<div class="col-lg-5 col-md-5 col-sm-5 col-xs-8 vtoVen2Buss1">
+											<input type="date" class="form-control" id="usrtimeTwo" name="expirationToDate" value="{{expirationToDate}}" required="true" disabled="true">
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -49,22 +65,22 @@
 								<textarea maxlength="240" value="{{legalNotices}}" class="form-control" name="legalNotices" required="true"></textarea>
 							</div>
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<label class="bold">Picture</label>
-								<div class="">
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-8 removeMargTopImg veditOfferOfferImg">
-										{{#if offerImgData}}
-											<span class="vendor2Img">
-												<i class="pull-right fa fa-times-circle cursorPointer delOfferImage" id="{{id}}" data-imgid="{{offerImage}}"></i>
-												<img class="thumbnail draggedImg imgVendorSpan" src='{{#if offerImgData}}{{offerImgData.link}}{{else}}{{offerImage}}{{/if}}'>
-											</span>
-										{{else}}
-											<input type="file" name="files" class="businessPhotofiles inputOfferImg" accept=".jpg,.jpeg,.png">
-											<input type="button" name="choosePic" value="Choose Picture" class="form-control uploadButton1">
-										
-											<output id={{i}}></output>
-										{{/if}}
-									</div>
-								</div>						
+								<label class="bold">Picture</label>						
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-8 removeMargTopImg veditOfferOfferImg">
+									{{#if offerImgData}}
+										<span class="vendor2Img">
+											<i class="pull-right fa fa-times-circle cursorPointer delOfferImage" id="{{id}}" data-imgid="{{offerImage}}"></i>
+											<img class="thumbnail draggedImg imgVendorSpan" src='{{#if offerImgData}}{{offerImgData.link}}{{else}}{{offerImage}}{{/if}}'>
+										</span>
+									{{else}}
+										<input type="file" name="files" class="businessPhotofiles inputOfferImg" accept=".jpg,.jpeg,.png">
+										<input type="button" name="choosePic" value="Choose Picture" class="form-control vUploadButton1Offer">
+									
+										<output id={{i}}></output>
+									{{/if}}
+								</div>
 							</div>
 						{{/with}}
 						<div class="{{#if offerImgData}}{{else}}locIcn{{/if}} col-lg-12 col-md-12 col-sm-12 col-xs-12">

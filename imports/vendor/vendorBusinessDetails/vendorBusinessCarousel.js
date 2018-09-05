@@ -88,7 +88,7 @@ Template.vendorBusinessCarousel.helpers({
     	var bussData = Business.findOne({"businessLink":businessLink});
     	if(bussData){
     		if(bussData.businessVideo){
-	    		if(bussData.businessVideo == '0')
+	    		if(bussData.businessVideo == '')
 	    		{
 	    			return false;
 	    		}else{

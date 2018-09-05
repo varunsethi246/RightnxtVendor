@@ -222,6 +222,10 @@ Template.addvendorOpeningAndClosing.onRendered(function(){
   $('#datetimepicker4').datetimepicker({format: 'LT'});
   $('#datetimepicker3').datetimepicker({format: 'LT'});
   selectedCategoriesList = [];
+  var windowWidth = $(window).width();
+  if (windowWidth >= 320 && windowWidth <= 767){
+    $('[data-toggle="tooltip"]').tooltip(); 
+  }
   
 });
 

@@ -260,7 +260,7 @@ Template.aboutBusiness.helpers({
 	      	}
 			
 	      	if(data.businessVideo ){
-	      		if(data.businessVideo == 0 ){
+	      		if(!data.businessVideo){
 	      			data.businessVideo = false;
 	      		}else{
 			      	Session.set("videoPresent",1);
@@ -603,6 +603,10 @@ Template.aboutBusiness.events({
 
 Template.aboutBusiness.onRendered(function(){
 	$('html, body').scrollTop(0);
+	var windowWidth = $(window).width();
+	if (windowWidth >= 320 && windowWidth <= 767){
+	    $('[data-toggle="tooltip"]').tooltip(); 
+	}
 });
 
 aboutBusinessForm = function () {  

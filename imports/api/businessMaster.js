@@ -351,7 +351,7 @@ Meteor.methods({
 	'deleteVendorVideo' : function(businessLink,imgId){
 		Business.update(
 			{"businessLink": businessLink},
-			{$set : {"businessVideo" : '0'}},
+			{$set : {"businessVideo" : ''}},
 			function(error, result) { 
               if(error) {
                   console.log ('Error Message: ' +error ); 

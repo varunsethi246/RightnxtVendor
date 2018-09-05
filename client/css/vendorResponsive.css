@@ -230,8 +230,8 @@ margin-right:-30px
 
 .delBusiMenu {
 position:relative;
-top:16px;
-right:3px
+top:3px;
+right:3px;
 }
 
 .BussUploadSize img {
@@ -285,12 +285,15 @@ margin-top:10px
 .vPhotosYouUpload {
 padding:4px 18px
 }
-
-.delBusiImg {
-top:10px;
-right:38px
+.deleteVideo{right: 0px;top: 0px;}
+.videoShow{width: 235px;}
+.videoShow > video{width: 235px!important;}
+.vImageUplaodToBusi{margin-bottom: 10px;}
+.delBusiImg.vDelBusinessImg {
+top:14px;right:3px;
 }
-
+.vBusinessImagesRow{margin-left: 0px;}
+/*.vBusinessImagesRow > .vPhotosUserRowSec{padding-left: 0px;padding-right: 0px;}*/
 .profSettingsidebarUl li {
 width:100%;
 padding-left:10px;
@@ -450,7 +453,7 @@ margin-bottom:20px
 }
 
 .claimOtp form > input[name='claimOtp'] {
-border:1px solid #666
+border:1px solid #666;margin-bottom: 11px;
 }
 
 .receipt > h3 {

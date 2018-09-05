@@ -35,8 +35,8 @@ Template.addVendorBusInfo.helpers({
          if(Session.get("backlinkurl")){
             // console.log('in back url');
             var businessLink = Session.get("backlinkurl");
-            console.log('businessLink :',businessLink);
-            console.log('Session.get("backlinkurl") :',Session.get("backlinkurl"));
+            // console.log('businessLink :',businessLink);
+            // console.log('Session.get("backlinkurl") :',Session.get("backlinkurl"));
             var busData = Business.findOne({"businessLink":businessLink});
             busData.completedPercent = 25;            
          }else{
@@ -699,9 +699,12 @@ Template.addVendorBusInfo.onRendered(function(){
    GoogleMaps.load();
    $("#businessTitle").focus();
    $("html,body").scrollTop(0);
-
-var businessLink = Session.get("backlinkurl");
-            console.log('businessLink :',businessLink);
+   var windowWidth = $(window).width();
+   if (windowWidth >= 320 && windowWidth <= 767){
+      $('[data-toggle="tooltip"]').tooltip(); 
+   }
+   var businessLink = Session.get("backlinkurl");
+   // console.log('businessLink :',businessLink);
    // Session.set("addVenCountrySes","India");
    // Session.set("addVenStateSes","Maharashtra");
    // Session.set("addVenCitySes","Pune");

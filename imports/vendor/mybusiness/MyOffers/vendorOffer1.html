@@ -30,13 +30,29 @@
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<label class="bold col-lg-12 col-md-12 col-sm-12 col-xs-12 expireLabel">Expiration Date</label>
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 toDateBuss">
-								<div class="row">
+								<div class="row hidden-xs">
 									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-4 expireLabelfromDate">
 										<label class="bold">From</label>	
 									</div>
 									<div class="col-lg-5 col-md-5 col-sm-5 col-xs-8 fromDateBuss">
 										<input type="date" class="form-control changeDate" id="usrtimeFrom" name="expirationFromDate" value="{{dateData}}">		
 									</div>
+									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-4 fromDate">
+										<label class="bold toDate">To</label>	
+									</div>
+									<div class="col-lg-5 col-md-5 col-sm-5 col-xs-8 toDateBuss toDateBusiness">
+										<input type="date" class="form-control changeMonth" id="usrtimeTo" name="expirationToDate" value="{{todateData}}">
+									</div>
+								</div>
+								<div class="row hidden-md hidden-lg hidden-sm">
+									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-4 expireLabelfromDate">
+										<label class="bold">From</label>	
+									</div>
+									<div class="col-lg-5 col-md-5 col-sm-5 col-xs-8 fromDateBuss">
+										<input type="date" class="form-control changeDate" id="usrtimeFrom" name="expirationFromDate" value="{{dateData}}">		
+									</div>
+								</div>
+								<div class="row hidden-md hidden-lg hidden-sm">
 									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-4 fromDate">
 										<label class="bold toDate">To</label>	
 									</div>
@@ -51,16 +67,16 @@
 							<textarea maxlength="240" class="form-control" name="legalNotices"></textarea>
 						</div>
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<label class="bold">Picture</label>
-							<div class="">
-								<div class="col-lg-5 col-md-4 col-sm-8 col-xs-9 removeMargTopImg vOfferTopImg">
-									<input type="file" name="files" class="businessPhotofiles inputOfferImg" accept=".jpg,.jpeg,.png">
-									<input type="button" name="choosePic" value="Choose Picture" class="form-control uploadButton1">
-								
-									<output id={{i}}></output>
-									<!-- <span class="noFile drag">No File Chosen</span> -->
-								</div>
-							</div>						
+							<label class="bold">Picture</label>						
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="col-lg-5 col-md-4 col-sm-5 col-xs-8 removeMargTopImg vOfferTopImg">
+								<input type="file" name="files" class="businessPhotofiles inputOfferImg" accept=".jpg,.jpeg,.png">
+								<input type="button" name="choosePic" value="Choose Picture" class="form-control vUploadButton1Offer">
+							
+								<output id={{i}}></output>
+								<!-- <span class="noFile drag">No File Chosen</span> -->
+							</div>
 						</div>
 						{{#with currentUpload}}
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">	

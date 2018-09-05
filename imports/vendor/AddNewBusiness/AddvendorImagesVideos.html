@@ -52,13 +52,13 @@
 
 							<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  vBusGroupRow">
 								<div class="vPhotosOwnerManager vAddBussMarginTop">
-									<div class="row vPhotosYouRow">
+									<div class="row vPhotosYouRow vBusinessImagesRow">
 										{{#each vendorPhotosOwnerManagerData  }}
 										{{#if businessImg}}
-											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 vPhotosUserRowSec">
+											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 vPhotosUserRowSec">
 												<div class="">
-													<i class="fa fa-times-circle pull-right delBusiImg cursorPointer" id="img-{{_id}}" aria-hidden="true"></i><br>
-													<div class="uploadPhotoSize col-lg-12 col-md-12 col-xs-12 col-sm-12">
+													<i class="fa fa-times-circle pull-right delBusiImg vDelBusinessImg cursorPointer" id="img-{{_id}}" aria-hidden="true"></i><br>
+													<div class="uploadPhotoSize col-lg-12 col-md-12 col-xs-12 col-sm-12 noPaddingxs">
 														<img src="{{link}}" class="img-responsive thumbnail cursorPointer {{checkpngImg}}" data-toggle="modal" data-target="#businessImgModal-{{_id}}" >
 													</div>
 													<!-- Modal -->
@@ -115,7 +115,7 @@
 											<div class="vPhotosYouRImgNew vPhotosYouRImgPost">
 												<i class="fa fa-times-circle pull-right deleteVideo cursorPointer" id="video-{{_id}}" aria-hidden="true"></i>
 												<div class="videoShow">
-													<video  width="300" height="200" src="{{fileURL this}}?play=true" class="videoBkImg" controlsList="nodownload">
+													<video controls="controls" width="300" height="200" src="{{fileURL this}}?play=true" class="videoBkImg" controlsList="nodownload">
 													</video>
 												</div>
 												<!-- Modal -->
@@ -186,7 +186,7 @@
 									<div class="vPhotosOwnerManager vAddBussMarginTop">
 										<div class="row vPhotosYouRow">
 											{{#each vendorMenuOwnerManagerData}}
-											<div class="col-lg-3 col-md-3 col-sm-3  col-xs-12 vPhotosUserRowSec">
+											<div class="col-lg-3 col-md-3 col-sm-3  col-xs-6 vPhotosUserRowSec noPaddingxs">
 												<div class="vPhotosYouRImgNew">
 													<i class="fa fa-times-circle pull-right delBusiMenu cursorPointer" id="menu-{{_id}}" aria-hidden="true"></i>
 													<div class="vPhotosYouRepeatImg uploadPhotoSize">

@@ -3958,6 +3958,7 @@ padding:4px 5px!important
 }
 
 @media screen and (min-width:320px) and (max-width:767px) {
+	#agetCategory.agetWidth{width: 97%!important;}
 	.notifyreportWrapper{padding: 5% 0%!important;}
 	.busListEnq{margin-bottom: 12px!important;width: 100%;}
 	.bussMapContainer{margin-bottom: 35px!important;}
@@ -4332,11 +4333,12 @@ text-align: center
 		.vPhotosYouUploadTxt{margin-top: 7px!important;}
 		.viphotoUpload{margin-top: 6%!important;}
 		.vofferPara{width: 65.5%;}
-		.expireLabelfromDate{width: 10%;}
-		.fromDate{width: 8%;}
-		.toVen2Buss{width: 4%!important;}
-		.toVen2Buss1,.vtoVen2Buss1{width: 43%;}
-		.fromDateBuss,.toDateBusiness,.veditOfferOfferImg{width: 40%;}
+		/*.expireLabelfromDate{width: 10%;}*/
+		/*.fromDate{width: 8%;}*/
+		/*.toVen2Buss{width: 4%!important;}*/
+		/*.toVen2Buss1,.vtoVen2Buss1{width: 43%;}*/
+		/*.fromDateBuss,.toDateBusiness,.veditOfferOfferImg{width: 40%;}*/
+		.veditOfferOfferImg{width: 40%;}
 		.body-close{margin-left: 38%!important;}
 		.flagEnq {right: 46px!important;top: -3px!important;}
 		.delEnq {right: 26px!important;top: -3px!important;}
@@ -4381,7 +4383,7 @@ text-align: center
 	@media screen and (min-width: 320px) and (max-width: 767px) {
 		.userRepName{padding-left: 8px!important;margin-top: 12px!important;}
 		.ReviewBusiness{float: none!important;top: 0px!important;}
-		.locIcn {margin-top: 14%!important;}
+		/*.locIcn {margin-top: 14%!important;}*/
 		.vPhotosYouNewBtn.publishUserPic{float: none!important;position: relative;top: 4px;}
 		.vPhotosYouRepeatImgO{height: 105px!important;}
 		.vDragText{font-size: 15px!important;}
@@ -4417,3 +4419,4 @@ text-align: center
 .slick-prev,.slick-next{height: 100px;width: 60px;}
 #faqCollapse{padding-left: 30px;}
 .custLead > div{margin-bottom: 15px;}
+.tooltip{position: absolute;}

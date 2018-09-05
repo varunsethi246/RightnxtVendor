@@ -83,6 +83,10 @@ Template.addvendorAboutOwner.helpers({
 Template.addvendorAboutOwner.onRendered(function(){
   $("#businessFullName").focus();
   $("html,body").scrollTop(0);
+  var windowWidth = $(window).width();
+   if (windowWidth >= 320 && windowWidth <= 767){
+      $('[data-toggle="tooltip"]').tooltip(); 
+   }
 });
 
 Template.addvendorAboutOwner.events({

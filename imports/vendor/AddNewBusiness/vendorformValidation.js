@@ -365,20 +365,20 @@ Template.addvendorOpeningAndClosing.events({
 
 // Vendor Business About Owner Start
 Template.addvendorAboutOwner.events({
-   // 'focusout #businessFullName': function(){
-   //       var myFuncVar = $("#businessFullName").val();
-   //       var nameRegex = /^[A-Za-z ]{3,40}$/;
-   //       if (myFuncVar==null||myFuncVar==""||!myFuncVar.match(nameRegex)) {
-   //          $(".SpanBusinessFullName").addClass("ErrorRedText");
-   //          $(".businessFullNameC").addClass("SpanLandLineRedBorder");
-   //          $( ".SpanBusinessFullName" ).text("Please Enter Valid Full Name" );
+   'focusout #businessFullName': function(){
+         var myFuncVar = $("#businessFullName").val();
+         var nameRegex = /^[A-Za-z ]{3,40}$|^$/;
+         if (!myFuncVar.match(nameRegex)) {
+            $(".SpanBusinessFullName").addClass("ErrorRedText");
+            $(".businessFullNameC").addClass("SpanLandLineRedBorder");
+            $( ".SpanBusinessFullName" ).text("Please Enter Valid Full Name" );
 
-   //       } else {
-   //          $(".SpanBusinessFullName").removeClass("ErrorRedText");
-   //          $(".businessFullNameC").removeClass("SpanLandLineRedBorder");
+         } else {
+            $(".SpanBusinessFullName").removeClass("ErrorRedText");
+            $(".businessFullNameC").removeClass("SpanLandLineRedBorder");
 
-   //       }
-   //    },
+         }
+      },
    'focusout #businessYourDesc': function(){
          var myFuncVar = $("#businessYourDesc").val();
          if ((myFuncVar.length>0&&myFuncVar.length<50)||myFuncVar.length>1000) {
