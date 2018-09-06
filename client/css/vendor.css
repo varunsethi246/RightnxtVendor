@@ -1365,12 +1365,12 @@ position:relative
 .vPhotosYouUploadBtn input {
 position:absolute;
 width:115px;
-height:30px;
-top:8px;
+height:30px!important;
+top:10px;
 opacity:0;
 cursor:pointer
 }
-
+/*#businessPhotolist{position: absolute;z-index: 2;}*/
 .vPhotosYouUploadBtn button {
 padding:0;
 border-radius:0;
@@ -1381,19 +1381,16 @@ color:#fff;
 font-size:14px;
 height:30px;
 font-family:'PROXIMANOVA-REGULAR';
-width:115px
+width:115px;
+cursor: pointer;
 }
-
-.vPhotosYouUploadBtn button.btn.btn-success {
-margin-left:0;
-margin-top:3px
-}
+.vPhotosYouUploadBtn button.btn.btn-success.marginBtnV{margin-left: -15%;}
 
 .vPhotosYouUploadPost {
 padding:0;
-margin:0 auto;
+/*margin:0 auto;
 max-width:470px;
-width:100%
+width:100%*/
 }
 
 .vPhotosYouRepeat {
@@ -2685,7 +2682,7 @@ margin-top: 2px;
 .contentBody {
 border-left:1px solid #ccc;
 padding-bottom:100px;
-min-height: 600px;
+min-height: 700px;
 }
 
 .draggedImgenq {

@@ -2358,13 +2358,20 @@ margin-top:15%
 }
 
 .uploadpicvendor {
-display:none;
-height:122px!important
+	display:none;
+	height:122px!important;
+    border: 1px solid grey;
+    overflow: hidden;
+    overflow-y: auto;
 }
-
-.marginBtnV {
-margin-left:98%!important;
-margin-top:12%!important
+#vBusinessPhotofiles{
+    opacity: 0;
+    /*width: 100%;*/
+    height: 100%;
+    overflow-y: auto;
+    padding-left: 0px;
+    padding-right: 0px;
+    position: absolute;
 }
 
 .uploadPicSize {
@@ -3738,6 +3745,7 @@ right:236px!important
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
+.vPhotosYouUpload{margin-top: 0px!important;}
 .notifyreportWrapper{padding: 4% 0%!important;}
 .thumbBusDivs{left: 0px;}
 .mapViewBusList{padding-left: 30px!important;}
@@ -3748,7 +3756,7 @@ right:236px!important
 .vSearchBorder{border: 2px solid #ccc;}
 .viewModal{margin-top: 5px;}
 .offerPay{box-shadow: 0px 0px 6px #aaa;margin-bottom: 30px;}
-.viphotoUpload{margin-top: 8%!important;}
+/*.viphotoUpload{margin-top: 8%!important;}*/
 .sidbarPadAdj.closeSubMenuTab{padding-left: 15px!important;padding-right: 15px!important;}
 .vendorLayoutCss{margin-left: 2%!important;}
 .recBorder{margin-top: -2.5%!important;}
@@ -3987,7 +3995,7 @@ padding:4px 5px!important
 	.mapViewBusList .mapVBusTitle,.mapViewBusList .mapVBusAddr,.mapViewBusList .mapVBusPhnNum {
 	width:90%
 	}
-
+	.vPhotoYouUpldBTN{position: absolute;left: 0px;}
 	.displayMapView {
 	min-height:720px!important
 	}
@@ -4331,7 +4339,7 @@ text-align: center
 		.proLeftMargDiv{margin-left: -12%;}
 		.uploadPhotoSize{height: 185px!important;}
 		.vPhotosYouUploadTxt{margin-top: 7px!important;}
-		.viphotoUpload{margin-top: 6%!important;}
+		/*.viphotoUpload{margin-top: 6%!important;}*/
 		.vofferPara{width: 65.5%;}
 		/*.expireLabelfromDate{width: 10%;}*/
 		/*.fromDate{width: 8%;}*/
@@ -4366,7 +4374,7 @@ text-align: center
 		.vSearchBorder{border: 2px solid #ccc;}
 	}
 	@media screen and (max-width: 1024px) and (min-width: 768px){
-		.viphotoUpload{position: absolute;right: 0px;top: 3%;}
+		/*.viphotoUpload{position: absolute;right: 0px;top: 3%;}*/
 		.vPhotosYoui{margin-bottom: 3%!important;}
 		.vPhotosYouUpload{padding: 20px 12px!important;}
 	}
@@ -4387,7 +4395,7 @@ text-align: center
 		.vPhotosYouNewBtn.publishUserPic{float: none!important;position: relative;top: 4px;}
 		.vPhotosYouRepeatImgO{height: 105px!important;}
 		.vDragText{font-size: 15px!important;}
-		.viphotoUpload{margin-top: 15%!important;}
+		/*.viphotoUpload{margin-top: 15%!important;}*/
 		.vPhotosYouUploadImg{width: 25%;float: left;}
 		.vPhotosYouUploadTxt{width: 70%;margin-top: 9px!important;}
 		.addPhotoTxt {
@@ -4406,9 +4414,9 @@ text-align: center
 		.userCommentText.vUserCommentPadding,.userlike.vUserCommentPadding{padding-left: 9px!important;}
 	}
 	@media screen and (min-width: 992px) and (max-width: 1199px){
-		.viphotoUpload{position: absolute;right: 0px;top: 3%;}
+		/*.viphotoUpload{position: absolute;right: 0px;top: 3%;}*/
 		.vPhotosYoui{margin-bottom: 3%!important;}
-		.vPhotosYouUpload{padding: 20px 12px!important;}
+		.vPhotosYouUpload{padding: 20px 12px!important;margin-top: -20px!important;}
 		.vPhotosYouRepeatImgO {height: 125px!important;}
 	}
 }

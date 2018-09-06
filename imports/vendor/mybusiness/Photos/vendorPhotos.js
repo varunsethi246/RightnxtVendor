@@ -70,7 +70,7 @@ Template.vendorPhotos.helpers({
 			if(data.businessImages){
 				var imgListCount = data.businessImages.length;
 				var imgList = [];
-				for(i = 0 ; i < imgListCount ; i++)
+				for(var i = 0 ; i < imgListCount ; i++)
 				{
 
 					var imgId =  data.businessImages[i];
@@ -163,7 +163,7 @@ Template.vendorPhotos.helpers({
 		if(data){
 			if(data.businessImages){
 				var imgListCount = data.businessImages.length;
-				for(i = 0 ; i < imgListCount ; i++)
+				for(var i = 0 ; i < imgListCount ; i++)
 				{
 					var imgId =  data.businessImages[i];
 					var imgData = ReviewImage.findOne({"_id":imgId.img});
@@ -278,15 +278,12 @@ Template.vendorPhotos.events({
 	},
 	'click #saveBusinessphoto' : function(event,template){
 		var businessLink = FlowRouter.getParam('businessLink');
-		$('#uploadImgDivHide').show();
 		if(files.length > 0){
+			$('#uploadImgDivHide').show();
 			for(var i = 0 ; i < files.length; i++){
 			    if(i == files.length-1){
 		          	$('#uploadImgDivHide').find('.progress-bar').css('width','40%');
 		          	$('#uploadImgDivHide').find('b').html('40%');
-		        }else{
-		          	$('#uploadImgDivHide').find('.progress-bar').css('width','30%');
-		          	$('#uploadImgDivHide').find('b').html('30%');
 		        }
 			  const imageCompressor = new ImageCompressor();
 		      imageCompressor.compress(files[i])
@@ -296,9 +293,6 @@ Template.vendorPhotos.events({
 		        if(i == files.length){
 		          	$('#uploadImgDivHide').find('.progress-bar').css('width','55%');
 		          	$('#uploadImgDivHide').find('b').html('55%');
-		        }else{
-		          	$('#uploadImgDivHide').find('.progress-bar').css('width','85%');
-		          	$('#uploadImgDivHide').find('b').html('85%');
 		        }
 
 		          // Handle the compressed image file.
@@ -316,9 +310,6 @@ Template.vendorPhotos.events({
 		          if(i == files.length){
 		          	$('#uploadImgDivHide').find('.progress-bar').css('width','70%');
 		          	$('#uploadImgDivHide').find('b').html('70%');
-		          }else{
-		          	$('#uploadImgDivHide').find('.progress-bar').css('width','100%');
-		          	$('#uploadImgDivHide').find('b').html('100%');
 		          }
 		        });
 
@@ -338,13 +329,20 @@ Template.vendorPhotos.events({
 		                  return;
 		                }else{
 		                	if(i == files.length){
-					          	$('#uploadImgDivHide').find('.progress-bar').css('width','100%');
-					          	$('#uploadImgDivHide').find('b').html('100%');
+		                		if(files.length == 1){
+						          	$('#uploadImgDivHide').find('.progress-bar').css('width','100%');
+						          	$('#uploadImgDivHide').find('b').html('100%');
+									$('#uploadImgDivHide').hide();
+		                		}else{
+		                			$('#uploadImgDivHide').find('.progress-bar').css('width','100%');
+						          	$('#uploadImgDivHide').find('b').html('100%');
+		                		}
 					   			files=[];
 								counterImg = 0;
-								$('#businessPhotolist').empty();
+								$('#businessPhotolist').find('span').remove();
 								$('.drag').show();
-								$('.displayDiv').css("display","none");	
+								$('.vDisplayDiv').css("display","none");
+								$('#saveBusinessphoto').siblings('#vBusinessPhotofiles').css("width","115px");
 								$('.displayBtn').removeClass('marginBtnV');
 					            Bert.alert('Business Image uploaded.','success','growl-top-right');
 				          	}else{
@@ -366,46 +364,49 @@ Template.vendorPhotos.events({
 		}
 	},
 
-	'change #businessPhotofiles' : function(event){
+	'change #vBusinessPhotofiles' : function(event){
 		event.preventDefault();
-		$('.displayDiv').css("display","block");
-		$('.drag').hide();
-		$('.displayBtn').addClass('marginBtnV');
 		var file = event.target.files; // FileList object\
-		for(var j = 0 , f1;f1 = file[j]; j++){
-			files[counterImg] = file[j];
-			counterImg = counterImg + 1;
-		}
-
-		// Loop through the FileList and render image files as thumbnails.
-		
-		for (var i = 0, f; f = file[i]; i++) {
-			
-		    // Only process image files.
-		    if (!f.type.match('image.*')) {
-		      continue;
+		if(file.length > 0){
+			$('.vDisplayDiv').css("display","block");
+			$('#saveBusinessphoto').siblings('#vBusinessPhotofiles').css("width","0px");
+			$('.drag').hide();
+			$('.displayBtn').addClass('marginBtnV');
+			for(var j = 0 , f1;f1 = file[j]; j++){
+				files[counterImg] = file[j];
+				counterImg = counterImg + 1;
 			}
 
-			var reader = new FileReader();
+			// Loop through the FileList and render image files as thumbnails.
 			
-			// Closure to capture the file information.
-		    reader.onload = (function(theFile) {
-		      return function(e) {
-		        // Render thumbnail.
+			for (var i = 0, f; f = file[i]; i++) {
+				
+			    // Only process image files.
+			    if (!f.type.match('image.*')) {
+			      continue;
+				}
 
-		        var span = document.createElement('span');
-		        span.innerHTML = ['<img class="draggedImgPhotos" src="', e.target.result,
-		                          '" title="', escape(theFile.name), '"/>'].join('');
-		        document.getElementById('businessPhotolist').insertBefore(span, null);
-		        
-		      };
-		    })(f); //end of onload
+				var reader = new FileReader();
+				
+				// Closure to capture the file information.
+			    reader.onload = (function(theFile) {
+			      return function(e) {
+			        // Render thumbnail.
+
+			        var span = document.createElement('span');
+			        span.innerHTML = ['<img class="draggedImgPhotos" src="', e.target.result,
+			                          '" title="', escape(theFile.name), '"/>'].join('');
+			        document.getElementById('businessPhotolist').insertBefore(span, null);
+			        
+			      };
+			    })(f); //end of onload
 
 
-		    // Read in the image file as a data URL.
-		    reader.readAsDataURL(f);
-		    
-		}// end of for loop
+			    // Read in the image file as a data URL.
+			    reader.readAsDataURL(f);
+			    
+			}// end of for loop
+		}
 
 	},	
 

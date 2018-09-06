@@ -281,9 +281,9 @@ margin-bottom:5px
 .vPhotosYouUploadImg {
 margin-top:10px
 }
-
+.marginBtnV{margin-left: 0%!important;}
 .vPhotosYouUpload {
-padding:4px 18px
+padding:4px 18px;margin-top: 10px!important;
 }
 .deleteVideo{right: 0px;top: 0px;}
 .videoShow{width: 235px;}
