@@ -355,7 +355,7 @@ Template.vendorEnquiry.helpers({
 
 			// $('.vEnqFormImgOne').animate({ scrollTop: $(document).height() }, 1);
 			var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
-        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
+            $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
 			return enqData;			
 		}
 	},

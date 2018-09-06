@@ -631,10 +631,12 @@ Meteor.methods({
 			function(error,result){
 				if(error){
 					return error;
+				}else{
+					return result;
 				}
 			}
 		);
-		return id;
+		// return id;
 	},
 	'updateUnblockUser':function(formValues){
 		Business.update(
@@ -646,10 +648,12 @@ Meteor.methods({
 			function(error,result){
 				if(error){
 					return error;
+				}else{
+					return result;
 				}
 			}
 		);
-		return id;
+		// return id;
 	},
 	'updateVendorPhotos':function(businessLink,vendorId,formValues){
 		for(var i = 0; i<formValues.length; i++){

@@ -364,11 +364,15 @@ margin-top:25px
 padding-top:5%
 }
 
-.vPaymentTable > tbody > tr > td,.editOfferTable > tbody > tr > td,.vPaymentTable > thead > tr > th,.editOfferTable > thead > tr > th {
+.vPaymentTable > tbody > tr > td,.vPaymentTable > thead > tr > th{
 padding-right:8px;
 padding-left:5px
 }
-
+.editOfferTable tbody tr td i{padding: 2%;}
+/*.editOfferTable > tbody > tr > td,.editOfferTable > thead > tr > th {
+padding-right:8px;
+padding-left:5px	
+}*/
 .toVen2Buss1 {
 margin-bottom:6px
 }

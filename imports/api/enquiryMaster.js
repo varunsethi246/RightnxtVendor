@@ -113,7 +113,24 @@ Meteor.methods({
 	},
 
 	'updateCommentBlock':function(formValues){
-		return Enquiry.update({"enquirySentBy":formValues.currentUser,"enquiryDesc.commentBy":'User'},{$set:{"enquiryDesc.$.commentblock":false}});
+		// return Enquiry.update({"enquirySentBy":formValues.currentUser,"enquiryDesc.commentBy":'User'},{$set:{"enquiryDesc.$.commentblock":false}},{multi: true});
+		var enquiryObj = Enquiry.find({"enquirySentBy":formValues.currentUser}).fetch();
+		// console.log(enquiryObj);
+		if(enquiryObj.length > 0){
+			for (var i = 0; i < enquiryObj.length; i++) {
+				if(enquiryObj[i].enquiryDesc){
+				// console.log(enquiryObj[i].enquiryDesc);
+					for (var j = 0; j < enquiryObj[i].enquiryDesc.length; j++) {
+						// console.log(enquiryObj[i].enquiryDesc[j].commentBy);
+						if(enquiryObj[i].enquiryDesc[j].commentBy == 'User' && enquiryObj[i].enquiryDesc[j].commentblock){
+							// console.log(j);
+							Enquiry.update({"_id":enquiryObj[i]._id},{$set:{["enquiryDesc."+j+".commentblock"]:false}});
+						}
+					}
+				}
+			}
+		}
+		return;
 	},
 
 	// For Vendor Side
