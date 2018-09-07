@@ -527,17 +527,23 @@ Template.customerLeadsGraph.helpers({
 			}
 		}
 
-		var data = {
-			"bookmarkCount"  : bookmarkCount,
-			"beenThereCount" : beenThereCount,
-			"likesCount" 	 : likesCount,
-			"saveOfferCount" : saveOfferCount,
-			"userStatisticCount"   : userStatisticCount,
-			"mapStatisticCount"    : mapStatisticCount,
-			"mobileStatisticCount" : mobileStatisticCount,
-			"reviewImagesCount" : reviewImagesCount,
-			"date" : date,
-		};
+		if(bookmarkData.length>0 || statisticData.length>0 || reviewData.length>0 ||
+		beenThereData.length>0 || likesData.length>0 || savedOfferData.length>0 ||
+		mapStatisticData.length>0 || mobileStatisticData.length>0){
+			var data = {
+				"bookmarkCount"  : bookmarkCount,
+				"beenThereCount" : beenThereCount,
+				"likesCount" 	 : likesCount,
+				"saveOfferCount" : saveOfferCount,
+				"userStatisticCount"   : userStatisticCount,
+				"mapStatisticCount"    : mapStatisticCount,
+				"mobileStatisticCount" : mobileStatisticCount,
+				"reviewImagesCount" : reviewImagesCount,
+				"date" : date,
+			};
+		}else{
+			var data = null;
+		}
 
 		return data;		
 	}

@@ -3372,6 +3372,7 @@ margin-top:0
 }
 
 .dropmenu {
+width: 18%;
 position:relative;
 top:-105px;
 right:5px;
@@ -3966,6 +3967,7 @@ padding:4px 5px!important
 }
 
 @media screen and (min-width:320px) and (max-width:767px) {
+	#faqCollapse {padding-left: 15px!important;}
 	#agetCategory.agetWidth{width: 97%!important;}
 	.notifyreportWrapper{padding: 5% 0%!important;}
 	.busListEnq{margin-bottom: 12px!important;width: 100%;}
@@ -3987,7 +3989,7 @@ padding:4px 5px!important
 	.vModalCommentWrpr{height: auto;}
 	.notifiacationUsers {
 	position:absolute;
-	left:38%;
+	left:35%;
 	top:18px
 	}
 	.recBorder{margin-top: 0%;}
@@ -4272,6 +4274,7 @@ text-align: center
     margin-left: 15px!important;
 }
 @media screen and (min-width: 1920px){
+	.contentBody{min-height: 1000px!important;}
 	.merchantGuidelineslg {margin-top: 3.5%;}
 	.aboutNavbar {padding-left: 15px;margin-left: 40.5%}
 	.notifiacationUsers{left: 8%;}
@@ -4402,10 +4405,10 @@ text-align: center
 			height:18px!important;
 			padding:0!important;
 			position:absolute!important;
-			right:15px!important;
+			right:9px!important;
 			cursor:pointer!important;
 			opacity:.8!important;
-			bottom:-27px!important;
+			bottom:-9px!important;
 			z-index:1!important
 		}
 		.dateTimeDiv{margin-left: 19%!important;}
