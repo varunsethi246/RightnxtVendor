@@ -359,7 +359,12 @@ Template.allbusinessList.events({
 		});
 
 	},
-	'click .sidebarMapPre': function(){
+	'click .sidebarMapPre': function(event){
+		event.preventDefault();
+
+		var data = Template.currentData(self.view);
+		// console.log('data:',data);
+        Blaze.renderWithData(Template.businessMap, data, $(".mapContainer")[0]);
 		$('.sidebarMapPre').css('display','none');
 		
         $('.displayMapView').show();
@@ -883,7 +888,8 @@ Template.businessList.events({
 	},
 
 	// Map View Click Events
-	'click .mapVwPointer': function() {
+	'click .mapVwPointer': function(event) {
+		event.preventDefault();
 		$('.displayMapView').show();
 		$('.displayMapView').addClass('col-lg-5');
 		$('.displayGridView').removeClass('col-lg-8');

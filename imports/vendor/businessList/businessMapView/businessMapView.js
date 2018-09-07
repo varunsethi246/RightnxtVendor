@@ -20,9 +20,9 @@ if (Meteor.isClient) {
    });
 }
 
-// Template.businessList.onRendered(function() {
-//    GoogleMaps.load();
-// });
+Template.businessMap.onRendered(function() {
+   GoogleMaps.load();
+});
 
 // console.log("Session.get('currentMarker'): ",Session.get('currentMarker'));
 
