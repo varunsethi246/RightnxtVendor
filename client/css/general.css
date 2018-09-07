@@ -3989,7 +3989,7 @@ padding:4px 5px!important
 	.vModalCommentWrpr{height: auto;}
 	.notifiacationUsers {
 	position:absolute;
-	left:35%;
+	left:38%;
 	top:18px
 	}
 	.recBorder{margin-top: 0%;}
@@ -4330,16 +4330,17 @@ text-align: center
 .prfSpan{left: 0px!important;top: 0px!important;}
 @media only screen and (orientation: landscape) {
 	@media screen and (min-width: 320px) and (max-width: 767px) {
+		.prfPic{height: 100px!important;width: 105px!important;}
 		.gridViewBusList{width: 50%;}
 		.gridViewBusList:nth-child(even){padding-left: 7.5px;}
 		.gridViewBusList:nth-child(odd){padding-right: 7.5px;}
 		.dayBuss {margin-left: -44px!important;}
 		.groupHeight1-xs{margin-left: 0px;}
 		.vOfferTopImg{width: 36%!important}
-		.notifiacationUsers {left: 48%;}
-		.dropmenu{width: 12%;}
-		.addPhotoTxt{right: 41%!important;}
-		.proLeftMargDiv{margin-left: -12%;}
+		/*.notifiacationUsers {left: 48%;}*/
+		.dropmenu{width: 15%;}
+		.addPhotoTxt{left: 0%;bottom: -10px!important;}
+		.proLeftMargDiv{padding-left: 0px;padding-right: 0px;}
 		.uploadPhotoSize{height: 185px!important;}
 		.vPhotosYouUploadTxt{margin-top: 7px!important;}
 		/*.viphotoUpload{margin-top: 6%!important;}*/
