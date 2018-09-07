@@ -542,7 +542,7 @@ Template.customerLeadsGraph.helpers({
 				"date" : date,
 			};
 		}else{
-			var data = null;
+			var data = {};
 		}
 
 		return data;		

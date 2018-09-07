@@ -4404,11 +4404,11 @@ text-align: center
 		.addPhotoTxt {
 			height:18px!important;
 			padding:0!important;
-			position:absolute!important;
-			right:9px!important;
+			position:relative!important;
+			right:0px!important;
 			cursor:pointer!important;
 			opacity:.8!important;
-			bottom:-9px!important;
+			bottom:9px!important;
 			z-index:1!important
 		}
 		.dateTimeDiv{margin-left: 19%!important;}

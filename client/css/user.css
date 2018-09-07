@@ -4247,3 +4247,7 @@ padding-left: 48px;
 .rightBtn .timeLineFollowBtn:hover {
 	color: white;
 }
+.newBackground {
+    background-color: #ffe0b6;
+    text-align: center;
+}
