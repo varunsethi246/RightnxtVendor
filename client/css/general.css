@@ -3967,6 +3967,7 @@ padding:4px 5px!important
 }
 
 @media screen and (min-width:320px) and (max-width:767px) {
+	.offerFormDiv{padding-right: 0px;}
 	#faqCollapse {padding-left: 15px!important;}
 	#agetCategory.agetWidth{width: 97%!important;}
 	.notifyreportWrapper{padding: 5% 0%!important;}
@@ -4338,7 +4339,7 @@ text-align: center
 		.groupHeight1-xs{margin-left: 0px;}
 		.vOfferTopImg{width: 36%!important}
 		/*.notifiacationUsers {left: 48%;}*/
-		.dropmenu{width: 15%;}
+		/*.dropmenu{width: 15%;}*/
 		.addPhotoTxt{left: 0%;bottom: -10px!important;}
 		.proLeftMargDiv{padding-left: 0px;padding-right: 0px;}
 		.uploadPhotoSize{height: 185px!important;}
@@ -4358,8 +4359,8 @@ text-align: center
 		.vEnqUserNameMargLeft{margin-left: -20px;}
 		.vUserUndoAlign{text-align: left!important;}
 		.vImgWidth{width: 50%;}
-		.deleteBus{float: none!important;top: 45px!important;right: 0%!important;}
-		.ReviewBusiness{float: none!important;top: -24px!important;}
+		.deleteBus{top: 6px!important;right: 0%!important;}
+		.ReviewBusiness{float: none!important;top: 5px!important;}
 		.BussAbtTtl {margin-top: 5%!important;}
 		.userRevTempleftImg img{height: 130px!important;}
 		.venGenClaimButt{width: 10.5%!important;}
