@@ -3164,7 +3164,7 @@ padding-bottom:0
 }
 
 .loginForm {
-margin-top:28px
+margin-top:35px
 }
 
 .loginFormGroup {
@@ -3498,6 +3498,8 @@ padding-left:10px
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
+.resetpass h2{width: 100%!important;}
+.resetWrapper{width: 50%!important;margin-left: 24%;}
 .notifyreportWrapper{padding: 3% 0%!important;}
 .thumbBusDivs{left: 0px;}
 .mapViewBusList{padding-left: 40px!important;}
@@ -3746,6 +3748,8 @@ right:236px!important
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
+.resetpass h2{width: 100%!important;}
+.resetWrapper{width: 60%!important;margin-left: 18.5%;}
 .vPhotosYouUpload{margin-top: 0px!important;}
 .notifyreportWrapper{padding: 4% 0%!important;}
 .thumbBusDivs{left: 0px;}
@@ -3967,6 +3971,11 @@ padding:4px 5px!important
 }
 
 @media screen and (min-width:320px) and (max-width:767px) {
+	.imageReportBodyOne{padding-bottom: 10px;}
+	.review_right > .userName{margin-left: 0px!important;}
+	.resetWrapper{margin-left: 0%!important;width: 100%!important;}
+	.resetpass h2{width: 100%;}
+	.forgotEmailMessage{width: 297px!important;}
 	.userReplyComent{padding-left: 10px!important;}
 	.thumBusDistance{margin-left: 0px!important;}
 	.offerFormDiv{padding-right: 0px;}
@@ -4030,11 +4039,11 @@ padding:4px 5px!important
 	.imageReportLarge {
 	width:auto
 	}
-
+/*
 	.carousel-inner > .item > img {
 	width:100%!important;
 	height:100%!important
-	}
+	}*/
 
 	#imageSliderCarousel {
 	overflow:hidden
