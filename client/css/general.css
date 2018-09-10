@@ -3967,6 +3967,8 @@ padding:4px 5px!important
 }
 
 @media screen and (min-width:320px) and (max-width:767px) {
+	.userReplyComent{padding-left: 10px!important;}
+	.thumBusDistance{margin-left: 0px!important;}
 	.offerFormDiv{padding-right: 0px;}
 	#faqCollapse {padding-left: 15px!important;}
 	#agetCategory.agetWidth{width: 97%!important;}
@@ -4331,18 +4333,22 @@ text-align: center
 .prfSpan{left: 0px!important;top: 0px!important;}
 @media only screen and (orientation: landscape) {
 	@media screen and (min-width: 320px) and (max-width: 767px) {
+		.vPhotosYouRepeatImgO{height: 155px!important;}
+		.vUploadPhotoSz{height: 145px!important;}
+		.vNoPaddingComntRply{padding-left: 10px!important;}
+		.vCustActivityDiv{padding-left: 0px;padding-right: 0px;}
 		.prfPic{height: 100px!important;width: 105px!important;}
 		.gridViewBusList{width: 50%;}
 		.gridViewBusList:nth-child(even){padding-left: 7.5px;}
 		.gridViewBusList:nth-child(odd){padding-right: 7.5px;}
-		.dayBuss {margin-left: -44px!important;}
+		.dayBuss {margin-left: -10px!important;}
 		.groupHeight1-xs{margin-left: 0px;}
 		.vOfferTopImg{width: 36%!important}
 		/*.notifiacationUsers {left: 48%;}*/
 		/*.dropmenu{width: 15%;}*/
 		.addPhotoTxt{left: 0%;bottom: -10px!important;}
 		.proLeftMargDiv{padding-left: 0px;padding-right: 0px;}
-		.uploadPhotoSize{height: 185px!important;}
+		/*.uploadPhotoSize{height: 185px!important;}*/
 		.vPhotosYouUploadTxt{margin-top: 7px!important;}
 		/*.viphotoUpload{margin-top: 6%!important;}*/
 		.vofferPara{width: 65.5%;}
@@ -4353,25 +4359,25 @@ text-align: center
 		/*.fromDateBuss,.toDateBusiness,.veditOfferOfferImg{width: 40%;}*/
 		.veditOfferOfferImg{width: 40%;}
 		.body-close{margin-left: 38%!important;}
-		.flagEnq {right: 46px!important;top: -3px!important;}
-		.delEnq {right: 26px!important;top: -3px!important;}
+		.flagEnq {right: 10px!important;top: -3px!important;}
+		.delEnq {right: 10px!important;top: -3px!important;}
 		.vDatePaddLeft{padding-left: 20px!important;}
-		.vEnqUserNameMargLeft{margin-left: -20px;}
+		/*.vEnqUserNameMargLeft{margin-left: -5px;}*/
 		.vUserUndoAlign{text-align: left!important;}
 		.vImgWidth{width: 50%;}
 		.deleteBus{top: 6px!important;right: 0%!important;}
 		.ReviewBusiness{float: none!important;top: 5px!important;}
 		.BussAbtTtl {margin-top: 5%!important;}
-		.userRevTempleftImg img{height: 130px!important;}
-		.venGenClaimButt{width: 10.5%!important;}
+		.userRevTempleftImg img{height: 110px!important;}
+		.venGenClaimButt{width: 11%!important;}
 		.claimRightModal form {margin-left: 3%;}
 		.placeOrder .btn{margin-left: 25px!important;}
 		.review_left{height: 115px!important;}
 		.closeLogout{margin-left: 80px!important;}
 		#graphBusinessTitle{width: 50%;}
 		.imageReportCloseFirst{margin-right: -75px!important;}
-		.rateBusi{width: 20%!important;}
-		.uploadPicSize{height: 88px!important;}
+		.rateBusi{width: 28%!important;}
+		.uploadPicSize{height: 70px!important;}
 		.businessPicSize {height: 185px!important;}
 	}
 	@media screen and (min-width: 1024px) and (max-width: 1366px) {
@@ -4397,7 +4403,7 @@ text-align: center
 		.userRepName{padding-left: 8px!important;margin-top: 12px!important;}
 		.ReviewBusiness{float: none!important;top: 0px!important;}
 		/*.locIcn {margin-top: 14%!important;}*/
-		.vPhotosYouNewBtn.publishUserPic{float: none!important;position: relative;top: 4px;}
+		.vPhotosYouNewBtn.publishUserPic{float: none!important;position: relative;top: 0px;}
 		.vPhotosYouRepeatImgO{height: 105px!important;}
 		.vDragText{font-size: 15px!important;}
 		/*.viphotoUpload{margin-top: 15%!important;}*/

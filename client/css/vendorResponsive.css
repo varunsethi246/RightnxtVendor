@@ -138,8 +138,8 @@ float:left
 
 .deleteBus {
 position:relative;
-top:36px;
-right:190px;
+top:1px;
+/*right:190px;*/
 padding:3px 6px
 }
 
@@ -164,9 +164,9 @@ margin-left:0;
 margin-bottom:4px
 }
 
-.BussAbtTtl {
+/*.BussAbtTtl {
 margin-top:16%;
-}
+}*/
 
 .body-close {
 margin-left:27%
