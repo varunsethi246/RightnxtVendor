@@ -4286,6 +4286,7 @@ text-align: center
     margin-left: 15px!important;
 }
 @media screen and (min-width: 1920px){
+	.addPhotoTxt{right: 26%!important;}
 	.contentBody{min-height: 1000px!important;}
 	.merchantGuidelineslg {margin-top: 3.5%;}
 	.aboutNavbar {padding-left: 15px;margin-left: 40.5%}

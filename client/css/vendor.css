@@ -3770,7 +3770,7 @@ video::-webkit-media-controls-panel {
 	margin-top: 15px!important;
 }
 @media screen and (min-width: 1900px){
-	.addPhotoTxt{
+	/*.addPhotoTxt{
 	    height: 18px;
     position: absolute;
     right: 25.5%!important;
@@ -3778,7 +3778,7 @@ video::-webkit-media-controls-panel {
     opacity: 1;
     bottom: -27px;
     z-index: 1;
-	}
+	}*/
 }
 
 @media  screen and (max-width: 1600px) {
