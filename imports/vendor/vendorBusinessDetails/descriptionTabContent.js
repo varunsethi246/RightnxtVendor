@@ -143,7 +143,7 @@ Template.descriptionTabContent.helpers({
 			}
 
 			for(i=0; i<allReviews.length; i++){
-				allReviews[i].userProfileUrl = generateURLid(allReviews[i].userId);	
+				// allReviews[i].userProfileUrl = generateURLid(allReviews[i].userId);	
 				var newUserThree = Meteor.userId();
 				if(newUserThree){
 					if((Meteor.users.findOne({"_id": newUserThree}).roles[0] === 'admin') || (allReviews[i].userId === newUserThree)){
@@ -209,7 +209,7 @@ Template.descriptionTabContent.helpers({
 
 						var obj = {
 							'tagedFriends'   : tagfrndName,
-							'tagedFriendsUrl': generateURLid(allReviews[i].tagedFriends[m]),
+							// 'tagedFriendsUrl': generateURLid(allReviews[i].tagedFriends[m]),
 							'userTagged':allReviews[i].tagedFriends[m],
 							'imagePath':dataImgUser,
 						}

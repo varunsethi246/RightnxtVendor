@@ -603,10 +603,10 @@ Template.imageReports.events({
 	},
 	'click .previousImageID':function(event){
 		var imgIdPrevious = $('#myCarousel1 .carousel-inner').find('.active').prev().children('img').attr('id');
-		// if(!imgIdPrevious){
-		// 	imgIdPrevious = $('#myCarousel1 .carousel-inner').find('.active').last().children('img').attr('id');
-		// console.log('imgIdPrevious',imgIdPrevious);
-		// }
+		if(!imgIdPrevious){
+			imgIdPrevious = $('#myCarousel1 .carousel-inner').find('.imageReportSlider').last().children('img').attr('id');
+			// console.log('imgIdPrevious',imgIdPrevious);
+		}
 		Session.set("ModalimageID",imgIdPrevious);
 		var ImageCount = BussImgLikes.find({'LikedImage':imgIdPrevious}).count();
 		Session.set('carouselLikeCount', ImageCount);

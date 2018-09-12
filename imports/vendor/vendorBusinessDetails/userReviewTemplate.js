@@ -251,11 +251,11 @@ Template.userReviewTemplate.events({
 	},
 
 	'click .commentReplyLike':function(event){
-		var businessLink 		= $(event.currentTarget).parent().parent().parent().parent().parent().attr('data-businesslink');
-		var reviewPostedByUser 	= $(event.currentTarget).parent().parent().parent().parent().parent().attr('data-reviewpostedby');
-		var reviewId 			= $(event.currentTarget).parent().parent().parent().parent().parent().attr('data-reviewid');
-		var commentId 			= $(event.currentTarget).parent().parent().parent().parent().parent().attr('data-commentid');		
-		var replyId 			= $(event.currentTarget).parent().parent().attr('data-replyid');
+		var businessLink 		= $(event.currentTarget).parent().parent().parent().parent().parent().parent().attr('data-businesslink');
+		var reviewPostedByUser 	= $(event.currentTarget).parent().parent().parent().parent().parent().parent().attr('data-reviewPostedBy');
+		var reviewId 			= $(event.currentTarget).parent().parent().parent().parent().parent().parent().attr('data-reviewId');
+		var commentId 			= $(event.currentTarget).parent().parent().parent().parent().parent().parent().attr('data-commentId');		
+		var replyId 			= $(event.currentTarget).parent().parent().parent().attr('data-replyid');
 		
 		var commentPostedByUser = $(event.currentTarget).attr('data-commentPostedUser');
 		var commentReplyPostedUser = $(event.currentTarget).attr('data-commentReplyPostedUser');

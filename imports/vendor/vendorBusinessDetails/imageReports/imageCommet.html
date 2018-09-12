@@ -41,7 +41,7 @@
 			    {{/unless}}
 			    <div class="user_image2 col-lg-12">
 			    	<img alt="" src="/images/user-profile/following2.png" class="userComment">
-			    	<input id="commentone" class="comment_txt modalComments" placeholder="Comment" name="comment" type="text">
+			    	<input id="commentone" class="comment_txt modalComments form-control" placeholder="Comment" name="comment" type="text">
 			    </div>
 			</div>
 		{{/if}}
@@ -59,7 +59,9 @@
 	                       <!--  {{#if checkCurrentUser userId}}
 	                           <div class="col-lg-6 col-xs-12 col-md-6 revName">{{commentUserName}} </div>
 	                        {{else}} -->
-	                           <a href="/userReview/{{userId}}" target="_blank"><div class="col-lg-7 revName">  {{commentUserName}} </div>  </a>
+	                           <!-- <a href="/userReview/{{userId}}" target="_blank"> -->
+	                           	<div class="col-lg-12 col-xs-12 col-md-12 col-sm-12 revName">  {{commentUserName}} </div>  
+	                           <!-- </a> -->
 	                        <!-- {{/if}} -->
 	                     </div>
 	                     <div class="col-lg-5 col-xs-4 col-md-6 imgDateAgo">
@@ -81,7 +83,7 @@
 	                     <div class="col-lg-12 col-xs-12 col-md-12 userCommentText">
 	                     	<span class="replyInputShwHid">{{imgcomment}}</span>
 	                     	<br>
-	                     	<input data-commentId="{{_id}}" class="editReplyInput" placeholder="Edit Comment" name="" type="text">
+	                     	<input data-commentId="{{_id}}" class="editReplyInput form-control" placeholder="Edit Comment" name="" type="text">
 
 	                     </div>
 	                     <div class="col-lg-12 col-xs-12 col-md-12">
@@ -97,12 +99,12 @@
 	                        <span class="commentReply">
 	                           Reply <span>({{commentReplyCount}})</span>
 	                        </span>
-	                        <input id="replyOfreplyInput" data-userId={{userId}} data-commentId="{{_id}}" class="reportModInputReply" placeholder="Comment" name="" type="text">
+	                        <input id="replyOfreplyInput" data-userId={{userId}} data-commentId="{{_id}}" class="reportModInputReply form-control" placeholder="Comment" name="" type="text">
 
 
 	                        <!-- MultiComment HTML Start-->
 	                        {{#each imgMultiComment}}
-							<div class="replyOfReplySub">
+							<div class="replyOfReplySub col-lg-12 col-xs-12 col-md-12 col-sm-12 noPaddingGeneral">
 								<div class="col-lg-1 col-xs-1 col-md-1 userPic">
 									<div class="">
 										<img class="commentImg" src="{{userProfileImgPath}}"/>
@@ -111,7 +113,9 @@
 								<div class="col-lg-11 col-xs-11 col-md-11 imgCommentData">
 									<div class="">
 										<div class="col-lg-7 col-xs-8 col-md-6 usercommName">
-											<a href="/userReview/{{userId}}" target="_blank"><div class="col-lg-6 revName">  {{commentUserName}} </div>  </a>
+											<!-- <a href="/userReview/{{userId}}" target="_blank"> -->
+												<div class="col-lg-12 col-xs-12 col-md-12 col-sm-12 revName">  {{commentUserName}} </div>  
+											<!-- </a> -->
 										</div>
 										<div class="col-lg-5 col-xs-4 col-md-6 imgDateAgo">
 											{{userCommentDateAgo}}
@@ -132,7 +136,7 @@
 										<div class="col-lg-12 col-xs-12 col-md-12 userCommentText">
 											<span class="replyOfReplyInpShwHid">{{imgcomment}}</span>
 											<br>
-	                     					<input data-commentId="{{../_id}}" data-replyId="{{replyId}}" class="editReplyOfReplyInput" placeholder="Edit Comment" name="" type="text">
+	                     					<input data-commentId="{{../_id}}" data-replyId="{{replyId}}" class="editReplyOfReplyInput form-control" placeholder="Edit Comment" name="" type="text">
 
 										</div>
 										<div class="col-lg-12 col-xs-12 col-md-12">
@@ -144,11 +148,11 @@
 													{{/if}}
 												 <span>({{commentReplyLikeCount}})</span>
 											</span>
-											&nbsp;.&nbsp;
+											&nbsp;&nbsp;
 											<!-- <span class="commentReply" data-commentcount="">
 												Reply
 											</span> -->
-											<input id="replyOfreplyInputTwo"  data-userId={{../userId}}  data-commentId="{{../_id}}" class="reportModInputReply" placeholder="Comment" name="" type="text">
+											<input id="replyOfreplyInputTwo"  data-userId={{../userId}}  data-commentId="{{../_id}}" class="reportModInputReply form-control" placeholder="Comment" name="" type="text">
 										</div>
 									</div>
 								</div>
