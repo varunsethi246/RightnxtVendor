@@ -23,7 +23,7 @@ Template.customerLeadsGraph.onRendered(function(){
 
     // ---customer 24month Chart--- //
     Tracker.autorun(function () {
-      	if (chart1.ready() && chart2.ready() && chart3.ready()) {
+      	// if (chart1.ready() && chart2.ready() && chart3.ready()) {
 	      	$('#custtwoYearChart').empty();
 	      	var businessUrl = Session.get('busLink');
 	      	if(businessUrl){
@@ -143,13 +143,13 @@ Template.customerLeadsGraph.onRendered(function(){
 				    }
 				});
 	      	}//if businessUrl
-        }//if(chart1.ready)
+        // }//if(chart1.ready)
     }); //tracker.autorun
     // ---End customer 24months Chart--- //
 
     // ---customer year Chart--- //
     Tracker.autorun(function () {
-      	if (chart1.ready() && chart2.ready() && chart3.ready()) {
+      	// if (chart1.ready() && chart2.ready() && chart3.ready()) {
     		$("#custyearChart").empty();
     		var businessUrl = Session.get('busLink');
     		if(businessUrl){
@@ -267,13 +267,13 @@ Template.customerLeadsGraph.onRendered(function(){
 				    }
 				});
     		}//if businessUrl
-        }//if(chart1.ready)
+        // }//if(chart1.ready)
     }); //tracker.autorun
     // ---End customer year Chart--- //
 
      // ---customer month Chart--- //
     Tracker.autorun(function () {
-      	if (chart1.ready() && chart2.ready() && chart3.ready()) {
+      	// if (chart1.ready() && chart2.ready() && chart3.ready()) {
     		$("#custmonthChart").empty();
 	      	var businessUrl = Session.get('busLink');
 	      	if(businessUrl){
@@ -397,7 +397,7 @@ Template.customerLeadsGraph.onRendered(function(){
 				    }
 				}); 	
 	      	}//if businessUrl
-        }//if(chart1.ready)
+        // }//if(chart1.ready)
     }); //tracker.autorun
     // ---End customer month Chart--- //
 });
@@ -545,8 +545,6 @@ Template.customerLeadsGraph.helpers({
 				"reviewImagesCount" : reviewImagesCount,
 				"date" : date,
 			};
-		}else{
-			var data = {};
 		}
 
 		return data;		

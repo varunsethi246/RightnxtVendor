@@ -22,15 +22,15 @@ Template.vendorDashboard.onRendered(function(){
 	Session.set("year","");
 	Session.set("twoYear","");
 
-    var businessLink = $('#graphBusinessTitle').val(); 
-    Session.set('busLink',businessLink);
+    var businessUrl = $('#graphBusinessTitle').val(); 
+    Session.set('busLink',businessUrl);
 	$(".twoYr").addClass('addYearClass');
 
     // // ---User two year Chart--- //
     Tracker.autorun(function () {
-    	if (chart.ready()) {
-    		var businessLink = Session.get('busLink');
+    	// if (chart.ready() && chart1.ready()) {
     		$("#twoYearChart").empty();
+    		var businessLink = Session.get('busLink');
     		if(businessLink){
 
 		    	var date = new Date();
@@ -181,13 +181,13 @@ Template.vendorDashboard.onRendered(function(){
 				});
     		}//if businessLink
 
-        }//if(chart.ready)
+        // }//if(chart.ready)
       }); //tracker.autorun
     // ---End User two year Chart--- //
 
     // // ---User Month Chart--- //
     Tracker.autorun(function () {
-    	if (chart.ready()) {
+    	// if (chart.ready() && chart1.ready()) {
     		$("#monthChart").empty();
     		var businessLink = Session.get('busLink');
     		if(businessLink){
@@ -288,13 +288,13 @@ Template.vendorDashboard.onRendered(function(){
 				});
     		}//if businessLink
 	      	
-        }//if(chart.ready)
+        // }//if(chart.ready)
     }); //tracker.autorun
     // ---End User Month Chart--- //
 
     // // ---User year Chart--- //
     Tracker.autorun(function () {
-      	if (chart.ready() && chart1.ready()) {
+      	// if (chart.ready() && chart1.ready()) {
     		$("#yearChart").empty();
     		var businessLink = Session.get('busLink');
     		if(businessLink){
@@ -430,7 +430,7 @@ Template.vendorDashboard.onRendered(function(){
 				    }
 				});
     		}//if businessLink
-        }//if(chart.ready)
+        // }//if(chart.ready)
     }); //tracker.autorun
     // ---End User year Chart--- //
 })
@@ -569,7 +569,6 @@ Template.userViewGraph.helpers({
 					});
 				}//i
 			}//userData
-			return custActivityArray;
 		}else{
 			var businessData      = Business.find({'businessOwnerId':userId,'status':'active'}).fetch();
 			if(businessData){
@@ -590,8 +589,21 @@ Template.userViewGraph.helpers({
 					}//userData
 				}//j
 			}//businessData	
+		}
+		if(custActivityArray.length > 0){
 			return custActivityArray;
 		}
+	},
+	'isDataAvail':function(){
+		// if (chart.ready() && chart1.ready()) {
+			var businessUrl = Session.get('busLink');
+	  		var statisticData = UserStatistics.findOne({'businessLink':businessUrl});
+			if(statisticData){
+				return true;	
+			}else{
+				return false;	
+			}
+		// }
 	}
 });
 

@@ -54,10 +54,10 @@ Template.vendorReport.helpers({
 					{
 						
 						if(reports[i].mailStatus === 'block'){
-							console.log('in if');
+							// console.log('in if');
 							reports[i].status = false;
 						}else{
-							console.log('in else');
+							// console.log('in else');
 
 							reports[i].status = true;
 						}
@@ -320,76 +320,76 @@ Template.imageReport.events({
 });
 
 Template.businessReport.events({
-	'click .sendBussReportEmail':function(event){
-		event.preventDefault();
-		var userId = Meteor.userId();
-		var adminUser 	= Meteor.users.findOne({'roles':'admin'});
-		var adminID		= adminUser._id;
-		var userDetails = Meteor.users.findOne({'_id':userId});
-		var email = $(event.currentTarget).attr('id');
-		var res = email.split(" ");
-		var userID = res[1];
-		var userDet = Reports.findOne({'_id':userID});
-		var usermailID = userDet.userid;
-		Meteor.call('updateReportStatus',userID,function(error,result){
-			if(error){
-				Bert.alert(error.reason,"danger",'growl-top-right');
-			}else{
-				if(userDetails){
-					var mailAdmin 		= userDetails.emails[0].address;
-					var date 			= new Date();
-					var currentDate 	= moment(date).format('DD/MM/YYYY');
-					var businessLink 	= FlowRouter.getParam('businessLink');
-					var businessDetails = Business.findOne({"businessLink":businessLink});
+	// 'click .sendBussReportEmail':function(event){
+	// 	event.preventDefault();
+	// 	var userId = Meteor.userId();
+	// 	var adminUser 	= Meteor.users.findOne({'roles':'admin'});
+	// 	var adminID		= adminUser._id;
+	// 	var userDetails = Meteor.users.findOne({'_id':userId});
+	// 	var email = $(event.currentTarget).attr('id');
+	// 	var res = email.split(" ");
+	// 	var userID = res[1];
+	// 	var userDet = Reports.findOne({'_id':userID});
+	// 	var usermailID = userDet.userid;
+	// 	Meteor.call('updateReportStatus',userID,function(error,result){
+	// 		if(error){
+	// 			Bert.alert(error.reason,"danger",'growl-top-right');
+	// 		}else{
+	// 			if(userDetails){
+	// 				var mailAdmin 		= userDetails.emails[0].address;
+	// 				var date 			= new Date();
+	// 				var currentDate 	= moment(date).format('DD/MM/YYYY');
+	// 				var businessLink 	= FlowRouter.getParam('businessLink');
+	// 				var businessDetails = Business.findOne({"businessLink":businessLink});
 
-					if(businessDetails){
-						var msgvariable = {
-							'[currentDate]'	: currentDate,
-							'[businessName]': businessDetails.businessTitle,
-				       	};
-						// user
-						var inputObj = {
-							notifPath	 : businessLink,
-							from 		 : userId,
-						    to           : usermailID,
-						    templateName : 'businessDone-report-acknowledgedOne',
-						    variables    : msgvariable,
-						}
-						sendMailNotification(inputObj);
+	// 				if(businessDetails){
+	// 					var msgvariable = {
+	// 						'[currentDate]'	: currentDate,
+	// 						'[businessName]': businessDetails.businessTitle,
+	// 			       	};
+	// 					// user
+	// 					var inputObj = {
+	// 						notifPath	 : businessLink,
+	// 						from 		 : userId,
+	// 					    to           : usermailID,
+	// 					    templateName : 'businessDone-report-acknowledgedOne',
+	// 					    variables    : msgvariable,
+	// 					}
+	// 					sendMailNotification(inputObj);
 
-						var inputObj = {
-							notifPath	 : businessLink,
-						    to           : usermailID,
-						    templateName : 'businessDone-report-acknowledgedOne',
-						    variables    : msgvariable,
-						}
+	// 					var inputObj = {
+	// 						notifPath	 : businessLink,
+	// 					    to           : usermailID,
+	// 					    templateName : 'businessDone-report-acknowledgedOne',
+	// 					    variables    : msgvariable,
+	// 					}
 
-						sendInAppNotification(inputObj);
-						// admin
-						// var inputObj = {
-						// 	notifPath	 : businessLink,
-						// 	from 		 : userId,
-						//     to           : adminID,
-						//     templateName : 'businessDone-report-acknowledged',
-						//     variables    : msgvariable,
-						// }
-						// sendMailNotification(inputObj);
+	// 					sendInAppNotification(inputObj);
+	// 					// admin
+	// 					// var inputObj = {
+	// 					// 	notifPath	 : businessLink,
+	// 					// 	from 		 : userId,
+	// 					//     to           : adminID,
+	// 					//     templateName : 'businessDone-report-acknowledged',
+	// 					//     variables    : msgvariable,
+	// 					// }
+	// 					// sendMailNotification(inputObj);
 
-						// var inputObj = {
-						// 	notifPath	 : businessLink,
-						//     to           : adminID,
-						//     templateName : 'businessDone-report-acknowledged',
-						//     variables    : msgvariable,
-						// }
+	// 					// var inputObj = {
+	// 					// 	notifPath	 : businessLink,
+	// 					//     to           : adminID,
+	// 					//     templateName : 'businessDone-report-acknowledged',
+	// 					//     variables    : msgvariable,
+	// 					// }
 
-						// sendInAppNotification(inputObj); 
-						Bert.alert('Mail send successfully.','success','growl-top-right');
+	// 					// sendInAppNotification(inputObj); 
+	// 					Bert.alert('Mail send successfully.','success','growl-top-right');
 
-					}
-				}
-			}
-		});
-	},
+	// 				}
+	// 			}
+	// 		}
+	// 	});
+	// },
 
 	'click .delete':function(event){
 		event.preventDefault();
@@ -449,8 +449,8 @@ Template.businessReport.events({
 						    templateName : 'business-report-acknowledged',
 						    variables    : msgvariable,
 						}
-
 						sendInAppNotification(inputObj); 
+						
 						// admin
 						var inputObj = {
 							notifPath	 : "",
@@ -467,7 +467,6 @@ Template.businessReport.events({
 						    templateName : 'business-report-acknowledged',
 						    variables    : msgvariable,
 						}
-
 						sendInAppNotification(inputObj); 
 					}
 				}

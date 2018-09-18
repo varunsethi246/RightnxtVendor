@@ -767,7 +767,7 @@ Template.vendorBusinessCarousel.helpers({
 
 
 vendorBusinessLayoutForm = function () { 
-	console.log('function render');
+	// console.log('function render');
 	BlazeLayout.render("vendorLayoutOne",{vendorMain: 'vendorBusinessLayout'}); 
   	// Blaze.render(Template.vendorBusinessLayout,document.body);
 }

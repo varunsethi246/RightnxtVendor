@@ -173,7 +173,7 @@ Template.vendorSidebar.events({
 		$(event.currentTarget).parent().parent().removeClass('in');
 	},
 	'click .closeSubMenuTab': function(event){
-		console.log($(event.currentTarget));
+		// console.log($(event.currentTarget));
 		var windowWidth = $(window).width();
 		if (windowWidth >= 320 && windowWidth <= 767){
 			// $(event.currentTarget).parent().parent().removeClass('in');

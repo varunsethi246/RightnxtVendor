@@ -10,24 +10,6 @@ import './allEnquries.html';
 import './enquiryDetails.html';
 import './vendorEnquiry.html';
 
-// Template.enquiryDetails.events({
-// 	'click .vEnqsndEnqBtn':function(event){
-// 		var elem = $(e.currentTarget).attr('.vEnqFormImgOne');
-// 	    if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight())
-// 	    {
-// 	        console.log("bottom");
-// 	    }
-// 	}
-// });
-
-// Template.vendorEnquiry.onCreated(function() {
-//   // this.currentUpload = new ReactiveVar(false);
-//   this.subscribe('businessEnquiryImage');
-// });
-
-// Template.vendorEnquiry.onCreated(function(){
-//   this.subscribe('vendorImage');
-// });
 Template.vendorEnquiry.helpers({
 	// Enquiry enquiryImages
 	blockUsers:function(){
@@ -289,26 +271,8 @@ Template.vendorEnquiry.helpers({
 		return data;
 	},
 	vendorEnquiryCount: function(){
-		// var businessLink = FlowRouter.getParam('businessLink');
-		// // console.log('businessLink :',businessLink);
-		// if (businessLink) {
-
-		// 	var businessObj = Business.findOne({"businessLink":businessLink,"status": "active"});
-			
-		// 	var blockedUserArray;
-		// 	if(businessObj){
-		// 		// console.log('businessObj :',businessObj);
-		// 		blockedUserArray = businessObj.blockedUsers;
-		// 	}
-		// 	var enqCount = Enquiry.find({"businessid":businessObj._id,'enquirySentBy': { $nin: blockedUserArray }}).count();	
-			var enquiryCount = Counts.get('enquiryCount');		
-
-			// var data = {
-			// 	vendorcount : enquiryCount,	
-			// }
-			// console.log('enquiryCount',enquiryCount);
-			return enquiryCount;
-		// }
+		var enquiryCount = Counts.get('enquiryCount');		
+		return enquiryCount;
 	},
 	vendorEnquiryDetails:function () {
 		if(Session.get("EnqIDSes")){
@@ -337,12 +301,9 @@ Template.vendorEnquiry.helpers({
 					if(enqData.enquiryDesc[i].commentBy == 'User'){
 						enqData.enquiryDesc[i].posClass = "pull-left";
 						enqData.enquiryDesc[i].posClassTringl = "vEnqTriangleleft";
-						// $('.vEnqTriangleleft').animate({ scrollTop: $(document).height() }, 1);
 					}else{
 						enqData.enquiryDesc[i].posClass = "pull-right";
-						enqData.enquiryDesc[i].posClassTringl = "vEnqTriangleRight";
-						// $('.vEnqTriangleRight').animate({ scrollTop: $(document).height() }, 1);
-						
+						enqData.enquiryDesc[i].posClassTringl = "vEnqTriangleRight";						
 					}
 				}
 			}
@@ -353,7 +314,6 @@ Template.vendorEnquiry.helpers({
 				enqData.isUserDeleted = true;
 			}
 
-			// $('.vEnqFormImgOne').animate({ scrollTop: $(document).height() }, 1);
 			var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
             $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
 			return enqData;			
@@ -375,12 +335,22 @@ Template.vendorEnquiry.onRendered(function(){
 	Session.set('vendorSort','All');
 });
 
+Template.enquiryDetails.onRendered(function(){
+	if(Session.get("EnqIDSes")){
+		var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
+        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
+	}
+});
+
 Template.allEnquries.events({
 	
 	'click .readEnClass':function(event){
-		$('html, body').animate({
-	        'scrollTop' : $("#vScrollToEnquiry").position().top
-	    });
+		var windowWidth = $(window).width();
+		if(windowWidth >= 320 && windowWidth <= 767){
+			$('html, body').animate({
+		        'scrollTop' : $("#vScrollToEnquiry").position().top
+		    });
+		}
 		var id = $(event.currentTarget).parent().attr('id');
 		Session.set("EnqIDSes",id);
 
@@ -388,22 +358,16 @@ Template.allEnquries.events({
 
 		$("#"+id).addClass('selectedEnqRead');
 		$("#"+id).addClass('selectedEnq');
-		var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
-        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
 		Meteor.call('updateEnquiryForRead',id,'read',function(err,rslt){});
 	},
 	'click .flagEnquiry':function(event){
 		var thisFlag = event.currentTarget;
 		id = $(thisFlag).parent().parent().attr('id');
-		var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
-        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
 		Meteor.call('updateEnquiryForFlag',id,'noflag',function(err,rslt){});
 	},
 	'click .noflagEnquiry':function(event){
 		var thisFlag = event.currentTarget;
 		id = $(thisFlag).parent().parent().attr('id');
-		var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
-        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
 		Meteor.call('updateEnquiryForFlag',id,'flag',function(err,rslt){});
 	},
 	'click .deleteEnqBtn': function(event){
@@ -442,15 +406,9 @@ Template.allEnquries.events({
 	},	
 });
 
-
-
 var filesM = [];
 
 Template.vendorEnquiry.events({
-	'click .vEnqAllC':function(event){
-		var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
-        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
-	},
 	"keyup .vendorEnquiryFormSearch": _.throttle(function(e) {
 	    var text = $(e.target).val().trim();
 	    Session.set("nameKey",text);
@@ -507,17 +465,6 @@ Template.vendorEnquiry.events({
 
 	'keypress .vEnqFormTextarea': function(event,template){
 		if(event.which === 13){
-			// var elem = $(event.currentTarget).attr('.vEnqFormImgOne');
-			// console.log(elem);
-			// console.log('elem.outerHeight():',elem.outerHeight());
-			// console.log('elem[0].scrollHeight:',elem[0].scrollHeight);
-			// console.log('elem.scrollTop():',elem.scrollTop());
-			// elem.animate({ scrollTop: elem.prop('scrollHeight') }, 300);
-			    // if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight())
-			    // {
-			    //     console.log("bottom");
-			    // }
-	 		// 	}
 			$('.vEnqFormImgOne').animate({ scrollTop: $(document).height() }, 1);
 			var enquiryPhoto = '';
 			var enquiryCommentNew = $('.vEnqFormTextarea').val();
@@ -528,10 +475,6 @@ Template.vendorEnquiry.events({
 	       	var businessLink = $(event.currentTarget).attr("data-businessLink");
 	       	// console.log('hi');
 			var elem = $(event.currentTarget).attr('.vEnqFormImgOne');
-		    // if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight())
-		    // {
-		    //     console.log("bottom");
-		    // }
 		    // console.log(filesM.length);
 	       	if(filesM.length > 0){
 				for(i = 0 ; i < filesM.length; i++){
@@ -727,17 +670,6 @@ Template.vendorEnquiry.events({
 
 	'click .vEnqsndEnqBtn': function(event,template) {
 		event.preventDefault();
-		// var elem = $(event.currentTarget).attr('.vEnqFormImgOne');
-		// console.log(elem);
-		// console.log('elem.outerHeight():',elem.outerHeight());
-		// console.log('elem[0].scrollHeight:',elem[0].scrollHeight);
-		// console.log('elem.scrollTop():',elem.scrollTop());
-		// elem.animate({ scrollTop: elem.prop('scrollHeight') }, 300);
-		    // if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight())
-		    // {
-		    //     console.log("bottom");
-		    // }
- 		// 	}
 		$('.vEnqFormImgOne').animate({ scrollTop: $(document).height() }, 1);
 		var enquiryPhoto = '';
 		var enquiryCommentNew = $('.vEnqFormTextarea').val();
@@ -748,10 +680,6 @@ Template.vendorEnquiry.events({
        	var businessLink = $(event.currentTarget).attr("data-businessLink");
        	// console.log('hi');
 		var elem = $(event.currentTarget).attr('.vEnqFormImgOne');
-	    // if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight())
-	    // {
-	    //     console.log("bottom");
-	    // }
        	if(filesM.length > 0){
 			for(i = 0 ; i < filesM.length; i++){
 

@@ -1,6 +1,6 @@
 <template name="userViewGraph">
 <div class="graphWrapper">
-	{{#if customerActivity}}
+	{{#if isDataAvail}}
 		<!-- <h5 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 noPaddingGeneral">To increase your views on business you can buy <a href="/vendorAds/{{businessLink}}">Ads</a> and <a href="/vendorbanner/{{businessLink}}">Banners</a>.</h5> -->
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 monthChart noPaddingGeneral" id="monthChart"></div>
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 yearChart noPaddingGeneral" id="yearChart"></div>
@@ -13,27 +13,29 @@
 			<div class="legendBgClsBanners col-lg-1 col-md-1 col-sm-1 col-xs-2 legendUserVwsBanners"></div>
 			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-10 legendUserVwsBanners">User Views with Banners</div>
 		</div>
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 feedBlock customerActivityStat">
-			<h4><b>Customer Activity Feed</b></h4>
-			<br>
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custActivity">
-				<ul class="custActivityLists">
-					{{#each customerActivity}}
-						<li class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<span class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vCustActivityDiv">
-								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-									<i class="fa fa-calendar-check-o"></i>
-								</div>
-								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">A user in {{city}} clicked on business {{businessTitle}}.</div>
-							</span>
-							<span class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="dateTimeDiv">{{date}}</div>
-							</span>
-						</li>
-					{{/each}}
-				</ul>
+		{{#if customerActivity}}
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 feedBlock customerActivityStat">
+				<h4><b>Customer Activity Feed</b></h4>
+				<br>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custActivity">
+					<ul class="custActivityLists">
+						{{#each customerActivity}}
+							<li class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<span class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vCustActivityDiv">
+									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+										<i class="fa fa-calendar-check-o"></i>
+									</div>
+									<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">A user in {{city}} clicked on business {{businessTitle}}.</div>
+								</span>
+								<span class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="dateTimeDiv">{{date}}</div>
+								</span>
+							</li>
+						{{/each}}
+					</ul>
+				</div>
 			</div>
-		</div>
+		{{/if}}
 	{{else}}
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="noData"><p style="text-align: center;">No Data Found</p></div>
 	{{/if}}
