@@ -1421,7 +1421,7 @@ margin-top:20%
 }
 
 .claimOtp input {
-padding:3.7px 4px
+padding:3.7px 4px;-moz-appearance:textfield;
 }
 
 .claimRightModal form {

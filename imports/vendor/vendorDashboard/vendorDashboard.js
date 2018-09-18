@@ -29,7 +29,7 @@ Template.vendorDashboard.onRendered(function(){
     // // ---User two year Chart--- //
     Tracker.autorun(function () {
     	// if (chart.ready() && chart1.ready()) {
-    		$("#twoYearChart").empty();
+    		// $("#twoYearChart").empty();
     		var businessLink = Session.get('busLink');
     		if(businessLink){
 
@@ -188,7 +188,7 @@ Template.vendorDashboard.onRendered(function(){
     // // ---User Month Chart--- //
     Tracker.autorun(function () {
     	// if (chart.ready() && chart1.ready()) {
-    		$("#monthChart").empty();
+    		// $("#monthChart").empty();
     		var businessLink = Session.get('busLink');
     		if(businessLink){
 
@@ -295,7 +295,7 @@ Template.vendorDashboard.onRendered(function(){
     // // ---User year Chart--- //
     Tracker.autorun(function () {
       	// if (chart.ready() && chart1.ready()) {
-    		$("#yearChart").empty();
+    		// $("#yearChart").empty();
     		var businessLink = Session.get('busLink');
     		if(businessLink){
 

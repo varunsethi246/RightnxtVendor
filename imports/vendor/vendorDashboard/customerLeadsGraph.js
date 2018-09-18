@@ -24,7 +24,7 @@ Template.customerLeadsGraph.onRendered(function(){
     // ---customer 24month Chart--- //
     Tracker.autorun(function () {
       	// if (chart1.ready() && chart2.ready() && chart3.ready()) {
-	      	$('#custtwoYearChart').empty();
+	      	// $('#custtwoYearChart').empty();
 	      	var businessUrl = Session.get('busLink');
 	      	if(businessUrl){
 		      	var date = new Date();
@@ -111,6 +111,8 @@ Template.customerLeadsGraph.onRendered(function(){
 					}
 	        	}// j
 
+	        	
+
 	        	datasetsArray.push({
 			      // label: 'User Views',
 			      data: dataArray,
@@ -150,7 +152,7 @@ Template.customerLeadsGraph.onRendered(function(){
     // ---customer year Chart--- //
     Tracker.autorun(function () {
       	// if (chart1.ready() && chart2.ready() && chart3.ready()) {
-    		$("#custyearChart").empty();
+    		// $("#custyearChart").empty();
     		var businessUrl = Session.get('busLink');
     		if(businessUrl){
 			  	var dateArray      = [];
@@ -274,7 +276,7 @@ Template.customerLeadsGraph.onRendered(function(){
      // ---customer month Chart--- //
     Tracker.autorun(function () {
       	// if (chart1.ready() && chart2.ready() && chart3.ready()) {
-    		$("#custmonthChart").empty();
+    		// $("#custmonthChart").empty();
 	      	var businessUrl = Session.get('busLink');
 	      	if(businessUrl){
 		      	var date = new Date();

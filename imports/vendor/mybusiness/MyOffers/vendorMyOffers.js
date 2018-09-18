@@ -92,7 +92,7 @@ Template.paymentSuccess.helpers({
 		var payId    	= FlowRouter.getQueryParam('orderId');
  
 	    if(status == 'paid'){
-              Meteor.call("insertOnlineDetailsToOffers",id, billnumbers, payId, function(err,result){
+            Meteor.call("insertOnlineDetailsToOffers",id, billnumbers, payId, function(err,result){
                 if(result){
 
 				}
