@@ -31,152 +31,155 @@ Template.vendorDashboard.onRendered(function(){
     	if (chart.ready()) {
     		var businessLink = Session.get('busLink');
     		$("#twoYearChart").empty();
-	    	var date = new Date();
-		    var LastYrFD = new Date(date.getFullYear()-1, 0, 1);
-		    var LastYrLD = new Date(date.getFullYear()-1, 12, 0);
-		    var ThisYrFD = new Date(date.getFullYear() , 0, 1);
-		    var ThisYrLD = new Date(date.getFullYear() , 12, 0);
-	     	var dateArray 		 = [];
-	     	var dataArray    	 = [];
-	      	var bgcolorArray     = [];
-	      	var datasetsArray    = [];
+    		if(businessLink){
 
-		    var lastYrStatisticData  = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte:new Date(LastYrFD.toISOString()),$lt: new Date(LastYrLD.toISOString())}}).fetch();
-		    if(lastYrStatisticData){
-			    if(lastYrStatisticData.length > 0){
-	    			var totalCount = 0;
-					for (var i = 0; i < lastYrStatisticData.length; i++) {
-						totalCount += parseInt(lastYrStatisticData[i].count) ;
+		    	var date = new Date();
+			    var LastYrFD = new Date(date.getFullYear()-1, 0, 1);
+			    var LastYrLD = new Date(date.getFullYear()-1, 12, 0);
+			    var ThisYrFD = new Date(date.getFullYear() , 0, 1);
+			    var ThisYrLD = new Date(date.getFullYear() , 12, 0);
+		     	var dateArray 		 = [];
+		     	var dataArray    	 = [];
+		      	var bgcolorArray     = [];
+		      	var datasetsArray    = [];
+
+			    var lastYrStatisticData  = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte:new Date(LastYrFD.toISOString()),$lt: new Date(LastYrLD.toISOString())}}).fetch();
+			    if(lastYrStatisticData){
+				    if(lastYrStatisticData.length > 0){
+		    			var totalCount = 0;
+						for (var i = 0; i < lastYrStatisticData.length; i++) {
+							totalCount += parseInt(lastYrStatisticData[i].count) ;
+						}
+		  				$('.legendUserVws').show();
+						dateArray.push(date.getFullYear()-1);
+						dataArray.push(totalCount);
+						bgcolorArray.push("rgba(54, 162, 235, 0.8)");
 					}
-	  				$('.legendUserVws').show();
-					dateArray.push(date.getFullYear()-1);
-					dataArray.push(totalCount);
-					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
-				}
-		    }
-
-		    var thisYrStatisticData  = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte:new Date(ThisYrFD.toISOString()),$lt: new Date(ThisYrLD.toISOString())}}).fetch();
-		    if(thisYrStatisticData){
-			    if(thisYrStatisticData.length > 0){
-	    			var totalCount = 0;
-					for (var i = 0; i < thisYrStatisticData.length; i++) {
-						totalCount += parseInt(thisYrStatisticData[i].count) ;
-					}
-	  				$('.legendUserVws').show();
-					dateArray.push(date.getFullYear());
-					dataArray.push(totalCount);
-					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
-				}
-		    }
-
-		    var businessAdsDetails = BusinessAds.findOne({'businessLink':businessLink,'status':'active'});
-	        if(businessAdsDetails){
-	        	if(date.getFullYear()-1 == businessAdsDetails.createdAt.getFullYear()){
-		      	  	var busAdsFirstDate = new Date(businessAdsDetails.startDate);  
-					var busAdsLastDate = new Date(businessAdsDetails.endDate);
-					var lastYrStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
-      				if(lastYrStatisticData){
-	      				if(lastYrStatisticData.length > 0){
-				    		var totalCount = 0;
-	      					for (var i = 0; i < lastYrStatisticData.length; i++) {
-								totalCount += parseInt(lastYrStatisticData[i].count) ;
-	      					}
-	  						$('.legendUserVwsAds').show();
-		      				dateArray.push(date.getFullYear()-1);
-							dataArray.push(totalCount);
-							bgcolorArray.push("rgba(255, 206, 86, 0.8)");
-	      				}
-      				}
-				}
-	       		if(date.getFullYear() == businessAdsDetails.createdAt.getFullYear()){
-		      	  	var busAdsFirstDate = new Date(businessAdsDetails.startDate);  
-					var busAdsLastDate = new Date(businessAdsDetails.endDate);
-					var thisYrStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
-      				if(thisYrStatisticData){
-	      				if(thisYrStatisticData.length > 0){
-				    		var totalCount = 0;
-	      					for (var i = 0; i < thisYrStatisticData.length; i++) {
-								totalCount += parseInt(thisYrStatisticData[i].count) ;
-	      					}
-	  						$('.legendUserVwsAds').show();
-		      				dateArray.push(date.getFullYear());
-							dataArray.push(totalCount);
-							bgcolorArray.push("rgba(255, 206, 86, 0.8)");
-	      				}
-      				}
-				}
-	      	}
-
-	      	var businessBannersDetails = BusinessBanner.findOne({'businessLink':businessLink,'status':'active'});
-	        if(businessBannersDetails){
-	        	if(date.getFullYear()-1 == businessBannersDetails.createdAt.getFullYear()){
-		      	  	var busAdsFirstDate = new Date(businessBannersDetails.startDate);  
-					var busAdsLastDate = new Date(businessBannersDetails.endDate);
-					var lastYrStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
-      				if(lastYrStatisticData){
-	      				if(lastYrStatisticData.length > 0){
-				    		var totalCount = 0;
-	      					for (var i = 0; i < lastYrStatisticData.length; i++) {
-								totalCount += parseInt(lastYrStatisticData[i].count) ;
-	      					}
-	  						$('.legendUserVwsBanners').show();
-		      				dateArray.push(date.getFullYear()-1);
-							dataArray.push(totalCount);
-							bgcolorArray.push("rgba(255, 159, 64, 0.8)");
-	      				}
-      				}
-				}
-	       		if(date.getFullYear() == businessBannersDetails.createdAt.getFullYear()){
-		      	  	var busAdsFirstDate = new Date(businessBannersDetails.startDate);  
-					var busAdsLastDate = new Date(businessBannersDetails.endDate);
-					var thisYrStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
-      				if(thisYrStatisticData){
-	      				if(thisYrStatisticData.length > 0){
-				    		var totalCount = 0;
-	      					for (var i = 0; i < thisYrStatisticData.length; i++) {
-								totalCount += parseInt(thisYrStatisticData[i].count) ;
-	      					}
-	  						$('.legendUserVwsBanners').show();
-		      				dateArray.push(date.getFullYear());
-							dataArray.push(totalCount);
-							bgcolorArray.push("rgba(255, 159, 64, 0.8)");
-	      				}
-      				}
-				}
-	      	}
-
-	      	datasetsArray.push({
-		      // label: 'User Views',
-		      data: dataArray,
-		      backgroundColor: bgcolorArray,
-		      borderWidth: 1
-		    });
-
-
-			$("#twoYearChart").append(
-        		"<div class='noPaddingGeneral col-lg-10 col-md-10 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-yearly' style='max-height: 100%;'></canvas></div>"
-        	);
-
-	      	var ctx = document.getElementById(businessLink+"-yearly").getContext("2d");
-		    var myChart = new Chart(ctx, {
-			  type: 'bar',
-			  data: {
-			    labels: dateArray,
-			    datasets: datasetsArray
-		   	  },
-			    options: {
-			        scales: {
-			            yAxes: [{
-			                ticks: {
-			                    beginAtZero:true
-			                }
-			            }]
-			        },
-			        legend: {
-			            display: false,
-			        }
 			    }
-			});
+
+			    var thisYrStatisticData  = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte:new Date(ThisYrFD.toISOString()),$lt: new Date(ThisYrLD.toISOString())}}).fetch();
+			    if(thisYrStatisticData){
+				    if(thisYrStatisticData.length > 0){
+		    			var totalCount = 0;
+						for (var i = 0; i < thisYrStatisticData.length; i++) {
+							totalCount += parseInt(thisYrStatisticData[i].count) ;
+						}
+		  				$('.legendUserVws').show();
+						dateArray.push(date.getFullYear());
+						dataArray.push(totalCount);
+						bgcolorArray.push("rgba(54, 162, 235, 0.8)");
+					}
+			    }
+
+			    var businessAdsDetails = BusinessAds.findOne({'businessLink':businessLink,'status':'active'});
+		        if(businessAdsDetails){
+		        	if(date.getFullYear()-1 == businessAdsDetails.createdAt.getFullYear()){
+			      	  	var busAdsFirstDate = new Date(businessAdsDetails.startDate);  
+						var busAdsLastDate = new Date(businessAdsDetails.endDate);
+						var lastYrStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
+	      				if(lastYrStatisticData){
+		      				if(lastYrStatisticData.length > 0){
+					    		var totalCount = 0;
+		      					for (var i = 0; i < lastYrStatisticData.length; i++) {
+									totalCount += parseInt(lastYrStatisticData[i].count) ;
+		      					}
+		  						$('.legendUserVwsAds').show();
+			      				dateArray.push(date.getFullYear()-1);
+								dataArray.push(totalCount);
+								bgcolorArray.push("rgba(255, 206, 86, 0.8)");
+		      				}
+	      				}
+					}
+		       		if(date.getFullYear() == businessAdsDetails.createdAt.getFullYear()){
+			      	  	var busAdsFirstDate = new Date(businessAdsDetails.startDate);  
+						var busAdsLastDate = new Date(businessAdsDetails.endDate);
+						var thisYrStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
+	      				if(thisYrStatisticData){
+		      				if(thisYrStatisticData.length > 0){
+					    		var totalCount = 0;
+		      					for (var i = 0; i < thisYrStatisticData.length; i++) {
+									totalCount += parseInt(thisYrStatisticData[i].count) ;
+		      					}
+		  						$('.legendUserVwsAds').show();
+			      				dateArray.push(date.getFullYear());
+								dataArray.push(totalCount);
+								bgcolorArray.push("rgba(255, 206, 86, 0.8)");
+		      				}
+	      				}
+					}
+		      	}
+
+		      	var businessBannersDetails = BusinessBanner.findOne({'businessLink':businessLink,'status':'active'});
+		        if(businessBannersDetails){
+		        	if(date.getFullYear()-1 == businessBannersDetails.createdAt.getFullYear()){
+			      	  	var busAdsFirstDate = new Date(businessBannersDetails.startDate);  
+						var busAdsLastDate = new Date(businessBannersDetails.endDate);
+						var lastYrStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
+	      				if(lastYrStatisticData){
+		      				if(lastYrStatisticData.length > 0){
+					    		var totalCount = 0;
+		      					for (var i = 0; i < lastYrStatisticData.length; i++) {
+									totalCount += parseInt(lastYrStatisticData[i].count) ;
+		      					}
+		  						$('.legendUserVwsBanners').show();
+			      				dateArray.push(date.getFullYear()-1);
+								dataArray.push(totalCount);
+								bgcolorArray.push("rgba(255, 159, 64, 0.8)");
+		      				}
+	      				}
+					}
+		       		if(date.getFullYear() == businessBannersDetails.createdAt.getFullYear()){
+			      	  	var busAdsFirstDate = new Date(businessBannersDetails.startDate);  
+						var busAdsLastDate = new Date(businessBannersDetails.endDate);
+						var thisYrStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
+	      				if(thisYrStatisticData){
+		      				if(thisYrStatisticData.length > 0){
+					    		var totalCount = 0;
+		      					for (var i = 0; i < thisYrStatisticData.length; i++) {
+									totalCount += parseInt(thisYrStatisticData[i].count) ;
+		      					}
+		  						$('.legendUserVwsBanners').show();
+			      				dateArray.push(date.getFullYear());
+								dataArray.push(totalCount);
+								bgcolorArray.push("rgba(255, 159, 64, 0.8)");
+		      				}
+	      				}
+					}
+		      	}
+
+		      	datasetsArray.push({
+			      // label: 'User Views',
+			      data: dataArray,
+			      backgroundColor: bgcolorArray,
+			      borderWidth: 1
+			    });
+
+
+				$("#twoYearChart").append(
+	        		"<div class='noPaddingGeneral col-lg-10 col-md-10 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-yearly' style='max-height: 100%;'></canvas></div>"
+	        	);
+
+		      	var ctx = document.getElementById(businessLink+"-yearly").getContext("2d");
+			    var myChart = new Chart(ctx, {
+				  type: 'bar',
+				  data: {
+				    labels: dateArray,
+				    datasets: datasetsArray
+			   	  },
+				    options: {
+				        scales: {
+				            yAxes: [{
+				                ticks: {
+				                    beginAtZero:true
+				                }
+				            }]
+				        },
+				        legend: {
+				            display: false,
+				        }
+				    }
+				});
+    		}//if businessLink
 
         }//if(chart.ready)
       }); //tracker.autorun
@@ -187,100 +190,103 @@ Template.vendorDashboard.onRendered(function(){
     	if (chart.ready()) {
     		$("#monthChart").empty();
     		var businessLink = Session.get('busLink');
-	      	var date = new Date();
-		  	var firstDate = new Date(date.getFullYear(), date.getMonth(), 1);
-    		var days = [];
-		    while (firstDate.getMonth() === date.getMonth()) {
-		        days.push(new Date(firstDate.toISOString()));
-		        firstDate.setDate(firstDate.getDate() + 1);
-		    }
-	      	var dateArray      = [];
-	      	var dataArray      = [];
-	      	var datasetsArray  = [];
-	      	var bgcolorArray   = [];
-	      	
+    		if(businessLink){
 
-	      	for (var j = 0; j < days.length; j++) {
-    			var currentDate = moment(days[j]).format('DD/MM/YYYY');
-	      		var totalCount = UserStatistics.findOne({'businessLink':businessLink , 'date':currentDate});
-  				if(totalCount){
-	  				$('.legendUserVws').show();
-  					dataArray.push(totalCount.count);
-  					dateArray.push(currentDate);
-  					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
-  				}
-	      	}
-
-	      	var businessAdsDetails = BusinessAds.findOne({'businessLink':businessLink,'status':'active'});
-        	if(businessAdsDetails){
-        		if(date.getMonth() == businessAdsDetails.createdAt.getMonth()){
-		      	  	var busAdsFirstDate = new Date(businessAdsDetails.startDate);  
-					var busAdsLastDate = new Date(businessAdsDetails.endDate);
-					var thisMnthStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
-	  				if(thisMnthStatisticData){
-	      				if(thisMnthStatisticData.length > 0){
-	      					$('.legendUserVwsAds').show();
-				    		var totalCount = 0;
-	      					for (var k = 0; k < thisMnthStatisticData.length; k++) {
-								dateArray.push(thisMnthStatisticData[k].date);
-			  					bgcolorArray.push("rgba(255, 206, 86, 0.8)");
-			  					dataArray.push(thisMnthStatisticData[k].count);
-	      					}
-	      				}
-	  				}
-	  			}
-			}
-
-			var businessBannersDetails = BusinessBanner.findOne({'businessLink':businessLink,'status':'active'});
-        	if(businessBannersDetails){
-        		if(date.getMonth() == businessBannersDetails.createdAt.getMonth()){
-		      	  	var busAdsFirstDate = new Date(businessBannersDetails.startDate);  
-					var busAdsLastDate = new Date(businessBannersDetails.endDate);
-					var thisMnthStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
-	  				if(thisMnthStatisticData){
-	      				if(thisMnthStatisticData.length > 0){
-		      				$('.legendUserVwsBanners').show();
-				    		var totalCount = 0;
-	      					for (var l = 0; l < thisMnthStatisticData.length; l++) {
-								dateArray.push(thisMnthStatisticData[l].date);
-			  					bgcolorArray.push("rgba(255, 159, 64, 0.8)");
-			  					dataArray.push(thisMnthStatisticData[l].count);
-	      					}
-	      				}
-	  				}
-	  			}
-			}
-	      	datasetsArray.push({
-		      // label: 'User Views',
-		      data: dataArray,
-		      backgroundColor: bgcolorArray,
-		      borderWidth: 1
-		    });
-
-	      	$("#monthChart").append(
-        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-daily' style='max-height: 100%;'></canvas></div>"
-        	);
-
-	      	var ctx = document.getElementById(businessLink+"-daily").getContext("2d");
-		    var myChart = new Chart(ctx, {
-			  type: 'bar',
-			  data: {
-			    labels: dateArray,
-			    datasets: datasetsArray
-		   	  },
-			    options: {
-			        scales: {
-			            yAxes: [{
-			                ticks: {
-			                    beginAtZero:true
-			                }
-			            }]
-			        },
-			        legend: {
-			            display: false,
-			        }
+		      	var date = new Date();
+			  	var firstDate = new Date(date.getFullYear(), date.getMonth(), 1);
+	    		var days = [];
+			    while (firstDate.getMonth() === date.getMonth()) {
+			        days.push(new Date(firstDate.toISOString()));
+			        firstDate.setDate(firstDate.getDate() + 1);
 			    }
-			});
+		      	var dateArray      = [];
+		      	var dataArray      = [];
+		      	var datasetsArray  = [];
+		      	var bgcolorArray   = [];
+		      	
+
+		      	for (var j = 0; j < days.length; j++) {
+	    			var currentDate = moment(days[j]).format('DD/MM/YYYY');
+		      		var totalCount = UserStatistics.findOne({'businessLink':businessLink , 'date':currentDate});
+	  				if(totalCount){
+		  				$('.legendUserVws').show();
+	  					dataArray.push(totalCount.count);
+	  					dateArray.push(currentDate);
+	  					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
+	  				}
+		      	}
+
+		      	var businessAdsDetails = BusinessAds.findOne({'businessLink':businessLink,'status':'active'});
+	        	if(businessAdsDetails){
+	        		if(date.getMonth() == businessAdsDetails.createdAt.getMonth()){
+			      	  	var busAdsFirstDate = new Date(businessAdsDetails.startDate);  
+						var busAdsLastDate = new Date(businessAdsDetails.endDate);
+						var thisMnthStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
+		  				if(thisMnthStatisticData){
+		      				if(thisMnthStatisticData.length > 0){
+		      					$('.legendUserVwsAds').show();
+					    		var totalCount = 0;
+		      					for (var k = 0; k < thisMnthStatisticData.length; k++) {
+									dateArray.push(thisMnthStatisticData[k].date);
+				  					bgcolorArray.push("rgba(255, 206, 86, 0.8)");
+				  					dataArray.push(thisMnthStatisticData[k].count);
+		      					}
+		      				}
+		  				}
+		  			}
+				}
+
+				var businessBannersDetails = BusinessBanner.findOne({'businessLink':businessLink,'status':'active'});
+	        	if(businessBannersDetails){
+	        		if(date.getMonth() == businessBannersDetails.createdAt.getMonth()){
+			      	  	var busAdsFirstDate = new Date(businessBannersDetails.startDate);  
+						var busAdsLastDate = new Date(businessBannersDetails.endDate);
+						var thisMnthStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(busAdsFirstDate.toISOString()),$lt: new Date(busAdsLastDate.toISOString())}}).fetch();
+		  				if(thisMnthStatisticData){
+		      				if(thisMnthStatisticData.length > 0){
+			      				$('.legendUserVwsBanners').show();
+					    		var totalCount = 0;
+		      					for (var l = 0; l < thisMnthStatisticData.length; l++) {
+									dateArray.push(thisMnthStatisticData[l].date);
+				  					bgcolorArray.push("rgba(255, 159, 64, 0.8)");
+				  					dataArray.push(thisMnthStatisticData[l].count);
+		      					}
+		      				}
+		  				}
+		  			}
+				}
+		      	datasetsArray.push({
+			      // label: 'User Views',
+			      data: dataArray,
+			      backgroundColor: bgcolorArray,
+			      borderWidth: 1
+			    });
+
+		      	$("#monthChart").append(
+	        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-daily' style='max-height: 100%;'></canvas></div>"
+	        	);
+
+		      	var ctx = document.getElementById(businessLink+"-daily").getContext("2d");
+			    var myChart = new Chart(ctx, {
+				  type: 'bar',
+				  data: {
+				    labels: dateArray,
+				    datasets: datasetsArray
+			   	  },
+				    options: {
+				        scales: {
+				            yAxes: [{
+				                ticks: {
+				                    beginAtZero:true
+				                }
+				            }]
+				        },
+				        legend: {
+				            display: false,
+				        }
+				    }
+				});
+    		}//if businessLink
 	      	
         }//if(chart.ready)
     }); //tracker.autorun
@@ -291,136 +297,139 @@ Template.vendorDashboard.onRendered(function(){
       	if (chart.ready() && chart1.ready()) {
     		$("#yearChart").empty();
     		var businessLink = Session.get('busLink');
-	      	var monthsArray      = [];
-	      	var dataArray    	 = [];
-	      	var bgcolorArray     = [];
-	      	var datasetsArray    = [];
-    		for (var i = 0; i < 12; i++) {
-				var date  = new Date();
-			  	var firstDate = new Date(date.getFullYear(), i, 1);
-			  	var lastDate  = new Date(date.getFullYear(), i, 31);    			
-		      	var statisticData  = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(firstDate.toISOString()),$lt: new Date(lastDate.toISOString())}}).fetch();
-		      	if(statisticData){
-		      		if(statisticData.length > 0){
-			      		var totalCount = 0;
-	  					for (var j = 0; j < statisticData.length; j++) {
-							totalCount += parseInt(statisticData[j].count) ;
-	  					}
-	  					$('.legendUserVws').show();
-	  					monthsArray.push(moment(firstDate).format('MMMM'));
-						dataArray.push(totalCount);
-    					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
-		      		}
-		      	}
-    		}
+    		if(businessLink){
 
-		    var businessAdsDetails = BusinessAds.findOne({'businessLink':businessLink,'status':'active'});
-        	if(businessAdsDetails){
-        		if(date.getFullYear() == businessAdsDetails.createdAt.getFullYear()){
-		      	  	var busAdsFirstDate = new Date(businessAdsDetails.startDate);  
-					var busAdsLastDate = new Date(businessAdsDetails.endDate);
-					
-					var monthValue = date.getMonth();
-					for (var k = 0; k < (businessAdsDetails.noOfMonths+1).length; k++) {
-						if(k==0){
-							var firstDate = busAdsFirstDate;
-						}else{
-							var firstDate = new Date(date.getFullYear(), monthValue, 1);
+		      	var monthsArray      = [];
+		      	var dataArray    	 = [];
+		      	var bgcolorArray     = [];
+		      	var datasetsArray    = [];
+	    		for (var i = 0; i < 12; i++) {
+					var date  = new Date();
+				  	var firstDate = new Date(date.getFullYear(), i, 1);
+				  	var lastDate  = new Date(date.getFullYear(), i, 31);    			
+			      	var statisticData  = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(firstDate.toISOString()),$lt: new Date(lastDate.toISOString())}}).fetch();
+			      	if(statisticData){
+			      		if(statisticData.length > 0){
+				      		var totalCount = 0;
+		  					for (var j = 0; j < statisticData.length; j++) {
+								totalCount += parseInt(statisticData[j].count) ;
+		  					}
+		  					$('.legendUserVws').show();
+		  					monthsArray.push(moment(firstDate).format('MMMM'));
+							dataArray.push(totalCount);
+	    					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
+			      		}
+			      	}
+	    		}
+
+			    var businessAdsDetails = BusinessAds.findOne({'businessLink':businessLink,'status':'active'});
+	        	if(businessAdsDetails){
+	        		if(date.getFullYear() == businessAdsDetails.createdAt.getFullYear()){
+			      	  	var busAdsFirstDate = new Date(businessAdsDetails.startDate);  
+						var busAdsLastDate = new Date(businessAdsDetails.endDate);
+						
+						var monthValue = date.getMonth();
+						for (var k = 0; k < (businessAdsDetails.noOfMonths+1).length; k++) {
+							if(k==0){
+								var firstDate = busAdsFirstDate;
+							}else{
+								var firstDate = new Date(date.getFullYear(), monthValue, 1);
+							}
+
+							if(k==businessAdsDetails.noOfMonths){
+				  				var lastDate  = busAdsLastDate;
+							}else{
+			  					var lastDate  = new Date(date.getFullYear(), monthValue, 31);
+							}
+
+			  				var thisMnthStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(firstDate.toISOString()),$lte: new Date(lastDate.toISOString())}}).fetch();
+			  				if(thisMnthStatisticData){
+			      				if(thisMnthStatisticData.length > 0){
+						    		var totalCount = 0;
+			      					for (var j = 0; j < thisMnthStatisticData.length; j++) {
+										totalCount += parseInt(thisMnthStatisticData[j].count) ;
+			      					}
+			      					$('.legendUserVwsAds').show();
+				      				monthsArray.push(moment(thisMnthStatisticData.date).format('MMMM'));
+									dataArray.push(totalCount);
+		    						bgcolorArray.push("rgba(255, 206, 86, 0.8)");
+			      				}
+			  				}
+			  				monthValue++;
 						}
-
-						if(k==businessAdsDetails.noOfMonths){
-			  				var lastDate  = busAdsLastDate;
-						}else{
-		  					var lastDate  = new Date(date.getFullYear(), monthValue, 31);
-						}
-
-		  				var thisMnthStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(firstDate.toISOString()),$lte: new Date(lastDate.toISOString())}}).fetch();
-		  				if(thisMnthStatisticData){
-		      				if(thisMnthStatisticData.length > 0){
-					    		var totalCount = 0;
-		      					for (var j = 0; j < thisMnthStatisticData.length; j++) {
-									totalCount += parseInt(thisMnthStatisticData[j].count) ;
-		      					}
-		      					$('.legendUserVwsAds').show();
-			      				monthsArray.push(moment(thisMnthStatisticData.date).format('MMMM'));
-								dataArray.push(totalCount);
-	    						bgcolorArray.push("rgba(255, 206, 86, 0.8)");
-		      				}
-		  				}
-		  				monthValue++;
-					}
-	  			}
-			}
-
-			var businessBannersDetails = BusinessBanner.findOne({'businessLink':businessLink,'status':'active'});
-        	if(businessBannersDetails){
-        		if(date.getFullYear() == businessBannersDetails.createdAt.getFullYear()){
-		      	  	var busAdsFirstDate = new Date(businessBannersDetails.startDate);  
-					var busAdsLastDate = new Date(businessBannersDetails.endDate);
-					
-					var monthValue = date.getMonth();
-					for (var k = 0; k < (businessBannersDetails.noOfMonths+1).length; k++) {
-						if(k==0){
-							var firstDate = busAdsFirstDate;
-						}else{
-							var firstDate = new Date(date.getFullYear(), monthValue, 1);
-						}
-
-						if(k==businessBannersDetails.noOfMonths){
-			  				var lastDate  = busAdsLastDate;
-						}else{
-		  					var lastDate  = new Date(date.getFullYear(), monthValue, 31);
-						}
-
-		  				var thisMnthStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(firstDate.toISOString()),$lte: new Date(lastDate.toISOString())}}).fetch();
-		  				if(thisMnthStatisticData){
-		      				if(thisMnthStatisticData.length > 0){
-					    		var totalCount = 0;
-		      					for (var j = 0; j < thisMnthStatisticData.length; j++) {
-									totalCount += parseInt(thisMnthStatisticData[j].count) ;
-		      					}
-		      					$('.legendUserVwsBanners').show();
-			      				monthsArray.push(moment(thisMnthStatisticData.date).format('MMMM'));
-								dataArray.push(totalCount);
-	    						bgcolorArray.push("rgba(255, 159, 64, 0.8)");
-		      				}
-		  				}
-		  				monthValue++;
 		  			}
-	  			}
-			}
+				}
 
-			datasetsArray.push({
-		      // label: 'User Views',
-		      data: dataArray,
-		      backgroundColor: bgcolorArray,
-		      borderWidth: 1
-		    });
+				var businessBannersDetails = BusinessBanner.findOne({'businessLink':businessLink,'status':'active'});
+	        	if(businessBannersDetails){
+	        		if(date.getFullYear() == businessBannersDetails.createdAt.getFullYear()){
+			      	  	var busAdsFirstDate = new Date(businessBannersDetails.startDate);  
+						var busAdsLastDate = new Date(businessBannersDetails.endDate);
+						
+						var monthValue = date.getMonth();
+						for (var k = 0; k < (businessBannersDetails.noOfMonths+1).length; k++) {
+							if(k==0){
+								var firstDate = busAdsFirstDate;
+							}else{
+								var firstDate = new Date(date.getFullYear(), monthValue, 1);
+							}
 
-			$("#yearChart").append(
-        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-monthly' style='max-height: 100%;'></canvas></div>"
-        	);
+							if(k==businessBannersDetails.noOfMonths){
+				  				var lastDate  = busAdsLastDate;
+							}else{
+			  					var lastDate  = new Date(date.getFullYear(), monthValue, 31);
+							}
 
-	      	var ctx = document.getElementById(businessLink+"-monthly").getContext("2d");
-		    var myChart = new Chart(ctx, {
-			  type: 'bar',
-			  data: {
-			    labels: monthsArray,
-			    datasets: datasetsArray 
-		   	  },
-			    options: {
-			        scales: {
-			            yAxes: [{
-			                ticks: {
-			                    beginAtZero:true
-			                }
-			            }]
-			        },
-			        legend: {
-			            display: false,
-			        }
-			    }
-			});
+			  				var thisMnthStatisticData = UserStatistics.find({'businessLink':businessLink ,'createdAt':{$gte: new Date(firstDate.toISOString()),$lte: new Date(lastDate.toISOString())}}).fetch();
+			  				if(thisMnthStatisticData){
+			      				if(thisMnthStatisticData.length > 0){
+						    		var totalCount = 0;
+			      					for (var j = 0; j < thisMnthStatisticData.length; j++) {
+										totalCount += parseInt(thisMnthStatisticData[j].count) ;
+			      					}
+			      					$('.legendUserVwsBanners').show();
+				      				monthsArray.push(moment(thisMnthStatisticData.date).format('MMMM'));
+									dataArray.push(totalCount);
+		    						bgcolorArray.push("rgba(255, 159, 64, 0.8)");
+			      				}
+			  				}
+			  				monthValue++;
+			  			}
+		  			}
+				}
+
+				datasetsArray.push({
+			      // label: 'User Views',
+			      data: dataArray,
+			      backgroundColor: bgcolorArray,
+			      borderWidth: 1
+			    });
+
+				$("#yearChart").append(
+	        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-monthly' style='max-height: 100%;'></canvas></div>"
+	        	);
+
+		      	var ctx = document.getElementById(businessLink+"-monthly").getContext("2d");
+			    var myChart = new Chart(ctx, {
+				  type: 'bar',
+				  data: {
+				    labels: monthsArray,
+				    datasets: datasetsArray 
+			   	  },
+				    options: {
+				        scales: {
+				            yAxes: [{
+				                ticks: {
+				                    beginAtZero:true
+				                }
+				            }]
+				        },
+				        legend: {
+				            display: false,
+				        }
+				    }
+				});
+    		}//if businessLink
         }//if(chart.ready)
     }); //tracker.autorun
     // ---End User year Chart--- //
