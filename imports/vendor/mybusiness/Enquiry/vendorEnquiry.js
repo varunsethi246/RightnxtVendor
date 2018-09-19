@@ -291,6 +291,11 @@ Template.vendorEnquiry.helpers({
 					if(enqData.enquiryDesc[i].commentImage != ''){
 						var enquiryImage =	EnquiryImage.findOne({"_id":enqData.enquiryDesc[i].commentImage});
 						if(enquiryImage){
+							if(enquiryImage.type == 'image/png'){
+								enqData.enquiryDesc[i].checkpngImg = 'bkgImgNone';
+							}else{
+								enqData.enquiryDesc[i].checkpngImg = '';
+							}	
 							enqData.enquiryDesc[i].enquiryPhoto = enquiryImage.link();
 						}
 						enqData.enquiryDesc[i].enquiryImgVal = true;
@@ -345,6 +350,9 @@ Template.enquiryDetails.onRendered(function(){
 Template.allEnquries.events({
 	
 	'click .readEnClass':function(event){
+		var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
+        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
+        
 		var windowWidth = $(window).width();
 		if(windowWidth >= 320 && windowWidth <= 767){
 			$('html, body').animate({

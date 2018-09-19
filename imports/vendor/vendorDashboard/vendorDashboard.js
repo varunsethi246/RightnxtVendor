@@ -12,12 +12,12 @@ import './customerLeadsGraph.js';
 import './customerLeadsGraph.html';
 import '../vendor.js';
 
-Template.vendorDashboard.onCreated(function() {
+Template.userViewGraph.onCreated(function() {
   chart = this.subscribe('allStatistics');
   chart1 = this.subscribe('chartBusiness');
 });
 
-Template.vendorDashboard.onRendered(function(){
+Template.userViewGraph.onRendered(function(){
 	Session.set("month","");
 	Session.set("year","");
 	Session.set("twoYear","");
@@ -28,7 +28,7 @@ Template.vendorDashboard.onRendered(function(){
 
     // // ---User two year Chart--- //
     Tracker.autorun(function () {
-    	// if (chart.ready() && chart1.ready()) {
+    	if (chart.ready() && chart1.ready()) {
     		// $("#twoYearChart").empty();
     		var businessLink = Session.get('busLink');
     		if(businessLink){
@@ -181,7 +181,7 @@ Template.vendorDashboard.onRendered(function(){
 				});
     		}//if businessLink
 
-        // }//if(chart.ready)
+        }//if(chart.ready)
       }); //tracker.autorun
     // ---End User two year Chart--- //
 
@@ -556,7 +556,8 @@ Template.userViewGraph.helpers({
 			if(businessData){
 				var businessTitle = businessData.businessTitle;
 			}
-			var userData    = UserLatLng.find({'businessLink':businessLink}, {sort: {createdAt: -1}, limit: 10}).fetch();
+			// var userData    = UserLatLng.find({'businessLink':businessLink}, {sort: {createdAt: -1}, limit: 10}).fetch();
+			var userData    = UserLatLng.find({'businessLink':businessLink}, {sort: {createdAt: -1}}).fetch();
 			if(userData){
 				for(var i=0 ; i<userData.length ; i++){
 					var city     = userData[i].city;
@@ -574,7 +575,7 @@ Template.userViewGraph.helpers({
 			if(businessData){
 				for(j = 0 ; j < businessData.length; j++){
 					var businessUrl = businessData[j].businessLink;
-					var userData    = UserLatLng.find({'businessLink':businessUrl}, {sort: {createdAt: -1}, limit: 10}).fetch();
+					var userData    = UserLatLng.find({'businessLink':businessUrl}, {sort: {createdAt: -1}}).fetch();
 					if(userData){
 						for(var i=0 ; i<userData.length ; i++){
 							var city     = userData[i].city;
@@ -597,11 +598,14 @@ Template.userViewGraph.helpers({
 	'isDataAvail':function(){
 		// if (chart.ready() && chart1.ready()) {
 			var businessUrl = Session.get('busLink');
-	  		var statisticData = UserStatistics.findOne({'businessLink':businessUrl});
-			if(statisticData){
-				return true;	
-			}else{
-				return false;	
+			if(businessUrl){
+				var userData    = UserLatLng.findOne({'businessLink':businessUrl});
+		  		var statisticData = UserStatistics.findOne({'businessLink':businessUrl});
+				if(statisticData || userData){
+					return true;	
+				}else{
+					return false;	
+				}
 			}
 		// }
 	}

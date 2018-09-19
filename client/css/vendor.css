@@ -2699,6 +2699,10 @@ height:113px
 .vEnqFormImgThreeImg {
 max-width:366px;
 margin-top: 5px;
+border: 1px solid #bbb;
+padding: 5px;
+border-radius: 5px;
+background-image: url('/images/loading/loading-squares2.gif');
 }
 /*.vEnqFormImgThreeImg {
 max-width:366px

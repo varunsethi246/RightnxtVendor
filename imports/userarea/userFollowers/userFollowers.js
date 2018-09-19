@@ -287,7 +287,7 @@ Template.userFollowers.events({
 			                        templateName: 'Follow',
 			                        OrderId     : getResult,
 			                	}
-			                	sendMailnNotif(inputObj);
+			                	sendMailNotification(inputObj);
 			                }
 			            }
 	              	}//followData 

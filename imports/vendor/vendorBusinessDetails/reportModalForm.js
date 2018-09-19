@@ -122,7 +122,7 @@ Template.reportModalForm.events({
    								'[reportComment]'	: reportComment
 
 			               	};
-			               	console.log('msgvariable ',msgvariable);
+			               	// console.log('msgvariable ',msgvariable);
 							var inputObj = {
 								notifPath	 : businessLink,
 								from         : adminId,
@@ -130,7 +130,7 @@ Template.reportModalForm.events({
 							    templateName : 'User Business Page Report',
 							    variables    : msgvariable,
 							}
-			               	console.log('inputObj ',inputObj);
+			               	// console.log('inputObj ',inputObj);
 
 							sendMailNotification(inputObj); 
 
