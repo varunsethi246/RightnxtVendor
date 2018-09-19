@@ -1,14 +1,19 @@
 <template name="paymentSuccess">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="paymentSuccessVen">
             Payment Successful
         </div>
-    </div>
+    </div> -->
     {{paymentSuccessfull}}
 
     {{#if currentUser}}
         {{#if isInRole 'Vendor'}}
             {{#with invoiceDetailsForOnline}}
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="paymentSuccessVen">
+                    Payment {{transactionMsg}}
+                </div>
+            </div>
                 <div class="">
                     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12 receipt"> 
 

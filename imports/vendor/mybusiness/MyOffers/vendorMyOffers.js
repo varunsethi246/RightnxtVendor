@@ -85,6 +85,7 @@ Template.vendorMyOffers.helpers({
 Template.paymentSuccess.helpers({
 	paymentSuccessfull(){
 		var status      = FlowRouter.getQueryParam('status');
+		console.log('status :',status);
 	    var id          = FlowRouter.getQueryParam('id');
 	    var billnumbers = FlowRouter.getQueryParam('billnumbers');
 	    var checksum    = FlowRouter.getQueryParam('checksum');
@@ -139,7 +140,7 @@ Template.paymentSuccess.helpers({
 				paymentMode 			: paymentDetails.modeOfPayment,
 				totalAmount				: paymentDetails.totalAmount,
 				totalPrice				: totalPrice,
-				transactionMsg 			: 'Payment Successful'
+				transactionMsg 			: paymentDetails.paymentStatus,
 			}
 			return data;
 		}
@@ -855,6 +856,8 @@ Template.paymentInvoice.events({
 		var businessLink = FlowRouter.getParam('businessLink');
 		var invoiceNumber = FlowRouter.getParam('invoiceNumber');
 		var mode = $('input[name="modeOfPayment"]:checked').val();
+		console.log('businessLink :',businessLink);
+		console.log('invoiceNumber :',invoiceNumber);
 
 		var receiptObj = Payment.findOne({"vendorId"	  : Meteor.userId(),
 										   "businessLink" : businessLink,
@@ -957,7 +960,7 @@ Template.paymentInvoice.events({
 			else{
 				//Send user to Payment Gateway link
 				var current = window.location.host;
-				// console.log("window.location : ",current );
+				console.log("window.location : ",current );
 
 				Meteor.call('updateInvoiceforOnlinePayment', businessLink, parseInt(invoiceNumber), current, (error, result)=>{
 					if(result){
