@@ -1,5 +1,6 @@
 import { Bert } from 'meteor/themeteorchef:bert';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { Business } from '/imports/api/businessMaster.js';
 
 import '/imports/common/common.js';
 
@@ -159,7 +160,12 @@ import '/imports/common/common.js';
                   // var user = Meteor.users.findOne({'_id' : loggedInUser });
                   var user = Meteor.userId();
                   if(user){
-                    FlowRouter.go('/vendorDashboard');                                
+                    var businessName = Business.findOne({'businessOwnerId':user});
+                    if(businessName){
+                      FlowRouter.go('/vendorDashboard/'+businessName.businessLink);
+                    }else{
+                      FlowRouter.go('/vendorDashboard');
+                    }                                
                   }
                 }
               }

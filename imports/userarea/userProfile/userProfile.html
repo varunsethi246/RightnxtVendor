@@ -32,7 +32,7 @@
 							<i class="fa fa-server" aria-hidden="true"></i>&nbsp; Timeline
 						</a>
 						{{else}}
-						<a href="/vendorDashboard" class="timeLineSetting {{statusClassProSet}}">
+						<a href="{{#if getBusinessName}}/vendorDashboard/{{getBusinessName}}{{else}}/vendorDashboard{{/if}}" class="timeLineSetting {{statusClassProSet}}">
 							<i class="fa fa-server" aria-hidden="true"></i>&nbsp; Timeline
 						</a>
 						{{/if}}

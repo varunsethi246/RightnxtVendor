@@ -40,7 +40,6 @@ if (Meteor.isServer) {
   Meteor.publish('oneBusiness', function oneBusiness(businessurl) {
     return Business.find({"businessLink": businessurl});
   });
-
   Meteor.publish('businessListSearch', function() {
     return Business.find({},{fields:{"businessTitle" 	:1,"businessLink":1,
                              "businessAddress" 	:1,"businessLandline" 	:1,

@@ -3,6 +3,7 @@ import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { FollowUser } from '/imports/api/userFollowMaster.js';
 import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
 import ImageCompressor from 'image-compressor.js';
+import { Business } from '/imports/api/businessMaster.js';
 
 Template.userProfile.onCreated(function() {
     this.currentUpload = new ReactiveVar(false);
@@ -174,6 +175,12 @@ Template.userProfile.helpers({
 			return false;
 		}
 	},
+	'getBusinessName':function(){
+    	var businessName = Business.findOne({'businessOwnerId':Meteor.userId()});
+    	if(businessName){
+    		return businessName.businessLink;
+    	}
+    },
 });
 
 

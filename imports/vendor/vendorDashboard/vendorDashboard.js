@@ -22,16 +22,16 @@ Template.userViewGraph.onRendered(function(){
 	Session.set("year","");
 	Session.set("twoYear","");
 
-    var businessUrl = $('#graphBusinessTitle').val(); 
-    Session.set('busLink',businessUrl);
+    // var businessUrl = $('#graphBusinessTitle').val(); 
+    // Session.set('busLink',businessUrl);
 	$(".twoYr").addClass('addYearClass');
 
     // // ---User two year Chart--- //
     Tracker.autorun(function () {
-    	if (chart.ready() && chart1.ready()) {
-    		// $("#twoYearChart").empty();
-    		var businessLink = Session.get('busLink');
+    	// if (chart.ready() && chart1.ready()) {
+    		var businessLink = FlowRouter.getParam('businessLink');
     		if(businessLink){
+	    		$("#twoYearChart").empty();
 
 		    	var date = new Date();
 			    var LastYrFD = new Date(date.getFullYear()-1, 0, 1);
@@ -181,17 +181,17 @@ Template.userViewGraph.onRendered(function(){
 				});
     		}//if businessLink
 
-        }//if(chart.ready)
+        // }//if(chart.ready)
       }); //tracker.autorun
     // ---End User two year Chart--- //
 
     // // ---User Month Chart--- //
     Tracker.autorun(function () {
     	// if (chart.ready() && chart1.ready()) {
-    		// $("#monthChart").empty();
-    		var businessLink = Session.get('busLink');
+    		var businessLink = FlowRouter.getParam('businessLink');
     		if(businessLink){
 
+	    		$("#monthChart").empty();
 		      	var date = new Date();
 			  	var firstDate = new Date(date.getFullYear(), date.getMonth(), 1);
 	    		var days = [];
@@ -295,10 +295,10 @@ Template.userViewGraph.onRendered(function(){
     // // ---User year Chart--- //
     Tracker.autorun(function () {
       	// if (chart.ready() && chart1.ready()) {
-    		// $("#yearChart").empty();
-    		var businessLink = Session.get('busLink');
+    		var businessLink = FlowRouter.getParam('businessLink');
     		if(businessLink){
-
+	
+	    		$("#yearChart").empty();
 		      	var monthsArray      = [];
 		      	var dataArray    	 = [];
 		      	var bgcolorArray     = [];
@@ -433,13 +433,14 @@ Template.userViewGraph.onRendered(function(){
         // }//if(chart.ready)
     }); //tracker.autorun
     // ---End User year Chart--- //
-})
+});
 
 Template.vendorDashboard.events({
 	'change #graphBusinessTitle':function(event){
 		event.preventDefault();
 		var businessLink = $('#graphBusinessTitle').val(); 
-	    Session.set('busLink',businessLink);
+		FlowRouter.go('/vendorDashboard/'+businessLink);
+	    // Session.set('busLink',businessLink);
 	},
 	'click .monthDate':function(event){
 		event.preventDefault();
@@ -550,7 +551,7 @@ Template.userViewGraph.helpers({
 	'customerActivity':function(){
 		var userId            = Meteor.userId();
 		var custActivityArray = [];
-		var businessLink = Session.get('busLink');
+		var businessLink = FlowRouter.getParam('businessLink');
 		if(businessLink){
 			var businessData      = Business.findOne({'businessLink':businessLink,'status':'active'});
 			if(businessData){
@@ -597,7 +598,7 @@ Template.userViewGraph.helpers({
 	},
 	'isDataAvail':function(){
 		// if (chart.ready() && chart1.ready()) {
-			var businessUrl = Session.get('busLink');
+			var businessUrl = FlowRouter.getParam('businessLink');
 			if(businessUrl){
 				var userData    = UserLatLng.findOne({'businessLink':businessUrl});
 		  		var statisticData = UserStatistics.findOne({'businessLink':businessUrl});

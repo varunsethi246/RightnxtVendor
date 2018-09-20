@@ -1,5 +1,6 @@
 import { Bert } from 'meteor/themeteorchef:bert';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { Business } from '/imports/api/businessMaster.js';
 import './LoginOTP.html';
 import './anonymousUserLayout.html';
 import './loading.html';
@@ -139,7 +140,12 @@ Template.LoginOTP.events({
                               if(err){
                                 Bert.alert('Something went wrong' , "danger" , "growl-top-right");
                               }else{
-                                FlowRouter.go('/vendorDashboard');
+                                var businessName = Business.findOne({'businessOwnerId':Meteor.userId()});
+                                if(businessName){
+                                  FlowRouter.go('/vendorDashboard/'+businessName.businessLink);
+                                }else{
+                                  FlowRouter.go('/vendorDashboard');
+                                }
                                 // if (Roles.userIsInRole(userDetails, ['user'])) {
                                 //           FlowRouter.go('/userProfile',{'userId':userDetails._id});
                                 //       }else if (Roles.userIsInRole(userDetails, ['Vendor'])) {

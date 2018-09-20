@@ -1,6 +1,7 @@
 import './generalHeader.html';
 import { Notification } from '/imports/api/notification.js';
 import { ConfigSettings } from '/imports/api/companysettingsAPI.js';
+import { Business } from '/imports/api/businessMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
 
@@ -193,7 +194,13 @@ Template.generalHeader.helpers({
     	}else{
     		return false;
     	}
-    }
+    },
+    'getBusinessName':function(){
+    	var businessName = Business.findOne({'businessOwnerId':Meteor.userId()});
+    	if(businessName){
+    		return businessName.businessLink;
+    	}
+    },
 });
 
 Template.generalHeader.events({

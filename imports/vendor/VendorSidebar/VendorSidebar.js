@@ -166,6 +166,12 @@ Template.vendorSidebar.helpers({
 		}
 		return currentCity;
 	},
+	'getBusinessName':function(){
+    	var businessName = Business.findOne({'businessOwnerId':Meteor.userId()});
+    	if(businessName){
+    		return businessName.businessLink;
+    	}
+    },
 });
 
 Template.vendorSidebar.events({

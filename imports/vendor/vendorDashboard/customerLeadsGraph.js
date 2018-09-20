@@ -1,5 +1,5 @@
 import './customerLeadsGraph.html';
-
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { Session } from 'meteor/session';
 import { UserLatLng } from '../../api/userViewMaster.js';
 import { UserStatistics } from '../../api/userViewMaster.js';
@@ -24,9 +24,9 @@ Template.customerLeadsGraph.onRendered(function(){
     // ---customer 24month Chart--- //
     Tracker.autorun(function () {
       	// if (chart1.ready() && chart2.ready() && chart3.ready()) {
-	      	// $('#custtwoYearChart').empty();
-	      	var businessUrl = Session.get('busLink');
+	      	var businessUrl = FlowRouter.getParam('businessLink');
 	      	if(businessUrl){
+		      	$('#custtwoYearChart').empty();
 		      	var date = new Date();
 			  	var dateArray      = [];
 				var datasetsArray  = [];
@@ -152,9 +152,9 @@ Template.customerLeadsGraph.onRendered(function(){
     // ---customer year Chart--- //
     Tracker.autorun(function () {
       	// if (chart1.ready() && chart2.ready() && chart3.ready()) {
-    		// $("#custyearChart").empty();
-    		var businessUrl = Session.get('busLink');
+    		var businessUrl = FlowRouter.getParam('businessLink');
     		if(businessUrl){
+	    		$("#custyearChart").empty();
 			  	var dateArray      = [];
 				var datasetsArray  = [];
 				var dataArray      = [];
@@ -276,9 +276,9 @@ Template.customerLeadsGraph.onRendered(function(){
      // ---customer month Chart--- //
     Tracker.autorun(function () {
       	// if (chart1.ready() && chart2.ready() && chart3.ready()) {
-    		// $("#custmonthChart").empty();
-	      	var businessUrl = Session.get('busLink');
+	      	var businessUrl = FlowRouter.getParam('businessLink');
 	      	if(businessUrl){
+	    		$("#custmonthChart").empty();
 		      	var date = new Date();
 		      	var firstDate = new Date(date.getFullYear(), date.getMonth(), 1);
 	    		var days = [];
@@ -409,7 +409,7 @@ Template.customerLeadsGraph.helpers({
 		var month    = Session.get("month");
 		var year     = Session.get("year");
 		var twoyear  = Session.get("twoYear");
-	    var businessUrl = Session.get('busLink');
+	    var businessUrl = FlowRouter.getParam('businessLink');
 
 		if(month){
 			var date = month;
