@@ -4297,7 +4297,10 @@ text-align: center
 	.userCommRepDt{padding-left: 42px!important}
 	.days,.rateBusi{width: 19%;}
 	#faqCollapse{margin-left: 34.5%;}
-	.mapViewBusList .mapVBusTitle, .mapViewBusList .mapVBusAddr, .mapViewBusList .mapVBusPhnNum {width: 200px!important;}
+	.mapViewBusList .mapVBusTitle, .mapViewBusList .mapVBusAddr, .mapViewBusList .mapVBusPhnNum {
+	    width: 100%;
+	}
+	/*.mapViewBusList .mapVBusTitle, .mapViewBusList .mapVBusAddr, .mapViewBusList .mapVBusPhnNum {width: 200px!important;}*/
 	.mapViewBusList .imgMapview{max-height: 150px!important;}
 }
 .otpOuterDiv{border: 1px solid #bbbbbb;margin-top: 15px;}
@@ -4451,3 +4454,4 @@ text-align: center
 .tooltip{position: absolute;}
 .replyOfReplySub{margin-top: 10px;}
 #replyOfreplyInput{margin-top: 10px;}
+.showMoreCommnt{padding-left: 0px;padding-right: 0px;}
