@@ -335,6 +335,7 @@ Meteor.methods({
 		  	var METEOR_URL = 'localhost:3003'; // your production server url
 		  	// console.log('quickWalletUrl :',quickWalletUrl);
 		  	// console.log('METEOR_URL :',METEOR_URL);
+		  	// var 
 		}else{
 			var quickWalletUrl = 'https://server.livquik.com';
 
@@ -361,9 +362,10 @@ Meteor.methods({
 
 			try {
 				if (Meteor.isServer) {
+					console.log('quickWalletUrl: ',quickWalletUrl);
 					console.log('quickWalletInput: ',quickWalletInput);
 
-						var result = HTTP.call("POST",quickWalletUrl+"/api/partner/323/requestPayment",
+						var result = HTTP.call("POST",quickWalletUrl+"/api/partner/"+quickWalletInput.partnerid+"/requestPayment",
 										{params: quickWalletInput});
 										// http://uat.quikwallet.com/api/partner/<partnerid>/requestpayment
 						// var result = HTTP.call("POST","https://uat.quikwallet.com/api/partner/366/requestpayment",
