@@ -484,6 +484,13 @@ Template.vendorEnquiry.events({
 	       	// console.log('hi');
 			var elem = $(event.currentTarget).attr('.vEnqFormImgOne');
 		    // console.log(filesM.length);
+		    Meteor.call('updateEnquiry',id ,function(err,rslt){
+				if (err) {
+
+				}else{
+					// console.log(rslt.reason);
+				}
+			});
 	       	if(filesM.length > 0){
 				for(i = 0 ; i < filesM.length; i++){
 
@@ -688,6 +695,16 @@ Template.vendorEnquiry.events({
        	var businessLink = $(event.currentTarget).attr("data-businessLink");
        	// console.log('hi');
 		var elem = $(event.currentTarget).attr('.vEnqFormImgOne');
+
+		Meteor.call('updateEnquiry',id ,function(err,rslt){
+			if (err) {
+
+			}else{
+				// console.log(rslt.reason);
+			}
+		});
+
+
        	if(filesM.length > 0){
 			for(i = 0 ; i < filesM.length; i++){
 

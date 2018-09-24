@@ -145,6 +145,10 @@ Meteor.methods({
 		// return Enquiry.remove({"_id":id});
 		return Enquiry.update({"_id":id},{$set:{'deleteStatusVen' : true}});
 	},
+	'updateEnquiry':function(id){
+		// return Enquiry.remove({"_id":id});
+		return Enquiry.update({"_id":id},{$set:{'deleteStatus' : false}});
+	},
 	'updateEnquiryForArchive':function(id,value){
 		return Enquiry.update({"_id":id},{$set:{"vendorArchive":value}});
 	},
