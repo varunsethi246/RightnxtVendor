@@ -4038,8 +4038,11 @@ display:none
 overflow:hidden!important
 }
 
-.notifRowBunch:hover .deleteTrash {
+/*.notifRowBunch:hover .deleteTrash {
 display:inline-block
+}*/
+.notifRowBunch .deleteTrash {
+display:inline-block;
 }
 
 .userSettingadmin1 {

@@ -79,7 +79,7 @@
 				<h2 class="notifyWrapper vAllNotifWrprHead">All Notifications</h2>
 				<!-- <hr class="notify col-lg-12 col-md-12 col-sm-12 col-xs-12"> -->
 				<div class="box-body col-lg-12 col-md-12 col-sm-12 col-xs-12 vboxBody">
-					<!-- {{#if AllnotifCounts}} -->
+					{{#if notifRes}}
 						{{#each notifRes}}
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  {{statusBackground}} notifRowBunch hrViewAll" id="{{id}}">
 								<span class="col-lg-12 col-md-12 col-sm-12 col-xs-12  notifyBody"> {{ notifBody }} <i class="fa fa-trash fa-lg pull-right deleteTrash"></i> </span>
@@ -87,11 +87,11 @@
 								<!-- <hr class="hrViewAll col-lg-12 col-md-12 col-sm-12 col-xs-12"> -->
 							</div>
 						{{/each}}
-					<!-- {{else}}
-					<div class="">
-						No Notification
-					</div>
-					{{/if}} -->
+					{{else}}
+						<h4 class="NoNotifi">
+							No Notifications
+						</h4>
+					{{/if}}
 				</div>
 			</div>
 			{{/if}}

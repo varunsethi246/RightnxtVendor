@@ -91,7 +91,7 @@ Template.ViewAllNotif.helpers({
 				}
 			}
 			if(userDetail.notificationConfiguration.follow == "true"){
-				var arr = ["Follow User Other", "Follow User Other", "Follow User Current"];
+				var arr = ["Follow User Other", "Follow User Other", "Follow User Current","Follow","UnFollow"];
 				for(j=0;j<arr.length;j++){
 					notifArr.push(arr[j]);
 				}

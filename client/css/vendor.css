@@ -21,7 +21,10 @@ margin-right:2%
 .generalHeadVendor .genHead {
 z-index:1
 }
-
+.NoNotifi{
+        text-align: center;
+    padding-top: 10px;
+}
 .profileborderfluid {
 border-bottom:1px solid #ccc;
 padding-left:10%;
