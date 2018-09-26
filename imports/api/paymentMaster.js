@@ -185,8 +185,7 @@ Meteor.methods({
 			var quickWalletUrl = 'https://uat.quikwallet.com';
 		  	var METEOR_URL = 'localhost:3000'; // your production server url
 		}else{
-			var quickWalletUrl = 'https://server.livquik.com';
-
+			var quickWalletUrl = 'https://uat.quikwallet.com';
 			var METEOR_URL = current;
 		}
 
@@ -212,7 +211,7 @@ Meteor.methods({
 			try {
 				console.log("Im trying");
 				if (Meteor.isServer) {
-						var result = HTTP.call("POST", quickWalletUrl+"/api/partner/323/requestPayment",
+						var result = HTTP.call("POST", quickWalletUrl+"/api/partner/"+quickWalletInput.partnerid+"/requestPayment",
 										{params: quickWalletInput});
 										console.log("result: ",result);
 						if(result.data.status == 'success'){
@@ -249,7 +248,7 @@ Meteor.methods({
 			var quickWalletUrl = 'https://uat.quikwallet.com';
 		  	var METEOR_URL = 'localhost:3000'; // your production server url
 		}else{
-			var quickWalletUrl = 'https://server.livquik.com';
+			var quickWalletUrl = 'https://uat.quikwallet.com';
 
 			var METEOR_URL = current;
 		}
@@ -276,7 +275,7 @@ Meteor.methods({
 				console.log("Im trying");
 				if (Meteor.isServer) {
 
-						var result = HTTP.call("POST", quickWalletUrl+"/api/partner/323/requestPayment",
+						var result = HTTP.call("POST", quickWalletUrl+"/api/partner/"+quickWalletInput.partnerid+"/requestPayment",
 										{params: quickWalletInput});
 										console.log("result: ",result);
 						if(result.data.status == 'success'){
@@ -337,7 +336,7 @@ Meteor.methods({
 		  	// console.log('METEOR_URL :',METEOR_URL);
 		  	// var 
 		}else{
-			var quickWalletUrl = 'https://server.livquik.com';
+			var quickWalletUrl = 'https://uat.quikwallet.com';
 
 			var METEOR_URL = current;
 			// console.log('quickWalletUrl :',quickWalletUrl);
