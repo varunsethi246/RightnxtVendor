@@ -1055,7 +1055,17 @@ Template.imageCommet.events({
     	}
 	},
 	'click .commentReply':function(event){
-		$(event.currentTarget).siblings('.reportModInputReply').toggleClass('showCmmnt');
+		if(Meteor.userId()){
+			$(event.currentTarget).siblings('.reportModInputReply').toggleClass('showCmmnt');
+		}else{
+			$('#loginModal').modal('show');
+			$('.loginScreen').hide();
+			$('.signupScreen').hide();
+			$('.thankyouscreen').hide();
+			$('.genLoginSignup').show();
+			$('.thankyouscreen').hide();
+			$('.signUpBox').hide();
+		}
 	},
 	'keypress #replyOfreplyInput':function(event){
 		var commentId = $(event.currentTarget).attr('data-commentId');
@@ -1363,104 +1373,70 @@ Template.imageCommet.events({
     	}
 	},
 	'click .commentLike': function(event){
-		var commentDocId = $(event.currentTarget).attr('data-docId');
 		var userId =  Meteor.userId(); 
-		var businessLink = FlowRouter.getParam('businessurl');
-		var imageId =   $(event.currentTarget).attr('data-imageId'); 
-		var commentUser =   $(event.currentTarget).attr('data-userId'); 
 
-		var selector = {
-			"businessLink"		: businessLink,
-			"imgId"				: imageId,
-			"userId"			: userId,
-			"replyId"			: '',
-			"commentDocId"		: commentDocId,
-		}
-		var data = ImageCommentLike.findOne(selector);
+		if(userId){
+			var commentDocId = $(event.currentTarget).attr('data-docId');
+			var businessLink = FlowRouter.getParam('businessurl');
+			var imageId =   $(event.currentTarget).attr('data-imageId'); 
+			var commentUser =   $(event.currentTarget).attr('data-userId'); 
 
-		var formValues = {
-			"userId" 				: userId,
-			"businessLink" 			: businessLink,
-			"imgId" 	 			: imageId,
-			"commentDocId"			: commentDocId,
-		}
+			var selector = {
+				"businessLink"		: businessLink,
+				"imgId"				: imageId,
+				"userId"			: userId,
+				"replyId"			: '',
+				"commentDocId"		: commentDocId,
+			}
+			var data = ImageCommentLike.findOne(selector);
 
-		if(formValues){
-			Meteor.call('insertImageCommentLike', formValues, function(error, result){
-				if(error){
-				}else{
-					// Vendor Modal Image Comment Reply
-					// Vendor Modal Image Comment Reply
+			var formValues = {
+				"userId" 				: userId,
+				"businessLink" 			: businessLink,
+				"imgId" 	 			: imageId,
+				"commentDocId"			: commentDocId,
+			}
 
-					// User Modal Image Added Comment Reply
-					// User Modal Image Added Comment Reply
+			if(formValues){
+				Meteor.call('insertImageCommentLike', formValues, function(error, result){
+					if(error){
+					}else{
+						// Vendor Modal Image Comment Reply
+						// Vendor Modal Image Comment Reply
 
-					// User Modal Image Comment Reply
+						// User Modal Image Added Comment Reply
+						// User Modal Image Added Comment Reply
 
-					//============================================================
-					// 			Notification Email / SMS / InApp
-					//============================================================
-					if(!data){
-						var admin = Meteor.users.findOne({'roles':'admin'});
-					    if(admin){
-					    	var adminId = admin._id;
-					    }
+						// User Modal Image Comment Reply
 
-						var businessData = Business.findOne({"businessLink":formValues.businessLink});
-						if(businessData){
-							var vendorId = businessData.businessOwnerId;
-	        				var vendorDetail = Meteor.users.findOne({'_id':vendorId});
+						//============================================================
+						// 			Notification Email / SMS / InApp
+						//============================================================
+						if(!data){
+							var admin = Meteor.users.findOne({'roles':'admin'});
+						    if(admin){
+						    	var adminId = admin._id;
+						    }
 
-	          	  			var userId = Meteor.userId();
-	        				var userDetail = Meteor.users.findOne({'_id':userId});
+							var businessData = Business.findOne({"businessLink":formValues.businessLink});
+							if(businessData){
+								var vendorId = businessData.businessOwnerId;
+		        				var vendorDetail = Meteor.users.findOne({'_id':vendorId});
 
-	        				var commentedUser = Meteor.users.findOne({'_id':commentUser});
-	        				
+		          	  			var userId = Meteor.userId();
+		        				var userDetail = Meteor.users.findOne({'_id':userId});
 
-	        				if(vendorDetail&&userDetail&&commentedUser){
+		        				var commentedUser = Meteor.users.findOne({'_id':commentUser});
+		        				
 
-	        					//Send Notification, Mail and SMS to Vendor
-	        					var vendorname 	= vendorDetail.profile.name;
-		                		var date 		= new Date();
-		                		var currentDate = moment(date).format('DD/MM/YYYY');
-		                		var msgvariable = {
-									'[username]' 	: vendorname,
-				   					'[currentDate]'	: currentDate,
-	   								'[businessName]': businessData.businessTitle
+		        				if(vendorDetail&&userDetail&&commentedUser){
 
-				               	};
-
-								var inputObj = {
-									notifPath	 : formValues.businessLink,
-								    to           : vendorId,
-								    templateName : 'Vendor Modal Image Comment Like',
-								    variables    : msgvariable,
-								    type 		 : "Modal",
-								    picId		 : formValues.imgId
-								}
-								sendInAppNotification(inputObj);
-
-								var inputObj = {
-									notifPath	 : formValues.businessLink,
-									from         : adminId,
-								    to           : vendorId,
-								    templateName : 'Vendor Modal Image Comment Like',
-								    variables    : msgvariable,
-								    type 		 : "Modal",
-								    picId		 : formValues.imgId
-
-								}
-								sendMailNotification(inputObj);
-
-
-								//Send Notification, Mail and SMS to User that added Comment
-								// commentUser userId
-								if(commentUser!=userId){
-		        					var commentUserName 	= commentedUser.profile.name;
+		        					//Send Notification, Mail and SMS to Vendor
+		        					var vendorname 	= vendorDetail.profile.name;
 			                		var date 		= new Date();
 			                		var currentDate = moment(date).format('DD/MM/YYYY');
 			                		var msgvariable = {
-										'[username]' 	: commentUserName,
+										'[username]' 	: vendorname,
 					   					'[currentDate]'	: currentDate,
 		   								'[businessName]': businessData.businessTitle
 
@@ -1468,8 +1444,8 @@ Template.imageCommet.events({
 
 									var inputObj = {
 										notifPath	 : formValues.businessLink,
-									    to           : commentUser,
-									    templateName : 'User Modal Image Added Comment Like',
+									    to           : vendorId,
+									    templateName : 'Vendor Modal Image Comment Like',
 									    variables    : msgvariable,
 									    type 		 : "Modal",
 									    picId		 : formValues.imgId
@@ -1479,160 +1455,170 @@ Template.imageCommet.events({
 									var inputObj = {
 										notifPath	 : formValues.businessLink,
 										from         : adminId,
-									    to           : commentUser,
-									    templateName : 'User Modal Image Added Comment Like',
+									    to           : vendorId,
+									    templateName : 'Vendor Modal Image Comment Like',
 									    variables    : msgvariable,
 									    type 		 : "Modal",
 									    picId		 : formValues.imgId
 
 									}
 									sendMailNotification(inputObj);
-								}
 
 
-								//Send Notification, Mail and SMS to Current User
-								if(commentUser!=userId){
+									//Send Notification, Mail and SMS to User that added Comment
+									// commentUser userId
+									if(commentUser!=userId){
+			        					var commentUserName 	= commentedUser.profile.name;
+				                		var date 		= new Date();
+				                		var currentDate = moment(date).format('DD/MM/YYYY');
+				                		var msgvariable = {
+											'[username]' 	: commentUserName,
+						   					'[currentDate]'	: currentDate,
+			   								'[businessName]': businessData.businessTitle
 
-		        					var username 	= userDetail.profile.name;
-			                		var date 		= new Date();
-			                		var currentDate = moment(date).format('DD/MM/YYYY');
-			                		var msgvariable = {
-										'[username]' 	: username,
-					   					'[currentDate]'	: currentDate,
-		   								'[businessName]': businessData.businessTitle
+						               	};
 
-					               	};
+										var inputObj = {
+											notifPath	 : formValues.businessLink,
+										    to           : commentUser,
+										    templateName : 'User Modal Image Added Comment Like',
+										    variables    : msgvariable,
+										    type 		 : "Modal",
+										    picId		 : formValues.imgId
+										}
+										sendInAppNotification(inputObj);
 
-									// var inputObj = {
-									// 	notifPath	 : formValues.businessLink,
-									//     to           : vendorId,
-									//     templateName : 'Vendor Business Page Like',
-									//     variables    : msgvariable,
-									// }
-									// sendInAppNotification(inputObj);
+										var inputObj = {
+											notifPath	 : formValues.businessLink,
+											from         : adminId,
+										    to           : commentUser,
+										    templateName : 'User Modal Image Added Comment Like',
+										    variables    : msgvariable,
+										    type 		 : "Modal",
+										    picId		 : formValues.imgId
 
-									var inputObj = {
-										notifPath	 : formValues.businessLink,
-										from         : adminId,
-									    to           : userId,
-									    templateName : 'User Modal Image Comment Like',
-									    variables    : msgvariable,
-									    type 		 : "Modal",
-									    picId		 : formValues.imgId
-
+										}
+										sendMailNotification(inputObj);
 									}
-									sendMailNotification(inputObj); 
-								}
-	        				}
+
+
+									//Send Notification, Mail and SMS to Current User
+									if(commentUser!=userId){
+
+			        					var username 	= userDetail.profile.name;
+				                		var date 		= new Date();
+				                		var currentDate = moment(date).format('DD/MM/YYYY');
+				                		var msgvariable = {
+											'[username]' 	: username,
+						   					'[currentDate]'	: currentDate,
+			   								'[businessName]': businessData.businessTitle
+
+						               	};
+
+										// var inputObj = {
+										// 	notifPath	 : formValues.businessLink,
+										//     to           : vendorId,
+										//     templateName : 'Vendor Business Page Like',
+										//     variables    : msgvariable,
+										// }
+										// sendInAppNotification(inputObj);
+
+										var inputObj = {
+											notifPath	 : formValues.businessLink,
+											from         : adminId,
+										    to           : userId,
+										    templateName : 'User Modal Image Comment Like',
+										    variables    : msgvariable,
+										    type 		 : "Modal",
+										    picId		 : formValues.imgId
+
+										}
+										sendMailNotification(inputObj); 
+									}
+		        				}
+							}
 						}
+						//============================================================
+						// 			End Notification Email / SMS / InApp
+						//============================================================
 					}
-					//============================================================
-					// 			End Notification Email / SMS / InApp
-					//============================================================
-				}
-			});
+				});
+			}
+		}else{
+			$('#loginModal').modal('show');
+			$('.loginScreen').hide();
+			$('.signupScreen').hide();
+			$('.thankyouscreen').hide();
+			$('.genLoginSignup').show();
+			$('.thankyouscreen').hide();
+			$('.signUpBox').hide();
 		}
 	},
 	'click .commntMReplyLike': function(event){
-		var commentDocId = $(event.currentTarget).attr('data-docId');
 		var userId =  Meteor.userId(); 
-		var businessLink = FlowRouter.getParam('businessurl');
-		var imageId =   $(event.currentTarget).attr('data-imageId'); 
-		var commentId =   $(event.currentTarget).attr('data-likeDocId'); 
-		var commentUser =   $(event.currentTarget).attr('data-likeDocId'); 
-		var userIdReply =   $(event.currentTarget).attr('data-userIdReply'); 
-		var userIdComment =   $(event.currentTarget).attr('data-userIdComment'); 
-		console.log("commentUser id reply: ",commentUser);
+		if(userId){
 
-		var formValues = {
-			"userId" 				: userId,
-			"businessLink" 			: businessLink,
-			"imgId" 	 			: imageId,
-			"commentDocId"			: commentDocId,
-			"commentId"				: commentId,
-		}
+			var commentDocId = $(event.currentTarget).attr('data-docId');
+			var businessLink = FlowRouter.getParam('businessurl');
+			var imageId =   $(event.currentTarget).attr('data-imageId'); 
+			var commentId =   $(event.currentTarget).attr('data-likeDocId'); 
+			var commentUser =   $(event.currentTarget).attr('data-likeDocId'); 
+			var userIdReply =   $(event.currentTarget).attr('data-userIdReply'); 
+			var userIdComment =   $(event.currentTarget).attr('data-userIdComment'); 
+			// console.log("commentUser id reply: ",commentUser);
 
-		var selector = {
-			"businessLink"		: businessLink,
-			"imgId"				: imageId,
-			"userId"			: userId,
-			"replyId"			: commentUser,
-			"commentDocId"		: commentDocId,
-		}
-		var data = ImageCommentLike.findOne(selector);
+			var formValues = {
+				"userId" 				: userId,
+				"businessLink" 			: businessLink,
+				"imgId" 	 			: imageId,
+				"commentDocId"			: commentDocId,
+				"commentId"				: commentId,
+			}
 
+			var selector = {
+				"businessLink"		: businessLink,
+				"imgId"				: imageId,
+				"userId"			: userId,
+				"replyId"			: commentUser,
+				"commentDocId"		: commentDocId,
+			}
+			var data = ImageCommentLike.findOne(selector);
 
+			if(formValues){
+				Meteor.call('insertCommentReplyLike', formValues, function(error, result){
+					if(error){
+					}else{
 
-		if(formValues){
-			Meteor.call('insertCommentReplyLike', formValues, function(error, result){
-				if(error){
-				}else{
+						// //============================================================
+						// // 			Notification Email / SMS / InApp
+						// //============================================================
+						if(!data){
+							var admin = Meteor.users.findOne({'roles':'admin'});
+						    if(admin){
+						    	var adminId = admin._id;
+						    }
 
-					// //============================================================
-					// // 			Notification Email / SMS / InApp
-					// //============================================================
-					if(!data){
-						var admin = Meteor.users.findOne({'roles':'admin'});
-					    if(admin){
-					    	var adminId = admin._id;
-					    }
+							var businessData = Business.findOne({"businessLink":formValues.businessLink});
+							if(businessData){
+								var vendorId = businessData.businessOwnerId;
+		        				var vendorDetail = Meteor.users.findOne({'_id':vendorId});
 
-						var businessData = Business.findOne({"businessLink":formValues.businessLink});
-						if(businessData){
-							var vendorId = businessData.businessOwnerId;
-	        				var vendorDetail = Meteor.users.findOne({'_id':vendorId});
+		          	  			var userId = Meteor.userId();
+		        				var userDetail = Meteor.users.findOne({'_id':userId});
 
-	          	  			var userId = Meteor.userId();
-	        				var userDetail = Meteor.users.findOne({'_id':userId});
+		        				var commentedUser = Meteor.users.findOne({'_id':userIdComment});
+		        				var repliedUser = Meteor.users.findOne({'_id':userIdReply});
 
-	        				var commentedUser = Meteor.users.findOne({'_id':userIdComment});
-	        				var repliedUser = Meteor.users.findOne({'_id':userIdReply});
+		        				
 
-	        				
+		        				if(vendorDetail&&userDetail&&commentedUser&&repliedUser){
 
-	        				if(vendorDetail&&userDetail&&commentedUser&&repliedUser){
-
-	        					//Send Notification, Mail and SMS to Vendor
-	        					var vendorname 	= vendorDetail.profile.name;
-		                		var date 		= new Date();
-		                		var currentDate = moment(date).format('DD/MM/YYYY');
-		                		var msgvariable = {
-									'[username]' 	: vendorname,
-				   					'[currentDate]'	: currentDate,
-	   								'[businessName]': businessData.businessTitle
-
-				               	};
-
-								var inputObj = {
-									notifPath	 : formValues.businessLink,
-								    to           : vendorId,
-								    templateName : 'Vendor Modal Image Comment Reply Like',
-								    variables    : msgvariable,
-								    type 		 : "Modal",
-								    picId		 : formValues.imgId
-								}
-								sendInAppNotification(inputObj);
-
-								var inputObj = {
-									notifPath	 : formValues.businessLink,
-									from         : adminId,
-								    to           : vendorId,
-								    templateName : 'Vendor Modal Image Comment Reply Like',
-								    variables    : msgvariable,
-								    type 		 : "Modal",
-								    picId		 : formValues.imgId
-
-								}
-								sendMailNotification(inputObj);
-
-
-								//Send Notification, Mail and SMS to User that added Comment
-								if(userIdComment!=userId){
-		        					var commentUserName 	= commentedUser.profile.name;
+		        					//Send Notification, Mail and SMS to Vendor
+		        					var vendorname 	= vendorDetail.profile.name;
 			                		var date 		= new Date();
 			                		var currentDate = moment(date).format('DD/MM/YYYY');
 			                		var msgvariable = {
-										'[username]' 	: commentUserName,
+										'[username]' 	: vendorname,
 					   					'[currentDate]'	: currentDate,
 		   								'[businessName]': businessData.businessTitle
 
@@ -1640,8 +1626,8 @@ Template.imageCommet.events({
 
 									var inputObj = {
 										notifPath	 : formValues.businessLink,
-									    to           : userIdComment,
-									    templateName : 'User Modal Image Added Comment Reply Like',
+									    to           : vendorId,
+									    templateName : 'Vendor Modal Image Comment Reply Like',
 									    variables    : msgvariable,
 									    type 		 : "Modal",
 									    picId		 : formValues.imgId
@@ -1651,106 +1637,150 @@ Template.imageCommet.events({
 									var inputObj = {
 										notifPath	 : formValues.businessLink,
 										from         : adminId,
-									    to           : userIdComment,
-									    templateName : 'User Modal Image Added Comment Reply Like',
+									    to           : vendorId,
+									    templateName : 'Vendor Modal Image Comment Reply Like',
 									    variables    : msgvariable,
 									    type 		 : "Modal",
 									    picId		 : formValues.imgId
 
 									}
 									sendMailNotification(inputObj);
-								}
 
-								//Send Notification, Mail and SMS to User that added Comment Reply
-								if(repliedUser!=userId){
-		        					var commentUserName 	= repliedUser.profile.name;
-			                		var date 		= new Date();
-			                		var currentDate = moment(date).format('DD/MM/YYYY');
-			                		var msgvariable = {
-										'[username]' 	: commentUserName,
-					   					'[currentDate]'	: currentDate,
-		   								'[businessName]': businessData.businessTitle
 
-					               	};
+									//Send Notification, Mail and SMS to User that added Comment
+									if(userIdComment!=userId){
+			        					var commentUserName 	= commentedUser.profile.name;
+				                		var date 		= new Date();
+				                		var currentDate = moment(date).format('DD/MM/YYYY');
+				                		var msgvariable = {
+											'[username]' 	: commentUserName,
+						   					'[currentDate]'	: currentDate,
+			   								'[businessName]': businessData.businessTitle
 
-									var inputObj = {
-										notifPath	 : formValues.businessLink,
-									    to           : repliedUser,
-									    templateName : 'User Modal Image Added Comment SubReply Like',
-									    variables    : msgvariable,
-									    type 		 : "Modal",
-									    picId		 : formValues.imgId
+						               	};
+
+										var inputObj = {
+											notifPath	 : formValues.businessLink,
+										    to           : userIdComment,
+										    templateName : 'User Modal Image Added Comment Reply Like',
+										    variables    : msgvariable,
+										    type 		 : "Modal",
+										    picId		 : formValues.imgId
+										}
+										sendInAppNotification(inputObj);
+
+										var inputObj = {
+											notifPath	 : formValues.businessLink,
+											from         : adminId,
+										    to           : userIdComment,
+										    templateName : 'User Modal Image Added Comment Reply Like',
+										    variables    : msgvariable,
+										    type 		 : "Modal",
+										    picId		 : formValues.imgId
+
+										}
+										sendMailNotification(inputObj);
 									}
-									sendInAppNotification(inputObj);
 
-									var inputObj = {
-										notifPath	 : formValues.businessLink,
-										from         : adminId,
-									    to           : repliedUser,
-									    templateName : 'User Modal Image Added Comment SubReply Like',
-									    variables    : msgvariable,
-									    type 		 : "Modal",
-									    picId		 : formValues.imgId
+									//Send Notification, Mail and SMS to User that added Comment Reply
+									if(repliedUser!=userId){
+			        					var commentUserName 	= repliedUser.profile.name;
+				                		var date 		= new Date();
+				                		var currentDate = moment(date).format('DD/MM/YYYY');
+				                		var msgvariable = {
+											'[username]' 	: commentUserName,
+						   					'[currentDate]'	: currentDate,
+			   								'[businessName]': businessData.businessTitle
 
+						               	};
+
+										var inputObj = {
+											notifPath	 : formValues.businessLink,
+										    to           : repliedUser,
+										    templateName : 'User Modal Image Added Comment SubReply Like',
+										    variables    : msgvariable,
+										    type 		 : "Modal",
+										    picId		 : formValues.imgId
+										}
+										sendInAppNotification(inputObj);
+
+										var inputObj = {
+											notifPath	 : formValues.businessLink,
+											from         : adminId,
+										    to           : repliedUser,
+										    templateName : 'User Modal Image Added Comment SubReply Like',
+										    variables    : msgvariable,
+										    type 		 : "Modal",
+										    picId		 : formValues.imgId
+
+										}
+										sendMailNotification(inputObj);
 									}
-									sendMailNotification(inputObj);
-								}
 
 
-								//Send Notification, Mail and SMS to Current User
-								if(commentUser!=userId){
+									//Send Notification, Mail and SMS to Current User
+									if(commentUser!=userId){
 
-		        					var username 	= userDetail.profile.name;
-			                		var date 		= new Date();
-			                		var currentDate = moment(date).format('DD/MM/YYYY');
-			                		var msgvariable = {
-										'[username]' 	: username,
-					   					'[currentDate]'	: currentDate,
-		   								'[businessName]': businessData.businessTitle
+			        					var username 	= userDetail.profile.name;
+				                		var date 		= new Date();
+				                		var currentDate = moment(date).format('DD/MM/YYYY');
+				                		var msgvariable = {
+											'[username]' 	: username,
+						   					'[currentDate]'	: currentDate,
+			   								'[businessName]': businessData.businessTitle
 
-					               	};
+						               	};
 
-									// var inputObj = {
-									// 	notifPath	 : formValues.businessLink,
-									//     to           : vendorId,
-									//     templateName : 'Vendor Business Page Like',
-									//     variables    : msgvariable,
-									// }
-									// sendInAppNotification(inputObj);
+										// var inputObj = {
+										// 	notifPath	 : formValues.businessLink,
+										//     to           : vendorId,
+										//     templateName : 'Vendor Business Page Like',
+										//     variables    : msgvariable,
+										// }
+										// sendInAppNotification(inputObj);
 
-									var inputObj = {
-										notifPath	 : formValues.businessLink,
-										from         : adminId,
-									    to           : userId,
-									    templateName : 'User Modal Image Comment SubReply Like',
-									    variables    : msgvariable,
-									    type 		 : "Modal",
-									    picId		 : formValues.imgId
+										var inputObj = {
+											notifPath	 : formValues.businessLink,
+											from         : adminId,
+										    to           : userId,
+										    templateName : 'User Modal Image Comment SubReply Like',
+										    variables    : msgvariable,
+										    type 		 : "Modal",
+										    picId		 : formValues.imgId
 
+										}
+										sendMailNotification(inputObj); 
 									}
-									sendMailNotification(inputObj); 
-								}
-	        				}
+		        				}
+							}
 						}
-					}
+						
 					
-				
-					// //============================================================
-					// // 			End Notification Email / SMS / InApp
-					// //============================================================
-					// Vendor Modal Image Comment Reply Like
-					// Vendor Modal Image Comment Reply Like
+						// //============================================================
+						// // 			End Notification Email / SMS / InApp
+						// //============================================================
+						// Vendor Modal Image Comment Reply Like
+						// Vendor Modal Image Comment Reply Like
 
-					// User Modal Image Added Comment Reply Like
-					// User Modal Image Added Comment Reply Like
+						// User Modal Image Added Comment Reply Like
+						// User Modal Image Added Comment Reply Like
 
-					// User Modal Image Added Comment SubReply Like
-					// User Modal Image Added Comment SubReply Like
+						// User Modal Image Added Comment SubReply Like
+						// User Modal Image Added Comment SubReply Like
 
-					// User Modal Image Comment SubReply Like
+						// User Modal Image Comment SubReply Like
 
-				}
-			});
+					}
+				});
+			}
+		}else{
+			$('#loginModal').modal('show');
+			$('.loginScreen').hide();
+			$('.signupScreen').hide();
+			$('.thankyouscreen').hide();
+			$('.genLoginSignup').show();
+			$('.thankyouscreen').hide();
+			$('.signUpBox').hide();	
 		}
 	},
 	'click .replyEllpDelete': function(event){
