@@ -182,6 +182,11 @@ Template.vendorBusinessLayout.events({
 });
 
 Template.vendorBusinessLayout.onRendered(function(){	
+	$(window).on('popstate', function() {
+	    $('.modal').modal('hide');
+	    $('.modal-backdrop').hide();
+	});
+	
 	$(window).scroll(function() {
      	if ($(document).scrollTop() > 80) {
 	    	$('.bussScrollTop').fadeIn("slow");

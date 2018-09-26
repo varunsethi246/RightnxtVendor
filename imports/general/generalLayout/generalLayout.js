@@ -26,10 +26,18 @@ Template.generalContentForm.events({
 });
 
 Template.generalLayoutWithImage.onRendered(function(){
+  $(window).on('popstate', function() {
+    $('.modal').modal('hide');
+    $('.modal-backdrop').hide();
+  });
   $("#visible-lg").removeClass("merchantGuidelineslg"),$("#visible-md").removeClass("merchantGuidelinesmd"),$("#visible-sm").removeClass("merchantGuidelinessm"),$("#visible-xs").removeClass("merchantGuidelinesxs"),$(window).scroll(function(){$(document).scrollTop()>25?($("#visible-lg").addClass("merchantGuidelineslg"),$("#visible-md").addClass("merchantGuidelinesmd"),$("#visible-sm").addClass("merchantGuidelinessm"),$("#visible-xs").addClass("merchantGuidelinesxs")):($("#visible-lg").removeClass("merchantGuidelineslg"),$("#visible-md").removeClass("merchantGuidelinesmd"),$("#visible-sm").removeClass("merchantGuidelinessm"),$("#visible-xs").removeClass("merchantGuidelinesxs"))});
 });
 
 Template.generalContentForm.onRendered(function(){
+  $(window).on('popstate', function() {
+    $('.modal').modal('hide');
+    $('.modal-backdrop').hide();
+  });
   $('html, body').scrollTop(0);
 });
 

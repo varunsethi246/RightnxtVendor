@@ -22,6 +22,10 @@ var pageSize = 4;
 var totalpgno = 1;
 
 Template.claim.onRendered(function(){
+	$(window).on('popstate', function() {
+	    $('.modal').modal('hide');
+	    $('.modal-backdrop').hide();
+	});
 	Session.set('pgno',1);
 	totalpgno = 1;
 	$('.outerPaginationDiv').find('input').val('');

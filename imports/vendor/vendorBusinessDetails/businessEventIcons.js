@@ -18,6 +18,10 @@ Template.businessEventIcons.onCreated(function(){
 });
 
 Template.businessEventIcons.events({
+	'click .enqBusi': function(event){
+		event.preventDefault();
+		Bert.alert('Please Log In as User.','danger','growl-top-right');
+	},
 	'click #likeme': function(event){
 		event.preventDefault();
 		var businessurl = FlowRouter.getParam('businessurl');

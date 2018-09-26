@@ -36,6 +36,10 @@ Template.allbusinessList.onCreated(function(){
 });
 
 Template.businessList.onRendered(function(){
+	$(window).on('popstate', function() {
+	    $('.modal').modal('hide');
+	    $('.modal-backdrop').hide();
+	});
     $("html,body").scrollTop(0);
 
 	$('.mapViewBusList').hide();
@@ -417,42 +421,42 @@ Template.allbusinessList.events({
 	    }// end of for loop
 	  },
 	'click .busListEnq':function(){
-		var getUserRole = Meteor.userId();
-		if(getUserRole){
-			var userLogData = Meteor.users.findOne({"_id":getUserRole},{fields:{"roles":1}});
-			if(userLogData.roles[0] == "Vendor" || userLogData.roles[0] == "admin"){
-				Bert.alert('Please Log In as User','danger','growl-top-right');
-			}
-		}
+		Bert.alert('Please Log In as User.','danger','growl-top-right');
+		// var getUserRole = Meteor.userId();
+		// if(getUserRole){
+		// 	var userLogData = Meteor.users.findOne({"_id":getUserRole},{fields:{"roles":1}});
+		// 	if(userLogData.roles[0] == "Vendor" || userLogData.roles[0] == "admin"){
+		// 	}
+		// }
 
-		if($('.gridVwBus').hasClass('bkgOrange')){
-			Session.set("sendEnqToAll","sendEnqToAll");
-			Session.set("sendEnqToOne","");
-		}
-		if($('.mapVwPointer').hasClass('bkgOrange')){
-			Session.set("sendEnqToAll","sendEnqToAll");
-			Session.set("sendEnqToOne","");
-		}
+		// if($('.gridVwBus').hasClass('bkgOrange')){
+		// 	Session.set("sendEnqToAll","sendEnqToAll");
+		// 	Session.set("sendEnqToOne","");
+		// }
+		// if($('.mapVwPointer').hasClass('bkgOrange')){
+		// 	Session.set("sendEnqToAll","sendEnqToAll");
+		// 	Session.set("sendEnqToOne","");
+		// }
 	},
 	'click .thumbEnqBtn':function(event){
-		var getUserRole = Meteor.userId();
-		if(getUserRole){
-			var userLogData = Meteor.users.findOne({"_id":getUserRole},{fields:{"roles":1}});
-			if(userLogData.roles[0] == "Vendor" || userLogData.roles[0] == "admin"){
-				Bert.alert('Please Log In as User','danger','growl-top-right');
-			}
-		}
+		Bert.alert('Please Log In as User.','danger','growl-top-right');
+		// var getUserRole = Meteor.userId();
+		// if(getUserRole){
+		// 	var userLogData = Meteor.users.findOne({"_id":getUserRole},{fields:{"roles":1}});
+		// 	if(userLogData.roles[0] == "Vendor" || userLogData.roles[0] == "admin"){
+		// 	}
+		// }
 		
-		if($('.gridVwBus').hasClass('bkgOrange')){
-			var title = $(event.currentTarget).siblings('.thumImgDesc').children(".enqHelper").children().attr('data-linkUrl');
-			Session.set("sendEnqToAll","");
-			Session.set("sendEnqToOne",title);
-		}
-		if($('.mapVwPointer').hasClass('bkgOrange')){
-			var title = $(event.currentTarget).siblings('.enqHelper').children().attr('data-linkUrl');
-			Session.set("sendEnqToAll","");
-			Session.set("sendEnqToOne",title);
-		}
+		// if($('.gridVwBus').hasClass('bkgOrange')){
+		// 	var title = $(event.currentTarget).siblings('.thumImgDesc').children(".enqHelper").children().attr('data-linkUrl');
+		// 	Session.set("sendEnqToAll","");
+		// 	Session.set("sendEnqToOne",title);
+		// }
+		// if($('.mapVwPointer').hasClass('bkgOrange')){
+		// 	var title = $(event.currentTarget).siblings('.enqHelper').children().attr('data-linkUrl');
+		// 	Session.set("sendEnqToAll","");
+		// 	Session.set("sendEnqToOne",title);
+		// }
 	},
 	
 

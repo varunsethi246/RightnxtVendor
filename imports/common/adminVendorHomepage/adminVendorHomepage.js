@@ -18,6 +18,11 @@ var dataIndex = 0;
 
 
 Template.adminVendorHomepage.onRendered(function(){
+  $(window).on('popstate', function() {
+    $('.modal').modal('hide');
+    $('.modal-backdrop').hide();
+  });
+  
   Session.set('showGridView',true);
   
   var userId = Meteor.userId();
