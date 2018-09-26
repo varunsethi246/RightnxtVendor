@@ -3971,6 +3971,7 @@ padding:4px 5px!important
 }
 
 @media screen and (min-width:320px) and (max-width:767px) {
+	.playButtonCss{width: 25%!important;}
 	.imageReportBodyOne{padding-bottom: 10px;}
 	.review_right > .userName{margin-left: 0px!important;}
 	.resetWrapper{margin-left: 0%!important;width: 100%!important;}
