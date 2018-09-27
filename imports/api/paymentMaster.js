@@ -230,11 +230,11 @@ Meteor.methods({
 	},
 	'updateAdsPaymentOnline':function(businessLink,current){
 		var businessAds = BusinessAds.find({"businessLink":businessLink,"status":"new"}).fetch();
-		console.log("businessAds: ",businessAds);
+		// console.log("businessAds: ",businessAds);
 		var paymentCheck = Payment.findOne({"businessLink":businessLink,"orderType":"Ads","paymentStatus":"unpaid"});
-		console.log("paymentCheck: ",paymentCheck);
+		// console.log("paymentCheck: ",paymentCheck);
 		var businessUser = Business.findOne({"businessLink":businessLink});
-		console.log("businessUser: ",businessUser);
+		// console.log("businessUser: ",businessUser);
 
 		if(!businessUser.ownerMobile){
 			businessUser.ownerMobile = "9730190305";
@@ -269,7 +269,7 @@ Meteor.methods({
 				"redirecturl" : 'http://'+METEOR_URL+'/paymentAds-response?payId='+paymentCheck._id+"&InvNo="+paymentCheck.invoiceNumber+"&BusLink="+paymentCheck.businessLink,
 			};
 
-			console.log('quickWalletInput: ',quickWalletInput);
+			// console.log('quickWalletInput: ',quickWalletInput);
 
 			try {
 				console.log("Im trying");
