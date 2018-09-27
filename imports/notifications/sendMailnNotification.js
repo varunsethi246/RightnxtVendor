@@ -140,20 +140,21 @@ sendMailNotification = function(inputObj) {
 							}
 						});
 					}
-				}else if(other.includes(inputObj.templateName)){
-					var fromId 	= getMailId(inputObj.from);
-					var to 		= getMailId(inputObj.to);  
-					var subject	= getSubject(inputObj.templateName);
-					var body	= getMessageContent(inputObj.templateName,inputObj.variables);
-					Meteor.call('sendEmailRightNxt',to, fromId, subject, body,function(error,result){
-						if(error){
-							Bert.alert(error,'danger', 'growl-top-right');
-						}else{
-							console.log('Mail Sent','success', 'growl-top-right');
-								
-						}
-					});
 				}
+			}
+			if(other.includes(inputObj.templateName)){
+				var fromId 	= getMailId(inputObj.from);
+				var to 		= getMailId(inputObj.to);  
+				var subject	= getSubject(inputObj.templateName);
+				var body	= getMessageContent(inputObj.templateName,inputObj.variables);
+				Meteor.call('sendEmailRightNxt',to, fromId, subject, body,function(error,result){
+					if(error){
+						Bert.alert(error,'danger', 'growl-top-right');
+					}else{
+						console.log('Mail Sent','success', 'growl-top-right');
+							
+					}
+				});
 			}
 		}else{
 			// console.log('user detail not found:');
@@ -300,17 +301,16 @@ sendInAppNotification = function(inputObj) {
 							}
 						});
 					}
-				} else if(other.includes(inputObj.templateName)){
-					Meteor.call('insertNotification',templateName,toMailId,toUserId,notifBody,notifPath,function(error,result){
-						if(error){
-							console.log(error,'danger', 'growl-top-right');
-						}else if(result){
-							console.log("Notification sent",'success', 'growl-top-right');
-						}
-					});
-				}
-
-				
+				} 
+			}
+			if(other.includes(inputObj.templateName)){
+				Meteor.call('insertNotification',templateName,toMailId,toUserId,notifBody,notifPath,function(error,result){
+					if(error){
+						console.log(error,'danger', 'growl-top-right');
+					}else if(result){
+						console.log("Notification sent",'success', 'growl-top-right');
+					}
+				});
 			}
 		}
 	}

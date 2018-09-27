@@ -49,47 +49,50 @@ Template.vendorReport.helpers({
 				reportImageArray	: [],
 				// "businessTitle" : businessObj.businessTitle,
 			}
-			for(i = 0 ; i < reports.length ; i ++){
-					if(reports[i].reportType == 'business')
-					{
-						
-						if(reports[i].mailStatus === 'block'){
-							// console.log('in if');
-							reports[i].status = false;
-						}else{
-							// console.log('in else');
+			if(reports.length > 0){
+				reportDataReturn.reportData = true;
+				for(i = 0 ; i < reports.length ; i ++){
+						if(reports[i].reportType == 'business')
+						{
+							
+							if(reports[i].mailStatus === 'block'){
+								// console.log('in if');
+								reports[i].status = false;
+							}else{
+								// console.log('in else');
 
-							reports[i].status = true;
+								reports[i].status = true;
+							}
+
+							var userObj = Meteor.users.findOne({'_id':reports[i].userid});
+							if(userObj){
+								reports[i].isUserDeleted = false;
+							}else{
+								reports[i].isUserDeleted = true;
+							}
+
+							reportDataReturn.reportBusinessArray.push(reports[i]);
 						}
+						if(reports[i].reportType == 'image')
+						{
+							if(reports[i].mailStatus === 'block'){
+								reports[i].status = false;
+							}else{
+								reports[i].status = true;
+							}
 
-						var userObj = Meteor.users.findOne({'_id':reports[i].userid});
-						if(userObj){
-							reports[i].isUserDeleted = false;
-						}else{
-							reports[i].isUserDeleted = true;
+							var userObj = Meteor.users.findOne({'_id':reports[i].userid});
+							if(userObj){
+								reports[i].isUserDeleted = false;
+							}else{
+								reports[i].isUserDeleted = true;
+							}
+
+							reportDataReturn.reportImageArray.push(reports[i]);
+							
 						}
-
-						reportDataReturn.reportBusinessArray.push(reports[i]);
 					}
-					if(reports[i].reportType == 'image')
-					{
-						if(reports[i].mailStatus === 'block'){
-							reports[i].status = false;
-						}else{
-							reports[i].status = true;
-						}
-
-						var userObj = Meteor.users.findOne({'_id':reports[i].userid});
-						if(userObj){
-							reports[i].isUserDeleted = false;
-						}else{
-							reports[i].isUserDeleted = true;
-						}
-
-						reportDataReturn.reportImageArray.push(reports[i]);
-						
-					}
-				}
+			}
 			// console.log(reportDataReturn);
 			return reportDataReturn;
 		}

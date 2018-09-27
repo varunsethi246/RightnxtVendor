@@ -94,22 +94,22 @@ Template.reportModalForm.events({
 							}
 							sendMailNotification(inputObj);
 
-							if(businessData.businessMobile){
-								var msgvariable = {
-									'[username]' 		: userDetail.profile.name,
-				   					'[currentDate]'		: currentDate,
-									'[businessName]'	: businessData.businessTitle,
-									'[reportComment]'	: reportComment
-				               	};
-								var inputObj = {
-								    to           : vendorId,
-								    number       : businessData.businessMobile,
-								    templateName : 'Vendor Business Page Report',
-								    variables    : msgvariable,
-								}
-								sendSMS(inputObj);
+							// if(businessData.businessMobile){
+							// 	var msgvariable = {
+							// 		'[username]' 		: userDetail.profile.name,
+				   // 					'[currentDate]'		: currentDate,
+							// 		'[businessName]'	: businessData.businessTitle,
+							// 		'[reportComment]'	: reportComment
+				   //             	};
+							// 	var inputObj = {
+							// 	    to           : vendorId,
+							// 	    number       : businessData.businessMobile,
+							// 	    templateName : 'Vendor Business Page Report',
+							// 	    variables    : msgvariable,
+							// 	}
+							// 	sendSMS(inputObj);
 
-							}
+							// }
 							
 							//Send Notification, Mail and SMS to Current User
         					var username 	= userDetail.profile.name;

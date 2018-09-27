@@ -31,7 +31,7 @@
 		{{/if}}
 
 	{{/with}}
-	<!-- {{#if isInRole 'user ,Vendor'}} -->
+	{{#if isInRole 'user ,Vendor'}}
 		{{#if isInRole 'user'}}
 			<div class="bg_gry col-lg-12 imageCommentReviewOne">
 				{{#unless showComment}}
@@ -173,5 +173,5 @@
 	            </div>
 	        {{/each}}
         </div>
-	<!-- {{/if}} -->
+	{{/if}}
 </template>

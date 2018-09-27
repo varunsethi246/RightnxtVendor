@@ -627,36 +627,36 @@ Template.allbusinessList.events({
 				                                                sendMailNotification(inputObj); 
 
 
-																if(businessidNew.ownerMobile){
-																	var msgvariable = {
-																	'[username]'            : vendorname,
-				                                                    '[businessTitle]'       : businessidNew.businessTitle,
-				                                                    '[enquiryName]'         : userDetail.profile.name,
-				                                                    '[enquiryEmail]'        : enquiryEmail,
-				                                                    '[enquiryPhoneTwo]'     : enquiryPhoneTwo,
-				                                                    '[enquiryDesc]'         : enquiryDesc,
-				                                                    '[enquiryUserName]'     : userVar.profile.name,
-													               	};
+																// if(businessidNew.ownerMobile){
+																// 	var msgvariable = {
+																// 	'[username]'            : vendorname,
+				            //                                         '[businessTitle]'       : businessidNew.businessTitle,
+				            //                                         '[enquiryName]'         : userDetail.profile.name,
+				            //                                         '[enquiryEmail]'        : enquiryEmail,
+				            //                                         '[enquiryPhoneTwo]'     : enquiryPhoneTwo,
+				            //                                         '[enquiryDesc]'         : enquiryDesc,
+				            //                                         '[enquiryUserName]'     : userVar.profile.name,
+													   //             	};
 
-																	var inputObj = {
-																	    to           : vendormailId,
-																	    number       : businessidNew.ownerMobile,
-																	    templateName : 'Vendor Business Enquiry',
-																	    variables    : msgvariable,
-																	}
-																	sendSMS(inputObj);
+																// 	var inputObj = {
+																// 	    to           : vendormailId,
+																// 	    number       : businessidNew.ownerMobile,
+																// 	    templateName : 'Vendor Business Enquiry',
+																// 	    variables    : msgvariable,
+																// 	}
+																// 	sendSMS(inputObj);
 
-																}
+																// }
 
 
-				                                                var inputObj = {
-			                                                        to           : userDetail._id,
-			                                                        templateName : 'Business Enquiry',
-			                                                        number       : businessidNew.businessMobile,
-			                                                        variables    : msgvariable,
-			                                                    }
-			                                                    // console.log('inputObj ', inputObj);
-			                                                    sendSMS(inputObj); 
+				                                                // var inputObj = {
+			                                                 //        to           : userDetail._id,
+			                                                 //        templateName : 'Business Enquiry',
+			                                                 //        number       : businessidNew.businessMobile,
+			                                                 //        variables    : msgvariable,
+			                                                 //    }
+			                                                 //    // console.log('inputObj ', inputObj);
+			                                                 //    sendSMS(inputObj); 
 				                                            }
 
 
@@ -794,26 +794,26 @@ Template.allbusinessList.events({
 			                                    sendMailNotification(inputObj); 
 			                                }
 
-			                                if(businessidNew.ownerMobile){
-												var msgvariable = {
-												'[username]'            : vendorname,
-                                                '[businessTitle]'       : businessidNew.businessTitle,
-                                                '[enquiryName]'         : userDetail.profile.name,
-                                                '[enquiryEmail]'        : enquiryEmail,
-                                                '[enquiryPhoneTwo]'     : enquiryPhoneTwo,
-                                                '[enquiryDesc]'         : enquiryDesc,
-				                                '[enquiryUserName]'     : userVar.profile.name,
+			        //                         if(businessidNew.ownerMobile){
+											// 	var msgvariable = {
+											// 	'[username]'            : vendorname,
+           //                                      '[businessTitle]'       : businessidNew.businessTitle,
+           //                                      '[enquiryName]'         : userDetail.profile.name,
+           //                                      '[enquiryEmail]'        : enquiryEmail,
+           //                                      '[enquiryPhoneTwo]'     : enquiryPhoneTwo,
+           //                                      '[enquiryDesc]'         : enquiryDesc,
+				       //                          '[enquiryUserName]'     : userVar.profile.name,
 
-								               	};
+								   //             	};
 								               	
-												var inputObj = {
-												    to           : vendormailId,
-												    number       : businessidNew.ownerMobile,
-												    templateName : 'Vendor Business Enquiry',
-												    variables    : msgvariable,
-												}
-												sendSMS(inputObj);
-											}
+											// 	var inputObj = {
+											// 	    to           : vendormailId,
+											// 	    number       : businessidNew.ownerMobile,
+											// 	    templateName : 'Vendor Business Enquiry',
+											// 	    variables    : msgvariable,
+											// 	}
+											// 	sendSMS(inputObj);
+											// }
 				   
 	                                        	
 		                                        if(userVar){

@@ -695,6 +695,7 @@ Template.vendorMyOffers.events({
 					else{
 						Bert.alert("Payment Invoice is Created!",'success','growl-top-right');
 						var payid = result;
+						console.log('payid',payid);
 						// send mail to admin //
 	                    var userData = Meteor.users.findOne({'roles':'admin'});
 	                    if(userData){
