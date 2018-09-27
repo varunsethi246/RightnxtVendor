@@ -119,7 +119,9 @@ Template.imageCommet.helpers({
 
 	'showComment':function(){
 		var businessLink = FlowRouter.getParam('businessurl');
+		console.log("businessLink",businessLink);
 		var imgId = Session.get("ModalimageID");
+		console.log("imgId",imgId);
 		var commentDetails = ImageComment.find({'businessLink': businessLink,'imgId':imgId},{sort:{"imgCommentDate":-1}}).fetch();
 		console.log(commentDetails);
 		if(commentDetails){
