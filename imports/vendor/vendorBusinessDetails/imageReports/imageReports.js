@@ -121,10 +121,12 @@ Template.imageCommet.helpers({
 		var businessLink = FlowRouter.getParam('businessurl');
 		var imgId = Session.get("ModalimageID");
 		var commentDetails = ImageComment.find({'businessLink': businessLink,'imgId':imgId},{sort:{"imgCommentDate":-1}}).fetch();
+		console.log(commentDetails);
 		if(commentDetails){
 			for (var i = 0; i < commentDetails.length; i++){
 				if(commentDetails[i].userId){
 					var userObj = Meteor.users.findOne({"_id":commentDetails[i].userId});
+		console.log(userObj);
 					if(userObj){
 						commentDetails[i].commentUserName = userObj.profile.name;
 
@@ -184,8 +186,10 @@ Template.imageCommet.helpers({
 
 
 						if(commentDetails[i].imgMultiComment){
+							console.log(commentDetails[i].imgMultiComment);
 							for(j=0;j<commentDetails[i].imgMultiComment.length;j++){
 								var userObj = Meteor.users.findOne({"_id":commentDetails[i].imgMultiComment[j].userId});
+							console.log(userObj);
 								if(userObj){
 									commentDetails[i].imgMultiComment[j].commentUserName = userObj.profile.name;
 
@@ -261,9 +265,11 @@ Template.imageCommet.helpers({
 				// 	return commentDetails;
 				// }
 			}
-			// console.log("commentDetails: ",commentDetails);
+			console.log("commentDetails: ",commentDetails);
 			return commentDetails;
 
+		}else{
+			console.log('detailsnotfound');
 		}
 	},
 });

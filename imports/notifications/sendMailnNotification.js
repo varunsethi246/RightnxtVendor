@@ -12,12 +12,12 @@ import { NotificationTemplate } from '../api/NotificationTemplate.js';
 //  Mail Function
 //============================================================
 sendMailNotification = function(inputObj) {
-	// console.log("sendMailNotification: ",sendMailNotification);
-	// console.log('inputObj Mail');
+	console.log("sendMailNotification: ",sendMailNotification);
+	console.log('inputObj Mail');
 	
 	if(inputObj){
 		var userDetail = Meteor.users.findOne({'_id':inputObj.to});
-		// console.log('userDetail :',userDetail);
+		console.log('userDetail :',userDetail);
 		var enquiry = ["User Enquiry Message", "User Enquiry Messages","Vendor Enquiry Message", "Vendor Business Enquiry", "User Business Enquiry", "Enquiry Message Send", "User Business Enquiry All"];
 		var rating = ["Vendor Review and Rating", "User Review and Rating", "User Added Review and Rating", "Business Page Review Share"];
 		var like = ["Vendor Modal Image Like", "User Modal Image Like", "Vendor Modal Image Comment Like", "User Modal Image Added Comment Like", "User Modal Image Comment Like", "Vendor Modal Image Comment Reply Like", "User Modal Image Added Comment Reply Like", "User Modal Image Added Comment SubReply Like", "User Modal Image Comment SubReply Like", "Vendor Business Page Like", "User Business Page Like", "Vendor Review and Rating Like", "Other User Review and Rating Like", "Current User Review and Rating Like", "Vendor Review Comment Like", "User Comment Review and Rating Like", "User Review Comment Like", "Current User Review Comment Like", "Vendor Review Comment SubReply Like", "User Added Review and Rating SubReply Like", "User Review Comment SubReply Like", "User Added Review Reply SubReply Like", "Current User Review Comment Reply Like"];
