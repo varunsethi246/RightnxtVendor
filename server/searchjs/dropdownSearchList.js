@@ -58,11 +58,11 @@ SearchSource.defineSource('dropdownSearch', function(searchText, options) {
             {level2: regExp},
             {level3: regExp},
             {level4: regExp},
-            {tags: regExp},
+            {tags   : regExp},
+            {menuStatus:'Enable'}
         ]};
-
         var newCatArr = Categories.find(selector, {
-                        fields : {"level0":1, "level1":1,"level2":1,"level3":1,"level4":1, "tags":1},
+                        fields : {"level0":1, "level1":1,"level2":1,"level3":1,"level4":1, "tags":1,"menuStatus":"Enable"},
                         sort   : { level1: 1 },
                         limit  : 40,
                     }).fetch();
@@ -73,6 +73,8 @@ SearchSource.defineSource('dropdownSearch', function(searchText, options) {
 
         if(newCatArr){
             for(j=0;j<newCatArr.length;j++){
+               if((newCatArr[j].menuStatus) == 'Enable'){
+                 // catArrSort.push(newCatArr[j].level4);
                if(((newCatArr[j].level4).search(newSearch))!=-1){
                  catArrSort.push(newCatArr[j].level4);
                } else if (((newCatArr[j].level3).search(newSearch))!=-1){
@@ -84,11 +86,12 @@ SearchSource.defineSource('dropdownSearch', function(searchText, options) {
                } else if (((newCatArr[j].level0).search(newSearch))!=-1){
                  catArrSort.push(newCatArr[j].level0);
                }
-           }
+           }}
         }
 
 
         catArrSort     = _.uniq(catArrSort, function(p){ return p; });
+
         for(i=0;i<catArrSort.length;i++){
             var selectedObj = {
                 "_id"             :   count,

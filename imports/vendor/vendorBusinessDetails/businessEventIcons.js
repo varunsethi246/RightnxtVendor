@@ -193,6 +193,7 @@ Template.businessEventIcons.events({
 	},
 
 	'click #busiRate':function(event){
+		event.preventDefault();
 		if(Meteor.userId()){
 			var userReview = Review.findOne({"userId":Meteor.userId()});
 			if(userReview){

@@ -1,10 +1,8 @@
 import { Business } from '/imports/api/businessMaster.js';
 import { BusinessImage } from '/imports/videoUploadserver/businessImageServer.js';
+import { ReviewImage } from '/imports/videoUploadserver/reviewImageServer.js';
 import { BusinessAds } from '/imports/api/businessAdsMaster.js';
 import { Offers } from '/imports/api/offersMaster.js';
-
-
-
 
 SearchSource.defineSource('business', (searchText, options)=> {
     // searchText = "city|area|categories OR text to search";
@@ -72,24 +70,36 @@ SearchSource.defineSource('business', (searchText, options)=> {
     // ==================Get Image URL from Start ==============
     // =========================================================
     var searchPageShowImage = (imgId)=> {
-		if(imgId){
+        if(imgId){
             var imgData = BusinessImage.findOne({"_id":imgId});
-			if(imgData)	{
-				var data = {
-					img : imgData.link(),
-				}
-				if(imgData.type == 'image/png'){
-					data.checkpngImg = 'bkgImgNone';
-				}else{
-					data.checkpngImg = '';
-				}
-			}else{
-				var data = {
-					img : '/images/rightnxt_image_nocontent.jpg',
-					checkpngImg: '',
-				};
-			}
-			return data;
+            if(imgData) {
+                var data = {
+                    img : imgData.link(),
+                }
+                if(imgData.type == 'image/png'){
+                    data.checkpngImg = 'bkgImgNone';
+                }else{
+                    data.checkpngImg = '';
+                }
+            }else{
+                var imgObj = ReviewImage.findOne({"_id":imgId});
+                if(imgObj) {
+                    var data = {
+                        img : imgObj.link(),
+                    }
+                    if(imgObj.type == 'image/png'){
+                        data.checkpngImg = 'bkgImgNone';
+                    }else{
+                        data.checkpngImg = '';
+                    }
+                }else{
+                    var data = {
+                        img : 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg',
+                        checkpngImg: '',
+                    };
+                }
+            }
+            return data;
         }
     }
     // =========================================================
@@ -180,9 +190,9 @@ SearchSource.defineSource('business', (searchText, options)=> {
                 businessAdsDocs.push(businessAdsDocsNew);  
             }
             
-        }		
+        }       
     }
-    businessAdsDocs = businessAdsDocs.concat(searchResult);	
+    businessAdsDocs = businessAdsDocs.concat(searchResult); 
     // return businessAdsDocs;
     
     if(businessAdsDocs){
@@ -196,14 +206,14 @@ SearchSource.defineSource('business', (searchText, options)=> {
                             businessAdsDocs[i].businessSelectedImagesNew = searchPageShowImage(businessAdsDocs[i].businessImages[0].img);
                         }else{
                             var data = {
-                                img : '/images/rightnxt_image_nocontent.jpg',
+                                img : 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg',
                                 checkpngImg: '',
                             };
                             businessAdsDocs[i].businessSelectedImagesNew = data;
                         }
                     }else{
                         var data = {
-                            img : '/images/rightnxt_image_nocontent.jpg',
+                            img : 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg',
                             checkpngImg: '',
                         };
                         businessAdsDocs[i].businessSelectedImagesNew = data;
@@ -234,7 +244,7 @@ SearchSource.defineSource('business', (searchText, options)=> {
                             ratingObj[x] = "fixStar2";
                         }else{
                             ratingObj[x] = "fixStar1";
-                        }				
+                        }               
                     }else{
                         ratingObj[x]  = "";
                     }
@@ -260,14 +270,14 @@ SearchSource.defineSource('business', (searchText, options)=> {
                             businessAdsDocs[i].businessSelectedImagesNew = searchPageShowImage(businessAdsDocs[i].businessImages[0].img);
                         }else{
                             var data = {
-                                img : '/images/rightnxt_image_nocontent.jpg',
+                                img : 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg',
                                 checkpngImg: '',
                             };
                             businessAdsDocs[i].businessSelectedImagesNew = data;
                         }
                     }else{
                         var data = {
-                            img : '/images/rightnxt_image_nocontent.jpg',
+                            img : 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg',
                             checkpngImg: '',
                         };
                         businessAdsDocs[i].businessSelectedImagesNew = data;
@@ -276,14 +286,14 @@ SearchSource.defineSource('business', (searchText, options)=> {
             //Set business Image as per vendor End
 
             // Find Offers of Business Start
-                var bussId = businessAdsDocs[i]._id;		
+                var bussId = businessAdsDocs[i]._id;        
                 var busOffer = Offers.find({"businessId":bussId,"offerStatus":"Active"}).count();
                 if(busOffer){
                     // businessAdsDocs[i].busOffer = busOffer.dealHeadline;
-                    businessAdsDocs[i].busNoOffer = busOffer;
+                   businessAdsDocs[i].busNoOffer = busOffer;
                 }else{
                     // businessAdsDocs[i].busOffer = '';
-                    businessAdsDocs[i].busNoOffer = 0;
+                   businessAdsDocs[i].busNoOffer = 0;
                 }
             // Find Offers of Business End
             

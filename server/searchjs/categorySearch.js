@@ -35,7 +35,7 @@ SearchSource.defineSource('categories', function(searchText, options) {
 
 });
 
-function buildRegExp(searchText) {
+function  buildRegExp(searchText) {
   // console.log('buildRegExp business');
   var words = searchText.trim().split(/[ \-\:]+/);
   var exps = _.map(words, function(word) {

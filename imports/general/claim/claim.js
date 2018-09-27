@@ -128,8 +128,8 @@ Template.claim.helpers({
   	var businessObj = Business.find({});
   	if(businessObj){
   		var ownerId = businessOwnerId;
-  		// console.log('ownerId :',ownerId);
-  		if(ownerId == null){
+  		console.log('ownerId :',ownerId);
+  		if(ownerId == "null"){
   			var statusClaim    = 'Claim your business';
   			var statusClass    = 'statusClass-g';
   			var newStatusClass = 'statusClass-green';
