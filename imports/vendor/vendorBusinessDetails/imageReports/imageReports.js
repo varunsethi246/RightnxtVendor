@@ -128,7 +128,7 @@ Template.imageCommet.helpers({
 						commentDetails[i].commentUserName = userObj.profile.name;
 
 						if(userObj.profile.userProfilePic){								
-							var pic = VendorImage.findOne({"_id":userName.profile.userProfilePic});
+							var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
 							if(pic){
 								commentDetails[i].userProfileImgPath = pic.link();
 							}else{
@@ -188,7 +188,7 @@ Template.imageCommet.helpers({
 									commentDetails[i].imgMultiComment[j].commentUserName = userObj.profile.name;
 
 									if(userObj.profile.userProfilePic){								
-										var pic = VendorImage.findOne({"_id":userName.profile.userProfilePic});
+										var pic = VendorImage.findOne({"_id":userObj.profile.userProfilePic});
 										if(pic){
 											commentDetails[i].imgMultiComment[j].userProfileImgPath = pic.link();
 										}else{
