@@ -166,73 +166,73 @@ Meteor.methods({
 		// return businessLink;
 	},
 
-	// 'updateBannerPaymentOnline':function(businessLink){
-	// 	var businessBanner = BusinessBanner.find({"businessLink":businessLink,"status":"new"}).fetch();
-	// 	console.log("businessBanner",businessBanner);
-	// 	var paymentCheck = Payment.findOne({"businessLink":businessLink,"orderType":"Banner","paymentStatus":"unpaid"});
-	// 	console.log("paymentCheck",paymentCheck);
-	// 	var businessUser = Business.findOne({"businessLink":businessLink});
-	// 	console.log("businessUser",businessUser);
+	'updateBannerPaymentOnline':function(businessLink,current){
+		var businessBanner = BusinessBanner.find({"businessLink":businessLink,"status":"new"}).fetch();
+		console.log("businessBanner",businessBanner);
+		var paymentCheck = Payment.findOne({"businessLink":businessLink,"orderType":"Banner","paymentStatus":"unpaid"});
+		console.log("paymentCheck",paymentCheck);
+		var businessUser = Business.findOne({"businessLink":businessLink});
+		console.log("businessUser",businessUser);
 
-	// 	if(!businessUser.ownerMobile){
-	// 		businessUser.ownerMobile = "9730190305";
-	// 	}else{
-	// 		if((businessUser.ownerMobile).indexOf("+") >= 0){
-	// 			businessUser.ownerMobile = (businessUser.ownerMobile).substring(3);
-	// 		}
-	// 	}
-
-
-
-	// 	if (process.env.NODE_ENV == 'development') {
-	// 		var quickWalletUrl = 'https://uat.quikwallet.com';
-	// 	  	var METEOR_URL = 'localhost:3000'; // your production server url
-	// 	}else{
-	// 		var quickWalletUrl = 'https://server.livquik.com';
-	// 		var METEOR_URL = current;
-	// 	}
-	// 	console.log('quickWalletUrl,METEOR_URL',quickWalletUrl,METEOR_URL);
+		if(!businessUser.ownerMobile){
+			businessUser.ownerMobile = "9730190305";
+		}else{
+			if((businessUser.ownerMobile).indexOf("+") >= 0){
+				businessUser.ownerMobile = (businessUser.ownerMobile).substring(3);
+			}
+		}
 
 
 
+		if (process.env.NODE_ENV == 'development') {
+			var quickWalletUrl = 'https://uat.quikwallet.com';
+		  	var METEOR_URL = 'localhost:3000'; // your production server url
+		}else{
+			var quickWalletUrl = 'https://server.livquik.com';
+			var METEOR_URL = current;
+		}
+		console.log('quickWalletUrl,METEOR_URL',quickWalletUrl,METEOR_URL);
 
-	// 	if(paymentCheck.totalAmount){
-	// 		var quickwalletDetail 	= QuickwalletDetails.findOne({'_id':'2'});
+
+
+
+		if(paymentCheck.totalAmount){
+			var quickwalletDetail 	= QuickwalletDetails.findOne({'_id':'2'});
 			
-	// 		var userId       	= Meteor.userId();
-	// 		var userObj      	= Meteor.users.findOne({"_id":userId});
-	// 		var mobileNumber 	= businessUser.ownerMobile;
-	// 		var grandTotal 		= paymentCheck.totalAmount;
-	// 		var quickWalletInput = {
-	// 			"partnerid"	:   quickwalletDetail.partnerid,
-	// 			"mobile"   	:   mobileNumber,
-	// 			"secret"   	:   quickwalletDetail.secret,
-	// 			"amount"   	:    grandTotal,
-	// 			"udf1"		: 	paymentCheck._id,
-	// 			"redirecturl" : 'http://'+METEOR_URL+'/paymentAds-response?payId='+paymentCheck._id+"&InvNo="+paymentCheck.invoiceNumber+"&BusLink="+paymentCheck.businessLink,
-	// 		};
-	// 		console.log('quickWalletInput',quickWalletInput);
+			var userId       	= Meteor.userId();
+			var userObj      	= Meteor.users.findOne({"_id":userId});
+			var mobileNumber 	= businessUser.ownerMobile;
+			var grandTotal 		= paymentCheck.totalAmount;
+			var quickWalletInput = {
+				"partnerid"	:   quickwalletDetail.partnerid,
+				"mobile"   	:   mobileNumber,
+				"secret"   	:   quickwalletDetail.secret,
+				"amount"   	:    grandTotal,
+				"udf1"		: 	paymentCheck._id,
+				"redirecturl" : 'http://'+METEOR_URL+'/paymentAds-response?payId='+paymentCheck._id+"&InvNo="+paymentCheck.invoiceNumber+"&BusLink="+paymentCheck.businessLink,
+			};
+			console.log('quickWalletInput',quickWalletInput);
 
-	// 		try {
-	// 			console.log("Im trying");
-	// 			if (Meteor.isServer) {
-	// 					var result = HTTP.call("POST", quickWalletUrl+"/api/partner/"+quickWalletInput.partnerid+"/requestPayment",
-	// 									{params: quickWalletInput});
-	// 									console.log("result: ",result);
-	// 					if(result.data.status == 'success'){
-	// 						var paymentUrl = result.data.data.url;
-	// 						console.log("paymentUrl: ",paymentUrl);
+			try {
+				console.log("Im trying");
+				if (Meteor.isServer) {
+						var result = HTTP.call("POST", quickWalletUrl+"/api/partner/"+quickWalletInput.partnerid+"/requestPayment",
+										{params: quickWalletInput});
+										console.log("result: ",result);
+						if(result.data.status == 'success'){
+							var paymentUrl = result.data.data.url;
+							console.log("paymentUrl: ",paymentUrl);
 				
-	// 						return paymentUrl;
-	// 					}else{
-	// 						return false;
-	// 					}
-	// 				}
-	// 		} catch (err) {
-	// 			return false;
-	// 		}
-	// 	}
-	// },
+							return paymentUrl;
+						}else{
+							return false;
+						}
+					}
+			} catch (err) {
+				return false;
+			}
+		}
+	},
 	'updateAdsPaymentOnline':function(businessLink,current){
 		var businessAds = BusinessAds.find({"businessLink":businessLink,"status":"new"}).fetch();
 		console.log("businessAds: ",businessAds);
@@ -592,72 +592,72 @@ Meteor.methods({
 
 }
 
-Meteor.methods({
-	'updateBannerPaymentOnline':function(businessLink){
-		var businessBanner = BusinessBanner.find({"businessLink":businessLink,"status":"new"}).fetch();
-		console.log("businessBanner",businessBanner);
-		var paymentCheck = Payment.findOne({"businessLink":businessLink,"orderType":"Banner","paymentStatus":"unpaid"});
-		console.log("paymentCheck",paymentCheck);
-		var businessUser = Business.findOne({"businessLink":businessLink});
-		console.log("businessUser",businessUser);
+// Meteor.methods({
+// 	'updateBannerPaymentOnline':function(businessLink){
+// 		var businessBanner = BusinessBanner.find({"businessLink":businessLink,"status":"new"}).fetch();
+// 		console.log("businessBanner",businessBanner);
+// 		var paymentCheck = Payment.findOne({"businessLink":businessLink,"orderType":"Banner","paymentStatus":"unpaid"});
+// 		console.log("paymentCheck",paymentCheck);
+// 		var businessUser = Business.findOne({"businessLink":businessLink});
+// 		console.log("businessUser",businessUser);
 
-		if(!businessUser.ownerMobile){
-			businessUser.ownerMobile = "9730190305";
-		}else{
-			if((businessUser.ownerMobile).indexOf("+") >= 0){
-				businessUser.ownerMobile = (businessUser.ownerMobile).substring(3);
-			}
-		}
-
-
-
-		if (process.env.NODE_ENV == 'development') {
-			var quickWalletUrl = 'https://uat.quikwallet.com';
-		  	var METEOR_URL = 'localhost:3000'; // your production server url
-		}else{
-			var quickWalletUrl = 'https://server.livquik.com';
-			var METEOR_URL = current;
-		}
-		console.log('quickWalletUrl,METEOR_URL',quickWalletUrl,METEOR_URL);
+// 		if(!businessUser.ownerMobile){
+// 			businessUser.ownerMobile = "9730190305";
+// 		}else{
+// 			if((businessUser.ownerMobile).indexOf("+") >= 0){
+// 				businessUser.ownerMobile = (businessUser.ownerMobile).substring(3);
+// 			}
+// 		}
 
 
 
+// 		if (process.env.NODE_ENV == 'development') {
+// 			var quickWalletUrl = 'https://uat.quikwallet.com';
+// 		  	var METEOR_URL = 'localhost:3000'; // your production server url
+// 		}else{
+// 			var quickWalletUrl = 'https://server.livquik.com';
+// 			var METEOR_URL = current;
+// 		}
+// 		console.log('quickWalletUrl,METEOR_URL',quickWalletUrl,METEOR_URL);
 
-		if(paymentCheck.totalAmount){
-			var quickwalletDetail 	= QuickwalletDetails.findOne({'_id':'2'});
+
+
+
+// 		if(paymentCheck.totalAmount){
+// 			var quickwalletDetail 	= QuickwalletDetails.findOne({'_id':'2'});
 			
-			var userId       	= Meteor.userId();
-			var userObj      	= Meteor.users.findOne({"_id":userId});
-			var mobileNumber 	= businessUser.ownerMobile;
-			var grandTotal 		= paymentCheck.totalAmount;
-			var quickWalletInput = {
-				"partnerid"	:   quickwalletDetail.partnerid,
-				"mobile"   	:   mobileNumber,
-				"secret"   	:   quickwalletDetail.secret,
-				"amount"   	:    grandTotal,
-				"udf1"		: 	paymentCheck._id,
-				"redirecturl" : 'http://'+METEOR_URL+'/paymentAds-response?payId='+paymentCheck._id+"&InvNo="+paymentCheck.invoiceNumber+"&BusLink="+paymentCheck.businessLink,
-			};
-			console.log('quickWalletInput',quickWalletInput);
+// 			var userId       	= Meteor.userId();
+// 			var userObj      	= Meteor.users.findOne({"_id":userId});
+// 			var mobileNumber 	= businessUser.ownerMobile;
+// 			var grandTotal 		= paymentCheck.totalAmount;
+// 			var quickWalletInput = {
+// 				"partnerid"	:   quickwalletDetail.partnerid,
+// 				"mobile"   	:   mobileNumber,
+// 				"secret"   	:   quickwalletDetail.secret,
+// 				"amount"   	:    grandTotal,
+// 				"udf1"		: 	paymentCheck._id,
+// 				"redirecturl" : 'http://'+METEOR_URL+'/paymentAds-response?payId='+paymentCheck._id+"&InvNo="+paymentCheck.invoiceNumber+"&BusLink="+paymentCheck.businessLink,
+// 			};
+// 			console.log('quickWalletInput',quickWalletInput);
 
-			try {
-				console.log("Im trying");
-				if (Meteor.isServer) {
-						var result = HTTP.call("POST", quickWalletUrl+"/api/partner/"+quickWalletInput.partnerid+"/requestPayment",
-										{params: quickWalletInput});
-										console.log("result: ",result);
-						if(result.data.status == 'success'){
-							var paymentUrl = result.data.data.url;
-							console.log("paymentUrl: ",paymentUrl);
+// 			try {
+// 				console.log("Im trying");
+// 				if (Meteor.isServer) {
+// 						var result = HTTP.call("POST", quickWalletUrl+"/api/partner/"+quickWalletInput.partnerid+"/requestPayment",
+// 										{params: quickWalletInput});
+// 										console.log("result: ",result);
+// 						if(result.data.status == 'success'){
+// 							var paymentUrl = result.data.data.url;
+// 							console.log("paymentUrl: ",paymentUrl);
 				
-							return paymentUrl;
-						}else{
-							return false;
-						}
-					}
-			} catch (err) {
-				return false;
-			}
-		}
-	},
-});
+// 							return paymentUrl;
+// 						}else{
+// 							return false;
+// 						}
+// 					}
+// 			} catch (err) {
+// 				return false;
+// 			}
+// 		}
+// 	},
+// });
