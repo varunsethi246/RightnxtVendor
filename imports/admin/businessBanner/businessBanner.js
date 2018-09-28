@@ -251,7 +251,6 @@ Template.businessBanner.helpers({
   		var businessLink = Session.get("businessLink");
 
     	var businessBanner = BusinessBanner.find({"businessLink":businessLink,"status":"new"}).fetch();
-    	console.log("businessBanner: ",businessBanner);
     	if(businessBanner){
     		for(i=0;i<businessBanner.length;i++){
     			if(businessBanner[i].areas){
@@ -372,8 +371,6 @@ Template.bannerInvoice.events({
 		var currentVal = $(event.currentTarget).siblings('.bannerPayButtonRadio').val();
 		var current = window.location.host;
 		// console.log("window.location : ",current );
-		console.log("currentVal : ",currentVal );
-		console.log("currentLink,current : ",currentLink,current );
 		if(currentVal == "online"){
 			Meteor.call("updateBannerPaymentOnline",currentLink,current,(error, result)=>{
 				if(result){

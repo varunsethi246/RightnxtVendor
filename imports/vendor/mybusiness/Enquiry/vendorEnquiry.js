@@ -325,7 +325,7 @@ Template.vendorEnquiry.helpers({
 			}
 
 			var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
-            $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
+            $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 2000},"fast");
 			return enqData;			
 		}
 	},
@@ -348,7 +348,7 @@ Template.vendorEnquiry.onRendered(function(){
 Template.enquiryDetails.onRendered(function(){
 	if(Session.get("EnqIDSes")){
 		var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
-        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
+        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 2000},"fast");
 	}
 });
 
@@ -356,7 +356,7 @@ Template.allEnquries.events({
 	
 	'click .readEnClass':function(event){
 		var scrollBottom = $('.vEnqFormImgOne').scrollTop() + $(window).height();
-        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 1000},"fast");
+        $('.vEnqFormImgOne').animate({scrollTop: scrollBottom + 2000},"fast");
         
 		var windowWidth = $(window).width();
 		if(windowWidth >= 320 && windowWidth <= 767){
