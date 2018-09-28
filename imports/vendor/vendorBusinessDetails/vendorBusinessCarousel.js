@@ -140,3 +140,11 @@ Template.vendorBusinessCarousel.events({
 	// }
 });
 
+Template.imageCarouselItems.events({
+	'click .modalIdSeach':function(event){
+		var currentId = event.currentTarget; 
+		var id = $(currentId).children().attr('id');
+		console.log('id',id);
+		Session.set('ModalimageID',id);
+	},
+});

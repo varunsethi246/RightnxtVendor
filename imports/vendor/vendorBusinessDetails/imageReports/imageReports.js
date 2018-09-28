@@ -2,7 +2,6 @@ import './imageReports.html';
 import './imageReportModal.html';
 import './imageCommet.html';
 import '../vendorBusinessCarousel.html';
-import '../imageCarouselItems.html';
 
 import { BusinessVideoUpload } from '/client/cfsjs/businessVideo.js';
 import { Business } from '/imports/api/businessMaster.js';
@@ -601,6 +600,7 @@ Template.imageReports.events({
 		if(!imgIdNext){
 			imgIdNext = $('#myCarousel1 .carousel-inner').find('.imageReportSlider').first().children('img').attr('id');
 		}
+		console.log(imgIdNext);
 		Session.set("ModalimageID",imgIdNext);
 		var ImageCount = BussImgLikes.find({'LikedImage':imgIdNext}).count();
 		Session.set('carouselLikeCount', ImageCount);
@@ -615,6 +615,7 @@ Template.imageReports.events({
 			imgIdPrevious = $('#myCarousel1 .carousel-inner').find('.imageReportSlider').last().children('img').attr('id');
 			// console.log('imgIdPrevious',imgIdPrevious);
 		}
+		console.log(imgIdPrevious);
 		Session.set("ModalimageID",imgIdPrevious);
 		var ImageCount = BussImgLikes.find({'LikedImage':imgIdPrevious}).count();
 		Session.set('carouselLikeCount', ImageCount);
@@ -944,15 +945,6 @@ googleplusshare = function(image) {
   if (window.focus) {newwindow.focus()}                                                                                                                                
   return false;
 }  
-
-
-Template.imageCarouselItems.events({
-	'click .modalIdSeach':function(event){
-		var currentId = event.currentTarget; 
-		var id = $(currentId).children().attr('id');
-		Session.set('ModalimageID',id);
-	},
-});
 
 Template.imageCommet.events({
 	'keypress .modalComments':function(event){
