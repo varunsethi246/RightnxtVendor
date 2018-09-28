@@ -188,8 +188,7 @@ Meteor.methods({
 			var quickWalletUrl = 'https://uat.quikwallet.com';
 		  	var METEOR_URL = 'localhost:3000'; // your production server url
 		}else{
-			var quickWalletUrl = 'https://uat.quikwallet.com';
-			// var quickWalletUrl = 'https://server.livquik.com';
+			var quickWalletUrl = 'https://server.livquik.com';
 			var METEOR_URL = current;
 		}
 		console.log('quickWalletUrl,METEOR_URL',quickWalletUrl,METEOR_URL);
