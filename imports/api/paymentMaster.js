@@ -168,8 +168,11 @@ Meteor.methods({
 
 	'updateBannerPaymentOnline':function(businessLink){
 		var businessBanner = BusinessBanner.find({"businessLink":businessLink,"status":"new"}).fetch();
+		console.log(businessBanner);
 		var paymentCheck = Payment.findOne({"businessLink":businessLink,"orderType":"Banner","paymentStatus":"unpaid"});
+		console.log(paymentCheck);
 		var businessUser = Business.findOne({"businessLink":businessLink});
+		console.log(businessUser);
 
 		if(!businessUser.ownerMobile){
 			businessUser.ownerMobile = "9730190305";
@@ -188,6 +191,8 @@ Meteor.methods({
 			var quickWalletUrl = 'https://server.livquik.com';
 			var METEOR_URL = current;
 		}
+		console.log(quickWalletUrl,METEOR_URL);
+
 
 
 
@@ -198,7 +203,6 @@ Meteor.methods({
 			var userObj      	= Meteor.users.findOne({"_id":userId});
 			var mobileNumber 	= businessUser.ownerMobile;
 			var grandTotal 		= paymentCheck.totalAmount;
-			console.log("METEOR_URL: ",METEOR_URL);
 			var quickWalletInput = {
 				"partnerid"	:   quickwalletDetail.partnerid,
 				"mobile"   	:   mobileNumber,
@@ -207,6 +211,7 @@ Meteor.methods({
 				"udf1"		: 	paymentCheck._id,
 				"redirecturl" : 'http://'+METEOR_URL+'/paymentAds-response?payId='+paymentCheck._id+"&InvNo="+paymentCheck.invoiceNumber+"&BusLink="+paymentCheck.businessLink,
 			};
+			console.log(quickWalletInput);
 
 			try {
 				console.log("Im trying");
@@ -230,11 +235,11 @@ Meteor.methods({
 	},
 	'updateAdsPaymentOnline':function(businessLink,current){
 		var businessAds = BusinessAds.find({"businessLink":businessLink,"status":"new"}).fetch();
-		// console.log("businessAds: ",businessAds);
+		console.log("businessAds: ",businessAds);
 		var paymentCheck = Payment.findOne({"businessLink":businessLink,"orderType":"Ads","paymentStatus":"unpaid"});
-		// console.log("paymentCheck: ",paymentCheck);
+		console.log("paymentCheck: ",paymentCheck);
 		var businessUser = Business.findOne({"businessLink":businessLink});
-		// console.log("businessUser: ",businessUser);
+		console.log("businessUser: ",businessUser);
 
 		if(!businessUser.ownerMobile){
 			businessUser.ownerMobile = "9730190305";
@@ -269,7 +274,7 @@ Meteor.methods({
 				"redirecturl" : 'http://'+METEOR_URL+'/paymentAds-response?payId='+paymentCheck._id+"&InvNo="+paymentCheck.invoiceNumber+"&BusLink="+paymentCheck.businessLink,
 			};
 
-			// console.log('quickWalletInput: ',quickWalletInput);
+			console.log('quickWalletInput: ',quickWalletInput);
 
 			try {
 				console.log("Im trying");

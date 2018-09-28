@@ -2706,7 +2706,7 @@ border: 1px solid #bbb;
 padding: 5px;
 border-radius: 5px;
 background-image: url('/images/loading/loading-squares2.gif');
-background-size: cover;
+/*background-size: cover;*/
 }
 /*.vEnqFormImgThreeImg {
 max-width:366px

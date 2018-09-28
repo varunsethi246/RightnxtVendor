@@ -118,26 +118,21 @@ Template.imageCommet.helpers({
 
 	'showComment':function(){
 		var businessLink = FlowRouter.getParam('businessurl');
-		console.log("businessLink",businessLink);
 		var imgId = Session.get("ModalimageID");
-		console.log("imgId",imgId);
 		var commentDetails = ImageComment.find({'businessLink': businessLink,'imgId':imgId},{sort:{"imgCommentDate":-1}}).fetch();
-		console.log(commentDetails);
 		if(commentDetails){
 			for (var i = 0; i < commentDetails.length; i++){
 				if(commentDetails[i].userId){
 					var userObj = Meteor.users.findOne({"_id":commentDetails[i].userId});
-		console.log(userObj);
 					if(userObj){
 						commentDetails[i].commentUserName = userObj.profile.name;
 
 						if(userObj.profile.userProfilePic){								
-							var pic = UserProfileStoreS3New.findOne({"_id":userObj.profile.userProfilePic});
+							var pic = VendorImage.findOne({"_id":userName.profile.userProfilePic});
 							if(pic){
-								commentDetails[i].userProfileImgPath = pic.url();	
-							}
-							else{
-								commentDetails[i].userProfileImgPath = "/users/profile/profile_image_dummy.svg";
+								commentDetails[i].userProfileImgPath = pic.link();
+							}else{
+								commentDetails[i].userProfileImgPath = '/users/profile/profile_image_dummy.svg';
 							}				
 						}else{
 							commentDetails[i].userProfileImgPath = '/users/profile/profile_image_dummy.svg';
@@ -187,20 +182,17 @@ Template.imageCommet.helpers({
 
 
 						if(commentDetails[i].imgMultiComment){
-							console.log(commentDetails[i].imgMultiComment);
 							for(j=0;j<commentDetails[i].imgMultiComment.length;j++){
 								var userObj = Meteor.users.findOne({"_id":commentDetails[i].imgMultiComment[j].userId});
-							console.log(userObj);
 								if(userObj){
 									commentDetails[i].imgMultiComment[j].commentUserName = userObj.profile.name;
 
 									if(userObj.profile.userProfilePic){								
-										var pic = UserProfileStoreS3New.findOne({"_id":userObj.profile.userProfilePic});
+										var pic = VendorImage.findOne({"_id":userName.profile.userProfilePic});
 										if(pic){
-											commentDetails[i].imgMultiComment[j].userProfileImgPath = pic.url();	
-										}
-										else{
-											commentDetails[i].imgMultiComment[j].userProfileImgPath = "/users/profile/profile_image_dummy.svg";
+											commentDetails[i].imgMultiComment[j].userProfileImgPath = pic.link();
+										}else{
+											commentDetails[i].imgMultiComment[j].userProfileImgPath = '/users/profile/profile_image_dummy.svg';
 										}				
 									}else{
 										commentDetails[i].imgMultiComment[j].userProfileImgPath = '/users/profile/profile_image_dummy.svg';
@@ -266,11 +258,9 @@ Template.imageCommet.helpers({
 				// 	return commentDetails;
 				// }
 			}
-			console.log("commentDetails: ",commentDetails);
 			return commentDetails;
 
 		}else{
-			console.log('detailsnotfound');
 		}
 	},
 });
@@ -339,7 +329,6 @@ Template.imageReportModal.events({
 						    // console.log("formValues: ",formValues);
 						    // console.log("businessurl: ",formValues.businessLink);
 							var businessData = Business.findOne({"businessLink":formValues.businessLink});
-							console.log("businessData: ",businessData);
 							if(businessData){
 								var vendorId = businessData.businessOwnerId;
                 				var vendorDetail = Meteor.users.findOne({'_id':vendorId});
@@ -600,7 +589,6 @@ Template.imageReports.events({
 		if(!imgIdNext){
 			imgIdNext = $('#myCarousel1 .carousel-inner').find('.imageReportSlider').first().children('img').attr('id');
 		}
-		console.log(imgIdNext);
 		Session.set("ModalimageID",imgIdNext);
 		var ImageCount = BussImgLikes.find({'LikedImage':imgIdNext}).count();
 		Session.set('carouselLikeCount', ImageCount);
@@ -615,7 +603,6 @@ Template.imageReports.events({
 			imgIdPrevious = $('#myCarousel1 .carousel-inner').find('.imageReportSlider').last().children('img').attr('id');
 			// console.log('imgIdPrevious',imgIdPrevious);
 		}
-		console.log(imgIdPrevious);
 		Session.set("ModalimageID",imgIdPrevious);
 		var ImageCount = BussImgLikes.find({'LikedImage':imgIdPrevious}).count();
 		Session.set('carouselLikeCount', ImageCount);
