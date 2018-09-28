@@ -168,11 +168,11 @@ Meteor.methods({
 
 	'updateBannerPaymentOnline':function(businessLink){
 		var businessBanner = BusinessBanner.find({"businessLink":businessLink,"status":"new"}).fetch();
-		console.log(businessBanner);
+		console.log("businessBanner",businessBanner);
 		var paymentCheck = Payment.findOne({"businessLink":businessLink,"orderType":"Banner","paymentStatus":"unpaid"});
-		console.log(paymentCheck);
+		console.log("paymentCheck",paymentCheck);
 		var businessUser = Business.findOne({"businessLink":businessLink});
-		console.log(businessUser);
+		console.log("businessUser",businessUser);
 
 		if(!businessUser.ownerMobile){
 			businessUser.ownerMobile = "9730190305";
@@ -185,14 +185,14 @@ Meteor.methods({
 
 
 		if (process.env.NODE_ENV == 'development') {
-			// var quickWalletUrl = 'https://uat.quikwallet.com';
-			var quickWalletUrl = 'https://server.livquik.com';
+			var quickWalletUrl = 'https://uat.quikwallet.com';
 		  	var METEOR_URL = 'localhost:3000'; // your production server url
 		}else{
-			var quickWalletUrl = 'https://server.livquik.com';
+			var quickWalletUrl = 'https://uat.quikwallet.com';
+			// var quickWalletUrl = 'https://server.livquik.com';
 			var METEOR_URL = current;
 		}
-		console.log(quickWalletUrl,METEOR_URL);
+		console.log('quickWalletUrl,METEOR_URL',quickWalletUrl,METEOR_URL);
 
 
 
@@ -212,7 +212,7 @@ Meteor.methods({
 				"udf1"		: 	paymentCheck._id,
 				"redirecturl" : 'http://'+METEOR_URL+'/paymentAds-response?payId='+paymentCheck._id+"&InvNo="+paymentCheck.invoiceNumber+"&BusLink="+paymentCheck.businessLink,
 			};
-			console.log(quickWalletInput);
+			console.log('quickWalletInput',quickWalletInput);
 
 			try {
 				console.log("Im trying");
