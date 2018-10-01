@@ -551,7 +551,7 @@ Meteor.methods({
 			{_id: id},
 			{$set : { 
 				"status"  			: "inactive",
-				"businessOwnerId"	: null,
+				"businessOwnerId"	: 'null',
 				}
 			}, 
 			function(error,result){
@@ -1032,7 +1032,7 @@ Meteor.methods({
 				Business.insert({ 
 					// "categoryIndex"			: categoryIndexSrno,
 					
-				 	"businessOwnerId"		: null,
+				 	"businessOwnerId"		: 'null',
 					"businessTitle" 		: BusinessTitle,
 					"businessLink" 			: BusinessLink,
 					"businessAboutBus"		: AboutBusiness,

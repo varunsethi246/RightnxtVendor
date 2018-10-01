@@ -471,6 +471,7 @@ Template.businessReport.events({
 						    variables    : msgvariable,
 						}
 						sendInAppNotification(inputObj); 
+						Bert.alert('Mail send successfully.','success','growl-top-right');
 					}
 				}
 			}
