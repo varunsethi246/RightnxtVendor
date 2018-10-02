@@ -448,10 +448,10 @@ Template.userReviewTemplate.events({
 	'click .unuserLike': function(event){
 		if(!Meteor.userId()){
 			$('#loginModal').modal('show');
-			$('.loginScreen').hide();
+			$('.loginScreen').show();
 			$('.signupScreen').hide();
 			$('.thankyouscreen').hide();
-			$('.genLoginSignup').show();
+			// $('.genLoginSignup').show();
 			$('.thankyouscreen').hide();
 			$('.signUpBox').hide();
 		}

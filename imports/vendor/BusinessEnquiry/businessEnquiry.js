@@ -467,10 +467,10 @@ Template.businessEnquiry.events({
     'click .vCmtEnqPage': function(event){
         if(!(Meteor.userId())){
             $('#loginModal').modal('hide');
-            $('.loginScreen').hide();
+            $('.loginScreen').show();
             $('.signupScreen').hide();
             $('.thankyouscreen').hide();
-            $('.genLoginSignup').show();
+            // $('.genLoginSignup').show();
             $('.thankyouscreen').hide();
             $('.signUpBox').hide();
             $('#vEnqModal').show();

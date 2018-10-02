@@ -133,19 +133,19 @@ Template.businessEventIcons.events({
 				}			
 			}else{
 				$('#loginModal').modal('show');
-				$('.loginScreen').hide();
+				$('.loginScreen').show();
 				$('.signupScreen').hide();
 				$('.thankyouscreen').hide();
-				$('.genLoginSignup').show();
+				// $('.genLoginSignup').show();
 				$('.thankyouscreen').hide();
 				$('.signUpBox').hide();
 			}
 		}else{
 			$('#loginModal').modal('show');
-			$('.loginScreen').hide();
+			$('.loginScreen').show();
 			$('.signupScreen').hide();
 			$('.thankyouscreen').hide();
-			$('.genLoginSignup').show();
+			// $('.genLoginSignup').show();
 			$('.thankyouscreen').hide();
 			$('.signUpBox').hide();
 		}
@@ -171,10 +171,10 @@ Template.businessEventIcons.events({
 		event.preventDefault();
 		if(!(Meteor.userId())){
 			$('#loginModal').modal('show');
-			$('.loginScreen').hide();
+			$('.loginScreen').show();
 			$('.signupScreen').hide();
 			$('.thankyouscreen').hide();
-			$('.genLoginSignup').show();
+			// $('.genLoginSignup').show();
 			$('.signUpBox').hide();
 		}
 	},
@@ -183,10 +183,10 @@ Template.businessEventIcons.events({
 		if(!(Meteor.userId())){
 			$('#loginModal').modal('show');
 			$('#sharebtn').hide();
-			$('.loginScreen').hide();
+			$('.loginScreen').show();
 			$('.signupScreen').hide();
 			$('.thankyouscreen').hide();
-			$('.genLoginSignup').show();
+			// $('.genLoginSignup').show();
 			$('.signUpBox').hide();
 			$('#share_page3').modal('hide');
 		}
@@ -238,10 +238,10 @@ Template.businessEventIcons.events({
 
 		}else{
 			$('#loginModal').modal('show');
-			$('.loginScreen').hide();
+			$('.loginScreen').show();
 			$('.signupScreen').hide();
 			$('.thankyouscreen').hide();
-			$('.genLoginSignup').show();
+			// $('.genLoginSignup').show();
 			$('.signUpBox').hide();
 		}
 

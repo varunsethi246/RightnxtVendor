@@ -172,17 +172,18 @@ Template.header.events({
 	},
 
 	'click .login': function(event){
-		$('.loginScreen').hide();
+		$('.loginScreen').show();
 		$('.signupScreen').hide();
 		$('.thankyouscreen').hide();
-		$('.genLoginSignup').show();
+		// $('.genLoginSignup').show();
 		$('.thankyouscreen').hide();
 		$('.signUpBox').hide();
 	},
 	'click .loginTxt': function(event){
 		$('.loginScreen').hide();
-		$('.genLoginSignup').show();
 		$('.thankyouscreen').hide();
+		// $('.genLoginSignup').show();
+		$('.signUpBox').show();
 	},
 	'click .signUp-btn': function(event){
 		// $('.loginScreen').hide();
@@ -202,8 +203,8 @@ Template.header.events({
 		$('.thankyouscreen').hide();
 	},
 	'click .loginTxt1': function(event){
-		$('.loginScreen').hide();
-		$('.genLoginSignup').show();
+		$('.loginScreen').show();
+		// $('.genLoginSignup').show();
 		$('.signupScreen').hide();
 		$('.thankyouscreen').hide();
 	},
@@ -215,8 +216,8 @@ Template.header.events({
 		$('.signUpBox').show();
 	},
 	'click .loginTxt2': function(event){
-		$('.loginScreen').hide();
-		$('.genLoginSignup').show();
+		$('.loginScreen').show();
+		// $('.genLoginSignup').show();
 		$('.signupScreen').hide();
 		$('.thankyouscreen').hide();
 		$('.signUpBox').hide();
