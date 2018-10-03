@@ -55,7 +55,7 @@
 			                        </ul>
 			                      </li>
 			                      <!-- <hr> -->
-			                      <li class="notificationFooter"><a href="/viewVendorNotification" class="hoverColor">View all</a></li>
+			                      <li class="notificationFooter"><a href="" class="notificationDropdown">View all</a></li>
 			                    </ul>
 			                </li>
 			            </ul>
@@ -65,14 +65,12 @@
 				<div class="col-lg-2 col-md-3 col-sm-2 col-xs-3 {{#if showElement}}dropmenu{{else}}dropmenuGen{{/if}} pull-right">
 					{{#with userDetails}}
 						<li class="dropdown dropGeneral pull-right">
-
-							{{#if displayUserProfileHeader profile.userProfilePic}}
-						    	<img src="{{profile.userProfilePic}}" class="propic profileBkImg {{checkpngImg}}" name="profilepicone">
-						    {{else}}
-						    	<img src="{{profile.userProfilePic}}" class="propic profileBkImg {{checkpngImg}}" name="profilepic">
-						    {{/if}}
-
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								{{#if displayUserProfileHeader profile.userProfilePic}}
+							    	<img src="{{profile.userProfilePic}}" class="propic profileBkImg {{checkpngImg}}" name="profilepicone">
+							    {{else}}
+							    	<img src="{{profile.userProfilePic}}" class="propic profileBkImg {{checkpngImg}}" name="profilepic">
+							    {{/if}}
 								<span class="prfSpan hidden-xs hidden-sm">{{profile.name}}</span>
 								<!-- {{firstName}} -->
 								<i class="fa fa-angle-down fa-2x userFaAngle"></i>

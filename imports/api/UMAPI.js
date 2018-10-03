@@ -74,13 +74,9 @@ Meteor.methods({
             $set: { notificationConfiguration : 
                 {
                   enquiry : "true",
-                  invoice : "true",
                   rating  : "true",
-                  payment : "true",
                   follow  : "true",
-                  // unfollow: "true",
                   like    : "true",
-                  // unlike  : "true",
                   comment : "true",
                   editbusiness : "true",
                   report  : "true",

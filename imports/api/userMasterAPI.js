@@ -230,13 +230,9 @@ Meteor.methods({
 						$set: { notificationConfiguration : 
 								{
 									"enquiry"		: Enquiry,
-									"invoice"		: "true",
 									"rating"		: Rating,
-									"payment"   	: "true",
 									"follow"    	: Follow,
-									// "unfollow"  : UnFollow,
 									"like"	    	: Like,
-									// "unlike"	: UnLike,
 									"comment"  		: Comment,
 									"editbusiness"  : Editbusiness,
 									"report"  		: report,

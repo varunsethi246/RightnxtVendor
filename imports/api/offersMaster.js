@@ -54,7 +54,7 @@ if (Meteor.isServer) {
 
 Meteor.methods({
 	'insertOffers':function(formValues){
-		console.log(formValues);
+		// console.log(formValues);
 		Offers.insert({ 
 			"businessId"			: formValues.businessId, 
 			"vendorId"  			: formValues.vendorId,  

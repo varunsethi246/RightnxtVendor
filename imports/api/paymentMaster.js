@@ -34,7 +34,8 @@ if (Meteor.isServer) {
 				"numberOfOffers"		: '',  
 				"totalAmount"			: '',  
 				"paymentStatus"			: '',  
-				"paymentDate"			: '',  
+				"paymentDate"			: '', 
+				"orderNumber" 			: 111111, 
   		});
   	}  	
   }
@@ -80,6 +81,7 @@ Meteor.methods({
 				var maxInvNum = Payment.find({}, {sort: {invoiceNumber:-1, limit:1}}).fetch();
 				if(maxInvNum.length > 0){
 					var invNum = maxInvNum[0].invoiceNumber + 1;
+					var orderNum = maxInvNum[0].orderNumber + 1;
 				}
 			
 				return Payment.insert({  
@@ -88,6 +90,7 @@ Meteor.methods({
 					"businessLink" 			: formValues.businessLink, 
 					"offerId"				: newOffersArr,
 					"invoiceNumber"			: invNum,
+					"orderNumber"			: orderNum,
 					"invoiceDate"			: new Date(), 
 					"offerPricePerMonth"	: companyRates.rates.ratePerOffer, 
 					"numberOfOffers"		: newOffers.length, 

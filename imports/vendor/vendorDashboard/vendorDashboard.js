@@ -263,7 +263,7 @@ Template.userViewGraph.onRendered(function(){
 			    });
 
 		      	$("#monthChart").append(
-	        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-daily' style='max-height: 100%;'></canvas></div>"
+	        		"<div class='noPaddingGeneral col-lg-10 col-md-10 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-daily' style='max-height: 100%;'></canvas></div>"
 	        	);
 
 		      	var ctx = document.getElementById(businessLink+"-daily").getContext("2d");
@@ -406,7 +406,7 @@ Template.userViewGraph.onRendered(function(){
 			    });
 
 				$("#yearChart").append(
-	        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-monthly' style='max-height: 100%;'></canvas></div>"
+	        		"<div class='noPaddingGeneral col-lg-10 col-md-10 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-monthly' style='max-height: 100%;'></canvas></div>"
 	        	);
 
 		      	var ctx = document.getElementById(businessLink+"-monthly").getContext("2d");

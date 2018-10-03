@@ -228,6 +228,12 @@ Template.generalHeader.helpers({
 });
 
 Template.generalHeader.events({
+	'click .notificationDropdown':function(event){
+		event.preventDefault();
+		$('.sidebarCollabse').removeClass('in');
+		$('#myBussiness').removeClass('in');
+		FlowRouter.go('/viewVendorNotification');
+	},
 	'click .notifContent':function(event){
 	    // event.preventDefault();
 	    var id = event.currentTarget.id;

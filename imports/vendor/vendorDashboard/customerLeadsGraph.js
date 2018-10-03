@@ -245,7 +245,7 @@ Template.customerLeadsGraph.onRendered(function(){
 			    });
 
 				$("#custyearChart").append(
-	        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessUrl+"-custmonthly' style='max-height: 100%;'></canvas></div>"
+	        		"<div class='noPaddingGeneral col-lg-10 col-md-10 col-sm-12 col-xs-12'><canvas id='"+businessUrl+"-custmonthly' style='max-height: 100%;'></canvas></div>"
 	        	);
 
 		      	var ctx = document.getElementById(businessUrl+"-custmonthly").getContext("2d");
@@ -375,7 +375,7 @@ Template.customerLeadsGraph.onRendered(function(){
 			    });
 
 				$("#custmonthChart").append(
-	        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessUrl+"-custdaily' style='max-height: 100%;'></canvas></div>"
+	        		"<div class='noPaddingGeneral col-lg-10 col-md-10 col-sm-12 col-xs-12'><canvas id='"+businessUrl+"-custdaily' style='max-height: 100%;'></canvas></div>"
 	        	);
 
 		      	var ctx = document.getElementById(businessUrl+"-custdaily").getContext("2d");

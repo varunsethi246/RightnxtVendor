@@ -1704,7 +1704,7 @@ color:#fff!important
 .editpage {
 padding-top:2%;
 margin-top:5.5%;
-margin-bottom:12%
+/*margin-bottom:12%*/
 }
 
 .editpage .true {
@@ -2229,7 +2229,7 @@ margin-top:13%
 .editexistingoffer {
 background:#fff;
 border-radius:0;
-margin-bottom:10%;
+/*margin-bottom:10%;*/
 padding-top:2%;
 padding-right:0
 }
@@ -2248,7 +2248,7 @@ padding:0
 }
 
 .editpay {
-margin:-4.5% -2% -10px
+margin:4.5% 2% 10px
 }
 
 .venBusiOffer {
@@ -4456,3 +4456,4 @@ text-align: center
 .replyOfReplySub{margin-top: 10px;}
 #replyOfreplyInput{margin-top: 10px;}
 .showMoreCommnt{padding-left: 0px;padding-right: 0px;}
+.notificationDropdown:hover{color: #fff;}
