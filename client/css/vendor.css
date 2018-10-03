@@ -12,7 +12,15 @@ src:url(/fonts/PROXIMANOVA-REGULAR.ttf),url(/fonts/PROXIMANOVA-REGULAR.eot)
 font-family:'GOTHIC_0';
 src:url(/fonts/GOTHIC_0.ttf),url(/fonts/GOTHIC_0.eot)
 }
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
+input[type=number] {
+    -moz-appearance:textfield;
+}
 .vendorLayoutCss {
 margin-left:5%;
 margin-right:2%
@@ -31,7 +39,39 @@ padding-left:10%;
 padding-right:10%;
 margin-top:60px
 }
+.profilepicHide{
+    display: none;
+    /*display: block;*/
+        position: absolute;
+    bottom: 42%;
+    right: 35%;
+    color: #a2a2a2b0;
+}
+.genHead:hover .profilepicHide{
+/*height:18px;
+position:absolute;
+right:20px;
+cursor:pointer;
+opacity:1;
+bottom:-27px;
+z-index:1*/
+/*padding-left: 0px;
+position: relative;
+bottom: -12px;
+right: 3px;*/
+/*position: absolute;
+bottom: 5px;
+right: 20px;*/
 
+/*position: absolute;
+    bottom: 42%;
+    right: 72px;*/
+    display: block!important;
+        position: absolute;
+    bottom: 42%;
+    right: 35%;
+    color: #a2a2a2b0;
+}
 .profilephotoUpload {
 height:143px;
 position:relative
