@@ -39,7 +39,7 @@ Template.signupScreen.events({
 
       event.preventDefault();
         var name     = event.target.name.value;
-        var email    = event.target.email.value;
+        var email    = event.target.email.value.toLowerCase();
         var mobile   = event.target.mobile.value;
         var pwd      = event.target.pwd.value;
         var reverse    = pwd.split("").reverse().join("");

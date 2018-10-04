@@ -125,7 +125,7 @@ import '/imports/common/common.js';
   'submit .loginForm': function(event) {
     event.preventDefault();
 
-    var email = event.target.email.value;
+    var email = event.target.email.value.toLowerCase();
     var pwd   = event.target.pwd.value;
 
     var vendorObj = Meteor.users.findOne({"emails.address":email});
