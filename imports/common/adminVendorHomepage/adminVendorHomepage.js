@@ -95,12 +95,40 @@ Template.adminVendorHomepage.helpers({
       }
 
       var currentAreaList = Area.find({'city':currentCity,"status":"active"}).fetch();
-      currentAreaList.sort(function(a, b) {
+      var areaArray = [];
+      var areaList = [];
+      if(currentAreaList){
+        for(var i=0;i<currentAreaList.length;i++){
+          areaArray.push({'area':currentAreaList[i].area})
+        }//i
+        var pluck = _.pluck(areaArray, 'area');
+        data = _.uniq(pluck);
+        console.log('data ...',data);
+
+        if(data.length>0){
+          for(var j=0;j<data.length;j++){
+              var uniqueArea = data[j];
+              var areaLists = Area.findOne({'area':uniqueArea});
+              if(areaLists){
+                areaList.push({
+                              'area'    : uniqueArea,
+                              'country' : areaLists.country,
+                              'state'   : areaLists.state,
+                              'city'    : areaLists.city,
+                              'zipcode' : areaLists.zipcode,
+                              'status'  : areaLists.status,
+                            });
+              }
+          }//j
+        }//length
+      }//currentAreaList
+
+      areaList.sort(function(a, b) {
         var textA = a.area.toUpperCase();
         var textB = b.area.toUpperCase();
         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
       });
-
+      currentAreaList = areaList;
       return {currentCityList, currentAreaList};
   },
 });

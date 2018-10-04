@@ -681,7 +681,10 @@ display:none
 }
 
 .addPhotoTxt {
-height:18px;
+/*background: red;*/
+height: 180px;
+width: 55%;
+/*height:18px;*/
 position:absolute;
 right:20px;
 cursor:pointer;
