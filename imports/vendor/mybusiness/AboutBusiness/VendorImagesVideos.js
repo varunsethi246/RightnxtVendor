@@ -367,9 +367,9 @@ Template.vendorImagesVideos.events({
 		var file = event.target.files; // FileList object\
 		// Loop through the FileList and render image files as thumbnails.
 		
-		if(file.length > 6){
-			$('#div1').css("height","300px");
-		}
+		// if(file.length > 6){
+		// 	$('#div1').css("height","300px");
+		// }
 		for(var j = 0 , f1;f1 = file[j]; j++){
 			files[counterImg] = file[j];
 			counterImg = counterImg + 1;
@@ -410,9 +410,9 @@ Template.vendorImagesVideos.events({
 		 var fileM = event.target.files; // FileList object
 		// Loop through the FileList and render image files as thumbnails.
 
-		if(fileM.length > 6){
-			$('.businessDivOpen').css("height","300px");
-		}
+		// if(fileM.length > 6){
+		// 	$('.businessDivOpen').css("height","300px");
+		// }
 
 		for(var j = 0 , f1;f1 = fileM[j]; j++){
 			filesM[counterMenu] = fileM[j];

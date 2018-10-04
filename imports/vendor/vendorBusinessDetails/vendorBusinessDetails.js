@@ -182,6 +182,7 @@ Template.vendorBusinessLayout.events({
 });
 
 Template.vendorBusinessLayout.onRendered(function(){	
+	$('html,body').scrollTop(0);
 	$(window).on('popstate', function() {
 	    $('.modal').modal('hide');
 	    $('.modal-backdrop').hide();

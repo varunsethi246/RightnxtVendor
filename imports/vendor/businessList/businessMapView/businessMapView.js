@@ -142,7 +142,7 @@ Template.businessMap.onCreated(function() {
                     var ratingObj = businessDetails[n].businessRating;
                     
                     // InfoWindow Content String
-                    contentString[n] = `<div class="">
+                    contentString[n] = `<div class="redirectTo" id="`+businessLink+`">
                                             <div class=" thumbBusDivMarker">
                                                 <div class=" thumImgDimMarkerNew">
                                                     <img  class="imgSearchMarkerNew" src="
@@ -239,3 +239,12 @@ Template.businessMap.onCreated(function() {
 });
 
 
+Template.businessMap.events({
+    'click .gmnoprint>img':function(event){
+        event.preventDefault();
+        var businessLink = $(event.currentTarget).parent().parent().siblings().find('.redirectTo').attr('id');
+        console.log('businessLink:',businessLink);
+        var path = '/'+businessLink;
+        FlowRouter.go(path);
+    }
+});
