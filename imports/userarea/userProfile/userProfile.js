@@ -8,6 +8,7 @@ import { Business } from '/imports/api/businessMaster.js';
 Template.userProfile.onCreated(function() {
     this.currentUpload = new ReactiveVar(false);
     this.subscribe('vendorImage');  
+    this.subscribe('vendorBusiness');  
 });
 
 Template.userProfile.helpers({

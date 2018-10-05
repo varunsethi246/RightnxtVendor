@@ -7,6 +7,7 @@ import { VendorImage } from '/imports/videoUploadClient/vendorImageClient.js';
 
 Template.generalHeader.onCreated(function(){
   this.subscribe('vendorImage');
+  this.subscribe('vendorBusiness');
 });
 Template.generalHeader.helpers({
 	'userDetails' : function(){
