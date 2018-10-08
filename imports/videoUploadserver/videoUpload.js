@@ -57,7 +57,7 @@ if(s3Data)
                         // limit size to 1GB and in mp4 format
                         return true;
                     } else {
-                        return "Please upload video of size less than 200 & of type .mp4, .3gp, .ogv or .webm";
+                        return "Please upload video of size less than 200Mb & of type .mp4, .3gp, .ogv or .webm";
                     }
 
                 },

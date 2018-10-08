@@ -187,47 +187,7 @@ Template.userProfile.helpers({
 
 
 Template.userProfile.events({
-	// for follower
-	// 'click .follow' : function(event){
-	// 	var value  = this;
-	// 	var id     = value.id;
-	// 	var userFollowdata = FollowUser.findOne({'userId':Meteor.userId() , 'followUserId': id});
-	// 	if(userFollowdata){
-	// 		swal("You are already following this person!");
-	// 	}else{
-	// 		Meteor.call('insertUserFollow',id,(error,result)=>{
-	// 			if(error){
-	// 				console.log(error.reason);
-	// 			}else{
-	// 				Bert.alert('Follow User Successfull!','success','growl-top-right');
-	// 				var getResult = result;
-	// 				$(event.currentTarget).css('display','none');
-	// 				//send mail to the user//
-	//              	var followData = FollowUser.findOne({"_id":getResult});
-	//               	if(followData){
-	//                 	var usermailId = followData.followUserId;
-	//                 	var userVar = Meteor.users.findOne({'_id':usermailId});
-	// 	                if(userVar){
-	// 	                    var notifConfig = userVar.notificationConfiguration.follow;
-	// 	                    if(notifConfig == "true"){
-	// 		                	var inputObj = {
-	// 		                        roles       : 'user',
-	// 		                        to          : usermailId,
-	// 		                        templateName: 'Follow',
-	// 		                        OrderId     : getResult,
-	// 		                	}
-	// 		                	sendMailnNotif(inputObj);
-	// 		                }
-	// 		            }
-	//               	}//followData 
-	// 			}
-	// 		});
-	// 	}
-	// },
-
-	'click .showAddPhotoTxt' : function(event){
-		
-		// console.log('showAddPhotoTxt');
+	'click .cameraIconPro' : function(event){
 		$("input[id='uploadImg']").click();
 	},
 	
