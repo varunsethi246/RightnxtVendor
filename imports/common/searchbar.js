@@ -82,7 +82,11 @@ Template.searchbar.helpers({
 			}
 		}
 
-	    var currentArea =  FlowRouter.getParam('area');
+		if(FlowRouter.getParam('area')){
+	    	var currentArea =  FlowRouter.getParam('area').split('-').join(' ');
+		}else{
+			var currentArea = ''; 
+		}
 	    var currentAreaData = Area.find({'city':currentCity}).fetch();
 	    var areaArray = [];
 		var areaList = [];
@@ -185,8 +189,8 @@ Template.searchbar.events({
 	    var currentParams 	= FlowRouter.getParam('businessurl');
 	    var currentPath 	= FlowRouter.current().path;
 	    var businessLink 	= $('.selectedSearch').attr('data-busLink');
-		var currentText		= $('#gridSearchBusiness').val();
-		var currentCatg		= $('.selectedSearch').attr('data-catg');
+		var currentText		= $('#gridSearchBusiness').val().split(' ').join('-');
+		var currentCatg		= $('.selectedSearch').attr('data-catg').split(' ').join('-');
 		if(currentPath){
 			var newURl = currentPath.split('/');
 		}
@@ -220,11 +224,11 @@ Template.searchbar.events({
 				$('.topSearchBarList').css('display','none');
 				if(currentCatg){
 					// For Category Only
-					var	area = $('#getArea').val();
+					var	area = $('#getArea').val().split(' ').join('-');
 					var flowGo = "/search/"+currentCity+"/"+area+"/"+currentCatg;
 					FlowRouter.go(flowGo);
 				}else{
-					var	area = $('#getArea').val();
+					var	area = $('#getArea').val().split(' ').join('-');
 					// If pressed enter withount arrow up or down
 					if(currentText.length>0){
 						var flowGo = "/search/"+currentCity+"/"+area+"/"+currentText;
@@ -248,12 +252,12 @@ Template.searchbar.events({
 				// var busCity = Business.findOne({"businessLink":currentParams},{fields: {'businessCity': 1}});
 	    		if(currentCatg){
 					// For Category Only
-					var area = $('#getArea').val();
+					var area = $('#getArea').val().split(' ').join('-');
 					var flowGo = "/search/"+currentCity+"/"+area+"/"+currentCatg;
 					FlowRouter.go(flowGo);
 				}else{
 					// If pressed eneter withount arrow up or down
-					var area = $('#getArea').val();
+					var area = $('#getArea').val().split(' ').join('-');
 					if(currentText){
 						var flowGo = "/search/"+currentCity+"/"+area+"/"+currentText;
 						FlowRouter.go(flowGo);
@@ -275,7 +279,7 @@ Template.searchbar.events({
 	    	if(businessLink==undefined){
 	    		if(currentCatg){
 					// For Category Only
-					var area = $('#getArea').val();
+					var area = $('#getArea').val().split(' ').join('-');
 					
 					var flowGo = "/search/"+currentCity+"/"+area+"/"+currentCatg;
 					FlowRouter.go(flowGo);
@@ -284,7 +288,7 @@ Template.searchbar.events({
 					businessSearchbanner1.search(searchText);
 				}else{
 					// If pressed eneter withount arrow up or down
-					var area = $('#getArea').val();
+					var area = $('#getArea').val().split(' ').join('-');
 					if(currentText){
 						var flowGo = "/search/"+currentCity+"/"+area+"/"+currentText;
 						FlowRouter.go(flowGo);
@@ -329,7 +333,7 @@ Template.searchbar.events({
 
 		var currentPath = FlowRouter.current().path;
 		var businessLink = $('.selectedSearch').attr('data-busLink');
-		var currentCatg = $('.selectedSearch').attr('data-catg');
+		var currentCatg = $('.selectedSearch').attr('data-catg').split(' ').join('-');
 		var currentParams 	= FlowRouter.getParam('businessurl');
 		var currentText = "*";
 		
@@ -367,7 +371,7 @@ Template.searchbar.events({
 				$('.topSearchBarList').css('display','none');
 				// if(currentCatg){
 					// For Category Only
-					var	area = $('#getArea').val();					
+					var	area = $('#getArea').val().split(' ').join('-');					
 					
 					var flowGo = "/search/"+currentCity+"/"+area+"/"+currentCatg;
 					FlowRouter.go(flowGo);
@@ -387,7 +391,7 @@ Template.searchbar.events({
 				// var busCity = Business.findOne({"businessLink":currentParams},{fields: {'businessCity': 1}});
 	    		// if(currentCatg){
 					// For Category Only
-					var area = $('#getArea').val();
+					var area = $('#getArea').val().split(' ').join('-');
 					var flowGo = "/search/"+currentCity+"/"+area+"/"+currentCatg;
 					FlowRouter.go(flowGo);
 					var searchText = currentCity + '|' + area + '|' + currentCatg;
@@ -404,7 +408,7 @@ Template.searchbar.events({
 			
 	    	if(businessLink==undefined){
 					// For Category Only
-					var area = $('#getArea').val();					
+					var area = $('#getArea').val().split(' ').join('-');					
 					var flowGo = "/search/"+currentCity+"/"+area+"/"+currentCatg;
 					FlowRouter.go(flowGo);
 					var searchText = currentCity + '|' + area + '|' + currentCatg;
@@ -422,7 +426,7 @@ Template.searchbar.events({
 		$('.topSearchBarList').addClass('searchDisplayShow').removeClass('searchDisplayHide');
 		var currentPath = FlowRouter.current().path;
 		var currentParams 	= FlowRouter.getParam('businessurl');
-		var currentText = $('#gridSearchBusiness').val();
+		var currentText = $('#gridSearchBusiness').val().split(' ').join('-');
 		// if(!currentText){
 		// 	currentText = "*";
 		// }
@@ -455,7 +459,7 @@ Template.searchbar.events({
 		// console.log('url :',newURl[2]);
 		if(newURl[1] == 'search'){
 			// From Business List Page
-			var	area = $('#getArea').val();
+			var	area = $('#getArea').val().split(' ').join('-');
 			// console.log('area :',area);
 			if(currentText){
 				var flowGo = "/search/"+currentCity+"/"+area+"/"+currentText;
@@ -481,7 +485,7 @@ Template.searchbar.events({
 			
 		}else if(currentPath!=undefined&&currentParams!=undefined){
 			// From Business Page
-			var	area = $('#getArea').val();
+			var	area = $('#getArea').val().split(' ').join('-');
 			Session.set('showGridView',true);
 			Session.set('showMapView',false);
 			
@@ -504,7 +508,7 @@ Template.searchbar.events({
 
 		}else if(currentParams==undefined){
 			// From other General Vendor and User Pages
-			var	area = $('#getArea').val();
+			var	area = $('#getArea').val().split(' ').join('-');
 			Session.set('showGridView',true);
 			Session.set('showMapView',false);
 			

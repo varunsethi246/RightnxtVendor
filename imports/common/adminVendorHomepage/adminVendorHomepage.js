@@ -141,9 +141,9 @@ Template.adminVendorHomepage.events({
 
   'click .searchBusList':function() {
     $(".homeSearchBarList").addClass("searchDisplayShow").removeClass("searchDisplayHide");
-    var searchString=$("#getBusiness").val();
+    var searchString=$("#getBusiness").val().split(' ').join('-');
     var currentCity = $('#getCity').val();
-    var currentArea = $('#getArea').val();
+    var currentArea = $('#getArea').val().split(' ').join('-');
 
     if(searchString){
       var path =  "/search/"+currentCity+"/"+currentArea+"/"+searchString;

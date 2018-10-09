@@ -16,10 +16,10 @@ Template.homepageProductCarousel.events({
    'click .item' : function(event){
         $("html,body").scrollTop(0);
         event.preventDefault();
-        var searchCatg = $(event.target).attr('title'); 
+        var searchCatg = $(event.target).attr('title').split(' ').join('-'); 
         
         var currentCity = $('#getCity').val();
-        var currentArea = $('#getArea').val();
+        var currentArea = $('#getArea').val().split(' ').join('-');
         var path =  "/search/"+currentCity+"/"+currentArea+"/"+searchCatg;
         FlowRouter.go(path);
     
@@ -30,10 +30,10 @@ Template.homepageServicesCarousel.events({
    'click .item' : function(event){
         $("html,body").scrollTop(0);
         event.preventDefault();
-        var searchCatg = $(event.target).attr('title'); 
+        var searchCatg = $(event.target).attr('title').split(' ').join('-'); 
         
         var currentCity = $('#getCity').val();
-        var currentArea = $('#getArea').val();
+        var currentArea = $('#getArea').val().split(' ').join('-');
         var path =  "/search/"+currentCity+"/"+currentArea+"/"+searchCatg;
         FlowRouter.go(path);
   },

@@ -27,11 +27,11 @@ Template.homepageServicesCarousel.events({
    'click .item' : function(event){
 
         event.preventDefault();
-        var searchCatg = $(event.target).attr('title'); 
+        var searchCatg = $(event.target).attr('title').split(' ').join('-'); 
         // console.log("searchCatg; ",searchCatg);
         
         var currentCity = $('#getCity').val();
-        var currentArea = $('#getArea').val();
+        var currentArea = $('#getArea').val().split(' ').join('-');
         var path =  "/search/"+currentCity+"/"+currentArea+"/"+searchCatg;
         FlowRouter.go(path);
 

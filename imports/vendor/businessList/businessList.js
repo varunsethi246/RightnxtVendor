@@ -60,15 +60,27 @@ Template.businessList.onRendered(function(){
 	$('.hiddenCitySearchInpBox').val(city);
 	// console.log("$('.hiddenCitySearchInpBox').val(city);",$('.hiddenCitySearchInpBox').val())
 
-	var sesArea= FlowRouter.getParam('area');
+	if(FlowRouter.getParam('area')){
+		var sesArea= FlowRouter.getParam('area').split('-').join(' ');
+	}else{
+		var sesArea= '';
+	}
 	if(sesArea){
 		area = sesArea;
 	}else {
 		area = 'All Areas';
 	}
 	
-	var category = FlowRouter.getParam('category');
-	var searchText = FlowRouter.getParam('searchText');
+	if(FlowRouter.getParam('category')){
+		var category = FlowRouter.getParam('category').split('-').join(' ');
+	}else{
+		var category = '';
+	}
+	if(FlowRouter.getParam('searchText')){
+		var searchText = FlowRouter.getParam('searchText').split('-').join(' ');
+	}else{
+		var searchText = '';
+	}
 	var searchTextVar = city + '|' + area + '|' + searchText;
 	businessSearch1.search(searchTextVar);
 	businessSearchbanner1.search(searchTextVar);
@@ -970,7 +982,7 @@ Template.businessList.events({
       	}, 1);
 	},
 	'click .listofTypeSearch':function(event){
-		var	area = $('#getArea').val();
+		var	area = $('#getArea').val().split(' ').join('-');
 		var userId = Meteor.userId();
 		if(userId){
 			var cityObject = Meteor.users.findOne({"_id":userId});
@@ -983,7 +995,7 @@ Template.businessList.events({
 			var currentCity = FlowRouter.getParam('city');
 		}
 		
-		var category = $(event.currentTarget).text();
+		var category = $(event.currentTarget).text().split(' ').join('-');
 		var searchText = currentCity + '|' + area + '|' + category;
 		var path =  "/search/"+currentCity+"/"+area+"/"+category;
 		FlowRouter.go(path);

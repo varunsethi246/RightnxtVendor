@@ -46,7 +46,7 @@ Template.yourAccount.helpers({
 		// var currentURL = FlowRouter.current().path;
 		// var actualURL = currentURL.substring(1);
 		// var yourAccount = GeneralContent.find({"url": actualURL , "tabName": "Your Account"}).fetch();
-		var currentURL = FlowRouter.getParam('tabName');
+		var currentURL = FlowRouter.getParam('tabName').split('-').join(' ');
 		var yourAccount = GeneralContent.find({"url": 'faqs' , "tabName": currentURL}).fetch();
 		if(yourAccount){
 			return yourAccount;
@@ -56,7 +56,8 @@ Template.yourAccount.helpers({
 		// var currentURL = FlowRouter.current().path;
 		// var actualURL = currentURL.substring(1);
 		// var introduction = GeneralContent.findOne({"url": actualURL , "tabName": "Your Account"});
-		var currentURL = FlowRouter.getParam('tabName');
+		// var currentURL = FlowRouter.getParam('tabName');
+		var currentURL = FlowRouter.getParam('tabName').split('-').join(' ');
 		var introduction = GeneralContent.findOne({"url": 'faqs' , "tabName": currentURL});
 		if(introduction._id == this._id){
 			return true;
@@ -115,7 +116,7 @@ Template.businessOwners.helpers({
 		// var currentURL = FlowRouter.current().path;
 		// var actualURL = currentURL.substring(1);
 		// var businessOwners = GeneralContent.find({"url": actualURL , "tabName": "Business Owners"}).fetch();
-		var currentURL = FlowRouter.getParam('tabName');
+		var currentURL = FlowRouter.getParam('tabName').split('-').join(' ');
 		var businessOwners = GeneralContent.find({"url": 'faqs' , "tabName": currentURL}).fetch();
 		if(businessOwners){
 			return businessOwners;
@@ -125,7 +126,7 @@ Template.businessOwners.helpers({
 		// var currentURL = FlowRouter.current().path;
 		// var actualURL = currentURL.substring(1);
 		// var introduction = GeneralContent.findOne({"url": actualURL , "tabName": "Business Owners"});
-		var currentURL = FlowRouter.getParam('tabName');
+		var currentURL = FlowRouter.getParam('tabName').split('-').join(' ');
 		var introduction = GeneralContent.findOne({"url": 'faqs' , "tabName": currentURL});
 		if(introduction._id == this._id){
 			return true;
@@ -142,7 +143,7 @@ Template.faq.helpers({
 	},
 	yourAccountTab(){
 		var currentURL = FlowRouter.getParam('tabName');
-		if(currentURL == 'Your Account'){
+		if(currentURL == 'Your-Account'){
 			return true;
 		}	
 	},
@@ -160,7 +161,7 @@ Template.faq.helpers({
 	},
 	businessOwnersTab(){
 		var currentURL = FlowRouter.getParam('tabName');
-		if(currentURL == 'Business Owners'){
+		if(currentURL == 'Business-Owners'){
 			return true;
 		}	
 	}
@@ -347,7 +348,7 @@ Template.faq.events({
 	    $('.home').addClass('active');
 	},
 	'click .menu1': function(event){
-    	FlowRouter.go('/faqs/Your Account');
+    	FlowRouter.go('/faqs/Your-Account');
 	    $('.pillsContent').find('.active').removeClass('in active');
 	    $('#menu1').addClass('in active');
 	    $('.menu1').addClass('active');
@@ -365,7 +366,7 @@ Template.faq.events({
 	    $('.menu3').addClass('active');
 	},
 	'click .menu4': function(event){
-    	FlowRouter.go('/faqs/Business Owners');
+    	FlowRouter.go('/faqs/Business-Owners');
 	    $('.pillsContent').find('.active').removeClass('in active');
 	    $('#menu4').addClass('in active');
 	    $('.menu4').addClass('active');
