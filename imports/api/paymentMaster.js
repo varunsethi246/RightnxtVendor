@@ -201,13 +201,14 @@ Meteor.methods({
 
 
 
-		if(paymentCheck.totalAmount){
+		// if(paymentCheck.totalAmount){
+		if(paymentCheck.discountedPrice){
 			var quickwalletDetail 	= QuickwalletDetails.findOne({'_id':'2'});
 			
 			var userId       	= Meteor.userId();
 			var userObj      	= Meteor.users.findOne({"_id":userId});
 			var mobileNumber 	= businessUser.ownerMobile;
-			var grandTotal 		= paymentCheck.totalAmount;
+			var grandTotal 		= paymentCheck.discountedPrice;
 			var quickWalletInput = {
 				"partnerid"	:   quickwalletDetail.partnerid,
 				"mobile"   	:   mobileNumber,
@@ -259,13 +260,14 @@ Meteor.methods({
 			var METEOR_URL = current;
 		}
 
-		if(paymentCheck.totalAmount){
+		// if(paymentCheck.totalAmount){
+		if(paymentCheck.discountedPrice){
 			var quickwalletDetail 	= QuickwalletDetails.findOne({'_id':'2'});
 
 			var userId       	= Meteor.userId();
 			var userObj      	= Meteor.users.findOne({"_id":userId});
 			var mobileNumber 	= businessUser.ownerMobile;
-			var grandTotal 		= paymentCheck.totalAmount;
+			var grandTotal 		= paymentCheck.discountedPrice;
 			var quickWalletInput = {
 				"partnerid"	:   quickwalletDetail.partnerid,
 				"mobile"   	:   mobileNumber,
