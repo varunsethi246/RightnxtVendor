@@ -103,7 +103,7 @@ Template.adminVendorHomepage.helpers({
         }//i
         var pluck = _.pluck(areaArray, 'area');
         data = _.uniq(pluck);
-        console.log('data ...',data);
+        // console.log('data ...',data);
 
         if(data.length>0){
           for(var j=0;j<data.length;j++){

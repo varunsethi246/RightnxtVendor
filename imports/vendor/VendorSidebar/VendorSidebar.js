@@ -86,44 +86,6 @@ Template.vendorSidebar.helpers({
 				}else{
 					data[i].noofPhotosCount = 0;
 				}
-
-				// if(commentsCount){
-				// 	data[i].noofComments = commentsCount;
-				// }else{
-				// 	data[i].noofComments = 0;
-				// }
-
-
-				// var reviewPhotosCount = Review.find({'businessLink':businessLink}).fetch();
-				// // console.log("photosCount: ",reviewPhotosCount);
-				// // console.log("Review businessLink: ",businessLink);
-				// var busPhotoCount = 0;
-				// var userPhotoCount = 0;
-
-				// if(data[i]){
-				// 	if(data[i].businessImages){
-				// 		for(j = 0 ; j < data[i].businessImages.length ; j++){
-				// 			var imgId =  data[i].businessImages[j];
-				// 			var imgData = BusinessImage.findOne({"_id":imgId.img});
-				// 			if(imgData){
-				// 				busPhotoCount++;  					 
-				// 			}
-				// 		}
-				// 	}	
-				// }
-				// if(reviewPhotosCount){
-				// 	for (var k = 0; k < reviewPhotosCount.length; k++) {
-				// 		if(reviewPhotosCount[k].reviewImages){
-				// 			var imgListCount = reviewPhotosCount[k].reviewImages.length;
-				// 			userPhotoCount = userPhotoCount + imgListCount;
-				// 		}else{
-				// 			userPhotoCount = 0;
-				// 		}
-				// 	}
-				// }
-				// var photosCount = busPhotoCount + userPhotoCount;
-				// data[i].noofPhotosCount = photosCount;
-
 				
 				// My Offers Count noofOffersCount
 	
@@ -159,7 +121,9 @@ Template.vendorSidebar.helpers({
 		if(userId){
 			var cityObject = Meteor.users.findOne({"_id":userId});
 			if(cityObject.selectedCity){
-				var currentCity = cityObject.selectedCity;
+				// var city = cityObject.selectedCity.replace(/ /g, "-");
+				var city = cityObject.selectedCity;
+				var currentCity = city;
 			}else {
 				var currentCity = "Pune";
 			}

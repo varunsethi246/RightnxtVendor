@@ -169,7 +169,7 @@ Template.claim.helpers({
       currentCity = 'Pune';
     }
     
-    var currentArea = Area.find({'city':currentCity,"status":"active"}).fetch();
+    var currentAreaList = Area.find({'city':currentCity,"status":"active"}).fetch();
     var areaArray = [];
 	var areaList = [];
 	if(currentAreaList){
@@ -178,7 +178,7 @@ Template.claim.helpers({
 		}//i
 		var pluck = _.pluck(areaArray, 'area');
 		data = _.uniq(pluck);
-		console.log('data ...',data);
+		// console.log('data ...',data);
 
 		if(data.length>0){
 		  for(var j=0;j<data.length;j++){
