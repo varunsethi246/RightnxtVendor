@@ -389,7 +389,7 @@ Template.claim.events({
 		$('.claimOtp').show();
 		$('.claimProcess').show();
 
-		if(mobile != ""){
+		if(mobile){
 			Meteor.call('sendOtp',mobile,otp,
 			function(error,result){
 				if(error){
