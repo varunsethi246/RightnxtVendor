@@ -220,10 +220,58 @@ Template.thumbnailBusinessList.helpers({
 
 	},
 	'offerIngridview'(){
-		var offerCount = Offers.find({"offerStatus":"Active"}).fetch();
-		var offerLength = offerCount.length;
-		console.log(offerCount);
-		console.log(offerLength);
+		if(FlowRouter.getParam('searchText')){
+			var categoryName = FlowRouter.getParam('searchText');
+		}else if(FlowRouter.getParam('category')){
+			var categoryName = FlowRouter.getParam('category');
+		}else{
+			var categoryName = '';
+		}
+
+		if(categoryName){
+			var offerCount = Offers.find({"offerStatus":"Active"}).fetch();
+			if(offerCount.length > 0){
+				for (var i = 0; i < offerCount.length; i++) {
+					var categoriesLevel = [];
+					var businessLink = Business.findOne({'businessLink':offerCount[i].businessLink,'status':'active'});
+					if(businessLink){
+						if(businessLink.businesscategories){
+							if(businessLink.businesscategories.length > 0){
+								for (var j = 0; j < businessLink.businesscategories.length; j++) {
+									var tempArr = businessLink.businesscategories[j].split('>');
+									for(var k=0;k<tempArr.length;k++){
+										categoriesLevel.push(tempArr[k].trim());
+									}
+								}
+							}
+						}
+					}
+
+					// console.log(categoriesLevel);
+					if(categoriesLevel.length > 0){
+						categoryName = categoryName.split('-').join(' ');
+				        if(categoriesLevel.indexOf(categoryName) >= 0){
+			            	var offerLength = 1;
+			            	break;
+			            }else{
+				           	var offerLength = 0;
+	    				}
+					}else{
+						var offerLength = 0;
+					}							
+				}	
+			}else{
+				var offerLength = 0;
+			}
+		}else{
+			// console.log('without category');
+			var offerCount = Offers.find({"offerStatus":"Active"}).fetch();
+			if(offerCount){
+				var offerLength = offerCount.length;
+			}else{
+				var offerLength = 0;
+			}
+		}
 		return offerLength;
 	},
 	isGridViewVisible(){

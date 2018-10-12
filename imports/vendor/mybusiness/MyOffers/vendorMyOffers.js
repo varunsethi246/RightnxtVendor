@@ -1010,21 +1010,23 @@ Template.vendorOffer2.events({
 		var id = $(event.target).parent().parent().parent().parent().parent().find('i').attr('id');
 		var offers = Offers.findOne({"_id":id});
 		var offersImgId = offers.offerImage;
-		var monthVal = (moment($(event.target).find('input[name="expirationFromDate"]').val()).month())+1;
-		var monthVal1 = (moment($(event.target).find('input[name="expirationToDate"]').val()).month())+1;
-		var num = parseInt(monthVal1) - parseInt(monthVal);
-		if(num < 0){
-			var offerStatus = 'Inactive';
-		}else if(num > 0 && offers.offerStatus == 'Active'){
-			var offerStatus = 'Active';
-		}else if(num > 0 && offers.offerStatus == 'Inactive'){
-			var offerStatus = 'Inactive';
-		}
-		else if(offers.offerStatus == 'Payment Pending'){
-			var offerStatus = 'Payment Pending';
+		// var monthVal = (moment($(event.target).find('input[name="expirationFromDate"]').val()).month())+1;
+		// var monthVal1 = (moment($(event.target).find('input[name="expirationToDate"]').val()).month())+1;
+		// var num = parseInt(monthVal1) - parseInt(monthVal);
+		// if(num < 0){
+		// 	var offerStatus = 'Inactive';
+		// }else if(num > 0 && offers.offerStatus == 'Active'){
+		// 	var offerStatus = 'Active';
+		// }else if(num > 0 && offers.offerStatus == 'Inactive'){
+		// 	var offerStatus = 'Inactive';
+		// }
+		
+		if(offers.offerStatus){
+			var offerStatus = offers.offerStatus;
 		}else{
-			var offerStatus = 'New';
+			var offerStatus = "";
 		}
+
 		var businessLink = FlowRouter.getParam('businessLink');
 		
 		if(files[0]){
@@ -1067,7 +1069,7 @@ Template.vendorOffer2.events({
 						"expirationFromDate" 	: $(event.target).find('#usrtimeOne').val(),
 						"expirationToDate" 		: $(event.target).find('#usrtimeTwo').val(),
 						"legalNotices"			: event.target.legalNotices.value,
-						"numOfMonths"			: num,
+						"numOfMonths"			: offers.numOfMonths,
 						"offerImage"			: imgId,
 						"offerStatus"			: offerStatus,
 						"businessLink" 			: businessLink,
@@ -1110,7 +1112,7 @@ Template.vendorOffer2.events({
 				"expirationFromDate" 	: $(event.target).find('#usrtimeOne').val(),
 				"expirationToDate" 		: $(event.target).find('#usrtimeTwo').val(),
 				"legalNotices"			: event.target.legalNotices.value,
-				"numOfMonths"			: num,
+				"numOfMonths"			: offers.numOfMonths,
 				"offerImage"			: offerImageId,
 				"offerStatus"			: offerStatus,
 				"businessLink" 			: businessLink,
