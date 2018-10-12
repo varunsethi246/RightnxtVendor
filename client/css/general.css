@@ -2660,9 +2660,9 @@ top:8.5px;
 font-size:22px
 }
 
-.login-margin {
+/*.login-margin {
 margin-left:36%
-}
+}*/
 
 .deleteBtn:hover {
 border:1px solid red;
@@ -2909,12 +2909,12 @@ padding-left:0
 margin-left:0
 }
 
-.login-margin {
+/*.login-margin {
 margin-left:0;
 padding-top:0;
 position:relative;
 top:-54px
-}
+}*/
 
 .headerLogin-xs {
 padding-top:0;

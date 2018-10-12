@@ -118,15 +118,23 @@ Template.offersTabContent.events({
 
 	    var msg = 'Hi there, <br/><br/>'+name+ ' has share offer with you. Check it out.<p>'+addText+'</p><br/><div style="border: 1px solid #ccc; width: 800px;"><img src='+image+' alt="" style="height: 60px; width: 60px; padding-left: 15px; padding-top: 15px;" /><SPAN style= "font-size: 16px; font-weight: 700; position:absolute; top: 40%; padding-left: 2%;">'+subj+'</SPAN><span style=""><h5 style="padding-right: 15px; padding-left: 15px;">Expiration Date: From '+from+' To '+to+' </h5><hr style="margin-right: 15px; margin-left: 15px;"><p style="font-size: 14px; padding-right: 15px; padding-left: 15px; text-align: justify; font-weight: 400; color: #555;">'+dealDesc+'</p></span></div>';
 
-		Meteor.call('sendEmailRightNxt', toEmail, fromEmail, subj, msg,function(error,result){
-			if(error){
-				Bert.alert(error.reason, 'danger', 'growl-top-right' );
-				return;
+	    if(toEmail){
+	    	if(toEmail.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+				Meteor.call('sendEmailRightNxt', toEmail, fromEmail, subj, msg,function(error,result){
+					if(error){
+						Bert.alert(error.reason, 'danger', 'growl-top-right' );
+						return;
+					}else{
+						$('#shareOfferPage-'+id).modal('hide');
+						Bert.alert('Offer successfully shared with your friend.','success','growl-top-right');
+					}
+				});
 			}else{
-				$('#shareOfferPage-'+id).modal('hide');
-				Bert.alert('Offer successfully shared with your friend.','success','growl-top-right');
-			}
-		});
+	    		Bert.alert('Please enter a valid email address.','danger','growl-top-right');
+	    	}
+	    }else{
+	    	Bert.alert('Please enter email address.','danger','growl-top-right');
+	    }
 	}
 
 });

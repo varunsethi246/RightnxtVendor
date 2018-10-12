@@ -155,6 +155,16 @@ Template.generalHeader.helpers({
 });
 
 Template.header.events({
+	'click .login-margin': function(event){
+		$('.passwordWrongSpan').removeClass('passwordWrongWar');
+	    $('label.error').hide();
+	    $('input[type="text"]').val('');
+	    $('input[type="password"]').val('');
+	    $('input[type="tel"]').val('');
+	    $('input[type="email"]').val('');
+    	$('.loginLabel').removeClass('active');
+	},
+	
 	'click .forgotPass': function(event) {
 	    $('.passwordWrongSpan').removeClass('passwordWrongWar');
 	    $('label.error').hide();
