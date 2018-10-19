@@ -60,7 +60,8 @@ Template.passwords.events({
         } else {
           // console.log('Your password has been changed. Welcome back!');
           Session.set('resetPassword', null);
-          FlowRouter.go('/');
+          // FlowRouter.go('/');
+          FlowRouter.go('/claim');
         }
       });
     }else{

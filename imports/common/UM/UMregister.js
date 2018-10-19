@@ -27,7 +27,8 @@ Template.UMregister.events({
             Meteor.call('addRoles', newID , defaultRoleconfig);
             Meteor.call('createUserByAdminSetEmailToTrue', newID);
             Meteor.logout();
-            FlowRouter.go("/");
+            // FlowRouter.go("/");
+            FlowRouter.go("/claim");
          }
       }); //End of create user
     } //End of Submit event

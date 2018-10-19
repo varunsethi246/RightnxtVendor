@@ -29,7 +29,8 @@ Template.profileSetting.events({
               if(err){
                 Bert.alert('Password can not be changed!', 'danger', 'growl-top-right');
               }else{
-                FlowRouter.go('/');
+                // FlowRouter.go('/');
+                FlowRouter.go('/claim');
                 Bert.alert('Your password has been changed successfully! Please login again!', 'success', 'growl-top-right' );
                 // $("html,body").scrollTop(0);
               }
@@ -45,8 +46,10 @@ Template.profileSetting.events({
 
   'click .userYesbtn': function(event) {
     $('#userDeleteModal').modal('hide');
-              $('.modal-backdrop').hide();
-              FlowRouter.go('/');
+    $('.modal-backdrop').hide();
+    // FlowRouter.go('/');
+    FlowRouter.go('/claim');
+
     Meteor.call('blockUser',function(err, result) {
         if (err) {
           console.log("err",err);
