@@ -58,9 +58,9 @@ SearchSource.defineSource('dropdownSearch', function(searchText, options) {
             {level2: regExp},
             {level3: regExp},
             {level4: regExp},
-            {tags   : regExp},
-            {menuStatus:'Enable'}
-        ]};
+            // {tags   : regExp},
+            // {menuStatus:'Enable'}
+        ],menuStatus:'Enable'};
         var newCatArr = Categories.find(selector, {
                         fields : {"level0":1, "level1":1,"level2":1,"level3":1,"level4":1, "tags":1,"menuStatus":"Enable"},
                         sort   : { level1: 1 },

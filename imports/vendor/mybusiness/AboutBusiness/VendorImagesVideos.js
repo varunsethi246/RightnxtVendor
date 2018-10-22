@@ -341,8 +341,8 @@ Template.vendorImagesVideos.events({
 		          alert('Error during upload: ' + error);
 				  template.currentUpload.set(false);
 		        } else {
-		          // alert('File "' + fileObj._id + '" successfully uploaded');
-		          Bert.alert('Business Video uploaded','success','growl-top-right');
+		            // alert('File "' + fileObj._id + '" successfully uploaded');
+		            Bert.alert('Business Video uploaded','success','growl-top-right');
 		          
 		          	Meteor.call("updateVendorBulkVideo", businessLink,fileObj._id,
 			          function(error, result) { 
@@ -354,6 +354,65 @@ Template.vendorImagesVideos.events({
 					        template.currentUpload.set(false);
 			              }
 			        });
+
+			        var file = e.target.files[0];
+					var fileReader = new FileReader();
+					if (file.type.match('image')) {
+					fileReader.onload = function() {
+					  var img = document.createElement('img');
+					  img.src = fileReader.result;
+					  document.getElementsByTagName('div')[0].appendChild(img);
+					};
+					fileReader.readAsDataURL(file);
+					} else {
+					fileReader.onload = function() {
+					  var blob = new Blob([fileReader.result], {type: file.type});
+					  var url = URL.createObjectURL(blob);
+					  var video = document.createElement('video');
+					  var timeupdate = function() {
+					    if (snapImage()) {
+					      video.removeEventListener('timeupdate', timeupdate);
+					      video.pause();
+					    }
+					  };
+					  video.addEventListener('loadeddata', function() {
+					    if (snapImage()) {
+					      video.removeEventListener('timeupdate', timeupdate);
+					    }
+					  });
+					  var snapImage = function() {
+					    var canvas = document.createElement('canvas');
+					    canvas.width = video.videoWidth;
+					    canvas.height = video.videoHeight;
+					    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+					    var image = canvas.toDataURL();
+					    var success = image.length > 100000;
+					    if (success) {
+					      var img = document.createElement('img');
+					      img.src = image;
+					      // console.log(img.src)
+					      Meteor.call("createVideoThumbnail",img.src,fileObj._id,
+					        function(error, result) { 
+				              if(error) {
+				                console.log ('Error Message: ' +error ); 
+				              }else{
+					        }
+					      });
+					      // document.getElementById('uniqueVid').appendChild(img);
+					      URL.revokeObjectURL(url);
+					    }
+					    return success;
+					  };
+					  video.addEventListener('timeupdate', timeupdate);
+					  video.preload = 'metadata';
+					  video.src = url;
+					  // Load video in Safari / IE11
+					  video.muted = true;
+					  video.playsInline = true;
+					  video.play();
+					};
+					fileReader.readAsArrayBuffer(file);
+					}
 		        }
 		      });
 
@@ -511,7 +570,14 @@ Template.vendorImagesVideos.events({
             if(error) {
                 console.log ('Error Message: ' +error ); 
             }else{
-				  BizVideo.remove({_id: delId[1]});
+				BizVideo.remove({_id: delId[1]});
+				Meteor.call('removeThumbnail',delId[1],
+		            function(error, result) { 
+		            if(error) {
+		                console.log ('Error Message: ' +error ); 
+	                }else{
+	                }
+				});
             }
 		});
 	},
