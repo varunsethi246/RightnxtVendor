@@ -194,7 +194,7 @@ Meteor.methods({
 			var quickWalletUrl = 'https://uat.quikwallet.com';
 		  	var METEOR_URL = 'localhost:3000'; // your production server url
 		}else{
-			var quickWalletUrl = 'https://server.livquik.com';
+			var quickWalletUrl = 'https://uat.quikwallet.com';
 			var METEOR_URL = current;
 		}
 
@@ -255,7 +255,7 @@ Meteor.methods({
 			var quickWalletUrl = 'https://uat.quikwallet.com';
 		  	var METEOR_URL = 'localhost:3000'; // your production server url
 		}else{
-			var quickWalletUrl = 'https://server.livquik.com';
+			var quickWalletUrl = 'https://uat.quikwallet.com';
 
 			var METEOR_URL = current;
 		}
@@ -343,7 +343,7 @@ Meteor.methods({
 		  	// console.log('METEOR_URL :',METEOR_URL);
 		  	// var 
 		}else{
-			var quickWalletUrl = 'https://server.livquik.com';
+			var quickWalletUrl = 'https://uat.quikwallet.com';
 
 			var METEOR_URL = current;
 			// console.log('quickWalletUrl :',quickWalletUrl);
