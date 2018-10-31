@@ -86,7 +86,7 @@ Template.imageCommet.helpers({
 				if(pic){
 					var pic = pic.link();
 				}else{
-					var pic = '/images/rightnxt_image_nocontent.jpg';
+					var pic = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 				}
 			}else{
 				if(businessName.businessImages.length>0){
@@ -95,13 +95,13 @@ Template.imageCommet.helpers({
 						if(pic){
 							var pic = pic.link();
 						}else{
-							var pic = '/images/rightnxt_image_nocontent.jpg';
+							var pic = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 						}
 					}else{
-						var pic = '/images/rightnxt_image_nocontent.jpg';
+						var pic = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 					}
 				}else{
-					var pic = '/images/rightnxt_image_nocontent.jpg';
+					var pic = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 				}	
 			}
 			
@@ -853,11 +853,11 @@ Template.imageReports.events({
 				if(pic){
 					businessData.businessImages = pic.path;
 				}else{
-					businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+					businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 				}
 
 			}else{
-				businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+				businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 			}
 
 			var img = businessData.businessImages;
@@ -878,11 +878,11 @@ Template.imageReports.events({
 				if(pic){
 					businessData.businessImages = pic.path;
 				}else{
-					businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+					businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 				}
 
 			}else{
-				businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+				businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 			}
 			var img = businessData.businessImages;
 			var image = 'https://rightnxt.s3.amazonaws.com/BusinessImages/'+img;

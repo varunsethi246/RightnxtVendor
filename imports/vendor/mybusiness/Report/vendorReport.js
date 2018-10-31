@@ -181,7 +181,7 @@ Template.imageReport.helpers({
 					};	
 				}else{			
 					var data = {
-						img : '/images/rightnxt_image_nocontent.jpg',
+						img : 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg',
 					};
 				}
 			}

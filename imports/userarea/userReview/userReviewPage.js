@@ -202,11 +202,11 @@ Template.userReview.helpers({
 								if(pic){
 									reviewData[i].businessImages = pic.url();
 								}else{
-									reviewData[i].businessImages = '/images/rightnxt_image_nocontent.jpg';
+									reviewData[i].businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 								}
 
 							}else{
-								reviewData[i].businessImages = '/images/rightnxt_image_nocontent.jpg';
+								reviewData[i].businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 							}
 
 						}
@@ -1297,11 +1297,11 @@ Template.userReview.events({
 					if(pic){
 						businessData.businessImages = pic.copies.businessImgS3.key;
 					}else{
-						businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+						businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 					}
 
 				}else{
-					businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+					businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 				}
 
 				var img = businessData.businessImages;
@@ -1333,11 +1333,11 @@ Template.userReview.events({
 					if(pic){
 						businessData.businessImages = pic.copies.businessImgS3.key;
 					}else{
-						businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+						businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 					}
 
 				}else{
-					businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+					businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 				}
 
 				var img = businessData.businessImages;

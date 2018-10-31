@@ -374,11 +374,11 @@ Template.userTimeline.helpers({
 						if(pic){
 							allReviews[i].businessImages = pic.url();
 						}else{
-							allReviews[i].businessImages = '/images/rightnxt_image_nocontent.jpg';
+							allReviews[i].businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 						}
 
 					}else{
-						allReviews[i].businessImages = '/images/rightnxt_image_nocontent.jpg';
+						allReviews[i].businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 					}
 				
 					allReviews[i].reviewDateAgo = moment(allReviews[i].reviewDate).fromNow();
@@ -1131,11 +1131,11 @@ Template.userTimeline.events({
 					if(pic){
 						businessData.businessImages = pic.copies.businessImgS3.key;
 					}else{
-						businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+						businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 					}
 
 				}else{
-					businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+					businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 				}
 
 				var img = businessData.businessImages;
@@ -1166,11 +1166,11 @@ Template.userTimeline.events({
 					if(pic){
 						businessData.businessImages = pic.copies.businessImgS3.key;
 					}else{
-						businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+						businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 					}
 
 				}else{
-					businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+					businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 				}
 
 				var img = businessData.businessImages;

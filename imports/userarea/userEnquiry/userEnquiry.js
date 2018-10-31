@@ -62,13 +62,13 @@ Template.userEnquiryPage.helpers({
 												enqList[i].userProfilePic = pic.url();	
 											}
 											else{
-												enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";	
+												enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";	
 											}
 										}else{
-											enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";	
+											enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";	
 										}
 									}else{
-										enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";
+										enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";
 									}
 								}
 					        	newobj.push(enqList[i]);
@@ -90,13 +90,13 @@ Template.userEnquiryPage.helpers({
 											enqList[i].userProfilePic = pic.url();	
 										}
 										else{
-											enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";	
+											enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";	
 										}
 									}else{
-										enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";	
+										enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";	
 									}
 								}else{
-									enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";
+									enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";
 								}
 							}
 						}
@@ -130,13 +130,13 @@ Template.userEnquiryPage.helpers({
 												enqList[i].userProfilePic = pic.url();	
 											}
 											else{
-												enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";	
+												enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";	
 											}
 										}else{
-											enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";	
+											enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";	
 										}
 									}else{
-										enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";
+										enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";
 									}
 								}
 					        	newobj.push(enqList[i]);
@@ -158,13 +158,13 @@ Template.userEnquiryPage.helpers({
 											enqList[i].userProfilePic = pic.url();	
 										}
 										else{
-											enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";	
+											enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";	
 										}
 									}else{
-										enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";	
+										enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";	
 									}
 								}else{
-									enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";
+									enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";
 								}
 							}
 						}
@@ -199,13 +199,13 @@ Template.userEnquiryPage.helpers({
 												enqList[i].userProfilePic = pic.url();	
 											}
 											else{
-												enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";	
+												enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";	
 											}
 										}else{
-											enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";	
+											enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";	
 										}
 									}else{
-										enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";
+										enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";
 									}
 								}
 					        	newobj.push(enqList[i]);
@@ -227,13 +227,13 @@ Template.userEnquiryPage.helpers({
 											enqList[i].userProfilePic = pic.url();	
 										}
 										else{
-											enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";	
+											enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";	
 										}
 									}else{
-										enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";	
+										enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";	
 									}
 								}else{
-									enqList[i].userProfilePic = "/images/rightnxt_image_nocontent.jpg";
+									enqList[i].userProfilePic = "https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg";
 								}
 							}
 						}

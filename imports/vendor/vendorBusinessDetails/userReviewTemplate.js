@@ -472,11 +472,11 @@ Template.userReviewTemplate.events({
 					if(pic){
 						businessData.businessImages = pic.path;
 					}else{
-						businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+						businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 					}
 
 				}else{
-					businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+					businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 				}
 
 				var img = businessData.businessImages;
@@ -505,11 +505,11 @@ Template.userReviewTemplate.events({
 					if(pic){
 						businessData.businessImages = pic.path;
 					}else{
-						businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+						businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 					}
 
 				}else{
-					businessData.businessImages = '/images/rightnxt_image_nocontent.jpg';
+					businessData.businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 				}
 
 				var img = businessData.businessImages;

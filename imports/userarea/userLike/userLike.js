@@ -65,13 +65,13 @@ Template.userLike.helpers({
 							if(pic){
 								businessImages = pic.url();
 							}else{
-								businessImages = '/images/rightnxt_image_nocontent.jpg';
+								businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 							}
 						}else{
-							businessImages = '/images/rightnxt_image_nocontent.jpg';
+							businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 						}
 					}else{
-						businessImages = '/images/rightnxt_image_nocontent.jpg';
+						businessImages = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg';
 					}
 						var reviewDateAgo = moment(likesData[i].createdAt).fromNow();
 

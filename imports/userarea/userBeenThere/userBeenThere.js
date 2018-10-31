@@ -65,11 +65,11 @@ Template.userBeenThere.helpers({
 						}else if(pic1){
 							userBeenThere[i].ownerPhoto = pic1.url();
 						}else{
-							userBeenThere[i].ownerPhoto = '../images/rightnxt_image_nocontent.jpg'
+							userBeenThere[i].ownerPhoto = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg'
 						}	
 					}
 					else{
-						userBeenThere[i].ownerPhoto = '../images/rightnxt_image_nocontent.jpg'
+						userBeenThere[i].ownerPhoto = 'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/rightnxt_image_nocontent.jpg'
 					}
 
 					beenThereArr.push(userBeenThere[i]);

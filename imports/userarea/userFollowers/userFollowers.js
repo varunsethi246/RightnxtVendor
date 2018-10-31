@@ -581,7 +581,7 @@ fbInvite = function(url){
 	//   method: 'feed',
 	//   link: url,
 	//   caption: 'Check out this site!',
-	//   picture: url+'/images/logo.png',
+	//   picture: url+'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/logo.png',
 	// }, function(response){});
 	FB.ui({
 	    method: 'send',
@@ -590,7 +590,7 @@ fbInvite = function(url){
             object : {
                'og:title'      : 'Check out this site',
                'og:description': 'This is the best site ever',
-               'og:image'      : url+'/images/logo.png' 
+               'og:image'      : url+'https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/logo.png' 
             }
         })
 	});
