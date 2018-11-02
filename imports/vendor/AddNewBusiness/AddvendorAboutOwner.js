@@ -8,8 +8,6 @@ import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import { OwnerImage } from '/imports/videoUploadClient/ownerImageClient.js';
 import ImageCompressor from 'image-compressor.js';
 
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage';
-
 import '../vendor.js';
 import './AddvendorAboutOwner.html';
 

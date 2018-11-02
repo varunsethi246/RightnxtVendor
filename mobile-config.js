@@ -1,6 +1,6 @@
 App.info({
   name: 'Rightnxt Vendor',
-  version: "0.0.1", 
+  version: "1.10.0", 
 });
 
 App.setPreference('loadUrlTimeoutValue', '700000', 'android');

@@ -10,7 +10,6 @@ import { Offers } from '/imports/api/offersMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';
 import { Bookmark } from '/imports/api/bookmarkMaster.js';
 import { BeenThere } from '/imports/api/beenThereMaster.js';
-import { BusinessVideoUpload } from '/client/cfsjs/businessVideo.js';
 import { Likes } from '/imports/api/likesMaster.js';
 import { BussImgLikes } from '/imports/api/businessImageLikesMaster.js';
 import { UserStatistics } from '/imports/api/userViewMaster.js';

@@ -8,7 +8,6 @@ import { Bookmark } from '/imports/api/bookmarkMaster.js';
 import { BeenThere } from '/imports/api/beenThereMaster.js';
 import { Review } from '/imports/api/reviewMaster.js';
 import { FollowUser } from '../../api/userFollowMaster.js';
-import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { SavedOffer } from '/imports/api/savedOffersMaster.js';
 import { Enquiry } from '/imports/api/enquiryMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';

@@ -3,9 +3,6 @@ import { Mongo } from 'meteor/mongo';
 
 import { FollowUser } from '../../api/userFollowMaster.js';
 import { Review } from '../../api/reviewMaster.js';
-import { UserProfileStoreS3New } from '/client/cfsjs/UserProfileS3.js';
-// import  'lib/collections/userCollection.js';
-// import swal from 'sweetalert2'
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 import '../userLayout.js';

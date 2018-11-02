@@ -4,8 +4,6 @@ import { Template } from 'meteor/templating';
 import { Bert } from 'meteor/themeteorchef:bert';
 
 import { Business } from '../../api/businessMaster.js';
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
-import { UserReviewStoreS3New } from '/client/cfsjs/UserReviewS3.js';
 import { Review } from '../../api/reviewMaster.js';
 import { UserImgLikes } from '/imports/api/UserImgLikesMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';

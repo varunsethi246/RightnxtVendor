@@ -3,7 +3,6 @@ import './imageCarouselItems.js';
  
 import { Business } from '/imports/api/businessMaster.js';
 import { BussImgLikes } from '/imports/api/businessImageLikesMaster.js';
-import { BusinessVideoUpload } from '/client/cfsjs/businessVideo.js';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { BizVideo } from '/imports/videoUploadClient/videoUpload.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';

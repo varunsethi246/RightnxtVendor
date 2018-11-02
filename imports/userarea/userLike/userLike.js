@@ -2,7 +2,6 @@ import { Template } from 'meteor/templating' ;
 
 import { Business } from '/imports/api/businessMaster.js';
 import { Likes } from '/imports/api/likesMaster.js';
-import { BusinessImgUploadS3 } from '/client/cfsjs/businessImage.js';
 import { emptyReviewTemplate } from '../../common/emptyReviewTemplate.html';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
