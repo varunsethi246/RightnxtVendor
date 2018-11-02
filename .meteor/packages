@@ -48,8 +48,8 @@ bigdsk:inputmask
 #chart:chart
 tmeasday:publish-counts
 
-ostrio:files
 ostrio:flow-router-extra
+ostrio:files
 dynamic-import@0.5.0
 pfafman:plivo
 meteorhacks:subs-manager
