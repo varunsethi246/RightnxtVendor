@@ -13,9 +13,9 @@ SearchSource.defineSource('business', (searchText, options)=> {
     var listCategory = [];
 
     var searchCity      = splitData[0];
-    var searchArea      = splitData[1];
-    var searchCatg      = splitData[2];
-    var searchString    = splitData[2];
+    var searchArea      = splitData[1].split('-').join(' ');
+    var searchCatg      = splitData[2].split('-').join(' ');
+    var searchString    = splitData[2].split('-').join(' ');
 
     if(searchCity == 'undefined'){
         searchCity = 'Pune';
