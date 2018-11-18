@@ -11,12 +11,12 @@ import './merchantGuidelines.html';
 
 Template.merchantGuidelines.helpers({
 	merchantGuidelinesData(){
-		// var currentURL = FlowRouter.current().path;
-		// var actualURL = currentURL.substring(1);
-		// var splitUrl = currentURL.split('/');
-		// var merchantGuidelines = GeneralContent.findOne({"url": splitUrl[1]});
-		var currentURL = FlowRouter.getParam("url");
-		var merchantGuidelines = GeneralContent.findOne({"url": currentURL});
+		var currentURL = FlowRouter.current().path;
+		var actualURL = currentURL.substring(1);
+		var splitUrl = currentURL.split('/');
+		var merchantGuidelines = GeneralContent.findOne({"url": splitUrl[1]});
+		// var currentURL = FlowRouter.getParam("url");
+		// var merchantGuidelines = GeneralContent.findOne({"url": currentURL});
 		if(merchantGuidelines){
 			return merchantGuidelines;
 		} 

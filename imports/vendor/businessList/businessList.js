@@ -134,6 +134,11 @@ Template.thumbnailBusinessList.helpers({
 
 		if(busList){
 			for(var i = 0  ; i < busList.length ; i++){
+				if(busList[i].businessOwnerId != 'null'){
+					busList[i].ownerId = true;
+				}else{
+					busList[i].ownerId = false;
+				}
 				if(busList[i].businesscategories){
 					for(var j = 0 ; j < busList[i].businesscategories.length; j++){
 						if(busList[i].businesscategories[j]){

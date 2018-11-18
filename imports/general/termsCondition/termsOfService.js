@@ -10,11 +10,11 @@ import './termsOfService.html';
 
 Template.termsOfService.helpers({
 	termsofServiceData(){
-		// var currentURL = FlowRouter.current().path;
-		// var splitStr = currentURL.split('/');
-		// var termsOfService = GeneralContent.findOne({"url": splitStr[1]});
-		var currentURL = FlowRouter.getParam("url");
-		var termsOfService = GeneralContent.findOne({"url": currentURL});
+		var currentURL = FlowRouter.current().path;
+		var splitStr = currentURL.split('/');
+		var termsOfService = GeneralContent.findOne({"url": splitStr[1]});
+		// var currentURL = FlowRouter.getParam("url");
+		// var termsOfService = GeneralContent.findOne({"url": currentURL});
 		return termsOfService;
 	},
 });

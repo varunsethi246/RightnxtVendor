@@ -45,7 +45,11 @@
 											<span class="thumBusOffersSnT">{{busNoOffer}} Offer</span>
 										</div>
 										<div class="thumbEnqBtn" data-link="{{businessLink}}" data-toggle="modal" data-target="#vEnqModal">
-											<button class="btn btn-success">Enquiry</button>
+											{{#if ownerId}}
+												<button class="btn btn-success">Enquiry</button>
+											{{else}}
+												<button class="btn btn-success" disabled>Enquiry</button>
+											{{/if}}
 											<span class="vCmtEnqPageHideGrid">
 												{{> businessEnquiry}}
 											</span>
@@ -116,7 +120,11 @@
 											</div>
 
 											<div class="thumbEnqBtn" data-link="{{businessLink}}" data-toggle="modal" data-target="#vEnqModal">
-												<button class="btn btn-success">Enquiry</button>
+												{{#if ownerId}}
+													<button class="btn btn-success">Enquiry</button>
+												{{else}}
+													<button class="btn btn-success" disabled>Enquiry</button>
+												{{/if}}
 												<span class="vCmtEnqPageHideGrid">
 													{{> businessEnquiry}}
 												</span>

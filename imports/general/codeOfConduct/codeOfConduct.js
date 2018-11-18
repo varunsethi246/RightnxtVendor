@@ -10,11 +10,11 @@ import './codeOfConduct.html';
 
 Template.codeOfConduct.helpers({
 	codeOfConductData(){
-		// var currentURL = FlowRouter.current().path;
-		// var actualURL = currentURL.split("/");
-		// var codeOfConduct = GeneralContent.findOne({"url": actualURL[1]});
-		var currentURL = FlowRouter.getParam("url");
-		var codeOfConduct = GeneralContent.findOne({"url": currentURL});
+		var currentURL = FlowRouter.current().path;
+		var actualURL = currentURL.split("/");
+		var codeOfConduct = GeneralContent.findOne({"url": actualURL[1]});
+		// var currentURL = FlowRouter.getParam("url");
+		// var codeOfConduct = GeneralContent.findOne({"url": currentURL});
 		return codeOfConduct;
 	}
 });

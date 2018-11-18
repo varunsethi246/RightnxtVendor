@@ -10,11 +10,11 @@ import './privacyPolicy.html';
 
 Template.privacyPolicy.helpers({
 	privacyPolicyData(){
-		// var currentURL = FlowRouter.current().path;
-		// var actualURL = currentURL.split("/");
-		// var privacyPolicy = GeneralContent.findOne({"url": actualURL[1]});
-		var currentURL = FlowRouter.getParam("url");
-		var privacyPolicy = GeneralContent.findOne({"url": currentURL});
+		var currentURL = FlowRouter.current().path;
+		var actualURL = currentURL.split("/");
+		var privacyPolicy = GeneralContent.findOne({"url": actualURL[1]});
+		// var currentURL = FlowRouter.getParam("url");
+		// var privacyPolicy = GeneralContent.findOne({"url": currentURL});
 		return privacyPolicy;
 	},
 });
