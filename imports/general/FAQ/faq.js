@@ -342,31 +342,31 @@ Template.faq.events({
 		$(event.currentTarget).parent().parent().removeClass('in');
 	},
 	'click .home': function(event){
-    	FlowRouter.go('/faqs/Introduction');
+    	FlowRouter.go('https://rightnxt.com/faqs/Introduction');
 	    $('.pillsContent').find('.active').removeClass('in active');
 	    $('#home').addClass('in active');
 	    $('.home').addClass('active');
 	},
 	'click .menu1': function(event){
-    	FlowRouter.go('/faqs/Your-Account');
+    	FlowRouter.go('https://rightnxt.com/faqs/Your-Account');
 	    $('.pillsContent').find('.active').removeClass('in active');
 	    $('#menu1').addClass('in active');
 	    $('.menu1').addClass('active');
 	},
 	'click .menu2': function(event){
-    	FlowRouter.go('/faqs/Reviews');
+    	FlowRouter.go('https://rightnxt.com/faqs/Reviews');
 	    $('.pillsContent').find('.active').removeClass('in active');
 	    $('#menu2').addClass('in active');
 	    $('.menu2').addClass('active');
 	},
 	'click .menu3': function(event){
-    	FlowRouter.go('/faqs/Privacy');
+    	FlowRouter.go('https://rightnxt.com/faqs/Privacy');
 	    $('.pillsContent').find('.active').removeClass('in active');
 	    $('#menu3').addClass('in active');
 	    $('.menu3').addClass('active');
 	},
 	'click .menu4': function(event){
-    	FlowRouter.go('/faqs/Business-Owners');
+    	FlowRouter.go('https://rightnxt.com/faqs/Business-Owners');
 	    $('.pillsContent').find('.active').removeClass('in active');
 	    $('#menu4').addClass('in active');
 	    $('.menu4').addClass('active');

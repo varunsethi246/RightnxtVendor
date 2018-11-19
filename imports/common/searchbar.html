@@ -21,6 +21,24 @@
 					<div class="topSearchBarListWrapper">
 						{{#each businessSearchList}}
 							{{#if businessSearchTypeBus searchType}}
+							<div class="topSearchBarListContent optionSearch"  data-catg={{categoryTitle}}>
+								<a>
+									<img src="https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/favicon.ico" style="width: 14px">
+									<span class="selectedTitleVal">{{categoryTitle}}</span>
+									<span class="categoryDropList">[+]</span>
+								</a>
+							</div>
+							{{/if}}
+							{{#if businessSearchTypeBus searchType}}
+							{{else}}
+							<div class="topSearchBarListContent optionSearch" data-busLink={{businessLink}}>
+									<a href="/{{businessLink}}">
+									<i class="fa fa-shopping-bag" style="margin-right: 5px;color: #666;" aria-hidden="true"></i>
+									<span class="selectedTitleVal" data-busTitle={{businessTitle}}>{{businessTitle}} </span>({{businessArea}})
+								</a>
+							</div>
+							{{/if}}
+							<!-- {{#if businessSearchTypeBus searchType}}
 								<div class="topSearchBarListContent optionSearch"  data-catg={{categoryTitle}}>
 									<a>
 										<img src="https://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/general/favicon.ico" style="width: 14px">
@@ -31,14 +49,11 @@
 							{{else}}
 								<div class="topSearchBarListContent optionSearch" data-busLink={{businessLink}}>
 									<a href="/{{businessLink}}">
-										<!-- {{#with searchPageShowImageList businessSelectedImages}}
-											<img src="{{img}}" class="{{checkpngImg}}"  style="width: 14px;border-radius: 50%">
-										{{/with}} -->
 										<i class="fa fa-shopping-bag" style="margin-right: 5px;color: #666;" aria-hidden="true"></i>
 										<span class="selectedTitleVal" data-busTitle={{businessTitle}}>{{businessTitle}} </span>({{businessArea}})
 									</a>
 								</div>
-							{{/if}}
+							{{/if}} -->
 						{{/each}}
 					</div>
 				</div>

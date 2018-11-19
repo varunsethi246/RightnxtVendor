@@ -920,7 +920,7 @@ Template.allbusinessList.events({
             if (!enquiryEmail) {
                 $(".spanEnqEmail").addClass("ErrorRedText");
                 $(".enquiryEmail").addClass("SpanLandLineRedBorder");
-                $( ".spanEnqEmail" ).text("Please Enter Valid Business Email Id" );
+                $( ".spanEnqEmail" ).text("Please enter valid Business email address" );
             }
             if (!enquiryPhoneTwo) {
                 $(".spanEnqPhone").addClass("ErrorRedText");

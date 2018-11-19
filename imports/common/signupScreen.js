@@ -167,7 +167,7 @@ Template.signupScreen.onRendered(function(){
 
   $.validator.addMethod("reget", function(value, element, regexpr) {          
       return regexpr.test(value);
-  }, "Please Enter Valid Mobile Number");
+  }, "Please enter a valid mobile number");
 
   $.validator.addMethod("regex_B", function(value, element, regexpr) {          
       return regexpr.test(value);

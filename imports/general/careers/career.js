@@ -201,7 +201,7 @@ Template.careerJoinUsForm.events({
 Template.jobApplicationForm.events({
 	'focusout input[name="name"]': function(event){
 		if($(event.target).val() != ''){
-			$('#name-error').html('Name should only contains uppercase, lowercase letters and space.');
+			$('#name-error').html('Name should only contain alphabets and spaces.');
 		}
 	},
 	'submit #joinForm': function(event,template){
@@ -569,7 +569,7 @@ Template.jobApplicationForm.onRendered(function(){
 	
 	$.validator.addMethod("regx1", function(value, element, regexpr) {          
     	return regexpr.test(value);
-	}, "Name should only contains uppercase, lowercase letters and space.");
+	}, "Name should only contain alphabets and spaces.");
 	
 	$.validator.addMethod("regx2", function(value, element, regexpr) {          
     	return regexpr.test(value);

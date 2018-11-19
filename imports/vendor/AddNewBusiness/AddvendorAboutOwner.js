@@ -264,7 +264,7 @@ Template.addvendorAboutOwner.events({
 	    } else {
 	        // Bert.alert('Please fill correct fields in form or You must agree with the Terms and Conditions checkbox','danger','growl-top-right');
 	    	if(formValues.businessTermNCon==false){
-	    		$('.SpanBusinessTandC').text("Please agree Terms and Conditions");
+	    		$('.SpanBusinessTandC').text("Please agree to Terms and Conditions");
 	    		$('.SpanBusinessTandC').addClass('ErrorRedText hvr-buzz-out tAndCBlock');
 	    		$('#businessTermNCon').addClass('SpanLandLineRedBorder');
 	    	}

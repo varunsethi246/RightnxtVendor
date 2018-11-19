@@ -30,7 +30,7 @@ Template.vendorBusinessInformation.events({
             $(".linkValid").removeClass("linkAvail");
             $(".SpanBusinessTitle").addClass("ErrorRedText");
             $(".businessTitleC").addClass("SpanLandLineRedBorder");
-            $( ".SpanBusinessTitle" ).text("A valid title should be alphanumeric with space, comma, hyphen(-) & fullstop." );
+            $( ".SpanBusinessTitle" ).text("A valid title should be alphanumeric and can have space, comma, hyphen(-) & fullstop." );
 
          } else {
             $(".SpanBusinessTitle").removeClass("ErrorRedText");
@@ -78,7 +78,7 @@ Template.vendorBusinessInformation.events({
          if (myFuncVar==null||myFuncVar==""||!myFuncVar.match(nameRegex)||myFuncVar.match(whiteSpace)) {
             $(".SpanBusinessEmailId").addClass("ErrorRedText");
             $(".businessEmailIdC").addClass("SpanLandLineRedBorder");
-            $( ".SpanBusinessEmailId" ).text("Please Enter Valid Business Email Id" );
+            $( ".SpanBusinessEmailId" ).text("Please enter valid Business email address" );
 
          } else {
             $(".SpanBusinessEmailId").removeClass("ErrorRedText");

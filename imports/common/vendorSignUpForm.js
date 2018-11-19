@@ -142,7 +142,7 @@ Template.vendorSignUpForm.onRendered(function(){
 
   $.validator.addMethod("regexx2", function(value, element, regexpr) {          
       return regexpr.test(value);
-  }, "Please Enter Valid Mobile Number");
+  }, "Please enter a valid mobile number");
 
   $.validator.addMethod("regex_B3", function(value, element, regexpr) {          
       return regexpr.test(value);

@@ -28,6 +28,7 @@ Template.claim.onRendered(function(){
 	});
 	Session.set('pgno',1);
 	totalpgno = 1;
+	$('.outerPaginationDiv').css('display','none');
 	$('.outerPaginationDiv').find('input').val('');
 	$('.outerPaginationDiv').find('input').removeClass('active');
 	$('#claimBusiness').val('');
@@ -68,7 +69,7 @@ Template.claim.onRendered(function(){
 Template.claim.helpers({ 
 
 	pgcount:function(){
-		var getClaimData   = claimSearch1.getData();
+		var getClaimData  = claimSearch1.getData();
 		if(getClaimData){
 			if(getClaimData.length > 0){
 				var returnpgno = [];
@@ -95,6 +96,7 @@ Template.claim.helpers({
 					}
 				}
 				var result = {'returnpgno' : returnpgno, 'nxtArrow':nxtArrow};
+				// console.log(result);
 				return result;
 			}
 		}     
@@ -128,7 +130,7 @@ Template.claim.helpers({
   	var businessObj = Business.find({});
   	if(businessObj){
   		var ownerId = businessOwnerId;
-  		console.log('ownerId :',ownerId);
+  		// console.log('ownerId :',ownerId);
   		if(ownerId == "null"){
   			var statusClaim    = 'Claim your business';
   			var statusClass    = 'statusClass-g';
@@ -285,6 +287,10 @@ Template.claim.events({
 		$('#alternatenmbers').val('');
 	},
 	"keyup #claimBusiness": _.throttle(function(e) {
+		$('.outerPaginationDiv').css('display','block');
+		$('.outerPaginationDiv').find('input').val('');
+		$('.outerPaginationDiv').find('input').removeClass('active');
+		
 		$('.footer-row').removeClass("hidden-lg");
 		$('.footer-row').removeClass("hidden-md");
 		$('.footer-row').removeClass("hidden-sm");
@@ -356,8 +362,6 @@ Template.claim.events({
 
 	'change #getClaimCity': function(event){
 	    $('.claimRow').hide();
-		$('.outerPaginationDiv').find('input').val('');
-		$('.outerPaginationDiv').find('input').removeClass('active');
 		$('#claimBusiness').val('');
 		$('.footer-row').addClass("hidden-lg");
 		$('.footer-row').addClass("hidden-md");

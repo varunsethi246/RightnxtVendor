@@ -47,7 +47,7 @@ Template.passwords.events({
          //    showConfirmButton: true,
          //    type: 'error'
          // }); //End of error swal
-        Bert.alert('Passwords does not match.','danger','growl-top-right');
+        Bert.alert('Passwords do not match.','danger','growl-top-right');
          
        } //End of else
      }

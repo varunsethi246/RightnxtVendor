@@ -382,7 +382,7 @@ Template.addVendorBusInfo.events({
          $(".linkValid").removeClass("linkAvail");
          $(".SpanBusinessTitle").addClass("ErrorRedText");
          $(".businessTitleC").addClass("SpanLandLineRedBorder");
-         $( ".SpanBusinessTitle" ).text("A valid title should be alphanumeric with space, comma, hyphen(-) & fullstop." );
+         $( ".SpanBusinessTitle" ).text("A valid title should be alphanumeric and can have space, comma, hyphen(-) & fullstop." );
       } else {
          $(".SpanBusinessTitle").removeClass("ErrorRedText");
          $(".businessTitleC").removeClass("SpanLandLineRedBorder");
@@ -636,7 +636,7 @@ Template.addVendorBusInfo.events({
          if (!formValues.businessTitle) {
             $(".SpanBusinessTitle").addClass("ErrorRedText");
             $(".businessTitleC").addClass("SpanLandLineRedBorder");
-            $( ".SpanBusinessTitle" ).text("A valid title should be alphanumeric with space, comma, hyphen(-) & fullstop." );
+            $( ".SpanBusinessTitle" ).text("A valid title should be alphanumeric and can have space, comma, hyphen(-) & fullstop." );
             $(".linkValid").removeClass("linkAvail");
          }
          // if (formValues.businessAboutBus.length<150) {
@@ -647,7 +647,7 @@ Template.addVendorBusInfo.events({
          if (!formValues.businessEmailId) {
             $(".SpanBusinessEmailId").addClass("ErrorRedText");
             $(".businessEmailIdC").addClass("SpanLandLineRedBorder");
-            $( ".SpanBusinessEmailId" ).text("Please Enter Valid Business Email Id" );
+            $( ".SpanBusinessEmailId" ).text("Please enter valid Business email address" );
          }
          if (!formValues.businessAddress) {
             $(".SpanBusinessAddress").addClass("ErrorRedText");

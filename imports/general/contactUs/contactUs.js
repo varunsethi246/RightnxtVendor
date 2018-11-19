@@ -99,7 +99,7 @@ Template.contactUs.events({
     },
 	'focusout input[name="name"]': function(event){
 		if($(event.target).val() != ''){
-			$('#name-error').html('Name should only contains uppercase, lowercase letters and space.');
+			$('#name-error').html('Name should only contain alphabets and spaces.');
 		}
 	},
 	'submit #contactUsFrom': function(event){
@@ -149,7 +149,7 @@ Template.contactUs.onRendered(function(){
 	
 	$.validator.addMethod("regx10", function(value, element, regexpr) {          
     	return regexpr.test(value);
-	}, "Name should only contains uppercase, lowercase letters and space.");
+	}, "Name should only contain alphabets and spaces.");
 
 	$.validator.addMethod("regx11", function(value, element, regexpr) {          
     	return regexpr.test(value);

@@ -63,7 +63,7 @@ Template.businessEnquiry.events({
 			if (myFuncVar==null||myFuncVar==""||!myFuncVar.match(nameRegex)) {
 				$(".spanEnqPhone").addClass("ErrorRedText");
 				$(".enquiryPhone").addClass("SpanLandLineRedBorder");
-				$( ".spanEnqPhone" ).text("Please Enter Valid Mobile Number" );
+				$( ".spanEnqPhone" ).text("Please enter a valid mobile number" );
 			} else {
 				$( ".spanEnqPhone" ).text("" );
 				$(".spanEnqPhone").removeClass("ErrorRedText");
@@ -77,7 +77,7 @@ Template.businessEnquiry.events({
 		if (myFuncVar==null||myFuncVar==""||!myFuncVar.match(nameRegex)) {
 			$(".spanEnqPhone").addClass("ErrorRedText");
 			$(".enquiryPhone").addClass("SpanLandLineRedBorder");
-			$( ".spanEnqPhone" ).text("Please Enter Valid Mobile Number" );
+			$( ".spanEnqPhone" ).text("Please enter a valid mobile number" );
 		} else {
 			$( ".spanEnqPhone" ).text("" );
 			$(".spanEnqPhone").removeClass("ErrorRedText");
@@ -91,7 +91,7 @@ Template.businessEnquiry.events({
 		if (myFuncVar==null||myFuncVar==""||!myFuncVar.match(nameRegex)) {
 			$(".spanEnqEmail").addClass("ErrorRedText");
 			$(".enquiryEmail").addClass("SpanLandLineRedBorder");
-			$( ".spanEnqEmail" ).text("Please Enter Valid Business Email Id" );
+			$( ".spanEnqEmail" ).text("Please enter valid Business email address" );
 		} else {
 			$( ".spanEnqEmail" ).text("" );
 			$(".spanEnqEmail").removeClass("ErrorRedText");
@@ -104,7 +104,7 @@ Template.businessEnquiry.events({
 		if (myFuncVar==null||myFuncVar==""||!myFuncVar.match(nameRegex)) {
 			$(".spanEnqEmail").addClass("ErrorRedText");
 			$(".enquiryEmail").addClass("SpanLandLineRedBorder");
-			$( ".spanEnqEmail" ).text("Please Enter Valid Business Email Id" );
+			$( ".spanEnqEmail" ).text("Please enter valid Business email address" );
 		} else {
 			$( ".spanEnqEmail" ).text("" );
 			$(".spanEnqEmail").removeClass("ErrorRedText");

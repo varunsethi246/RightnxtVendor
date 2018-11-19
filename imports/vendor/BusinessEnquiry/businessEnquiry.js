@@ -433,7 +433,7 @@ Template.businessEnquiry.events({
             if (!enquiryEmail) {
                 $(".spanEnqEmail").addClass("ErrorRedText");
                 $(".enquiryEmail").addClass("SpanLandLineRedBorder");
-                $(".spanEnqEmail" ).text("Please Enter Valid Business Email Id" );
+                $(".spanEnqEmail" ).text("Please enter valid Business email address" );
             }else{
                 $(".spanEnqDesc").removeClass("ErrorRedText");
                 $(".enquiryDesc").removeClass("SpanLandLineRedBorder");

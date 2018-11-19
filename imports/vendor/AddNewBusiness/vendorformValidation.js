@@ -21,7 +21,7 @@ Template.addVendorBusInfo.events({
          if (myFuncVar==null||myFuncVar==""||!myFuncVar.match(nameRegex)) {
             $(".SpanBusinessEmailId").addClass("ErrorRedText");
             $(".businessEmailIdC").addClass("SpanLandLineRedBorder");
-            $( ".SpanBusinessEmailId" ).text("Please Enter Valid Business Email Id" );
+            $( ".SpanBusinessEmailId" ).text("Please enter valid Business email address" );
 
          } else {
             $(".SpanBusinessEmailId").removeClass("ErrorRedText");
