@@ -90,7 +90,7 @@ import '/imports/common/common.js';
     }else{
       if(vendorObj.roles[0] == 'Vendor'){
         $('#loginModal').modal('hide');
-        $('.modal-backdrop').hide();
+        // $('.modal-backdrop').hide();
         Meteor.call('checkEmailVerification', email, (error,data)=>{
           if (data == "verified"){
             Meteor.loginWithPassword(email, pwd, (error)=> {
@@ -109,6 +109,7 @@ import '/imports/common/common.js';
                   // FlowRouter.go('/');
                                         
                   // $('.modal-backdrop').remove();
+                  $('.modal-backdrop').hide();
 
                   var loggedInUser = Meteor.userId();
                   // var user = Meteor.users.findOne({'_id' : loggedInUser });
