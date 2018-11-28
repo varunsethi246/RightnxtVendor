@@ -95,7 +95,7 @@ import '/imports/common/common.js';
           if (data == "verified"){
             Meteor.loginWithPassword(email, pwd, (error)=> {
                if (error) {
-                  $('#loginModal').show();
+                  $('#loginModal').modal('show');
                   $('.passwordWrongSpan').text("Please Enter Valid Email or Password");
                   $('.passwordWrongSpan').addClass('passwordWrongWar');
                   
@@ -126,15 +126,15 @@ import '/imports/common/common.js';
               }
               );
           }else if(data == "unverified"){
-                 $('#loginModal').show();
+                 $('#loginModal').modal('show');
                  $('.passwordWrongSpan').text("Please use the option Verify Account for OTP verification.");
                  $('.passwordWrongSpan').addClass('passwordWrongWar');
           }else if(data == "Blocked"){
-                 $('#loginModal').show();
+                 $('#loginModal').modal('show');
                  $('.passwordWrongSpan').text("You're profile is blocked. Please contact Admin.");
                  $('.passwordWrongSpan').addClass('passwordWrongWar');
           }else{    
-                $('#loginModal').show();
+                $('#loginModal').modal('show');
                 $('.passwordWrongSpan').text("Please Enter Valid Email or Password");
                 $('.passwordWrongSpan').addClass('passwordWrongWar');         
           }
