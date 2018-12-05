@@ -319,12 +319,17 @@ Template.bannerInvoice.helpers({
 		    	businessDetails.discountPercent = paymentCheck.discountPercent;
 		    	businessDetails.totalDiscount 	= paymentCheck.totalDiscount;
 		    	businessDetails.discountedPrice = paymentCheck.discountedPrice;
+				businessDetails.invoiceDate = moment(paymentCheck.invoiceDate).format('DD/MM/YYYY');
+		   //  	if(paymentCheck.paymentStatus == 'unpaid'){
+					// businessDetails.invoiceDate = moment(paymentCheck.invoiceDate).format('DD/MM/YYYY');
+		   //  	}else{
+					// businessDetails.invoiceDate = moment(paymentCheck.paymentDate).format('DD/MM/YYYY');
+		   //  	}
 			}else{
 				businessDetails.invoiceNumber = 'None';
 			}
 			var companyDetails 	= CompanySettings.findOne({'companyId':101});
 
-			businessDetails.invoiceDate = moment(new Date()).format('DD/MM/YYYY');
 			if(companyDetails){
 				businessDetails.companyName = companyDetails.companyName;
 				businessDetails.companyAddress = companyDetails.companyLocationsInfo[0].companyAddress;
@@ -367,6 +372,7 @@ Template.bannerInvoice.helpers({
 
 Template.bannerInvoice.events({
 	'click .bannerPayButton': function(event){
+		console.log("hi");
 		var currentLink = $(event.currentTarget).attr('data-busLink');
 		var currentVal = $(event.currentTarget).siblings('.bannerPayButtonRadio').val();
 		var current = window.location.host;

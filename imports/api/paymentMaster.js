@@ -176,6 +176,7 @@ Meteor.methods({
 	},
 
 	'updateBannerPaymentOnline':function(businessLink,current){
+		// console.log(businessLink,current);
 		var businessBanner = BusinessBanner.find({"businessLink":businessLink,"status":"new"}).fetch();
 		var paymentCheck = Payment.findOne({"businessLink":businessLink,"orderType":"Banner","paymentStatus":"unpaid"});
 		var businessUser = Business.findOne({"businessLink":businessLink});
@@ -397,7 +398,7 @@ Meteor.methods({
 				{"_id": payId},
 				{ $set:	{ 
 							"paymentStatus" 			: "paid",
-							"paymentDate" 				: moment(new Date()).format('DD/MM/YYYY'),
+							"paymentDate" 				: new Date(),
 							"modeOfPayment" 			: "Online",
 							"transactionId"				: id, 
 						}, 
@@ -437,7 +438,7 @@ Meteor.methods({
 			{"_id": payId},
 			{ $set:	{ 
 						"paymentStatus" 			: "paid",
-						"paymentDate" 				: moment(new Date()).format('DD/MM/YYYY'),
+						"paymentDate" 				: new Date(),
 						"modeOfPayment" 			: "online"
 					}, 
 			},
@@ -470,7 +471,7 @@ Meteor.methods({
 			{"_id": payId},
 			{ $set:	{ 
 						"paymentStatus" 			: "paid",
-						"paymentDate" 				: moment(new Date()).format('DD/MM/YYYY'),
+						"paymentDate" 				: new Date(),
 						"modeOfPayment" 			: "online"
 					}, 
 			},
@@ -504,7 +505,7 @@ Meteor.methods({
 			{"_id": _id},
 			{ $set:	{ 
 						"paymentStatus" 			: "paid",
-						"paymentDate" 				: moment(new Date()).format('DD/MM/YYYY'),
+						"paymentDate" 				: new Date(),
 						"modeOfPayment" 			: mode
 					}, 
 			},

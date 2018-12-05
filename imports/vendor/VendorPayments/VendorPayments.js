@@ -36,7 +36,6 @@ Template.paymentSuccessAdsBanners.helpers({
 		var businessLink = FlowRouter.getQueryParam('BusLink');
 		var getPayData = Payment.findOne({"_id":payId});
 		// console.log(getPayData);
-		var checkAdspayment = Payment.find({'_id':payId,'orderType':'Ads'}).fetch();
 
 		// if(getPayData && getPayData.paymentStatus != "paid"){
 		// 	if(status == 'paid'){
@@ -47,31 +46,23 @@ Template.paymentSuccessAdsBanners.helpers({
 		// 	  });
 		//   }
 		// }
-		if(checkAdspayment){
-			// console.log('in updateAdsInvoiceforPayment');
-			if(getPayData && getPayData.paymentStatus != "paid"){
-			// console.log('in updateAdsInvoiceforPayment 2');
-
+		if(getPayData){
+			if(getPayData.orderType == "Ads"){
 				if(status == 'paid'){
-					// console.log('in updateAdsInvoiceforPayment 3');
-
 					Meteor.call("updateAdsInvoiceforPayment",id, billnumbers, payId, businessLink, function(err,result){
 					  if(result){
 	  
 					  }
-				  });
-			  }
-			}
-		}else{
-			// console.log('in updateAdsInvoiceforPayment');
-			if(getPayData && getPayData.paymentStatus != "paid"){
+				    });
+			    }
+			}else if(getPayData.orderType == "Banner"){
 				if(status == 'paid'){
 					Meteor.call("updateAdsBannerInvoiceforPayment",id, billnumbers, payId, businessLink, function(err,result){
 					  if(result){
 	  
 					  }
-				  });
-			  }
+				    });
+				}
 			}
 		}
 	},
@@ -79,59 +70,103 @@ Template.paymentSuccessAdsBanners.helpers({
 		var businessLink = FlowRouter.getQueryParam('BusLink');
 		var payId    		= FlowRouter.getQueryParam('payId');
 		var businessDetails = Business.findOne({"businessLink":businessLink, "status":"active"});
+	    var totalPrice = 0;
 		var paymentCheck = Payment.findOne({"_id":payId});
+		if(paymentCheck){
+
 		  businessDetails.invoiceNumber 	= paymentCheck.invoiceNumber;
 		  businessDetails.discountPercent = paymentCheck.discountPercent;
 		  businessDetails.totalDiscount 	= paymentCheck.totalDiscount;
 		  businessDetails.discountedPrice = paymentCheck.discountedPrice;
-	  var companyDetails 	= CompanySettings.findOne({'companyId':101});
+	  	  businessDetails.invoiceDate = moment(paymentCheck.invoiceDate).format('DD/MM/YYYY');
+	  	  businessDetails.paymentDate = moment(paymentCheck.paymentDate).format('DD/MM/YYYY');
+	      if(paymentCheck.orderType == 'Ads'){
+	      	var businessBanner = BusinessAds.find({"businessLink":businessLink,"status":"active"}).fetch();
+	    	// console.log(businessBanner);
+	    	if(businessBanner){
+		  		businessDetails.isAd 	= true;
+	    		for(i=0;i<businessBanner.length;i++){
+	    			if(businessBanner[i].areas){
+	    				businessBanner[i].numOfAreas=businessBanner[i].areas.length;
+	    			}else{
+	    				businessBanner[i].numOfAreas=0;
+	    			}
+					var monthlyRate = AdsPosition.findOne({'position':parseInt(businessBanner[i].position)});
+	    			businessBanner[i].monthlyRate 	= monthlyRate.rate;
+					businessBanner[i].totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessBanner[i].areas.length) * parseInt(businessBanner[i].noOfMonths);
+					// businessBanner[i].isAd 	= true;
+	    			totalPrice= totalPrice + businessBanner[i].totalAmount;
+	    		}
+	    	}
+	      }else if(paymentCheck.orderType == 'Banner'){
+	      	var businessBanner = BusinessBanner.find({"businessLink":businessLink,"status":"active"}).fetch();
+			// console.log("businessBanner: ",businessBanner);
+			if(businessBanner){
+		  		businessDetails.isAd 	= false;
+				for(i=0;i<businessBanner.length;i++){
+					if(businessBanner[i].areas){
+						businessBanner[i].numOfAreas=businessBanner[i].areas.length;
+					}else{
+						businessBanner[i].numOfAreas=0;
+					}
+					var monthlyRate = Position.findOne({'position':businessBanner[i].position});
+					businessBanner[i].monthlyRate 	= monthlyRate.rate;
+					businessBanner[i].totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessBanner[i].areas.length) * parseInt(businessBanner[i].noOfMonths);
+					// businessBanner[i].isAd 	= false;
+					totalPrice= totalPrice + businessBanner[i].totalAmount;
+				}
+			}
+	      }
+		}
+	    var companyDetails 	= CompanySettings.findOne({'companyId':101});
 
-	  businessDetails.invoiceDate = moment(new Date()).format('DD/MM/YYYY');
-	  if(companyDetails){
+	    if(companyDetails){
 		  businessDetails.companyName = companyDetails.companyName;
 		  businessDetails.companyAddress = companyDetails.companyLocationsInfo[0].companyAddress;
 		  businessDetails.companyCity = companyDetails.companyLocationsInfo[0].companyCity;
 		  businessDetails.companyState = companyDetails.companyLocationsInfo[0].companyState;
 		  businessDetails.companyPincode = companyDetails.companyLocationsInfo[0].companyPincode;
-	  }
+	    }
 	
-	  var totalPrice = 0;
-	  var checkAdspayment = Payment.find({'_id':payId,'orderType':'Ads'}).fetch();
-	  if(checkAdspayment){
-    	var businessBanner = BusinessAds.find({"businessLink":businessLink}).fetch();
-    	// console.log(businessBanner);
-    	if(businessBanner){
-    		for(i=0;i<businessBanner.length;i++){
-    			if(businessBanner[i].areas){
-    				businessBanner[i].numOfAreas=businessBanner[i].areas.length;
-    			}else{
-    				businessBanner[i].numOfAreas=0;
-    			}
-				var monthlyRate = AdsPosition.findOne({'position':parseInt(businessBanner[i].position)});
-    			businessBanner[i].monthlyRate 	= monthlyRate.rate;
-				businessBanner[i].totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessBanner[i].areas.length) * parseInt(businessBanner[i].noOfMonths);
-				businessBanner[i].isAd 	= true;
-    			totalPrice= totalPrice + businessBanner[i].totalAmount;
-    		}
-    	}
-	  }else{
-	  	var businessBanner = BusinessBanner.find({"businessLink":businessLink,"status":"active"}).fetch();
-		// console.log("businessBanner: ",businessBanner);
-		if(businessBanner){
-			for(i=0;i<businessBanner.length;i++){
-				if(businessBanner[i].areas){
-					businessBanner[i].numOfAreas=businessBanner[i].areas.length;
-				}else{
-					businessBanner[i].numOfAreas=0;
-				}
-				var monthlyRate = Position.findOne({'position':businessBanner[i].position});
-				businessBanner[i].monthlyRate 	= monthlyRate.rate;
-				businessBanner[i].totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessBanner[i].areas.length) * parseInt(businessBanner[i].noOfMonths);
-				businessBanner[i].isAd 	= false;
-				totalPrice= totalPrice + businessBanner[i].totalAmount;
-			}
-		}
-	  }
+	 //  var totalPrice = 0;
+	 //  var checkAdspayment = Payment.find({'_id':payId,'orderType':'Ads'}).fetch();
+	 //  if(checkAdspayment){
+  //   	var businessBanner = BusinessAds.find({"businessLink":businessLink}).fetch();
+  //   	// console.log(businessBanner);
+  //   	if(businessBanner){
+	 //  		businessDetails.isAd 	= true;
+  //   		for(i=0;i<businessBanner.length;i++){
+  //   			if(businessBanner[i].areas){
+  //   				businessBanner[i].numOfAreas=businessBanner[i].areas.length;
+  //   			}else{
+  //   				businessBanner[i].numOfAreas=0;
+  //   			}
+		// 		var monthlyRate = AdsPosition.findOne({'position':parseInt(businessBanner[i].position)});
+  //   			businessBanner[i].monthlyRate 	= monthlyRate.rate;
+		// 		businessBanner[i].totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessBanner[i].areas.length) * parseInt(businessBanner[i].noOfMonths);
+		// 		// businessBanner[i].isAd 	= true;
+  //   			totalPrice= totalPrice + businessBanner[i].totalAmount;
+  //   		}
+  //   	}
+	 //  }else{
+	 //  	var businessBanner = BusinessBanner.find({"businessLink":businessLink,"status":"active"}).fetch();
+		// // console.log("businessBanner: ",businessBanner);
+		// if(businessBanner){
+	 //  		businessDetails.isAd 	= false;
+		// 	for(i=0;i<businessBanner.length;i++){
+		// 		if(businessBanner[i].areas){
+		// 			businessBanner[i].numOfAreas=businessBanner[i].areas.length;
+		// 		}else{
+		// 			businessBanner[i].numOfAreas=0;
+		// 		}
+		// 		var monthlyRate = Position.findOne({'position':businessBanner[i].position});
+		// 		businessBanner[i].monthlyRate 	= monthlyRate.rate;
+		// 		businessBanner[i].totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessBanner[i].areas.length) * parseInt(businessBanner[i].noOfMonths);
+		// 		// businessBanner[i].isAd 	= false;
+		// 		totalPrice= totalPrice + businessBanner[i].totalAmount;
+		// 	}
+		// }
+	 //  }
 
 	  businessDetails.businessLink = businessLink;
 	  businessDetails.totalPrice = totalPrice;
@@ -289,7 +324,7 @@ Template.vendorPayments.helpers({
 					paymentDetails[i].receiptLink = "/bannerInvoice/" + paymentDetails[i].businessLink;
 				} else if(paymentDetails[i].orderType=="Ads"){
 					paymentDetails[i].totalAmount = paymentDetails[i].discountedPrice;
-					paymentDetails[i].receiptLink = "/adsInvoice/" + paymentDetails[i].businessLink;
+					paymentDetails[i].receiptLink = "/adsInvoice/" + paymentDetails[i].businessLink+'/'+paymentDetails[i]._id;
 				} else {
 					paymentDetails[i].receiptLink = "/" + paymentDetails[i].businessLink + "/receipt/" + paymentDetails[i].invoiceNumber+'-i';
 				}

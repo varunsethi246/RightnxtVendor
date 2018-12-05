@@ -16,11 +16,11 @@
 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Merchant Ref.:</p>
 								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 venMerRef noPaddingxs">{{merchantRef}}</span>
 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Transaction ID:</p>
-								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 noPaddingxs venMerRef"></span>
+								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 noPaddingxs venMerRef">{{transactionID}}</span>
 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Transaction Message:</p>
 								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 {{paymentclass}} noPaddingxs">{{transactionMsg}}</span>
 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Transaction Date &amp; Time:</p>
-								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 noPaddingxs">{{invDate}}</span>
+								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 noPaddingxs">{{#if paymentcheck}}{{invDate}}{{else}}{{paymentDate}}{{/if}}</span>
 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Payment Method:</p>
 								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 noPaddingxs">{{paymentMode}}</span>
 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Amount Paid:</p>

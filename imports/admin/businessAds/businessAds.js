@@ -249,7 +249,7 @@ Template.businessAds.helpers({
 
 Template.adsInvoice.events({
 	'click .bannerPayButton': function(event){
-		// console.log('hi');
+		console.log('hi');
 		var currentLink = $(event.currentTarget).attr('data-busLink');
 		console.log('data-busLink:',currentLink);
 		var currentVal = $(event.currentTarget).siblings('.bannerPayButtonRadio').val();
@@ -279,21 +279,61 @@ Template.adsInvoice.helpers({
 		}
 	},
 	adsInvoiceData(){
+		var id = FlowRouter.getParam('paymentId');
 		var businessLink = FlowRouter.getParam('businessLink');
   		var businessDetails = Business.findOne({"businessLink":businessLink, "status":"active"});
-		var paymentCheck = Payment.findOne({"businessLink":businessLink,"orderType":"Ads"});
+  		var businessAdsArray = [];
+  		if(id){
+			var paymentCheck = Payment.findOne({"_id":id});
+  		}else{
+			var paymentCheck = Payment.findOne({"businessLink":businessLink,"orderType":"Ads",'paymentStatus':'unpaid'});
+  		}
 
 		if(paymentCheck) {
 			businessDetails.invoiceNumber 	= paymentCheck.invoiceNumber;
 	    	businessDetails.discountPercent = paymentCheck.discountPercent;
 	    	businessDetails.totalDiscount 	= paymentCheck.totalDiscount;
 	    	businessDetails.discountedPrice = paymentCheck.discountedPrice;
+			businessDetails.invoiceDate = moment(paymentCheck.invoiceDate).format('DD/MM/YYYY');
+	   //  	if(paymentCheck.paymentStatus == 'unpaid'){
+				// businessDetails.invoiceDate = moment(paymentCheck.invoiceDate).format('DD/MM/YYYY');
+	   //  	}else{
+				// businessDetails.invoiceDate = moment(paymentCheck.paymentDate).format('DD/MM/YYYY');
+	   //  	}
+
+	   		var totalPrice = 0;
+			if(paymentCheck.businessAds){
+				if(paymentCheck.businessAds.length > 0){
+					for (var i = 0; i < paymentCheck.businessAds.length; i++) {
+	    				var businessAds = BusinessAds.findOne({"_id":paymentCheck.businessAds[i].businessAdsId});
+						if(businessAds){
+			    			if(businessAds.areas){
+			    				var numOfAreas=businessAds.areas.length;
+			    			}else{
+			    				var numOfAreas=0;
+			    			}
+							var monthlyRate = AdsPosition.findOne({'position':parseInt(businessAds.position)});
+			    			monthlyRate1 	= monthlyRate.rate;
+							var totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessAds.areas.length) * parseInt(businessAds.noOfMonths);
+			    			totalPrice= totalPrice + totalAmount;
+			    			businessAdsArray.push({
+			    				'numOfAreas'  : numOfAreas,
+			    				'monthlyRate' : monthlyRate1,
+			    				'totalAmount' : totalAmount,
+			    				'totalPrice'  : totalPrice,
+			    				'category'	  : businessAds.category,
+			    				'position'	  : businessAds.position,
+			    				'noOfMonths'  : businessAds.noOfMonths,
+			    			});
+				    	}			
+					}
+				}
+			}
 		}else{
 			businessDetails.invoiceNumber = 'None';
 		}
 		var companyDetails 	= CompanySettings.findOne({'companyId':101});
 
-		businessDetails.invoiceDate = moment(new Date()).format('DD/MM/YYYY');
 		if(companyDetails){
 			businessDetails.companyName = companyDetails.companyName;
 			businessDetails.companyAddress = companyDetails.companyLocationsInfo[0].companyAddress;
@@ -303,26 +343,26 @@ Template.adsInvoice.helpers({
 
 		}
 
-		var totalPrice = 0;
-    	var businessAds = BusinessAds.find({"businessLink":businessLink}).fetch();
-    	if(businessAds){
-    		for(i=0;i<businessAds.length;i++){
-    			if(businessAds[i].areas){
-    				businessAds[i].numOfAreas=businessAds[i].areas.length;
-    			}else{
-    				businessAds[i].numOfAreas=0;
-    			}
-				var monthlyRate = AdsPosition.findOne({'position':parseInt(businessAds[i].position)});
-    			businessAds[i].monthlyRate 	= monthlyRate.rate;
-				businessAds[i].totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessAds[i].areas.length) * parseInt(businessAds[i].noOfMonths);
-    			totalPrice= totalPrice + businessAds[i].totalAmount;
-    		}
-    	}
+		// var totalPrice = 0;
+  //   	var businessAds = BusinessAds.find({"businessLink":businessLink,'status':'new'}).fetch();
+  //   	if(businessAds){
+  //   		for(i=0;i<businessAds.length;i++){
+  //   			if(businessAds[i].areas){
+  //   				businessAds[i].numOfAreas=businessAds[i].areas.length;
+  //   			}else{
+  //   				businessAds[i].numOfAreas=0;
+  //   			}
+		// 		var monthlyRate = AdsPosition.findOne({'position':parseInt(businessAds[i].position)});
+  //   			businessAds[i].monthlyRate 	= monthlyRate.rate;
+		// 		businessAds[i].totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessAds[i].areas.length) * parseInt(businessAds[i].noOfMonths);
+  //   			totalPrice= totalPrice + businessAds[i].totalAmount;
+  //   		}
+  //   	}
 
 
 	    businessDetails.paymentCheck = paymentCheck.paymentStatus;
     	businessDetails.totalPrice = totalPrice;
-    	businessDetails.businessAds = businessAds;
+    	businessDetails.businessAds = businessAdsArray;
 		return businessDetails;
 	},
 });

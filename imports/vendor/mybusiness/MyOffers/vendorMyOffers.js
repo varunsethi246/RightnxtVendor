@@ -102,6 +102,7 @@ Template.paymentSuccess.helpers({
 			// var dateTime = paymentDetails.invoiceDate.toLocaleString();
 			var dateTime = paymentDetails.invoiceDate;
 			var newDateTime = moment(dateTime).format('DD/MM/YYYY hh:mm');
+			var payDateTime = moment(paymentDetails.paymentDate).format('DD/MM/YYYY hh:mm');
 
 			var data = {
 				businessName			: businessDetails.businessTitle ,
@@ -109,6 +110,7 @@ Template.paymentSuccess.helpers({
 				merchantRef				: paymentDetails._id.toUpperCase(),
 				transactionID			: paymentDetails.transactionId,
 				invDate					: newDateTime,
+				paymentDate				: payDateTime,
 				paymentMode 			: paymentDetails.modeOfPayment,
 				totalAmount				: paymentDetails.totalAmount,
 				totalPrice				: totalPrice,
@@ -659,7 +661,7 @@ Template.paymentInvoice.events({
 				                      		var invoiceDate 	= moment(paymentData.invoiceDate).format();
 				                      		var numberOfOffers 	= paymentData.numberOfOffers;
 				                      		var totalAmount 	= paymentData.totalAmount;
-				                      		var paymentDate		= paymentData.paymentDate;
+				                      		var paymentDate		= moment(paymentData.paymentDate).format('DD/MM/YYYY');
 				                        	var busPaymentId 	= paymentData.businessId;
 				                        	var busId 			= Business.findOne({'_id':busPaymentId});
 				                        	if(busId){
@@ -1264,12 +1266,15 @@ Template.receipt.helpers({
 			
 			var dateTime = paymentDetails.invoiceDate;
 			var newDateTime = moment(dateTime).format('DD/MM/YYYY hh:mm');
+			var payDateTime = moment(paymentDetails.paymentDate).format('DD/MM/YYYY hh:mm');
 
 			var data = {
 				businessName			: businessDetails.businessTitle ,
 				companyName				: companyDetails.companyName,
 				merchantRef				: paymentDetails._id.toUpperCase(),
 				invDate					: newDateTime,
+				paymentDate				: payDateTime,
+				transactionID			: paymentDetails.transactionId,
 				paymentMode 			: paymentDetails.modeOfPayment,
 				totalAmount				: paymentDetails.totalAmount,
 				totalPrice				: totalPrice,
@@ -1449,7 +1454,7 @@ Template.editOffer.events({
                       		var invoiceDate 	= moment(paymentData.invoiceDate).format();
                       		var numberOfOffers 	= paymentData.numberOfOffers;
                       		var totalAmount 	= paymentData.totalAmount;
-                      		var paymentDate		= paymentData.paymentDate;
+                      		var paymentDate		= moment(paymentData.paymentDate).format('DD/MM/YYYY');
                         	var busPaymentId 	= paymentData.businessId;
                         	var busId 			= Business.findOne({'_id':busPaymentId});
                         	if(busId){

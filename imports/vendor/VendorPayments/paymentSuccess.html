@@ -18,7 +18,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <h2 class="adminBannerIn">Invoice for {{#if isAd}}Ads{{else}}Banner{{/if}} Payment</h2>
                         <div class="pull-right bannerInvDate">
-                            <div class="bannerTextFont">Date: <span class="bannerSpanTextFont">{{invoiceDate}}</span></div>
+                            <div class="bannerTextFont">Date: <span class="bannerSpanTextFont">{{paymentDate}}</span></div>
                             <div class="bannerTextFont">Invoice Number: <span class="bannerSpanTextFont">{{invoiceNumber}}</span></div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                                 {{ #each businessBanner	 }}
                                 <tr>
                                     <td> {{category}} </td>
-                                    <td> {{position}}{{#if isAd}}{{else}}-{{rank}}{{/if}} </td>
+                                    <td> {{position}}{{#if ../isAd}}{{else}}-{{rank}}{{/if}} </td>
                                     <td> {{monthlyRate}} </td>
                                     <td> {{numOfAreas}} </td>
                                     <td> {{noOfMonths}} </td>

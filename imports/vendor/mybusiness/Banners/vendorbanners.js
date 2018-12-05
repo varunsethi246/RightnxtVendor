@@ -33,7 +33,7 @@ Template.vendorbanners.helpers({
 					paymentDetails[i].receiptLink = "/bannerInvoice/" + paymentDetails[i].businessLink;
 				} else if(paymentDetails[i].orderType=="Ads"){
 					paymentDetails[i].totalAmount = paymentDetails[i].discountedPrice;
-					paymentDetails[i].receiptLink = "/adsInvoice/" + paymentDetails[i].businessLink;
+					paymentDetails[i].receiptLink = "/adsInvoice/" + paymentDetails[i].businessLink+'/'+paymentDetails[i]._id;
 				} else {
 					paymentDetails[i].receiptLink = "/" + paymentDetails[i].businessLink + "/receipt/" + paymentDetails[i].invoiceNumber;
 				}
