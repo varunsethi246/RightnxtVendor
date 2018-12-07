@@ -1,6 +1,10 @@
 App.info({
+  id : "com.rightvendor",
   name: 'Rightnxt Vendor',
-  version: "1.10.0", 
+  version: "1.0.0", 
+  author: 'iAssure IT',
+  email: 'rightnxt123@gmail.com',
+  website: 'https://rightnxt.com'
 });
 
 App.setPreference('loadUrlTimeoutValue', '700000', 'android');
