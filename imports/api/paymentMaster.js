@@ -446,21 +446,29 @@ Meteor.methods({
 				if(error){
 					return error;
 				}else{
-					BusinessBanner.update(
-						{"businessLink": businessLink, "status":"new"},
-						{ $set:	{ 
-									"status" 	: "active",
-								}, 
-						},{multi: true},
-						function(error1,result1){
-							if(error1){
-								return error1;
-							}
-							if(result1){
-								return result1;
+					// console.log(result);
+					var paymentCheck = Payment.findOne({"_id":payId});
+					if(paymentCheck.businessBanner){
+						if(paymentCheck.businessBanner.length > 0){
+							for (var i = 0; i < paymentCheck.businessBanner.length; i++) {
+			    				BusinessBanner.update(
+									{"_id": paymentCheck.businessBanner[i].businessBannerId},
+									{ $set:	{ 
+												"status" 	: "active",
+											}, 
+									},
+									function(error1,result1){
+										if(error1){
+											return error1;
+										}
+										if(result1){
+											return result1;
+										}
+									}
+								);						
 							}
 						}
-					);
+					}
 					return result;
 				}
 			}
@@ -479,21 +487,28 @@ Meteor.methods({
 				if(error){
 					return error;
 				}else{
-					BusinessAds.update(
-						{"businessLink": businessLink, "status":"new"},
-						{ $set:	{ 
-									"status" 	: "active",
-								}, 
-						},{multi: true},
-						function(error1,result1){
-							if(error1){
-								return error1;
-							}
-							if(result1){
-								return result1;
+					var paymentCheck = Payment.findOne({"_id":payId});
+					if(paymentCheck.businessAds){
+						if(paymentCheck.businessAds.length > 0){
+							for (var i = 0; i < paymentCheck.businessAds.length; i++) {
+			    				BusinessAds.update(
+									{"_id": paymentCheck.businessAds[i].businessAdsId},
+									{ $set:	{ 
+												"status" 	: "active",
+											}, 
+									},
+									function(error1,result1){
+										if(error1){
+											return error1;
+										}
+										if(result1){
+											return result1;
+										}
+									}
+								);						
 							}
 						}
-					);
+					}
 					return result;
 				}
 			}

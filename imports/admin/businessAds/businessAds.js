@@ -313,7 +313,7 @@ Template.adsInvoice.helpers({
 			    				var numOfAreas=0;
 			    			}
 							var monthlyRate = AdsPosition.findOne({'position':parseInt(businessAds.position)});
-			    			monthlyRate1 	= monthlyRate.rate;
+			    			var monthlyRate1 	= monthlyRate.rate;
 							var totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessAds.areas.length) * parseInt(businessAds.noOfMonths);
 			    			totalPrice= totalPrice + totalAmount;
 			    			businessAdsArray.push({

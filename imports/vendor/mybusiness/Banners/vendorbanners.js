@@ -30,7 +30,7 @@ Template.vendorbanners.helpers({
 				var receiptLink = '';
 				if(paymentDetails[i].orderType=="Banner"){
 					paymentDetails[i].totalAmount = paymentDetails[i].discountedPrice;
-					paymentDetails[i].receiptLink = "/bannerInvoice/" + paymentDetails[i].businessLink;
+					paymentDetails[i].receiptLink = "/bannerInvoice/" + paymentDetails[i].businessLink+'/'+paymentDetails[i]._id;
 				} else if(paymentDetails[i].orderType=="Ads"){
 					paymentDetails[i].totalAmount = paymentDetails[i].discountedPrice;
 					paymentDetails[i].receiptLink = "/adsInvoice/" + paymentDetails[i].businessLink+'/'+paymentDetails[i]._id;
