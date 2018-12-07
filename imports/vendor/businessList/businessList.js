@@ -1063,6 +1063,15 @@ Template.businessList.events({
 });
 
 Template.thumbnailBusinessList.events({
+	'click .redirectBusinessLink':function(event){
+		event.preventDefault();
+		if($(event.target).hasClass('fa-map-marker') || $(event.target).hasClass('btn')){
+
+		}else{
+			var path = $(event.currentTarget).attr('data-link');			
+			FlowRouter.go(path);
+		}
+	},
 	'click .thumbEnqBtn':function(event){
 		event.preventDefault();
 		var linkName = $(event.currentTarget).attr('data-link');

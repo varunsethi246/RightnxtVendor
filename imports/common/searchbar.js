@@ -596,15 +596,8 @@ Template.searchbar.events({
 		    // For Business List Page businessList.js fields
 		    // Session.set('searchQueryText',text);
 		    setTimeout(function() {
-		    	if($('.listRelevance').hasClass('busListSelected')){
-					$('.listRelevance').click();
-				}
-				if($('.listOffers').hasClass('busListSelected')){
-					$('.listOffers').click();
-				}
-				if($('.listDistance').hasClass('busListSelected')){
-					$('.listDistance').click();
-				}
+		    	$('.listRelevance').click();
+		    	$('.busListSelectedPre').not('.busListSelectedPre.listRelevance').removeClass('busListSelected');
 				if($('.gridVwBus').hasClass('bkgOrange')){
 					$('.gridVwBus').trigger('click');
 				}
