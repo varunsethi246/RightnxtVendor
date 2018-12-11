@@ -44,16 +44,19 @@
 											</span>
 											<span class="thumBusOffersSnT">{{busNoOffer}} Offer</span>
 										</div>
-										<div class="thumbEnqBtn" data-link="{{businessLink}}" data-toggle="modal" data-target="#vEnqModal">
-											{{#if ownerId}}
+										{{#if ownerId}}
+											<div class="thumbEnqBtn" data-link="{{businessLink}}" data-toggle="modal" data-target="#vEnqModal">
 												<button class="btn btn-success">Enquiry</button>
-											{{else}}
-												<button class="btn btn-success" disabled>Enquiry</button>
-											{{/if}}
-											<span class="vCmtEnqPageHideGrid">
-												{{> businessEnquiry}}
-											</span>
-										</div>
+												<span class="vCmtEnqPageHideGrid">
+													{{> businessEnquiry}}
+												</span>
+											</div>
+										{{else}}
+											<div style="opacity: 0;">
+												<button class="btn">Enquiry</button>
+												<!-- <button class="btn btn-success" disabled>Enquiry</button> -->
+											</div>
+										{{/if}}
 										<div class="thumBusDistance pull-right">
 											{{#if busDist}}{{busDist}}{{else}}--{{/if}} km
 										</div>
@@ -119,16 +122,19 @@
 												<span>{{businessLandline}}{{mobNumSeperator}} {{businessMobile}}</span>
 											</div>
 
-											<div class="thumbEnqBtn" data-link="{{businessLink}}" data-toggle="modal" data-target="#vEnqModal">
-												{{#if ownerId}}
+											{{#if ownerId}}
+												<div class="thumbEnqBtn" data-link="{{businessLink}}" data-toggle="modal" data-target="#vEnqModal">
 													<button class="btn btn-success">Enquiry</button>
-												{{else}}
-													<button class="btn btn-success" disabled>Enquiry</button>
-												{{/if}}
-												<span class="vCmtEnqPageHideGrid">
-													{{> businessEnquiry}}
-												</span>
-											</div>
+													<span class="vCmtEnqPageHideGrid">
+														{{> businessEnquiry}}
+													</span>
+												</div>
+											{{else}}
+												<div style="opacity: 0;">
+													<button class="btn">Enquiry</button>
+													<!-- <button class="btn btn-success" disabled>Enquiry</button> -->
+												</div>
+											{{/if}}
 											
 											<div class="thumBusDistance pull-right">
 												{{#if busDist}}{{busDist}}{{else}}--{{/if}} km
