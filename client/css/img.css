@@ -231,6 +231,10 @@ right:4%;
 top:40%!important
 }
 
+.slick-prev:hover:before, .slick-prev:focus:before, .slick-next:hover:before, .slick-next:focus:before{
+ color: #f89b1c!important;
+}
+
 .imageReportSlider img {
 width:550px;
 height:330px!important

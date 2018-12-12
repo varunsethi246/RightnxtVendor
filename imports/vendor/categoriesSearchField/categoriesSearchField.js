@@ -70,28 +70,33 @@ Template.categoriesSearchField.events({
 						temp = 1;
 					}
 				}
-				if(temp == 0){
-					selectedCategoriesList.push(data);	
-					$('#alistCategory').append("<div class='js-click-tag1 str-tags-each1' id='catgIndex-" + dataIndex + "' > <div class='str-category str-category1' > " + showData + " x </div> </div>");
-					dataIndex = dataIndex + 1;
-					$('.category').text('');
-					$('#agetCategory').val('');
-					var catgList = $('#asearchCategories').val();
-					if(catgList){
-						catgList = catgList + '|' + data;
+
+				if($('#alistCategory>.str-tags-each1').length<5){
+					if(temp == 0){
+						selectedCategoriesList.push(data);	
+						$('#alistCategory').append("<div class='js-click-tag1 str-tags-each1' id='catgIndex-" + dataIndex + "' > <div class='str-category str-category1' > " + showData + " x </div> </div>");
+						dataIndex = dataIndex + 1;
+						$('.category').text('');
+						$('#agetCategory').val('');
+						var catgList = $('#asearchCategories').val();
+						if(catgList){
+							catgList = catgList + '|' + data;
+						}
+						else{
+							catgList = data;
+						}
+						$('#asearchCategories').val(catgList);
+				        $(".SpanCategoryErrors").removeClass("ErrorRedText");
+				        $(".SpanCategoryErrors").text("");
+				        $(".focus-agetCategory1").removeClass("SpanLandLineRedBorder");
+					}else{
+						$('#agetCategory').val('');
 					}
-					else{
-						catgList = data;
-					}
-					$('#asearchCategories').val(catgList);
-			        $(".SpanCategoryErrors").removeClass("ErrorRedText");
-			        $(".SpanCategoryErrors").text("");
-			        $(".focus-agetCategory1").removeClass("SpanLandLineRedBorder");
 				}else{
 					$('#agetCategory').val('');
-					// $(".SpanCategoryErrors").addClass("ErrorRedText");
-			  //       $(".SpanCategoryErrors").text("Please enter the relevant category.");
-			  //       $(".focus-agetCategory1").addClass("SpanLandLineRedBorder");
+			        // $(".SpanCategoryErrors").addClass("ErrorRedText");
+		         //    $(".SpanCategoryErrors").text("You can select max upto 5 categories.");
+		         //    $(".focus-agetCategory1").addClass("SpanLandLineRedBorder");
 				}
 				$('#agetCategory').focus();
 			}else{
@@ -136,9 +141,6 @@ Template.categoriesSearchField.events({
 			}
 			// console.log('newSplitvarCategoryValue : ',newSplitvarCategoryValue);
 			$('#asearchCategories').val(newSplitvarCategoryValue);
-			// $(".SpanCategoryErrors").addClass("ErrorRedText");
-	  //       $(".SpanCategoryErrors").text("Please enter the relevant category.");
-	  //       $(".focus-agetCategory1").addClass("SpanLandLineRedBorder");
 		}
 		
 	},
@@ -196,22 +198,32 @@ Template.categoriesSearchField.events({
 						temp = 1;
 					}
 				}
-				if(temp == 0){
-					selectedCategoriesList.push(text);	
-					$('#alistCategory').append("<div class='js-click-tag1 str-tags-each1' id='catgIndex-" + dataIndex + "' > <div class='str-category str-category1' > " + showData + " x </div> </div>");
-					dataIndex = dataIndex + 1;
-					$('.category').text('');
-					$('#agetCategory').val('');
-					var catgList = $('#asearchCategories').val();
-					if(catgList){
-						catgList = catgList + '|' + text;
+				if($('#alistCategory>.str-tags-each1').length<5){
+					if(temp == 0){
+						selectedCategoriesList.push(text);	
+						$('#alistCategory').append("<div class='js-click-tag1 str-tags-each1' id='catgIndex-" + dataIndex + "' > <div class='str-category str-category1' > " + showData + " x </div> </div>");
+						dataIndex = dataIndex + 1;
+						$('.category').text('');
+						$('#agetCategory').val('');
+						var catgList = $('#asearchCategories').val();
+						if(catgList){
+							catgList = catgList + '|' + text;
+						}
+						else{
+							catgList = text;
+						}
+						$('#asearchCategories').val(catgList);
+						$(".SpanCategoryErrors").removeClass("ErrorRedText");
+			            $(".SpanCategoryErrors").text("");
+			            $(".focus-agetCategory1").removeClass("SpanLandLineRedBorder");
+					}else{
+						$('#agetCategory').val('');
 					}
-					else{
-						catgList = text;
-					}
-					$('#asearchCategories').val(catgList);
 				}else{
 					$('#agetCategory').val('');
+			        // $(".SpanCategoryErrors").addClass("ErrorRedText");
+		         //    $(".SpanCategoryErrors").text("You can select max upto 5 categories.");
+		         //    $(".focus-agetCategory1").addClass("SpanLandLineRedBorder");
 				}
 
 			}
