@@ -71,21 +71,21 @@ Template.vendorBusinessInformation.events({
 
          }
       },
-   'change #businessEmailId': function(){
-         var myFuncVar = $("#businessEmailId").val();
-         var nameRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-         var whiteSpace = /^\S$/;
-         if (myFuncVar==null||myFuncVar==""||!myFuncVar.match(nameRegex)||myFuncVar.match(whiteSpace)) {
-            $(".SpanBusinessEmailId").addClass("ErrorRedText");
-            $(".businessEmailIdC").addClass("SpanLandLineRedBorder");
-            $( ".SpanBusinessEmailId" ).text("Please enter valid Business email address" );
+   // 'change #businessEmailId': function(){
+   //       var myFuncVar = $("#businessEmailId").val();
+   //       var nameRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+   //       var whiteSpace = /^\S$/;
+   //       if (myFuncVar==null||myFuncVar==""||!myFuncVar.match(nameRegex)||myFuncVar.match(whiteSpace)) {
+   //          $(".SpanBusinessEmailId").addClass("ErrorRedText");
+   //          $(".businessEmailIdC").addClass("SpanLandLineRedBorder");
+   //          $( ".SpanBusinessEmailId" ).text("Please enter valid Business email address" );
 
-         } else {
-            $(".SpanBusinessEmailId").removeClass("ErrorRedText");
-            $(".businessEmailIdC").removeClass("SpanLandLineRedBorder");
+   //       } else {
+   //          $(".SpanBusinessEmailId").removeClass("ErrorRedText");
+   //          $(".businessEmailIdC").removeClass("SpanLandLineRedBorder");
 
-         }
-      },
+   //       }
+   //    },
    'focusout #businessAddress': function(){
          var myFuncVar = $("#businessAddress").val();
          // var nameRegex = /^[A-Za-z0-9'\.\-\s\,/]{3,300}$/;

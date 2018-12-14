@@ -346,10 +346,13 @@ Template.bannerInvoice.helpers({
 				    				var numOfAreas=0;
 				    			}
 
-				    			var monthlyRate = Position.findOne({'position':businessBanner.position});
-				    			var monthlyRate1 	= monthlyRate.rate;
-								var totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessBanner.areas.length) * parseInt(businessBanner.noOfMonths);
-				    			totalPrice= totalPrice + totalAmount;
+				    			var monthlyRate = Position.findOne({'position':parseInt(businessBanner.position)});
+				    			// console.log(monthlyRate);
+				    			if(monthlyRate){
+					    			var monthlyRate1 	= monthlyRate.rate;
+									var totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessBanner.areas.length) * parseInt(businessBanner.noOfMonths);
+					    			totalPrice= totalPrice + totalAmount;
+				    			}
 				    			businessBannerArray.push({
 				    				'numOfAreas'  : numOfAreas,
 				    				'monthlyRate' : monthlyRate1,

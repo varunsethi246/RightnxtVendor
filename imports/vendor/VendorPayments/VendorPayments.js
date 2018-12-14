@@ -94,9 +94,11 @@ Template.paymentSuccessAdsBanners.helpers({
 			    				var numOfAreas=0;
 			    			}
 							var monthlyRate = AdsPosition.findOne({'position':parseInt(businessAds.position)});
-			    			var monthlyRate1 	= monthlyRate.rate;
-							var totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessAds.areas.length) * parseInt(businessAds.noOfMonths);
-			    			totalPrice= totalPrice + totalAmount;
+			    			if(monthlyRate){
+				    			var monthlyRate1 	= monthlyRate.rate;
+								var totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessAds.areas.length) * parseInt(businessAds.noOfMonths);
+				    			totalPrice= totalPrice + totalAmount;
+			    			}
 			    			businessBannerArray.push({
 			    				'numOfAreas'  : numOfAreas,
 			    				'monthlyRate' : monthlyRate1,
@@ -141,10 +143,12 @@ Template.paymentSuccessAdsBanners.helpers({
 			    				var numOfAreas=0;
 			    			}
 
-			    			var monthlyRate = Position.findOne({'position':businessBanner.position});
-			    			var monthlyRate1 	= monthlyRate.rate;
-							var totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessBanner.areas.length) * parseInt(businessBanner.noOfMonths);
-			    			totalPrice= totalPrice + totalAmount;
+			    			var monthlyRate = Position.findOne({'position':parseInt(businessBanner.position)});
+			    			if(monthlyRate){
+				    			var monthlyRate1 	= monthlyRate.rate;
+								var totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessBanner.areas.length) * parseInt(businessBanner.noOfMonths);
+				    			totalPrice= totalPrice + totalAmount;
+			    			}
 			    			businessBannerArray.push({
 			    				'numOfAreas'  : numOfAreas,
 			    				'monthlyRate' : monthlyRate1,

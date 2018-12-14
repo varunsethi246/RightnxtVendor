@@ -276,7 +276,7 @@ Template.vendorBusinessInformation.events({
       errorIn = "true";
     } 
 
-    if(errorIn!="true" && formValues.businessTitle && formValues.businessLink && formValues.businessEmailId && formValues.businessAddress && formValues.businessCountry && formValues.businessState && formValues.businessCity && formValues.businessArea && formValues.businessZipCode && venState != "--Select--" && venCity != "--Select--" && venArea != "--Select--") {
+    if(errorIn!="true" && formValues.businessTitle && formValues.businessLink && formValues.businessAddress && formValues.businessCountry && formValues.businessState && formValues.businessCity && formValues.businessArea && formValues.businessZipCode && venState != "--Select--" && venCity != "--Select--" && venArea != "--Select--") {
       // if(venState != "--Select--" && venCity != "--Select--" && venArea != "--Select--") {
         Meteor.call('updateBusInfoAcc', id, formValues, 
           function(error,result){

@@ -484,7 +484,7 @@ Template.addVendorBusInfo.events({
          errorIn = "true";
       }
 
-      if(errorIn!="true" && formValues.businessTitle && formValues.businessLink && formValues.businessEmailId && formValues.businessAddress && formValues.businessCountry && formValues.businessState && formValues.businessCity && formValues.businessArea && formValues.businessZipCode &&venState != "--Select--" && venCity != "--Select--" && venArea != "--Select--"){
+      if(errorIn!="true" && formValues.businessTitle && formValues.businessLink && formValues.businessAddress && formValues.businessCountry && formValues.businessState && formValues.businessCity && formValues.businessArea && formValues.businessZipCode &&venState != "--Select--" && venCity != "--Select--" && venArea != "--Select--"){
          if(Session.get("backlinkurl")){
             var busLink = Session.get("backlinkurl");
             Meteor.call('updateBusinessInfo', busLink, formValues, 
@@ -644,11 +644,11 @@ Template.addVendorBusInfo.events({
          //    $(".businessAbtBus").addClass("SpanLandLineRedBorder");
          //    $( ".SpanbusinessAbtBus" ).text("Please Enter About Business information between 300-1000 characters" );
          // }
-         if (!formValues.businessEmailId) {
-            $(".SpanBusinessEmailId").addClass("ErrorRedText");
-            $(".businessEmailIdC").addClass("SpanLandLineRedBorder");
-            $( ".SpanBusinessEmailId" ).text("Please enter valid Business email address" );
-         }
+         // if (!formValues.businessEmailId) {
+         //    $(".SpanBusinessEmailId").addClass("ErrorRedText");
+         //    $(".businessEmailIdC").addClass("SpanLandLineRedBorder");
+         //    $( ".SpanBusinessEmailId" ).text("Please enter valid Business email address" );
+         // }
          if (!formValues.businessAddress) {
             $(".SpanBusinessAddress").addClass("ErrorRedText");
             $(".businessAddressC").addClass("SpanLandLineRedBorder");

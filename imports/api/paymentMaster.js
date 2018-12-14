@@ -241,6 +241,7 @@ Meteor.methods({
 	'updateAdsPaymentOnline':function(businessLink,current){
 		var businessAds = BusinessAds.find({"businessLink":businessLink,"status":"new"}).fetch();
 		var paymentCheck = Payment.findOne({"businessLink":businessLink,"orderType":"Ads","paymentStatus":"unpaid"});
+		console.log(paymentCheck);
 		var businessUser = Business.findOne({"businessLink":businessLink});
 
 		if(!businessUser.ownerMobile){
@@ -264,7 +265,6 @@ Meteor.methods({
 		// if(paymentCheck.totalAmount){
 		if(paymentCheck.discountedPrice){
 			var quickwalletDetail 	= QuickwalletDetails.findOne({'_id':'2'});
-
 			var userId       	= Meteor.userId();
 			var userObj      	= Meteor.users.findOne({"_id":userId});
 			var mobileNumber 	= businessUser.ownerMobile;
@@ -278,7 +278,7 @@ Meteor.methods({
 				"redirecturl" : 'http://'+METEOR_URL+'/paymentAds-response?payId='+paymentCheck._id+"&InvNo="+paymentCheck.invoiceNumber+"&BusLink="+paymentCheck.businessLink,
 			};
 
-			// console.log('quickWalletInput: ',quickWalletInput);
+			console.log('quickWalletInput: ',quickWalletInput);
 
 			try {
 				if (Meteor.isServer) {

@@ -280,10 +280,10 @@ Template.addvendorOpeningAndClosing.events({
         console.log('error ', err.reason);
       }
       else{
-        // console.log(integerInd);
-        if(integerInd==0){
+        // console.log($('#businessAnythingElse').val(),$('.str-tags-each1').length);
+        if($('.str-tags-each1').length==0 && !($('#businessAnythingElse').val())){
           $(".SpanCategoryErrors").addClass("ErrorRedText");
-          $(".SpanCategoryErrors").text("Please enter the relevant category.");
+          $(".SpanCategoryErrors").text("Please enter either 'Categories' or 'Anything Else'.");
           $(".focus-agetCategory1").addClass("SpanLandLineRedBorder");
         }
         
@@ -405,7 +405,7 @@ Template.addvendorOpeningAndClosing.events({
       (formValues.businessModeOfPay.CreditCard||formValues.businessModeOfPay.Cash||
           formValues.businessModeOfPay.Cheque||formValues.businessModeOfPay.DebitCard||
           formValues.businessModeOfPay.Netbanking||formValues.businessModeOfPay.Paytm) 
-        && formValues.businesscategories.length > 0) {
+        && (formValues.businesscategories.length > 0||formValues.businessAnythingElse)) {
       $(".SpanMobileErrors").removeClass("ErrorRedText");
       $(".SpanModeOfPayErrors").removeClass("ErrorRedText");
       $(".SpanCategoryErrors").removeClass("ErrorRedText");
@@ -536,11 +536,11 @@ Template.addvendorOpeningAndClosing.events({
           $(".SpanModeOfPayErrors").text("Please select mode of payment.");
         }
 
-        if(formValues.businesscategories.length == 0){
+        if(formValues.businesscategories.length == 0 && !formValues.businessAnythingElse){
         // console.log('false3');
           $(".SpanCategoryErrors").addClass("ErrorRedText");
           $(".focus-agetCategory1").addClass("SpanLandLineRedBorder");
-          $(".SpanCategoryErrors").text("Please enter the relevant category."); 
+          $(".SpanCategoryErrors").text("Please enter either 'Categories' or 'Anything Else'."); 
           $('.SpanLandLineRedBorder').find('input').focus();
         }else{
           $('.SpanLandLineRedBorder:visible:first').focus();
