@@ -87,6 +87,7 @@ Template.categoriesSearchField.events({
 						}
 						$('#asearchCategories').val(catgList);
 				        $(".SpanCategoryErrors").removeClass("ErrorRedText");
+			            $("#businessAnythingElse").removeClass("SpanLandLineRedBorder");
 				        $(".SpanCategoryErrors").text("");
 				        $(".focus-agetCategory1").removeClass("SpanLandLineRedBorder");
 					}else{
@@ -216,6 +217,7 @@ Template.categoriesSearchField.events({
 						$(".SpanCategoryErrors").removeClass("ErrorRedText");
 			            $(".SpanCategoryErrors").text("");
 			            $(".focus-agetCategory1").removeClass("SpanLandLineRedBorder");
+			            $("#businessAnythingElse").removeClass("SpanLandLineRedBorder");
 					}else{
 						$('#agetCategory').val('');
 					}

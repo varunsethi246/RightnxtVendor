@@ -27,7 +27,19 @@ Template.vendorOpeningAndClosing.events({
   // 'click :not(.selectOption)':function(event){
   //     $('.showOption').addClass('hideDiv');
   // },
-
+  'change #businessAnythingElse':function(event){
+    if($('#businessAnythingElse').val()||$('.str-tags-each1').length>0){
+      $(".SpanCategoryErrors").removeClass("ErrorRedText");
+      $("#businessAnythingElse").removeClass("SpanLandLineRedBorder");
+      $(".SpanCategoryErrors").text("");
+      $(".focus-agetCategory1").removeClass("SpanLandLineRedBorder");
+    }else{
+      $(".SpanCategoryErrors").addClass("ErrorRedText");
+      $("#businessAnythingElse").addClass("SpanLandLineRedBorder");
+      $(".SpanCategoryErrors").text("Please enter either 'Categories' or 'Anything Else'.");
+      $(".focus-agetCategory1").addClass("SpanLandLineRedBorder");
+    }
+  },
   'keypress #fromTime':function(event){
     return false;
   },
@@ -162,6 +174,7 @@ Template.vendorOpeningAndClosing.events({
         // console.log('true');
         $(".SpanMobileErrors").removeClass("ErrorRedText");
         $(".SpanModeOfPayErrors").removeClass("ErrorRedText");
+        $("#businessAnythingElse").removeClass("SpanLandLineRedBorder");
         $(".SpanCategoryErrors").removeClass("ErrorRedText");
         $(".SpanMobileErrors").text("");
         $(".SpanModeOfPayErrors").text("");
@@ -268,6 +281,7 @@ Template.vendorOpeningAndClosing.events({
             $(".focus-agetCategory1").addClass("SpanLandLineRedBorder");
             $(".SpanCategoryErrors").text("Please enter either 'Categories' or 'Anything Else'."); 
             $('.SpanLandLineRedBorder').find('input').focus();
+            $("#businessAnythingElse").addClass("SpanLandLineRedBorder");
           }else{
             $('.SpanLandLineRedBorder:visible:first').focus();
           }
@@ -543,13 +557,15 @@ Template.vendorOpeningAndClosing.helpers({
 
 Template.vendorOpeningAndClosing.events({
   'click .showCategory' : function(event){
+    // console.log('true:',event);
     var businessLink = FlowRouter.getParam('businessLink');
     
-    var getdataIndex = $(event.target).parent().attr('id');
+    var getdataIndex = $(event.currentTarget).parent().attr('id');
     
     var ind = getdataIndex.split('-') ;
 
     var integerInd = parseInt(ind[1]);
+    // console.log('integerInd:',integerInd);
 
     var removeCategory = Business.findOne({"businessLink":businessLink} , { businesscategories : { $slice : [integerInd , 1] } });
     
@@ -563,8 +579,10 @@ Template.vendorOpeningAndClosing.events({
           $(".SpanCategoryErrors").addClass("ErrorRedText");
           $(".SpanCategoryErrors").text("Please enter either 'Categories' or 'Anything Else'.");
           $(".focus-agetCategory1").addClass("SpanLandLineRedBorder");
+          $("#businessAnythingElse").addClass("SpanLandLineRedBorder");
         }
         var indexx = selectedCategoriesList.indexOf(removeCategory.businesscategories[integerInd]);
+        // console.log('indexx:',indexx);
      
         if (indexx > -1) {
            selectedCategoriesList.splice(indexx, 1);

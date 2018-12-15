@@ -241,7 +241,7 @@ Meteor.methods({
 	'updateAdsPaymentOnline':function(businessLink,current){
 		var businessAds = BusinessAds.find({"businessLink":businessLink,"status":"new"}).fetch();
 		var paymentCheck = Payment.findOne({"businessLink":businessLink,"orderType":"Ads","paymentStatus":"unpaid"});
-		console.log(paymentCheck);
+		// console.log(paymentCheck);
 		var businessUser = Business.findOne({"businessLink":businessLink});
 
 		if(!businessUser.ownerMobile){
