@@ -990,6 +990,16 @@ Template.vendorOffer2.helpers({
 });
 
 Template.vendorOffer2.events({
+	'click #locationIcon':function(event){
+		event.preventDefault();
+	    $('.modal-backdrop').hide();
+		var windowWidth = $(window).width();
+		if(windowWidth <= 767){
+    		FlowRouter.go('/terms-of-service');
+		}else{
+    		FlowRouter.go('https://rightnxt.com/terms-of-service');
+		}
+	},
 	'change .dealy':function(event){
 		// var dealDescriptionval = event.target.dealTemplate.value;
 		var dealDescriptionval = $('.dealy').val();

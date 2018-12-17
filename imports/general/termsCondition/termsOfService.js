@@ -20,6 +20,10 @@ Template.termsOfService.helpers({
 });
 
 Template.termsOfService.onRendered(function(){
+	$(window).on('popstate', function() {
+	    $('.modal').modal('hide');
+	    $('.modal-backdrop').hide();
+	  });
 	$("#visible-lg").removeClass("merchantGuidelineslg");
 	$("#visible-md").removeClass("merchantGuidelinesmd");
 	$("#visible-sm").removeClass("merchantGuidelinessm");
