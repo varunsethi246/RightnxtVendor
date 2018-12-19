@@ -35,7 +35,7 @@ Template.addVendorBusInfo.events({
          if (myFuncVar==null||myFuncVar=="") {
             $(".SpanBusinessAddress").addClass("ErrorRedText");
             $(".businessAddressC").addClass("SpanLandLineRedBorder");
-            $( ".SpanBusinessAddress" ).text("Please Enter Address" );
+            $( ".SpanBusinessAddress" ).text("Please enter the valid address of your Business" );
 
          } else {
             $(".SpanBusinessAddress").removeClass("ErrorRedText");
@@ -200,7 +200,7 @@ Template.addvendorOpeningAndClosing.events({
          if (!myFuncVar.match(nameRegex)&&myFuncVar) {
             $(".SpanMobileErrors").addClass("ErrorRedText");
             $(".businessLandlineC").addClass("SpanLandLineRedBorder");
-            $(".SpanMobileErrors").text("Please Enter Valid Landline or 10 digit Mobile Number" );
+            $(".SpanMobileErrors").text("Please enter valid Landline or 10 digit Mobile Number" );
          } else {
             $(".businessLandlineC").removeClass("SpanLandLineRedBorder");
             $(".SpanMobileErrors").text("");
@@ -210,7 +210,7 @@ Template.addvendorOpeningAndClosing.events({
               if(myFuncVarMob.length<10){
                 $('.businessMobileC').addClass("SpanLandLineRedBorder");
                 $(".SpanMobileErrors").addClass("ErrorRedText");
-                $(".SpanMobileErrors").text("Please Enter Valid Landline or 10 digit Mobile Number");
+                $(".SpanMobileErrors").text("Please enter valid Landline or 10 digit Mobile Number");
               }
             }
          }
@@ -247,14 +247,14 @@ Template.addvendorOpeningAndClosing.events({
               if(myFuncVar.length<10){
                 $(".SpanMobileErrors").addClass("ErrorRedText");
                 $(".businessMobileC").addClass("SpanLandLineRedBorder");
-                $(".SpanMobileErrors").text("Please Enter Valid Landline or 10 digit Mobile Number");
+                $(".SpanMobileErrors").text("Please enter valid Landline or 10 digit Mobile Number");
               }
             }
             if(mylandLine){
               if(!mylandLine.match(nameRegexLandLine)){
                 $(".SpanMobileErrors").addClass("ErrorRedText");
                 $(".businessLandlineC").addClass("SpanLandLineRedBorder");
-                $(".SpanMobileErrors").text("Please Enter Valid Landline or 10 digit Mobile Number");
+                $(".SpanMobileErrors").text("Please enter valid Landline or 10 digit Mobile Number");
               }
             }
           }
@@ -268,7 +268,7 @@ Template.addvendorOpeningAndClosing.events({
             if(myFuncVar.length<10){
               $(".SpanMobileErrors").addClass("ErrorRedText");
               $(".businessMobileC").addClass("SpanLandLineRedBorder");
-              $(".SpanMobileErrors").text("Please Enter Valid Landline or 10 digit Mobile Number");
+              $(".SpanMobileErrors").text("Please enter valid Landline or 10 digit Mobile Number");
             }
             if(myFuncVar.length==10){
                 $(".SpanMobileErrors").removeClass("ErrorRedText");
@@ -281,7 +281,7 @@ Template.addvendorOpeningAndClosing.events({
             if(!mylandLine.match(nameRegexLandLine)){
               $(".SpanMobileErrors").addClass("ErrorRedText");
               $(".businessLandlineC").addClass("SpanLandLineRedBorder");
-              $(".SpanMobileErrors").text("Please Enter Valid Landline or 10 digit Mobile Number");
+              $(".SpanMobileErrors").text("Please enter valid Landline or 10 digit Mobile Number");
             }
           }
         }
@@ -289,7 +289,7 @@ Template.addvendorOpeningAndClosing.events({
         if(!myFuncVar&&!mylandLine){
           $(".SpanMobileErrors").addClass("ErrorRedText");
           $(".businessMobileC").addClass("SpanLandLineRedBorder");
-          $(".SpanMobileErrors").text("Please Enter Valid Landline or 10 digit Mobile Number");
+          $(".SpanMobileErrors").text("Please enter valid Landline or 10 digit Mobile Number");
         }
     },
 

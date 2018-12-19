@@ -262,7 +262,7 @@ Template.vendorOpeningAndClosing.events({
             $(".SpanMobileErrors").addClass("ErrorRedText");
             $(".businessLandlineC").addClass("SpanLandLineRedBorder");
             $(".businessMobileC").addClass("SpanLandLineRedBorder");
-            $(".SpanMobileErrors").text("Please Enter Valid Landline or 10 digit Mobile Number");
+            $(".SpanMobileErrors").text("Please enter valid Landline or 10 digit Mobile Number");
           }
 
           if (formValues.businessModeOfPay.CreditCard || formValues.businessModeOfPay.Cash ||

@@ -535,7 +535,7 @@ Template.addvendorOpeningAndClosing.events({
         if(formValues.businessLandline || formValues.businessMobile) {
         }else{
           // console.log('false1');
-          $(".SpanMobileErrors").text("Please Enter Valid Landline or 10 digit Mobile Number");
+          $(".SpanMobileErrors").text("Please enter valid Landline or 10 digit Mobile Number");
           $(".SpanMobileErrors").addClass("ErrorRedText");
           $(".businessLandlineC").addClass("SpanLandLineRedBorder");
           $(".businessMobileC").addClass("SpanLandLineRedBorder");

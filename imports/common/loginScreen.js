@@ -12,7 +12,7 @@ import '/imports/common/common.js';
       event.preventDefault();
 
       // var forgotPasswordForm = $(e.currentTarget);
-      console.log('T');
+      // console.log('T');
       var email , trimInput ;
 
       // var emailVar = e.target.email.value;
@@ -24,10 +24,10 @@ import '/imports/common/common.js';
       if(emailVar){
         emailtrim = trimInput(emailVar);
         email     = emailtrim.toLowerCase();
-        console.log(email);
+        // console.log(email);
         var vendorObj = Meteor.users.findOne({"emails.address":email});
         if(!vendorObj){
-          Bert.alert('This email address does not exist.','danger','growl-top-right');
+          Bert.alert('The entered email address doesn’t exist in our Vendor database','danger','growl-top-right');
         }else{
           if(vendorObj.roles[0] == 'Vendor'){
             $('.enteredEmail').text(email);
@@ -48,11 +48,11 @@ import '/imports/common/common.js';
               }
             });
           }else{
-            Bert.alert("You can't change your password. Please contact Admin.","danger","growl-top-right");
+            Bert.alert("You can’t change your password. Please contact us at support@rightnxt.com or call our support staff.","danger","growl-top-right");
           }
         }
       }else{
-        Bert.alert('Please enter the email address.',"danger","growl-top-right");
+        Bert.alert('Please enter your registered email address',"danger","growl-top-right");
       }
           
         // Bert.alert( "Instructions sent! We've sent an email with instructions on how to reset your password.If you don't receive an email within a few minutes, check your spam and junk folders.", 'success', 'growl-top-right' );
@@ -85,7 +85,7 @@ import '/imports/common/common.js';
     var vendorObj = Meteor.users.findOne({"emails.address":email});
     if(!vendorObj){      
       // Bert.alert('This email address does not exist.','danger','growl-top-right');
-      $('.passwordWrongSpan').text("This email address does not exist");
+      $('.passwordWrongSpan').text("The entered email address doesn’t exist in our Vendor database");
       $('.passwordWrongSpan').addClass('passwordWrongWar');
     }else{
       if(vendorObj.roles[0] == 'Vendor'){
@@ -96,7 +96,7 @@ import '/imports/common/common.js';
             Meteor.loginWithPassword(email, pwd, (error)=> {
                if (error) {
                   $('#loginModal').modal('show');
-                  $('.passwordWrongSpan').text("Please Enter Valid Email or Password");
+                  $('.passwordWrongSpan').text("The email address or password you entered is not valid. Please try again");
                   $('.passwordWrongSpan').addClass('passwordWrongWar');
                   
                   // Bert.alert( error.reason, 'danger', 'fixed-top', 'fa-frown-o' );
@@ -135,12 +135,12 @@ import '/imports/common/common.js';
                  $('.passwordWrongSpan').addClass('passwordWrongWar');
           }else{    
                 $('#loginModal').modal('show');
-                $('.passwordWrongSpan').text("Please Enter Valid Email or Password");
+                $('.passwordWrongSpan').text("The email address or password you entered is not valid. Please try again");
                 $('.passwordWrongSpan').addClass('passwordWrongWar');         
           }
         });
       }else{
-        $('.passwordWrongSpan').text("You can't login into the system. Please contact Admin.");
+        $('.passwordWrongSpan').text("Something is wrong with your account’s email id. Please contact us at support@rightnxt.com or call our support staff.");
         $('.passwordWrongSpan').addClass('passwordWrongWar');
       }
     }

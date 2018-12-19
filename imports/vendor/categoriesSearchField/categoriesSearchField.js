@@ -95,9 +95,9 @@ Template.categoriesSearchField.events({
 					}
 				}else{
 					$('#agetCategory').val('');
-			        // $(".SpanCategoryErrors").addClass("ErrorRedText");
-		         //    $(".SpanCategoryErrors").text("You can select max upto 5 categories.");
-		         //    $(".focus-agetCategory1").addClass("SpanLandLineRedBorder");
+			        $(".SpanCategoryErrors").addClass("ErrorRedText");
+		            $(".SpanCategoryErrors").text("You can select max upto 5 categories.");
+		            $(".focus-agetCategory1").addClass("SpanLandLineRedBorder");
 				}
 				$('#agetCategory').focus();
 			}else{

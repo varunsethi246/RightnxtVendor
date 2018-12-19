@@ -35,8 +35,8 @@ Template.addVendorBusInfo.helpers({
          if(Session.get("backlinkurl")){
             // console.log('in back url');
             var businessLink = Session.get("backlinkurl");
-            // console.log('businessLink :',businessLink);
-            // console.log('Session.get("backlinkurl") :',Session.get("backlinkurl"));
+            console.log('businessLink :',businessLink);
+            console.log('Session.get("backlinkurl") :',Session.get("backlinkurl"));
             var busData = Business.findOne({"businessLink":businessLink});
             busData.completedPercent = 25;            
          }else{
@@ -157,7 +157,7 @@ Template.addVendorBusInfo.events({
          }
       }, 1);
    },
-   'focusout .businessAbtBus':function(){
+   'focusout .businessAbtBus':function(event){
         var myFuncVar = $(".businessAbtBus").val();
         if ((myFuncVar.length>0&&myFuncVar.length<150)||myFuncVar.length>2500) {
             $(".SpanbusinessAbtBus").addClass("ErrorRedText");
@@ -204,7 +204,7 @@ Template.addVendorBusInfo.events({
         }
    },
 
-   'change .addVenState': function () {
+   'change .addVenState': function (event) {
       var state = $(".addVenState").val();
       Session.set("addVenStateSes",state);
 
@@ -218,7 +218,7 @@ Template.addVendorBusInfo.events({
             $(".addVenState").removeClass("SpanLandLineRedBorder");
          }
    },
-   'change .businessCityC': function () {
+   'change .businessCityC': function (event) {
       var city = $(".businessCityC").val();
       Session.set("addVenCitySes",city);
 
@@ -232,7 +232,7 @@ Template.addVendorBusInfo.events({
          $(".addVenCity").removeClass("SpanLandLineRedBorder");
       }
    },
-   'change .businessAreaC': function () {
+   'change .businessAreaC': function (event) {
       var area = $(".businessAreaC").val();
       Session.set("addVenAreaSes",area);
 
@@ -273,17 +273,28 @@ Template.addVendorBusInfo.events({
          }
       } else {
          $(".SpanBusinessLink").text(" ");
-         var data = Business.findOne({"businessLink":myFuncVarLink});
-         if(data&&Session.get('backlinkurl') !== myFuncVarLink){
+         var data = Business.find({}).fetch();
+         if(data.length > 0){
+            for (var i = 0; i < data.length; i++) {
+               if(data[i].businessLink){
+                  if(data[i].businessLink.toUpperCase() == myFuncVarLink.toUpperCase()){
+                     var linkFound = true;
+                     break;
+                  }
+               }
+            }
+         }
+
+         if(linkFound){
             $(".SpanBusinessLink").addClass("ErrorRedText hvr-buzz-out");
             $(".SpanBusinessLink").text("Link already exists");
             $(".businessLinkC").addClass("SpanLandLineRedBorder");
             $(".SpanBusinessLink").removeClass("linkAvail");
-         } else {
+         }else{
+            $(".SpanBusinessLink").removeClass(" ErrorRedText hvr-buzz-out");
             $(".SpanBusinessLink").addClass("linkAvail");
-            $(".SpanBusinessLink").text("Link Available");
             $(".businessLinkC").removeClass("SpanLandLineRedBorder");
-            $(".SpanBusinessLink").removeClass("ErrorRedText hvr-buzz-out");
+            $( ".SpanBusinessLink" ).text("Link Available");
          }
       }
       $("#businessLink").val(myFuncVarLink);
@@ -291,10 +302,10 @@ Template.addVendorBusInfo.events({
    'focusout .businessLinkC': function(event){
       var myFuncVar = $("#businessLink").val().replace(/ /g,'');
       var myFuncVarLink = $("#businessLink").val().replace(/ /g,'');
-      var data = Business.findOne({"businessLink":myFuncVarLink});
       var nameRegex = /^[A-Za-z0-9-]{1,50}$/;
 
-      if (myFuncVar==null||myFuncVar==""||data||!myFuncVarLink.match(nameRegex)) {
+      // if (myFuncVar==null||myFuncVar==""||data||!myFuncVarLink.match(nameRegex)) {
+      if (myFuncVar==null||myFuncVar==""||!myFuncVarLink.match(nameRegex)) {
          if(myFuncVarLink==null||myFuncVarLink==""){
             $(".SpanBusinessLink").addClass("hvr-buzz-out ErrorRedText hvr-buzz-out");
             $(".SpanBusinessLink").text("Please enter link");
@@ -307,28 +318,48 @@ Template.addVendorBusInfo.events({
             $(".businessLinkC").addClass("SpanLandLineRedBorder");
             $( ".SpanBusinessLink" ).text("A valid link should be alphanumeric with only hyphens(-)" );
          }
-
-         if(data&&Session.get('backlinkurl') !== myFuncVarLink){
-            $(".SpanBusinessLink").removeClass("linkAvail");
-            $(".SpanBusinessLink").addClass("hvr-buzz-out ErrorRedText");
-            $(".businessLinkC").addClass("SpanLandLineRedBorder");
-            $( ".SpanBusinessLink" ).text("A unique link should be alphanumeric with only hyphens(-)" );
-         }
+         
+         // if(data&&Session.get('backlinkurl') !== myFuncVarLink){
+         //    $(".SpanBusinessLink").removeClass("linkAvail");
+         //    $(".SpanBusinessLink").addClass("hvr-buzz-out ErrorRedText");
+         //    $(".businessLinkC").addClass("SpanLandLineRedBorder");
+         //    $( ".SpanBusinessLink" ).text("A unique link should be alphanumeric with only hyphens(-)" );
+         // }
       }else {
-         $(".SpanBusinessLink").removeClass(" ErrorRedText hvr-buzz-out");
-         $(".SpanBusinessLink").addClass("linkAvail");
-         $(".businessLinkC").removeClass("SpanLandLineRedBorder");
-         $( ".SpanBusinessLink" ).text("Link Available");
+         var data = Business.find({}).fetch();
+         if(data.length > 0){
+            for (var i = 0; i < data.length; i++) {
+               if(data[i].businessLink){
+                  if(data[i].businessLink.toUpperCase() == myFuncVarLink.toUpperCase()){
+                     var linkFound = true;
+                     break;
+                  }
+               }
+            }
+         }
+
+         if(linkFound){
+            $(".SpanBusinessLink").addClass("ErrorRedText hvr-buzz-out");
+            $(".SpanBusinessLink").text("Link already exists");
+            $(".businessLinkC").addClass("SpanLandLineRedBorder");
+            $(".SpanBusinessLink").removeClass("linkAvail");
+         }else{
+            $(".SpanBusinessLink").removeClass(" ErrorRedText hvr-buzz-out");
+            $(".SpanBusinessLink").addClass("linkAvail");
+            $(".businessLinkC").removeClass("SpanLandLineRedBorder");
+            $( ".SpanBusinessLink" ).text("Link Available");
+         }
       }
       $("#businessLink").val(myFuncVarLink);
    },
    'keypress .businessLinkC':function(event){
       var myFuncVar = $("#businessLink").val().replace(/ /g,'');
       var myFuncVarLink = $("#businessLink").val().replace(/ /g,'');
-      var data = Business.findOne({"businessLink":myFuncVarLink});
+      // var data = Business.findOne({"businessLink":myFuncVarLink});
       var nameRegex = /^[A-Za-z0-9-]{1,50}$/;
 
-      if (myFuncVar==null||myFuncVar==""||data||!myFuncVarLink.match(nameRegex)) {
+      // if (myFuncVar==null||myFuncVar==""||data||!myFuncVarLink.match(nameRegex)) {
+      if (myFuncVar==null||myFuncVar==""||!myFuncVarLink.match(nameRegex)) {
          if(myFuncVarLink==null||myFuncVarLink==""){
             $(".SpanBusinessLink").addClass("hvr-buzz-out ErrorRedText hvr-buzz-out");
             $(".SpanBusinessLink").text("Please enter link");
@@ -342,17 +373,17 @@ Template.addVendorBusInfo.events({
             $( ".SpanBusinessLink" ).text("A valid link should be alphanumeric with only hyphens(-)" );
          }
 
-         if(data&&Session.get('backlinkurl') !== myFuncVarLink){
-            $(".SpanBusinessLink").removeClass("linkAvail");
-            $(".SpanBusinessLink").addClass("hvr-buzz-out ErrorRedText");
-            $(".businessLinkC").addClass("SpanLandLineRedBorder");
-            $( ".SpanBusinessLink" ).text("A unique link should be alphanumeric with only hyphens(-)" );
-         }
+         // if(data&&Session.get('backlinkurl') !== myFuncVarLink){
+         //    $(".SpanBusinessLink").removeClass("linkAvail");
+         //    $(".SpanBusinessLink").addClass("hvr-buzz-out ErrorRedText");
+         //    $(".businessLinkC").addClass("SpanLandLineRedBorder");
+         //    $( ".SpanBusinessLink" ).text("A unique link should be alphanumeric with only hyphens(-)" );
+         // }
       }else {
-         $(".SpanBusinessLink").removeClass(" ErrorRedText hvr-buzz-out");
-         $(".SpanBusinessLink").addClass("linkAvail");
-         $(".businessLinkC").removeClass("SpanLandLineRedBorder");
-         $( ".SpanBusinessLink" ).text("Link Available");
+         // $(".SpanBusinessLink").removeClass(" ErrorRedText hvr-buzz-out");
+         // $(".SpanBusinessLink").addClass("linkAvail");
+         // $(".businessLinkC").removeClass("SpanLandLineRedBorder");
+         // $( ".SpanBusinessLink" ).text("Link Available");
       }
       $("#businessLink").val(myFuncVarLink);
    },
@@ -403,20 +434,44 @@ Template.addVendorBusInfo.events({
          }
          
       } else {
-         if(Session.get('backlinkurl') !== myFuncVarLink){
-            var data = Business.findOne({"businessLink":myFuncVarLink});
-            if(data){
-               $(".SpanBusinessLink").addClass("ErrorRedText hvr-buzz-out");
-               $(".SpanBusinessLink").text("Link already exists, Please enter different link");
-               $(".businessLinkC").addClass("SpanLandLineRedBorder");
-               $(".SpanBusinessLink").removeClass("linkAvail");
-            } else {
-               $(".SpanBusinessLink").addClass("linkAvail");
-               $(".SpanBusinessLink").text("Link Available");
-               $(".businessLinkC").removeClass("SpanLandLineRedBorder");
-               $(".SpanBusinessLink").removeClass("ErrorRedText hvr-buzz-out");
+         var data = Business.find({}).fetch();
+         if(data.length > 0){
+            for (var i = 0; i < data.length; i++) {
+               if(data[i].businessLink){
+                  if(data[i].businessLink.toUpperCase() == myFuncVarLink.toUpperCase()){
+                     var linkFound = true;
+                     break;
+                  }
+               }
             }
          }
+
+         if(linkFound){
+            $(".SpanBusinessLink").addClass("ErrorRedText hvr-buzz-out");
+            $(".SpanBusinessLink").text("Link already exists");
+            $(".businessLinkC").addClass("SpanLandLineRedBorder");
+            $(".SpanBusinessLink").removeClass("linkAvail");
+         }else{
+            $(".SpanBusinessLink").removeClass(" ErrorRedText hvr-buzz-out");
+            $(".SpanBusinessLink").addClass("linkAvail");
+            $(".businessLinkC").removeClass("SpanLandLineRedBorder");
+            $( ".SpanBusinessLink" ).text("Link Available");
+         }
+
+         // if(Session.get('backlinkurl') !== myFuncVarLink){
+         //    var data = Business.findOne({"businessLink":myFuncVarLink});
+         //    if(data){
+         //       $(".SpanBusinessLink").addClass("ErrorRedText hvr-buzz-out");
+         //       $(".SpanBusinessLink").text("Link already exists, Please enter different link");
+         //       $(".businessLinkC").addClass("SpanLandLineRedBorder");
+         //       $(".SpanBusinessLink").removeClass("linkAvail");
+         //    } else {
+         //       $(".SpanBusinessLink").addClass("linkAvail");
+         //       $(".SpanBusinessLink").text("Link Available");
+         //       $(".businessLinkC").removeClass("SpanLandLineRedBorder");
+         //       $(".SpanBusinessLink").removeClass("ErrorRedText hvr-buzz-out");
+         //    }
+         // }
       }
 
       $('.businessLinkC').val(myBusinessTitle.substring(0,50));
@@ -433,10 +488,9 @@ Template.addVendorBusInfo.events({
 
       var myFuncVar = $("#businessLink").val();
       var myFuncVarLink = $("#businessLink").val().replace(/ /g,'');
-      var data = Business.findOne({"businessLink":myFuncVarLink});
       var nameRegexLink = /^[A-Za-z0-9-]{1,50}$/;
 
-      if (myFuncVar==null||myFuncVar==""||data||!myFuncVarLink.match(nameRegexLink)) {
+      if (myFuncVar==null||myFuncVar==""||!myFuncVarLink.match(nameRegexLink)) {
          if(myFuncVarLink==null||myFuncVarLink==""){
             $(".SpanBusinessLink").text("Please enter link");
             $(".SpanBusinessLink").addClass("hvr-buzz-out ErrorRedText");
@@ -448,16 +502,30 @@ Template.addVendorBusInfo.events({
             $(".businessLinkC").addClass("SpanLandLineRedBorder");
             $( ".SpanBusinessLink" ).text("A valid link should be alphanumeric with only hyphens(-)" );
          }
-         if(data&&Session.get('backlinkurl') !== myFuncVarLink){
-            $(".SpanBusinessLink").addClass("hvr-buzz-out ErrorRedText");
-            $(".businessLinkC").addClass("SpanLandLineRedBorder");
-            $( ".SpanBusinessLink" ).text("A unique link should be alphanumeric with only hyphens(-)" );
-         }
       } else {
-         $(".SpanBusinessLink").removeClass("ErrorRedText hvr-buzz-out");
-         $(".SpanBusinessLink").addClass("linkAvail");
-         $(".businessLinkC").removeClass("SpanLandLineRedBorder");
-         $(".SpanBusinessLink").text("Link Available");
+         var data = Business.find({}).fetch();
+         if(data.length > 0){
+            for (var i = 0; i < data.length; i++) {
+               if(data[i].businessLink){
+                  if(data[i].businessLink.toUpperCase() == myFuncVarLink.toUpperCase()){
+                     var linkFound = true;
+                     break;
+                  }
+               }
+            }
+         }
+
+         if(linkFound){
+            $(".SpanBusinessLink").addClass("ErrorRedText hvr-buzz-out");
+            $(".SpanBusinessLink").text("Link already exists");
+            $(".businessLinkC").addClass("SpanLandLineRedBorder");
+            $(".SpanBusinessLink").removeClass("linkAvail");
+         }else{
+            $(".SpanBusinessLink").removeClass(" ErrorRedText hvr-buzz-out");
+            $(".SpanBusinessLink").addClass("linkAvail");
+            $(".businessLinkC").removeClass("SpanLandLineRedBorder");
+            $( ".SpanBusinessLink" ).text("Link Available");
+         }
       }
 
       
@@ -551,9 +619,9 @@ Template.addVendorBusInfo.events({
                      var admin = Meteor.users.findOne({'roles':'admin'});
                     //  console.log('admin ',admin);
                      var vendorDetail = Meteor.users.findOne({'_id':Meteor.userId()});
-                     // console.log('formValues ',formValues);
+                    //  console.log('vendorDetail ',vendorDetail);
 
-                     // if(admin || vendorDetail){
+                     if(admin&&vendorDetail){
                         var adminId = admin._id;
 
                         //Send Notification, Mail and SMS to Current Vendor
@@ -563,57 +631,55 @@ Template.addVendorBusInfo.events({
                         var date        = new Date();
                         var currentDate = moment(date).format('DD/MM/YYYY');
                         var msgvariable = {
-                           '[vendorname]'    : vendorname,
-                           '[currentDate]'   : currentDate,
-                           '[businessName]'  : formValues.businessTitle
-                        };
+                                             '[vendorname]'    : vendorname,
+                                             '[currentDate]'   : currentDate,
+                                             '[businessName]'  : formValues.businessTitle
+                                          };
 
                         var inputObj = {
-                           notifPath    : formValues.businessLink,
-                           to           : Meteor.userId(),
-                           templateName : 'Thanks for Registering New Business',
-                           variables    : msgvariable,
-                        }
+                                          notifPath    : formValues.businessLink,
+                                          to           : Meteor.userId(),
+                                          templateName : 'Thanks for Registering New Business',
+                                          variables    : msgvariable,
+                                       }
                         sendInAppNotification(inputObj);
 
                         var inputObj = {
-                           notifPath     : formValues.businessLink,
-                           from          : adminId,
-                           to            : Meteor.userId(),
-                           templateName  : 'Thanks for Registering New Business',
-                           variables     : msgvariable,
-                        }
+                                          notifPath     : formValues.businessLink,
+                                          from          : adminId,
+                                          to            : Meteor.userId(),
+                                          templateName  : 'Thanks for Registering New Business',
+                                          variables     : msgvariable,
+                                       }
                         sendMailNotification(inputObj);
 
                         //Send Notification, Mail and SMS to Admin
                         var date       = new Date();
                         var currentDate = moment(date).format('DD/MM/YYYY');
                         var msgvariable = {
-                           '[vendorname]'    : vendorname,
-                           '[adminname]'     : username,
-                           '[currentDate]'   : currentDate,
-                           '[businessName]'  : formValues.businessTitle,
-                        };
+                                             '[vendorname]'    : vendorname,
+                                             '[adminname]'     : username,
+                                             '[currentDate]'   : currentDate,
+                                             '[businessName]'  : formValues.businessTitle,
+                                          };
 
                         var inputObj = {
-                           notifPath    : formValues.businessLink,
-                           to           : adminId,
-                           templateName : 'Vendor Added New Business',
-                           variables    : msgvariable,
-                        }
-                        // console.log('inputObj:' ,inputObj);
-
+                                          notifPath    : formValues.businessLink,
+                                          to           : adminId,
+                                          templateName : 'Vendor Added New Business',
+                                          variables    : msgvariable,
+                                       }
                         sendInAppNotification(inputObj);
 
                         var inputObj = {
-                           notifPath    : formValues.businessLink,
-                           from         : adminId,
-                           to           : adminId,
-                           templateName : 'Vendor Added New Business',
-                           variables    : msgvariable,
-                        }
+                                          notifPath    : formValues.businessLink,
+                                          from         : adminId,
+                                          to           : adminId,
+                                          templateName : 'Vendor Added New Business',
+                                          variables    : msgvariable,
+                                       }
                         sendMailNotification(inputObj);  
-                     // }
+                     }
                      //============================================================
                      //          End Notification Email / SMS / InApp
                      //============================================================
@@ -652,7 +718,7 @@ Template.addVendorBusInfo.events({
          if (!formValues.businessAddress) {
             $(".SpanBusinessAddress").addClass("ErrorRedText");
             $(".businessAddressC").addClass("SpanLandLineRedBorder");
-            $( ".SpanBusinessAddress" ).text("Please Enter Valid Address" );
+            $( ".SpanBusinessAddress" ).text("Please enter the valid address of your Business" );
          }
          if (!formValues.businessState || venState=='--Select--') {
             $(".SpanBusinessState").addClass("ErrorRedText");
@@ -699,12 +765,9 @@ Template.addVendorBusInfo.onRendered(function(){
    GoogleMaps.load();
    $("#businessTitle").focus();
    $("html,body").scrollTop(0);
-   var windowWidth = $(window).width();
-   if (windowWidth >= 320 && windowWidth <= 767){
-      $('[data-toggle="tooltip"]').tooltip(); 
-   }
-   var businessLink = Session.get("backlinkurl");
-   // console.log('businessLink :',businessLink);
+
+var businessLink = Session.get("backlinkurl");
+            console.log('businessLink :',businessLink);
    // Session.set("addVenCountrySes","India");
    // Session.set("addVenStateSes","Maharashtra");
    // Session.set("addVenCitySes","Pune");

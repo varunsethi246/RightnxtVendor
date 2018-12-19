@@ -4,7 +4,7 @@ App.info({
   version: "1.0.0", 
   author: 'iAssure IT',
   email: 'rightnxt123@gmail.com',
-  website: 'https://rightnxt.com'
+  website: 'http://mobileappvendor.rightnxt.com'
 });
 
 App.setPreference('loadUrlTimeoutValue', '700000', 'android');
