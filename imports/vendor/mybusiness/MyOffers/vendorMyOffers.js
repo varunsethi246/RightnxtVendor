@@ -1240,7 +1240,11 @@ Template.receipt.helpers({
 		var businessDetails = Business.findOne({"businessLink":businessLink, "status":"active"});
 		var companyDetails 	= CompanySettings.findOne({'companyId':101});
 		var paymentDetails 	= Payment.findOne({'invoiceNumber':invNum,"orderType":'Offer'});
-		
+		var vendorObj = Meteor.users.findOne({'_id':Meteor.userId()});
+		if(vendorObj){
+			var vendorname = vendorObj.profile.name;
+		}
+
 		if(paymentDetails){
 			var paymentStatusOne =paymentDetails.paymentStatus;
 			if (paymentStatusOne == 'unpaid') {
@@ -1282,6 +1286,7 @@ Template.receipt.helpers({
 				businessName			: businessDetails.businessTitle ,
 				companyName				: companyDetails.companyName,
 				merchantRef				: paymentDetails._id.toUpperCase(),
+				vendorname				: vendorname,
 				invDate					: newDateTime,
 				paymentDate				: payDateTime,
 				transactionID			: paymentDetails.transactionId,
@@ -1290,6 +1295,7 @@ Template.receipt.helpers({
 				totalPrice				: totalPrice,
 				transactionMsg 			: PaymentSuccess,
 				paymentclass 			: PaymentClass,
+				invoiceNumber 			: invNum,
 			}
 			return data;
 		}

@@ -13,8 +13,12 @@
 							<h4> Payment Receipt for {{businessName}} </h4>
 							<div class="recMargin">
 								<hr class="col-lg-11 col-md-11 col-sm-11 col-xs-11 recLine">
-								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Merchant Ref.:</p>
-								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 venMerRef noPaddingxs">{{merchantRef}}</span>
+<!-- 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Merchant Ref.:</p>
+								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 venMerRef noPaddingxs">{{merchantRef}}</span> -->
+								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Merchant Name:</p>
+								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{vendorname}}</span>
+								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Invoice Number:</p>
+								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{invoiceNumber}}</span>
 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Transaction ID:</p>
 								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 noPaddingxs venMerRef">{{transactionID}}</span>
 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7">Transaction Message:</p>
@@ -118,8 +122,10 @@
 							"> Payment Receipt for {{businessName}} </h4>
 							<hr class="col-lg-11 col-md-11 col-sm-11 col-xs-11 recLine">
 							<div class="recMargin">
-								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="color: #444;font-size: 12px;">Merchant Ref.:
-								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{merchantRef}}</span></p>
+<!-- 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="color: #444;font-size: 12px;">Merchant Ref.:
+								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{merchantRef}}</span></p> -->
+								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="color: #444;font-size: 12px;">Merchant Name: <span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{vendorname}}</span></p>
+								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="color: #444;font-size: 12px;">Invoice Number: <span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">{{invoiceNumber}}</span></p>
 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="color: #444;font-size: 12px;">Transaction ID:
 								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5"></span></p>
 								<p class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="color: #444;font-size: 12px;">Transaction Message:
