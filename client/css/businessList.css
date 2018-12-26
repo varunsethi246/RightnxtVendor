@@ -135,13 +135,13 @@ font-weight:700;
 white-space:nowrap;
 }
 .thumbTxtOverfl {
-display:inline-block;
+/*display:inline-block;*/
 /*width:230px;*/
-/*white-space:nowrap;*/
-overflow:hidden!important;
+white-space:nowrap;
+overflow:hidden;
 text-overflow:ellipsis;
-word-break: break-word;
 line-height: 18px;
+/*word-break: break-word;*/
 /*min-height: 40px;*/
 }
 

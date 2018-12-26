@@ -4288,7 +4288,8 @@ text-align: center
 }
 @media screen and (min-width: 1920px){
 	.addPhotoTxt{right: 26%!important;}
-	.claim.claimDiv{min-height: 800px!important;}
+	.claim{min-height: 800px!important;}
+	/*.claim.claimDiv{min-height: 800px!important;}*/
 	.contentBody{min-height: 1000px!important;}
 	.merchantGuidelineslg {margin-top: 3.5%;}
 	.aboutNavbar {padding-left: 15px;margin-left: 40.5%}

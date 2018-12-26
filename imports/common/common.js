@@ -163,6 +163,7 @@ Template.header.events({
 	    $('input[type="tel"]').val('');
 	    $('input[type="email"]').val('');
     	$('.loginLabel').removeClass('active');
+    	$('#forgotPwdModal').modal('hide');
 	},
 	
 	'click .forgotPass': function(event) {
@@ -188,6 +189,7 @@ Template.header.events({
 		// $('.genLoginSignup').show();
 		$('.thankyouscreen').hide();
 		$('.signUpBox').hide();
+		$('#forgotPwdModal').modal('hide');
 	},
 	'click .loginTxt': function(event){
 		$('.loginScreen').hide();

@@ -63,7 +63,8 @@ SearchSource.defineSource('business', (searchText, options)=> {
     // selector["$and"].push(catgSelector);
 
     
-    searchResult = Business.find(selector, options).fetch();
+    // searchResult = Business.find(selector, options).fetch();
+    searchResult = Business.find(selector).fetch();
 
 
     // =========================================================
