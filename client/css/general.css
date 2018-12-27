@@ -1214,7 +1214,7 @@ background:url(../images/claim/banner.jpg) no-repeat;
 background-attachment:fixed;
 background-position:center;
 background-size:cover;
-min-height:500px
+min-height:550px;
 }
 
 .text-center h3 {
@@ -4288,7 +4288,6 @@ text-align: center
 }
 @media screen and (min-width: 1920px){
 	.addPhotoTxt{right: 26%!important;}
-	.claim{min-height: 800px!important;}
 	/*.claim.claimDiv{min-height: 800px!important;}*/
 	.contentBody{min-height: 1000px!important;}
 	.merchantGuidelineslg {margin-top: 3.5%;}
@@ -4460,3 +4459,4 @@ text-align: center
 .showMoreCommnt{padding-left: 0px;padding-right: 0px;}
 .notificationDropdown:hover{color: #fff;}
 .redirectBusinessLink{cursor: pointer;}
+.careerColorRed{color: #ff0000}
