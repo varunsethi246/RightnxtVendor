@@ -18,7 +18,9 @@ Template.addVendorBusInfo.events({
    'focusout #businessEmailId': function(){
          var myFuncVar = $("#businessEmailId").val();
          var nameRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-         if (myFuncVar==null||myFuncVar==""||!myFuncVar.match(nameRegex)) {
+
+         if (myFuncVar!=""&&!myFuncVar.match(nameRegex)) {
+         // if (myFuncVar==null||myFuncVar==""||!myFuncVar.match(nameRegex)) {
             $(".SpanBusinessEmailId").addClass("ErrorRedText");
             $(".businessEmailIdC").addClass("SpanLandLineRedBorder");
             $( ".SpanBusinessEmailId" ).text("Please enter valid Business email address" );
