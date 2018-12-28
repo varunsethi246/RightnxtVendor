@@ -79,6 +79,10 @@ Template.paymentSuccess.helpers({
 		var businessDetails = Business.findOne({"businessLink":businessLink, "status":"active"});
 		var companyDetails 	= CompanySettings.findOne({'companyId':101});
 		var paymentDetails 	= Payment.findOne({'invoiceNumber':invNum,"orderType":'Offer'});
+		var vendorObj = Meteor.users.findOne({'_id':Meteor.userId()});
+		if(vendorObj){
+			var vendorname = vendorObj.profile.name;
+		}
 
 		if(paymentDetails){
 			var offers = [];
@@ -115,6 +119,8 @@ Template.paymentSuccess.helpers({
 				totalAmount				: paymentDetails.totalAmount,
 				totalPrice				: totalPrice,
 				transactionMsg 			: paymentDetails.paymentStatus,
+				vendorname 				: vendorname,
+				invoiceNumber 			: invNum
 			}
 			return data;
 		}
