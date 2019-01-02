@@ -339,7 +339,11 @@ Template.vendorBusinessInformation.events({
         //     $(".businessLng").addClass("SpanLandLineRedBorder");
         //     $( ".SpanBusinessLongitude" ).text("Please select or enter valid Longitude" );
         // }
-        $('.SpanLandLineRedBorder:visible:first').focus();
+        // $('.SpanLandLineRedBorder:visible:first').focus();
+        $('.SpanLandLineRedBorder:first').focus();
+        $('html,body').animate({
+          scrollTop: $(".SpanLandLineRedBorder:first").offset().top-200},
+        'slow');
     }
 
     

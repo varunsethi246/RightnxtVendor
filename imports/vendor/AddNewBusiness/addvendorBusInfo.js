@@ -740,7 +740,12 @@ Template.addVendorBusInfo.events({
             $(".businessZipCodeC").addClass("SpanLandLineRedBorder");
             $( ".SpanBusinessZipCode" ).text("Please select Zip Code" );
          }
-         $('.SpanLandLineRedBorder:visible:first').focus();
+         // $('.SpanLandLineRedBorder:visible:first').focus();
+         // console.log($(".SpanLandLineRedBorder:first").offset().top-200);
+         $('.SpanLandLineRedBorder:first').focus();
+         $('html,body').animate({
+           scrollTop: $(".SpanLandLineRedBorder:first").offset().top-200},
+         'slow');
       }
    },
    // 'keypress .businessLat':

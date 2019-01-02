@@ -277,6 +277,7 @@ Template.vendorPhotos.events({
 					
 	},
 	'click #saveBusinessphoto' : function(event,template){
+		console.log(event);
 		var businessLink = FlowRouter.getParam('businessLink');
 		if(files.length > 0){
 			$('#uploadImgDivHide').show();
@@ -328,6 +329,7 @@ Template.vendorPhotos.events({
 		                  // Bert.alert('There is some error in submitting this form!','danger','growl-top-right');
 		                  return;
 		                }else{
+							$('.vPhotosYouUploadBtn').children('input#vBusinessPhotofiles').show();
 		                	if(i == files.length){
 		                		if(files.length == 1){
 						          	$('#uploadImgDivHide').find('.progress-bar').css('width','100%');
@@ -368,6 +370,7 @@ Template.vendorPhotos.events({
 		event.preventDefault();
 		var file = event.target.files; // FileList object\
 		if(file.length > 0){
+			$('.vPhotosYouUploadBtn').children('input#vBusinessPhotofiles').hide();
 			$('.vDisplayDiv').css("display","block");
 			$('#saveBusinessphoto').siblings('#vBusinessPhotofiles').css("width","0px");
 			$('.drag').hide();
