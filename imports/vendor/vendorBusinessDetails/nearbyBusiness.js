@@ -57,7 +57,14 @@ Template.nearbyBusiness.helpers({
 						actualBusiness =  actualBusiness.slice(0,4);
 					}
 					for(i=0; i<actualBusiness.length;i++){
-						if(actualBusiness[i].businessImages && actualBusiness[i].businessImages.length>0){								
+						if(actualBusiness[i].publishedImage){
+							var publishedPic = BusinessImage.findOne({"_id":actualBusiness[i].publishedImage});
+							if(publishedPic){
+								actualBusiness[i].imgUrl = publishedPic.link(); 
+							}else{
+								actualBusiness[i].imgUrl = "/images/search/nearby-testaurants1.jpg";
+							}
+						}else if(actualBusiness[i].businessImages && actualBusiness[i].businessImages.length>0){								
 							var pic = BusinessImage.findOne({"_id":actualBusiness[i].businessImages[0].img});
 							if(pic){
 								actualBusiness[i].imgUrl = pic.link(); 

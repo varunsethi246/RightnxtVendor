@@ -21,6 +21,8 @@ var filesV = [];
 var counterImg = 0;
 var counterMenu = 0;
 var uploader = new ReactiveVar();
+var businessID = '';
+var publishImgId = '';
 Template.addvendorImagesVideos.onRendered(function () {
 	var businessLink = FlowRouter.getParam('businessLink');
 	Session.set('SessionBusinessLink',businessLink);
@@ -164,6 +166,8 @@ Template.addvendorImagesVideos.helpers({
 		
 		var data = Business.findOne({'businessLink':businessLink});
 		if(data){
+			publishImgId = data.publishedImage;
+			businessID = data._id;
 			if(data.businessImages){
 				var imgListCount = data.businessImages.length;
 				var imgList = [];
@@ -199,6 +203,15 @@ Template.addvendorImagesVideos.helpers({
 				// console.log('imgList ' , imgList);
 				return imgList;
 			}
+		}
+	},
+
+	isCheckboxChecked: function(){
+		// console.log(publishImgId,this._id);
+		if(publishImgId == this._id){
+			return true;
+		}else{
+			return false;
 		}
 	},
 
@@ -258,7 +271,34 @@ Template.addvendorImagesVideos.helpers({
 
 
 Template.addvendorImagesVideos.events({ 
-	
+	'click input[type="checkbox"]': function(event){
+		var $this = $(event.target);
+		
+		if($($this).prop( "checked" )){
+			$('input[type="checkbox"]').not($this).prop('checked','');
+		}
+	},
+	'click .publishBusinessImg': function(event){
+		event.preventDefault();
+		var checked = $('input[type="checkbox"]:checked').val();
+		// console.log(businessID,checked);
+
+		if(!checked){
+			Bert.alert("Please select image to set as a business profile image.",'danger','growl-top-right');
+		}else{
+			Meteor.call('publishBusinessImage',businessID,checked,
+				function(error,result){
+					if(error){
+						Bert.alert('There is some error while publishing images!','danger','growl-top-right');
+					}
+					else{
+						Bert.alert('Selected image is set as a business profile image.','success','growl-top-right');
+					}
+				}
+			);
+		}
+					
+	},
 	'click #closeStartVideo' : function (event) {
 		video.pause();
 	},

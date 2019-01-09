@@ -53,13 +53,18 @@
 							<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12  vBusGroupRow">
 								<div class="vPhotosOwnerManager vAddBussMarginTop">
 									<div class="row vPhotosYouRow vBusinessImagesRow">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vPhotosYouNewh" style="margin-bottom: 0px;">
+											<button id="setBusinessImg" class="btn btn-success vPhotosYouNewBtn pull-right publishBusinessImg">Set Business Profile Image</button>
+										</div>
+
 										{{#each vendorPhotosOwnerManagerData  }}
 										{{#if businessImg}}
 											<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 vPhotosUserRowSec">
 												<div class="">
-													<i class="fa fa-times-circle pull-right delBusiImg vDelBusinessImg cursorPointer" id="img-{{_id}}" aria-hidden="true"></i><br>
+													<i class="fa fa-times-circle pull-left delBusiImg vDelBusinessImg cursorPointer" id="img-{{_id}}" aria-hidden="true"></i><br>
 													<div class="uploadPhotoSize col-lg-12 col-md-12 col-xs-12 col-sm-12 noPaddingxs">
 														<img src="{{link}}" class="img-responsive thumbnail cursorPointer {{checkpngImg}}" data-toggle="modal" data-target="#businessImgModal-{{_id}}" >
+														<input type="checkbox" class="pull-right adminSetBusinessImg" value="{{_id}}" checked="{{#if isCheckboxChecked}}checked{{else}}{{/if}}">
 													</div>
 													<!-- Modal -->
 													<div id="businessImgModal-{{_id}}" class="modal fade" role="dialog">
