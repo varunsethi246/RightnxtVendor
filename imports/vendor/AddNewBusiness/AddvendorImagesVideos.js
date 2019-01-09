@@ -283,7 +283,7 @@ Template.addvendorImagesVideos.events({
 		var checked = $('input[type="checkbox"]:checked').val();
 		// console.log(businessID,checked);
 
-		if(!checked){
+		if(!checked||checked=='selectAll'){
 			Bert.alert("Please select image to set as a business profile image.",'danger','growl-top-right');
 		}else{
 			Meteor.call('publishBusinessImage',businessID,checked,
