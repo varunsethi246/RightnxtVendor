@@ -326,7 +326,7 @@ Meteor.methods({
 		);
 	},
 
-	'updateInvoiceforOnlinePayment':function(businessLink, invoiceNumber,current){
+	'updateInvoiceforOnlinePayment':function(businessLink, invoiceNumber,current,totalAmount){
 		var receiptObj = Payment.findOne({"vendorId" : Meteor.userId(),
 			"businessLink" : businessLink,
 			"invoiceNumber": parseInt(invoiceNumber),
@@ -342,23 +342,21 @@ Meteor.methods({
 		  	var METEOR_URL = 'localhost:3000'; // your production server url
 		  	// console.log('quickWalletUrl :',quickWalletUrl);
 		  	// console.log('METEOR_URL :',METEOR_URL);
-		  	// var 
 		}else{
 			// var quickWalletUrl = 'https://uat.quikwallet.com';
 			var quickWalletUrl = 'https://server.livquik.com';
-
 			var METEOR_URL = current;
 			// console.log('quickWalletUrl :',quickWalletUrl);
-		 //  	console.log('METEOR_URL :',METEOR_URL);
+			//  	console.log('METEOR_URL :',METEOR_URL);
 		}
 
-		if(receiptObj.totalAmount){
+		if(totalAmount){
 			var quickwalletDetail 	= QuickwalletDetails.findOne({});
 			// console.log('quickwalletDetail :',quickwalletDetail);
 			var userId       		= Meteor.userId();
 			var userObj      		= Meteor.users.findOne({"_id":userId});
 			var mobileNumber 		= userObj.profile.mobile;
-			var grandTotal 			= receiptObj.totalAmount;
+			var grandTotal 			= totalAmount;
 			var quickWalletInput 	= {
 				"partnerid"		:   quickwalletDetail.partnerid,
 				"mobile"   		:   mobileNumber,
@@ -370,8 +368,8 @@ Meteor.methods({
 
 			try {
 				if (Meteor.isServer) {
-					console.log('quickWalletUrl: ',quickWalletUrl);
-					console.log('quickWalletInput: ',quickWalletInput);
+					// console.log('quickWalletUrl: ',quickWalletUrl);
+					// console.log('quickWalletInput: ',quickWalletInput);
 
 						var result = HTTP.call("POST",quickWalletUrl+"/api/partner/"+quickWalletInput.partnerid+"/requestPayment",
 										{params: quickWalletInput});

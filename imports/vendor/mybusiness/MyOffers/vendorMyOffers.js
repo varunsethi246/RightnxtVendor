@@ -106,7 +106,11 @@ Template.paymentSuccess.helpers({
 			// var dateTime = paymentDetails.invoiceDate.toLocaleString();
 			var dateTime = paymentDetails.invoiceDate;
 			var newDateTime = moment(dateTime).format('DD/MM/YYYY hh:mm');
-			var payDateTime = moment(paymentDetails.paymentDate).format('DD/MM/YYYY hh:mm');
+			if(paymentDetails.paymentStatus == 'paid'){
+				var payDateTime = moment(paymentDetails.paymentDate).format('DD/MM/YYYY hh:mm');
+			}else{
+				var payDateTime = "";
+			}
 
 			var data = {
 				businessName			: businessDetails.businessTitle ,
@@ -120,7 +124,8 @@ Template.paymentSuccess.helpers({
 				totalPrice				: totalPrice,
 				transactionMsg 			: paymentDetails.paymentStatus,
 				vendorname 				: vendorname,
-				invoiceNumber 			: invNum
+				invoiceNumber 			: invNum,
+				orderNumber 			: paymentDetails.orderNumber
 			}
 			return data;
 		}
@@ -162,7 +167,7 @@ Template.paymentSuccess.events({
 
 				var date 		= new Date();
 				var currentDate = moment(date).format('DD/MM/YYYY');
-				var businessLink = FlowRouter.getParam('businessLink');
+				var businessLink = FlowRouter.getQueryParam('BusLink');
 				var businessDetails = Business.findOne({"businessLink":businessLink});
 				if(businessDetails){
 					var msgvariable = {
@@ -614,6 +619,7 @@ Template.paymentInvoice.helpers({
 				offers 					: offers,
 				totalPrice				: totalPrice,
 				paymentMode 			: paymentDetails.modeOfPayment,
+				orderNumber 			: paymentDetails.orderNumber,
 			}
 			// console.log(data);
 			return data;
@@ -629,9 +635,9 @@ Template.paymentInvoice.events({
 		var businessLink = FlowRouter.getParam('businessLink');
 		var invoiceNumber = FlowRouter.getParam('invoiceNumber');
 		var mode = $('input[name="modeOfPayment"]:checked').val();
-		console.log('businessLink :',businessLink);
-		console.log('invoiceNumber :',invoiceNumber);
-
+		var totalAmount = parseInt(this.totalPrice);
+		// console.log('businessLink :',businessLink);
+		// console.log('invoiceNumber :',invoiceNumber);
 		var receiptObj = Payment.findOne({"vendorId"	  : Meteor.userId(),
 										   "businessLink" : businessLink,
 										   "invoiceNumber": parseInt(invoiceNumber),
@@ -735,7 +741,7 @@ Template.paymentInvoice.events({
 				var current = window.location.host;
 				// console.log("window.location : ",current );
 
-				Meteor.call('updateInvoiceforOnlinePayment', businessLink, parseInt(invoiceNumber), current, (error, result)=>{
+				Meteor.call('updateInvoiceforOnlinePayment', businessLink, parseInt(invoiceNumber), current,totalAmount, (error, result)=>{
 					if(result){
 						window.location = result;
 					}
@@ -1257,13 +1263,16 @@ Template.receipt.helpers({
 				if(paymentDetails.modeOfPayment){
 					var PaymentSuccess = 'Payment Failed';
 					var PaymentClass = 'text-danger';
+					var payDateTime = "";
 				}else{
 					var PaymentSuccess = 'Payment Pending';
 					var PaymentClass = 'text-danger';
+					var payDateTime = "";
 				}
 			}else{
 				var PaymentSuccess = 'Payment Successful';
 				var PaymentClass = 'text-success';
+				var payDateTime = moment(paymentDetails.paymentDate).format('DD/MM/YYYY hh:mm');
 			}
 			var offers = [];
 			var totalPrice = 0;
@@ -1286,7 +1295,6 @@ Template.receipt.helpers({
 			
 			var dateTime = paymentDetails.invoiceDate;
 			var newDateTime = moment(dateTime).format('DD/MM/YYYY hh:mm');
-			var payDateTime = moment(paymentDetails.paymentDate).format('DD/MM/YYYY hh:mm');
 
 			var data = {
 				businessName			: businessDetails.businessTitle ,
@@ -1302,6 +1310,7 @@ Template.receipt.helpers({
 				transactionMsg 			: PaymentSuccess,
 				paymentclass 			: PaymentClass,
 				invoiceNumber 			: invNum,
+				orderNumber 			: paymentDetails.orderNumber,
 			}
 			return data;
 		}

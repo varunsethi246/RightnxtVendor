@@ -5,6 +5,7 @@ import { Bert } from 'meteor/themeteorchef:bert';
 
 import { Business } from '../../api/businessMaster.js';
 import { Payment } from '../../api/paymentMaster.js';
+import { Offers } from '../../api/offersMaster.js';
 import { Position } from '/imports/api/discountMaster.js';
 import { CompanySettings } from '/imports/api/companysettingsAPI.js';
 import { BusinessBanner } from '/imports/api/businessBannerMaster.js';
@@ -391,7 +392,24 @@ Template.vendorPayments.helpers({
 					paymentDetails[i].totalAmount = paymentDetails[i].discountedPrice;
 					paymentDetails[i].receiptLink = "/adsInvoice/" + paymentDetails[i].businessLink+'/'+paymentDetails[i]._id;
 				} else {
+					if(paymentDetails[i].offers.length>0){
+						var totalAmount = 0;
+						for (var j = 0; j < paymentDetails[i].offers.length; j++) {
+							var offerDeatils = Offers.findOne({'_id':paymentDetails[i].offers[j].offerId});
+							if(offerDeatils){
+								totalAmount = totalAmount+(parseInt(offerDeatils.numOfMonths)*parseInt(paymentDetails[i].offerPricePerMonth)*parseInt(paymentDetails[i].numberOfOffers));
+							}
+						}
+					}
+					paymentDetails[i].totalAmount = totalAmount;
 					paymentDetails[i].receiptLink = "/" + paymentDetails[i].businessLink + "/receipt/" + paymentDetails[i].invoiceNumber+'-i';
+				}
+				if(paymentDetails[i].paymentStatus=="paid"){
+					paymentDetails[i].paymentStatus = 'Paid';
+					paymentDetails[i].paymentDate = moment(paymentDetails[i].paymentDate).format('DD/MM/YYYY');
+				}else if(paymentDetails[i].paymentStatus=="unpaid"){
+					paymentDetails[i].paymentStatus = 'Unpaid';
+					paymentDetails[i].paymentDate = "";
 				}
 			}
 			return paymentDetails;
