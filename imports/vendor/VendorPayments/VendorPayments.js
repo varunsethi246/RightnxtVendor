@@ -75,8 +75,14 @@ Template.paymentSuccessAdsBanners.helpers({
 	    var totalPrice = 0;
 		var paymentCheck = Payment.findOne({"_id":payId});
 		if(paymentCheck){
+			if(paymentCheck.paymentStatus=='paid'){
+				businessDetails.paid = true;				
+			}else{
+				businessDetails.paid = false;				
+			}
 
 		  businessDetails.invoiceNumber 	= paymentCheck.invoiceNumber;
+		  businessDetails.orderNumber 		= paymentCheck.orderNumber;
 		  businessDetails.discountPercent = paymentCheck.discountPercent;
 		  businessDetails.totalDiscount 	= paymentCheck.totalDiscount;
 		  businessDetails.discountedPrice = paymentCheck.discountedPrice;
@@ -144,15 +150,11 @@ Template.paymentSuccessAdsBanners.helpers({
 			    				var numOfAreas=0;
 			    			}
 
-			    			var monthlyRate = Position.findOne({'position':parseInt(businessBanner.position)});
-			    			if(monthlyRate){
-				    			var monthlyRate1 	= monthlyRate.rate;
-								var totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessBanner.areas.length) * parseInt(businessBanner.noOfMonths);
-				    			totalPrice= totalPrice + totalAmount;
-			    			}
+							var totalAmount 	= parseInt(businessBanner.bannerRate) * parseInt(businessBanner.areas.length) * parseInt(businessBanner.noOfMonths);
+				    		totalPrice= totalPrice + totalAmount;
 			    			businessBannerArray.push({
 			    				'numOfAreas'  : numOfAreas,
-			    				'monthlyRate' : monthlyRate1,
+			    				'monthlyRate' : businessBanner.bannerRate,
 			    				'totalAmount' : totalAmount,
 			    				'totalPrice'  : totalPrice,
 			    				'category'	  : businessBanner.category,

@@ -20,6 +20,7 @@
                         <div class="pull-right bannerInvDate">
                             <div class="bannerTextFont">Date: <span class="bannerSpanTextFont">{{paymentDate}}</span></div>
                             <div class="bannerTextFont">Invoice Number: <span class="bannerSpanTextFont">{{invoiceNumber}}</span></div>
+                            <div class="bannerTextFont">Order Number: <span class="bannerSpanTextFont">{{orderNumber}}</span></div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 bannerDataTextFont">
@@ -64,7 +65,11 @@
                                     <td>{{totalDiscount}}</td>
                                 </tr>
                                 <tr class="payTableBkg">
+                                    {{#if paid}}
+                                    <td colspan="5"><strong>Amount Paid:</strong></td>
+                                    {{else}}
                                     <td colspan="5"><strong>Amount Payable:</strong></td>
+                                    {{/if}}
                                     <td><strong>{{discountedPrice}}</strong></td>
                                 </tr>
                             </tbody>

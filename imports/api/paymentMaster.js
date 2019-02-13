@@ -143,6 +143,28 @@ Meteor.methods({
 			}
 		});
 	},
+	'updateBannerInvoicePayment':function(formValues){
+		Payment.update( 
+			{"businessLink": formValues.businessLink,"orderType":'Banner',"invoiceNumber": formValues.invoiceNumber,'paymentStatus':'unpaid'},
+			{$set : {
+				"discountPercent"		: formValues.discountPercent, 
+				"discountedPrice"		: formValues.discountedPrice, 
+				"totalAmount"			: formValues.totalAmount, 
+				"totalDiscount"			: formValues.totalDiscount,
+				}
+			}, 
+			function(error,result){
+				if(error){
+					// console.log(error);
+					return error;
+				}
+				if(result){
+					return result;
+				}
+			}
+		);
+		// return businessLink;
+	},
 	'updateBannerPayment':function(formValues){
 		Payment.update( 
 			{"businessLink": formValues.businessLink,"orderType":'Banner'},
@@ -195,8 +217,8 @@ Meteor.methods({
 			var quickWalletUrl = 'https://uat.quikwallet.com';
 		  	var METEOR_URL = 'localhost:3000'; // your production server url
 		}else{
-			var quickWalletUrl = 'https://uat.quikwallet.com';
-			// var quickWalletUrl = 'https://server.livquik.com';
+			// var quickWalletUrl = 'https://uat.quikwallet.com';
+			var quickWalletUrl = 'https://server.livquik.com';
 			var METEOR_URL = current;
 		}
 
@@ -256,8 +278,8 @@ Meteor.methods({
 			var quickWalletUrl = 'https://uat.quikwallet.com';
 		  	var METEOR_URL = 'localhost:3000'; // your production server url
 		}else{
-			var quickWalletUrl = 'https://uat.quikwallet.com';
-			// var quickWalletUrl = 'https://server.livquik.com';
+			// var quickWalletUrl = 'https://uat.quikwallet.com';
+			var quickWalletUrl = 'https://server.livquik.com';
 
 			var METEOR_URL = current;
 		}
@@ -343,8 +365,8 @@ Meteor.methods({
 		  	// console.log('quickWalletUrl :',quickWalletUrl);
 		  	// console.log('METEOR_URL :',METEOR_URL);
 		}else{
-			var quickWalletUrl = 'https://uat.quikwallet.com';
-			// var quickWalletUrl = 'https://server.livquik.com';
+			// var quickWalletUrl = 'https://uat.quikwallet.com';
+			var quickWalletUrl = 'https://server.livquik.com';
 			var METEOR_URL = current;
 			// console.log('quickWalletUrl :',quickWalletUrl);
 			//  	console.log('METEOR_URL :',METEOR_URL);

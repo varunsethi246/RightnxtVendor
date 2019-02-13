@@ -1797,7 +1797,12 @@ Template.editOffer.helpers({
 				}
 				if(companyRates){
 					if(companyRates.rates){
-						var payment = companyRates.rates.ratePerOffer * allPages[i].numOfMonths;
+						var getPaymentStatus = Payment.findOne({'offers.offerId':allPages[i]._id});
+						if(getPaymentStatus){
+							var payment = parseInt(getPaymentStatus.offerPricePerMonth) * parseInt(allPages[i].numOfMonths);
+						}else{
+							var payment = companyRates.rates.ratePerOffer * allPages[i].numOfMonths;
+						}
 					}else{
 						var payment = 0;
 					}			

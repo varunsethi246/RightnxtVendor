@@ -321,12 +321,17 @@ Template.bannerInvoice.helpers({
 		if(businessDetails){
 			if(paymentCheck) {
 				// console.log('paymentCheck: ',paymentCheck);
+				if(paymentCheck.paymentStatus=='paid'){
+					businessDetails.paid = true;	
+				}else{
+					businessDetails.paid = false;	
+				}
 				businessDetails.invoiceNumber 	= paymentCheck.invoiceNumber;
-		    	businessDetails.discountPercent = paymentCheck.discountPercent;
-		    	businessDetails.totalDiscount 	= paymentCheck.totalDiscount;
-		    	businessDetails.discountedPrice = paymentCheck.discountedPrice;
+				businessDetails.orderNumber 	= paymentCheck.orderNumber;
 				businessDetails.invoiceDate = moment(paymentCheck.invoiceDate).format('DD/MM/YYYY');
 	    		businessDetails.paymentCheck = paymentCheck.paymentStatus;
+	    		var previousTotalPrice = paymentCheck.totalAmount;
+	    		var previousDiscountPercent = paymentCheck.discountPercent;
 
 		   //  	if(paymentCheck.paymentStatus == 'unpaid'){
 					// businessDetails.invoiceDate = moment(paymentCheck.invoiceDate).format('DD/MM/YYYY');
@@ -346,16 +351,11 @@ Template.bannerInvoice.helpers({
 				    				var numOfAreas=0;
 				    			}
 
-				    			var monthlyRate = Position.findOne({'position':parseInt(businessBanner.position)});
-				    			// console.log(monthlyRate);
-				    			if(monthlyRate){
-					    			var monthlyRate1 	= monthlyRate.rate;
-									var totalAmount 	= parseInt(monthlyRate.rate) * parseInt(businessBanner.areas.length) * parseInt(businessBanner.noOfMonths);
-					    			totalPrice= totalPrice + totalAmount;
-				    			}
+								var totalAmount 	= parseInt(businessBanner.bannerRate) * parseInt(businessBanner.areas.length) * parseInt(businessBanner.noOfMonths);
+					    		totalPrice = totalPrice + totalAmount;
 				    			businessBannerArray.push({
 				    				'numOfAreas'  : numOfAreas,
-				    				'monthlyRate' : monthlyRate1,
+				    				'monthlyRate' : businessBanner.bannerRate,
 				    				'totalAmount' : totalAmount,
 				    				'totalPrice'  : totalPrice,
 				    				'category'	  : businessBanner.category,
@@ -402,6 +402,58 @@ Template.bannerInvoice.helpers({
 	  //   		}
 	  //   	}
 
+	  		var discountData = Discount.find({}).fetch();
+			// To sort an discount percent array by price
+			function sortArrOfObjectsByParam(a, b) {
+			  const genreA = parseInt(a.price);
+			  const genreB = parseInt(b.price);
+			  let comparison = 0;
+			  if (genreA > genreB) {
+			    comparison = 1;
+			  } else if (genreA < genreB) {
+			    comparison = -1;
+			  }
+			  return comparison;
+			}
+			discountData.sort(sortArrOfObjectsByParam);
+
+			var discountPercent = 0;
+			if(discountData){
+				for(var i=0;i<discountData.length;i++){
+					if(totalPrice>discountData[i].price){
+						discountPercent = discountData[i].discount;
+					}
+				}
+			}
+
+			var totalDiscount = totalPrice*(discountPercent/100)
+			var discountedPrice = totalPrice-totalDiscount;
+
+			// console.log('businessDetails.totalPrice!=totalPrice',previousTotalPrice,totalPrice);
+			// console.log('previousDiscountPercent!=discountPercent',previousDiscountPercent,discountPercent);
+			if(previousTotalPrice!=totalPrice||previousDiscountPercent!=discountPercent){
+				var formValues = {
+					'businessLink' : businessLink,
+					'invoiceNumber' : businessDetails.invoiceNumber,
+					'discountPercent' : discountPercent,
+					'discountedPrice' : discountedPrice,
+					'totalAmount' : totalPrice,
+					'totalDiscount' : totalDiscount,
+				};
+				// console.log('formValues',formValues);
+				Meteor.call('updateBannerInvoicePayment', formValues, function(error,result){
+					if(error){
+						console.log('Error occured while updating Business Banner: ', error);
+					}else{
+					}
+				});
+			}
+
+			if(paymentCheck){
+			   	businessDetails.discountPercent = paymentCheck.discountPercent;
+			   	businessDetails.totalDiscount 	= paymentCheck.totalDiscount;
+		    	businessDetails.discountedPrice = paymentCheck.discountedPrice;
+			}
 	    	businessDetails.businessLink = businessLink;
 	    	businessDetails.totalPrice = totalPrice;
 	    	businessDetails.businessBanner = businessBannerArray;
