@@ -300,7 +300,7 @@ Meteor.methods({
 				"redirecturl" : 'http://'+METEOR_URL+'/paymentAds-response?payId='+paymentCheck._id+"&InvNo="+paymentCheck.invoiceNumber+"&BusLink="+paymentCheck.businessLink,
 			};
 
-			console.log('quickWalletInput: ',quickWalletInput);
+			// console.log('quickWalletInput: ',quickWalletInput);
 
 			try {
 				if (Meteor.isServer) {
@@ -321,6 +321,29 @@ Meteor.methods({
 				return false;
 			}
 		}
+	},
+
+	'updateAdsInvoicePayment':function(formValues){
+		Payment.update( 
+			{"businessLink": formValues.businessLink,"orderType":'Ads',"invoiceNumber": formValues.invoiceNumber,'paymentStatus':'unpaid'},
+			{$set : {
+				"discountPercent"		: formValues.discountPercent, 
+				"discountedPrice"		: formValues.discountedPrice, 
+				"totalAmount"			: formValues.totalAmount, 
+				"totalDiscount"			: formValues.totalDiscount,
+				}
+			}, 
+			function(error,result){
+				if(error){
+					// console.log(error);
+					return error;
+				}
+				if(result){
+					return result;
+				}
+			}
+		);
+		// return businessLink;
 	},
 	
 	'addNewOfferinPayment': function(_id, offerId){
