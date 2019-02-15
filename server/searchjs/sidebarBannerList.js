@@ -198,13 +198,13 @@ SearchSource.defineSource('sidebarBusinessBanners', (searchText, options)=> {
         
     } else{
         businessBannerListB = _.uniq(businessBannerListB, function(p){ return p.businessLink; });
-        console.log('businessBannerListB :',businessBannerListB);
+        // console.log('businessBannerListB :',businessBannerListB);
         if(businessBannerListB){
             for(i=0;i<businessBannerListB.length;i++){
                 for(j=0;j<searchResult.length;j++){
                     if(businessBannerListB[i].businessLink==searchResult[j].businessLink){
-                    console.log('searchResult[j] ',searchResult[j]);
-        console.log('businessBannerListB [j]:',businessBannerListB [j]);
+                    // console.log('searchResult[j] ',searchResult[j]);
+                    // console.log('businessBannerListB [j]:',businessBannerListB [j]);
 
 
                         var getBannnerImage = Business.findOne({"businessLink":businessBannerListB[i].businessLink});
@@ -245,6 +245,7 @@ SearchSource.defineSource('sidebarBusinessBanners', (searchText, options)=> {
                 }
             }
         }
+        console.log('businessBannerListB',businessBannerListB);
         return businessBannerListB;
     }
 });

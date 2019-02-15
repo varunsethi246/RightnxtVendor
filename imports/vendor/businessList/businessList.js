@@ -310,6 +310,7 @@ Template.thumbnailBusinessList.helpers({
 Template.rightSidebarBusList.helpers({
 	'gridVRightBusList': function(){
 		var busList = businessSearchbanner1.getData();
+        console.log('busList',busList);
 		return busList;
 	},
 });

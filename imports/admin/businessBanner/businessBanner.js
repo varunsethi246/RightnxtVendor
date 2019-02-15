@@ -323,8 +323,10 @@ Template.bannerInvoice.helpers({
 				// console.log('paymentCheck: ',paymentCheck);
 				if(paymentCheck.paymentStatus=='paid'){
 					businessDetails.paid = true;	
+					businessDetails.paymentDate = moment(paymentCheck.paymentDate).format('DD/MM/YYYY');
 				}else{
 					businessDetails.paid = false;	
+					businessDetails.paymentDate = '';
 				}
 				businessDetails.invoiceNumber 	= paymentCheck.invoiceNumber;
 				businessDetails.orderNumber 	= paymentCheck.orderNumber;

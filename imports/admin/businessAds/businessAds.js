@@ -292,8 +292,10 @@ Template.adsInvoice.helpers({
 		if(paymentCheck) {
 			if(paymentCheck.paymentStatus=='paid'){
 				businessDetails.paid = true;	
+				businessDetails.paymentDate = moment(paymentCheck.paymentDate).format('DD/MM/YYYY');
 			}else{
 				businessDetails.paid = false;	
+				businessDetails.paymentDate = "";
 			}
 
 			var previousTotalPrice = paymentCheck.totalAmount;
