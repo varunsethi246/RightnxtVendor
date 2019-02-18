@@ -187,7 +187,10 @@ Template.userProfile.helpers({
 
 
 Template.userProfile.events({
-	'click .cameraIconPro' : function(event){
+	// 'click .cameraIconPro' : function(event){
+	// 	$("input[id='uploadImg']").click();
+	// },
+	'click .cameraIconClick' : function(event){
 		$("input[id='uploadImg']").click();
 	},
 	

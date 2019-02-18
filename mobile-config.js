@@ -1,7 +1,7 @@
 App.info({
   id : "com.rightvendor",
   name: 'Rightnxt Business',
-  version: "1.1.0", 
+  version: "1.2.0", 
   author: 'iAssure IT',
   email: 'rightnxt123@gmail.com',
   website: 'http://mobileappvendor.rightnxt.com'
@@ -16,7 +16,7 @@ App.accessRule('https://*.gstatic.com/*');
 App.accessRule('blob:*',{type: 'intent'});
 App.accessRule('polyblob:*',{type: 'intent'});
 App.launchScreens({
-  'android_mdpi_portrait': 'splashscreen/320X320.png',
+  'android_mdpi_portrait': 'splashscreen/360X640_Splash-Screen.png',
 });
 App.icons({
   'android_mdpi': 'splashscreen/48X48.png',
