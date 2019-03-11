@@ -143,6 +143,11 @@ Template.descriptionTabContent.helpers({
 			}
 
 			for(i=0; i<allReviews.length; i++){
+				if(allReviews[i].userId == Meteor.userId()){
+					allReviews[i].showRText = true;
+				}else{
+					allReviews[i].showRText = false;
+				}
 				// allReviews[i].userProfileUrl = generateURLid(allReviews[i].userId);	
 				var newUserThree = Meteor.userId();
 				if(newUserThree){

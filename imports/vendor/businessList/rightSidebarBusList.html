@@ -18,12 +18,18 @@
 				<a href="/{{businessLink}}">
 					<div class="thumImgDimT">
 						<!-- {{#with searchTrendingImage businessImages}} -->
-							<img src="{{businessSelectedImagesNew.img}}">
+							{{#if businessSelectedImagesNew.img}}
+								<img src="{{businessSelectedImagesNew.img}}">
+							{{else}}
+								<img src="{{businessSelectedImagesNew}}">
+							{{/if}}
 						<!-- {{/with}} -->
 					</div>
 					<div class="thumImgDescT">
 						<p class="thumImgDescPT thumbTxtOverfl">{{businessTitle}}</p>
-						<p class="thumImgDescPTT">{{businessAboutBus}}</p>
+						<p class="thumImgDescPTT">{{area}}</p>
+						<p class="thumImgDescPTT">{{mobile}}</p>
+						<!-- <p class="thumImgDescPTT">{{businessAboutBus}}</p> -->
 					</div>
 				</a>
 			</div>
