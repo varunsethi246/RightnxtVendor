@@ -8,7 +8,7 @@ import '../../general/mainBusinessSearch/mainBusinessSearch.js';
 import '/imports/general/homepage/homepageBanner.js';
 
 Template.adminVendorHomepage.onCreated(function(){
-    FlowRouter.go('/claim');
+    // FlowRouter.go('/claim');
     $('html, body').scrollTop(0);
 	$(window).on('popstate', function() {
     	$('.modal').modal('hide');

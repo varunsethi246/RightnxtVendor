@@ -6,10 +6,10 @@ import { Categories } from '/imports/api/masterData/categoriesMaster.js';
 import { Business } from '/imports/api/businessMaster.js';
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
-import './searchbar.html'
-import '../vendor/businessList/businessMapView/businessMapView.js'
-import '/imports/vendor/businessList/businessMapView/businessMap.html'
-import '/imports/vendor/businessList/businessMapView/businessMapView.js'
+import './searchbar.html';
+// import '../vendor/businessList/businessMapView/businessMapView.js'
+import '/imports/vendor/businessList/businessMapView/businessMap.html';
+import '/imports/vendor/businessList/businessMapView/businessMapView.js';
 
 
 
@@ -21,6 +21,7 @@ var options = {
 var fields = ['businessTitle','tags','businesscategories'];
 dropdownSearchList = new SearchSource('dropdownSearch', fields, options);
 businessSearch1 = new SearchSource('business', fields, options);
+businessSearchbanner1 = new SearchSource('sidebarBusinessBanners', fields, options);
 
 if (Meteor.isClient) {
   Meteor.startup(function() {
@@ -71,7 +72,10 @@ Template.searchbar.helpers({
 		}else{
 			if(currentParams){
 				var busCity = Business.findOne({"businessLink":currentParams},{fields: {'businessCity': 1}});
-				var currentCity = busCity.businessCity;
+				var currentCity = 'Pune';
+				if(busCity){
+					var currentCity = busCity.businessCity;
+				}
 			}else{
 				var sesVal = Session.get('rxtNxtCityDatlist');
 		        if(sesVal){

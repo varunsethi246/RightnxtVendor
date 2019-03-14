@@ -71,6 +71,9 @@ import '../imports/api/businessBannerMaster.js';
 import '../imports/api/businessAdsMaster.js';
 import '../imports/api/thumbnailMaster.js';
 
+//vendor.js import
+// import '../imports/vendor/vendor.js';
+
 
 
 // Signup Setting

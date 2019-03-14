@@ -6,7 +6,7 @@ App.info({
   email: 'rightnxt123@gmail.com',
   website: 'http://mobileappvendor.rightnxt.com'
 });
-App.setPreference("orientation", "portrait");
+// App.setPreference("orientation", "portrait");
 App.setPreference('loadUrlTimeoutValue', '700000', 'android');
 App.accessRule('*://s3.us-east-2.amazonaws.com/rightnxt1/StaticImages/*');
 App.accessRule('*');

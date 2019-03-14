@@ -42,15 +42,6 @@ loadingFf = function () {
 		$("#inject-loader-wrapper").fadeOut(1500, function() { $(this).remove(); });
 	})
 }
-vendorBusinessLayoutFunc= function () {
-	import('/imports/vendor/vendorBusinessDetails/vendorBusinessDetails.js')
-	.then(function (handle) {        
-		handle.vendorBusinessLayoutForm();    
-	})
-	.then(function(){
-		$("#inject-loader-wrapper").fadeOut(1500, function() { $(this).remove(); });
-	})
-}
 profileSettingFunc= function () {    
 	import('/imports/userarea/profileSetting/profileSetting.js').then(function (handle) {        
 		handle.profileSettingForm();    
@@ -60,13 +51,15 @@ profileSettingFunc= function () {
 	})
 }
 claimFunc= function () {    
-	import('/imports/general/claim/claim.js').then(function (handle) {        
+	console.log('loading-client');       
+	import('/imports/general/claim/claim.js').then(function (handle) { 
 		handle.claimForm();    
 	})
 	.then(function(){
 		$("#inject-loader-wrapper").fadeOut(1500, function() { $(this).remove(); });
 	})
 }
+
 editProfileFunc= function () {    
 	import('/imports/userarea/profileSetting/editProfile.js').then(function (handle) {        
 		handle.editProfileForm();    
@@ -99,4 +92,19 @@ ViewAllNotifFunc= function () {
 	.then(function(){
 		$("#inject-loader-wrapper").fadeOut(1500, function() { $(this).remove(); });
 	})
+}
+
+vendorBusinessLayoutFunc= function () {
+	console.log('business page client');   
+	import('/imports/vendor/vendorBusinessDetails/vendorBusinessDetails.js')
+	.then(function (handle) {
+		console.log('hiii');     
+		handle.vendorBusinessLayoutForm();    
+	})
+	.then(function(){
+		console.log('loader');
+		$("#inject-loader-wrapper").fadeOut(1500, function() { $(this).remove(); });
+		console.log('loader');
+	})
+	.catch(err=>console.log(err))
 }

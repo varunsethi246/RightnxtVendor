@@ -1,3 +1,5 @@
+console.log('155');
+// import './userReviewTemplate.html';
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { Template } from 'meteor/templating';
@@ -21,7 +23,7 @@ import { BusinessMenu } from '/imports/videoUploadClient/businessMenuClient.js';
 import { OfferImage } from '/imports/videoUploadClient/offerImageClient.js';
 import { OwnerImage } from '/imports/videoUploadClient/ownerImageClient.js';
 import { ReviewImage } from '/imports/videoUploadClient/reviewImageClient.js';
-
+console.log('11');
 import '../BusinessEnquiry/businessEnquiry.js';
 import './vendorBusinessLayout.html';
 import './vendorBusinessCarousel.js';
@@ -29,7 +31,7 @@ import './imageReports/imageReports.js';
 import './imageReports/imageReports.html';
 import '/imports/common/common.js';
 
-
+console.log('1');
 /* leftSidebar */
 import './businessLeftSidebar.html';
 import './businessModeOfPayment.html';
@@ -37,14 +39,18 @@ import './businessContactDetails.html';
 import './businessContactDetails.js';
 import './businessOfferDetails.html';
 import './businessTimingDetails.html';
-
+console.log('2');
 /* mainContent*/
+// import './userReviewTemplate.html';
+// import './userReviewTemplate.js';
+console.log('3');
+
 import './businessMainContent.html';
 import './descriptionTabContent.html';
 import './businessEventIcons.html';
 import './businessEvntIcons2.html';
 import './businessEventIcons.js';
-
+console.log('4');
 import './reportModalForm.html';
 import './reportModalForm.js';
 
@@ -52,8 +58,6 @@ import './businessInformation.html';
 import './businessInformation.js';
 import './addReviewTemplate.html';
 import './addReviewTemplate.js';
-import './userReviewTemplate.html';
-import './userReviewTemplate.js';
 import './vendorLayoutOne.html';
 
 import './offersTabContent.html';
@@ -61,6 +65,8 @@ import './offersTabContent.js';
 import './descriptionTabContent.js';
 import './bookmarkBusiness.js';
 
+// import './userReviewTemplate.html';
+import './userReviewTemplate.js';
 
 /* rightSidebar */
 import './businessRightSidebar.html';
@@ -270,6 +276,7 @@ Template.vendorBusinessLayout.helpers({
 		var beenThereUser		= BeenThere.findOne({"userId":userId , "businessLink": currentUrl});
 		var userLikes			= Likes.findOne({"userid":userId , "businessLink": currentUrl});
 		var businessObj			= Business.findOne({'businessLink':currentUrl});
+
 
 		if(businessObj){
 			if(businessObj.status == 'inactive' ){

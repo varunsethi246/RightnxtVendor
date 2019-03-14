@@ -1,3 +1,4 @@
+// import './vendorBusinessDetails/vendorBusinessDetails.js';
 import './vendorSidebarMain.html';
 
 import './vendorLayout.html';
@@ -8,7 +9,6 @@ import './VendorPayments/VendorPayments.js'
 import './VendorProfileSetting/VendorProfileSetting.html'
 import './AddNewBusiness/addNewBusiness.js'
 
-import './vendorBusinessDetails/vendorBusinessDetails.js';
 import './venLayScrollTT.js';
 
 import './BusinessEnquiry/businessEnquiry.html';
