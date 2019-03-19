@@ -1,18 +1,12 @@
-console.log('1');
 import './claim.html';
 import './claimOtp.html';
 import './claimProcess.html';
 import './alreadyClaimed.html';
 import '../../common/header.html';
-console.log('1');
 import '../../common/generalHeader.js';
-console.log('2');
 import '../../common/searchbar.js';
-console.log('3');
 import '../../common/vendorSignUpForm.js';
-console.log('4');
 import '../generalLayout/generalLayout.js';
-console.log('5');
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 import { Meteor } from 'meteor/meteor';
@@ -26,10 +20,6 @@ claimSearch1 = new SearchSource('business2', fields);
 
 var pageSize = 4;
 var totalpgno = 1;
-
-Template.claim.onCreated(function(){
-	console.log('true');
-});
 
 Template.claim.onRendered(function(){
 	$('html, body').scrollTop(0);
