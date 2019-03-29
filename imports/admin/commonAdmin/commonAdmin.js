@@ -75,35 +75,53 @@ Template.ViewAllNotif.helpers({
       	var userId = Meteor.userId();
       	
 		var userDetail = Meteor.users.findOne({'_id':userId});
-		var notifArr = ["Vendor Modal Image Report", "Vendor Modal Image Report", "business-report-acknowledged", "business-image-report-acknowledged", "User Modal Image Report", "Admin Business Page Modal Report", "Admin Business Page Modal Report", "Vendor Business Page Bookmark", "Vendor Business Page Bookmark", "User Business Page Bookmark", "Vendor Business Page Been There", "Vendor Business Page Been There", "User Business Page Been There", "Business Page Share", "Vendor Business Page Report", "Vendor Business Page Report", "Vendor Business Page Report", "User Business Page Report", "Admin Business Page Report", "Admin Business Page Report", "You have been Tagged", "You have been Tagged", "Delete Business Admin", "Delete Business Admin", "Delete Business Vendor", "Delete Business Vendor", "Anything Else Business Admin", "Anything Else Business Admin", "Thanks for Submiting Offer", "Thanks for Submiting Offer", "Vendor has Submiting Offer", "Vendor has Submiting Offer", "Payment Received", "Payment Received", "Vendor Paid for Offer", "Vendor Paid for Offer", "Offer Deleted", "Offer Deleted", "Vendor deleted Offer", "Vendor deleted Offer", "Vendor Message Send", "Thanks for Registering New Business", "Thanks for Registering New Business", "Vendor Added New Business", "Vendor Added New Business"];
+		var notifArr = ["Payment Received", "Vendor Paid for Offer", "Vendor Message Send"];
 
 		if(userDetail.notificationConfiguration){
 			if(userDetail.notificationConfiguration.enquiry == "true"){
-				var arr = ["Vendor Business Enquiry", "Vendor Business Enquiry", "Vendor Business Enquiry", "User Business Enquiry", "Enquiry Message Send", "User Business Enquiry All"];
+				var arr = ["User Enquiry Message","User Enquiry Messages","Vendor Enquiry Message", "Vendor Business Enquiry", "User Business Enquiry", "Enquiry Message Send", "User Business Enquiry All"];
 				for(j=0;j<arr.length;j++){
 					notifArr.push(arr[j]);
 				}
 			}
 			if(userDetail.notificationConfiguration.rating == "true"){
-				var arr = ["Vendor Review and Rating", "Vendor Review and Rating", "User Review and Rating", "User Added Review and Rating", "User Added Review and Rating", "Business Page Review Share", "Business Page Review Share"];
+				var arr = ["Vendor Review and Rating", "User Review and Rating", "User Added Review and Rating", "Business Page Review Share"];
 				for(j=0;j<arr.length;j++){
 					notifArr.push(arr[j]);
 				}
 			}
 			if(userDetail.notificationConfiguration.follow == "true"){
-				var arr = ["Follow User Other", "Follow User Other", "Follow User Current","Follow","UnFollow"];
+				var arr = ["Follow User Other", "Follow User Current","Follow"];
 				for(j=0;j<arr.length;j++){
 					notifArr.push(arr[j]);
 				}
 			}
 			if(userDetail.notificationConfiguration.like == "true"){
-				var arr = ["Vendor Modal Image Like", "Vendor Modal Image Like", "User Modal Image Like", "Vendor Modal Image Comment Like", "Vendor Modal Image Comment Like", "User Modal Image Added Comment Like", "User Modal Image Added Comment Like", "User Modal Image Comment Like", "Vendor Modal Image Comment Reply Like", "Vendor Modal Image Comment Reply Like", "User Modal Image Added Comment Reply Like", "User Modal Image Added Comment Reply Like", "User Modal Image Added Comment SubReply Like", "User Modal Image Added Comment SubReply Like", "User Modal Image Comment SubReply Like", "Vendor Business Page Like", "Vendor Business Page Like", "User Business Page Like", "Vendor Review and Rating Like", "Vendor Review and Rating Like", "Other User Review and Rating Like", "Other User Review and Rating Like", "Current User Review and Rating Like", "Vendor Review Comment Like", "Vendor Review Comment Like", "User Comment Review and Rating Like", "User Comment Review and Rating Like", "User Review Comment Like", "User Review Comment Like", "Current User Review Comment Like", "Vendor Review Comment SubReply Like", "Vendor Review Comment SubReply Like", "User Added Review and Rating SubReply Like", "User Added Review and Rating SubReply Like", "User Review Comment SubReply Like", "User Review Comment SubReply Like", "User Added Review Reply SubReply Like", "User Added Review Reply SubReply Like", "Current User Review Comment Reply Like"];
+				var arr = ["Vendor Modal Image Like", "User Modal Image Like", "Vendor Modal Image Comment Like", "User Modal Image Added Comment Like", "User Modal Image Comment Like", "Vendor Modal Image Comment Reply Like", "User Modal Image Added Comment Reply Like", "User Modal Image Added Comment SubReply Like", "User Modal Image Comment SubReply Like", "Vendor Business Page Like", "User Business Page Like", "Vendor Review and Rating Like", "Other User Review and Rating Like", "Current User Review and Rating Like", "Vendor Review Comment Like", "User Comment Review and Rating Like", "User Review Comment Like", "Current User Review Comment Like", "Vendor Review Comment SubReply Like", "User Added Review and Rating SubReply Like", "User Review Comment SubReply Like", "User Added Review Reply SubReply Like", "Current User Review Comment Reply Like"];
 				for(j=0;j<arr.length;j++){
 					notifArr.push(arr[j]);
 				}
 			}
 			if(userDetail.notificationConfiguration.comment == "true"){
-				var arr = ["Vendor Modal Image Comment", "Vendor Modal Image Comment", "User Modal Image Comment", "Vendor Modal Image Comment Reply", "Vendor Modal Image Comment Reply", "User Modal Image Added Comment Reply", "User Modal Image Added Comment Reply", "User Modal Image Comment Reply", "Vendor Review and Rating Comment", "Vendor Review and Rating Comment", "Other User Review and Rating Comment", "Other User Review and Rating Comment", "Current User Review and Rating Comment", "Vendor Review Comment Reply", "Vendor Review Comment Reply", "User Review Comment", "User Review Comment", "Current User Review Comment Reply"];
+				var arr = ["Vendor Modal Image Comment", "User Modal Image Comment", "Vendor Modal Image Comment Reply", "User Modal Image Added Comment Reply", "User Modal Image Comment Reply", "Vendor Review and Rating Comment", "Other User Review and Rating Comment", "Current User Review and Rating Comment", "Vendor Review Comment Reply", "User Review Comment", "Current User Review Comment Reply"];
+				for(j=0;j<arr.length;j++){
+					notifArr.push(arr[j]);
+				}
+			}
+			if(userDetail.notificationConfiguration.report == "true"){
+				var arr = ["businessDone-report-acknowledgedOne","business-image-report-acknowledged","business-report-acknowledged"];
+				for(j=0;j<arr.length;j++){
+					notifArr.push(arr[j]);
+				}
+			}
+			if(userDetail.notificationConfiguration.editbusiness == "true"){
+				var arr = ["Delete Business Vendor","Delete Business Admin"];
+				for(j=0;j<arr.length;j++){
+					notifArr.push(arr[j]);
+				}
+			}
+			if(userDetail.notificationConfiguration){
+				var arr = ['Vendor deleted Offer','Vendor Added New Business','Admin Business Page Modal Report','Vendor Business Page Bookmark','User Business Page Been There','User Business Page Report','User Modal Image Report','Payment Successfull','Thanks for Registering','Vendor Business Page Been There','Offer Deleted','Vendor Business Page Report','Thanks for Submiting Offer','Vendor has Submiting Offer','Vendor Modal Image Report','Invoice','Admin Business Page Report','User Business Page Bookmark','You have been Tagged','Thanks for Registering New Business','Anything Else Business Admin','UnFollow','Mail Receipt','Claim','Business Page Share'];
 				for(j=0;j<arr.length;j++){
 					notifArr.push(arr[j]);
 				}
