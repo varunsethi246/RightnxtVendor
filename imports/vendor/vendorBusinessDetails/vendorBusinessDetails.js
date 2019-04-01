@@ -1,4 +1,3 @@
-console.log('155');
 // import './userReviewTemplate.html';
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
@@ -23,7 +22,6 @@ import { BusinessMenu } from '/imports/videoUploadClient/businessMenuClient.js';
 import { OfferImage } from '/imports/videoUploadClient/offerImageClient.js';
 import { OwnerImage } from '/imports/videoUploadClient/ownerImageClient.js';
 import { ReviewImage } from '/imports/videoUploadClient/reviewImageClient.js';
-console.log('11');
 import '../BusinessEnquiry/businessEnquiry.js';
 import './vendorBusinessLayout.html';
 import './vendorBusinessCarousel.js';
@@ -31,7 +29,6 @@ import './imageReports/imageReports.js';
 import './imageReports/imageReports.html';
 import '/imports/common/common.js';
 
-console.log('1');
 /* leftSidebar */
 import './businessLeftSidebar.html';
 import './businessModeOfPayment.html';
@@ -39,18 +36,15 @@ import './businessContactDetails.html';
 import './businessContactDetails.js';
 import './businessOfferDetails.html';
 import './businessTimingDetails.html';
-console.log('2');
 /* mainContent*/
-// import './userReviewTemplate.html';
-// import './userReviewTemplate.js';
-console.log('3');
+import './userReviewTemplate.html';
+import './userReviewTemplate.js';
 
 import './businessMainContent.html';
 import './descriptionTabContent.html';
 import './businessEventIcons.html';
 import './businessEvntIcons2.html';
 import './businessEventIcons.js';
-console.log('4');
 import './reportModalForm.html';
 import './reportModalForm.js';
 
