@@ -68,15 +68,20 @@ SearchSource.defineSource('business', (searchText, options)=> {
 
     //new code 02 April 2019
     if(searchResult.length==0){
-        var businessAdsDetails = BusinessAds.find({'status':'active'},{"areas":{ $in: [areaSelector] }}).fetch();
+        var businessAdsDetails = BusinessAds.find({'status':'active'}).fetch();
         // console.log('businessAdsDetails',businessAdsDetails);
         var tempArr = [];
         if(businessAdsDetails.length>0){
             for (var a = 0; a < businessAdsDetails.length; a++) {
-                var showAds = tempArr.findIndex(x=>x.businessLink == businessAdsDetails[a].businessLink);
-                if(showAds<0){        
-                    tempArr.push({'businessLink':businessAdsDetails[a].businessLink});                           
-                    searchResult = Business.find({'businessLink':businessAdsDetails[a].businessLink}).fetch();               
+                if(searchArea != 'undefined' && searchArea != 'All Areas'){
+                    var checkArea = businessAdsDetails[a].areas.findIndex(x=>x == searchArea);
+                    if(checkArea>=0){ 
+                        var showAds = tempArr.findIndex(x=>x.businessLink == businessAdsDetails[a].businessLink);
+                        if(showAds<0){        
+                            tempArr.push({'businessLink':businessAdsDetails[a].businessLink});                           
+                            searchResult = Business.find({'businessLink':businessAdsDetails[a].businessLink}).fetch();               
+                        }
+                    }
                 }
             }
         }
@@ -124,7 +129,7 @@ SearchSource.defineSource('business', (searchText, options)=> {
 
     // Get Unique Categories
     if(searchResult){
-        for(i=0;i<searchResult.length;i++){
+        for(var i=0;i<searchResult.length;i++){
             if(searchResult[i].businesscategories){
                 for(var j = 0 ; j < searchResult[i].businesscategories.length; j++){
                     if(searchResult[i].businesscategories[j] && searchResult[i].businesscategories[j].length > 0){
@@ -186,12 +191,23 @@ SearchSource.defineSource('business', (searchText, options)=> {
         
         if(businessAds){
             var commonLink = [];
-            for(i=0; i<businessAds.length; i++){
-                var paidBizLink = businessAds[i].businessLink;
-                searchResult = searchResult.filter(function( obj ) {
-                    return obj.businessLink !== paidBizLink;
-                });
-                commonLink.push(paidBizLink);
+            for(var i=0; i<businessAds.length; i++){
+                if(searchArea != 'undefined' && searchArea != 'All Areas'){
+                    var checkArea = businessAds[i].areas.findIndex(x=>x == searchArea);
+                    if(checkArea>=0){ 
+                        var paidBizLink = businessAds[i].businessLink;
+                        searchResult = searchResult.filter(function( obj ) {
+                            return obj.businessLink !== paidBizLink;
+                        });
+                        commonLink.push(paidBizLink);
+                    }
+                }else{
+                    var paidBizLink = businessAds[i].businessLink;
+                    searchResult = searchResult.filter(function( obj ) {
+                        return obj.businessLink !== paidBizLink;
+                    });
+                    commonLink.push(paidBizLink);
+                }
             }//for i
         
             
@@ -200,7 +216,7 @@ SearchSource.defineSource('business', (searchText, options)=> {
             
             // businessAdsDocs = [];
             // businessAdsDocs = Business.find({"businessLink":{$in : commonLink},"status":"active"}).fetch();
-            for(n=0;n<commonLink.length;n++){
+            for(var n=0;n<commonLink.length;n++){
                 // var busNewAdd = 
                 var businessAdsDocsNew = Business.findOne({"businessLink":commonLink[n],"status":"active"});
                 businessAdsDocs.push(businessAdsDocsNew);  
@@ -212,7 +228,7 @@ SearchSource.defineSource('business', (searchText, options)=> {
     // return businessAdsDocs;
     
     if(businessAdsDocs){
-        for(i=0;i<businessAdsDocs.length;i++){
+        for(var i=0;i<businessAdsDocs.length;i++){
              // ===================Get Image URL from ID Start=========================
                 if(businessAdsDocs[i].publishedImage){
                     businessAdsDocs[i].businessSelectedImagesNew = searchPageShowImage(businessAdsDocs[i].publishedImage);
@@ -253,7 +269,7 @@ SearchSource.defineSource('business', (searchText, options)=> {
 
                 var ratingObj = {};
 
-                for(j=1; j<=10; j++){
+                for(var j=1; j<=10; j++){
                     var x = "star" + j;
                     if(j <= finalRating*2){
                         if( j%2 == 0){
