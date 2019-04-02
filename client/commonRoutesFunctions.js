@@ -95,16 +95,16 @@ ViewAllNotifFunc= function () {
 }
 
 vendorBusinessLayoutFunc= function () {
-	console.log('business page client');   
+	// console.log('business page client');   
 	import('/imports/vendor/vendorBusinessDetails/vendorBusinessDetails.js')
 	.then(function (handle) {
-		console.log('hiii');     
+		// console.log('hiii');     
 		handle.vendorBusinessLayoutForm();    
 	})
 	.then(function(){
-		console.log('loader');
+		// console.log('loader');
 		$("#inject-loader-wrapper").fadeOut(1500, function() { $(this).remove(); });
-		console.log('loader');
+		// console.log('loader');
 	})
 	.catch(err=>console.log(err))
 }

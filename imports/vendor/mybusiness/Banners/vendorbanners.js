@@ -18,7 +18,7 @@ import '../../VendorPayments/VendorPayments.js'
 Template.vendorbanners.helpers({
 	'paymentDetailsBanner':function(){
 		var businessLink = FlowRouter.getParam('businessLink');
-		var paymentDetails 	= Payment.find({"vendorId":Meteor.userId(),'orderType':'Banner','businessLink':businessLink}).fetch();
+		var paymentDetails 	= Payment.find({"vendorId":Meteor.userId(),'orderType':'Banner','businessLink':businessLink},{sort:{invoiceNumber:-1}}).fetch();
 		// console.log('paymentDetails :',paymentDetails);
 		if(paymentDetails){
 		// console.log('paymentDetails 2 :',paymentDetails);

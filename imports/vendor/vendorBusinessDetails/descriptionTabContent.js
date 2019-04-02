@@ -490,7 +490,7 @@ Template.descriptionTabContent.helpers({
 			}//end i loop
 			var totalReview = allReviews.length;
 			Session.set('totalReview', totalReview);
-		console.log('allReviews',allReviews);
+		// console.log('allReviews',allReviews);
 		
 		return allReviews;
 		}

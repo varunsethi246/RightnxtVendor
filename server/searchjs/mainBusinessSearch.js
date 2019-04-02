@@ -66,6 +66,21 @@ SearchSource.defineSource('business', (searchText, options)=> {
     // searchResult = Business.find(selector, options).fetch();
     searchResult = Business.find(selector).fetch();
 
+    //new code 02 April 2019
+    if(searchResult.length==0){
+        var businessAdsDetails = BusinessAds.find({'status':'active'},{"areas":{ $in: [areaSelector] }}).fetch();
+        // console.log('businessAdsDetails',businessAdsDetails);
+        var tempArr = [];
+        if(businessAdsDetails.length>0){
+            for (var a = 0; a < businessAdsDetails.length; a++) {
+                var showAds = tempArr.findIndex(x=>x.businessLink == businessAdsDetails[a].businessLink);
+                if(showAds<0){        
+                    tempArr.push({'businessLink':businessAdsDetails[a].businessLink});                           
+                    searchResult = Business.find({'businessLink':businessAdsDetails[a].businessLink}).fetch();               
+                }
+            }
+        }
+    }
 
     // =========================================================
     // ==================Get Image URL from Start ==============
