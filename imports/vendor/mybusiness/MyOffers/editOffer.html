@@ -28,7 +28,7 @@
 								<td>{{offerStatus}}</td>
 								<td>Rs. {{payment}}</td>
 								<td>
-									<i id="{{_id}}" data-toggle="modal" data-target="#editDataModal-{{_id}}" class="fa fa-pencil-square-o editModal" title="Edit"></i>
+									{{#if disableEditOffer}}<i id="{{_id}}" data-toggle="modal" data-target="#editDataModal-{{_id}}" class="fa fa-pencil-square-o editModal" title="Edit"></i>{{/if}}
 									{{#if showDeleteOffer}}<i id="{{_id}}" data-toggle="modal" data-target="#deleteDataModal-{{_id}}" class="fa fa-trash-o" title="Delete"></i>{{else}}<i id="{{_id}}" class="fa fa-circle offerStatus {{#if showActiveOffer}}activeOfer{{/if}}" aria-hidden="true" title="{{#if showActiveOffer}}Inactivate Offer {{else}} Activate Offer {{/if}}"></i>{{/if}}
 									<i id="{{_id}}" data-toggle="modal" data-target="#viewDataModal-{{_id}}" class="fa fa-eye viewModal" title="View"></i>
 								</td>

@@ -128,6 +128,44 @@ Meteor.methods({
 		);
 	},
 
+	'updateInactiveStatus':function(_id,status,businessLink){
+		var payObj = Payment.findOne({"vendorId":Meteor.userId(), "businessLink": businessLink, "paymentStatus":"unpaid", "orderType":"Offer"});
+		// console.log('payObj',payObj);
+		if(payObj){
+			if(payObj.offers.length==0){
+				Payment.remove(payObj._id);
+			}else{
+				Payment.update(
+				{"_id":payObj._id},
+				{$pull: 
+					{'offers': 
+						{
+							'offerId': _id
+						},
+					'offerId': _id,
+					}
+				});
+			}
+		}
+		Offers.update(
+			{"_id": _id},
+			{ $set:	
+				{ 
+					offerStatus : status
+				}, 
+			},
+			function(error,result){
+				if(error){
+					console.log(error);
+					return error;
+				}
+				if(result){
+					return result;
+				}
+			}
+		);
+	},
+
 	'deleteOffers':function(formValues,businessLink){
 		Offers.remove(formValues);
 		var payObj = Payment.findOne({"vendorId":Meteor.userId(), "businessLink": businessLink, "paymentStatus":"unpaid", "orderType":"Offer"});

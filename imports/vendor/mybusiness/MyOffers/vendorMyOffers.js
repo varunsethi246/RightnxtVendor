@@ -1787,7 +1787,7 @@ Template.editOffer.helpers({
 				var expireDate = allPages[i].expirationToDate;
 				if(expireDate < postDate || expireDate < todayDate){
 					// var offerStatus = 'inactive';
-					Meteor.call('updateOfferStatus',allPages[i]._id,'Inactive',function(error,result){
+					Meteor.call('updateInactiveStatus',allPages[i]._id,'Inactive',businessLink,function(error,result){
 						if(error){
 							Bert.alert(error.reason,"danger","growl-top-right");
 						}else{
@@ -1837,9 +1837,17 @@ Template.editOffer.helpers({
 			return false;
 		} 
 	},
+	disableEditOffer(){
+		var offerStatus = this.offerStatus;
+		if(offerStatus != 'Inactive'){
+			return true;
+		}else{
+			return false;
+		}
+	},
 	showDeleteOffer(){
 		var offerStatus = this.offerStatus;
-		if(offerStatus == 'New' || offerStatus == 'Payment Pending'){
+		if(offerStatus == 'New' || offerStatus == 'Payment Pending' || offerStatus == 'Inactive'){
 			return true;
 		}else{
 			return false;
