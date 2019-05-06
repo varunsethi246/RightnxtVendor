@@ -56,6 +56,9 @@ if (Meteor.isServer) {
 	Meteor.publish('offerPayment', function offerPayment(invNo) {
 		return Payment.find({'invoiceNumber':invNo,'orderType':'Offer'});
 	});
+	Meteor.publish('offerByInvoive', function offerByInvoive(invNo) {
+		return Payment.find({'invoiceNumber':invNo});
+	});
 	Meteor.publish('noOfInvoiceCount', function() {
 		Counts.publish(this, 'noOfInvoiceCount', Payment.find({}));
 	});

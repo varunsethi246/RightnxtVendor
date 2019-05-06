@@ -612,7 +612,7 @@ Template.listOfBusiness.events({
 		Session.set('businessListLimit',nextLimit);
 	},
 	'keyup #searchBusiness': _.throttle(function(event) {
-		 event.preventDefault();
+		event.preventDefault();
 		var searchText = event.currentTarget.value;
 		var filter = searchText.toUpperCase();
 		var table = document.getElementById("businessListTable");

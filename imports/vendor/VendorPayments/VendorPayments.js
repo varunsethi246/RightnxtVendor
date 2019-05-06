@@ -389,10 +389,8 @@ Template.vendorPayments.helpers({
 				var receiptLink = '';
 				if(paymentDetails[i].orderType=="Banner"){
 					paymentDetails[i].totalAmount = paymentDetails[i].discountedPrice;
-					paymentDetails[i].receiptLink = "/bannerInvoice/" + paymentDetails[i].businessLink+'/'+paymentDetails[i]._id;
 				} else if(paymentDetails[i].orderType=="Ads"){
 					paymentDetails[i].totalAmount = paymentDetails[i].discountedPrice;
-					paymentDetails[i].receiptLink = "/adsInvoice/" + paymentDetails[i].businessLink+'/'+paymentDetails[i]._id;
 				} else {
 					if(paymentDetails[i].offers.length>0){
 						var totalAmount = 0;
@@ -404,14 +402,21 @@ Template.vendorPayments.helpers({
 						}
 					}
 					paymentDetails[i].totalAmount = totalAmount;
-					paymentDetails[i].receiptLink = "/" + paymentDetails[i].businessLink + "/receipt/" + paymentDetails[i].invoiceNumber+'-i';
 				}
 				if(paymentDetails[i].paymentStatus=="paid"){
 					paymentDetails[i].paymentStatus = 'Paid';
 					paymentDetails[i].paymentDate = moment(paymentDetails[i].paymentDate).format('DD/MM/YYYY');
+					paymentDetails[i].receiptLink = "/" + paymentDetails[i].businessLink + "/receipt/" + paymentDetails[i].invoiceNumber+'-i';
 				}else if(paymentDetails[i].paymentStatus=="unpaid"){
 					paymentDetails[i].paymentStatus = 'Unpaid';
 					paymentDetails[i].paymentDate = "";
+					if(paymentDetails[i].orderType=="Banner"){
+						paymentDetails[i].receiptLink = "/bannerInvoice/" + paymentDetails[i].businessLink+'/'+paymentDetails[i]._id;
+					}else if(paymentDetails[i].orderType=="Ads"){
+						paymentDetails[i].receiptLink = "/adsInvoice/" + paymentDetails[i].businessLink+'/'+paymentDetails[i]._id;
+					}else{
+						paymentDetails[i].receiptLink = "/businessOffers/" + paymentDetails[i].businessLink + "/invoice/" + paymentDetails[i].invoiceNumber;
+					}
 				}
 			}
 			return paymentDetails;
