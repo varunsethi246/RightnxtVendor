@@ -1801,6 +1801,13 @@ Template.editOffer.helpers({
 							// Bert.alert('Offer status updated sucessfully.','success',"growl-top-right");
 						}
 					});
+					var showActive = false;
+				}else{
+					if(allPages[i].offerStatus=='Inactive'){
+						var showActive = true;
+					}else{
+						var showActive = false;
+					}
 				}
 				if(companyRates){
 					if(companyRates.rates){
@@ -1826,8 +1833,10 @@ Template.editOffer.helpers({
 					expirationFromDate 	: moment(allPages[i].expirationFromDate).format('DD/MM/YYYY'),
 					expirationToDate 	: moment(allPages[i].expirationToDate).format('DD/MM/YYYY'),
 					payment 			: payment,
+					buttonActive 		: showActive,
 				};
 			}
+			// console.log('allPages',allPages)
 			return allPages;			
 		}
 	},
