@@ -1787,8 +1787,10 @@ Template.editOffer.helpers({
 		var businessId = businessName._id;
 		var companyRates = CompanySettings.findOne({'companyId':101},{"rates":1,"_id":0});
 		allPages = Offers.find({"vendorId":Meteor.userId(),"businessId":businessId}).fetch();
-		if(allPages){
-			for(i=0;i<allPages.length;i++){
+		if(allPages&&allPages.length>0){
+			var newAllPages = [];
+	    	var countAllPages = 0;
+	    	for(i=0;i<allPages.length;i++){
 				var postDate = allPages[i].expirationFromDate;
 				var todayDate = moment(new Date()).format("YYYY-MM-DD");
 				var expireDate = allPages[i].expirationToDate;
@@ -1809,35 +1811,46 @@ Template.editOffer.helpers({
 						var showActive = false;
 					}
 				}
-				if(companyRates){
-					if(companyRates.rates){
-						var getPaymentStatus = Payment.findOne({'offers.offerId':allPages[i]._id});
-						if(getPaymentStatus){
-							var payment = parseInt(getPaymentStatus.offerPricePerMonth) * parseInt(allPages[i].numOfMonths);
+				
+				if(allPages[i].offerStatus=='Inactive'){
+    				newAllPages.splice((allPages.length-1),0,allPages[i]);		
+				}else{
+					newAllPages.splice(countAllPages,0,allPages[i]);
+					countAllPages++;
+				}
+			}
+			// console.log('newAllPages',newAllPages)
+			if(newAllPages&&newAllPages.length>0){
+				for (var j = 0; j < newAllPages.length; j++) {
+					if(companyRates){
+						if(companyRates.rates){
+							var getPaymentStatus = Payment.findOne({'offers.offerId':newAllPages[j]._id});
+							if(getPaymentStatus){
+								var payment = parseInt(getPaymentStatus.offerPricePerMonth) * parseInt(newAllPages[j].numOfMonths);
+							}else{
+								var payment = companyRates.rates.ratePerOffer * newAllPages[j].numOfMonths;
+							}
 						}else{
-							var payment = companyRates.rates.ratePerOffer * allPages[i].numOfMonths;
-						}
+							var payment = 0;
+						}			
 					}else{
 						var payment = 0;
-					}			
-				}else{
-					var payment = 0;
+					}
+
+				
+					newAllPages[j] = {
+						"i"					: (j+1),
+						_id 				: newAllPages[j]._id,
+						offerStatus 		: newAllPages[j].offerStatus,
+						dealHeadline		: newAllPages[j].dealHeadline,
+						expirationFromDate 	: moment(newAllPages[j].expirationFromDate).format('DD/MM/YYYY'),
+						expirationToDate 	: moment(newAllPages[j].expirationToDate).format('DD/MM/YYYY'),
+						payment 			: payment,
+						buttonActive 		: newAllPages[j].showActive,
+					};
 				}
-
-
-				allPages[i] = {
-					"i"					: (i+1),
-					_id 				: allPages[i]._id,
-					offerStatus 		: allPages[i].offerStatus,
-					dealHeadline		: allPages[i].dealHeadline,
-					expirationFromDate 	: moment(allPages[i].expirationFromDate).format('DD/MM/YYYY'),
-					expirationToDate 	: moment(allPages[i].expirationToDate).format('DD/MM/YYYY'),
-					payment 			: payment,
-					buttonActive 		: showActive,
-				};
 			}
-			// console.log('allPages',allPages)
-			return allPages;			
+			return newAllPages;			
 		}
 	},
 	showEditOffer(){
