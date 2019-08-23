@@ -1,13 +1,13 @@
 <template name="customerLeadsGraph">
 <div class="graphWrapper">
 	{{#if customerLeadsData}}
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custmonthChart noPaddingGeneral" id="custmonthChart"></div>
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custyearChart noPaddingGeneral" id="custyearChart"></div>
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custtwoYearChart noPaddingGeneral" id="custtwoYearChart"></div>
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="labelCustLegendYear">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="labelCustLegendYear" style="margin-bottom: 15px">
 			<div class="legendBgCls col-lg-1 col-md-1 col-sm-1 col-xs-2 legendCustVws"></div>
 			<div class="col-lg-11 col-md-11 col-sm-11 col-xs-10 legendCustVws">Total Leads</div>
 		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custmonthChart noPaddingGeneral" id="custmonthChart"></div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custyearChart noPaddingGeneral" id="custyearChart"></div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custtwoYearChart noPaddingGeneral" id="custtwoYearChart"></div>
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 feedBlock">
 			{{#with customerLeadsData}}
 				<h4><b>Customer Leads Breakdown : {{date}}</b></h4>

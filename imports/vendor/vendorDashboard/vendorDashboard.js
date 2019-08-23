@@ -38,10 +38,10 @@ Template.userViewGraph.onRendered(function(){
     		var businessLink = FlowRouter.getParam('businessLink');
     		if(businessLink){
 	    		$("#twoYearChart").empty();
-	    		$('.legendUserVwsBannersAds').hide();
-				$('.legendUserVwsBanners').hide();
-				$('.legendUserVwsAds').hide();
-				$('.legendUserVws').hide();
+	   //  		$('.legendUserVwsBannersAds').hide();
+				// $('.legendUserVwsBanners').hide();
+				// $('.legendUserVwsAds').hide();
+				// $('.legendUserVws').hide();
 
 		    	var date = new Date();
 			    // var LastYrFD = new Date(date.getFullYear()-1, 0, 1);
@@ -94,7 +94,7 @@ Template.userViewGraph.onRendered(function(){
 								if((businessBannersDetails.startDate >= businessFirstDate && businessBannersDetails.startDate <= businessLastDate) || 
 								  (businessBannersDetails.endDate >= businessFirstDate && businessBannersDetails.endDate <= businessLastDate)){
 									if(totalCount){
-						  				$('.legendUserVwsBanners').show();
+						  				$('.legendUserVwsBanners').css('display','block');
 					  					dateArray.push(dateArrayData);
 										dataArray.push(totalCount);
 					  					bgcolorArray.push("rgba(255, 159, 64, 0.8)");
@@ -132,6 +132,10 @@ Template.userViewGraph.onRendered(function(){
 			    					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
 				  				}
 							}
+			      		}else{
+			      			dateArray.push(dateArrayData);
+							dataArray.push(0);
+							bgcolorArray.push("rgba(54, 162, 235, 0.8)");
 			      		}
 			      	}
 			      	
@@ -284,12 +288,11 @@ Template.userViewGraph.onRendered(function(){
     	// if (chart.ready() && chart1.ready()) {
     		var businessLink = FlowRouter.getParam('businessLink');
     		if(businessLink){
-
 	    		$("#monthChart").empty();
-	    		$('.legendUserVwsBannersAds').hide();
-				$('.legendUserVwsBanners').hide();
-				$('.legendUserVwsAds').hide();
-				$('.legendUserVws').hide();
+	   //  		$('.legendUserVwsBannersAds').hide();
+				// $('.legendUserVwsBanners').hide();
+				// $('.legendUserVwsAds').hide();
+				// $('.legendUserVws').hide();
 		      	var date = new Date();
 			  	var firstDate = new Date(date.getFullYear(), date.getMonth(), 1);
 	    		var days = [];
@@ -309,6 +312,7 @@ Template.userViewGraph.onRendered(function(){
 	    			var currentDate1 = moment(days[j]).format('YYYY-MM-DD');
 		      		var totalCount = UserStatistics.findOne({'businessLink':businessLink , 'date':currentDate});
 					if(businessBannersDetails && businessAdsDetails){
+						console.log('totalCount1');
 						if((currentDate1 >= businessBannersDetails.startDate && currentDate1 <= businessBannersDetails.endDate) && 
 						(currentDate1 >= businessAdsDetails.startDate && currentDate1 <= businessAdsDetails.endDate)){
 							if(totalCount){
@@ -321,9 +325,11 @@ Template.userViewGraph.onRendered(function(){
 			  				if(totalCount){
 				  				$('.legendUserVws').show();
 			  					dataArray.push(totalCount.count);
-			  					dateArray.push(currentDate);
-			  					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
+			  				}else{
+			  					dataArray.push(0);
 			  				}
+			  				dateArray.push(currentDate);
+			  				bgcolorArray.push("rgba(54, 162, 235, 0.8)");
 						}
 					}else if(businessBannersDetails){
 						if(currentDate1 >= businessBannersDetails.startDate && currentDate1 <= businessBannersDetails.endDate){
@@ -337,9 +343,11 @@ Template.userViewGraph.onRendered(function(){
 			  				if(totalCount){
 				  				$('.legendUserVws').show();
 			  					dataArray.push(totalCount.count);
-			  					dateArray.push(currentDate);
-			  					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
+			  				}else{
+			  					dataArray.push(0);	
 			  				}
+			  				dateArray.push(currentDate);
+			  				bgcolorArray.push("rgba(54, 162, 235, 0.8)");
 						}
 					}else if(businessAdsDetails){
 						if(currentDate1 >= businessAdsDetails.startDate && currentDate1 <= businessAdsDetails.endDate){
@@ -353,17 +361,21 @@ Template.userViewGraph.onRendered(function(){
 			  				if(totalCount){
 				  				$('.legendUserVws').show();
 			  					dataArray.push(totalCount.count);
-			  					dateArray.push(currentDate);
-			  					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
+			  				}else{
+			  					dataArray.push(0);
 			  				}
+			  				dateArray.push(currentDate);
+			  				bgcolorArray.push("rgba(54, 162, 235, 0.8)");
 						}
 					}else{
 		  				if(totalCount){
 			  				$('.legendUserVws').show();
 		  					dataArray.push(totalCount.count);
-		  					dateArray.push(currentDate);
-		  					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
+		  				}else{
+		  					dataArray.push(0);
 		  				}
+		  				dateArray.push(currentDate);
+		  				bgcolorArray.push("rgba(54, 162, 235, 0.8)");
 					}
 		      	}
 
@@ -414,7 +426,7 @@ Template.userViewGraph.onRendered(function(){
 			    });
 
 		      	$("#monthChart").append(
-	        		"<div class='noPaddingGeneral col-lg-10 col-md-10 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-daily' style='max-height: 100%;'></canvas></div>"
+	        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessLink+"-daily' style='max-height: 100%;'></canvas></div>"
 	        	);
 
 		      	var ctx = document.getElementById(businessLink+"-daily").getContext("2d");
@@ -450,10 +462,10 @@ Template.userViewGraph.onRendered(function(){
     		if(businessLink){
 	
 	    		$("#yearChart").empty();
-	    		$('.legendUserVwsBannersAds').hide();
-				$('.legendUserVwsBanners').hide();
-				$('.legendUserVwsAds').hide();
-				$('.legendUserVws').hide();
+	   //  		$('.legendUserVwsBannersAds').hide();
+				// $('.legendUserVwsBanners').hide();
+				// $('.legendUserVwsAds').hide();
+				// $('.legendUserVws').hide();
 		      	var monthsArray      = [];
 		      	var dataArray    	 = [];
 		      	var bgcolorArray     = [];
@@ -477,6 +489,7 @@ Template.userViewGraph.onRendered(function(){
 								totalCount += parseInt(statisticData[j].count) ;
 		  					}
 
+		  					// console.log('t',businessBannersDetails.startDate,businessBannersDetails.endDate,businessFirstDate,businessLastDate);
 		  					if(businessBannersDetails && businessAdsDetails){
 								if(((businessBannersDetails.startDate >= businessFirstDate && businessBannersDetails.startDate <= businessLastDate) || 
 								  (businessBannersDetails.endDate >= businessFirstDate && businessBannersDetails.endDate <= businessLastDate)) && 
@@ -538,6 +551,10 @@ Template.userViewGraph.onRendered(function(){
 			    					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
 				  				}
 							}
+			      		}else{
+			      			monthsArray.push(moment(firstDate).format('MMMM'));
+							dataArray.push(0);
+		  					bgcolorArray.push("rgba(54, 162, 235, 0.8)");
 			      		}
 			      	}
 			      	

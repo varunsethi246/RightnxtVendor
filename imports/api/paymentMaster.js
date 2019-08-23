@@ -460,7 +460,7 @@ Meteor.methods({
 							Offers.update(
 								{"_id": data},
 								{ $set:	{ 
-											"offerStatus" 	: "Active",
+											"offerStatus" 	: "Paid",
 										}, 
 								},
 								function(error1,result1){

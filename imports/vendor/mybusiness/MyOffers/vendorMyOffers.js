@@ -1803,13 +1803,23 @@ Template.editOffer.helpers({
 							// Bert.alert('Offer status updated sucessfully.','success',"growl-top-right");
 						}
 					});
-					var showActive = false;
+					allPages[i].showActive = false;
 				}else{
 					if(allPages[i].offerStatus=='Inactive'){
-						var showActive = true;
+						allPages[i].showActive = true;
 					}else{
-						var showActive = false;
+						allPages[i].showActive = false;
 					}
+				}
+
+				if(postDate == todayDate&&allPages[i].offerStatus=='Paid'){
+					Meteor.call('updateInactiveStatus',allPages[i]._id,'Active',businessLink,function(error,result){
+						if(error){
+							Bert.alert(error.reason,"danger","growl-top-right");
+						}else{
+							// Bert.alert('Offer status updated sucessfully.','success',"growl-top-right");
+						}
+					});
 				}
 				
 				if(allPages[i].offerStatus=='Inactive'){
@@ -1837,7 +1847,7 @@ Template.editOffer.helpers({
 						var payment = 0;
 					}
 
-				
+					
 					newAllPages[j] = {
 						"i"					: (j+1),
 						_id 				: newAllPages[j]._id,
@@ -1850,6 +1860,7 @@ Template.editOffer.helpers({
 					};
 				}
 			}
+			console.log('newAllPages',newAllPages);
 			return newAllPages;			
 		}
 	},
@@ -1900,7 +1911,7 @@ Template.editOffer.helpers({
 	},
 	activeInactiveOffer(){
 		var offerStatus = this.offerStatus;
-		if(offerStatus == 'Active' || offerStatus == 'Inactive'){
+		if(offerStatus == 'Active' || offerStatus == 'Inactive' || offerStatus == 'Paid'){
 			return false;
 		}else{
 			return true;

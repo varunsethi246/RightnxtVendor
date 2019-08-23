@@ -27,7 +27,7 @@ if (Meteor.isServer) {
 	});
 	Meteor.publish('offerCount', function(businessLink) {
   		
-		Counts.publish(this, 'offerCount', Offers.find({'businessLink':businessLink}));
+		Counts.publish(this, 'offerCount', Offers.find({'businessLink':businessLink,'offerStatus':'Active'}));
   	});
 	// Meteor.publish('noOfOfferWeek', function() {
 	// 	var days = 7;

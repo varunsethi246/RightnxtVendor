@@ -124,6 +124,8 @@ Template.customerLeadsGraph.onRendered(function(){
 	        		"<div class='noPaddingGeneral col-lg-10 col-md-10 col-sm-12 col-xs-12'><canvas id='"+businessUrl+"-custyearly' style='max-height: 100%;'></canvas></div>"
 	        	);
 
+	        	// console.log('dateArray,datasetsArray',dateArray,datasetsArray);
+
 		      	var ctx = document.getElementById(businessUrl+"-custyearly").getContext("2d");
 			    var myChart = new Chart(ctx, {
 				  type: 'bar',
@@ -234,6 +236,10 @@ Template.customerLeadsGraph.onRendered(function(){
 						dateArray.push(moment(statFirstDate).format('MMMM'));
 						dataArray.push(totalCount);
 						bgcolorArray.push("rgba(54, 162, 235, 0.8)");
+					}else{
+						dateArray.push(moment(statFirstDate).format('MMMM'));
+						dataArray.push(0);
+						bgcolorArray.push("rgba(54, 162, 235, 0.8)");
 					}
 	    		}
 
@@ -248,6 +254,7 @@ Template.customerLeadsGraph.onRendered(function(){
 	        		"<div class='noPaddingGeneral col-lg-10 col-md-10 col-sm-12 col-xs-12'><canvas id='"+businessUrl+"-custmonthly' style='max-height: 100%;'></canvas></div>"
 	        	);
 
+	        	// console.log('dateArray,datasetsArray',dateArray,datasetsArray);
 		      	var ctx = document.getElementById(businessUrl+"-custmonthly").getContext("2d");
 			    var myChart = new Chart(ctx, {
 				  type: 'bar',
@@ -364,6 +371,10 @@ Template.customerLeadsGraph.onRendered(function(){
 						dateArray.push(moment(days[j]).format('DD/MM/YYYY'));
 						dataArray.push(totalCount);
 						bgcolorArray.push("rgba(54, 162, 235, 0.8)");
+					}else{
+						dateArray.push(moment(days[j]).format('DD/MM/YYYY'));
+						dataArray.push(0);
+						bgcolorArray.push("rgba(54, 162, 235, 0.8)");
 					}
 		      	}
 			  
@@ -375,7 +386,7 @@ Template.customerLeadsGraph.onRendered(function(){
 			    });
 
 				$("#custmonthChart").append(
-	        		"<div class='noPaddingGeneral col-lg-10 col-md-10 col-sm-12 col-xs-12'><canvas id='"+businessUrl+"-custdaily' style='max-height: 100%;'></canvas></div>"
+	        		"<div class='noPaddingGeneral col-lg-12 col-md-12 col-sm-12 col-xs-12'><canvas id='"+businessUrl+"-custdaily' style='max-height: 100%;'></canvas></div>"
 	        	);
 
 		      	var ctx = document.getElementById(businessUrl+"-custdaily").getContext("2d");
@@ -545,6 +556,18 @@ Template.customerLeadsGraph.helpers({
 				"mapStatisticCount"    : mapStatisticCount,
 				"mobileStatisticCount" : mobileStatisticCount,
 				"reviewImagesCount" : reviewImagesCount,
+				"date" : date,
+			};
+		}else{
+			var data = {
+				"bookmarkCount"  : 0,
+				"beenThereCount" : 0,
+				"likesCount" 	 : 0,
+				"saveOfferCount" : 0,
+				"userStatisticCount"   : 0,
+				"mapStatisticCount"    : 0,
+				"mobileStatisticCount" : 0,
+				"reviewImagesCount" : 0,
 				"date" : date,
 			};
 		}
