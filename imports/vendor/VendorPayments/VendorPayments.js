@@ -47,6 +47,7 @@ Template.paymentSuccessAdsBanners.helpers({
 		// 	  });
 		//   }
 		// }
+		// console.log('true')
 		if(getPayData){
 			if(getPayData.orderType == "Ads"){
 				if(status == 'paid'){
