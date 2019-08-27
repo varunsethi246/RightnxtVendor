@@ -1812,7 +1812,7 @@ Template.editOffer.helpers({
 					}
 				}
 
-				if(postDate == todayDate&&allPages[i].offerStatus=='Paid'){
+				if(todayDate >= postDate&&allPages[i].offerStatus=='Paid'){
 					Meteor.call('updateInactiveStatus',allPages[i]._id,'Active',businessLink,function(error,result){
 						if(error){
 							Bert.alert(error.reason,"danger","growl-top-right");
